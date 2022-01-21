@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,13 +40,30 @@ namespace SVSU_Capstone_Project
             //If there are values in both textboxes, continue to check
             if(blnUsername && blnPassword)
             {
-                //If credentials don't pass, alert user and empty textboxes
+                //Hash password
+                string strHashedPassword = HashPassword(txtPassword.Text);
 
-
-                //If credentials pass, close the form and set username
-                frmMain.strUsername = txtUsername.Text;
-                Close();
+                //Check to see if username/password pair exists in database
+                if (true)
+                {
+                    //If credentials pass, close the form and set username
+                    frmMain.strUsername = txtUsername.Text;
+                    Close();
+                }
+                else
+                {
+                    //If not, alert the user and empty the textboxes
+                    txtUsername.Text = "";
+                    txtPassword.Text = "";
+                }
             }
+        }
+
+        private string HashPassword(string strPassword)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(strPassword);
+            byte[] hashedBytes = HashAlgorithm.Create("SHA256").ComputeHash(bytes);
+            return Convert.ToBase64String(hashedBytes);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
