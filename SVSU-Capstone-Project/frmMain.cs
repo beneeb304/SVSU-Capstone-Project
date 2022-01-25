@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SVSU_Capstone_Project.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,16 +24,16 @@ namespace SVSU_Capstone_Project
         private void frmMain_Load(object sender, EventArgs e)
         {
             //Instantiate splash screen
-            Form frmSplash = new frmSplash();
+            Form FrmSplash = new frmSplash();
 
             //Show as a dialog so code will not continue until the form is closed
-            frmSplash.ShowDialog();
+            FrmSplash.ShowDialog();
 
             //Instantiate login screen
-            Form frmLogin = new frmLogin();
+            Form FrmLogin = new frmLogin();
 
             //Show as a dialog so code will not continue until the form is closed
-            frmLogin.ShowDialog();
+            FrmLogin.ShowDialog();
 
             //Check if the user somehow closed the login form
             if(strUsername == null)

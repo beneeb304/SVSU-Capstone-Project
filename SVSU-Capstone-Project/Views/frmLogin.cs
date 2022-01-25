@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SVSU_Capstone_Project
+namespace SVSU_Capstone_Project.Views
 {
     public partial class frmLogin : Form
     {
@@ -53,8 +53,8 @@ namespace SVSU_Capstone_Project
                 else
                 {
                     //If not, alert the user and empty the textboxes
-                    txtUsername.Text = "";
-                    txtPassword.Text = "";
+                    //txtUsername.Text = "";
+                    //txtPassword.Text = "";
                 }
             }
         }

@@ -1,5 +1,5 @@
 ﻿
-namespace SVSU_Capstone_Project
+namespace SVSU_Capstone_Project.Views
 {
     partial class frmSettings
     {

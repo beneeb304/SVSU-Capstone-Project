@@ -103,6 +103,48 @@
     <Compile Include="frmViewInventory.Designer.cs">
       <DependentUpon>frmViewInventory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmAddItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmAddItems.Designer.cs">
+      <DependentUpon>frmAddItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmConsumeItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmConsumeItems.Designer.cs">
+      <DependentUpon>frmConsumeItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmGenerateReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmGenerateReports.Designer.cs">
+      <DependentUpon>frmGenerateReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmSplash.Designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmViewInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmViewInventory.Designer.cs">
+      <DependentUpon>frmViewInventory.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmAddItems.resx">
       <DependentUpon>frmAddItems.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +179,27 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\frmAddItems.resx">
+      <DependentUpon>frmAddItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmConsumeItems.resx">
+      <DependentUpon>frmConsumeItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmGenerateReports.resx">
+      <DependentUpon>frmGenerateReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmViewInventory.resx">
+      <DependentUpon>frmViewInventory.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -158,6 +221,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SVSU_Capstone_Project
+namespace SVSU_Capstone_Project.Views
 {
-    public partial class frmConsumeItems : Form
+    public partial class frmViewInventory : Form
     {
-        public frmConsumeItems()
+        public frmViewInventory()
         {
             InitializeComponent();
         }
