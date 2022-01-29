@@ -29,257 +29,296 @@ namespace SVSU_Capstone_Project.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.grbFields = new System.Windows.Forms.GroupBox();
-            this.chkNLevel = new System.Windows.Forms.CheckBox();
-            this.chkSupplier = new System.Windows.Forms.CheckBox();
-            this.chkQuanity = new System.Windows.Forms.CheckBox();
-            this.chkLocation = new System.Windows.Forms.CheckBox();
-            this.chkCategory = new System.Windows.Forms.CheckBox();
-            this.lblFilter = new System.Windows.Forms.Label();
-            this.cboNlevel = new System.Windows.Forms.ComboBox();
+            this.lblCategories = new System.Windows.Forms.Label();
+            this.btnDeleteNLevel = new System.Windows.Forms.Button();
+            this.btnAddNLevel = new System.Windows.Forms.Button();
+            this.btnDeleteCabinet = new System.Windows.Forms.Button();
+            this.btnAddCabinet = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
+            this.lblNLevel = new System.Windows.Forms.Label();
+            this.lblCabinet = new System.Windows.Forms.Label();
+            this.lblLoctions = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dgvInventoryView = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblViewInventory = new System.Windows.Forms.Label();
-            this.grbFields.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryView)).BeginInit();
+            this.lblSetting_Locations_Title = new System.Windows.Forms.Label();
+            this.lstLocations = new System.Windows.Forms.ListBox();
+            this.lstCabinet = new System.Windows.Forms.ListBox();
+            this.lstNLevel = new System.Windows.Forms.ListBox();
+            this.lstCategories = new System.Windows.Forms.ListBox();
+            this.btnDeleteLocation = new System.Windows.Forms.Button();
+            this.btnAddLocation = new System.Windows.Forms.Button();
+            this.btnDeleteCategories = new System.Windows.Forms.Button();
+            this.btnAddCategories = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnExcel
+            // lblCategories
             // 
-            this.btnExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.btnExcel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcel.Location = new System.Drawing.Point(574, 13);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(188, 63);
-            this.btnExcel.TabIndex = 34;
-            this.btnExcel.Text = "Export to Excel";
-            this.btnExcel.UseVisualStyleBackColor = true;
+            this.lblCategories.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCategories.AutoSize = true;
+            this.lblCategories.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategories.Location = new System.Drawing.Point(838, 84);
+            this.lblCategories.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCategories.Name = "lblCategories";
+            this.lblCategories.Size = new System.Drawing.Size(112, 26);
+            this.lblCategories.TabIndex = 74;
+            this.lblCategories.Text = "Categories";
             // 
-            // grbFields
+            // btnDeleteNLevel
             // 
-            this.grbFields.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.grbFields.Controls.Add(this.chkNLevel);
-            this.grbFields.Controls.Add(this.chkSupplier);
-            this.grbFields.Controls.Add(this.chkQuanity);
-            this.grbFields.Controls.Add(this.chkLocation);
-            this.grbFields.Controls.Add(this.chkCategory);
-            this.grbFields.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbFields.Location = new System.Drawing.Point(414, 81);
-            this.grbFields.Margin = new System.Windows.Forms.Padding(4);
-            this.grbFields.Name = "grbFields";
-            this.grbFields.Padding = new System.Windows.Forms.Padding(4);
-            this.grbFields.Size = new System.Drawing.Size(716, 82);
-            this.grbFields.TabIndex = 33;
-            this.grbFields.TabStop = false;
-            this.grbFields.Text = "Fields";
+            this.btnDeleteNLevel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteNLevel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteNLevel.Location = new System.Drawing.Point(666, 304);
+            this.btnDeleteNLevel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteNLevel.Name = "btnDeleteNLevel";
+            this.btnDeleteNLevel.Size = new System.Drawing.Size(88, 41);
+            this.btnDeleteNLevel.TabIndex = 71;
+            this.btnDeleteNLevel.Text = "Delete";
+            this.btnDeleteNLevel.UseVisualStyleBackColor = true;
             // 
-            // chkNLevel
+            // btnAddNLevel
             // 
-            this.chkNLevel.AutoSize = true;
-            this.chkNLevel.Checked = true;
-            this.chkNLevel.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkNLevel.Location = new System.Drawing.Point(553, 31);
-            this.chkNLevel.Margin = new System.Windows.Forms.Padding(4);
-            this.chkNLevel.Name = "chkNLevel";
-            this.chkNLevel.Size = new System.Drawing.Size(105, 30);
-            this.chkNLevel.TabIndex = 4;
-            this.chkNLevel.Text = "N Level";
-            this.chkNLevel.UseVisualStyleBackColor = true;
+            this.btnAddNLevel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddNLevel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNLevel.Location = new System.Drawing.Point(578, 304);
+            this.btnAddNLevel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddNLevel.Name = "btnAddNLevel";
+            this.btnAddNLevel.Size = new System.Drawing.Size(88, 41);
+            this.btnAddNLevel.TabIndex = 70;
+            this.btnAddNLevel.Text = "Add";
+            this.btnAddNLevel.UseVisualStyleBackColor = true;
             // 
-            // chkSupplier
+            // btnDeleteCabinet
             // 
-            this.chkSupplier.AutoSize = true;
-            this.chkSupplier.Checked = true;
-            this.chkSupplier.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSupplier.Location = new System.Drawing.Point(427, 31);
-            this.chkSupplier.Margin = new System.Windows.Forms.Padding(4);
-            this.chkSupplier.Name = "chkSupplier";
-            this.chkSupplier.Size = new System.Drawing.Size(113, 30);
-            this.chkSupplier.TabIndex = 3;
-            this.chkSupplier.Text = "Supplier";
-            this.chkSupplier.UseVisualStyleBackColor = true;
+            this.btnDeleteCabinet.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteCabinet.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteCabinet.Location = new System.Drawing.Point(449, 304);
+            this.btnDeleteCabinet.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteCabinet.Name = "btnDeleteCabinet";
+            this.btnDeleteCabinet.Size = new System.Drawing.Size(88, 41);
+            this.btnDeleteCabinet.TabIndex = 69;
+            this.btnDeleteCabinet.Text = "Delete";
+            this.btnDeleteCabinet.UseVisualStyleBackColor = true;
             // 
-            // chkQuanity
+            // btnAddCabinet
             // 
-            this.chkQuanity.AutoSize = true;
-            this.chkQuanity.Checked = true;
-            this.chkQuanity.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkQuanity.Location = new System.Drawing.Point(296, 31);
-            this.chkQuanity.Margin = new System.Windows.Forms.Padding(4);
-            this.chkQuanity.Name = "chkQuanity";
-            this.chkQuanity.Size = new System.Drawing.Size(116, 30);
-            this.chkQuanity.TabIndex = 2;
-            this.chkQuanity.Text = "Quantity";
-            this.chkQuanity.UseVisualStyleBackColor = true;
-            // 
-            // chkLocation
-            // 
-            this.chkLocation.AutoSize = true;
-            this.chkLocation.Checked = true;
-            this.chkLocation.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkLocation.Location = new System.Drawing.Point(160, 31);
-            this.chkLocation.Margin = new System.Windows.Forms.Padding(4);
-            this.chkLocation.Name = "chkLocation";
-            this.chkLocation.Size = new System.Drawing.Size(114, 30);
-            this.chkLocation.TabIndex = 1;
-            this.chkLocation.Text = "Location";
-            this.chkLocation.UseVisualStyleBackColor = true;
-            // 
-            // chkCategory
-            // 
-            this.chkCategory.AutoSize = true;
-            this.chkCategory.Checked = true;
-            this.chkCategory.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCategory.Location = new System.Drawing.Point(23, 31);
-            this.chkCategory.Margin = new System.Windows.Forms.Padding(4);
-            this.chkCategory.Name = "chkCategory";
-            this.chkCategory.Size = new System.Drawing.Size(118, 30);
-            this.chkCategory.TabIndex = 0;
-            this.chkCategory.Text = "Category";
-            this.chkCategory.UseVisualStyleBackColor = true;
-            // 
-            // lblFilter
-            // 
-            this.lblFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lblFilter.AutoSize = true;
-            this.lblFilter.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilter.Location = new System.Drawing.Point(19, 124);
-            this.lblFilter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(65, 26);
-            this.lblFilter.TabIndex = 32;
-            this.lblFilter.Text = "Filter";
-            // 
-            // cboNlevel
-            // 
-            this.cboNlevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.cboNlevel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboNlevel.FormattingEnabled = true;
-            this.cboNlevel.Location = new System.Drawing.Point(104, 120);
-            this.cboNlevel.Margin = new System.Windows.Forms.Padding(4);
-            this.cboNlevel.Name = "cboNlevel";
-            this.cboNlevel.Size = new System.Drawing.Size(219, 34);
-            this.cboNlevel.TabIndex = 31;
-            this.cboNlevel.Text = "N Level 3";
+            this.btnAddCabinet.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddCabinet.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCabinet.Location = new System.Drawing.Point(361, 304);
+            this.btnAddCabinet.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddCabinet.Name = "btnAddCabinet";
+            this.btnAddCabinet.Size = new System.Drawing.Size(88, 41);
+            this.btnAddCabinet.TabIndex = 68;
+            this.btnAddCabinet.Text = "Add";
+            this.btnAddCabinet.UseVisualStyleBackColor = true;
             // 
             // lblSearch
             // 
-            this.lblSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(14, 85);
+            this.lblSearch.Location = new System.Drawing.Point(488, 31);
             this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(76, 26);
-            this.lblSearch.TabIndex = 30;
+            this.lblSearch.TabIndex = 66;
             this.lblSearch.Text = "Search";
+            // 
+            // lblNLevel
+            // 
+            this.lblNLevel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblNLevel.AutoSize = true;
+            this.lblNLevel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNLevel.Location = new System.Drawing.Point(573, 83);
+            this.lblNLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNLevel.Name = "lblNLevel";
+            this.lblNLevel.Size = new System.Drawing.Size(83, 26);
+            this.lblNLevel.TabIndex = 65;
+            this.lblNLevel.Text = "N Level";
+            // 
+            // lblCabinet
+            // 
+            this.lblCabinet.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCabinet.AutoSize = true;
+            this.lblCabinet.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCabinet.Location = new System.Drawing.Point(356, 83);
+            this.lblCabinet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCabinet.Name = "lblCabinet";
+            this.lblCabinet.Size = new System.Drawing.Size(85, 26);
+            this.lblCabinet.TabIndex = 64;
+            this.lblCabinet.Text = "Cabinet";
+            // 
+            // lblLoctions
+            // 
+            this.lblLoctions.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblLoctions.AutoSize = true;
+            this.lblLoctions.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoctions.Location = new System.Drawing.Point(39, 83);
+            this.lblLoctions.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLoctions.Name = "lblLoctions";
+            this.lblLoctions.Size = new System.Drawing.Size(101, 26);
+            this.lblLoctions.TabIndex = 63;
+            this.lblLoctions.Text = "Locations";
             // 
             // txtSearch
             // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(104, 81);
+            this.txtSearch.Location = new System.Drawing.Point(578, 27);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(219, 31);
-            this.txtSearch.TabIndex = 29;
+            this.txtSearch.Size = new System.Drawing.Size(241, 31);
+            this.txtSearch.TabIndex = 61;
             // 
-            // dgvInventoryView
+            // lblSetting_Locations_Title
             // 
-            this.dgvInventoryView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvInventoryView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvInventoryView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInventoryView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
-            this.Category,
-            this.Location,
-            this.Quantity,
-            this.Supplier,
-            this.NLevel});
-            this.dgvInventoryView.Location = new System.Drawing.Point(1, 171);
-            this.dgvInventoryView.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvInventoryView.MultiSelect = false;
-            this.dgvInventoryView.Name = "dgvInventoryView";
-            this.dgvInventoryView.RowHeadersWidth = 51;
-            this.dgvInventoryView.Size = new System.Drawing.Size(1272, 386);
-            this.dgvInventoryView.TabIndex = 27;
+            this.lblSetting_Locations_Title.AutoSize = true;
+            this.lblSetting_Locations_Title.Font = new System.Drawing.Font("Trebuchet MS", 21.75F, System.Drawing.FontStyle.Bold);
+            this.lblSetting_Locations_Title.Location = new System.Drawing.Point(12, 15);
+            this.lblSetting_Locations_Title.Name = "lblSetting_Locations_Title";
+            this.lblSetting_Locations_Title.Size = new System.Drawing.Size(332, 46);
+            this.lblSetting_Locations_Title.TabIndex = 75;
+            this.lblSetting_Locations_Title.Text = "Setting: Locations";
+            this.lblSetting_Locations_Title.Click += new System.EventHandler(this.label6_Click);
             // 
-            // Name
+            // lstLocations
             // 
-            this.Name.HeaderText = "Name";
-            this.Name.MinimumWidth = 6;
-            this.Name.Name = "Name";
+            this.lstLocations.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.lstLocations.FormattingEnabled = true;
+            this.lstLocations.ItemHeight = 26;
+            this.lstLocations.Items.AddRange(new object[] {
+            "HE 111",
+            "HE 112",
+            "HE 145",
+            "HE 267",
+            "HE 284"});
+            this.lstLocations.Location = new System.Drawing.Point(44, 112);
+            this.lstLocations.Name = "lstLocations";
+            this.lstLocations.Size = new System.Drawing.Size(241, 342);
+            this.lstLocations.TabIndex = 76;
             // 
-            // Category
+            // lstCabinet
             // 
-            this.Category.HeaderText = "Category";
-            this.Category.MinimumWidth = 6;
-            this.Category.Name = "Category";
+            this.lstCabinet.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.lstCabinet.FormattingEnabled = true;
+            this.lstCabinet.ItemHeight = 26;
+            this.lstCabinet.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.lstCabinet.Location = new System.Drawing.Point(361, 112);
+            this.lstCabinet.Name = "lstCabinet";
+            this.lstCabinet.Size = new System.Drawing.Size(176, 186);
+            this.lstCabinet.TabIndex = 77;
             // 
-            // Location
+            // lstNLevel
             // 
-            this.Location.HeaderText = "Location";
-            this.Location.MinimumWidth = 6;
-            this.Location.Name = "Location";
+            this.lstNLevel.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.lstNLevel.FormattingEnabled = true;
+            this.lstNLevel.ItemHeight = 26;
+            this.lstNLevel.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "NP"});
+            this.lstNLevel.Location = new System.Drawing.Point(578, 112);
+            this.lstNLevel.Name = "lstNLevel";
+            this.lstNLevel.Size = new System.Drawing.Size(176, 186);
+            this.lstNLevel.TabIndex = 78;
             // 
-            // Quantity
+            // lstCategories
             // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.MinimumWidth = 6;
-            this.Quantity.Name = "Quantity";
+            this.lstCategories.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.lstCategories.FormattingEnabled = true;
+            this.lstCategories.ItemHeight = 26;
+            this.lstCategories.Items.AddRange(new object[] {
+            "Assets",
+            "Disposable",
+            "Low Fidelity Simulator",
+            "High Fidelity Simulator",
+            "PPE"});
+            this.lstCategories.Location = new System.Drawing.Point(843, 112);
+            this.lstCategories.Name = "lstCategories";
+            this.lstCategories.Size = new System.Drawing.Size(392, 186);
+            this.lstCategories.TabIndex = 79;
             // 
-            // Supplier
+            // btnDeleteLocation
             // 
-            this.Supplier.HeaderText = "Supplier";
-            this.Supplier.MinimumWidth = 6;
-            this.Supplier.Name = "Supplier";
+            this.btnDeleteLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteLocation.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteLocation.Location = new System.Drawing.Point(164, 461);
+            this.btnDeleteLocation.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteLocation.Name = "btnDeleteLocation";
+            this.btnDeleteLocation.Size = new System.Drawing.Size(121, 49);
+            this.btnDeleteLocation.TabIndex = 81;
+            this.btnDeleteLocation.Text = "Delete";
+            this.btnDeleteLocation.UseVisualStyleBackColor = true;
             // 
-            // NLevel
+            // btnAddLocation
             // 
-            this.NLevel.HeaderText = "N Level";
-            this.NLevel.MinimumWidth = 6;
-            this.NLevel.Name = "NLevel";
+            this.btnAddLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddLocation.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddLocation.Location = new System.Drawing.Point(43, 461);
+            this.btnAddLocation.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddLocation.Name = "btnAddLocation";
+            this.btnAddLocation.Size = new System.Drawing.Size(121, 49);
+            this.btnAddLocation.TabIndex = 80;
+            this.btnAddLocation.Text = "Add";
+            this.btnAddLocation.UseVisualStyleBackColor = true;
             // 
-            // lblViewInventory
+            // btnDeleteCategories
             // 
-            this.lblViewInventory.AutoSize = true;
-            this.lblViewInventory.Font = new System.Drawing.Font("Trebuchet MS", 21.75F, System.Drawing.FontStyle.Bold);
-            this.lblViewInventory.Location = new System.Drawing.Point(12, 13);
-            this.lblViewInventory.Name = "lblViewInventory";
-            this.lblViewInventory.Size = new System.Drawing.Size(281, 46);
-            this.lblViewInventory.TabIndex = 35;
-            this.lblViewInventory.Text = "View Inventory";
+            this.btnDeleteCategories.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteCategories.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteCategories.Location = new System.Drawing.Point(1027, 300);
+            this.btnDeleteCategories.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteCategories.Name = "btnDeleteCategories";
+            this.btnDeleteCategories.Size = new System.Drawing.Size(121, 49);
+            this.btnDeleteCategories.TabIndex = 83;
+            this.btnDeleteCategories.Text = "Delete";
+            this.btnDeleteCategories.UseVisualStyleBackColor = true;
+            // 
+            // btnAddCategories
+            // 
+            this.btnAddCategories.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddCategories.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCategories.Location = new System.Drawing.Point(906, 300);
+            this.btnAddCategories.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddCategories.Name = "btnAddCategories";
+            this.btnAddCategories.Size = new System.Drawing.Size(121, 49);
+            this.btnAddCategories.TabIndex = 82;
+            this.btnAddCategories.Text = "Add";
+            this.btnAddCategories.UseVisualStyleBackColor = true;
             // 
             // frmSettingsLocations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1273, 558);
-            this.Controls.Add(this.lblViewInventory);
-            this.Controls.Add(this.btnExcel);
-            this.Controls.Add(this.grbFields);
-            this.Controls.Add(this.lblFilter);
-            this.Controls.Add(this.cboNlevel);
+            this.Controls.Add(this.btnDeleteCategories);
+            this.Controls.Add(this.btnAddCategories);
+            this.Controls.Add(this.btnDeleteLocation);
+            this.Controls.Add(this.btnAddLocation);
+            this.Controls.Add(this.lstCategories);
+            this.Controls.Add(this.lstNLevel);
+            this.Controls.Add(this.lstCabinet);
+            this.Controls.Add(this.lstLocations);
+            this.Controls.Add(this.lblSetting_Locations_Title);
+            this.Controls.Add(this.lblCategories);
+            this.Controls.Add(this.btnDeleteNLevel);
+            this.Controls.Add(this.btnAddNLevel);
+            this.Controls.Add(this.btnDeleteCabinet);
+            this.Controls.Add(this.btnAddCabinet);
             this.Controls.Add(this.lblSearch);
+            this.Controls.Add(this.lblNLevel);
+            this.Controls.Add(this.lblCabinet);
+            this.Controls.Add(this.lblLoctions);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.dgvInventoryView);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmSettingsLocations";
             this.Text = "frmLocationSettings";
-            this.grbFields.ResumeLayout(false);
-            this.grbFields.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,24 +326,24 @@ namespace SVSU_Capstone_Project.Views
 
         #endregion
 
-        private System.Windows.Forms.Button btnExcel;
-        private System.Windows.Forms.GroupBox grbFields;
-        private System.Windows.Forms.CheckBox chkNLevel;
-        private System.Windows.Forms.CheckBox chkSupplier;
-        private System.Windows.Forms.CheckBox chkQuanity;
-        private System.Windows.Forms.CheckBox chkLocation;
-        private System.Windows.Forms.CheckBox chkCategory;
-        private System.Windows.Forms.Label lblFilter;
-        private System.Windows.Forms.ComboBox cboNlevel;
+        private System.Windows.Forms.Label lblCategories;
+        private System.Windows.Forms.Button btnDeleteNLevel;
+        private System.Windows.Forms.Button btnAddNLevel;
+        private System.Windows.Forms.Button btnDeleteCabinet;
+        private System.Windows.Forms.Button btnAddCabinet;
         private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.Label lblNLevel;
+        private System.Windows.Forms.Label lblCabinet;
+        private System.Windows.Forms.Label lblLoctions;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView dgvInventoryView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NLevel;
-        private System.Windows.Forms.Label lblViewInventory;
+        private System.Windows.Forms.Label lblSetting_Locations_Title;
+        private System.Windows.Forms.ListBox lstLocations;
+        private System.Windows.Forms.ListBox lstCabinet;
+        private System.Windows.Forms.ListBox lstNLevel;
+        private System.Windows.Forms.ListBox lstCategories;
+        private System.Windows.Forms.Button btnDeleteLocation;
+        private System.Windows.Forms.Button btnAddLocation;
+        private System.Windows.Forms.Button btnDeleteCategories;
+        private System.Windows.Forms.Button btnAddCategories;
     }
 }

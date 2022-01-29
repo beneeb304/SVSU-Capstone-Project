@@ -16,5 +16,10 @@ namespace SVSU_Capstone_Project.Views
         {
             InitializeComponent();
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

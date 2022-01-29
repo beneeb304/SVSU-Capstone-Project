@@ -16,5 +16,10 @@ namespace SVSU_Capstone_Project.Views
         {
             InitializeComponent();
         }
+
+        private void frmViewInventory_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
