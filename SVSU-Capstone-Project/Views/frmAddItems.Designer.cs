@@ -29,301 +29,392 @@ namespace SVSU_Capstone_Project.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.TextBox1 = new System.Windows.Forms.TextBox();
-            this.RichTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.TextBox14 = new System.Windows.Forms.TextBox();
-            this.Label10 = new System.Windows.Forms.Label();
-            this.ComboBox5 = new System.Windows.Forms.ComboBox();
-            this.Label15 = new System.Windows.Forms.Label();
-            this.TextBox10 = new System.Windows.Forms.TextBox();
-            this.Label24 = new System.Windows.Forms.Label();
-            this.TextBox11 = new System.Windows.Forms.TextBox();
-            this.Label27 = new System.Windows.Forms.Label();
-            this.Label28 = new System.Windows.Forms.Label();
-            this.ComboBox4 = new System.Windows.Forms.ComboBox();
-            this.Label29 = new System.Windows.Forms.Label();
-            this.CheckBox1 = new System.Windows.Forms.CheckBox();
-            this.ComboBox3 = new System.Windows.Forms.ComboBox();
-            this.Label30 = new System.Windows.Forms.Label();
-            this.ComboBox2 = new System.Windows.Forms.ComboBox();
-            this.Label31 = new System.Windows.Forms.Label();
-            this.Label32 = new System.Windows.Forms.Label();
-            this.ComboBox1 = new System.Windows.Forms.ComboBox();
-            this.Label33 = new System.Windows.Forms.Label();
-            this.TextBox12 = new System.Windows.Forms.TextBox();
-            this.Label34 = new System.Windows.Forms.Label();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.RichTextBox();
+            this.txtCost = new System.Windows.Forms.TextBox();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.cmbFeatures = new System.Windows.Forms.ComboBox();
+            this.lblFeatures = new System.Windows.Forms.Label();
+            this.txtLowStock = new System.Windows.Forms.TextBox();
+            this.lblLowStock = new System.Windows.Forms.Label();
+            this.txtLink = new System.Windows.Forms.TextBox();
+            this.lblLink = new System.Windows.Forms.Label();
+            this.lblCost = new System.Windows.Forms.Label();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.lblSupplier = new System.Windows.Forms.Label();
+            this.chkNLevel = new System.Windows.Forms.CheckBox();
+            this.cmbNLevel = new System.Windows.Forms.ComboBox();
+            this.lblNLevel = new System.Windows.Forms.Label();
+            this.cmbLocation = new System.Windows.Forms.ComboBox();
+            this.lblLocation = new System.Windows.Forms.Label();
+            this.lblQuantity = new System.Windows.Forms.Label();
+            this.cmbSupplier = new System.Windows.Forms.ComboBox();
+            this.lblCategory = new System.Windows.Forms.Label();
+            this.txtItemName = new System.Windows.Forms.TextBox();
+            this.lblItemName = new System.Windows.Forms.Label();
+            this.lblAddItems = new System.Windows.Forms.Label();
+            this.cmbCabinet = new System.Windows.Forms.ComboBox();
+            this.lblCabinet = new System.Windows.Forms.Label();
+            this.btnManageLocations = new System.Windows.Forms.Button();
+            this.chkMultipleLocations = new System.Windows.Forms.CheckBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // TextBox1
+            // txtQuantity
             // 
-            this.TextBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox1.Location = new System.Drawing.Point(110, 73);
-            this.TextBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.TextBox1.Name = "TextBox1";
-            this.TextBox1.Size = new System.Drawing.Size(55, 26);
-            this.TextBox1.TabIndex = 83;
-            this.TextBox1.Text = "0";
+            this.txtQuantity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.Location = new System.Drawing.Point(114, 133);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(66, 26);
+            this.txtQuantity.TabIndex = 83;
+            this.txtQuantity.Text = "0";
             // 
-            // RichTextBox1
+            // txtDescription
             // 
-            this.RichTextBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RichTextBox1.Location = new System.Drawing.Point(110, 344);
-            this.RichTextBox1.Name = "RichTextBox1";
-            this.RichTextBox1.Size = new System.Drawing.Size(192, 91);
-            this.RichTextBox1.TabIndex = 82;
-            this.RichTextBox1.Text = "";
+            this.txtDescription.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Location = new System.Drawing.Point(114, 321);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(517, 110);
+            this.txtDescription.TabIndex = 82;
+            this.txtDescription.Text = "";
             // 
-            // TextBox14
+            // txtCost
             // 
-            this.TextBox14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox14.Location = new System.Drawing.Point(110, 206);
-            this.TextBox14.Margin = new System.Windows.Forms.Padding(2);
-            this.TextBox14.Name = "TextBox14";
-            this.TextBox14.Size = new System.Drawing.Size(55, 26);
-            this.TextBox14.TabIndex = 81;
-            this.TextBox14.Text = "0";
+            this.txtCost.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCost.Location = new System.Drawing.Point(472, 133);
+            this.txtCost.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCost.Name = "txtCost";
+            this.txtCost.Size = new System.Drawing.Size(66, 26);
+            this.txtCost.TabIndex = 81;
+            this.txtCost.Text = "0";
             // 
-            // Label10
+            // lblDescription
             // 
-            this.Label10.AutoSize = true;
-            this.Label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label10.Location = new System.Drawing.Point(9, 342);
-            this.Label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label10.Name = "Label10";
-            this.Label10.Size = new System.Drawing.Size(103, 19);
-            this.Label10.TabIndex = 80;
-            this.Label10.Text = "Description:";
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(7, 324);
+            this.lblDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(103, 19);
+            this.lblDescription.TabIndex = 80;
+            this.lblDescription.Text = "Description:";
             // 
-            // ComboBox5
+            // cmbFeatures
             // 
-            this.ComboBox5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComboBox5.FormattingEnabled = true;
-            this.ComboBox5.Location = new System.Drawing.Point(110, 306);
-            this.ComboBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.ComboBox5.Name = "ComboBox5";
-            this.ComboBox5.Size = new System.Drawing.Size(111, 26);
-            this.ComboBox5.TabIndex = 79;
+            this.cmbFeatures.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFeatures.FormattingEnabled = true;
+            this.cmbFeatures.Location = new System.Drawing.Point(472, 259);
+            this.cmbFeatures.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbFeatures.Name = "cmbFeatures";
+            this.cmbFeatures.Size = new System.Drawing.Size(159, 26);
+            this.cmbFeatures.TabIndex = 79;
             // 
-            // Label15
+            // lblFeatures
             // 
-            this.Label15.AutoSize = true;
-            this.Label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label15.Location = new System.Drawing.Point(22, 307);
-            this.Label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label15.Name = "Label15";
-            this.Label15.Size = new System.Drawing.Size(82, 19);
-            this.Label15.TabIndex = 78;
-            this.Label15.Text = "Features:";
+            this.lblFeatures.AutoSize = true;
+            this.lblFeatures.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFeatures.Location = new System.Drawing.Point(386, 262);
+            this.lblFeatures.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFeatures.Name = "lblFeatures";
+            this.lblFeatures.Size = new System.Drawing.Size(82, 19);
+            this.lblFeatures.TabIndex = 78;
+            this.lblFeatures.Text = "Features:";
             // 
-            // TextBox10
+            // txtLowStock
             // 
-            this.TextBox10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox10.Location = new System.Drawing.Point(110, 275);
-            this.TextBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.TextBox10.Name = "TextBox10";
-            this.TextBox10.Size = new System.Drawing.Size(55, 26);
-            this.TextBox10.TabIndex = 77;
-            this.TextBox10.Text = "0";
+            this.txtLowStock.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLowStock.Location = new System.Drawing.Point(472, 216);
+            this.txtLowStock.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLowStock.Name = "txtLowStock";
+            this.txtLowStock.Size = new System.Drawing.Size(66, 26);
+            this.txtLowStock.TabIndex = 77;
+            this.txtLowStock.Text = "0";
             // 
-            // Label24
+            // lblLowStock
             // 
-            this.Label24.AutoSize = true;
-            this.Label24.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label24.Location = new System.Drawing.Point(15, 276);
-            this.Label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label24.Name = "Label24";
-            this.Label24.Size = new System.Drawing.Size(96, 19);
-            this.Label24.TabIndex = 76;
-            this.Label24.Text = "Low Stock:";
+            this.lblLowStock.AutoSize = true;
+            this.lblLowStock.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLowStock.Location = new System.Drawing.Point(372, 219);
+            this.lblLowStock.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLowStock.Name = "lblLowStock";
+            this.lblLowStock.Size = new System.Drawing.Size(96, 19);
+            this.lblLowStock.TabIndex = 76;
+            this.lblLowStock.Text = "Low Stock:";
             // 
-            // TextBox11
+            // txtLink
             // 
-            this.TextBox11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox11.Location = new System.Drawing.Point(110, 240);
-            this.TextBox11.Margin = new System.Windows.Forms.Padding(2);
-            this.TextBox11.Name = "TextBox11";
-            this.TextBox11.Size = new System.Drawing.Size(112, 26);
-            this.TextBox11.TabIndex = 75;
+            this.txtLink.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLink.Location = new System.Drawing.Point(472, 175);
+            this.txtLink.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLink.Name = "txtLink";
+            this.txtLink.Size = new System.Drawing.Size(159, 26);
+            this.txtLink.TabIndex = 75;
             // 
-            // Label27
+            // lblLink
             // 
-            this.Label27.AutoSize = true;
-            this.Label27.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label27.Location = new System.Drawing.Point(50, 241);
-            this.Label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label27.Name = "Label27";
-            this.Label27.Size = new System.Drawing.Size(48, 19);
-            this.Label27.TabIndex = 74;
-            this.Label27.Text = "Link:";
+            this.lblLink.AutoSize = true;
+            this.lblLink.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLink.Location = new System.Drawing.Point(420, 178);
+            this.lblLink.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLink.Name = "lblLink";
+            this.lblLink.Size = new System.Drawing.Size(48, 19);
+            this.lblLink.TabIndex = 74;
+            this.lblLink.Text = "Link:";
             // 
-            // Label28
+            // lblCost
             // 
-            this.Label28.AutoSize = true;
-            this.Label28.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label28.Location = new System.Drawing.Point(50, 207);
-            this.Label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label28.Name = "Label28";
-            this.Label28.Size = new System.Drawing.Size(51, 19);
-            this.Label28.TabIndex = 73;
-            this.Label28.Text = "Cost:";
+            this.lblCost.AutoSize = true;
+            this.lblCost.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCost.Location = new System.Drawing.Point(417, 133);
+            this.lblCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCost.Name = "lblCost";
+            this.lblCost.Size = new System.Drawing.Size(51, 19);
+            this.lblCost.TabIndex = 73;
+            this.lblCost.Text = "Cost:";
             // 
-            // ComboBox4
+            // cmbCategory
             // 
-            this.ComboBox4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComboBox4.FormattingEnabled = true;
-            this.ComboBox4.Location = new System.Drawing.Point(110, 171);
-            this.ComboBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.ComboBox4.Name = "ComboBox4";
-            this.ComboBox4.Size = new System.Drawing.Size(113, 26);
-            this.ComboBox4.TabIndex = 72;
+            this.cmbCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(114, 89);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(159, 26);
+            this.cmbCategory.TabIndex = 72;
             // 
-            // Label29
+            // lblSupplier
             // 
-            this.Label29.AutoSize = true;
-            this.Label29.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label29.Location = new System.Drawing.Point(27, 172);
-            this.Label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label29.Name = "Label29";
-            this.Label29.Size = new System.Drawing.Size(79, 19);
-            this.Label29.TabIndex = 71;
-            this.Label29.Text = "Supplier:";
+            this.lblSupplier.AutoSize = true;
+            this.lblSupplier.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupplier.Location = new System.Drawing.Point(389, 89);
+            this.lblSupplier.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSupplier.Name = "lblSupplier";
+            this.lblSupplier.Size = new System.Drawing.Size(79, 19);
+            this.lblSupplier.TabIndex = 71;
+            this.lblSupplier.Text = "Supplier:";
             // 
-            // CheckBox1
+            // chkNLevel
             // 
-            this.CheckBox1.AutoSize = true;
-            this.CheckBox1.Checked = true;
-            this.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox1.Location = new System.Drawing.Point(110, 141);
-            this.CheckBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.CheckBox1.Name = "CheckBox1";
-            this.CheckBox1.Size = new System.Drawing.Size(15, 14);
-            this.CheckBox1.TabIndex = 70;
-            this.CheckBox1.UseVisualStyleBackColor = true;
+            this.chkNLevel.AutoSize = true;
+            this.chkNLevel.Checked = true;
+            this.chkNLevel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkNLevel.Location = new System.Drawing.Point(114, 285);
+            this.chkNLevel.Margin = new System.Windows.Forms.Padding(2);
+            this.chkNLevel.Name = "chkNLevel";
+            this.chkNLevel.Size = new System.Drawing.Size(15, 14);
+            this.chkNLevel.TabIndex = 70;
+            this.chkNLevel.UseVisualStyleBackColor = true;
+            this.chkNLevel.CheckedChanged += new System.EventHandler(this.chkNLevel_CheckedChanged);
             // 
-            // ComboBox3
+            // cmbNLevel
             // 
-            this.ComboBox3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComboBox3.FormattingEnabled = true;
-            this.ComboBox3.Location = new System.Drawing.Point(129, 136);
-            this.ComboBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.ComboBox3.Name = "ComboBox3";
-            this.ComboBox3.Size = new System.Drawing.Size(38, 26);
-            this.ComboBox3.TabIndex = 69;
+            this.cmbNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbNLevel.FormattingEnabled = true;
+            this.cmbNLevel.Location = new System.Drawing.Point(135, 278);
+            this.cmbNLevel.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbNLevel.Name = "cmbNLevel";
+            this.cmbNLevel.Size = new System.Drawing.Size(54, 26);
+            this.cmbNLevel.TabIndex = 69;
             // 
-            // Label30
+            // lblNLevel
             // 
-            this.Label30.AutoSize = true;
-            this.Label30.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label30.Location = new System.Drawing.Point(31, 139);
-            this.Label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label30.Name = "Label30";
-            this.Label30.Size = new System.Drawing.Size(72, 19);
-            this.Label30.TabIndex = 68;
-            this.Label30.Text = "N Level:";
+            this.lblNLevel.AutoSize = true;
+            this.lblNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNLevel.Location = new System.Drawing.Point(38, 281);
+            this.lblNLevel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNLevel.Name = "lblNLevel";
+            this.lblNLevel.Size = new System.Drawing.Size(72, 19);
+            this.lblNLevel.TabIndex = 68;
+            this.lblNLevel.Text = "N Level:";
             // 
-            // ComboBox2
+            // cmbLocation
             // 
-            this.ComboBox2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComboBox2.FormattingEnabled = true;
-            this.ComboBox2.Location = new System.Drawing.Point(110, 104);
-            this.ComboBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.ComboBox2.Name = "ComboBox2";
-            this.ComboBox2.Size = new System.Drawing.Size(113, 26);
-            this.ComboBox2.TabIndex = 67;
+            this.cmbLocation.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLocation.FormattingEnabled = true;
+            this.cmbLocation.Location = new System.Drawing.Point(114, 178);
+            this.cmbLocation.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbLocation.Name = "cmbLocation";
+            this.cmbLocation.Size = new System.Drawing.Size(159, 26);
+            this.cmbLocation.TabIndex = 67;
             // 
-            // Label31
+            // lblLocation
             // 
-            this.Label31.AutoSize = true;
-            this.Label31.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label31.Location = new System.Drawing.Point(25, 106);
-            this.Label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label31.Name = "Label31";
-            this.Label31.Size = new System.Drawing.Size(82, 19);
-            this.Label31.TabIndex = 66;
-            this.Label31.Text = "Location:";
+            this.lblLocation.AutoSize = true;
+            this.lblLocation.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLocation.Location = new System.Drawing.Point(28, 181);
+            this.lblLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLocation.Name = "lblLocation";
+            this.lblLocation.Size = new System.Drawing.Size(82, 19);
+            this.lblLocation.TabIndex = 66;
+            this.lblLocation.Text = "Location:";
             // 
-            // Label32
+            // lblQuantity
             // 
-            this.Label32.AutoSize = true;
-            this.Label32.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label32.Location = new System.Drawing.Point(25, 74);
-            this.Label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label32.Name = "Label32";
-            this.Label32.Size = new System.Drawing.Size(79, 19);
-            this.Label32.TabIndex = 65;
-            this.Label32.Text = "Quantity:";
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantity.Location = new System.Drawing.Point(31, 136);
+            this.lblQuantity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(79, 19);
+            this.lblQuantity.TabIndex = 65;
+            this.lblQuantity.Text = "Quantity:";
             // 
-            // ComboBox1
+            // cmbSupplier
             // 
-            this.ComboBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComboBox1.FormattingEnabled = true;
-            this.ComboBox1.Location = new System.Drawing.Point(110, 41);
-            this.ComboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.ComboBox1.Name = "ComboBox1";
-            this.ComboBox1.Size = new System.Drawing.Size(115, 26);
-            this.ComboBox1.TabIndex = 64;
+            this.cmbSupplier.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSupplier.FormattingEnabled = true;
+            this.cmbSupplier.Location = new System.Drawing.Point(472, 89);
+            this.cmbSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbSupplier.Name = "cmbSupplier";
+            this.cmbSupplier.Size = new System.Drawing.Size(159, 26);
+            this.cmbSupplier.TabIndex = 64;
             // 
-            // Label33
+            // lblCategory
             // 
-            this.Label33.AutoSize = true;
-            this.Label33.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label33.Location = new System.Drawing.Point(21, 42);
-            this.Label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label33.Name = "Label33";
-            this.Label33.Size = new System.Drawing.Size(85, 19);
-            this.Label33.TabIndex = 63;
-            this.Label33.Text = "Category:";
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.Location = new System.Drawing.Point(25, 92);
+            this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(85, 19);
+            this.lblCategory.TabIndex = 63;
+            this.lblCategory.Text = "Category:";
             // 
-            // TextBox12
+            // txtItemName
             // 
-            this.TextBox12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox12.Location = new System.Drawing.Point(110, 8);
-            this.TextBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.TextBox12.Name = "TextBox12";
-            this.TextBox12.Size = new System.Drawing.Size(117, 26);
-            this.TextBox12.TabIndex = 62;
+            this.txtItemName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemName.Location = new System.Drawing.Point(114, 44);
+            this.txtItemName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Size = new System.Drawing.Size(254, 26);
+            this.txtItemName.TabIndex = 62;
             // 
-            // Label34
+            // lblItemName
             // 
-            this.Label34.AutoSize = true;
-            this.Label34.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label34.Location = new System.Drawing.Point(11, 9);
-            this.Label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label34.Name = "Label34";
-            this.Label34.Size = new System.Drawing.Size(95, 19);
-            this.Label34.TabIndex = 61;
-            this.Label34.Text = "Item Name:";
+            this.lblItemName.AutoSize = true;
+            this.lblItemName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemName.Location = new System.Drawing.Point(15, 47);
+            this.lblItemName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblItemName.Name = "lblItemName";
+            this.lblItemName.Size = new System.Drawing.Size(95, 19);
+            this.lblItemName.TabIndex = 61;
+            this.lblItemName.Text = "Item Name:";
+            // 
+            // lblAddItems
+            // 
+            this.lblAddItems.AutoSize = true;
+            this.lblAddItems.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddItems.Location = new System.Drawing.Point(12, 9);
+            this.lblAddItems.Name = "lblAddItems";
+            this.lblAddItems.Size = new System.Drawing.Size(102, 22);
+            this.lblAddItems.TabIndex = 84;
+            this.lblAddItems.Text = "Add Items";
+            // 
+            // cmbCabinet
+            // 
+            this.cmbCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCabinet.FormattingEnabled = true;
+            this.cmbCabinet.Location = new System.Drawing.Point(114, 225);
+            this.cmbCabinet.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCabinet.Name = "cmbCabinet";
+            this.cmbCabinet.Size = new System.Drawing.Size(159, 26);
+            this.cmbCabinet.TabIndex = 86;
+            // 
+            // lblCabinet
+            // 
+            this.lblCabinet.AutoSize = true;
+            this.lblCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCabinet.Location = new System.Drawing.Point(36, 228);
+            this.lblCabinet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCabinet.Name = "lblCabinet";
+            this.lblCabinet.Size = new System.Drawing.Size(74, 19);
+            this.lblCabinet.TabIndex = 85;
+            this.lblCabinet.Text = "Cabinet:";
+            // 
+            // btnManageLocations
+            // 
+            this.btnManageLocations.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageLocations.Location = new System.Drawing.Point(115, 178);
+            this.btnManageLocations.Name = "btnManageLocations";
+            this.btnManageLocations.Size = new System.Drawing.Size(158, 26);
+            this.btnManageLocations.TabIndex = 88;
+            this.btnManageLocations.Text = "Manage Locations";
+            this.btnManageLocations.UseVisualStyleBackColor = true;
+            this.btnManageLocations.Visible = false;
+            this.btnManageLocations.Click += new System.EventHandler(this.btnManageLocations_Click);
+            // 
+            // chkMultipleLocations
+            // 
+            this.chkMultipleLocations.AutoSize = true;
+            this.chkMultipleLocations.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMultipleLocations.Location = new System.Drawing.Point(225, 256);
+            this.chkMultipleLocations.Name = "chkMultipleLocations";
+            this.chkMultipleLocations.Size = new System.Drawing.Size(143, 20);
+            this.chkMultipleLocations.TabIndex = 89;
+            this.chkMultipleLocations.Text = "Multiple Locations";
+            this.chkMultipleLocations.UseVisualStyleBackColor = true;
+            this.chkMultipleLocations.CheckedChanged += new System.EventHandler(this.chkMultipleLocations_CheckedChanged);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(758, 388);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(77, 43);
+            this.btnCancel.TabIndex = 111;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(664, 388);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(77, 43);
+            this.btnSave.TabIndex = 110;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // frmAddItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(955, 453);
-            this.Controls.Add(this.TextBox1);
-            this.Controls.Add(this.RichTextBox1);
-            this.Controls.Add(this.TextBox14);
-            this.Controls.Add(this.Label10);
-            this.Controls.Add(this.ComboBox5);
-            this.Controls.Add(this.Label15);
-            this.Controls.Add(this.TextBox10);
-            this.Controls.Add(this.Label24);
-            this.Controls.Add(this.TextBox11);
-            this.Controls.Add(this.Label27);
-            this.Controls.Add(this.Label28);
-            this.Controls.Add(this.ComboBox4);
-            this.Controls.Add(this.Label29);
-            this.Controls.Add(this.CheckBox1);
-            this.Controls.Add(this.ComboBox3);
-            this.Controls.Add(this.Label30);
-            this.Controls.Add(this.ComboBox2);
-            this.Controls.Add(this.Label31);
-            this.Controls.Add(this.Label32);
-            this.Controls.Add(this.ComboBox1);
-            this.Controls.Add(this.Label33);
-            this.Controls.Add(this.TextBox12);
-            this.Controls.Add(this.Label34);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.chkMultipleLocations);
+            this.Controls.Add(this.btnManageLocations);
+            this.Controls.Add(this.cmbCabinet);
+            this.Controls.Add(this.lblCabinet);
+            this.Controls.Add(this.lblAddItems);
+            this.Controls.Add(this.txtQuantity);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.txtCost);
+            this.Controls.Add(this.lblDescription);
+            this.Controls.Add(this.cmbFeatures);
+            this.Controls.Add(this.lblFeatures);
+            this.Controls.Add(this.txtLowStock);
+            this.Controls.Add(this.lblLowStock);
+            this.Controls.Add(this.txtLink);
+            this.Controls.Add(this.lblLink);
+            this.Controls.Add(this.lblCost);
+            this.Controls.Add(this.cmbCategory);
+            this.Controls.Add(this.lblSupplier);
+            this.Controls.Add(this.chkNLevel);
+            this.Controls.Add(this.cmbNLevel);
+            this.Controls.Add(this.lblNLevel);
+            this.Controls.Add(this.cmbLocation);
+            this.Controls.Add(this.lblLocation);
+            this.Controls.Add(this.lblQuantity);
+            this.Controls.Add(this.cmbSupplier);
+            this.Controls.Add(this.lblCategory);
+            this.Controls.Add(this.txtItemName);
+            this.Controls.Add(this.lblItemName);
             this.Name = "frmAddItems";
             this.Text = "Add Items";
+            this.Load += new System.EventHandler(this.frmAddItems_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,28 +422,35 @@ namespace SVSU_Capstone_Project.Views
 
         #endregion
 
-        internal System.Windows.Forms.TextBox TextBox1;
-        internal System.Windows.Forms.RichTextBox RichTextBox1;
-        internal System.Windows.Forms.TextBox TextBox14;
-        internal System.Windows.Forms.Label Label10;
-        internal System.Windows.Forms.ComboBox ComboBox5;
-        internal System.Windows.Forms.Label Label15;
-        internal System.Windows.Forms.TextBox TextBox10;
-        internal System.Windows.Forms.Label Label24;
-        internal System.Windows.Forms.TextBox TextBox11;
-        internal System.Windows.Forms.Label Label27;
-        internal System.Windows.Forms.Label Label28;
-        internal System.Windows.Forms.ComboBox ComboBox4;
-        internal System.Windows.Forms.Label Label29;
-        internal System.Windows.Forms.CheckBox CheckBox1;
-        internal System.Windows.Forms.ComboBox ComboBox3;
-        internal System.Windows.Forms.Label Label30;
-        internal System.Windows.Forms.ComboBox ComboBox2;
-        internal System.Windows.Forms.Label Label31;
-        internal System.Windows.Forms.Label Label32;
-        internal System.Windows.Forms.ComboBox ComboBox1;
-        internal System.Windows.Forms.Label Label33;
-        internal System.Windows.Forms.TextBox TextBox12;
-        internal System.Windows.Forms.Label Label34;
+        internal System.Windows.Forms.TextBox txtQuantity;
+        internal System.Windows.Forms.RichTextBox txtDescription;
+        internal System.Windows.Forms.TextBox txtCost;
+        internal System.Windows.Forms.Label lblDescription;
+        internal System.Windows.Forms.ComboBox cmbFeatures;
+        internal System.Windows.Forms.Label lblFeatures;
+        internal System.Windows.Forms.TextBox txtLowStock;
+        internal System.Windows.Forms.Label lblLowStock;
+        internal System.Windows.Forms.TextBox txtLink;
+        internal System.Windows.Forms.Label lblLink;
+        internal System.Windows.Forms.Label lblCost;
+        internal System.Windows.Forms.ComboBox cmbCategory;
+        internal System.Windows.Forms.Label lblSupplier;
+        internal System.Windows.Forms.CheckBox chkNLevel;
+        internal System.Windows.Forms.ComboBox cmbNLevel;
+        internal System.Windows.Forms.Label lblNLevel;
+        internal System.Windows.Forms.ComboBox cmbLocation;
+        internal System.Windows.Forms.Label lblLocation;
+        internal System.Windows.Forms.Label lblQuantity;
+        internal System.Windows.Forms.ComboBox cmbSupplier;
+        internal System.Windows.Forms.Label lblCategory;
+        internal System.Windows.Forms.TextBox txtItemName;
+        internal System.Windows.Forms.Label lblItemName;
+        private System.Windows.Forms.Label lblAddItems;
+        internal System.Windows.Forms.ComboBox cmbCabinet;
+        internal System.Windows.Forms.Label lblCabinet;
+        private System.Windows.Forms.Button btnManageLocations;
+        private System.Windows.Forms.CheckBox chkMultipleLocations;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
     }
 }
