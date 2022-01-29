@@ -71,13 +71,32 @@ namespace SVSU_Capstone_Project
                     newF = new frmAddItems();
                     break;
                 case "msiConsumeItems":
-                    newF = new frmConsumeItems();
+                    newF = new frmManageInventory();
                     break;
                 case "msiGenerateReports":
-                    newF = new frmGenerateReports();
+                    newF = new frmCheckInOutItems();
+                    break;           
+                case "msiPrintBarcodes":
+                    newF = new frmPrintBarcodes();
+                    break;
+                case "msiCheckInOutItems":
+                    newF = new frmCheckInOutItems();
                     break;
                 case "msiSettings":
-                    newF = new frmSettings();
+                case "msiSettingsUsers":
+                    newF = new frmSettingsUsers();
+                    break;
+                case "msiSettingsLocations":
+                    newF = new frmSettingsLocations();
+                    break;
+                case "msiSettingsCabinets":
+                    newF = new frmSettingsCabinets();
+                    break;
+                case "msiSettingsCategories":
+                    newF = new frmSettingsCategories();
+                    break;
+                case "msiSettingsVendors":
+                    newF = new frmSettingsVendors();
                     break;
             }
 

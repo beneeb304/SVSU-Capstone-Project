@@ -48,7 +48,7 @@ namespace SVSU_Capstone_Project.Views
             this.ClientSize = new System.Drawing.Size(1038, 520);
             this.Controls.Add(this.label1);
             this.Name = "frmAddItems";
-            this.Text = "frmAddItems";
+            this.Text = "Add Items";
             this.ResumeLayout(false);
             this.PerformLayout();
 
