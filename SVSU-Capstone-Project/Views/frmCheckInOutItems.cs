@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SVSU_Capstone_Project.Views
 {
-    public partial class frmGenerateReports : Form
+    public partial class frmCheckInOutItems : Form
     {
-        public frmGenerateReports()
+        public frmCheckInOutItems()
         {
             InitializeComponent();
         }

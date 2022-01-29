@@ -53,79 +53,61 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAddItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmAddItems.Designer.cs">
-      <DependentUpon>frmAddItems.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmConsumeItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmConsumeItems.Designer.cs">
-      <DependentUpon>frmConsumeItems.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGenerateReports.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmGenerateReports.Designer.cs">
-      <DependentUpon>frmGenerateReports.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSettings.Designer.cs">
-      <DependentUpon>frmSettings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmSplash.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSplash.Designer.cs">
-      <DependentUpon>frmSplash.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="frmViewInventory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmViewInventory.Designer.cs">
-      <DependentUpon>frmViewInventory.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\frmAddItems.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmAddItems.Designer.cs">
       <DependentUpon>frmAddItems.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmConsumeItems.cs">
+    <Compile Include="Views\frmSettingsCabinets.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmConsumeItems.Designer.cs">
-      <DependentUpon>frmConsumeItems.cs</DependentUpon>
+    <Compile Include="Views\frmSettingsCabinets.Designer.cs">
+      <DependentUpon>frmSettingsCabinets.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmGenerateReports.cs">
+    <Compile Include="Views\frmSettingsCategories.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmGenerateReports.Designer.cs">
-      <DependentUpon>frmGenerateReports.cs</DependentUpon>
+    <Compile Include="Views\frmSettingsCategories.Designer.cs">
+      <DependentUpon>frmSettingsCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmSettingsLocations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmSettingsLocations.Designer.cs">
+      <DependentUpon>frmSettingsLocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmManageInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmManageInventory.Designer.cs">
+      <DependentUpon>frmManageInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmCheckInOutItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmCheckInOutItems.Designer.cs">
+      <DependentUpon>frmCheckInOutItems.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmPrintBarcodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmPrintBarcodes.Designer.cs">
+      <DependentUpon>frmPrintBarcodes.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmSettings.cs">
       <SubType>Form</SubType>
@@ -139,35 +121,26 @@
     <Compile Include="Views\frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmSettingsUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmSettingsUsers.Designer.cs">
+      <DependentUpon>frmSettingsUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmSettingsVendors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmSettingsVendors.Designer.cs">
+      <DependentUpon>frmSettingsVendors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmViewInventory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmViewInventory.Designer.cs">
       <DependentUpon>frmViewInventory.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmAddItems.resx">
-      <DependentUpon>frmAddItems.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmConsumeItems.resx">
-      <DependentUpon>frmConsumeItems.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmGenerateReports.resx">
-      <DependentUpon>frmGenerateReports.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSettings.resx">
-      <DependentUpon>frmSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSplash.resx">
-      <DependentUpon>frmSplash.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmViewInventory.resx">
-      <DependentUpon>frmViewInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -182,17 +155,35 @@
     <EmbeddedResource Include="Views\frmAddItems.resx">
       <DependentUpon>frmAddItems.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmConsumeItems.resx">
-      <DependentUpon>frmConsumeItems.cs</DependentUpon>
+    <EmbeddedResource Include="Views\frmManageInventory.resx">
+      <DependentUpon>frmManageInventory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmGenerateReports.resx">
-      <DependentUpon>frmGenerateReports.cs</DependentUpon>
+    <EmbeddedResource Include="Views\frmCheckInOutItems.resx">
+      <DependentUpon>frmCheckInOutItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmPrintBarcodes.resx">
+      <DependentUpon>frmPrintBarcodes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettingsCabinets.resx">
+      <DependentUpon>frmSettingsCabinets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettingsCategories.resx">
+      <DependentUpon>frmSettingsCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettingsLocations.resx">
+      <DependentUpon>frmSettingsLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettingsUsers.resx">
+      <DependentUpon>frmSettingsUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettingsVendors.resx">
+      <DependentUpon>frmSettingsVendors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>

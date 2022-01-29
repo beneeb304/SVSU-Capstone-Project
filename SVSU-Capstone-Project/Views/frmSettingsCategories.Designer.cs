@@ -1,7 +1,7 @@
 ﻿
 namespace SVSU_Capstone_Project.Views
 {
-    partial class frmGenerateReports
+    partial class frmSettingsCategories
     {
         /// <summary>
         /// Required designer variable.
@@ -37,18 +37,18 @@ namespace SVSU_Capstone_Project.Views
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "generate reports page";
+            this.label1.Size = new System.Drawing.Size(128, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "settings - categories page";
             // 
-            // frmGenerateReports
+            // frmSettingsCategories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1038, 520);
+            this.ClientSize = new System.Drawing.Size(955, 453);
             this.Controls.Add(this.label1);
-            this.Name = "frmGenerateReports";
-            this.Text = "frmGenerateReports";
+            this.Name = "frmSettingsCategories";
+            this.Text = "frmSettingsCategories";
             this.ResumeLayout(false);
             this.PerformLayout();
 

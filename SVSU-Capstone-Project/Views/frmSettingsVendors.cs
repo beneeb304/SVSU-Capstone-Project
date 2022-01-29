@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SVSU_Capstone_Project.Views
 {
-    public partial class frmConsumeItems : Form
+    public partial class frmSettingsVendors : Form
     {
-        public frmConsumeItems()
+        public frmSettingsVendors()
         {
             InitializeComponent();
         }
