@@ -70,7 +70,7 @@ namespace SVSU_Capstone_Project
                 case "msiAddItems":
                     newF = new frmAddItems();
                     break;
-                case "msiConsumeItems":
+                case "msiManageInventory":
                     newF = new frmManageInventory();
                     break;
                 case "msiGenerateReports":
@@ -83,6 +83,8 @@ namespace SVSU_Capstone_Project
                     newF = new frmCheckInOutItems();
                     break;
                 case "msiSettings":
+                    newF = new frmSettings();
+                    break;
                 case "msiSettingsUsers":
                     newF = new frmSettingsUsers();
                     break;
@@ -117,8 +119,8 @@ namespace SVSU_Capstone_Project
             newF.MdiParent = this;
             newF.FormBorderStyle = FormBorderStyle.None;
             newF.Show();
-            newF.Location = new Point(118, 190);
-            newF.Size = new Size(1054, 559);
+            newF.Location = new Point(0,0);
+            newF.Size = new Size(971, 492);
         }
 
         private void tmrTime_Tick(object sender, EventArgs e)

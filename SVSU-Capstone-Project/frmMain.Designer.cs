@@ -34,22 +34,22 @@ namespace SVSU_Capstone_Project
             this.mstMain = new System.Windows.Forms.MenuStrip();
             this.msiViewInventory = new System.Windows.Forms.ToolStripMenuItem();
             this.msiAddItems = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiConsumeItems = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiManageInventory = new System.Windows.Forms.ToolStripMenuItem();
             this.msiGenerateReports = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiPrintBarcodes = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiCheckInOutItems = new System.Windows.Forms.ToolStripMenuItem();
             this.msiSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiSettingsUsers = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiSettingsLocations = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiSettingsCabinets = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiSettingsCategories = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiSettingsVendors = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.tmrTime = new System.Windows.Forms.Timer(this.components);
             this.lblLoggedInTime = new System.Windows.Forms.Label();
             this.pcbMain = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.msiSettingsUsers = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiSettingsLocations = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiSettingsCabinets = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiSettingsCategories = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiSettingsVendors = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiPrintBarcodes = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiCheckInOutItems = new System.Windows.Forms.ToolStripMenuItem();
             this.mstMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbMain)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,7 +61,7 @@ namespace SVSU_Capstone_Project
             this.mstMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.msiViewInventory,
             this.msiAddItems,
-            this.msiConsumeItems,
+            this.msiManageInventory,
             this.msiGenerateReports,
             this.msiPrintBarcodes,
             this.msiCheckInOutItems,
@@ -91,14 +91,14 @@ namespace SVSU_Capstone_Project
             this.msiAddItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiAddItems.Click += new System.EventHandler(this.PageController);
             // 
-            // msiConsumeItems
+            // msiManageInventory
             // 
-            this.msiConsumeItems.Name = "msiConsumeItems";
-            this.msiConsumeItems.Padding = new System.Windows.Forms.Padding(4);
-            this.msiConsumeItems.Size = new System.Drawing.Size(172, 31);
-            this.msiConsumeItems.Text = "Consume Items";
-            this.msiConsumeItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msiConsumeItems.Click += new System.EventHandler(this.PageController);
+            this.msiManageInventory.Name = "msiManageInventory";
+            this.msiManageInventory.Padding = new System.Windows.Forms.Padding(4);
+            this.msiManageInventory.Size = new System.Drawing.Size(172, 31);
+            this.msiManageInventory.Text = "Manage Inventory";
+            this.msiManageInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msiManageInventory.Click += new System.EventHandler(this.PageController);
             // 
             // msiGenerateReports
             // 
@@ -108,6 +108,24 @@ namespace SVSU_Capstone_Project
             this.msiGenerateReports.Text = "Generate Reports";
             this.msiGenerateReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiGenerateReports.Click += new System.EventHandler(this.PageController);
+            // 
+            // msiPrintBarcodes
+            // 
+            this.msiPrintBarcodes.Name = "msiPrintBarcodes";
+            this.msiPrintBarcodes.Padding = new System.Windows.Forms.Padding(4);
+            this.msiPrintBarcodes.Size = new System.Drawing.Size(172, 31);
+            this.msiPrintBarcodes.Text = "Print Barcodes";
+            this.msiPrintBarcodes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msiPrintBarcodes.Click += new System.EventHandler(this.PageController);
+            // 
+            // msiCheckInOutItems
+            // 
+            this.msiCheckInOutItems.Name = "msiCheckInOutItems";
+            this.msiCheckInOutItems.Padding = new System.Windows.Forms.Padding(4);
+            this.msiCheckInOutItems.Size = new System.Drawing.Size(172, 31);
+            this.msiCheckInOutItems.Text = "Check-In/Out Items";
+            this.msiCheckInOutItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msiCheckInOutItems.Click += new System.EventHandler(this.PageController);
             // 
             // msiSettings
             // 
@@ -123,6 +141,46 @@ namespace SVSU_Capstone_Project
             this.msiSettings.Text = "Settings";
             this.msiSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiSettings.Click += new System.EventHandler(this.PageController);
+            // 
+            // msiSettingsUsers
+            // 
+            this.msiSettingsUsers.Name = "msiSettingsUsers";
+            this.msiSettingsUsers.Size = new System.Drawing.Size(161, 24);
+            this.msiSettingsUsers.Text = "Users";
+            this.msiSettingsUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msiSettingsUsers.Click += new System.EventHandler(this.PageController);
+            // 
+            // msiSettingsLocations
+            // 
+            this.msiSettingsLocations.Name = "msiSettingsLocations";
+            this.msiSettingsLocations.Size = new System.Drawing.Size(161, 24);
+            this.msiSettingsLocations.Text = "Locations";
+            this.msiSettingsLocations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msiSettingsLocations.Click += new System.EventHandler(this.PageController);
+            // 
+            // msiSettingsCabinets
+            // 
+            this.msiSettingsCabinets.Name = "msiSettingsCabinets";
+            this.msiSettingsCabinets.Size = new System.Drawing.Size(161, 24);
+            this.msiSettingsCabinets.Text = "Cabinets";
+            this.msiSettingsCabinets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msiSettingsCabinets.Click += new System.EventHandler(this.PageController);
+            // 
+            // msiSettingsCategories
+            // 
+            this.msiSettingsCategories.Name = "msiSettingsCategories";
+            this.msiSettingsCategories.Size = new System.Drawing.Size(161, 24);
+            this.msiSettingsCategories.Text = "Categories";
+            this.msiSettingsCategories.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msiSettingsCategories.Click += new System.EventHandler(this.PageController);
+            // 
+            // msiSettingsVendors
+            // 
+            this.msiSettingsVendors.Name = "msiSettingsVendors";
+            this.msiSettingsVendors.Size = new System.Drawing.Size(161, 24);
+            this.msiSettingsVendors.Text = "Vendors";
+            this.msiSettingsVendors.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msiSettingsVendors.Click += new System.EventHandler(this.PageController);
             // 
             // lblUser
             // 
@@ -183,57 +241,6 @@ namespace SVSU_Capstone_Project
             this.panel1.Size = new System.Drawing.Size(181, 497);
             this.panel1.TabIndex = 10;
             // 
-            // msiSettingsUsers
-            // 
-            this.msiSettingsUsers.Name = "msiSettingsUsers";
-            this.msiSettingsUsers.Size = new System.Drawing.Size(180, 24);
-            this.msiSettingsUsers.Text = "Users";
-            this.msiSettingsUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // msiSettingsLocations
-            // 
-            this.msiSettingsLocations.Name = "msiSettingsLocations";
-            this.msiSettingsLocations.Size = new System.Drawing.Size(180, 24);
-            this.msiSettingsLocations.Text = "Locations";
-            this.msiSettingsLocations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // msiSettingsCabinets
-            // 
-            this.msiSettingsCabinets.Name = "msiSettingsCabinets";
-            this.msiSettingsCabinets.Size = new System.Drawing.Size(180, 24);
-            this.msiSettingsCabinets.Text = "Cabinets";
-            this.msiSettingsCabinets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // msiSettingsCategories
-            // 
-            this.msiSettingsCategories.Name = "msiSettingsCategories";
-            this.msiSettingsCategories.Size = new System.Drawing.Size(180, 24);
-            this.msiSettingsCategories.Text = "Categories";
-            this.msiSettingsCategories.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // msiSettingsVendors
-            // 
-            this.msiSettingsVendors.Name = "msiSettingsVendors";
-            this.msiSettingsVendors.Size = new System.Drawing.Size(180, 24);
-            this.msiSettingsVendors.Text = "Vendors";
-            this.msiSettingsVendors.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // msiPrintBarcodes
-            // 
-            this.msiPrintBarcodes.Name = "msiPrintBarcodes";
-            this.msiPrintBarcodes.Padding = new System.Windows.Forms.Padding(4);
-            this.msiPrintBarcodes.Size = new System.Drawing.Size(172, 31);
-            this.msiPrintBarcodes.Text = "Print Barcodes";
-            this.msiPrintBarcodes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // msiCheckInOutItems
-            // 
-            this.msiCheckInOutItems.Name = "msiCheckInOutItems";
-            this.msiCheckInOutItems.Padding = new System.Windows.Forms.Padding(4);
-            this.msiCheckInOutItems.Size = new System.Drawing.Size(172, 31);
-            this.msiCheckInOutItems.Text = "Check-In/Out Items";
-            this.msiCheckInOutItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,7 +275,7 @@ namespace SVSU_Capstone_Project
         private System.Windows.Forms.MenuStrip mstMain;
         private System.Windows.Forms.ToolStripMenuItem msiAddItems;
         private System.Windows.Forms.ToolStripMenuItem msiViewInventory;
-        private System.Windows.Forms.ToolStripMenuItem msiConsumeItems;
+        private System.Windows.Forms.ToolStripMenuItem msiManageInventory;
         private System.Windows.Forms.ToolStripMenuItem msiGenerateReports;
         private System.Windows.Forms.ToolStripMenuItem msiSettings;
         private System.Windows.Forms.PictureBox pcbMain;

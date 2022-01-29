@@ -170,6 +170,21 @@
     <EmbeddedResource Include="Views\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettingsCabinets.resx">
+      <DependentUpon>frmSettingsCabinets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettingsCategories.resx">
+      <DependentUpon>frmSettingsCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettingsLocations.resx">
+      <DependentUpon>frmSettingsLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettingsUsers.resx">
+      <DependentUpon>frmSettingsUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSettingsVendors.resx">
+      <DependentUpon>frmSettingsVendors.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
