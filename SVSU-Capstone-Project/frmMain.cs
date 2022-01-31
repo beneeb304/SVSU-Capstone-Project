@@ -36,7 +36,7 @@ namespace SVSU_Capstone_Project
             FrmLogin.ShowDialog();
 
             //Check if the user somehow closed the login form
-            if(strUsername == null)
+            if (strUsername == null)
             {
                 //Close the application
                 Application.Exit();
