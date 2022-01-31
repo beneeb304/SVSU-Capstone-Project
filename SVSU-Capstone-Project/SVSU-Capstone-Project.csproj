@@ -89,7 +89,6 @@
     <Compile Include="Views\frmSettingsCategories.Designer.cs">
       <DependentUpon>frmSettingsCategories.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSettingsLocations.cs">
     <Compile Include="InvDbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
