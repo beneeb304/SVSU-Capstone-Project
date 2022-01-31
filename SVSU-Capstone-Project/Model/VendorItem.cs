@@ -1,12 +1,10 @@
-// --------------------------------------------------------------------
-// !!! Define Schema as seperate class files under the Model folder !!!
-// --------------------------------------------------------------------
+using System.ComponentModel.DataAnnotations;
 
 public class VendorItem
 {
+    [Key]
     public string tuid { get; set; }
-    public string commodity_tuid { get; set; }
+    public int costInCents { get; set; }
     public virtual Commodity commodity { get; set; }
-    public string vendor_tuid { get; set; }
     public virtual Vendor vendor { get; set; }
 }

@@ -1,11 +1,9 @@
-// --------------------------------------------------------------------
-// !!! Define Schema as seperate class files under the Model folder !!!
-// --------------------------------------------------------------------
-
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
 public class User
 {
+    [Key]
     public string tuid { get; set; }
     public string svsu_id { get; set; }
     public string first_name { get; set; }
