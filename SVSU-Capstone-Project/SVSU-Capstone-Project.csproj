@@ -13,8 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,8 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject></StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
@@ -88,6 +86,9 @@
     </Compile>
     <Compile Include="Views\frmSettingsCategories.Designer.cs">
       <DependentUpon>frmSettingsCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmSettingsLocations.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="InvDbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
