@@ -23,23 +23,23 @@
 
             //Create mock user data in the Users table
             context.Users.AddOrUpdate(
-            new User() { tuid = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500001", first_name = "Alexander", last_name = "Buckstiegel", email = "awbuckst@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("baaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500002", first_name = "Ann", last_name = "Krause", email = "aekrause@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("caaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500003", first_name = "Ariel", last_name = "Taylor", email = "aataylo3@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("daaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500004", first_name = "Benjamin", last_name = "Neeb", email = "brneeb@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("eaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500005", first_name = "Brett", last_name = "Previdi", email = "bcprevid@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("faaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500006", first_name = "Devin", last_name = "Campbell", email = "dscampbe@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("gaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500007", first_name = "Durrell", last_name = "Pigee", email = "depigee@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("haaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500008", first_name = "Hunter", last_name = "Clipper", email = "hmclippe@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("iaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500009", first_name = "James", last_name = "Hax", email = "jhax@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("jaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500010", first_name = "Lamar", last_name = "Scott", email = "ldscott2@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("kaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500011", first_name = "Maxwell", last_name = "Grevais", email = "mtgrevai@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("laaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500012", first_name = "Michael", last_name = "Cardinalli", email = "macardin@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("maaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500013", first_name = "Michael", last_name = "Simon", email = "mjsimon1@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("naaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500014", first_name = "Omar", last_name = "Salih", email = "osalih@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("oaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "000001", first_name = "Scott", last_name = "James", email = "james@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("paaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500016", first_name = "Taylor", last_name = "Debolt", email = "tsdebolt@svsu.edu", password = "Capstone424", isAdmin = true },
-            new User() { tuid = new Guid("qaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500017", first_name = "Trevor", last_name = "Eurich", email = "taeurich@svsu.edu", password = "Capstone424", isAdmin = true }
+                new User() { tuid = new Guid("abaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500001", first_name = "Alexander", last_name = "Buckstiegel", email = "awbuckst@svsu.edu",phone ="", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("baaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500002", first_name = "Ann", last_name = "Krause", email = "aekrause@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("caaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500003", first_name = "Ariel", last_name = "Taylor", email = "aataylo3@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("daaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500004", first_name = "Benjamin", last_name = "Neeb", email = "brneeb@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("eaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500005", first_name = "Brett", last_name = "Previdi", email = "bcprevid@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("faaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500006", first_name = "Devin", last_name = "Campbell", email = "dscampbe@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("gaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500007", first_name = "Durrell", last_name = "Pigee", email = "depigee@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("haaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500008", first_name = "Hunter", last_name = "Clipper", email = "hmclippe@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("iaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500009", first_name = "James", last_name = "Hax", email = "jhax@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("jaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500010", first_name = "Lamar", last_name = "Scott", email = "ldscott2@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("kaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500011", first_name = "Maxwell", last_name = "Grevais", email = "mtgrevai@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("laaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500012", first_name = "Michael", last_name = "Cardinalli", email = "macardin@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("maaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500013", first_name = "Michael", last_name = "Simon", email = "mjsimon1@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("naaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500014", first_name = "Omar", last_name = "Salih", email = "osalih@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("oaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "000001", first_name = "Scott", last_name = "James", email = "james@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("paaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500016", first_name = "Taylor", last_name = "Debolt", email = "tsdebolt@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("qaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500017", first_name = "Trevor", last_name = "Eurich", email = "taeurich@svsu.edu", phone = "", password = "Capstone424", isAdmin = true }
             );
 
             //Create mock category data in the Categories table
