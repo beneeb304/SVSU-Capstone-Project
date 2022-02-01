@@ -20,8 +20,13 @@ namespace SVSU_Capstone_Project.Views
         private void btnModifyCancel_Click(object sender, EventArgs e)
         {
             //Clear fields
-            txtModifyUser.Text = "";
-            chkModifyAdmin.Checked = false;
+            txtUserSVSUID.Text = "";
+            txtUserEmail.Text = "";
+            txtUserFName.Text = "";
+            txtUserLName.Text = "";
+            txtUserPassword.Text = "";
+            txtUserPhone.Text = "";
+            chkUserAdmin.Checked = false;
             lstUser.SelectedIndex = -1;
         }
     }
