@@ -7,19 +7,19 @@ using System.Linq;
 
 public class InvDb : DbContext
 {
-    public InvDb() : base("name=InvDb")
+    public InvDb() : base("strName=InvDb")
     {
 
     }
 
-    public DbSet<Category> Categories { get; set; }
-    public DbSet<Room> Rooms { get; set; }
-    public DbSet<Cabinet> Cabinets { get; set; }
-    public DbSet<NLevel> NLevels { get; set; }
-    public DbSet<Vendor> Vendors { get; set; }
-    public DbSet<Commodity> Commodites { get; set; }
-    public DbSet<Log> Logs { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Quantity> Quantities { get; set; }
-    public DbSet<VendorItem> VendorItems { get; set; }
+    public DbSet<Category> dsCategories { get; set; }
+    public DbSet<Room> dsRooms { get; set; }
+    public DbSet<Cabinet> dsCabinets { get; set; }
+    public DbSet<NLevel> dsNLevels { get; set; }
+    public DbSet<Vendor> dsVendors { get; set; }
+    public DbSet<Commodity> dsCommodites { get; set; }
+    public DbSet<Log> dsLogs { get; set; }
+    public DbSet<User> dsUsers { get; set; }
+    public DbSet<Quantity> dsQuantities { get; set; }
+    public DbSet<VendorItem> dsVendorItems { get; set; }
 }

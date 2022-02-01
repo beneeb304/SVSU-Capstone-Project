@@ -1,15 +1,16 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public class Quantity
 {
     // Properties
     [Key]
-    public Guid tuid { get; set; }
-    public int quantity { get; set; }
+    public Guid uidTuid { get; set; }
+    public int intQuantity { get; set; }
 
     // Foreign Keys
-    public virtual NLevel nlevel { get; set; }
-    public virtual Cabinet cabinet { get; set; }
-    public virtual Commodity commodity { get; set; }
+    public virtual NLevel objNLevel { get; set; }
+    public virtual Cabinet objCabinet { get; set; }
+    public virtual Commodity objCommodity { get; set; }
 }

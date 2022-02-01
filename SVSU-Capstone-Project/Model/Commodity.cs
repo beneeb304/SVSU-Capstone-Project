@@ -1,23 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 public class Commodity
 {
     //properties
     [Key]
-    public Guid tuid { get; set; }
-    public string name { get; set; }
-    public string description { get; set; }
-    public string features { get; set; }
-    public int alert_quantity { get; set; }
+    public Guid uidTuid { get; set; }
+    public string strName { get; set; }
+    public string strDescription { get; set; }
+    public string strFeatures { get; set; }
+    public int intAlert_quantity { get; set; }
 
 
     //foreign keys
-    public virtual Category category { get; set; }
-    public List<Quantity> quantities { get; set; }
-    public List<VendorItem> vendorItems { get; set; }
+    public virtual Category objCategory { get; set; }
+    public List<Quantity> lstQuantities { get; set; }
+    public List<VendorItem> lstVendorItems { get; set; }
 
 
 

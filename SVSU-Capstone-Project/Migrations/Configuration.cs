@@ -21,12 +21,12 @@
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
-            context.Rooms.AddOrUpdate(
-                new Room() { tuid = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), name = "Room 1", description = "Room 1 Description" }
+            context.dsRooms.AddOrUpdate(
+                new Room() { uidTuid = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Room 1", strDescription = "Room 1 strDescription" }
             );
-            context.Cabinets.AddOrUpdate( 
-                new Cabinet() { tuid = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), name = "Cabinet 1", description = "Cabinet 1", room = context.Rooms.First(x => x.name == "Room 1") },
-                new Cabinet() { tuid = new Guid("bbcccbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), name = "Cabinet 2", description = "Cabinet 2", room = context.Rooms.First(x => x.name == "Room 1") }
+            context.dsCabinets.AddOrUpdate( 
+                new Cabinet() { uidTuid = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), strName = "Cabinet 1", strDescription = "Cabinet 1", objRoom = context.dsRooms.First(x => x.strName == "Room 1") },
+                new Cabinet() { uidTuid = new Guid("bbcccbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), strName = "Cabinet 2", strDescription = "Cabinet 2", objRoom = context.dsRooms.First(x => x.strName == "Room 1") }
             );
 
         }

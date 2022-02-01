@@ -1,11 +1,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public class VendorItem
 {
     [Key]
-    public Guid tuid { get; set; }
-    public int costInCents { get; set; }
-    public virtual Commodity commodity { get; set; }
-    public virtual Vendor vendor { get; set; }
+    public Guid uidTuid { get; set; }
+    public int intCostInCents { get; set; }
+    public virtual Commodity objCommodity { get; set; }
+    public virtual Vendor objVendor { get; set; }
 }
