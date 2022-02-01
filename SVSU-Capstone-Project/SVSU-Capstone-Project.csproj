@@ -75,11 +75,17 @@
     <Compile Include="Migrations\202202011428330_addGuid.designer.cs">
       <DependentUpon>202202011428330_addGuid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmAddItems.cs">
+    <Compile Include="Views\old-frmAddItems.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmAddItems.Designer.cs">
-      <DependentUpon>frmAddItems.cs</DependentUpon>
+    <Compile Include="Views\old-frmAddItems.Designer.cs">
+      <DependentUpon>old-frmAddItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmGenerateReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmGenerateReports.Designer.cs">
+      <DependentUpon>frmGenerateReports.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmMultipleLocations.cs">
       <SubType>Form</SubType>
@@ -87,19 +93,19 @@
     <Compile Include="Views\frmMultipleLocations.Designer.cs">
       <DependentUpon>frmMultipleLocations.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSettingsCabinets.cs">
+    <Compile Include="Views\old-frmSettingsCabinets.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmSettingsCabinets.Designer.cs">
-      <DependentUpon>frmSettingsCabinets.cs</DependentUpon>
+    <Compile Include="Views\old-frmSettingsCabinets.Designer.cs">
+      <DependentUpon>old-frmSettingsCabinets.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSettingsCategories.cs">
+    <Compile Include="Views\old-frmSettingsCategories.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmSettingsCategories.Designer.cs">
-      <DependentUpon>frmSettingsCategories.cs</DependentUpon>
+    <Compile Include="Views\old-frmSettingsCategories.Designer.cs">
+      <DependentUpon>old-frmSettingsCategories.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSettingsLocations.cs">
+    <Compile Include="Views\old-frmSettingsLocations.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InvDbDataSet.Designer.cs">
@@ -125,11 +131,8 @@
     <Compile Include="Model\VendorItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\frmAddItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\frmSettingsLocations.Designer.cs">
-      <DependentUpon>frmSettingsLocations.cs</DependentUpon>
+    <Compile Include="Views\old-frmSettingsLocations.Designer.cs">
+      <DependentUpon>old-frmSettingsLocations.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmManageInventory.cs">
       <SubType>Form</SubType>
@@ -167,17 +170,17 @@
     <Compile Include="Views\frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSettingsUsers.cs">
+    <Compile Include="Views\old-frmSettingsUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmSettingsUsers.Designer.cs">
-      <DependentUpon>frmSettingsUsers.cs</DependentUpon>
+    <Compile Include="Views\old-frmSettingsUsers.Designer.cs">
+      <DependentUpon>old-frmSettingsUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSettingsVendors.cs">
+    <Compile Include="Views\old-frmSettingsVendors.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmSettingsVendors.Designer.cs">
-      <DependentUpon>frmSettingsVendors.cs</DependentUpon>
+    <Compile Include="Views\old-frmSettingsVendors.Designer.cs">
+      <DependentUpon>old-frmSettingsVendors.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmViewInventory.cs">
       <SubType>Form</SubType>
@@ -204,8 +207,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\frmAddItems.resx">
-      <DependentUpon>frmAddItems.cs</DependentUpon>
+    <EmbeddedResource Include="Views\old-frmAddItems.resx">
+      <DependentUpon>old-frmAddItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmGenerateReports.resx">
+      <DependentUpon>frmGenerateReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmManageInventory.resx">
       <DependentUpon>frmManageInventory.cs</DependentUpon>
@@ -225,20 +231,20 @@
     <EmbeddedResource Include="Views\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmSettingsCabinets.resx">
-      <DependentUpon>frmSettingsCabinets.cs</DependentUpon>
+    <EmbeddedResource Include="Views\old-frmSettingsCabinets.resx">
+      <DependentUpon>old-frmSettingsCabinets.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmSettingsCategories.resx">
-      <DependentUpon>frmSettingsCategories.cs</DependentUpon>
+    <EmbeddedResource Include="Views\old-frmSettingsCategories.resx">
+      <DependentUpon>old-frmSettingsCategories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmSettingsLocations.resx">
-      <DependentUpon>frmSettingsLocations.cs</DependentUpon>
+    <EmbeddedResource Include="Views\old-frmSettingsLocations.resx">
+      <DependentUpon>old-frmSettingsLocations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmSettingsUsers.resx">
-      <DependentUpon>frmSettingsUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Views\old-frmSettingsUsers.resx">
+      <DependentUpon>old-frmSettingsUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmSettingsVendors.resx">
-      <DependentUpon>frmSettingsVendors.cs</DependentUpon>
+    <EmbeddedResource Include="Views\old-frmSettingsVendors.resx">
+      <DependentUpon>old-frmSettingsVendors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>

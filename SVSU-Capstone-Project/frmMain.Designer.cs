@@ -33,17 +33,11 @@ namespace SVSU_Capstone_Project
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.mstMain = new System.Windows.Forms.MenuStrip();
             this.msiViewInventory = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiAddItems = new System.Windows.Forms.ToolStripMenuItem();
             this.msiManageInventory = new System.Windows.Forms.ToolStripMenuItem();
             this.msiGenerateReports = new System.Windows.Forms.ToolStripMenuItem();
             this.msiPrintBarcodes = new System.Windows.Forms.ToolStripMenuItem();
             this.msiCheckInOutItems = new System.Windows.Forms.ToolStripMenuItem();
             this.msiSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiSettingsUsers = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiSettingsLocations = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiSettingsCabinets = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiSettingsCategories = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiSettingsVendors = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.tmrTime = new System.Windows.Forms.Timer(this.components);
@@ -60,7 +54,6 @@ namespace SVSU_Capstone_Project
             this.mstMain.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mstMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.msiViewInventory,
-            this.msiAddItems,
             this.msiManageInventory,
             this.msiGenerateReports,
             this.msiPrintBarcodes,
@@ -69,7 +62,7 @@ namespace SVSU_Capstone_Project
             this.mstMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.mstMain.Location = new System.Drawing.Point(0, 0);
             this.mstMain.Name = "mstMain";
-            this.mstMain.Size = new System.Drawing.Size(179, 223);
+            this.mstMain.Size = new System.Drawing.Size(179, 192);
             this.mstMain.TabIndex = 0;
             this.mstMain.Text = "menuStrip1";
             // 
@@ -81,15 +74,6 @@ namespace SVSU_Capstone_Project
             this.msiViewInventory.Text = "View Inventory";
             this.msiViewInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiViewInventory.Click += new System.EventHandler(this.PageController);
-            // 
-            // msiAddItems
-            // 
-            this.msiAddItems.Name = "msiAddItems";
-            this.msiAddItems.Padding = new System.Windows.Forms.Padding(4);
-            this.msiAddItems.Size = new System.Drawing.Size(172, 31);
-            this.msiAddItems.Text = "Add Items";
-            this.msiAddItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msiAddItems.Click += new System.EventHandler(this.PageController);
             // 
             // msiManageInventory
             // 
@@ -129,58 +113,12 @@ namespace SVSU_Capstone_Project
             // 
             // msiSettings
             // 
-            this.msiSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.msiSettingsUsers,
-            this.msiSettingsLocations,
-            this.msiSettingsCabinets,
-            this.msiSettingsCategories,
-            this.msiSettingsVendors});
             this.msiSettings.Name = "msiSettings";
             this.msiSettings.Padding = new System.Windows.Forms.Padding(4);
             this.msiSettings.Size = new System.Drawing.Size(172, 31);
             this.msiSettings.Text = "Settings";
             this.msiSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiSettings.Click += new System.EventHandler(this.PageController);
-            // 
-            // msiSettingsUsers
-            // 
-            this.msiSettingsUsers.Name = "msiSettingsUsers";
-            this.msiSettingsUsers.Size = new System.Drawing.Size(161, 24);
-            this.msiSettingsUsers.Text = "Users";
-            this.msiSettingsUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msiSettingsUsers.Click += new System.EventHandler(this.PageController);
-            // 
-            // msiSettingsLocations
-            // 
-            this.msiSettingsLocations.Name = "msiSettingsLocations";
-            this.msiSettingsLocations.Size = new System.Drawing.Size(161, 24);
-            this.msiSettingsLocations.Text = "Locations";
-            this.msiSettingsLocations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msiSettingsLocations.Click += new System.EventHandler(this.PageController);
-            // 
-            // msiSettingsCabinets
-            // 
-            this.msiSettingsCabinets.Name = "msiSettingsCabinets";
-            this.msiSettingsCabinets.Size = new System.Drawing.Size(161, 24);
-            this.msiSettingsCabinets.Text = "Cabinets";
-            this.msiSettingsCabinets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msiSettingsCabinets.Click += new System.EventHandler(this.PageController);
-            // 
-            // msiSettingsCategories
-            // 
-            this.msiSettingsCategories.Name = "msiSettingsCategories";
-            this.msiSettingsCategories.Size = new System.Drawing.Size(161, 24);
-            this.msiSettingsCategories.Text = "Categories";
-            this.msiSettingsCategories.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msiSettingsCategories.Click += new System.EventHandler(this.PageController);
-            // 
-            // msiSettingsVendors
-            // 
-            this.msiSettingsVendors.Name = "msiSettingsVendors";
-            this.msiSettingsVendors.Size = new System.Drawing.Size(161, 24);
-            this.msiSettingsVendors.Text = "Vendors";
-            this.msiSettingsVendors.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msiSettingsVendors.Click += new System.EventHandler(this.PageController);
             // 
             // lblUser
             // 
@@ -226,7 +164,7 @@ namespace SVSU_Capstone_Project
             this.pcbMain.Image = global::SVSU_Capstone_Project.Properties.Resources.svsu_top_bar;
             this.pcbMain.Location = new System.Drawing.Point(0, 0);
             this.pcbMain.Name = "pcbMain";
-            this.pcbMain.Size = new System.Drawing.Size(1156, 184);
+            this.pcbMain.Size = new System.Drawing.Size(1156, 187);
             this.pcbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pcbMain.TabIndex = 1;
             this.pcbMain.TabStop = false;
@@ -236,9 +174,9 @@ namespace SVSU_Capstone_Project
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.mstMain);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 184);
+            this.panel1.Location = new System.Drawing.Point(0, 187);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(181, 497);
+            this.panel1.Size = new System.Drawing.Size(181, 494);
             this.panel1.TabIndex = 10;
             // 
             // frmMain
@@ -273,7 +211,6 @@ namespace SVSU_Capstone_Project
         #endregion
 
         private System.Windows.Forms.MenuStrip mstMain;
-        private System.Windows.Forms.ToolStripMenuItem msiAddItems;
         private System.Windows.Forms.ToolStripMenuItem msiViewInventory;
         private System.Windows.Forms.ToolStripMenuItem msiManageInventory;
         private System.Windows.Forms.ToolStripMenuItem msiGenerateReports;
@@ -284,11 +221,6 @@ namespace SVSU_Capstone_Project
         private System.Windows.Forms.Timer tmrTime;
         private System.Windows.Forms.Label lblLoggedInTime;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolStripMenuItem msiSettingsUsers;
-        private System.Windows.Forms.ToolStripMenuItem msiSettingsLocations;
-        private System.Windows.Forms.ToolStripMenuItem msiSettingsCabinets;
-        private System.Windows.Forms.ToolStripMenuItem msiSettingsCategories;
-        private System.Windows.Forms.ToolStripMenuItem msiSettingsVendors;
         private System.Windows.Forms.ToolStripMenuItem msiPrintBarcodes;
         private System.Windows.Forms.ToolStripMenuItem msiCheckInOutItems;
     }

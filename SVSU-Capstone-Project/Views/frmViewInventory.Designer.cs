@@ -260,7 +260,6 @@ namespace SVSU_Capstone_Project.Views
             this.NLevel.HeaderText = "N Level";
             this.NLevel.MinimumWidth = 6;
             this.NLevel.Name = "NLevel";
-            this.label1.Size = new System.Drawing.Size(102, 13);
             this.Location.HeaderText = "Location";
             this.Location.MinimumWidth = 6;
             this.Location.Name = "Location";
@@ -298,8 +297,6 @@ namespace SVSU_Capstone_Project.Views
             this.Controls.Add(this.dgvInventoryView);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ClientSize = new System.Drawing.Size(955, 453);
-            this.Controls.Add(this.label1);
-            this.Name = "frmViewInventory";
             this.Text = "View Inventory";
             this.Load += new System.EventHandler(this.frmViewInventory_Load);
             this.grbFields.ResumeLayout(false);

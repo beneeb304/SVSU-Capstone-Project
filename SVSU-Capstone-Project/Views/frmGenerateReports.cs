@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace SVSU_Capstone_Project.Views
 {
-    public partial class frmSettings : Form
+    public partial class frmGenerateReports : Form
     {
-        public frmSettings()
+        public frmGenerateReports()
         {
             InitializeComponent();
-        }
-
-        private void btnModifyCancel_Click(object sender, EventArgs e)
-        {
-            //Clear fields
-            txtModifyUser.Text = "";
-            chkModifyAdmin.Checked = false;
-            lstUser.SelectedIndex = -1;
         }
     }
 }

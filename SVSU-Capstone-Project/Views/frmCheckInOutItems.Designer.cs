@@ -29,6 +29,11 @@ namespace SVSU_Capstone_Project.Views
         /// </summary>
         private void InitializeComponent()
         {
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tbpCheckIn = new System.Windows.Forms.TabPage();
+            this.tbpCheckOut = new System.Windows.Forms.TabPage();
+            this.tbpHandOut = new System.Windows.Forms.TabPage();
+            this.lblCheckOutTitle = new System.Windows.Forms.Label();
             this.lblCheckout = new System.Windows.Forms.Label();
             this.lblDate_Time_Title = new System.Windows.Forms.Label();
             this.btnCheckin = new System.Windows.Forms.Button();
@@ -41,195 +46,219 @@ namespace SVSU_Capstone_Project.Views
             this.txtItemID = new System.Windows.Forms.TextBox();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.txtStudentName = new System.Windows.Forms.TextBox();
-            this.lblCheckOutTitle = new System.Windows.Forms.Label();
+            this.tabControl1.SuspendLayout();
+            this.tbpCheckOut.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tbpCheckIn);
+            this.tabControl1.Controls.Add(this.tbpCheckOut);
+            this.tabControl1.Controls.Add(this.tbpHandOut);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(931, 429);
+            this.tabControl1.TabIndex = 43;
+            // 
+            // tbpCheckIn
+            // 
+            this.tbpCheckIn.Location = new System.Drawing.Point(4, 22);
+            this.tbpCheckIn.Name = "tbpCheckIn";
+            this.tbpCheckIn.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpCheckIn.Size = new System.Drawing.Size(923, 403);
+            this.tbpCheckIn.TabIndex = 0;
+            this.tbpCheckIn.Text = "Check In Simulator";
+            this.tbpCheckIn.UseVisualStyleBackColor = true;
+            // 
+            // tbpCheckOut
+            // 
+            this.tbpCheckOut.Controls.Add(this.lblCheckOutTitle);
+            this.tbpCheckOut.Controls.Add(this.lblCheckout);
+            this.tbpCheckOut.Controls.Add(this.lblDate_Time_Title);
+            this.tbpCheckOut.Controls.Add(this.btnCheckin);
+            this.tbpCheckOut.Controls.Add(this.lblDate_and_Time);
+            this.tbpCheckOut.Controls.Add(this.lblID);
+            this.tbpCheckOut.Controls.Add(this.lblName);
+            this.tbpCheckOut.Controls.Add(this.lblStudentID);
+            this.tbpCheckOut.Controls.Add(this.lblStudentName);
+            this.tbpCheckOut.Controls.Add(this.txtStudent_ID);
+            this.tbpCheckOut.Controls.Add(this.txtItemID);
+            this.tbpCheckOut.Controls.Add(this.txtItemName);
+            this.tbpCheckOut.Controls.Add(this.txtStudentName);
+            this.tbpCheckOut.Location = new System.Drawing.Point(4, 22);
+            this.tbpCheckOut.Name = "tbpCheckOut";
+            this.tbpCheckOut.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpCheckOut.Size = new System.Drawing.Size(923, 403);
+            this.tbpCheckOut.TabIndex = 1;
+            this.tbpCheckOut.Text = "Check Out Simulator";
+            this.tbpCheckOut.UseVisualStyleBackColor = true;
+            // 
+            // tbpHandOut
+            // 
+            this.tbpHandOut.Location = new System.Drawing.Point(4, 22);
+            this.tbpHandOut.Name = "tbpHandOut";
+            this.tbpHandOut.Size = new System.Drawing.Size(192, 74);
+            this.tbpHandOut.TabIndex = 2;
+            this.tbpHandOut.Text = "Hand-Out Item";
+            this.tbpHandOut.UseVisualStyleBackColor = true;
+            // 
+            // lblCheckOutTitle
+            // 
+            this.lblCheckOutTitle.AutoSize = true;
+            this.lblCheckOutTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheckOutTitle.Location = new System.Drawing.Point(268, 6);
+            this.lblCheckOutTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCheckOutTitle.Name = "lblCheckOutTitle";
+            this.lblCheckOutTitle.Size = new System.Drawing.Size(203, 31);
+            this.lblCheckOutTitle.TabIndex = 55;
+            this.lblCheckOutTitle.Text = "Item Checkout";
             // 
             // lblCheckout
             // 
             this.lblCheckout.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCheckout.AutoSize = true;
             this.lblCheckout.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckout.Location = new System.Drawing.Point(72, 371);
-            this.lblCheckout.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCheckout.Location = new System.Drawing.Point(313, 300);
             this.lblCheckout.Name = "lblCheckout";
-            this.lblCheckout.Size = new System.Drawing.Size(435, 26);
-            this.lblCheckout.TabIndex = 41;
+            this.lblCheckout.Size = new System.Drawing.Size(341, 22);
+            this.lblCheckout.TabIndex = 54;
             this.lblCheckout.Text = "OT-04 Checked Out on 11/15/2021 10:43 AM";
-            this.lblCheckout.Click += new System.EventHandler(this.label8_Click);
             // 
             // lblDate_Time_Title
             // 
             this.lblDate_Time_Title.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDate_Time_Title.AutoSize = true;
             this.lblDate_Time_Title.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate_Time_Title.Location = new System.Drawing.Point(93, 310);
-            this.lblDate_Time_Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDate_Time_Title.Location = new System.Drawing.Point(329, 251);
             this.lblDate_Time_Title.Name = "lblDate_Time_Title";
-            this.lblDate_Time_Title.Size = new System.Drawing.Size(110, 26);
-            this.lblDate_Time_Title.TabIndex = 40;
+            this.lblDate_Time_Title.Size = new System.Drawing.Size(87, 22);
+            this.lblDate_Time_Title.TabIndex = 53;
             this.lblDate_Time_Title.Text = "Date/Time";
-            this.lblDate_Time_Title.Click += new System.EventHandler(this.label6_Click);
             // 
             // btnCheckin
             // 
             this.btnCheckin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCheckin.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckin.Location = new System.Drawing.Point(223, 433);
-            this.btnCheckin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCheckin.Location = new System.Drawing.Point(426, 351);
             this.btnCheckin.Name = "btnCheckin";
-            this.btnCheckin.Size = new System.Drawing.Size(132, 57);
-            this.btnCheckin.TabIndex = 39;
+            this.btnCheckin.Size = new System.Drawing.Size(99, 46);
+            this.btnCheckin.TabIndex = 52;
             this.btnCheckin.Text = "Checkin";
             this.btnCheckin.UseVisualStyleBackColor = true;
-            this.btnCheckin.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblDate_and_Time
             // 
             this.lblDate_and_Time.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDate_and_Time.AutoSize = true;
             this.lblDate_and_Time.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate_and_Time.Location = new System.Drawing.Point(217, 310);
-            this.lblDate_and_Time.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDate_and_Time.Location = new System.Drawing.Point(422, 251);
             this.lblDate_and_Time.Name = "lblDate_and_Time";
-            this.lblDate_and_Time.Size = new System.Drawing.Size(218, 26);
-            this.lblDate_and_Time.TabIndex = 38;
+            this.lblDate_and_Time.Size = new System.Drawing.Size(168, 22);
+            this.lblDate_and_Time.TabIndex = 51;
             this.lblDate_and_Time.Text = "11/15/2021 10:43 AM";
-            this.lblDate_and_Time.Click += new System.EventHandler(this.label5_Click);
             // 
             // lblID
             // 
             this.lblID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblID.AutoSize = true;
             this.lblID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(127, 252);
-            this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblID.Location = new System.Drawing.Point(354, 204);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(80, 26);
-            this.lblID.TabIndex = 37;
+            this.lblID.Size = new System.Drawing.Size(62, 22);
+            this.lblID.TabIndex = 50;
             this.lblID.Text = "Item ID";
-            this.lblID.Click += new System.EventHandler(this.label4_Click);
             // 
             // lblName
             // 
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(88, 191);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(325, 154);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(114, 26);
-            this.lblName.TabIndex = 36;
+            this.lblName.Size = new System.Drawing.Size(91, 22);
+            this.lblName.TabIndex = 49;
             this.lblName.Text = "Item Name";
-            this.lblName.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblStudentID
             // 
             this.lblStudentID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblStudentID.AutoSize = true;
             this.lblStudentID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentID.Location = new System.Drawing.Point(96, 129);
-            this.lblStudentID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStudentID.Location = new System.Drawing.Point(331, 104);
             this.lblStudentID.Name = "lblStudentID";
-            this.lblStudentID.Size = new System.Drawing.Size(111, 26);
-            this.lblStudentID.TabIndex = 35;
+            this.lblStudentID.Size = new System.Drawing.Size(85, 22);
+            this.lblStudentID.TabIndex = 48;
             this.lblStudentID.Text = "Student ID";
-            this.lblStudentID.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblStudentName
             // 
             this.lblStudentName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblStudentName.AutoSize = true;
             this.lblStudentName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentName.Location = new System.Drawing.Point(57, 67);
-            this.lblStudentName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStudentName.Location = new System.Drawing.Point(302, 53);
             this.lblStudentName.Name = "lblStudentName";
-            this.lblStudentName.Size = new System.Drawing.Size(145, 26);
-            this.lblStudentName.TabIndex = 34;
+            this.lblStudentName.Size = new System.Drawing.Size(114, 22);
+            this.lblStudentName.TabIndex = 47;
             this.lblStudentName.Text = "Student Name";
-            this.lblStudentName.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // txtStudent_ID
             // 
             this.txtStudent_ID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtStudent_ID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudent_ID.Location = new System.Drawing.Point(217, 125);
-            this.txtStudent_ID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStudent_ID.Location = new System.Drawing.Point(422, 101);
             this.txtStudent_ID.Name = "txtStudent_ID";
-            this.txtStudent_ID.Size = new System.Drawing.Size(132, 31);
-            this.txtStudent_ID.TabIndex = 33;
-            this.txtStudent_ID.TextChanged += new System.EventHandler(this.textBox14_TextChanged);
+            this.txtStudent_ID.Size = new System.Drawing.Size(100, 26);
+            this.txtStudent_ID.TabIndex = 46;
             // 
             // txtItemID
             // 
             this.txtItemID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtItemID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemID.Location = new System.Drawing.Point(217, 248);
-            this.txtItemID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtItemID.Location = new System.Drawing.Point(422, 201);
             this.txtItemID.Name = "txtItemID";
-            this.txtItemID.Size = new System.Drawing.Size(132, 31);
-            this.txtItemID.TabIndex = 32;
-            this.txtItemID.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
+            this.txtItemID.Size = new System.Drawing.Size(100, 26);
+            this.txtItemID.TabIndex = 45;
             // 
             // txtItemName
             // 
             this.txtItemName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtItemName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemName.Location = new System.Drawing.Point(217, 187);
-            this.txtItemName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtItemName.Location = new System.Drawing.Point(422, 151);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(291, 31);
-            this.txtItemName.TabIndex = 31;
-            this.txtItemName.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
+            this.txtItemName.Size = new System.Drawing.Size(219, 26);
+            this.txtItemName.TabIndex = 44;
             // 
             // txtStudentName
             // 
             this.txtStudentName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtStudentName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentName.Location = new System.Drawing.Point(217, 64);
-            this.txtStudentName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStudentName.Location = new System.Drawing.Point(422, 51);
             this.txtStudentName.Name = "txtStudentName";
-            this.txtStudentName.Size = new System.Drawing.Size(291, 31);
-            this.txtStudentName.TabIndex = 30;
-            this.txtStudentName.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
-            // 
-            // lblCheckOutTitle
-            // 
-            this.lblCheckOutTitle.AutoSize = true;
-            this.lblCheckOutTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckOutTitle.Location = new System.Drawing.Point(12, 9);
-            this.lblCheckOutTitle.Name = "lblCheckOutTitle";
-            this.lblCheckOutTitle.Size = new System.Drawing.Size(249, 39);
-            this.lblCheckOutTitle.TabIndex = 42;
-            this.lblCheckOutTitle.Text = "Item Checkout";
+            this.txtStudentName.Size = new System.Drawing.Size(219, 26);
+            this.txtStudentName.TabIndex = 43;
             // 
             // frmCheckInOutItems
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1273, 558);
-            this.Controls.Add(this.lblCheckOutTitle);
-            this.Controls.Add(this.lblCheckout);
-            this.Controls.Add(this.lblDate_Time_Title);
-            this.Controls.Add(this.btnCheckin);
-            this.Controls.Add(this.lblDate_and_Time);
-            this.Controls.Add(this.lblID);
-            this.Controls.Add(this.lblName);
-            this.Controls.Add(this.lblStudentID);
-            this.Controls.Add(this.lblStudentName);
-            this.Controls.Add(this.txtStudent_ID);
-            this.Controls.Add(this.txtItemID);
-            this.Controls.Add(this.txtItemName);
-            this.Controls.Add(this.txtStudentName);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.ClientSize = new System.Drawing.Size(955, 453);
+            this.Controls.Add(this.tabControl1);
             this.Name = "frmCheckInOutItems";
             this.Text = "Check-In/Out Items";
+            this.tabControl1.ResumeLayout(false);
+            this.tbpCheckOut.ResumeLayout(false);
+            this.tbpCheckOut.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tbpCheckIn;
+        private System.Windows.Forms.TabPage tbpCheckOut;
+        private System.Windows.Forms.Label lblCheckOutTitle;
         private System.Windows.Forms.Label lblCheckout;
         private System.Windows.Forms.Label lblDate_Time_Title;
         private System.Windows.Forms.Button btnCheckin;
@@ -242,6 +271,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.TextBox txtItemID;
         private System.Windows.Forms.TextBox txtItemName;
         private System.Windows.Forms.TextBox txtStudentName;
-        private System.Windows.Forms.Label lblCheckOutTitle;
+        private System.Windows.Forms.TabPage tbpHandOut;
     }
 }
