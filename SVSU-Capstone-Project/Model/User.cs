@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System;
 
 public class User
 {
     [Key]
-    public string tuid { get; set; }
+    public Guid tuid { get; set; }
     public string svsu_id { get; set; }
     public string first_name { get; set; }
     public string last_name { get; set; }

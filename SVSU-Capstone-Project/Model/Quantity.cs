@@ -1,10 +1,11 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 public class Quantity
 {
     // Properties
     [Key]
-    public string tuid { get; set; }
+    public Guid tuid { get; set; }
     public int quantity { get; set; }
 
     // Foreign Keys
