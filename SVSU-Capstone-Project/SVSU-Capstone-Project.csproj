@@ -74,13 +74,7 @@
       <DependentUpon>202202011428330_addGuid.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\frmAddItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\frmAddItems.Designer.cs">
-      <DependentUpon>frmAddItems.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />    
     <Compile Include="Views\frmSettingsCabinets.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\frmAddItems.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmAddItems.Designer.cs">
+      <DependentUpon>frmAddItems.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmSettingsLocations.Designer.cs">
       <DependentUpon>frmSettingsLocations.cs</DependentUpon>
@@ -272,7 +269,7 @@
     <Content Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <Folder Include="Controller\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
