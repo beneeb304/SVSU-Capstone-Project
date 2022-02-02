@@ -29,5 +29,46 @@ namespace SVSU_Capstone_Project.Views
             chkUserAdmin.Checked = false;
             lstUser.SelectedIndex = -1;
         }
+
+        private void btnCancelRoom_Click(object sender, EventArgs e)
+        {
+            //Clear fields
+            txtRoomDescription.Text = "";
+            txtRoomName.Text = "";
+            lstRoom.SelectedIndex = -1;
+        }
+
+        private void btnCancelCabinet_Click(object sender, EventArgs e)
+        {
+            //Clear fields
+            txtCabinetDescription.Text = "";
+            txtCabinetName.Text = "";
+            cmbRoom.SelectedIndex = -1;
+            lstCabinet.SelectedIndex = -1;
+        }
+
+        private void btnCancelCategory_Click(object sender, EventArgs e)
+        {
+            //Clear fields
+            txtCategoryDescription.Text = "";
+            txtCategoryName.Text = "";
+            lstCategory.SelectedIndex = -1;
+        }
+
+        private void btnCancelVendor_Click(object sender, EventArgs e)
+        {
+            //Clear fields
+            txtVendorDescription.Text = "";
+            txtVendorName.Text = "";
+            lstVendor.SelectedIndex = -1;
+        }
+
+        private void btnCancelNLevel_Click(object sender, EventArgs e)
+        {
+            //Clear fields
+            txtNLevelDescription.Text = "";
+            txtNLevelName.Text = "";
+            lstNLevel.SelectedIndex = -1;
+        }
     }
 }
