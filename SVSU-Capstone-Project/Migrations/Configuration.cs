@@ -23,7 +23,7 @@
 
             //Create mock user data in the Users table
             context.Users.AddOrUpdate(
-                new User() { tuid = new Guid("abaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500001", first_name = "Alexander", last_name = "Buckstiegel", email = "awbuckst@svsu.edu",phone ="", password = "Capstone424", isAdmin = true },
+                new User() { tuid = new Guid("abaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500001", first_name = "Alexander", last_name = "Buckstiegel", email = "awbuckst@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
                 new User() { tuid = new Guid("baaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500002", first_name = "Ann", last_name = "Krause", email = "aekrause@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
                 new User() { tuid = new Guid("caaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500003", first_name = "Ariel", last_name = "Taylor", email = "aataylo3@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
                 new User() { tuid = new Guid("daaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), svsu_id = "500004", first_name = "Benjamin", last_name = "Neeb", email = "brneeb@svsu.edu", phone = "", password = "Capstone424", isAdmin = true },
@@ -61,7 +61,6 @@
                 new Vendor() { tuid = new Guid("faaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), name = "Walmart", description = "www.walmart.com" },
                 new Vendor() { tuid = new Guid("gaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), name = "GTSimulators", description = "gtsimulators.com" },
                 new Vendor() { tuid = new Guid("haaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), name = "Medline", description = "medline.com" }
-
                 );
 
             //Create mock NLevel data in the NLevels table
