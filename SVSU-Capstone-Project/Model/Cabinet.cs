@@ -14,5 +14,5 @@ public class Cabinet
     
     [Column("room_tuid")]
     public virtual Room objRoom { get; set; }
-    public virtual List<Quantity> quantities { get; set; }
+    public virtual List<Quantity> lstQuantities { get; set; }
 }

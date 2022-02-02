@@ -11,7 +11,7 @@ public class InvDb : DbContext
     {
 
     }
-
+    
     public DbSet<Category> dsCategories { get; set; }
     public DbSet<Room> dsRooms { get; set; }
     public DbSet<Cabinet> dsCabinets { get; set; }
