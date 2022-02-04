@@ -32,6 +32,15 @@ namespace SVSU_Capstone_Project.Views
         private void btnCreateCancel_Click(object sender, EventArgs e)
         {
             //Clear all fields on Create tab
+            cmbCreateCategory.SelectedIndex = -1;
+            cmbCreateVendor.SelectedIndex = -1;
+            txtCreateDescription.Text = "";
+            txtCreateFeatures.Text = "";
+            txtCreateItemName.Text = "";
+            txtCreateUrl.Text = "";
+            txtCurrentQty.Text = "";
+            nudCreateAlertQty.Value = 0;
+            mtxCreateCost.Text = "";
         }
 
         private void btnDeleteCancel_Click(object sender, EventArgs e)
