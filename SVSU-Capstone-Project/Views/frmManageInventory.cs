@@ -43,5 +43,26 @@ namespace SVSU_Capstone_Project.Views
             cmbDeleteNLevel.SelectedIndex = -1;
             cmbDeleteRoom.SelectedIndex = -1;
         }
+
+        private void chkDelete_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDelete.Checked)
+            {
+                cmbDeleteCabinet.SelectedIndex = -1;
+                cmbDeleteNLevel.SelectedIndex = -1;
+                cmbDeleteRoom.SelectedIndex = -1;
+                cmbDeleteCabinet.Enabled = false;
+                cmbDeleteNLevel.Enabled = false;
+                cmbDeleteRoom.Enabled = false;
+                lblDelete.Text = "Deleting this commodity will delete it from all rooms, cabinets, and NLevels. It's quantity MUST be zero before deleting.";
+            }
+            else
+            {
+                cmbDeleteCabinet.Enabled = true;
+                cmbDeleteNLevel.Enabled = true;
+                cmbDeleteRoom.Enabled = true;
+                lblDelete.Text = "Deleting this commodity will delete it from the selected Room, Cabinet, Nurse Level.";
+            }
+        }
     }
 }

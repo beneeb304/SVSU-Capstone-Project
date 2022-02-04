@@ -31,7 +31,26 @@ namespace SVSU_Capstone_Project.Views
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbpAddItems = new System.Windows.Forms.TabPage();
+            this.cmbAddCategory = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnAddCancel = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.nudAddQty = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCurrentQty = new System.Windows.Forms.TextBox();
+            this.cmbAddCommodity = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbAddCabinet = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbAddNLevel = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbAddRoom = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tbpCreateItem = new System.Windows.Forms.TabPage();
+            this.mtxCreateCost = new System.Windows.Forms.MaskedTextBox();
+            this.nudCreateAlertQty = new System.Windows.Forms.NumericUpDown();
             this.nudCreateQty = new System.Windows.Forms.NumericUpDown();
             this.txtCreateFeatures = new System.Windows.Forms.TextBox();
             this.btnCreateCancel = new System.Windows.Forms.Button();
@@ -49,53 +68,36 @@ namespace SVSU_Capstone_Project.Views
             this.lblSupplier = new System.Windows.Forms.Label();
             this.cmbCreateNLevel = new System.Windows.Forms.ComboBox();
             this.lblNLevel = new System.Windows.Forms.Label();
+            this.cmbCreateRoom = new System.Windows.Forms.ComboBox();
+            this.lblLocation = new System.Windows.Forms.Label();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.cmbCreateVendor = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
             this.txtCreateItemName = new System.Windows.Forms.TextBox();
             this.lblItemName = new System.Windows.Forms.Label();
             this.tbpDeleteItem = new System.Windows.Forms.TabPage();
-            this.nudCreateAlertQty = new System.Windows.Forms.NumericUpDown();
-            this.mtxCreateCost = new System.Windows.Forms.MaskedTextBox();
-            this.cmbCreateRoom = new System.Windows.Forms.ComboBox();
-            this.lblLocation = new System.Windows.Forms.Label();
-            this.cmbAddCabinet = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbAddNLevel = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbAddRoom = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbAddCommodity = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtCurrentQty = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.nudAddQty = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnAddCancel = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDeleteCancel = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.cmbAddCategory = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.cmbDeleteCategory = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblDelete = new System.Windows.Forms.Label();
             this.cmbDeleteCommodity = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.cmbDeleteCabinet = new System.Windows.Forms.ComboBox();
+            this.btnDeleteCancel = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.chkDelete = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.cmbDeleteNLevel = new System.Windows.Forms.ComboBox();
+            this.cmbDeleteCabinet = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.cmbDeleteRoom = new System.Windows.Forms.ComboBox();
+            this.cmbDeleteNLevel = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.cmbDeleteRoom = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tbpAddItems.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).BeginInit();
             this.tbpCreateItem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCreateAlertQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCreateQty)).BeginInit();
             this.tbpDeleteItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCreateAlertQty)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -136,6 +138,189 @@ namespace SVSU_Capstone_Project.Views
             this.tbpAddItems.Text = "Add Quantity for Existing Item";
             this.tbpAddItems.UseVisualStyleBackColor = true;
             // 
+            // cmbAddCategory
+            // 
+            this.cmbAddCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddCategory.FormattingEnabled = true;
+            this.cmbAddCategory.Location = new System.Drawing.Point(129, 31);
+            this.cmbAddCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddCategory.Name = "cmbAddCategory";
+            this.cmbAddCategory.Size = new System.Drawing.Size(159, 26);
+            this.cmbAddCategory.TabIndex = 153;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(22, 34);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 19);
+            this.label9.TabIndex = 152;
+            this.label9.Text = "Category:";
+            // 
+            // btnAddCancel
+            // 
+            this.btnAddCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCancel.Location = new System.Drawing.Point(840, 354);
+            this.btnAddCancel.Name = "btnAddCancel";
+            this.btnAddCancel.Size = new System.Drawing.Size(77, 43);
+            this.btnAddCancel.TabIndex = 151;
+            this.btnAddCancel.Text = "Cancel";
+            this.btnAddCancel.UseVisualStyleBackColor = true;
+            this.btnAddCancel.Click += new System.EventHandler(this.btnAddCancel_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(746, 354);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(77, 43);
+            this.btnAdd.TabIndex = 150;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 118);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(356, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Update the quantity for this Commodity for the following room, cab, and NL";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(391, 259);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 13);
+            this.label6.TabIndex = 149;
+            this.label6.Text = "Additional Quantity:";
+            // 
+            // nudAddQty
+            // 
+            this.nudAddQty.Location = new System.Drawing.Point(495, 257);
+            this.nudAddQty.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudAddQty.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudAddQty.Name = "nudAddQty";
+            this.nudAddQty.Size = new System.Drawing.Size(120, 20);
+            this.nudAddQty.TabIndex = 148;
+            this.nudAddQty.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(403, 215);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 13);
+            this.label5.TabIndex = 147;
+            this.label5.Text = "Current Quantity:";
+            // 
+            // txtCurrentQty
+            // 
+            this.txtCurrentQty.Location = new System.Drawing.Point(495, 212);
+            this.txtCurrentQty.Name = "txtCurrentQty";
+            this.txtCurrentQty.ReadOnly = true;
+            this.txtCurrentQty.Size = new System.Drawing.Size(100, 20);
+            this.txtCurrentQty.TabIndex = 146;
+            // 
+            // cmbAddCommodity
+            // 
+            this.cmbAddCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddCommodity.FormattingEnabled = true;
+            this.cmbAddCommodity.Location = new System.Drawing.Point(129, 61);
+            this.cmbAddCommodity.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddCommodity.Name = "cmbAddCommodity";
+            this.cmbAddCommodity.Size = new System.Drawing.Size(159, 26);
+            this.cmbAddCommodity.TabIndex = 145;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(22, 64);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 19);
+            this.label4.TabIndex = 144;
+            this.label4.Text = "Commodity:";
+            // 
+            // cmbAddCabinet
+            // 
+            this.cmbAddCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddCabinet.FormattingEnabled = true;
+            this.cmbAddCabinet.Location = new System.Drawing.Point(117, 208);
+            this.cmbAddCabinet.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddCabinet.Name = "cmbAddCabinet";
+            this.cmbAddCabinet.Size = new System.Drawing.Size(159, 26);
+            this.cmbAddCabinet.TabIndex = 143;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(39, 211);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 19);
+            this.label1.TabIndex = 142;
+            this.label1.Text = "Cabinet:";
+            // 
+            // cmbAddNLevel
+            // 
+            this.cmbAddNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddNLevel.FormattingEnabled = true;
+            this.cmbAddNLevel.Location = new System.Drawing.Point(117, 261);
+            this.cmbAddNLevel.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddNLevel.Name = "cmbAddNLevel";
+            this.cmbAddNLevel.Size = new System.Drawing.Size(54, 26);
+            this.cmbAddNLevel.TabIndex = 141;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(41, 264);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 19);
+            this.label2.TabIndex = 140;
+            this.label2.Text = "N Level:";
+            // 
+            // cmbAddRoom
+            // 
+            this.cmbAddRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddRoom.FormattingEnabled = true;
+            this.cmbAddRoom.Location = new System.Drawing.Point(117, 161);
+            this.cmbAddRoom.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddRoom.Name = "cmbAddRoom";
+            this.cmbAddRoom.Size = new System.Drawing.Size(159, 26);
+            this.cmbAddRoom.TabIndex = 139;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(52, 164);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 19);
+            this.label3.TabIndex = 138;
+            this.label3.Text = "Room:";
+            // 
             // tbpCreateItem
             // 
             this.tbpCreateItem.Controls.Add(this.mtxCreateCost);
@@ -171,6 +356,37 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCreateItem.TabIndex = 1;
             this.tbpCreateItem.Text = "Create New Item";
             this.tbpCreateItem.UseVisualStyleBackColor = true;
+            // 
+            // mtxCreateCost
+            // 
+            this.mtxCreateCost.Location = new System.Drawing.Point(493, 98);
+            this.mtxCreateCost.Mask = "$9999999.00";
+            this.mtxCreateCost.Name = "mtxCreateCost";
+            this.mtxCreateCost.Size = new System.Drawing.Size(100, 20);
+            this.mtxCreateCost.TabIndex = 146;
+            this.mtxCreateCost.ValidatingType = typeof(int);
+            // 
+            // nudCreateAlertQty
+            // 
+            this.nudCreateAlertQty.Location = new System.Drawing.Point(493, 184);
+            this.nudCreateAlertQty.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudCreateAlertQty.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudCreateAlertQty.Name = "nudCreateAlertQty";
+            this.nudCreateAlertQty.Size = new System.Drawing.Size(120, 20);
+            this.nudCreateAlertQty.TabIndex = 145;
+            this.nudCreateAlertQty.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // nudCreateQty
             // 
@@ -360,6 +576,27 @@ namespace SVSU_Capstone_Project.Views
             this.lblNLevel.TabIndex = 119;
             this.lblNLevel.Text = "N Level:";
             // 
+            // cmbCreateRoom
+            // 
+            this.cmbCreateRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCreateRoom.FormattingEnabled = true;
+            this.cmbCreateRoom.Location = new System.Drawing.Point(134, 144);
+            this.cmbCreateRoom.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCreateRoom.Name = "cmbCreateRoom";
+            this.cmbCreateRoom.Size = new System.Drawing.Size(159, 26);
+            this.cmbCreateRoom.TabIndex = 118;
+            // 
+            // lblLocation
+            // 
+            this.lblLocation.AutoSize = true;
+            this.lblLocation.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLocation.Location = new System.Drawing.Point(69, 147);
+            this.lblLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLocation.Name = "lblLocation";
+            this.lblLocation.Size = new System.Drawing.Size(61, 19);
+            this.lblLocation.TabIndex = 117;
+            this.lblLocation.Text = "Room:";
+            // 
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
@@ -414,17 +651,19 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpDeleteItem
             // 
+            this.tbpDeleteItem.Controls.Add(this.cmbDeleteCabinet);
+            this.tbpDeleteItem.Controls.Add(this.label13);
+            this.tbpDeleteItem.Controls.Add(this.cmbDeleteNLevel);
+            this.tbpDeleteItem.Controls.Add(this.label14);
+            this.tbpDeleteItem.Controls.Add(this.cmbDeleteRoom);
+            this.tbpDeleteItem.Controls.Add(this.label15);
+            this.tbpDeleteItem.Controls.Add(this.label12);
+            this.tbpDeleteItem.Controls.Add(this.chkDelete);
             this.tbpDeleteItem.Controls.Add(this.cmbDeleteCategory);
             this.tbpDeleteItem.Controls.Add(this.label8);
-            this.tbpDeleteItem.Controls.Add(this.label10);
+            this.tbpDeleteItem.Controls.Add(this.lblDelete);
             this.tbpDeleteItem.Controls.Add(this.cmbDeleteCommodity);
             this.tbpDeleteItem.Controls.Add(this.label11);
-            this.tbpDeleteItem.Controls.Add(this.cmbDeleteCabinet);
-            this.tbpDeleteItem.Controls.Add(this.label12);
-            this.tbpDeleteItem.Controls.Add(this.cmbDeleteNLevel);
-            this.tbpDeleteItem.Controls.Add(this.label13);
-            this.tbpDeleteItem.Controls.Add(this.cmbDeleteRoom);
-            this.tbpDeleteItem.Controls.Add(this.label14);
             this.tbpDeleteItem.Controls.Add(this.btnDeleteCancel);
             this.tbpDeleteItem.Controls.Add(this.btnDelete);
             this.tbpDeleteItem.Location = new System.Drawing.Point(4, 22);
@@ -434,219 +673,57 @@ namespace SVSU_Capstone_Project.Views
             this.tbpDeleteItem.Text = "Delete Existing Item";
             this.tbpDeleteItem.UseVisualStyleBackColor = true;
             // 
-            // nudCreateAlertQty
+            // cmbDeleteCategory
             // 
-            this.nudCreateAlertQty.Location = new System.Drawing.Point(493, 184);
-            this.nudCreateAlertQty.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.nudCreateAlertQty.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudCreateAlertQty.Name = "nudCreateAlertQty";
-            this.nudCreateAlertQty.Size = new System.Drawing.Size(120, 20);
-            this.nudCreateAlertQty.TabIndex = 145;
-            this.nudCreateAlertQty.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.cmbDeleteCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDeleteCategory.FormattingEnabled = true;
+            this.cmbDeleteCategory.Location = new System.Drawing.Point(134, 32);
+            this.cmbDeleteCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbDeleteCategory.Name = "cmbDeleteCategory";
+            this.cmbDeleteCategory.Size = new System.Drawing.Size(159, 26);
+            this.cmbDeleteCategory.TabIndex = 177;
             // 
-            // mtxCreateCost
+            // label8
             // 
-            this.mtxCreateCost.Location = new System.Drawing.Point(493, 98);
-            this.mtxCreateCost.Mask = "$9999999.00";
-            this.mtxCreateCost.Name = "mtxCreateCost";
-            this.mtxCreateCost.Size = new System.Drawing.Size(100, 20);
-            this.mtxCreateCost.TabIndex = 146;
-            this.mtxCreateCost.ValidatingType = typeof(int);
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(27, 35);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(85, 19);
+            this.label8.TabIndex = 176;
+            this.label8.Text = "Category:";
             // 
-            // cmbCreateRoom
+            // lblDelete
             // 
-            this.cmbCreateRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCreateRoom.FormattingEnabled = true;
-            this.cmbCreateRoom.Location = new System.Drawing.Point(134, 144);
-            this.cmbCreateRoom.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbCreateRoom.Name = "cmbCreateRoom";
-            this.cmbCreateRoom.Size = new System.Drawing.Size(159, 26);
-            this.cmbCreateRoom.TabIndex = 118;
+            this.lblDelete.AutoSize = true;
+            this.lblDelete.Location = new System.Drawing.Point(344, 265);
+            this.lblDelete.Name = "lblDelete";
+            this.lblDelete.Size = new System.Drawing.Size(398, 13);
+            this.lblDelete.TabIndex = 167;
+            this.lblDelete.Text = "Deleting this commodity will delete it from the selected Room, Cabinet, Nurse Lev" +
+    "el.";
             // 
-            // lblLocation
+            // cmbDeleteCommodity
             // 
-            this.lblLocation.AutoSize = true;
-            this.lblLocation.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocation.Location = new System.Drawing.Point(69, 147);
-            this.lblLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblLocation.Name = "lblLocation";
-            this.lblLocation.Size = new System.Drawing.Size(61, 19);
-            this.lblLocation.TabIndex = 117;
-            this.lblLocation.Text = "Room:";
+            this.cmbDeleteCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDeleteCommodity.FormattingEnabled = true;
+            this.cmbDeleteCommodity.Location = new System.Drawing.Point(134, 62);
+            this.cmbDeleteCommodity.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbDeleteCommodity.Name = "cmbDeleteCommodity";
+            this.cmbDeleteCommodity.Size = new System.Drawing.Size(159, 26);
+            this.cmbDeleteCommodity.TabIndex = 175;
             // 
-            // cmbAddCabinet
+            // label11
             // 
-            this.cmbAddCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbAddCabinet.FormattingEnabled = true;
-            this.cmbAddCabinet.Location = new System.Drawing.Point(117, 208);
-            this.cmbAddCabinet.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbAddCabinet.Name = "cmbAddCabinet";
-            this.cmbAddCabinet.Size = new System.Drawing.Size(159, 26);
-            this.cmbAddCabinet.TabIndex = 143;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 211);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 19);
-            this.label1.TabIndex = 142;
-            this.label1.Text = "Cabinet:";
-            // 
-            // cmbAddNLevel
-            // 
-            this.cmbAddNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbAddNLevel.FormattingEnabled = true;
-            this.cmbAddNLevel.Location = new System.Drawing.Point(117, 261);
-            this.cmbAddNLevel.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbAddNLevel.Name = "cmbAddNLevel";
-            this.cmbAddNLevel.Size = new System.Drawing.Size(54, 26);
-            this.cmbAddNLevel.TabIndex = 141;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(41, 264);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 19);
-            this.label2.TabIndex = 140;
-            this.label2.Text = "N Level:";
-            // 
-            // cmbAddRoom
-            // 
-            this.cmbAddRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbAddRoom.FormattingEnabled = true;
-            this.cmbAddRoom.Location = new System.Drawing.Point(117, 161);
-            this.cmbAddRoom.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbAddRoom.Name = "cmbAddRoom";
-            this.cmbAddRoom.Size = new System.Drawing.Size(159, 26);
-            this.cmbAddRoom.TabIndex = 139;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(52, 164);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 19);
-            this.label3.TabIndex = 138;
-            this.label3.Text = "Room:";
-            // 
-            // cmbAddCommodity
-            // 
-            this.cmbAddCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbAddCommodity.FormattingEnabled = true;
-            this.cmbAddCommodity.Location = new System.Drawing.Point(129, 61);
-            this.cmbAddCommodity.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbAddCommodity.Name = "cmbAddCommodity";
-            this.cmbAddCommodity.Size = new System.Drawing.Size(159, 26);
-            this.cmbAddCommodity.TabIndex = 145;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 64);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 19);
-            this.label4.TabIndex = 144;
-            this.label4.Text = "Commodity:";
-            // 
-            // txtCurrentQty
-            // 
-            this.txtCurrentQty.Location = new System.Drawing.Point(495, 212);
-            this.txtCurrentQty.Name = "txtCurrentQty";
-            this.txtCurrentQty.ReadOnly = true;
-            this.txtCurrentQty.Size = new System.Drawing.Size(100, 20);
-            this.txtCurrentQty.TabIndex = 146;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(403, 215);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 13);
-            this.label5.TabIndex = 147;
-            this.label5.Text = "Current Quantity:";
-            // 
-            // nudAddQty
-            // 
-            this.nudAddQty.Location = new System.Drawing.Point(495, 257);
-            this.nudAddQty.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudAddQty.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudAddQty.Name = "nudAddQty";
-            this.nudAddQty.Size = new System.Drawing.Size(120, 20);
-            this.nudAddQty.TabIndex = 148;
-            this.nudAddQty.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(391, 259);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 13);
-            this.label6.TabIndex = 149;
-            this.label6.Text = "Additional Quantity:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 118);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(356, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Update the quantity for this Commodity for the following room, cab, and NL";
-            // 
-            // btnAddCancel
-            // 
-            this.btnAddCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCancel.Location = new System.Drawing.Point(840, 354);
-            this.btnAddCancel.Name = "btnAddCancel";
-            this.btnAddCancel.Size = new System.Drawing.Size(77, 43);
-            this.btnAddCancel.TabIndex = 151;
-            this.btnAddCancel.Text = "Cancel";
-            this.btnAddCancel.UseVisualStyleBackColor = true;
-            this.btnAddCancel.Click += new System.EventHandler(this.btnAddCancel_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(746, 354);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(77, 43);
-            this.btnAdd.TabIndex = 150;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(27, 65);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(103, 19);
+            this.label11.TabIndex = 174;
+            this.label11.Text = "Commodity:";
             // 
             // btnDeleteCancel
             // 
@@ -669,140 +746,88 @@ namespace SVSU_Capstone_Project.Views
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // cmbAddCategory
+            // chkDelete
             // 
-            this.cmbAddCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbAddCategory.FormattingEnabled = true;
-            this.cmbAddCategory.Location = new System.Drawing.Point(129, 31);
-            this.cmbAddCategory.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbAddCategory.Name = "cmbAddCategory";
-            this.cmbAddCategory.Size = new System.Drawing.Size(159, 26);
-            this.cmbAddCategory.TabIndex = 153;
+            this.chkDelete.AutoSize = true;
+            this.chkDelete.Location = new System.Drawing.Point(366, 232);
+            this.chkDelete.Name = "chkDelete";
+            this.chkDelete.Size = new System.Drawing.Size(116, 17);
+            this.chkDelete.TabIndex = 178;
+            this.chkDelete.Text = "Delete Everywhere";
+            this.chkDelete.UseVisualStyleBackColor = true;
+            this.chkDelete.CheckedChanged += new System.EventHandler(this.chkDelete_CheckedChanged);
             // 
-            // label9
+            // label12
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(22, 34);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 19);
-            this.label9.TabIndex = 152;
-            this.label9.Text = "Category:";
-            // 
-            // cmbDeleteCategory
-            // 
-            this.cmbDeleteCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDeleteCategory.FormattingEnabled = true;
-            this.cmbDeleteCategory.Location = new System.Drawing.Point(150, 21);
-            this.cmbDeleteCategory.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbDeleteCategory.Name = "cmbDeleteCategory";
-            this.cmbDeleteCategory.Size = new System.Drawing.Size(159, 26);
-            this.cmbDeleteCategory.TabIndex = 177;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(43, 24);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 19);
-            this.label8.TabIndex = 176;
-            this.label8.Text = "Category:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(44, 108);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(277, 13);
-            this.label10.TabIndex = 167;
-            this.label10.Text = "Delete the commodity for the following room, cab, and NL";
-            // 
-            // cmbDeleteCommodity
-            // 
-            this.cmbDeleteCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDeleteCommodity.FormattingEnabled = true;
-            this.cmbDeleteCommodity.Location = new System.Drawing.Point(150, 51);
-            this.cmbDeleteCommodity.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbDeleteCommodity.Name = "cmbDeleteCommodity";
-            this.cmbDeleteCommodity.Size = new System.Drawing.Size(159, 26);
-            this.cmbDeleteCommodity.TabIndex = 175;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(43, 54);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(103, 19);
-            this.label11.TabIndex = 174;
-            this.label11.Text = "Commodity:";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(435, 45);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(345, 13);
+            this.label12.TabIndex = 179;
+            this.label12.Text = "Delete selected commodity from chosen location OR remove commodity";
             // 
             // cmbDeleteCabinet
             // 
             this.cmbDeleteCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeleteCabinet.FormattingEnabled = true;
-            this.cmbDeleteCabinet.Location = new System.Drawing.Point(138, 198);
+            this.cmbDeleteCabinet.Location = new System.Drawing.Point(438, 129);
             this.cmbDeleteCabinet.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteCabinet.Name = "cmbDeleteCabinet";
             this.cmbDeleteCabinet.Size = new System.Drawing.Size(159, 26);
-            this.cmbDeleteCabinet.TabIndex = 173;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(60, 201);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(74, 19);
-            this.label12.TabIndex = 172;
-            this.label12.Text = "Cabinet:";
-            // 
-            // cmbDeleteNLevel
-            // 
-            this.cmbDeleteNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDeleteNLevel.FormattingEnabled = true;
-            this.cmbDeleteNLevel.Location = new System.Drawing.Point(138, 251);
-            this.cmbDeleteNLevel.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbDeleteNLevel.Name = "cmbDeleteNLevel";
-            this.cmbDeleteNLevel.Size = new System.Drawing.Size(54, 26);
-            this.cmbDeleteNLevel.TabIndex = 171;
+            this.cmbDeleteCabinet.TabIndex = 185;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(62, 254);
+            this.label13.Location = new System.Drawing.Point(360, 132);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 19);
-            this.label13.TabIndex = 170;
-            this.label13.Text = "N Level:";
+            this.label13.Size = new System.Drawing.Size(74, 19);
+            this.label13.TabIndex = 184;
+            this.label13.Text = "Cabinet:";
             // 
-            // cmbDeleteRoom
+            // cmbDeleteNLevel
             // 
-            this.cmbDeleteRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDeleteRoom.FormattingEnabled = true;
-            this.cmbDeleteRoom.Location = new System.Drawing.Point(138, 151);
-            this.cmbDeleteRoom.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbDeleteRoom.Name = "cmbDeleteRoom";
-            this.cmbDeleteRoom.Size = new System.Drawing.Size(159, 26);
-            this.cmbDeleteRoom.TabIndex = 169;
+            this.cmbDeleteNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDeleteNLevel.FormattingEnabled = true;
+            this.cmbDeleteNLevel.Location = new System.Drawing.Point(438, 182);
+            this.cmbDeleteNLevel.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbDeleteNLevel.Name = "cmbDeleteNLevel";
+            this.cmbDeleteNLevel.Size = new System.Drawing.Size(54, 26);
+            this.cmbDeleteNLevel.TabIndex = 183;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(73, 154);
+            this.label14.Location = new System.Drawing.Point(362, 185);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(61, 19);
-            this.label14.TabIndex = 168;
-            this.label14.Text = "Room:";
+            this.label14.Size = new System.Drawing.Size(72, 19);
+            this.label14.TabIndex = 182;
+            this.label14.Text = "N Level:";
+            // 
+            // cmbDeleteRoom
+            // 
+            this.cmbDeleteRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDeleteRoom.FormattingEnabled = true;
+            this.cmbDeleteRoom.Location = new System.Drawing.Point(438, 82);
+            this.cmbDeleteRoom.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbDeleteRoom.Name = "cmbDeleteRoom";
+            this.cmbDeleteRoom.Size = new System.Drawing.Size(159, 26);
+            this.cmbDeleteRoom.TabIndex = 181;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(373, 85);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(61, 19);
+            this.label15.TabIndex = 180;
+            this.label15.Text = "Room:";
             // 
             // frmManageInventory
             // 
@@ -815,13 +840,13 @@ namespace SVSU_Capstone_Project.Views
             this.tabControl1.ResumeLayout(false);
             this.tbpAddItems.ResumeLayout(false);
             this.tbpAddItems.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).EndInit();
             this.tbpCreateItem.ResumeLayout(false);
             this.tbpCreateItem.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCreateAlertQty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCreateQty)).EndInit();
             this.tbpDeleteItem.ResumeLayout(false);
             this.tbpDeleteItem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCreateAlertQty)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -879,14 +904,16 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.Label label9;
         internal System.Windows.Forms.ComboBox cmbDeleteCategory;
         internal System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblDelete;
         internal System.Windows.Forms.ComboBox cmbDeleteCommodity;
         internal System.Windows.Forms.Label label11;
         internal System.Windows.Forms.ComboBox cmbDeleteCabinet;
-        internal System.Windows.Forms.Label label12;
-        internal System.Windows.Forms.ComboBox cmbDeleteNLevel;
         internal System.Windows.Forms.Label label13;
-        internal System.Windows.Forms.ComboBox cmbDeleteRoom;
+        internal System.Windows.Forms.ComboBox cmbDeleteNLevel;
         internal System.Windows.Forms.Label label14;
+        internal System.Windows.Forms.ComboBox cmbDeleteRoom;
+        internal System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox chkDelete;
     }
 }
