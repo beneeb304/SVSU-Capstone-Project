@@ -7,18 +7,18 @@ namespace SVSU_Capstone_Project.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class addGuid : IMigrationMetadata
+    public sealed partial class renameColumns : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addGuid));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(renameColumns));
         
         string IMigrationMetadata.Id
         {
-            get { return "202202011428330_addGuid"; }
+            get { return "202202041838095_renameColumns"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

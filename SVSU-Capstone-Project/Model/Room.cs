@@ -1,16 +1,17 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
-using System;
-
-public class Room
+namespace SVSU_Capstone_Project.Model
 {
-    [Key, Column("tuid")]
-    public Guid uidTuid { get; set; }
-    [Column("name")]
-    public string strName { get; set; }
-    [Column("description")]
-    public string strDescription { get; set; }
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Collections.Generic;
+    using System;
 
-    public virtual List<Cabinet> lstCabinets { get; set; }
+    public class Room: ContextEntity
+    {
+        [Column("name")]
+        public string strName { get; set; }
+        [Column("description")]
+        public string strDescription { get; set; }
+
+        public virtual List<Cabinet> lstCabinets { get; set; }
+    }
 }

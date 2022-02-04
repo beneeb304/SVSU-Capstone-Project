@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-public class Category
+﻿namespace SVSU_Capstone_Project.Model
 {
-    [Key, Column("tuid")]
-    public Guid uidTuid { get; set; }
-    [Column("name")]
-    public string strName { get; set; }
-    [Column("description")]
-    public string strDescription { get; set; }
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    public List<Commodity> lstCommodities { get; set; }
+    public class Category : ContextEntity
+    {
+        public string strName { get; set; }
+        [Column("description")]
+        public string strDescription { get; set; }
+
+        public virtual List<Commodity> lstCommodities { get; set; }
+    }
 }
