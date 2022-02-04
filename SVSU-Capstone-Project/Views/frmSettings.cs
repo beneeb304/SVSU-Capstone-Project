@@ -70,5 +70,80 @@ namespace SVSU_Capstone_Project.Views
             txtNLevelName.Text = "";
             lstNLevel.SelectedIndex = -1;
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUserSVSUID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteCabinet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddCabinet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnModifyCabinet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbpCabinets_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteRoom_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnModifyVendor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddVendor_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

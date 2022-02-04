@@ -48,20 +48,20 @@ namespace SVSU_Capstone_Project.Views
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(12, 222);
+            this.Label3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Location = new System.Drawing.Point(8, 222);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(109, 24);
+            this.Label3.Size = new System.Drawing.Size(116, 24);
             this.Label3.TabIndex = 8;
             this.Label3.Text = "Password:";
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(12, 132);
+            this.Label2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Location = new System.Drawing.Point(8, 132);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(185, 24);
+            this.Label2.Size = new System.Drawing.Size(191, 24);
             this.Label2.TabIndex = 7;
             this.Label2.Text = "SVSU ID (6 digits):";
             // 
