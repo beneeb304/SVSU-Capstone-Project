@@ -14,7 +14,15 @@ namespace SVSU_Capstone_Project
     public partial class frmMain : Form
     {
         //Global variables
-        public static string strUsername;
+        public struct LoggedInUser
+        {
+            public static int intSVSU_ID;
+            public static string strFName;
+            public static string strLName;
+            public static string strEmail;
+            public static string strPhone;
+            public static bool blnAdmin;
+        }
 
         public frmMain()
         {
@@ -29,6 +37,15 @@ namespace SVSU_Capstone_Project
             //Show as a dialog so code will not continue until the form is closed
             FrmSplash.ShowDialog();
 
+            //Start login process
+            InitiateLogin();
+
+            //Set this form as an MDI parent
+            IsMdiContainer = true;
+        }
+
+        private void InitiateLogin()
+        {
             //Instantiate login screen
             Form FrmLogin = new frmLogin();
 
@@ -36,14 +53,14 @@ namespace SVSU_Capstone_Project
             FrmLogin.ShowDialog();
 
             //Check if the user somehow closed the login form
-            if (strUsername == null)
+            if (LoggedInUser.strEmail == null)
             {
                 //Close the application
                 Application.Exit();
             }
 
             //Set username in label
-            lblUser.Text = "User: " + strUsername;
+            lblUser.Text = "User: " + LoggedInUser.strFName;
 
             //Set user login time and current time
             lblLoggedInTime.Text = "Logged in since " + DateTime.Now.ToString("hh:mm:ss tt MM/dd/yyyy");
@@ -51,9 +68,6 @@ namespace SVSU_Capstone_Project
 
             //Start time timer
             tmrTime.Start();
-
-            //Set this form as an MDI parent
-            IsMdiContainer = true;
         }
 
         private void PageController(object sender, EventArgs e)
@@ -109,6 +123,12 @@ namespace SVSU_Capstone_Project
         {
             //Set time and date
             lblDateTime.Text = DateTime.Now.ToString("hh:mm:ss tt MM/dd/yyyy");
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            //Restart the program
+            Application.Restart();
         }
     }
 }
