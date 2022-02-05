@@ -29,7 +29,7 @@ namespace SVSU_Capstone_Project.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tbcInventory = new System.Windows.Forms.TabControl();
             this.tbpAddItems = new System.Windows.Forms.TabPage();
             this.cmbAddCategory = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -74,7 +74,6 @@ namespace SVSU_Capstone_Project.Views
             this.label14 = new System.Windows.Forms.Label();
             this.cmbDeleteRoom = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.chkDelete = new System.Windows.Forms.CheckBox();
             this.cmbDeleteCategory = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -83,7 +82,10 @@ namespace SVSU_Capstone_Project.Views
             this.label11 = new System.Windows.Forms.Label();
             this.btnDeleteCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tbcInventory.SuspendLayout();
             this.tbpAddItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).BeginInit();
             this.tbpCreateItem.SuspendLayout();
@@ -91,20 +93,21 @@ namespace SVSU_Capstone_Project.Views
             this.tbpDeleteItem.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tbcInventory
             // 
-            this.tabControl1.Controls.Add(this.tbpAddItems);
-            this.tabControl1.Controls.Add(this.tbpCreateItem);
-            this.tabControl1.Controls.Add(this.tbpDeleteItem);
-            this.tabControl1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(931, 429);
-            this.tabControl1.TabIndex = 0;
+            this.tbcInventory.Controls.Add(this.tbpAddItems);
+            this.tbcInventory.Controls.Add(this.tbpCreateItem);
+            this.tbcInventory.Controls.Add(this.tbpDeleteItem);
+            this.tbcInventory.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbcInventory.Location = new System.Drawing.Point(12, 12);
+            this.tbcInventory.Name = "tbcInventory";
+            this.tbcInventory.SelectedIndex = 0;
+            this.tbcInventory.Size = new System.Drawing.Size(931, 429);
+            this.tbcInventory.TabIndex = 0;
             // 
             // tbpAddItems
             // 
+            this.tbpAddItems.Controls.Add(this.label10);
             this.tbpAddItems.Controls.Add(this.cmbAddCategory);
             this.tbpAddItems.Controls.Add(this.label9);
             this.tbpAddItems.Controls.Add(this.btnAddCancel);
@@ -127,14 +130,14 @@ namespace SVSU_Capstone_Project.Views
             this.tbpAddItems.Padding = new System.Windows.Forms.Padding(3);
             this.tbpAddItems.Size = new System.Drawing.Size(923, 400);
             this.tbpAddItems.TabIndex = 0;
-            this.tbpAddItems.Text = "Add Quantity for Existing Item";
+            this.tbpAddItems.Text = "Add Stock for Existing Item";
             this.tbpAddItems.UseVisualStyleBackColor = true;
             // 
             // cmbAddCategory
             // 
             this.cmbAddCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAddCategory.FormattingEnabled = true;
-            this.cmbAddCategory.Location = new System.Drawing.Point(129, 31);
+            this.cmbAddCategory.Location = new System.Drawing.Point(147, 59);
             this.cmbAddCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAddCategory.Name = "cmbAddCategory";
             this.cmbAddCategory.Size = new System.Drawing.Size(159, 26);
@@ -144,7 +147,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(22, 34);
+            this.label9.Location = new System.Drawing.Point(40, 62);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(85, 19);
@@ -154,7 +157,7 @@ namespace SVSU_Capstone_Project.Views
             // btnAddCancel
             // 
             this.btnAddCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCancel.Location = new System.Drawing.Point(840, 354);
+            this.btnAddCancel.Location = new System.Drawing.Point(729, 338);
             this.btnAddCancel.Name = "btnAddCancel";
             this.btnAddCancel.Size = new System.Drawing.Size(77, 43);
             this.btnAddCancel.TabIndex = 151;
@@ -165,7 +168,7 @@ namespace SVSU_Capstone_Project.Views
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(746, 354);
+            this.btnAdd.Location = new System.Drawing.Point(823, 338);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(77, 43);
             this.btnAdd.TabIndex = 150;
@@ -175,24 +178,28 @@ namespace SVSU_Capstone_Project.Views
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 118);
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(18, 153);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(438, 16);
+            this.label7.Size = new System.Drawing.Size(585, 18);
             this.label7.TabIndex = 1;
-            this.label7.Text = "Update the quantity for this Commodity for the following room, cab, and NL";
+            this.label7.Text = "Update the quantity for this Commodity for the following Room, Cabinet, and N Lev" +
+    "el";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(391, 259);
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(363, 242);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 16);
+            this.label6.Size = new System.Drawing.Size(160, 19);
             this.label6.TabIndex = 149;
             this.label6.Text = "Additional Quantity:";
             // 
             // nudAddQty
             // 
-            this.nudAddQty.Location = new System.Drawing.Point(495, 257);
+            this.nudAddQty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudAddQty.Location = new System.Drawing.Point(555, 240);
             this.nudAddQty.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -204,7 +211,7 @@ namespace SVSU_Capstone_Project.Views
             0,
             0});
             this.nudAddQty.Name = "nudAddQty";
-            this.nudAddQty.Size = new System.Drawing.Size(120, 22);
+            this.nudAddQty.Size = new System.Drawing.Size(120, 26);
             this.nudAddQty.TabIndex = 148;
             this.nudAddQty.Value = new decimal(new int[] {
             1,
@@ -215,25 +222,27 @@ namespace SVSU_Capstone_Project.Views
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(403, 215);
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(363, 194);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 16);
+            this.label5.Size = new System.Drawing.Size(141, 19);
             this.label5.TabIndex = 147;
             this.label5.Text = "Current Quantity:";
             // 
             // txtCurrentQty
             // 
-            this.txtCurrentQty.Location = new System.Drawing.Point(495, 212);
+            this.txtCurrentQty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentQty.Location = new System.Drawing.Point(555, 191);
             this.txtCurrentQty.Name = "txtCurrentQty";
             this.txtCurrentQty.ReadOnly = true;
-            this.txtCurrentQty.Size = new System.Drawing.Size(100, 22);
+            this.txtCurrentQty.Size = new System.Drawing.Size(120, 26);
             this.txtCurrentQty.TabIndex = 146;
             // 
             // cmbAddCommodity
             // 
             this.cmbAddCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAddCommodity.FormattingEnabled = true;
-            this.cmbAddCommodity.Location = new System.Drawing.Point(129, 61);
+            this.cmbAddCommodity.Location = new System.Drawing.Point(147, 101);
             this.cmbAddCommodity.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAddCommodity.Name = "cmbAddCommodity";
             this.cmbAddCommodity.Size = new System.Drawing.Size(159, 26);
@@ -243,7 +252,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 64);
+            this.label4.Location = new System.Drawing.Point(40, 104);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 19);
@@ -254,7 +263,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.cmbAddCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAddCabinet.FormattingEnabled = true;
-            this.cmbAddCabinet.Location = new System.Drawing.Point(117, 208);
+            this.cmbAddCabinet.Location = new System.Drawing.Point(147, 239);
             this.cmbAddCabinet.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAddCabinet.Name = "cmbAddCabinet";
             this.cmbAddCabinet.Size = new System.Drawing.Size(159, 26);
@@ -264,7 +273,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 211);
+            this.label1.Location = new System.Drawing.Point(40, 242);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 19);
@@ -275,7 +284,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.cmbAddNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAddNLevel.FormattingEnabled = true;
-            this.cmbAddNLevel.Location = new System.Drawing.Point(117, 261);
+            this.cmbAddNLevel.Location = new System.Drawing.Point(147, 287);
             this.cmbAddNLevel.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAddNLevel.Name = "cmbAddNLevel";
             this.cmbAddNLevel.Size = new System.Drawing.Size(54, 26);
@@ -285,7 +294,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(41, 264);
+            this.label2.Location = new System.Drawing.Point(40, 290);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 19);
@@ -296,7 +305,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.cmbAddRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAddRoom.FormattingEnabled = true;
-            this.cmbAddRoom.Location = new System.Drawing.Point(117, 161);
+            this.cmbAddRoom.Location = new System.Drawing.Point(147, 191);
             this.cmbAddRoom.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAddRoom.Name = "cmbAddRoom";
             this.cmbAddRoom.Size = new System.Drawing.Size(159, 26);
@@ -306,7 +315,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(52, 164);
+            this.label3.Location = new System.Drawing.Point(40, 194);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 19);
@@ -315,6 +324,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpCreateItem
             // 
+            this.tbpCreateItem.Controls.Add(this.label16);
             this.tbpCreateItem.Controls.Add(this.mtxCreateCost);
             this.tbpCreateItem.Controls.Add(this.nudCreateAlertQty);
             this.tbpCreateItem.Controls.Add(this.txtCreateFeatures);
@@ -333,17 +343,17 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCreateItem.Controls.Add(this.lblCategory);
             this.tbpCreateItem.Controls.Add(this.txtCreateItemName);
             this.tbpCreateItem.Controls.Add(this.lblItemName);
-            this.tbpCreateItem.Location = new System.Drawing.Point(4, 22);
+            this.tbpCreateItem.Location = new System.Drawing.Point(4, 25);
             this.tbpCreateItem.Name = "tbpCreateItem";
             this.tbpCreateItem.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpCreateItem.Size = new System.Drawing.Size(923, 403);
+            this.tbpCreateItem.Size = new System.Drawing.Size(923, 400);
             this.tbpCreateItem.TabIndex = 1;
             this.tbpCreateItem.Text = "Create New Item";
             this.tbpCreateItem.UseVisualStyleBackColor = true;
             // 
             // mtxCreateCost
             // 
-            this.mtxCreateCost.Location = new System.Drawing.Point(493, 98);
+            this.mtxCreateCost.Location = new System.Drawing.Point(610, 105);
             this.mtxCreateCost.Mask = "$9999999.00";
             this.mtxCreateCost.Name = "mtxCreateCost";
             this.mtxCreateCost.Size = new System.Drawing.Size(100, 22);
@@ -352,20 +362,21 @@ namespace SVSU_Capstone_Project.Views
             // 
             // nudCreateAlertQty
             // 
-            this.nudCreateAlertQty.Location = new System.Drawing.Point(493, 184);
+            this.nudCreateAlertQty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudCreateAlertQty.Location = new System.Drawing.Point(610, 186);
             this.nudCreateAlertQty.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nudCreateAlertQty.Name = "nudCreateAlertQty";
-            this.nudCreateAlertQty.Size = new System.Drawing.Size(120, 22);
+            this.nudCreateAlertQty.Size = new System.Drawing.Size(120, 26);
             this.nudCreateAlertQty.TabIndex = 145;
             // 
             // txtCreateFeatures
             // 
             this.txtCreateFeatures.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreateFeatures.Location = new System.Drawing.Point(492, 225);
+            this.txtCreateFeatures.Location = new System.Drawing.Point(610, 228);
             this.txtCreateFeatures.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateFeatures.Name = "txtCreateFeatures";
             this.txtCreateFeatures.Size = new System.Drawing.Size(159, 26);
@@ -374,7 +385,7 @@ namespace SVSU_Capstone_Project.Views
             // btnCreateCancel
             // 
             this.btnCreateCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateCancel.Location = new System.Drawing.Point(778, 354);
+            this.btnCreateCancel.Location = new System.Drawing.Point(729, 338);
             this.btnCreateCancel.Name = "btnCreateCancel";
             this.btnCreateCancel.Size = new System.Drawing.Size(77, 43);
             this.btnCreateCancel.TabIndex = 141;
@@ -385,7 +396,7 @@ namespace SVSU_Capstone_Project.Views
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(684, 354);
+            this.btnCreate.Location = new System.Drawing.Point(823, 338);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(77, 43);
             this.btnCreate.TabIndex = 140;
@@ -395,9 +406,9 @@ namespace SVSU_Capstone_Project.Views
             // txtCreateDescription
             // 
             this.txtCreateDescription.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreateDescription.Location = new System.Drawing.Point(134, 287);
+            this.txtCreateDescription.Location = new System.Drawing.Point(148, 147);
             this.txtCreateDescription.Name = "txtCreateDescription";
-            this.txtCreateDescription.Size = new System.Drawing.Size(313, 110);
+            this.txtCreateDescription.Size = new System.Drawing.Size(254, 185);
             this.txtCreateDescription.TabIndex = 133;
             this.txtCreateDescription.Text = "";
             // 
@@ -405,7 +416,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(27, 290);
+            this.lblDescription.Location = new System.Drawing.Point(40, 150);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(103, 19);
@@ -416,7 +427,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblFeatures.AutoSize = true;
             this.lblFeatures.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFeatures.Location = new System.Drawing.Point(406, 228);
+            this.lblFeatures.Location = new System.Drawing.Point(469, 231);
             this.lblFeatures.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFeatures.Name = "lblFeatures";
             this.lblFeatures.Size = new System.Drawing.Size(82, 19);
@@ -427,7 +438,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblLowStock.AutoSize = true;
             this.lblLowStock.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLowStock.Location = new System.Drawing.Point(370, 185);
+            this.lblLowStock.Location = new System.Drawing.Point(469, 188);
             this.lblLowStock.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLowStock.Name = "lblLowStock";
             this.lblLowStock.Size = new System.Drawing.Size(118, 19);
@@ -437,7 +448,7 @@ namespace SVSU_Capstone_Project.Views
             // txtCreateUrl
             // 
             this.txtCreateUrl.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreateUrl.Location = new System.Drawing.Point(492, 141);
+            this.txtCreateUrl.Location = new System.Drawing.Point(610, 144);
             this.txtCreateUrl.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateUrl.Name = "txtCreateUrl";
             this.txtCreateUrl.Size = new System.Drawing.Size(159, 26);
@@ -447,7 +458,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblLink.AutoSize = true;
             this.lblLink.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLink.Location = new System.Drawing.Point(403, 144);
+            this.lblLink.Location = new System.Drawing.Point(469, 147);
             this.lblLink.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLink.Name = "lblLink";
             this.lblLink.Size = new System.Drawing.Size(85, 19);
@@ -458,7 +469,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblCost.AutoSize = true;
             this.lblCost.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCost.Location = new System.Drawing.Point(437, 99);
+            this.lblCost.Location = new System.Drawing.Point(469, 106);
             this.lblCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(51, 19);
@@ -469,7 +480,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.cmbCreateCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreateCategory.FormattingEnabled = true;
-            this.cmbCreateCategory.Location = new System.Drawing.Point(134, 55);
+            this.cmbCreateCategory.Location = new System.Drawing.Point(148, 103);
             this.cmbCreateCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCreateCategory.Name = "cmbCreateCategory";
             this.cmbCreateCategory.Size = new System.Drawing.Size(159, 26);
@@ -479,7 +490,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblSupplier.AutoSize = true;
             this.lblSupplier.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplier.Location = new System.Drawing.Point(409, 55);
+            this.lblSupplier.Location = new System.Drawing.Point(469, 62);
             this.lblSupplier.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSupplier.Name = "lblSupplier";
             this.lblSupplier.Size = new System.Drawing.Size(70, 19);
@@ -490,7 +501,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.cmbCreateVendor.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreateVendor.FormattingEnabled = true;
-            this.cmbCreateVendor.Location = new System.Drawing.Point(483, 52);
+            this.cmbCreateVendor.Location = new System.Drawing.Point(610, 59);
             this.cmbCreateVendor.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCreateVendor.Name = "cmbCreateVendor";
             this.cmbCreateVendor.Size = new System.Drawing.Size(159, 26);
@@ -500,7 +511,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(45, 58);
+            this.lblCategory.Location = new System.Drawing.Point(40, 106);
             this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(85, 19);
@@ -510,17 +521,18 @@ namespace SVSU_Capstone_Project.Views
             // txtCreateItemName
             // 
             this.txtCreateItemName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreateItemName.Location = new System.Drawing.Point(134, 10);
+            this.txtCreateItemName.Location = new System.Drawing.Point(148, 59);
             this.txtCreateItemName.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateItemName.Name = "txtCreateItemName";
             this.txtCreateItemName.Size = new System.Drawing.Size(254, 26);
             this.txtCreateItemName.TabIndex = 113;
+            this.txtCreateItemName.TextChanged += new System.EventHandler(this.txtCreateItemName_TextChanged);
             // 
             // lblItemName
             // 
             this.lblItemName.AutoSize = true;
             this.lblItemName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemName.Location = new System.Drawing.Point(35, 13);
+            this.lblItemName.Location = new System.Drawing.Point(40, 62);
             this.lblItemName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblItemName.Name = "lblItemName";
             this.lblItemName.Size = new System.Drawing.Size(95, 19);
@@ -529,13 +541,13 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpDeleteItem
             // 
+            this.tbpDeleteItem.Controls.Add(this.label17);
             this.tbpDeleteItem.Controls.Add(this.cmbDeleteCabinet);
             this.tbpDeleteItem.Controls.Add(this.label13);
             this.tbpDeleteItem.Controls.Add(this.cmbDeleteNLevel);
             this.tbpDeleteItem.Controls.Add(this.label14);
             this.tbpDeleteItem.Controls.Add(this.cmbDeleteRoom);
             this.tbpDeleteItem.Controls.Add(this.label15);
-            this.tbpDeleteItem.Controls.Add(this.label12);
             this.tbpDeleteItem.Controls.Add(this.chkDelete);
             this.tbpDeleteItem.Controls.Add(this.cmbDeleteCategory);
             this.tbpDeleteItem.Controls.Add(this.label8);
@@ -544,9 +556,9 @@ namespace SVSU_Capstone_Project.Views
             this.tbpDeleteItem.Controls.Add(this.label11);
             this.tbpDeleteItem.Controls.Add(this.btnDeleteCancel);
             this.tbpDeleteItem.Controls.Add(this.btnDelete);
-            this.tbpDeleteItem.Location = new System.Drawing.Point(4, 22);
+            this.tbpDeleteItem.Location = new System.Drawing.Point(4, 25);
             this.tbpDeleteItem.Name = "tbpDeleteItem";
-            this.tbpDeleteItem.Size = new System.Drawing.Size(923, 403);
+            this.tbpDeleteItem.Size = new System.Drawing.Size(923, 400);
             this.tbpDeleteItem.TabIndex = 2;
             this.tbpDeleteItem.Text = "Delete Existing Item";
             this.tbpDeleteItem.UseVisualStyleBackColor = true;
@@ -555,7 +567,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.cmbDeleteCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeleteCabinet.FormattingEnabled = true;
-            this.cmbDeleteCabinet.Location = new System.Drawing.Point(438, 129);
+            this.cmbDeleteCabinet.Location = new System.Drawing.Point(147, 239);
             this.cmbDeleteCabinet.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteCabinet.Name = "cmbDeleteCabinet";
             this.cmbDeleteCabinet.Size = new System.Drawing.Size(159, 26);
@@ -565,7 +577,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(360, 132);
+            this.label13.Location = new System.Drawing.Point(40, 242);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(74, 19);
@@ -576,7 +588,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.cmbDeleteNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeleteNLevel.FormattingEnabled = true;
-            this.cmbDeleteNLevel.Location = new System.Drawing.Point(438, 182);
+            this.cmbDeleteNLevel.Location = new System.Drawing.Point(147, 287);
             this.cmbDeleteNLevel.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteNLevel.Name = "cmbDeleteNLevel";
             this.cmbDeleteNLevel.Size = new System.Drawing.Size(54, 26);
@@ -586,7 +598,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(362, 185);
+            this.label14.Location = new System.Drawing.Point(40, 290);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(72, 19);
@@ -597,7 +609,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.cmbDeleteRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeleteRoom.FormattingEnabled = true;
-            this.cmbDeleteRoom.Location = new System.Drawing.Point(438, 82);
+            this.cmbDeleteRoom.Location = new System.Drawing.Point(147, 191);
             this.cmbDeleteRoom.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteRoom.Name = "cmbDeleteRoom";
             this.cmbDeleteRoom.Size = new System.Drawing.Size(159, 26);
@@ -607,28 +619,20 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(373, 85);
+            this.label15.Location = new System.Drawing.Point(40, 194);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(61, 19);
             this.label15.TabIndex = 180;
             this.label15.Text = "Room:";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(435, 45);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(426, 16);
-            this.label12.TabIndex = 179;
-            this.label12.Text = "Delete selected commodity from chosen location OR remove commodity";
-            // 
             // chkDelete
             // 
             this.chkDelete.AutoSize = true;
-            this.chkDelete.Location = new System.Drawing.Point(366, 232);
+            this.chkDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDelete.Location = new System.Drawing.Point(44, 349);
             this.chkDelete.Name = "chkDelete";
-            this.chkDelete.Size = new System.Drawing.Size(134, 20);
+            this.chkDelete.Size = new System.Drawing.Size(171, 23);
             this.chkDelete.TabIndex = 178;
             this.chkDelete.Text = "Delete Everywhere";
             this.chkDelete.UseVisualStyleBackColor = true;
@@ -638,7 +642,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.cmbDeleteCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeleteCategory.FormattingEnabled = true;
-            this.cmbDeleteCategory.Location = new System.Drawing.Point(134, 32);
+            this.cmbDeleteCategory.Location = new System.Drawing.Point(147, 59);
             this.cmbDeleteCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteCategory.Name = "cmbDeleteCategory";
             this.cmbDeleteCategory.Size = new System.Drawing.Size(159, 26);
@@ -648,7 +652,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(27, 35);
+            this.label8.Location = new System.Drawing.Point(40, 62);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(85, 19);
@@ -658,18 +662,19 @@ namespace SVSU_Capstone_Project.Views
             // lblDelete
             // 
             this.lblDelete.AutoSize = true;
-            this.lblDelete.Location = new System.Drawing.Point(344, 265);
+            this.lblDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDelete.Location = new System.Drawing.Point(18, 153);
             this.lblDelete.Name = "lblDelete";
-            this.lblDelete.Size = new System.Drawing.Size(493, 16);
+            this.lblDelete.Size = new System.Drawing.Size(580, 18);
             this.lblDelete.TabIndex = 167;
-            this.lblDelete.Text = "Deleting this commodity will delete it from the selected Room, Cabinet, Nurse Lev" +
-    "el.";
+            this.lblDelete.Text = "Deleting this commodity will delete it from the selected Room, Cabinet, and N Lev" +
+    "el";
             // 
             // cmbDeleteCommodity
             // 
             this.cmbDeleteCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeleteCommodity.FormattingEnabled = true;
-            this.cmbDeleteCommodity.Location = new System.Drawing.Point(134, 62);
+            this.cmbDeleteCommodity.Location = new System.Drawing.Point(147, 101);
             this.cmbDeleteCommodity.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteCommodity.Name = "cmbDeleteCommodity";
             this.cmbDeleteCommodity.Size = new System.Drawing.Size(159, 26);
@@ -679,7 +684,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(27, 65);
+            this.label11.Location = new System.Drawing.Point(40, 104);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(103, 19);
@@ -689,7 +694,7 @@ namespace SVSU_Capstone_Project.Views
             // btnDeleteCancel
             // 
             this.btnDeleteCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteCancel.Location = new System.Drawing.Point(828, 340);
+            this.btnDeleteCancel.Location = new System.Drawing.Point(729, 338);
             this.btnDeleteCancel.Name = "btnDeleteCancel";
             this.btnDeleteCancel.Size = new System.Drawing.Size(77, 43);
             this.btnDeleteCancel.TabIndex = 166;
@@ -700,22 +705,52 @@ namespace SVSU_Capstone_Project.Views
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(734, 340);
+            this.btnDelete.Location = new System.Drawing.Point(823, 338);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(77, 43);
             this.btnDelete.TabIndex = 165;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(17, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(260, 22);
+            this.label10.TabIndex = 154;
+            this.label10.Text = "Add Stock for Existing Item";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(17, 18);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(159, 22);
+            this.label16.TabIndex = 155;
+            this.label16.Text = "Create New Item";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(17, 18);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(192, 22);
+            this.label17.TabIndex = 186;
+            this.label17.Text = "Delete Existing Item";
+            // 
             // frmManageInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(955, 453);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tbcInventory);
             this.Name = "frmManageInventory";
             this.Text = "Manage Inventory";
-            this.tabControl1.ResumeLayout(false);
+            this.tbcInventory.ResumeLayout(false);
             this.tbpAddItems.ResumeLayout(false);
             this.tbpAddItems.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).EndInit();
@@ -730,7 +765,7 @@ namespace SVSU_Capstone_Project.Views
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tbcInventory;
         private System.Windows.Forms.TabPage tbpAddItems;
         private System.Windows.Forms.TabPage tbpCreateItem;
         private System.Windows.Forms.TabPage tbpDeleteItem;
@@ -782,7 +817,9 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.Label label14;
         internal System.Windows.Forms.ComboBox cmbDeleteRoom;
         internal System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox chkDelete;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
     }
 }

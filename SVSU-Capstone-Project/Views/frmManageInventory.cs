@@ -73,5 +73,10 @@ namespace SVSU_Capstone_Project.Views
                 lblDelete.Text = "Deleting this commodity will delete it from the selected Room, Cabinet, Nurse Level.";
             }
         }
+
+        private void txtCreateItemName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

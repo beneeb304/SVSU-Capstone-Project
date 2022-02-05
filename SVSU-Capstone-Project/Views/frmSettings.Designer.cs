@@ -346,13 +346,13 @@ namespace SVSU_Capstone_Project.Views
             // 
             // lstUser
             // 
-            this.lstUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstUser.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstUser.FormattingEnabled = true;
-            this.lstUser.ItemHeight = 18;
+            this.lstUser.ItemHeight = 16;
             this.lstUser.Location = new System.Drawing.Point(186, 61);
             this.lstUser.Margin = new System.Windows.Forms.Padding(2);
             this.lstUser.Name = "lstUser";
-            this.lstUser.Size = new System.Drawing.Size(210, 256);
+            this.lstUser.Size = new System.Drawing.Size(210, 260);
             this.lstUser.TabIndex = 103;
             // 
             // label3
@@ -484,13 +484,13 @@ namespace SVSU_Capstone_Project.Views
             // 
             // lstRoom
             // 
-            this.lstRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstRoom.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstRoom.FormattingEnabled = true;
-            this.lstRoom.ItemHeight = 18;
+            this.lstRoom.ItemHeight = 16;
             this.lstRoom.Location = new System.Drawing.Point(186, 61);
             this.lstRoom.Margin = new System.Windows.Forms.Padding(2);
             this.lstRoom.Name = "lstRoom";
-            this.lstRoom.Size = new System.Drawing.Size(210, 256);
+            this.lstRoom.Size = new System.Drawing.Size(210, 260);
             this.lstRoom.TabIndex = 95;
             this.lstRoom.SelectedIndexChanged += new System.EventHandler(this.lstRoom_SelectedIndexChanged);
             // 

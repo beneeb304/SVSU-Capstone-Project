@@ -77,5 +77,30 @@ namespace SVSU_Capstone_Project.Views
         {
 
         }
+
+        private void txtStudent_ID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStudentName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtItemName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtItemID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDateAndTime_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
