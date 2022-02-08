@@ -31,34 +31,34 @@ namespace SVSU_Capstone_Project.Views
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbpCheckIn = new System.Windows.Forms.TabPage();
-            this.tbpCheckOut = new System.Windows.Forms.TabPage();
-            this.lblDate_Time_Title = new System.Windows.Forms.Label();
-            this.btnCheckOut = new System.Windows.Forms.Button();
-            this.lblDateAndTime = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblStudentID = new System.Windows.Forms.Label();
-            this.lblStudentName = new System.Windows.Forms.Label();
-            this.txtStudent_ID = new System.Windows.Forms.TextBox();
-            this.txtItemID = new System.Windows.Forms.TextBox();
-            this.txtItemName = new System.Windows.Forms.TextBox();
-            this.txtStudentName = new System.Windows.Forms.TextBox();
-            this.tbpHandOut = new System.Windows.Forms.TabPage();
-            this.btnClearForm = new System.Windows.Forms.Button();
-            this.lblCheckOutTitle = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnClearCI = new System.Windows.Forms.Button();
+            this.lblCIHeader = new System.Windows.Forms.Label();
+            this.lblTimeCI = new System.Windows.Forms.Label();
             this.btnCheckIn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.lblTimeClockCI = new System.Windows.Forms.Label();
+            this.lblItemIdCI = new System.Windows.Forms.Label();
+            this.lblItemNameCI = new System.Windows.Forms.Label();
+            this.lblSvsuIdCI = new System.Windows.Forms.Label();
+            this.lblStudentNameCI = new System.Windows.Forms.Label();
+            this.txtItemIdCI = new System.Windows.Forms.TextBox();
+            this.txtItemNameCI = new System.Windows.Forms.TextBox();
+            this.txtStudentNameCI = new System.Windows.Forms.TextBox();
+            this.tbpCheckOut = new System.Windows.Forms.TabPage();
+            this.btnClearCO = new System.Windows.Forms.Button();
+            this.lblCOHeader = new System.Windows.Forms.Label();
+            this.lblTimeCO = new System.Windows.Forms.Label();
+            this.btnCheckOut = new System.Windows.Forms.Button();
+            this.lblTimeClockCO = new System.Windows.Forms.Label();
+            this.lblItemIdCO = new System.Windows.Forms.Label();
+            this.lblItemNameCO = new System.Windows.Forms.Label();
+            this.lblSvsuIdCO = new System.Windows.Forms.Label();
+            this.lblStudentNameCO = new System.Windows.Forms.Label();
+            this.txtItemIdCO = new System.Windows.Forms.TextBox();
+            this.txtItemNameCO = new System.Windows.Forms.TextBox();
+            this.txtStudentNameCO = new System.Windows.Forms.TextBox();
+            this.tbpHandOut = new System.Windows.Forms.TabPage();
+            this.txtSvsuIdCI = new System.Windows.Forms.MaskedTextBox();
+            this.txtSvsuIdCO = new System.Windows.Forms.MaskedTextBox();
             this.tabControl1.SuspendLayout();
             this.tbpCheckIn.SuspendLayout();
             this.tbpCheckOut.SuspendLayout();
@@ -78,19 +78,19 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpCheckIn
             // 
-            this.tbpCheckIn.Controls.Add(this.button1);
-            this.tbpCheckIn.Controls.Add(this.label1);
-            this.tbpCheckIn.Controls.Add(this.label2);
+            this.tbpCheckIn.Controls.Add(this.txtSvsuIdCI);
+            this.tbpCheckIn.Controls.Add(this.btnClearCI);
+            this.tbpCheckIn.Controls.Add(this.lblCIHeader);
+            this.tbpCheckIn.Controls.Add(this.lblTimeCI);
             this.tbpCheckIn.Controls.Add(this.btnCheckIn);
-            this.tbpCheckIn.Controls.Add(this.label3);
-            this.tbpCheckIn.Controls.Add(this.label4);
-            this.tbpCheckIn.Controls.Add(this.label5);
-            this.tbpCheckIn.Controls.Add(this.label6);
-            this.tbpCheckIn.Controls.Add(this.label7);
-            this.tbpCheckIn.Controls.Add(this.textBox1);
-            this.tbpCheckIn.Controls.Add(this.textBox2);
-            this.tbpCheckIn.Controls.Add(this.textBox3);
-            this.tbpCheckIn.Controls.Add(this.textBox4);
+            this.tbpCheckIn.Controls.Add(this.lblTimeClockCI);
+            this.tbpCheckIn.Controls.Add(this.lblItemIdCI);
+            this.tbpCheckIn.Controls.Add(this.lblItemNameCI);
+            this.tbpCheckIn.Controls.Add(this.lblSvsuIdCI);
+            this.tbpCheckIn.Controls.Add(this.lblStudentNameCI);
+            this.tbpCheckIn.Controls.Add(this.txtItemIdCI);
+            this.tbpCheckIn.Controls.Add(this.txtItemNameCI);
+            this.tbpCheckIn.Controls.Add(this.txtStudentNameCI);
             this.tbpCheckIn.Location = new System.Drawing.Point(4, 25);
             this.tbpCheckIn.Name = "tbpCheckIn";
             this.tbpCheckIn.Padding = new System.Windows.Forms.Padding(3);
@@ -99,21 +99,148 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCheckIn.Text = "Check In Simulator";
             this.tbpCheckIn.UseVisualStyleBackColor = true;
             // 
+            // btnClearCI
+            // 
+            this.btnClearCI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearCI.Location = new System.Drawing.Point(350, 323);
+            this.btnClearCI.Name = "btnClearCI";
+            this.btnClearCI.Size = new System.Drawing.Size(99, 46);
+            this.btnClearCI.TabIndex = 69;
+            this.btnClearCI.Text = "Clear";
+            this.btnClearCI.UseVisualStyleBackColor = true;
+            // 
+            // lblCIHeader
+            // 
+            this.lblCIHeader.AutoSize = true;
+            this.lblCIHeader.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCIHeader.Location = new System.Drawing.Point(290, 32);
+            this.lblCIHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCIHeader.Name = "lblCIHeader";
+            this.lblCIHeader.Size = new System.Drawing.Size(147, 24);
+            this.lblCIHeader.TabIndex = 68;
+            this.lblCIHeader.Text = "Item Check In";
+            // 
+            // lblTimeCI
+            // 
+            this.lblTimeCI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTimeCI.AutoSize = true;
+            this.lblTimeCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeCI.Location = new System.Drawing.Point(290, 278);
+            this.lblTimeCI.Name = "lblTimeCI";
+            this.lblTimeCI.Size = new System.Drawing.Size(85, 19);
+            this.lblTimeCI.TabIndex = 67;
+            this.lblTimeCI.Text = "Date/Time";
+            // 
+            // btnCheckIn
+            // 
+            this.btnCheckIn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCheckIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckIn.Location = new System.Drawing.Point(469, 323);
+            this.btnCheckIn.Name = "btnCheckIn";
+            this.btnCheckIn.Size = new System.Drawing.Size(99, 46);
+            this.btnCheckIn.TabIndex = 66;
+            this.btnCheckIn.Text = "Check In";
+            this.btnCheckIn.UseVisualStyleBackColor = true;
+            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
+            // 
+            // lblTimeClockCI
+            // 
+            this.lblTimeClockCI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTimeClockCI.AutoSize = true;
+            this.lblTimeClockCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeClockCI.Location = new System.Drawing.Point(410, 278);
+            this.lblTimeClockCI.Name = "lblTimeClockCI";
+            this.lblTimeClockCI.Size = new System.Drawing.Size(158, 18);
+            this.lblTimeClockCI.TabIndex = 65;
+            this.lblTimeClockCI.Text = "11/15/2021 10:43 AM";
+            // 
+            // lblItemIdCI
+            // 
+            this.lblItemIdCI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblItemIdCI.AutoSize = true;
+            this.lblItemIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemIdCI.Location = new System.Drawing.Point(290, 181);
+            this.lblItemIdCI.Name = "lblItemIdCI";
+            this.lblItemIdCI.Size = new System.Drawing.Size(61, 19);
+            this.lblItemIdCI.TabIndex = 64;
+            this.lblItemIdCI.Text = "Item ID";
+            // 
+            // lblItemNameCI
+            // 
+            this.lblItemNameCI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblItemNameCI.AutoSize = true;
+            this.lblItemNameCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemNameCI.Location = new System.Drawing.Point(290, 231);
+            this.lblItemNameCI.Name = "lblItemNameCI";
+            this.lblItemNameCI.Size = new System.Drawing.Size(89, 19);
+            this.lblItemNameCI.TabIndex = 63;
+            this.lblItemNameCI.Text = "Item Name";
+            // 
+            // lblSvsuIdCI
+            // 
+            this.lblSvsuIdCI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblSvsuIdCI.AutoSize = true;
+            this.lblSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSvsuIdCI.Location = new System.Drawing.Point(290, 81);
+            this.lblSvsuIdCI.Name = "lblSvsuIdCI";
+            this.lblSvsuIdCI.Size = new System.Drawing.Size(89, 19);
+            this.lblSvsuIdCI.TabIndex = 62;
+            this.lblSvsuIdCI.Text = "Student ID";
+            // 
+            // lblStudentNameCI
+            // 
+            this.lblStudentNameCI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblStudentNameCI.AutoSize = true;
+            this.lblStudentNameCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentNameCI.Location = new System.Drawing.Point(290, 131);
+            this.lblStudentNameCI.Name = "lblStudentNameCI";
+            this.lblStudentNameCI.Size = new System.Drawing.Size(117, 19);
+            this.lblStudentNameCI.TabIndex = 61;
+            this.lblStudentNameCI.Text = "Student Name";
+            // 
+            // txtItemIdCI
+            // 
+            this.txtItemIdCI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtItemIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemIdCI.Location = new System.Drawing.Point(413, 178);
+            this.txtItemIdCI.Name = "txtItemIdCI";
+            this.txtItemIdCI.Size = new System.Drawing.Size(100, 26);
+            this.txtItemIdCI.TabIndex = 59;
+            // 
+            // txtItemNameCI
+            // 
+            this.txtItemNameCI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtItemNameCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemNameCI.Location = new System.Drawing.Point(413, 228);
+            this.txtItemNameCI.Name = "txtItemNameCI";
+            this.txtItemNameCI.Size = new System.Drawing.Size(219, 26);
+            this.txtItemNameCI.TabIndex = 58;
+            // 
+            // txtStudentNameCI
+            // 
+            this.txtStudentNameCI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtStudentNameCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentNameCI.Location = new System.Drawing.Point(413, 128);
+            this.txtStudentNameCI.Name = "txtStudentNameCI";
+            this.txtStudentNameCI.Size = new System.Drawing.Size(219, 26);
+            this.txtStudentNameCI.TabIndex = 57;
+            // 
             // tbpCheckOut
             // 
-            this.tbpCheckOut.Controls.Add(this.btnClearForm);
-            this.tbpCheckOut.Controls.Add(this.lblCheckOutTitle);
-            this.tbpCheckOut.Controls.Add(this.lblDate_Time_Title);
+            this.tbpCheckOut.Controls.Add(this.txtSvsuIdCO);
+            this.tbpCheckOut.Controls.Add(this.btnClearCO);
+            this.tbpCheckOut.Controls.Add(this.lblCOHeader);
+            this.tbpCheckOut.Controls.Add(this.lblTimeCO);
             this.tbpCheckOut.Controls.Add(this.btnCheckOut);
-            this.tbpCheckOut.Controls.Add(this.lblDateAndTime);
-            this.tbpCheckOut.Controls.Add(this.lblID);
-            this.tbpCheckOut.Controls.Add(this.lblName);
-            this.tbpCheckOut.Controls.Add(this.lblStudentID);
-            this.tbpCheckOut.Controls.Add(this.lblStudentName);
-            this.tbpCheckOut.Controls.Add(this.txtStudent_ID);
-            this.tbpCheckOut.Controls.Add(this.txtItemID);
-            this.tbpCheckOut.Controls.Add(this.txtItemName);
-            this.tbpCheckOut.Controls.Add(this.txtStudentName);
+            this.tbpCheckOut.Controls.Add(this.lblTimeClockCO);
+            this.tbpCheckOut.Controls.Add(this.lblItemIdCO);
+            this.tbpCheckOut.Controls.Add(this.lblItemNameCO);
+            this.tbpCheckOut.Controls.Add(this.lblSvsuIdCO);
+            this.tbpCheckOut.Controls.Add(this.lblStudentNameCO);
+            this.tbpCheckOut.Controls.Add(this.txtItemIdCO);
+            this.tbpCheckOut.Controls.Add(this.txtItemNameCO);
+            this.tbpCheckOut.Controls.Add(this.txtStudentNameCO);
             this.tbpCheckOut.Location = new System.Drawing.Point(4, 25);
             this.tbpCheckOut.Name = "tbpCheckOut";
             this.tbpCheckOut.Padding = new System.Windows.Forms.Padding(3);
@@ -122,16 +249,38 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCheckOut.Text = "Check Out Simulator";
             this.tbpCheckOut.UseVisualStyleBackColor = true;
             // 
-            // lblDate_Time_Title
+            // btnClearCO
             // 
-            this.lblDate_Time_Title.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDate_Time_Title.AutoSize = true;
-            this.lblDate_Time_Title.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate_Time_Title.Location = new System.Drawing.Point(290, 278);
-            this.lblDate_Time_Title.Name = "lblDate_Time_Title";
-            this.lblDate_Time_Title.Size = new System.Drawing.Size(85, 19);
-            this.lblDate_Time_Title.TabIndex = 53;
-            this.lblDate_Time_Title.Text = "Date/Time";
+            this.btnClearCO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearCO.Location = new System.Drawing.Point(350, 323);
+            this.btnClearCO.Name = "btnClearCO";
+            this.btnClearCO.Size = new System.Drawing.Size(99, 46);
+            this.btnClearCO.TabIndex = 56;
+            this.btnClearCO.Text = "Clear";
+            this.btnClearCO.UseVisualStyleBackColor = true;
+            // 
+            // lblCOHeader
+            // 
+            this.lblCOHeader.AutoSize = true;
+            this.lblCOHeader.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCOHeader.Location = new System.Drawing.Point(290, 32);
+            this.lblCOHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCOHeader.Name = "lblCOHeader";
+            this.lblCOHeader.Size = new System.Drawing.Size(165, 24);
+            this.lblCOHeader.TabIndex = 55;
+            this.lblCOHeader.Text = "Item Check Out";
+            // 
+            // lblTimeCO
+            // 
+            this.lblTimeCO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTimeCO.AutoSize = true;
+            this.lblTimeCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeCO.Location = new System.Drawing.Point(290, 278);
+            this.lblTimeCO.Name = "lblTimeCO";
+            this.lblTimeCO.Size = new System.Drawing.Size(85, 19);
+            this.lblTimeCO.TabIndex = 53;
+            this.lblTimeCO.Text = "Date/Time";
             // 
             // btnCheckOut
             // 
@@ -144,101 +293,91 @@ namespace SVSU_Capstone_Project.Views
             this.btnCheckOut.Text = "Check Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
             // 
-            // lblDateAndTime
+            // lblTimeClockCO
             // 
-            this.lblDateAndTime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDateAndTime.AutoSize = true;
-            this.lblDateAndTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateAndTime.Location = new System.Drawing.Point(410, 278);
-            this.lblDateAndTime.Name = "lblDateAndTime";
-            this.lblDateAndTime.Size = new System.Drawing.Size(158, 18);
-            this.lblDateAndTime.TabIndex = 51;
-            this.lblDateAndTime.Text = "11/15/2021 10:43 AM";
-            this.lblDateAndTime.Click += new System.EventHandler(this.lblDateAndTime_Click);
+            this.lblTimeClockCO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTimeClockCO.AutoSize = true;
+            this.lblTimeClockCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeClockCO.Location = new System.Drawing.Point(410, 278);
+            this.lblTimeClockCO.Name = "lblTimeClockCO";
+            this.lblTimeClockCO.Size = new System.Drawing.Size(158, 18);
+            this.lblTimeClockCO.TabIndex = 51;
+            this.lblTimeClockCO.Text = "11/15/2021 10:43 AM";
+            this.lblTimeClockCO.Click += new System.EventHandler(this.lblDateAndTime_Click);
             // 
-            // lblID
+            // lblItemIdCO
             // 
-            this.lblID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(290, 181);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(61, 19);
-            this.lblID.TabIndex = 50;
-            this.lblID.Text = "Item ID";
+            this.lblItemIdCO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblItemIdCO.AutoSize = true;
+            this.lblItemIdCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemIdCO.Location = new System.Drawing.Point(290, 181);
+            this.lblItemIdCO.Name = "lblItemIdCO";
+            this.lblItemIdCO.Size = new System.Drawing.Size(61, 19);
+            this.lblItemIdCO.TabIndex = 50;
+            this.lblItemIdCO.Text = "Item ID";
             // 
-            // lblName
+            // lblItemNameCO
             // 
-            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(290, 231);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(89, 19);
-            this.lblName.TabIndex = 49;
-            this.lblName.Text = "Item Name";
+            this.lblItemNameCO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblItemNameCO.AutoSize = true;
+            this.lblItemNameCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemNameCO.Location = new System.Drawing.Point(290, 231);
+            this.lblItemNameCO.Name = "lblItemNameCO";
+            this.lblItemNameCO.Size = new System.Drawing.Size(89, 19);
+            this.lblItemNameCO.TabIndex = 49;
+            this.lblItemNameCO.Text = "Item Name";
             // 
-            // lblStudentID
+            // lblSvsuIdCO
             // 
-            this.lblStudentID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblStudentID.AutoSize = true;
-            this.lblStudentID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentID.Location = new System.Drawing.Point(290, 81);
-            this.lblStudentID.Name = "lblStudentID";
-            this.lblStudentID.Size = new System.Drawing.Size(89, 19);
-            this.lblStudentID.TabIndex = 48;
-            this.lblStudentID.Text = "Student ID";
+            this.lblSvsuIdCO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblSvsuIdCO.AutoSize = true;
+            this.lblSvsuIdCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSvsuIdCO.Location = new System.Drawing.Point(290, 81);
+            this.lblSvsuIdCO.Name = "lblSvsuIdCO";
+            this.lblSvsuIdCO.Size = new System.Drawing.Size(89, 19);
+            this.lblSvsuIdCO.TabIndex = 48;
+            this.lblSvsuIdCO.Text = "Student ID";
             // 
-            // lblStudentName
+            // lblStudentNameCO
             // 
-            this.lblStudentName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblStudentName.AutoSize = true;
-            this.lblStudentName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentName.Location = new System.Drawing.Point(290, 131);
-            this.lblStudentName.Name = "lblStudentName";
-            this.lblStudentName.Size = new System.Drawing.Size(117, 19);
-            this.lblStudentName.TabIndex = 47;
-            this.lblStudentName.Text = "Student Name";
+            this.lblStudentNameCO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblStudentNameCO.AutoSize = true;
+            this.lblStudentNameCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentNameCO.Location = new System.Drawing.Point(290, 131);
+            this.lblStudentNameCO.Name = "lblStudentNameCO";
+            this.lblStudentNameCO.Size = new System.Drawing.Size(117, 19);
+            this.lblStudentNameCO.TabIndex = 47;
+            this.lblStudentNameCO.Text = "Student Name";
             // 
-            // txtStudent_ID
+            // txtItemIdCO
             // 
-            this.txtStudent_ID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtStudent_ID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudent_ID.Location = new System.Drawing.Point(413, 78);
-            this.txtStudent_ID.Name = "txtStudent_ID";
-            this.txtStudent_ID.Size = new System.Drawing.Size(100, 26);
-            this.txtStudent_ID.TabIndex = 46;
-            this.txtStudent_ID.TextChanged += new System.EventHandler(this.txtStudent_ID_TextChanged);
+            this.txtItemIdCO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtItemIdCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemIdCO.Location = new System.Drawing.Point(413, 178);
+            this.txtItemIdCO.Name = "txtItemIdCO";
+            this.txtItemIdCO.Size = new System.Drawing.Size(100, 26);
+            this.txtItemIdCO.TabIndex = 45;
+            this.txtItemIdCO.TextChanged += new System.EventHandler(this.txtItemID_TextChanged);
             // 
-            // txtItemID
+            // txtItemNameCO
             // 
-            this.txtItemID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtItemID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemID.Location = new System.Drawing.Point(413, 178);
-            this.txtItemID.Name = "txtItemID";
-            this.txtItemID.Size = new System.Drawing.Size(100, 26);
-            this.txtItemID.TabIndex = 45;
-            this.txtItemID.TextChanged += new System.EventHandler(this.txtItemID_TextChanged);
+            this.txtItemNameCO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtItemNameCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemNameCO.Location = new System.Drawing.Point(413, 228);
+            this.txtItemNameCO.Name = "txtItemNameCO";
+            this.txtItemNameCO.Size = new System.Drawing.Size(219, 26);
+            this.txtItemNameCO.TabIndex = 44;
+            this.txtItemNameCO.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
             // 
-            // txtItemName
+            // txtStudentNameCO
             // 
-            this.txtItemName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtItemName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemName.Location = new System.Drawing.Point(413, 228);
-            this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(219, 26);
-            this.txtItemName.TabIndex = 44;
-            this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
-            // 
-            // txtStudentName
-            // 
-            this.txtStudentName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtStudentName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentName.Location = new System.Drawing.Point(413, 128);
-            this.txtStudentName.Name = "txtStudentName";
-            this.txtStudentName.Size = new System.Drawing.Size(219, 26);
-            this.txtStudentName.TabIndex = 43;
-            this.txtStudentName.TextChanged += new System.EventHandler(this.txtStudentName_TextChanged);
+            this.txtStudentNameCO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtStudentNameCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentNameCO.Location = new System.Drawing.Point(413, 128);
+            this.txtStudentNameCO.Name = "txtStudentNameCO";
+            this.txtStudentNameCO.Size = new System.Drawing.Size(219, 26);
+            this.txtStudentNameCO.TabIndex = 43;
+            this.txtStudentNameCO.TextChanged += new System.EventHandler(this.txtStudentName_TextChanged);
             // 
             // tbpHandOut
             // 
@@ -249,162 +388,26 @@ namespace SVSU_Capstone_Project.Views
             this.tbpHandOut.Text = "Hand-Out Item";
             this.tbpHandOut.UseVisualStyleBackColor = true;
             // 
-            // btnClearForm
+            // txtSvsuIdCI
             // 
-            this.btnClearForm.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClearForm.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearForm.Location = new System.Drawing.Point(350, 323);
-            this.btnClearForm.Name = "btnClearForm";
-            this.btnClearForm.Size = new System.Drawing.Size(99, 46);
-            this.btnClearForm.TabIndex = 56;
-            this.btnClearForm.Text = "Clear";
-            this.btnClearForm.UseVisualStyleBackColor = true;
+            this.txtSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSvsuIdCI.Location = new System.Drawing.Point(413, 78);
+            this.txtSvsuIdCI.Mask = "000000";
+            this.txtSvsuIdCI.Name = "txtSvsuIdCI";
+            this.txtSvsuIdCI.Size = new System.Drawing.Size(100, 26);
+            this.txtSvsuIdCI.TabIndex = 70;
+            this.txtSvsuIdCI.ValidatingType = typeof(int);
+            this.txtSvsuIdCI.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtSvsuIdCI_MaskInputRejected);
             // 
-            // lblCheckOutTitle
+            // txtSvsuIdCO
             // 
-            this.lblCheckOutTitle.AutoSize = true;
-            this.lblCheckOutTitle.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckOutTitle.Location = new System.Drawing.Point(290, 32);
-            this.lblCheckOutTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCheckOutTitle.Name = "lblCheckOutTitle";
-            this.lblCheckOutTitle.Size = new System.Drawing.Size(156, 24);
-            this.lblCheckOutTitle.TabIndex = 55;
-            this.lblCheckOutTitle.Text = "Item Checkout";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(350, 323);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 46);
-            this.button1.TabIndex = 69;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(290, 32);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 24);
-            this.label1.TabIndex = 68;
-            this.label1.Text = "Item Checkin";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(290, 278);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 19);
-            this.label2.TabIndex = 67;
-            this.label2.Text = "Date/Time";
-            // 
-            // btnCheckIn
-            // 
-            this.btnCheckIn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCheckIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckIn.Location = new System.Drawing.Point(469, 323);
-            this.btnCheckIn.Name = "btnCheckIn";
-            this.btnCheckIn.Size = new System.Drawing.Size(99, 46);
-            this.btnCheckIn.TabIndex = 66;
-            this.btnCheckIn.Text = "Check In";
-            this.btnCheckIn.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(410, 278);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 18);
-            this.label3.TabIndex = 65;
-            this.label3.Text = "11/15/2021 10:43 AM";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(290, 181);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 19);
-            this.label4.TabIndex = 64;
-            this.label4.Text = "Item ID";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(290, 231);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 19);
-            this.label5.TabIndex = 63;
-            this.label5.Text = "Item Name";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(290, 81);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 19);
-            this.label6.TabIndex = 62;
-            this.label6.Text = "Student ID";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(290, 131);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 19);
-            this.label7.TabIndex = 61;
-            this.label7.Text = "Student Name";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(413, 78);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
-            this.textBox1.TabIndex = 60;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(413, 178);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 26);
-            this.textBox2.TabIndex = 59;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(413, 228);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(219, 26);
-            this.textBox3.TabIndex = 58;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(413, 128);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(219, 26);
-            this.textBox4.TabIndex = 57;
+            this.txtSvsuIdCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSvsuIdCO.Location = new System.Drawing.Point(413, 78);
+            this.txtSvsuIdCO.Mask = "000000";
+            this.txtSvsuIdCO.Name = "txtSvsuIdCO";
+            this.txtSvsuIdCO.Size = new System.Drawing.Size(100, 26);
+            this.txtSvsuIdCO.TabIndex = 71;
+            this.txtSvsuIdCO.ValidatingType = typeof(int);
             // 
             // frmCheckInOutItems
             // 
@@ -428,32 +431,32 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tbpCheckIn;
         private System.Windows.Forms.TabPage tbpCheckOut;
-        private System.Windows.Forms.Label lblDate_Time_Title;
+        private System.Windows.Forms.Label lblTimeCO;
         private System.Windows.Forms.Button btnCheckOut;
-        private System.Windows.Forms.Label lblDateAndTime;
-        private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblStudentID;
-        private System.Windows.Forms.Label lblStudentName;
-        private System.Windows.Forms.TextBox txtStudent_ID;
-        private System.Windows.Forms.TextBox txtItemID;
-        private System.Windows.Forms.TextBox txtItemName;
-        private System.Windows.Forms.TextBox txtStudentName;
+        private System.Windows.Forms.Label lblTimeClockCO;
+        private System.Windows.Forms.Label lblItemIdCO;
+        private System.Windows.Forms.Label lblItemNameCO;
+        private System.Windows.Forms.Label lblSvsuIdCO;
+        private System.Windows.Forms.Label lblStudentNameCO;
+        private System.Windows.Forms.TextBox txtItemIdCO;
+        private System.Windows.Forms.TextBox txtItemNameCO;
+        private System.Windows.Forms.TextBox txtStudentNameCO;
         private System.Windows.Forms.TabPage tbpHandOut;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnClearCI;
+        private System.Windows.Forms.Label lblCIHeader;
+        private System.Windows.Forms.Label lblTimeCI;
         private System.Windows.Forms.Button btnCheckIn;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button btnClearForm;
-        private System.Windows.Forms.Label lblCheckOutTitle;
+        private System.Windows.Forms.Label lblTimeClockCI;
+        private System.Windows.Forms.Label lblItemIdCI;
+        private System.Windows.Forms.Label lblItemNameCI;
+        private System.Windows.Forms.Label lblSvsuIdCI;
+        private System.Windows.Forms.Label lblStudentNameCI;
+        private System.Windows.Forms.TextBox txtItemIdCI;
+        private System.Windows.Forms.TextBox txtItemNameCI;
+        private System.Windows.Forms.TextBox txtStudentNameCI;
+        private System.Windows.Forms.Button btnClearCO;
+        private System.Windows.Forms.Label lblCOHeader;
+        private System.Windows.Forms.MaskedTextBox txtSvsuIdCI;
+        private System.Windows.Forms.MaskedTextBox txtSvsuIdCO;
     }
 }
