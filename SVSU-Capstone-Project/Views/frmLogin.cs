@@ -25,7 +25,7 @@ namespace SVSU_Capstone_Project.Views
 
             //Check if username is blank
 
-            if (txtUsername.Text.Length == 0)
+            if (txtSVSU_ID.Text.Length == 0)
             {
                 blnSVSU_ID = false;
                 erpUsername.SetError(txtSVSU_ID, "Please enter an SVSU ID");
@@ -40,7 +40,7 @@ namespace SVSU_Capstone_Project.Views
 
             //If there are values in both textboxes, continue to check
 
-            if (blnUsername && blnPassword)
+            if (blnSVSU_ID && blnPassword)
             {
                 //Hash password
                 string strHashedPassword = HashPassword(txtPassword.Text);

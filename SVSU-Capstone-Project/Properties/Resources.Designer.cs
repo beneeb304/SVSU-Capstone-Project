@@ -79,5 +79,15 @@ namespace SVSU_Capstone_Project.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap svsu_top_bar_login {
+            get {
+                object obj = ResourceManager.GetObject("svsu top bar login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
