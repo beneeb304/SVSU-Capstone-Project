@@ -209,6 +209,7 @@ namespace SVSU_Capstone_Project
             this.MinimumSize = new System.Drawing.Size(1172, 720);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Saginaw Valley Nursing Inventory System";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.mstMain.ResumeLayout(false);
             this.mstMain.PerformLayout();
