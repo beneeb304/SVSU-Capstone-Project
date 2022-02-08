@@ -1,14 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-public class Cabinet
+﻿namespace SVSU_Capstone_Project.Model
 {
-    [Key]
-    public Guid tuid { get; set; }
-    public string name { get; set; }
-    public string description { get; set; }
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    public virtual Room room { get; set; }
-    public virtual List<Quantity> quantities { get; set; }
+    public class Cabinet : ContextEntity
+    {        
+        [Column("name")]
+        public string strName { get; set; }
+        [Column("description")]
+        public string strDescription { get; set; }
+
+
+       
+        public virtual Room objRoom { get; set; }
+        public virtual List<Quantity> lstQuantities { get; set; }
+    }
 }

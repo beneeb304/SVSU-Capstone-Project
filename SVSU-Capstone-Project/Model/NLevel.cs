@@ -1,14 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-
-public class NLevel
+namespace SVSU_Capstone_Project.Model
 {
-    [Key]
-    public Guid tuid { get; set; }
-    public string name { get; set; }
-    public string description { get; set; }
-   
-    public virtual List<Quantity> quantities { get; set; }
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+
+    public class NLevel: ContextEntity
+    {
+        [Column("name")]
+        public string strName { get; set; }
+        [Column("description")]
+        public string strDescription { get; set; }
+        public virtual List<Quantity> lstQuantities { get; set; }
+    }
 }

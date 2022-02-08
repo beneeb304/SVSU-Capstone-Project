@@ -1,18 +1,29 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-public class Log
+﻿namespace SVSU_Capstone_Project.Model
 {
-    [Key]
-    public Guid tuid { get; set; }
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    public string action { get; set; }
-    public string timestamp { get; set; }
-    public string notes { get; set; }
-    public int quantityChange { get; set; }
+    public class Log : ContextEntity
+    {
+        [Column("action")]
+        public ItemAction enuAction { get; set; }
+        [Column("timestamp"), DataType(DataType.DateTime)]
+        public DateTime dtTimestamp { get; set; }
+        [Column("notes")]
+        public string strNotes { get; set; }
+        [Column("quantityChange")]
+        public int intQuantityChange { get; set; }
 
-
-    public virtual User user { get; set; }
-    public virtual Commodity commodity { get; set; }
+        public virtual User objUser { get; set; }
+        public virtual Commodity objCommodity { get; set; }
+    }
+    public enum ItemAction{
+        Added,
+        Moved,
+        Used,
+        CheckedIn,
+        CheckedOut,
+    }
 }

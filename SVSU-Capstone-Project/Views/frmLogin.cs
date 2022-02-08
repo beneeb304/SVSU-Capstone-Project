@@ -18,14 +18,14 @@ namespace SVSU_Capstone_Project.Views
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click( object sender, EventArgs e )
         {
             //Boolean vars to check username and password
             bool blnSVSU_ID = true, blnPassword = true;
 
             //Check if username is blank
-            int intTemp;
-            if(txtSVSU_ID.Text.Length != 6 || !int.TryParse(txtSVSU_ID.Text, out intTemp))
+
+            if (txtUsername.Text.Length == 0)
             {
                 blnSVSU_ID = false;
                 erpUsername.SetError(txtSVSU_ID, "Please enter an SVSU ID");
@@ -39,7 +39,8 @@ namespace SVSU_Capstone_Project.Views
             }
 
             //If there are values in both textboxes, continue to check
-            if(blnSVSU_ID && blnPassword)
+
+            if (blnUsername && blnPassword)
             {
                 //Hash password
                 string strHashedPassword = HashPassword(txtPassword.Text);
@@ -68,26 +69,26 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        private string HashPassword(string strPassword)
+        private string HashPassword( string strPassword )
         {
             byte[] bytes = Encoding.Unicode.GetBytes(strPassword);
             byte[] hashedBytes = HashAlgorithm.Create("SHA256").ComputeHash(bytes);
             return Convert.ToBase64String(hashedBytes);
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCancel_Click( object sender, EventArgs e )
         {
             //Close application
             Application.Exit();
         }
 
-        private void txtUsername_Click(object sender, EventArgs e)
+        private void txtUsername_Click( object sender, EventArgs e )
         {
             //Clear the error provider
             erpUsername.Clear();
         }
 
-        private void txtPassword_Click(object sender, EventArgs e)
+        private void txtPassword_Click( object sender, EventArgs e )
         {
             //Clear the error provider
             erpPassword.Clear();
