@@ -72,16 +72,16 @@ namespace SVSU_Capstone_Project.Views
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(326, 31);
-            this.txtPassword.TabIndex = 6;
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
             // 
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(12, 342);
+            this.btnLogin.Location = new System.Drawing.Point(12, 324);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(326, 58);
-            this.btnLogin.TabIndex = 9;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -89,10 +89,10 @@ namespace SVSU_Capstone_Project.Views
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(12, 418);
+            this.btnCancel.Location = new System.Drawing.Point(12, 400);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(326, 58);
-            this.btnCancel.TabIndex = 10;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -111,7 +111,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtSVSU_ID.Location = new System.Drawing.Point(12, 159);
             this.txtSVSU_ID.Name = "txtSVSU_ID";
             this.txtSVSU_ID.Size = new System.Drawing.Size(109, 31);
-            this.txtSVSU_ID.TabIndex = 12;
+            this.txtSVSU_ID.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -127,7 +127,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 500);
+            this.ClientSize = new System.Drawing.Size(350, 476);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtSVSU_ID);
