@@ -63,7 +63,7 @@ namespace SVSU_Capstone_Project
             this.mstMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.mstMain.Location = new System.Drawing.Point(0, 0);
             this.mstMain.Name = "mstMain";
-            this.mstMain.Size = new System.Drawing.Size(179, 192);
+            this.mstMain.Size = new System.Drawing.Size(179, 211);
             this.mstMain.TabIndex = 0;
             this.mstMain.Text = "menuStrip1";
             // 
@@ -137,7 +137,7 @@ namespace SVSU_Capstone_Project
             this.lblDateTime.AutoSize = true;
             this.lblDateTime.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.lblDateTime.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.Location = new System.Drawing.Point(863, 116);
+            this.lblDateTime.Location = new System.Drawing.Point(862, 107);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(73, 24);
             this.lblDateTime.TabIndex = 3;
@@ -182,9 +182,10 @@ namespace SVSU_Capstone_Project
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(1079, 57);
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(1068, 145);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(65, 45);
+            this.btnLogout.Size = new System.Drawing.Size(76, 32);
             this.btnLogout.TabIndex = 11;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
