@@ -80,21 +80,27 @@ namespace SVSU_Capstone_Project
             {
                 case "msiViewInventory":
                     newF = new frmViewInventory();
+                    this.Text = "Saginaw Valley Nursing Inventory System | View Inventory";
                     break;
                 case "msiManageInventory":
                     newF = new frmManageInventory();
+                    this.Text = "Saginaw Valley Nursing Inventory System | Manage Inventory";
                     break;
                 case "msiGenerateReports":
                     newF = new frmGenerateReports();
+                    this.Text = "Saginaw Valley Nursing Inventory System | Generate Reports";
                     break;
                 case "msiPrintBarcodes":
                     newF = new frmPrintBarcodes();
+                    this.Text = "Saginaw Valley Nursing Inventory System | Print Barcodes";
                     break;
                 case "msiCheckInOutItems":
                     newF = new frmCheckInOutItems();
+                    this.Text = "Saginaw Valley Nursing Inventory System | Check In/Out Items";
                     break;
                 case "msiSettings":
                     newF = new frmSettings();
+                    this.Text = "Saginaw Valley Nursing Inventory System | Settings";
                     break;
             }
 
