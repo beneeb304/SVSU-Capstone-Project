@@ -21,13 +21,14 @@ namespace SVSU_Capstone_Project.Views
         private void btnLogin_Click( object sender, EventArgs e )
         {
             //Boolean vars to check username and password
-            bool blnUsername = true, blnPassword = true;
+            bool blnSVSU_ID = true, blnPassword = true;
 
             //Check if username is blank
+
             if (txtUsername.Text.Length == 0)
             {
-                blnUsername = false;
-                erpUsername.SetError(txtUsername, "Please enter a username");
+                blnSVSU_ID = false;
+                erpUsername.SetError(txtSVSU_ID, "Please enter an SVSU ID");
             }
 
             //Check if password is blank
@@ -38,6 +39,7 @@ namespace SVSU_Capstone_Project.Views
             }
 
             //If there are values in both textboxes, continue to check
+
             if (blnUsername && blnPassword)
             {
                 //Hash password
@@ -46,8 +48,16 @@ namespace SVSU_Capstone_Project.Views
                 //Check to see if username/password pair exists in database
                 if (true)
                 {
+                    //GET User's info FROM DATABASE QUERY
+
                     //If credentials pass, close the form and set username
-                    frmMain.strUsername = txtUsername.Text;
+                    frmMain.LoggedInUser.intSVSU_ID = int.Parse(txtSVSU_ID.Text);
+                    frmMain.LoggedInUser.strFName = "John";
+                    frmMain.LoggedInUser.strLName = "Doe";
+                    frmMain.LoggedInUser.strEmail = "jdoe@svsu.edu";
+                    frmMain.LoggedInUser.strPhone = "989-765-4321";
+                    frmMain.LoggedInUser.blnAdmin = true;
+
                     Close();
                 }
                 else

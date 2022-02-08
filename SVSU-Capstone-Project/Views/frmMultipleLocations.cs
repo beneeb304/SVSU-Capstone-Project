@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SVSU_Capstone_Project.Views
 {
-    public partial class frmSettingsLocations : Form
+    public partial class frmMultipleLocations : Form
     {
-        public frmSettingsLocations()
+        public frmMultipleLocations()
         {
             InitializeComponent();
         }

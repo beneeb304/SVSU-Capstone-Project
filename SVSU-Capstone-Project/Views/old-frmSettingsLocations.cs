@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace SVSU_Capstone_Project.Views
 {
-    public partial class frmViewInventory : Form
+    public partial class frmSettingsLocations : Form
     {
-        public frmViewInventory()
+        public frmSettingsLocations()
         {
             InitializeComponent();
         }
 
-        private void frmViewInventory_Load(object sender, EventArgs e)
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }
