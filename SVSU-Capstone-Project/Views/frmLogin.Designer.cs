@@ -122,7 +122,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtSVSU_ID.Mask = "000000";
             this.txtSVSU_ID.Name = "txtSVSU_ID";
             this.txtSVSU_ID.Size = new System.Drawing.Size(100, 31);
-            this.txtSVSU_ID.TabIndex = 14;
+            this.txtSVSU_ID.TabIndex = 1;
             this.txtSVSU_ID.ValidatingType = typeof(int);
             // 
             // frmLogin
