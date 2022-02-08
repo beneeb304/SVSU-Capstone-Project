@@ -38,8 +38,8 @@ namespace SVSU_Capstone_Project.Views
             this.btnCancel = new System.Windows.Forms.Button();
             this.erpUsername = new System.Windows.Forms.ErrorProvider(this.components);
             this.erpPassword = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtSVSU_ID = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtSVSU_ID = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.erpUsername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -105,14 +105,6 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.erpPassword.ContainerControl = this;
             // 
-            // txtSVSU_ID
-            // 
-            this.txtSVSU_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSVSU_ID.Location = new System.Drawing.Point(12, 159);
-            this.txtSVSU_ID.Name = "txtSVSU_ID";
-            this.txtSVSU_ID.Size = new System.Drawing.Size(109, 31);
-            this.txtSVSU_ID.TabIndex = 1;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::SVSU_Capstone_Project.Properties.Resources.svsu_top_bar_login;
@@ -123,14 +115,24 @@ namespace SVSU_Capstone_Project.Views
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
+            // txtSVSU_ID
+            // 
+            this.txtSVSU_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSVSU_ID.Location = new System.Drawing.Point(12, 159);
+            this.txtSVSU_ID.Mask = "000000";
+            this.txtSVSU_ID.Name = "txtSVSU_ID";
+            this.txtSVSU_ID.Size = new System.Drawing.Size(100, 31);
+            this.txtSVSU_ID.TabIndex = 14;
+            this.txtSVSU_ID.ValidatingType = typeof(int);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 476);
             this.ControlBox = false;
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtSVSU_ID);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.Label3);
@@ -141,6 +143,7 @@ namespace SVSU_Capstone_Project.Views
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.erpUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -158,7 +161,7 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ErrorProvider erpUsername;
         private System.Windows.Forms.ErrorProvider erpPassword;
-        internal System.Windows.Forms.TextBox txtSVSU_ID;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.MaskedTextBox txtSVSU_ID;
     }
 }

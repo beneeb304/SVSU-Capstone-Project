@@ -93,5 +93,10 @@ namespace SVSU_Capstone_Project.Views
             //Clear the error provider
             erpPassword.Clear();
         }
+
+        private void frmLogin_Load( object sender, EventArgs e )
+        {
+
+        }
     }
 }
