@@ -23,12 +23,9 @@ namespace SVSU_Capstone_Project.ViewModel
             return db.Set<T>().ToList();
         }
 
-        public static T Get<T>( params Func<T, bool>[] predicates) where T : ContextEntity
+        public static T Get<T>( Func<T, bool> predicate) where T : ContextEntity
         {
-            var dbSet = db.Set<T>();
-            foreach( var predicate in predicates )
-                dbSet.Where(predicate);
-            return dbSet.FirstOrDefault();
+            return db.Set<T>().FirstOrDefault(predicate);
         }
 
         public static T Include<T>( this T parent, params string[] propname ) where T : ContextEntity

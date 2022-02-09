@@ -41,11 +41,21 @@ namespace SVSU_Capstone_Project.Model
         // override equal operator
         public static bool operator == ( ContextEntity left, ContextEntity right )
         {
-            return left.Equals(right);
+            if (left is null && right is null)
+                return true;
+            else if (left is null || right is null)
+                return false;
+            else
+                return left.Equals(right);
         }
         public static bool operator != ( ContextEntity left, ContextEntity right )
         {
-            return !(left == right);
+            if (left is null && right is null)
+                return false;
+            else if (left is null || right is null)
+                return true;
+            else
+                return !(left.Equals(right));
         }
 
         public override int GetHashCode()
