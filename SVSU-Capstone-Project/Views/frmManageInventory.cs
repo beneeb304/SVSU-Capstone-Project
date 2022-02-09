@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SVSU_Capstone_Project.Model;
+using SVSU_Capstone_Project.ViewModel;
 
 namespace SVSU_Capstone_Project.Views
 {
@@ -15,9 +17,48 @@ namespace SVSU_Capstone_Project.Views
         public frmManageInventory()
         {
             InitializeComponent();
+            //this.Load += frmManageInventory_Load;
+            // codefirst example
+            // this.cmbAddCategory.DataBindings.Add("Items", this, "activeCategories", false, DataSourceUpdateMode.OnPropertyChanged);
+            // this.cmbAddCategory.SelectedValueChanged += (e,v) => {itemFeatures = v.toString();};
         }
 
-        private void btnAddCancel_Click(object sender, EventArgs e)
+        // //Data Binding Example || ReadOnly
+        // public Category[] activeCategories
+        // {
+        //     get
+        //     {
+        //         return ItemModel.GetMany<Category>((c) => c.blnActive == true).ToArray();
+        //     }
+        // }
+        //
+        // // Data Binding Example || ReadWrite
+        // public string itemFeatures
+        // {
+        //     get
+        //     {
+        //         return ItemModel.Get<Commodity>(i => i.strName == "Selected Item").strFeatures;
+        //     }
+        //     set
+        //     {
+        //         // set value
+        //         var x = ItemModel.Get<Commodity>(i => i.strName == "Selected Item");
+        //         x.strFeatures = value;
+        //         ItemModel.Update<Commodity>(x);
+        //     }
+        // }
+
+        //private void frmManageInventory_Load( object sender, EventArgs e )
+        //{
+        //    this.cmbAddCategory.Items.AddRange(ItemModel.GetMany<Category>(( c ) => true).Select(c => c.strName).ToArray());
+        //    this.cmbAddCategory.SelectedIndex = 0;
+        //    var x = ItemModel.GetMany<Commodity>((c) => c.objCategory.strName == "Probe").ToList();
+        //    this.cmbAddCabinet.Items.AddRange(ItemModel.GetMany<Cabinet>(( c ) => c.objRoom.strName == "abc").Select(c => c.strName).ToArray());
+        //    this.cmbAddCabinet.SelectedIndex = 0;
+        //    this.cmbAddCommodity.Items.AddRange(ItemModel.GetMany<Commodity>(( c ) => c.objCategory.strName == this.cmbAddCategory.SelectedText).Select(c => c.strName).ToArray());
+        //    var q = new List<string>() { "abc", "def" };
+        //}
+        private void btnAddCancel_Click( object sender, EventArgs e )
         {
             //Clear all fields on Add tab
             cmbAddCabinet.SelectedIndex = -1;
@@ -29,7 +70,7 @@ namespace SVSU_Capstone_Project.Views
             nudAddQty.Value = 1;
         }
 
-        private void btnCreateCancel_Click(object sender, EventArgs e)
+        private void btnCreateCancel_Click( object sender, EventArgs e )
         {
             //Clear all fields on Create tab
             cmbCreateCategory.SelectedIndex = -1;
@@ -43,7 +84,7 @@ namespace SVSU_Capstone_Project.Views
             mtxCreateCost.Text = "";
         }
 
-        private void btnDeleteCancel_Click(object sender, EventArgs e)
+        private void btnDeleteCancel_Click( object sender, EventArgs e )
         {
             //Clear all fields on Delete tab
             cmbDeleteCabinet.SelectedIndex = -1;
@@ -53,7 +94,7 @@ namespace SVSU_Capstone_Project.Views
             cmbDeleteRoom.SelectedIndex = -1;
         }
 
-        private void chkDelete_CheckedChanged(object sender, EventArgs e)
+        private void chkDelete_CheckedChanged( object sender, EventArgs e )
         {
             if (chkDelete.Checked)
             {
@@ -74,7 +115,7 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        private void txtCreateItemName_TextChanged(object sender, EventArgs e)
+        private void txtCreateItemName_TextChanged( object sender, EventArgs e )
         {
 
         }

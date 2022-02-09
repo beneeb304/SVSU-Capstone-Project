@@ -14,6 +14,8 @@ namespace SVSU_Capstone_Project.ViewModel
         public static List<T> GetMany<T>( Func<T, bool> predicate ) where T : ContextEntity
         {
             return db.Set<T>().Where(predicate).ToList();
+
+            //  ItemModel.GetMany<Cabinet>((c) => c.objRoom.strName == "Room 1").ToList();
         }
 
         public static T Get<T>( Func<T, bool> predicate ) where T : ContextEntity
