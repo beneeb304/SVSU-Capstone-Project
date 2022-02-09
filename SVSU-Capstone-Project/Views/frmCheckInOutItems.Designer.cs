@@ -30,45 +30,50 @@ namespace SVSU_Capstone_Project.Views
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tbpCheckIn = new System.Windows.Forms.TabPage();
-            this.txtSvsuIdCI = new System.Windows.Forms.MaskedTextBox();
-            this.btnClearCI = new System.Windows.Forms.Button();
-            this.lblCIHeader = new System.Windows.Forms.Label();
-            this.lblTimeCI = new System.Windows.Forms.Label();
+            this.tbpAssets = new System.Windows.Forms.TabPage();
             this.btnCheckIn = new System.Windows.Forms.Button();
-            this.lblTimeClockCI = new System.Windows.Forms.Label();
-            this.lblItemIdCI = new System.Windows.Forms.Label();
-            this.lblItemNameCI = new System.Windows.Forms.Label();
-            this.lblSvsuIdCI = new System.Windows.Forms.Label();
-            this.lblStudentNameCI = new System.Windows.Forms.Label();
-            this.txtItemIdCI = new System.Windows.Forms.TextBox();
-            this.txtItemNameCI = new System.Windows.Forms.TextBox();
-            this.txtStudentNameCI = new System.Windows.Forms.TextBox();
-            this.tbpCheckOut = new System.Windows.Forms.TabPage();
-            this.txtSvsuIdCO = new System.Windows.Forms.MaskedTextBox();
-            this.btnClearCO = new System.Windows.Forms.Button();
-            this.lblCOHeader = new System.Windows.Forms.Label();
-            this.lblTimeCO = new System.Windows.Forms.Label();
             this.btnCheckOut = new System.Windows.Forms.Button();
-            this.lblTimeClockCO = new System.Windows.Forms.Label();
-            this.lblItemIdCO = new System.Windows.Forms.Label();
-            this.lblItemNameCO = new System.Windows.Forms.Label();
-            this.lblSvsuIdCO = new System.Windows.Forms.Label();
-            this.lblStudentNameCO = new System.Windows.Forms.Label();
-            this.txtItemIdCO = new System.Windows.Forms.TextBox();
-            this.txtItemNameCO = new System.Windows.Forms.TextBox();
-            this.txtStudentNameCO = new System.Windows.Forms.TextBox();
-            this.tbpHandOut = new System.Windows.Forms.TabPage();
+            this.txtAssetNotes = new System.Windows.Forms.RichTextBox();
+            this.lblNotes = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lstCheckedOut = new System.Windows.Forms.ListBox();
+            this.lstCheckedIn = new System.Windows.Forms.ListBox();
+            this.txtSvsuIdCI = new System.Windows.Forms.MaskedTextBox();
+            this.lblSvsuIdCI = new System.Windows.Forms.Label();
+            this.tbpConsumables = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cmbAddCategory = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnHandOut = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.nudAddQty = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCurrentQty = new System.Windows.Forms.TextBox();
+            this.cmbAddCommodity = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbAddCabinet = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbAddNLevel = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbAddRoom = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tbpCheckIn.SuspendLayout();
-            this.tbpCheckOut.SuspendLayout();
+            this.tbpAssets.SuspendLayout();
+            this.tbpConsumables.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tbpCheckIn);
-            this.tabControl1.Controls.Add(this.tbpCheckOut);
-            this.tabControl1.Controls.Add(this.tbpHandOut);
+            this.tabControl1.Controls.Add(this.tbpAssets);
+            this.tabControl1.Controls.Add(this.tbpConsumables);
             this.tabControl1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -76,338 +81,400 @@ namespace SVSU_Capstone_Project.Views
             this.tabControl1.Size = new System.Drawing.Size(931, 429);
             this.tabControl1.TabIndex = 43;
             // 
-            // tbpCheckIn
+            // tbpAssets
             // 
-            this.tbpCheckIn.Controls.Add(this.txtSvsuIdCI);
-            this.tbpCheckIn.Controls.Add(this.btnClearCI);
-            this.tbpCheckIn.Controls.Add(this.lblCIHeader);
-            this.tbpCheckIn.Controls.Add(this.lblTimeCI);
-            this.tbpCheckIn.Controls.Add(this.btnCheckIn);
-            this.tbpCheckIn.Controls.Add(this.lblTimeClockCI);
-            this.tbpCheckIn.Controls.Add(this.lblItemIdCI);
-            this.tbpCheckIn.Controls.Add(this.lblItemNameCI);
-            this.tbpCheckIn.Controls.Add(this.lblSvsuIdCI);
-            this.tbpCheckIn.Controls.Add(this.lblStudentNameCI);
-            this.tbpCheckIn.Controls.Add(this.txtItemIdCI);
-            this.tbpCheckIn.Controls.Add(this.txtItemNameCI);
-            this.tbpCheckIn.Controls.Add(this.txtStudentNameCI);
-            this.tbpCheckIn.Location = new System.Drawing.Point(4, 25);
-            this.tbpCheckIn.Name = "tbpCheckIn";
-            this.tbpCheckIn.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpCheckIn.Size = new System.Drawing.Size(923, 400);
-            this.tbpCheckIn.TabIndex = 0;
-            this.tbpCheckIn.Text = "Check In Simulator";
-            this.tbpCheckIn.UseVisualStyleBackColor = true;
-            // 
-            // txtSvsuIdCI
-            // 
-            this.txtSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSvsuIdCI.Location = new System.Drawing.Point(413, 78);
-            this.txtSvsuIdCI.Mask = "000000";
-            this.txtSvsuIdCI.Name = "txtSvsuIdCI";
-            this.txtSvsuIdCI.Size = new System.Drawing.Size(100, 26);
-            this.txtSvsuIdCI.TabIndex = 1;
-            this.txtSvsuIdCI.ValidatingType = typeof(int);
-            this.txtSvsuIdCI.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtSvsuIdCI_MaskInputRejected);
-            // 
-            // btnClearCI
-            // 
-            this.btnClearCI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClearCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearCI.Location = new System.Drawing.Point(350, 323);
-            this.btnClearCI.Name = "btnClearCI";
-            this.btnClearCI.Size = new System.Drawing.Size(99, 46);
-            this.btnClearCI.TabIndex = 5;
-            this.btnClearCI.Text = "Clear";
-            this.btnClearCI.UseVisualStyleBackColor = true;
-            // 
-            // lblCIHeader
-            // 
-            this.lblCIHeader.AutoSize = true;
-            this.lblCIHeader.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCIHeader.Location = new System.Drawing.Point(290, 32);
-            this.lblCIHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCIHeader.Name = "lblCIHeader";
-            this.lblCIHeader.Size = new System.Drawing.Size(147, 24);
-            this.lblCIHeader.TabIndex = 68;
-            this.lblCIHeader.Text = "Item Check In";
-            // 
-            // lblTimeCI
-            // 
-            this.lblTimeCI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTimeCI.AutoSize = true;
-            this.lblTimeCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeCI.Location = new System.Drawing.Point(290, 278);
-            this.lblTimeCI.Name = "lblTimeCI";
-            this.lblTimeCI.Size = new System.Drawing.Size(85, 19);
-            this.lblTimeCI.TabIndex = 67;
-            this.lblTimeCI.Text = "Date/Time";
+            this.tbpAssets.Controls.Add(this.btnCheckIn);
+            this.tbpAssets.Controls.Add(this.btnCheckOut);
+            this.tbpAssets.Controls.Add(this.txtAssetNotes);
+            this.tbpAssets.Controls.Add(this.lblNotes);
+            this.tbpAssets.Controls.Add(this.label2);
+            this.tbpAssets.Controls.Add(this.label1);
+            this.tbpAssets.Controls.Add(this.lstCheckedOut);
+            this.tbpAssets.Controls.Add(this.lstCheckedIn);
+            this.tbpAssets.Controls.Add(this.txtSvsuIdCI);
+            this.tbpAssets.Controls.Add(this.lblSvsuIdCI);
+            this.tbpAssets.Location = new System.Drawing.Point(4, 25);
+            this.tbpAssets.Name = "tbpAssets";
+            this.tbpAssets.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpAssets.Size = new System.Drawing.Size(923, 400);
+            this.tbpAssets.TabIndex = 0;
+            this.tbpAssets.Text = "Assets";
+            this.tbpAssets.UseVisualStyleBackColor = true;
             // 
             // btnCheckIn
             // 
             this.btnCheckIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCheckIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckIn.Location = new System.Drawing.Point(469, 323);
+            this.btnCheckIn.Location = new System.Drawing.Point(699, 348);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(99, 46);
-            this.btnCheckIn.TabIndex = 6;
+            this.btnCheckIn.TabIndex = 134;
             this.btnCheckIn.Text = "Check In";
             this.btnCheckIn.UseVisualStyleBackColor = true;
-            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
-            // lblTimeClockCI
+            // btnCheckOut
             // 
-            this.lblTimeClockCI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTimeClockCI.AutoSize = true;
-            this.lblTimeClockCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeClockCI.Location = new System.Drawing.Point(410, 278);
-            this.lblTimeClockCI.Name = "lblTimeClockCI";
-            this.lblTimeClockCI.Size = new System.Drawing.Size(158, 18);
-            this.lblTimeClockCI.TabIndex = 65;
-            this.lblTimeClockCI.Text = "11/15/2021 10:43 AM";
+            this.btnCheckOut.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCheckOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckOut.Location = new System.Drawing.Point(818, 348);
+            this.btnCheckOut.Name = "btnCheckOut";
+            this.btnCheckOut.Size = new System.Drawing.Size(99, 46);
+            this.btnCheckOut.TabIndex = 135;
+            this.btnCheckOut.Text = "Check Out";
+            this.btnCheckOut.UseVisualStyleBackColor = true;
             // 
-            // lblItemIdCI
+            // txtAssetNotes
             // 
-            this.lblItemIdCI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblItemIdCI.AutoSize = true;
-            this.lblItemIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemIdCI.Location = new System.Drawing.Point(290, 181);
-            this.lblItemIdCI.Name = "lblItemIdCI";
-            this.lblItemIdCI.Size = new System.Drawing.Size(61, 19);
-            this.lblItemIdCI.TabIndex = 64;
-            this.lblItemIdCI.Text = "Item ID";
+            this.txtAssetNotes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAssetNotes.Location = new System.Drawing.Point(597, 137);
+            this.txtAssetNotes.Name = "txtAssetNotes";
+            this.txtAssetNotes.Size = new System.Drawing.Size(254, 185);
+            this.txtAssetNotes.TabIndex = 132;
+            this.txtAssetNotes.Text = "";
             // 
-            // lblItemNameCI
+            // lblNotes
             // 
-            this.lblItemNameCI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblItemNameCI.AutoSize = true;
-            this.lblItemNameCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemNameCI.Location = new System.Drawing.Point(290, 231);
-            this.lblItemNameCI.Name = "lblItemNameCI";
-            this.lblItemNameCI.Size = new System.Drawing.Size(89, 19);
-            this.lblItemNameCI.TabIndex = 63;
-            this.lblItemNameCI.Text = "Item Name";
+            this.lblNotes.AutoSize = true;
+            this.lblNotes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNotes.Location = new System.Drawing.Point(474, 140);
+            this.lblNotes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNotes.Name = "lblNotes";
+            this.lblNotes.Size = new System.Drawing.Size(60, 19);
+            this.lblNotes.TabIndex = 133;
+            this.lblNotes.Text = "Notes:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(255, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(163, 19);
+            this.label2.TabIndex = 74;
+            this.label2.Text = "Checked Out Assets";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(33, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(150, 19);
+            this.label1.TabIndex = 73;
+            this.label1.Text = "Checked In Assets";
+            // 
+            // lstCheckedOut
+            // 
+            this.lstCheckedOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstCheckedOut.FormattingEnabled = true;
+            this.lstCheckedOut.ItemHeight = 18;
+            this.lstCheckedOut.Location = new System.Drawing.Point(258, 56);
+            this.lstCheckedOut.Name = "lstCheckedOut";
+            this.lstCheckedOut.Size = new System.Drawing.Size(193, 310);
+            this.lstCheckedOut.TabIndex = 70;
+            this.lstCheckedOut.Click += new System.EventHandler(this.ListBoxClicked);
+            // 
+            // lstCheckedIn
+            // 
+            this.lstCheckedIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstCheckedIn.FormattingEnabled = true;
+            this.lstCheckedIn.ItemHeight = 18;
+            this.lstCheckedIn.Location = new System.Drawing.Point(36, 56);
+            this.lstCheckedIn.Name = "lstCheckedIn";
+            this.lstCheckedIn.Size = new System.Drawing.Size(193, 310);
+            this.lstCheckedIn.TabIndex = 69;
+            this.lstCheckedIn.Click += new System.EventHandler(this.ListBoxClicked);
+            // 
+            // txtSvsuIdCI
+            // 
+            this.txtSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSvsuIdCI.Location = new System.Drawing.Point(597, 79);
+            this.txtSvsuIdCI.Mask = "000000";
+            this.txtSvsuIdCI.Name = "txtSvsuIdCI";
+            this.txtSvsuIdCI.Size = new System.Drawing.Size(100, 26);
+            this.txtSvsuIdCI.TabIndex = 1;
+            this.txtSvsuIdCI.ValidatingType = typeof(int);
             // 
             // lblSvsuIdCI
             // 
             this.lblSvsuIdCI.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSvsuIdCI.AutoSize = true;
             this.lblSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSvsuIdCI.Location = new System.Drawing.Point(290, 81);
+            this.lblSvsuIdCI.Location = new System.Drawing.Point(474, 82);
             this.lblSvsuIdCI.Name = "lblSvsuIdCI";
             this.lblSvsuIdCI.Size = new System.Drawing.Size(89, 19);
             this.lblSvsuIdCI.TabIndex = 62;
             this.lblSvsuIdCI.Text = "Student ID";
             // 
-            // lblStudentNameCI
+            // tbpConsumables
             // 
-            this.lblStudentNameCI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblStudentNameCI.AutoSize = true;
-            this.lblStudentNameCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentNameCI.Location = new System.Drawing.Point(290, 131);
-            this.lblStudentNameCI.Name = "lblStudentNameCI";
-            this.lblStudentNameCI.Size = new System.Drawing.Size(117, 19);
-            this.lblStudentNameCI.TabIndex = 61;
-            this.lblStudentNameCI.Text = "Student Name";
+            this.tbpConsumables.Controls.Add(this.richTextBox1);
+            this.tbpConsumables.Controls.Add(this.label12);
+            this.tbpConsumables.Controls.Add(this.maskedTextBox1);
+            this.tbpConsumables.Controls.Add(this.label13);
+            this.tbpConsumables.Controls.Add(this.label10);
+            this.tbpConsumables.Controls.Add(this.cmbAddCategory);
+            this.tbpConsumables.Controls.Add(this.label9);
+            this.tbpConsumables.Controls.Add(this.btnCancel);
+            this.tbpConsumables.Controls.Add(this.btnHandOut);
+            this.tbpConsumables.Controls.Add(this.label7);
+            this.tbpConsumables.Controls.Add(this.label6);
+            this.tbpConsumables.Controls.Add(this.nudAddQty);
+            this.tbpConsumables.Controls.Add(this.label5);
+            this.tbpConsumables.Controls.Add(this.txtCurrentQty);
+            this.tbpConsumables.Controls.Add(this.cmbAddCommodity);
+            this.tbpConsumables.Controls.Add(this.label4);
+            this.tbpConsumables.Controls.Add(this.cmbAddCabinet);
+            this.tbpConsumables.Controls.Add(this.label3);
+            this.tbpConsumables.Controls.Add(this.cmbAddNLevel);
+            this.tbpConsumables.Controls.Add(this.label8);
+            this.tbpConsumables.Controls.Add(this.cmbAddRoom);
+            this.tbpConsumables.Controls.Add(this.label11);
+            this.tbpConsumables.Location = new System.Drawing.Point(4, 25);
+            this.tbpConsumables.Name = "tbpConsumables";
+            this.tbpConsumables.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpConsumables.Size = new System.Drawing.Size(923, 400);
+            this.tbpConsumables.TabIndex = 1;
+            this.tbpConsumables.Text = "Consumables";
+            this.tbpConsumables.UseVisualStyleBackColor = true;
             // 
-            // txtItemIdCI
+            // label10
             // 
-            this.txtItemIdCI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtItemIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemIdCI.Location = new System.Drawing.Point(413, 178);
-            this.txtItemIdCI.Name = "txtItemIdCI";
-            this.txtItemIdCI.Size = new System.Drawing.Size(100, 26);
-            this.txtItemIdCI.TabIndex = 3;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(20, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(262, 22);
+            this.label10.TabIndex = 172;
+            this.label10.Text = "Hand Out Consumable Item";
             // 
-            // txtItemNameCI
+            // cmbAddCategory
             // 
-            this.txtItemNameCI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtItemNameCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemNameCI.Location = new System.Drawing.Point(413, 228);
-            this.txtItemNameCI.Name = "txtItemNameCI";
-            this.txtItemNameCI.Size = new System.Drawing.Size(219, 26);
-            this.txtItemNameCI.TabIndex = 4;
+            this.cmbAddCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddCategory.FormattingEnabled = true;
+            this.cmbAddCategory.Location = new System.Drawing.Point(150, 60);
+            this.cmbAddCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddCategory.Name = "cmbAddCategory";
+            this.cmbAddCategory.Size = new System.Drawing.Size(159, 26);
+            this.cmbAddCategory.TabIndex = 155;
             // 
-            // txtStudentNameCI
+            // label9
             // 
-            this.txtStudentNameCI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtStudentNameCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentNameCI.Location = new System.Drawing.Point(413, 128);
-            this.txtStudentNameCI.Name = "txtStudentNameCI";
-            this.txtStudentNameCI.Size = new System.Drawing.Size(219, 26);
-            this.txtStudentNameCI.TabIndex = 2;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(43, 63);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 19);
+            this.label9.TabIndex = 171;
+            this.label9.Text = "Category:";
             // 
-            // tbpCheckOut
+            // btnCancel
             // 
-            this.tbpCheckOut.Controls.Add(this.txtSvsuIdCO);
-            this.tbpCheckOut.Controls.Add(this.btnClearCO);
-            this.tbpCheckOut.Controls.Add(this.lblCOHeader);
-            this.tbpCheckOut.Controls.Add(this.lblTimeCO);
-            this.tbpCheckOut.Controls.Add(this.btnCheckOut);
-            this.tbpCheckOut.Controls.Add(this.lblTimeClockCO);
-            this.tbpCheckOut.Controls.Add(this.lblItemIdCO);
-            this.tbpCheckOut.Controls.Add(this.lblItemNameCO);
-            this.tbpCheckOut.Controls.Add(this.lblSvsuIdCO);
-            this.tbpCheckOut.Controls.Add(this.lblStudentNameCO);
-            this.tbpCheckOut.Controls.Add(this.txtItemIdCO);
-            this.tbpCheckOut.Controls.Add(this.txtItemNameCO);
-            this.tbpCheckOut.Controls.Add(this.txtStudentNameCO);
-            this.tbpCheckOut.Location = new System.Drawing.Point(4, 25);
-            this.tbpCheckOut.Name = "tbpCheckOut";
-            this.tbpCheckOut.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpCheckOut.Size = new System.Drawing.Size(923, 400);
-            this.tbpCheckOut.TabIndex = 1;
-            this.tbpCheckOut.Text = "Check Out Simulator";
-            this.tbpCheckOut.UseVisualStyleBackColor = true;
+            this.btnCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(683, 351);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(114, 43);
+            this.btnCancel.TabIndex = 163;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // txtSvsuIdCO
+            // btnHandOut
             // 
-            this.txtSvsuIdCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSvsuIdCO.Location = new System.Drawing.Point(413, 78);
-            this.txtSvsuIdCO.Mask = "000000";
-            this.txtSvsuIdCO.Name = "txtSvsuIdCO";
-            this.txtSvsuIdCO.Size = new System.Drawing.Size(100, 26);
-            this.txtSvsuIdCO.TabIndex = 1;
-            this.txtSvsuIdCO.ValidatingType = typeof(int);
+            this.btnHandOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHandOut.Location = new System.Drawing.Point(803, 351);
+            this.btnHandOut.Name = "btnHandOut";
+            this.btnHandOut.Size = new System.Drawing.Size(114, 43);
+            this.btnHandOut.TabIndex = 164;
+            this.btnHandOut.Text = "Hand Out";
+            this.btnHandOut.UseVisualStyleBackColor = true;
             // 
-            // btnClearCO
+            // label7
             // 
-            this.btnClearCO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClearCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearCO.Location = new System.Drawing.Point(350, 323);
-            this.btnClearCO.Name = "btnClearCO";
-            this.btnClearCO.Size = new System.Drawing.Size(99, 46);
-            this.btnClearCO.TabIndex = 5;
-            this.btnClearCO.Text = "Clear";
-            this.btnClearCO.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(21, 154);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(441, 18);
+            this.label7.TabIndex = 156;
+            this.label7.Text = "Hand the Commodity out from this Room, Cabinet, and N Level";
             // 
-            // lblCOHeader
+            // label6
             // 
-            this.lblCOHeader.AutoSize = true;
-            this.lblCOHeader.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCOHeader.Location = new System.Drawing.Point(290, 32);
-            this.lblCOHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCOHeader.Name = "lblCOHeader";
-            this.lblCOHeader.Size = new System.Drawing.Size(165, 24);
-            this.lblCOHeader.TabIndex = 55;
-            this.lblCOHeader.Text = "Item Check Out";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(333, 243);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(155, 19);
+            this.label6.TabIndex = 170;
+            this.label6.Text = "Hand Out Quantity:";
             // 
-            // lblTimeCO
+            // nudAddQty
             // 
-            this.lblTimeCO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTimeCO.AutoSize = true;
-            this.lblTimeCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeCO.Location = new System.Drawing.Point(290, 278);
-            this.lblTimeCO.Name = "lblTimeCO";
-            this.lblTimeCO.Size = new System.Drawing.Size(85, 19);
-            this.lblTimeCO.TabIndex = 53;
-            this.lblTimeCO.Text = "Date/Time";
+            this.nudAddQty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudAddQty.Location = new System.Drawing.Point(525, 241);
+            this.nudAddQty.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudAddQty.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudAddQty.Name = "nudAddQty";
+            this.nudAddQty.Size = new System.Drawing.Size(120, 26);
+            this.nudAddQty.TabIndex = 162;
+            this.nudAddQty.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // btnCheckOut
+            // label5
             // 
-            this.btnCheckOut.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCheckOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.Location = new System.Drawing.Point(469, 323);
-            this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(99, 46);
-            this.btnCheckOut.TabIndex = 6;
-            this.btnCheckOut.Text = "Check Out";
-            this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(333, 195);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(141, 19);
+            this.label5.TabIndex = 169;
+            this.label5.Text = "Current Quantity:";
             // 
-            // lblTimeClockCO
+            // txtCurrentQty
             // 
-            this.lblTimeClockCO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTimeClockCO.AutoSize = true;
-            this.lblTimeClockCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeClockCO.Location = new System.Drawing.Point(410, 278);
-            this.lblTimeClockCO.Name = "lblTimeClockCO";
-            this.lblTimeClockCO.Size = new System.Drawing.Size(158, 18);
-            this.lblTimeClockCO.TabIndex = 51;
-            this.lblTimeClockCO.Text = "11/15/2021 10:43 AM";
-            this.lblTimeClockCO.Click += new System.EventHandler(this.lblDateAndTime_Click);
+            this.txtCurrentQty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentQty.Location = new System.Drawing.Point(525, 192);
+            this.txtCurrentQty.Name = "txtCurrentQty";
+            this.txtCurrentQty.ReadOnly = true;
+            this.txtCurrentQty.Size = new System.Drawing.Size(120, 26);
+            this.txtCurrentQty.TabIndex = 161;
             // 
-            // lblItemIdCO
+            // cmbAddCommodity
             // 
-            this.lblItemIdCO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblItemIdCO.AutoSize = true;
-            this.lblItemIdCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemIdCO.Location = new System.Drawing.Point(290, 181);
-            this.lblItemIdCO.Name = "lblItemIdCO";
-            this.lblItemIdCO.Size = new System.Drawing.Size(61, 19);
-            this.lblItemIdCO.TabIndex = 50;
-            this.lblItemIdCO.Text = "Item ID";
+            this.cmbAddCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddCommodity.FormattingEnabled = true;
+            this.cmbAddCommodity.Location = new System.Drawing.Point(150, 102);
+            this.cmbAddCommodity.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddCommodity.Name = "cmbAddCommodity";
+            this.cmbAddCommodity.Size = new System.Drawing.Size(159, 26);
+            this.cmbAddCommodity.TabIndex = 157;
             // 
-            // lblItemNameCO
+            // label4
             // 
-            this.lblItemNameCO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblItemNameCO.AutoSize = true;
-            this.lblItemNameCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemNameCO.Location = new System.Drawing.Point(290, 231);
-            this.lblItemNameCO.Name = "lblItemNameCO";
-            this.lblItemNameCO.Size = new System.Drawing.Size(89, 19);
-            this.lblItemNameCO.TabIndex = 49;
-            this.lblItemNameCO.Text = "Item Name";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(43, 105);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 19);
+            this.label4.TabIndex = 168;
+            this.label4.Text = "Commodity:";
             // 
-            // lblSvsuIdCO
+            // cmbAddCabinet
             // 
-            this.lblSvsuIdCO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblSvsuIdCO.AutoSize = true;
-            this.lblSvsuIdCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSvsuIdCO.Location = new System.Drawing.Point(290, 81);
-            this.lblSvsuIdCO.Name = "lblSvsuIdCO";
-            this.lblSvsuIdCO.Size = new System.Drawing.Size(89, 19);
-            this.lblSvsuIdCO.TabIndex = 48;
-            this.lblSvsuIdCO.Text = "Student ID";
+            this.cmbAddCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddCabinet.FormattingEnabled = true;
+            this.cmbAddCabinet.Location = new System.Drawing.Point(150, 240);
+            this.cmbAddCabinet.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddCabinet.Name = "cmbAddCabinet";
+            this.cmbAddCabinet.Size = new System.Drawing.Size(159, 26);
+            this.cmbAddCabinet.TabIndex = 159;
             // 
-            // lblStudentNameCO
+            // label3
             // 
-            this.lblStudentNameCO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblStudentNameCO.AutoSize = true;
-            this.lblStudentNameCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentNameCO.Location = new System.Drawing.Point(290, 131);
-            this.lblStudentNameCO.Name = "lblStudentNameCO";
-            this.lblStudentNameCO.Size = new System.Drawing.Size(117, 19);
-            this.lblStudentNameCO.TabIndex = 47;
-            this.lblStudentNameCO.Text = "Student Name";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(43, 243);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 19);
+            this.label3.TabIndex = 167;
+            this.label3.Text = "Cabinet:";
             // 
-            // txtItemIdCO
+            // cmbAddNLevel
             // 
-            this.txtItemIdCO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtItemIdCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemIdCO.Location = new System.Drawing.Point(413, 178);
-            this.txtItemIdCO.Name = "txtItemIdCO";
-            this.txtItemIdCO.Size = new System.Drawing.Size(100, 26);
-            this.txtItemIdCO.TabIndex = 3;
-            this.txtItemIdCO.TextChanged += new System.EventHandler(this.txtItemID_TextChanged);
+            this.cmbAddNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddNLevel.FormattingEnabled = true;
+            this.cmbAddNLevel.Location = new System.Drawing.Point(150, 288);
+            this.cmbAddNLevel.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddNLevel.Name = "cmbAddNLevel";
+            this.cmbAddNLevel.Size = new System.Drawing.Size(54, 26);
+            this.cmbAddNLevel.TabIndex = 160;
             // 
-            // txtItemNameCO
+            // label8
             // 
-            this.txtItemNameCO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtItemNameCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemNameCO.Location = new System.Drawing.Point(413, 228);
-            this.txtItemNameCO.Name = "txtItemNameCO";
-            this.txtItemNameCO.Size = new System.Drawing.Size(219, 26);
-            this.txtItemNameCO.TabIndex = 4;
-            this.txtItemNameCO.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(43, 291);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 19);
+            this.label8.TabIndex = 166;
+            this.label8.Text = "N Level:";
             // 
-            // txtStudentNameCO
+            // cmbAddRoom
             // 
-            this.txtStudentNameCO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtStudentNameCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentNameCO.Location = new System.Drawing.Point(413, 128);
-            this.txtStudentNameCO.Name = "txtStudentNameCO";
-            this.txtStudentNameCO.Size = new System.Drawing.Size(219, 26);
-            this.txtStudentNameCO.TabIndex = 2;
-            this.txtStudentNameCO.TextChanged += new System.EventHandler(this.txtStudentName_TextChanged);
+            this.cmbAddRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddRoom.FormattingEnabled = true;
+            this.cmbAddRoom.Location = new System.Drawing.Point(150, 192);
+            this.cmbAddRoom.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddRoom.Name = "cmbAddRoom";
+            this.cmbAddRoom.Size = new System.Drawing.Size(159, 26);
+            this.cmbAddRoom.TabIndex = 158;
             // 
-            // tbpHandOut
+            // label11
             // 
-            this.tbpHandOut.Location = new System.Drawing.Point(4, 25);
-            this.tbpHandOut.Name = "tbpHandOut";
-            this.tbpHandOut.Size = new System.Drawing.Size(923, 400);
-            this.tbpHandOut.TabIndex = 2;
-            this.tbpHandOut.Text = "Hand-Out Item";
-            this.tbpHandOut.UseVisualStyleBackColor = true;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(43, 195);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(61, 19);
+            this.label11.TabIndex = 165;
+            this.label11.Text = "Room:";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(663, 81);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(254, 185);
+            this.richTextBox1.TabIndex = 175;
+            this.richTextBox1.Text = "";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(540, 84);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 19);
+            this.label12.TabIndex = 176;
+            this.label12.Text = "Notes:";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox1.Location = new System.Drawing.Point(663, 23);
+            this.maskedTextBox1.Mask = "000000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 26);
+            this.maskedTextBox1.TabIndex = 173;
+            this.maskedTextBox1.ValidatingType = typeof(int);
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(540, 26);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(89, 19);
+            this.label13.TabIndex = 174;
+            this.label13.Text = "Student ID";
             // 
             // frmCheckInOutItems
             // 
@@ -418,10 +485,11 @@ namespace SVSU_Capstone_Project.Views
             this.Name = "frmCheckInOutItems";
             this.Text = "Check-In/Out Items";
             this.tabControl1.ResumeLayout(false);
-            this.tbpCheckIn.ResumeLayout(false);
-            this.tbpCheckIn.PerformLayout();
-            this.tbpCheckOut.ResumeLayout(false);
-            this.tbpCheckOut.PerformLayout();
+            this.tbpAssets.ResumeLayout(false);
+            this.tbpAssets.PerformLayout();
+            this.tbpConsumables.ResumeLayout(false);
+            this.tbpConsumables.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -429,34 +497,39 @@ namespace SVSU_Capstone_Project.Views
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tbpCheckIn;
-        private System.Windows.Forms.TabPage tbpCheckOut;
-        private System.Windows.Forms.Label lblTimeCO;
-        private System.Windows.Forms.Button btnCheckOut;
-        private System.Windows.Forms.Label lblTimeClockCO;
-        private System.Windows.Forms.Label lblItemIdCO;
-        private System.Windows.Forms.Label lblItemNameCO;
-        private System.Windows.Forms.Label lblSvsuIdCO;
-        private System.Windows.Forms.Label lblStudentNameCO;
-        private System.Windows.Forms.TextBox txtItemIdCO;
-        private System.Windows.Forms.TextBox txtItemNameCO;
-        private System.Windows.Forms.TextBox txtStudentNameCO;
-        private System.Windows.Forms.TabPage tbpHandOut;
-        private System.Windows.Forms.Button btnClearCI;
-        private System.Windows.Forms.Label lblCIHeader;
-        private System.Windows.Forms.Label lblTimeCI;
-        private System.Windows.Forms.Button btnCheckIn;
-        private System.Windows.Forms.Label lblTimeClockCI;
-        private System.Windows.Forms.Label lblItemIdCI;
-        private System.Windows.Forms.Label lblItemNameCI;
+        private System.Windows.Forms.TabPage tbpAssets;
+        private System.Windows.Forms.TabPage tbpConsumables;
         private System.Windows.Forms.Label lblSvsuIdCI;
-        private System.Windows.Forms.Label lblStudentNameCI;
-        private System.Windows.Forms.TextBox txtItemIdCI;
-        private System.Windows.Forms.TextBox txtItemNameCI;
-        private System.Windows.Forms.TextBox txtStudentNameCI;
-        private System.Windows.Forms.Button btnClearCO;
-        private System.Windows.Forms.Label lblCOHeader;
         private System.Windows.Forms.MaskedTextBox txtSvsuIdCI;
-        private System.Windows.Forms.MaskedTextBox txtSvsuIdCO;
+        private System.Windows.Forms.ListBox lstCheckedOut;
+        private System.Windows.Forms.ListBox lstCheckedIn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.RichTextBox txtAssetNotes;
+        internal System.Windows.Forms.Label lblNotes;
+        private System.Windows.Forms.Button btnCheckIn;
+        private System.Windows.Forms.Button btnCheckOut;
+        private System.Windows.Forms.Label label10;
+        internal System.Windows.Forms.ComboBox cmbAddCategory;
+        internal System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnHandOut;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown nudAddQty;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCurrentQty;
+        internal System.Windows.Forms.ComboBox cmbAddCommodity;
+        internal System.Windows.Forms.Label label4;
+        internal System.Windows.Forms.ComboBox cmbAddCabinet;
+        internal System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.ComboBox cmbAddNLevel;
+        internal System.Windows.Forms.Label label8;
+        internal System.Windows.Forms.ComboBox cmbAddRoom;
+        internal System.Windows.Forms.Label label11;
+        internal System.Windows.Forms.RichTextBox richTextBox1;
+        internal System.Windows.Forms.Label label12;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Label label13;
     }
 }
