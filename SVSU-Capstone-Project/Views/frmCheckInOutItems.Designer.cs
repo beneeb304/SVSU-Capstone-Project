@@ -31,6 +31,7 @@ namespace SVSU_Capstone_Project.Views
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbpCheckIn = new System.Windows.Forms.TabPage();
+            this.txtSvsuIdCI = new System.Windows.Forms.MaskedTextBox();
             this.btnClearCI = new System.Windows.Forms.Button();
             this.lblCIHeader = new System.Windows.Forms.Label();
             this.lblTimeCI = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtItemNameCI = new System.Windows.Forms.TextBox();
             this.txtStudentNameCI = new System.Windows.Forms.TextBox();
             this.tbpCheckOut = new System.Windows.Forms.TabPage();
+            this.txtSvsuIdCO = new System.Windows.Forms.MaskedTextBox();
             this.btnClearCO = new System.Windows.Forms.Button();
             this.lblCOHeader = new System.Windows.Forms.Label();
             this.lblTimeCO = new System.Windows.Forms.Label();
@@ -57,8 +59,6 @@ namespace SVSU_Capstone_Project.Views
             this.txtItemNameCO = new System.Windows.Forms.TextBox();
             this.txtStudentNameCO = new System.Windows.Forms.TextBox();
             this.tbpHandOut = new System.Windows.Forms.TabPage();
-            this.txtSvsuIdCI = new System.Windows.Forms.MaskedTextBox();
-            this.txtSvsuIdCO = new System.Windows.Forms.MaskedTextBox();
             this.tabControl1.SuspendLayout();
             this.tbpCheckIn.SuspendLayout();
             this.tbpCheckOut.SuspendLayout();
@@ -99,6 +99,17 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCheckIn.Text = "Check In Simulator";
             this.tbpCheckIn.UseVisualStyleBackColor = true;
             // 
+            // txtSvsuIdCI
+            // 
+            this.txtSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSvsuIdCI.Location = new System.Drawing.Point(413, 78);
+            this.txtSvsuIdCI.Mask = "000000";
+            this.txtSvsuIdCI.Name = "txtSvsuIdCI";
+            this.txtSvsuIdCI.Size = new System.Drawing.Size(100, 26);
+            this.txtSvsuIdCI.TabIndex = 1;
+            this.txtSvsuIdCI.ValidatingType = typeof(int);
+            this.txtSvsuIdCI.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtSvsuIdCI_MaskInputRejected);
+            // 
             // btnClearCI
             // 
             this.btnClearCI.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -106,7 +117,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnClearCI.Location = new System.Drawing.Point(350, 323);
             this.btnClearCI.Name = "btnClearCI";
             this.btnClearCI.Size = new System.Drawing.Size(99, 46);
-            this.btnClearCI.TabIndex = 69;
+            this.btnClearCI.TabIndex = 5;
             this.btnClearCI.Text = "Clear";
             this.btnClearCI.UseVisualStyleBackColor = true;
             // 
@@ -139,7 +150,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCheckIn.Location = new System.Drawing.Point(469, 323);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(99, 46);
-            this.btnCheckIn.TabIndex = 66;
+            this.btnCheckIn.TabIndex = 6;
             this.btnCheckIn.Text = "Check In";
             this.btnCheckIn.UseVisualStyleBackColor = true;
             this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
@@ -206,7 +217,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtItemIdCI.Location = new System.Drawing.Point(413, 178);
             this.txtItemIdCI.Name = "txtItemIdCI";
             this.txtItemIdCI.Size = new System.Drawing.Size(100, 26);
-            this.txtItemIdCI.TabIndex = 59;
+            this.txtItemIdCI.TabIndex = 3;
             // 
             // txtItemNameCI
             // 
@@ -215,7 +226,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtItemNameCI.Location = new System.Drawing.Point(413, 228);
             this.txtItemNameCI.Name = "txtItemNameCI";
             this.txtItemNameCI.Size = new System.Drawing.Size(219, 26);
-            this.txtItemNameCI.TabIndex = 58;
+            this.txtItemNameCI.TabIndex = 4;
             // 
             // txtStudentNameCI
             // 
@@ -224,7 +235,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtStudentNameCI.Location = new System.Drawing.Point(413, 128);
             this.txtStudentNameCI.Name = "txtStudentNameCI";
             this.txtStudentNameCI.Size = new System.Drawing.Size(219, 26);
-            this.txtStudentNameCI.TabIndex = 57;
+            this.txtStudentNameCI.TabIndex = 2;
             // 
             // tbpCheckOut
             // 
@@ -249,6 +260,16 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCheckOut.Text = "Check Out Simulator";
             this.tbpCheckOut.UseVisualStyleBackColor = true;
             // 
+            // txtSvsuIdCO
+            // 
+            this.txtSvsuIdCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSvsuIdCO.Location = new System.Drawing.Point(413, 78);
+            this.txtSvsuIdCO.Mask = "000000";
+            this.txtSvsuIdCO.Name = "txtSvsuIdCO";
+            this.txtSvsuIdCO.Size = new System.Drawing.Size(100, 26);
+            this.txtSvsuIdCO.TabIndex = 1;
+            this.txtSvsuIdCO.ValidatingType = typeof(int);
+            // 
             // btnClearCO
             // 
             this.btnClearCO.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -256,7 +277,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnClearCO.Location = new System.Drawing.Point(350, 323);
             this.btnClearCO.Name = "btnClearCO";
             this.btnClearCO.Size = new System.Drawing.Size(99, 46);
-            this.btnClearCO.TabIndex = 56;
+            this.btnClearCO.TabIndex = 5;
             this.btnClearCO.Text = "Clear";
             this.btnClearCO.UseVisualStyleBackColor = true;
             // 
@@ -289,7 +310,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCheckOut.Location = new System.Drawing.Point(469, 323);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(99, 46);
-            this.btnCheckOut.TabIndex = 52;
+            this.btnCheckOut.TabIndex = 6;
             this.btnCheckOut.Text = "Check Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
             // 
@@ -356,7 +377,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtItemIdCO.Location = new System.Drawing.Point(413, 178);
             this.txtItemIdCO.Name = "txtItemIdCO";
             this.txtItemIdCO.Size = new System.Drawing.Size(100, 26);
-            this.txtItemIdCO.TabIndex = 45;
+            this.txtItemIdCO.TabIndex = 3;
             this.txtItemIdCO.TextChanged += new System.EventHandler(this.txtItemID_TextChanged);
             // 
             // txtItemNameCO
@@ -366,7 +387,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtItemNameCO.Location = new System.Drawing.Point(413, 228);
             this.txtItemNameCO.Name = "txtItemNameCO";
             this.txtItemNameCO.Size = new System.Drawing.Size(219, 26);
-            this.txtItemNameCO.TabIndex = 44;
+            this.txtItemNameCO.TabIndex = 4;
             this.txtItemNameCO.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
             // 
             // txtStudentNameCO
@@ -376,7 +397,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtStudentNameCO.Location = new System.Drawing.Point(413, 128);
             this.txtStudentNameCO.Name = "txtStudentNameCO";
             this.txtStudentNameCO.Size = new System.Drawing.Size(219, 26);
-            this.txtStudentNameCO.TabIndex = 43;
+            this.txtStudentNameCO.TabIndex = 2;
             this.txtStudentNameCO.TextChanged += new System.EventHandler(this.txtStudentName_TextChanged);
             // 
             // tbpHandOut
@@ -387,27 +408,6 @@ namespace SVSU_Capstone_Project.Views
             this.tbpHandOut.TabIndex = 2;
             this.tbpHandOut.Text = "Hand-Out Item";
             this.tbpHandOut.UseVisualStyleBackColor = true;
-            // 
-            // txtSvsuIdCI
-            // 
-            this.txtSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSvsuIdCI.Location = new System.Drawing.Point(413, 78);
-            this.txtSvsuIdCI.Mask = "000000";
-            this.txtSvsuIdCI.Name = "txtSvsuIdCI";
-            this.txtSvsuIdCI.Size = new System.Drawing.Size(100, 26);
-            this.txtSvsuIdCI.TabIndex = 70;
-            this.txtSvsuIdCI.ValidatingType = typeof(int);
-            this.txtSvsuIdCI.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtSvsuIdCI_MaskInputRejected);
-            // 
-            // txtSvsuIdCO
-            // 
-            this.txtSvsuIdCO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSvsuIdCO.Location = new System.Drawing.Point(413, 78);
-            this.txtSvsuIdCO.Mask = "000000";
-            this.txtSvsuIdCO.Name = "txtSvsuIdCO";
-            this.txtSvsuIdCO.Size = new System.Drawing.Size(100, 26);
-            this.txtSvsuIdCO.TabIndex = 71;
-            this.txtSvsuIdCO.ValidatingType = typeof(int);
             // 
             // frmCheckInOutItems
             // 

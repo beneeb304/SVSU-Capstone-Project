@@ -31,6 +31,7 @@ namespace SVSU_Capstone_Project.Views
         {
             this.tbcInventory = new System.Windows.Forms.TabControl();
             this.tbpAddItems = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
             this.cmbAddCategory = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnAddCancel = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddRoom = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbpCreateItem = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
             this.mtxCreateCost = new System.Windows.Forms.MaskedTextBox();
             this.nudCreateAlertQty = new System.Windows.Forms.NumericUpDown();
             this.txtCreateFeatures = new System.Windows.Forms.TextBox();
@@ -68,6 +70,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCreateItemName = new System.Windows.Forms.TextBox();
             this.lblItemName = new System.Windows.Forms.Label();
             this.tbpDeleteItem = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
             this.cmbDeleteCabinet = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.cmbDeleteNLevel = new System.Windows.Forms.ComboBox();
@@ -82,9 +85,6 @@ namespace SVSU_Capstone_Project.Views
             this.label11 = new System.Windows.Forms.Label();
             this.btnDeleteCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.tbcInventory.SuspendLayout();
             this.tbpAddItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).BeginInit();
@@ -133,6 +133,16 @@ namespace SVSU_Capstone_Project.Views
             this.tbpAddItems.Text = "Add Stock for Existing Item";
             this.tbpAddItems.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(17, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(260, 22);
+            this.label10.TabIndex = 154;
+            this.label10.Text = "Add Stock for Existing Item";
+            // 
             // cmbAddCategory
             // 
             this.cmbAddCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -141,7 +151,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAddCategory.Name = "cmbAddCategory";
             this.cmbAddCategory.Size = new System.Drawing.Size(159, 26);
-            this.cmbAddCategory.TabIndex = 153;
+            this.cmbAddCategory.TabIndex = 1;
             // 
             // label9
             // 
@@ -160,7 +170,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnAddCancel.Location = new System.Drawing.Point(729, 338);
             this.btnAddCancel.Name = "btnAddCancel";
             this.btnAddCancel.Size = new System.Drawing.Size(77, 43);
-            this.btnAddCancel.TabIndex = 151;
+            this.btnAddCancel.TabIndex = 8;
             this.btnAddCancel.Text = "Cancel";
             this.btnAddCancel.UseVisualStyleBackColor = true;
             this.btnAddCancel.Click += new System.EventHandler(this.btnAddCancel_Click);
@@ -171,7 +181,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnAdd.Location = new System.Drawing.Point(823, 338);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(77, 43);
-            this.btnAdd.TabIndex = 150;
+            this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
@@ -212,7 +222,7 @@ namespace SVSU_Capstone_Project.Views
             0});
             this.nudAddQty.Name = "nudAddQty";
             this.nudAddQty.Size = new System.Drawing.Size(120, 26);
-            this.nudAddQty.TabIndex = 148;
+            this.nudAddQty.TabIndex = 7;
             this.nudAddQty.Value = new decimal(new int[] {
             1,
             0,
@@ -236,7 +246,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCurrentQty.Name = "txtCurrentQty";
             this.txtCurrentQty.ReadOnly = true;
             this.txtCurrentQty.Size = new System.Drawing.Size(120, 26);
-            this.txtCurrentQty.TabIndex = 146;
+            this.txtCurrentQty.TabIndex = 6;
             // 
             // cmbAddCommodity
             // 
@@ -246,7 +256,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddCommodity.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAddCommodity.Name = "cmbAddCommodity";
             this.cmbAddCommodity.Size = new System.Drawing.Size(159, 26);
-            this.cmbAddCommodity.TabIndex = 145;
+            this.cmbAddCommodity.TabIndex = 2;
             // 
             // label4
             // 
@@ -267,7 +277,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddCabinet.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAddCabinet.Name = "cmbAddCabinet";
             this.cmbAddCabinet.Size = new System.Drawing.Size(159, 26);
-            this.cmbAddCabinet.TabIndex = 143;
+            this.cmbAddCabinet.TabIndex = 4;
             // 
             // label1
             // 
@@ -288,7 +298,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddNLevel.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAddNLevel.Name = "cmbAddNLevel";
             this.cmbAddNLevel.Size = new System.Drawing.Size(54, 26);
-            this.cmbAddNLevel.TabIndex = 141;
+            this.cmbAddNLevel.TabIndex = 5;
             // 
             // label2
             // 
@@ -309,7 +319,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddRoom.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAddRoom.Name = "cmbAddRoom";
             this.cmbAddRoom.Size = new System.Drawing.Size(159, 26);
-            this.cmbAddRoom.TabIndex = 139;
+            this.cmbAddRoom.TabIndex = 3;
             // 
             // label3
             // 
@@ -351,13 +361,23 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCreateItem.Text = "Create New Item";
             this.tbpCreateItem.UseVisualStyleBackColor = true;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(17, 18);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(159, 22);
+            this.label16.TabIndex = 155;
+            this.label16.Text = "Create New Item";
+            // 
             // mtxCreateCost
             // 
             this.mtxCreateCost.Location = new System.Drawing.Point(610, 105);
             this.mtxCreateCost.Mask = "$9999999.00";
             this.mtxCreateCost.Name = "mtxCreateCost";
             this.mtxCreateCost.Size = new System.Drawing.Size(100, 22);
-            this.mtxCreateCost.TabIndex = 146;
+            this.mtxCreateCost.TabIndex = 5;
             this.mtxCreateCost.ValidatingType = typeof(int);
             // 
             // nudCreateAlertQty
@@ -371,7 +391,7 @@ namespace SVSU_Capstone_Project.Views
             0});
             this.nudCreateAlertQty.Name = "nudCreateAlertQty";
             this.nudCreateAlertQty.Size = new System.Drawing.Size(120, 26);
-            this.nudCreateAlertQty.TabIndex = 145;
+            this.nudCreateAlertQty.TabIndex = 7;
             // 
             // txtCreateFeatures
             // 
@@ -380,7 +400,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCreateFeatures.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateFeatures.Name = "txtCreateFeatures";
             this.txtCreateFeatures.Size = new System.Drawing.Size(159, 26);
-            this.txtCreateFeatures.TabIndex = 142;
+            this.txtCreateFeatures.TabIndex = 8;
             // 
             // btnCreateCancel
             // 
@@ -388,7 +408,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCreateCancel.Location = new System.Drawing.Point(729, 338);
             this.btnCreateCancel.Name = "btnCreateCancel";
             this.btnCreateCancel.Size = new System.Drawing.Size(77, 43);
-            this.btnCreateCancel.TabIndex = 141;
+            this.btnCreateCancel.TabIndex = 9;
             this.btnCreateCancel.Text = "Cancel";
             this.btnCreateCancel.UseVisualStyleBackColor = true;
             this.btnCreateCancel.Click += new System.EventHandler(this.btnCreateCancel_Click);
@@ -399,7 +419,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCreate.Location = new System.Drawing.Point(823, 338);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(77, 43);
-            this.btnCreate.TabIndex = 140;
+            this.btnCreate.TabIndex = 10;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
             // 
@@ -409,7 +429,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCreateDescription.Location = new System.Drawing.Point(148, 147);
             this.txtCreateDescription.Name = "txtCreateDescription";
             this.txtCreateDescription.Size = new System.Drawing.Size(254, 185);
-            this.txtCreateDescription.TabIndex = 133;
+            this.txtCreateDescription.TabIndex = 3;
             this.txtCreateDescription.Text = "";
             // 
             // lblDescription
@@ -452,7 +472,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCreateUrl.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateUrl.Name = "txtCreateUrl";
             this.txtCreateUrl.Size = new System.Drawing.Size(159, 26);
-            this.txtCreateUrl.TabIndex = 126;
+            this.txtCreateUrl.TabIndex = 6;
             // 
             // lblLink
             // 
@@ -484,7 +504,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbCreateCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCreateCategory.Name = "cmbCreateCategory";
             this.cmbCreateCategory.Size = new System.Drawing.Size(159, 26);
-            this.cmbCreateCategory.TabIndex = 123;
+            this.cmbCreateCategory.TabIndex = 2;
             // 
             // lblSupplier
             // 
@@ -505,7 +525,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbCreateVendor.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCreateVendor.Name = "cmbCreateVendor";
             this.cmbCreateVendor.Size = new System.Drawing.Size(159, 26);
-            this.cmbCreateVendor.TabIndex = 115;
+            this.cmbCreateVendor.TabIndex = 4;
             // 
             // lblCategory
             // 
@@ -525,7 +545,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCreateItemName.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateItemName.Name = "txtCreateItemName";
             this.txtCreateItemName.Size = new System.Drawing.Size(254, 26);
-            this.txtCreateItemName.TabIndex = 113;
+            this.txtCreateItemName.TabIndex = 1;
             this.txtCreateItemName.TextChanged += new System.EventHandler(this.txtCreateItemName_TextChanged);
             // 
             // lblItemName
@@ -563,6 +583,16 @@ namespace SVSU_Capstone_Project.Views
             this.tbpDeleteItem.Text = "Delete Existing Item";
             this.tbpDeleteItem.UseVisualStyleBackColor = true;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(17, 18);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(192, 22);
+            this.label17.TabIndex = 186;
+            this.label17.Text = "Delete Existing Item";
+            // 
             // cmbDeleteCabinet
             // 
             this.cmbDeleteCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -571,7 +601,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbDeleteCabinet.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteCabinet.Name = "cmbDeleteCabinet";
             this.cmbDeleteCabinet.Size = new System.Drawing.Size(159, 26);
-            this.cmbDeleteCabinet.TabIndex = 185;
+            this.cmbDeleteCabinet.TabIndex = 4;
             // 
             // label13
             // 
@@ -592,7 +622,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbDeleteNLevel.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteNLevel.Name = "cmbDeleteNLevel";
             this.cmbDeleteNLevel.Size = new System.Drawing.Size(54, 26);
-            this.cmbDeleteNLevel.TabIndex = 183;
+            this.cmbDeleteNLevel.TabIndex = 5;
             // 
             // label14
             // 
@@ -613,7 +643,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbDeleteRoom.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteRoom.Name = "cmbDeleteRoom";
             this.cmbDeleteRoom.Size = new System.Drawing.Size(159, 26);
-            this.cmbDeleteRoom.TabIndex = 181;
+            this.cmbDeleteRoom.TabIndex = 3;
             // 
             // label15
             // 
@@ -633,7 +663,7 @@ namespace SVSU_Capstone_Project.Views
             this.chkDelete.Location = new System.Drawing.Point(44, 349);
             this.chkDelete.Name = "chkDelete";
             this.chkDelete.Size = new System.Drawing.Size(171, 23);
-            this.chkDelete.TabIndex = 178;
+            this.chkDelete.TabIndex = 6;
             this.chkDelete.Text = "Delete Everywhere";
             this.chkDelete.UseVisualStyleBackColor = true;
             this.chkDelete.CheckedChanged += new System.EventHandler(this.chkDelete_CheckedChanged);
@@ -646,7 +676,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbDeleteCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteCategory.Name = "cmbDeleteCategory";
             this.cmbDeleteCategory.Size = new System.Drawing.Size(159, 26);
-            this.cmbDeleteCategory.TabIndex = 177;
+            this.cmbDeleteCategory.TabIndex = 1;
             // 
             // label8
             // 
@@ -678,7 +708,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbDeleteCommodity.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeleteCommodity.Name = "cmbDeleteCommodity";
             this.cmbDeleteCommodity.Size = new System.Drawing.Size(159, 26);
-            this.cmbDeleteCommodity.TabIndex = 175;
+            this.cmbDeleteCommodity.TabIndex = 2;
             // 
             // label11
             // 
@@ -697,7 +727,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnDeleteCancel.Location = new System.Drawing.Point(729, 338);
             this.btnDeleteCancel.Name = "btnDeleteCancel";
             this.btnDeleteCancel.Size = new System.Drawing.Size(77, 43);
-            this.btnDeleteCancel.TabIndex = 166;
+            this.btnDeleteCancel.TabIndex = 7;
             this.btnDeleteCancel.Text = "Cancel";
             this.btnDeleteCancel.UseVisualStyleBackColor = true;
             this.btnDeleteCancel.Click += new System.EventHandler(this.btnDeleteCancel_Click);
@@ -708,39 +738,9 @@ namespace SVSU_Capstone_Project.Views
             this.btnDelete.Location = new System.Drawing.Point(823, 338);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(77, 43);
-            this.btnDelete.TabIndex = 165;
+            this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(17, 18);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(260, 22);
-            this.label10.TabIndex = 154;
-            this.label10.Text = "Add Stock for Existing Item";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(17, 18);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(159, 22);
-            this.label16.TabIndex = 155;
-            this.label16.Text = "Create New Item";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(17, 18);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(192, 22);
-            this.label17.TabIndex = 186;
-            this.label17.Text = "Delete Existing Item";
             // 
             // frmManageInventory
             // 
