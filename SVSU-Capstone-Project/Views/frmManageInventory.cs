@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,36 +18,35 @@ namespace SVSU_Capstone_Project.Views
         public frmManageInventory()
         {
             InitializeComponent();
-            //this.Load += frmManageInventory_Load;
-            // codefirst example
-            // this.cmbAddCategory.DataBindings.Add("Items", this, "activeCategories", false, DataSourceUpdateMode.OnPropertyChanged);
-            // this.cmbAddCategory.SelectedValueChanged += (e,v) => {itemFeatures = v.toString();};
+
+            // Bind Events before datasource is set to prevent null reference exception
+            this.cmbAddCategory.SelectedValueChanged += cmbAddCategory_SelectedValueChanged;
+            this.cmbAddCommodity.SelectedValueChanged += cmbAddCommodity_SelectedValueChanged;
+            this.cmbAddCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
         }
 
-        // //Data Binding Example || ReadOnly
-        // public Category[] activeCategories
-        // {
-        //     get
-        //     {
-        //         return ItemModel.GetMany<Category>((c) => c.blnActive == true).ToArray();
-        //     }
-        // }
-        //
-        // // Data Binding Example || ReadWrite
-        // public string itemFeatures
-        // {
-        //     get
-        //     {
-        //         return ItemModel.Get<Commodity>(i => i.strName == "Selected Item").strFeatures;
-        //     }
-        //     set
-        //     {
-        //         // set value
-        //         var x = ItemModel.Get<Commodity>(i => i.strName == "Selected Item");
-        //         x.strFeatures = value;
-        //         ItemModel.Update<Commodity>(x);
-        //     }
-        // }
+        private void cmbAddCommodity_SelectedValueChanged( object sender, EventArgs e )
+        {
+            // set room, cabinet, and nlevel to ref of selected commodity
+            this.cmbAddRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
+            this.cmbAddCabinet.DataSource = (this.cmbAddRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
+            this.cmbAddNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
+            // set quantity to quantity of selected commodity
+            this.nudAddQty.Value = 1;            
+            this.txtCurrentQty.Text = ItemModel.Get<Quantity>(
+                x => x.objNLevel == this.cmbAddNLevel.SelectedValue as NLevel,
+                x => x.objCabinet == this.cmbAddCabinet.SelectedValue as Cabinet,
+                x => x.objCommodity == this.cmbAddCommodity.SelectedValue as Commodity
+                ).intQuantity.ToString();
+        }
+
+        private void cmbAddCategory_SelectedValueChanged( object sender, EventArgs e )
+        {
+            this.cmbAddCommodity.SelectedIndex = -1;
+            this.cmbAddCommodity.DataSource = (this.cmbAddCategory.SelectedValue as Category).lstCommodities;
+        }
+
+        //Data Binding Example || ReadOnly
 
         //private void frmManageInventory_Load( object sender, EventArgs e )
         //{

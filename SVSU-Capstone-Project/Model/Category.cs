@@ -12,5 +12,11 @@
         public string strDescription { get; set; }
 
         public virtual List<Commodity> lstCommodities { get; set; }
+        
+        // override tostring with strName
+        public override string ToString()
+        {
+            return strName;
+        }
     }
 }

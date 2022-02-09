@@ -13,5 +13,11 @@ namespace SVSU_Capstone_Project.Model
         [Column("description")]
         public string strDescription { get; set; }
         public virtual List<Quantity> lstQuantities { get; set; }
+
+        // override tostring with strName
+        public override string ToString()
+        {
+            return strName;
+        }
     }
 }

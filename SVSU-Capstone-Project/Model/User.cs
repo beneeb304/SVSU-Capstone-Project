@@ -23,5 +23,11 @@ namespace SVSU_Capstone_Project.Model
         public bool blnIsAdmin { get; set; }
 
         public virtual List<Log> lstLogs { get; set; }
+
+        // override tostring with name
+        public override string ToString()
+        {
+            return $"{strLast_name}, {strFirst_name}";
+        }
     }
 }

@@ -23,5 +23,11 @@
         public virtual List<Quantity> lstQuantities { get; set; }
         public virtual List<VendorItem> lstVendorItems { get; set; }
         public virtual List<Log> lstLogs { get; set; }
+
+        // override tostring with strName
+        public override string ToString()
+        {
+            return strName;
+        }
     }
 }

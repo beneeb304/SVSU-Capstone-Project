@@ -11,22 +11,37 @@ namespace SVSU_Capstone_Project.ViewModel
     {
         private static InvDb db = new InvDb();
 
-        public static List<T> GetMany<T>( Func<T, bool> predicate ) where T : ContextEntity
+        public static List<T> GetMany<T>( Func<T, bool> predicate, params string[] includes ) where T : ContextEntity
         {
-            return db.Set<T>().Where(predicate).ToList();
-
-            //  ItemModel.GetMany<Cabinet>((c) => c.objRoom.strName == "Room 1").ToList();
+            var dbSet = db.Set<T>();
+            foreach( string include in includes )
+                dbSet.Include(include);
+            return dbSet.Where(predicate).ToList();
+        }
+        public static List<T> GetMany<T>() where T : ContextEntity
+        {
+            return db.Set<T>().ToList();
         }
 
-        public static T Get<T>( Func<T, bool> predicate ) where T : ContextEntity
+        public static T Get<T>( params Func<T, bool>[] predicates) where T : ContextEntity
         {
-            return db.Set<T>().Where(predicate).FirstOrDefault();
+            var dbSet = db.Set<T>();
+            foreach( var predicate in predicates )
+                dbSet.Where(predicate);
+            return dbSet.FirstOrDefault();
         }
 
-        public static T Include<T>( string propname ) where T : ContextEntity
+        public static T Include<T>( this T parent, params string[] propname ) where T : ContextEntity
         {
             // return prop of type R from T with property name = propname
-            return db.Set<T>().Include(propname).FirstOrDefault();
+            foreach (string prop in propname)
+            {
+                if (parent.GetType().GetProperty(prop) != null)
+                {
+                    parent = db.Entry(parent).Entity.Include(prop);
+                }
+            }
+            return parent;
         }
 
         public static Guid Add<T>( T obj ) where T : ContextEntity

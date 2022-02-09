@@ -31,11 +31,34 @@ namespace SVSU_Capstone_Project.Model
     {
         [Key, Column("tuid")]
         public Guid uidTuid { get; set; }
+
+        public override bool Equals( object obj )
+        {
+            return obj is ContextEntity entity &&
+                   uidTuid.Equals(entity.uidTuid);
+        }
+
+        // override equal operator
+        public static bool operator == ( ContextEntity left, ContextEntity right )
+        {
+            return left.Equals(right);
+        }
+        public static bool operator != ( ContextEntity left, ContextEntity right )
+        {
+            return !(left == right);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
-    public enum ItemType {
+
+    public enum ItemType
+    {
         Consumable,
         Equipment,
         Simulator
     }
-    
+
 }

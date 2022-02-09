@@ -7,7 +7,7 @@
     public class Quantity : ContextEntity
     {
         [Column("quantity")]
-        public int intQuantity { get; set; }
+        public int intQuantity { get; set; } = 0;
 
         // Foreign Keys
         public virtual NLevel objNLevel { get; set; }
