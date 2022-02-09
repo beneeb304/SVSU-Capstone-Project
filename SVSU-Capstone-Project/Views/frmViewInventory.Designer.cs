@@ -32,13 +32,8 @@ namespace SVSU_Capstone_Project.Views
             this.lblViewInventory = new System.Windows.Forms.Label();
             this.btnExportToExcel = new System.Windows.Forms.Button();
             this.grbFilterFields = new System.Windows.Forms.GroupBox();
-            this.chkNLevel = new System.Windows.Forms.CheckBox();
-            this.chkSupplier = new System.Windows.Forms.CheckBox();
-            this.chkQuanity = new System.Windows.Forms.CheckBox();
-            this.chkLocation = new System.Windows.Forms.CheckBox();
-            this.chkCategory = new System.Windows.Forms.CheckBox();
-            this.lblFilter = new System.Windows.Forms.Label();
-            this.cboNlevel = new System.Windows.Forms.ComboBox();
+            this.lblNLevel = new System.Windows.Forms.Label();
+            this.cmbNLevel = new System.Windows.Forms.ComboBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvInventoryView = new System.Windows.Forms.DataGridView();
@@ -48,6 +43,12 @@ namespace SVSU_Capstone_Project.Views
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbRoom = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbVendor = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.grbFilterFields.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryView)).BeginInit();
             this.SuspendLayout();
@@ -77,115 +78,53 @@ namespace SVSU_Capstone_Project.Views
             // grbFilterFields
             // 
             this.grbFilterFields.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.grbFilterFields.Controls.Add(this.chkNLevel);
-            this.grbFilterFields.Controls.Add(this.chkSupplier);
-            this.grbFilterFields.Controls.Add(this.chkQuanity);
-            this.grbFilterFields.Controls.Add(this.chkLocation);
-            this.grbFilterFields.Controls.Add(this.chkCategory);
+            this.grbFilterFields.Controls.Add(this.cmbVendor);
+            this.grbFilterFields.Controls.Add(this.label3);
+            this.grbFilterFields.Controls.Add(this.cmbRoom);
+            this.grbFilterFields.Controls.Add(this.label2);
+            this.grbFilterFields.Controls.Add(this.cmbCategory);
+            this.grbFilterFields.Controls.Add(this.label1);
+            this.grbFilterFields.Controls.Add(this.cmbNLevel);
+            this.grbFilterFields.Controls.Add(this.lblNLevel);
             this.grbFilterFields.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbFilterFields.Location = new System.Drawing.Point(353, 58);
+            this.grbFilterFields.Location = new System.Drawing.Point(13, 62);
             this.grbFilterFields.Margin = new System.Windows.Forms.Padding(4);
             this.grbFilterFields.Name = "grbFilterFields";
             this.grbFilterFields.Padding = new System.Windows.Forms.Padding(4);
-            this.grbFilterFields.Size = new System.Drawing.Size(467, 65);
+            this.grbFilterFields.Size = new System.Drawing.Size(823, 82);
             this.grbFilterFields.TabIndex = 41;
             this.grbFilterFields.TabStop = false;
-            this.grbFilterFields.Text = "Fields";
+            this.grbFilterFields.Text = "Filter Fields";
             // 
-            // chkNLevel
+            // lblNLevel
             // 
-            this.chkNLevel.AutoSize = true;
-            this.chkNLevel.Checked = true;
-            this.chkNLevel.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkNLevel.Location = new System.Drawing.Point(389, 30);
-            this.chkNLevel.Margin = new System.Windows.Forms.Padding(4);
-            this.chkNLevel.Name = "chkNLevel";
-            this.chkNLevel.Size = new System.Drawing.Size(75, 20);
-            this.chkNLevel.TabIndex = 4;
-            this.chkNLevel.Text = "N Level";
-            this.chkNLevel.UseVisualStyleBackColor = true;
+            this.lblNLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblNLevel.AutoSize = true;
+            this.lblNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNLevel.Location = new System.Drawing.Point(727, 25);
+            this.lblNLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNLevel.Name = "lblNLevel";
+            this.lblNLevel.Size = new System.Drawing.Size(73, 19);
+            this.lblNLevel.TabIndex = 40;
+            this.lblNLevel.Text = "N-Level:";
             // 
-            // chkSupplier
+            // cmbNLevel
             // 
-            this.chkSupplier.AutoSize = true;
-            this.chkSupplier.Checked = true;
-            this.chkSupplier.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSupplier.Location = new System.Drawing.Point(296, 31);
-            this.chkSupplier.Margin = new System.Windows.Forms.Padding(4);
-            this.chkSupplier.Name = "chkSupplier";
-            this.chkSupplier.Size = new System.Drawing.Size(81, 20);
-            this.chkSupplier.TabIndex = 3;
-            this.chkSupplier.Text = "Supplier";
-            this.chkSupplier.UseVisualStyleBackColor = true;
-            // 
-            // chkQuanity
-            // 
-            this.chkQuanity.AutoSize = true;
-            this.chkQuanity.Checked = true;
-            this.chkQuanity.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkQuanity.Location = new System.Drawing.Point(201, 31);
-            this.chkQuanity.Margin = new System.Windows.Forms.Padding(4);
-            this.chkQuanity.Name = "chkQuanity";
-            this.chkQuanity.Size = new System.Drawing.Size(80, 20);
-            this.chkQuanity.TabIndex = 2;
-            this.chkQuanity.Text = "Quantity";
-            this.chkQuanity.UseVisualStyleBackColor = true;
-            // 
-            // chkLocation
-            // 
-            this.chkLocation.AutoSize = true;
-            this.chkLocation.Checked = true;
-            this.chkLocation.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkLocation.Location = new System.Drawing.Point(106, 30);
-            this.chkLocation.Margin = new System.Windows.Forms.Padding(4);
-            this.chkLocation.Name = "chkLocation";
-            this.chkLocation.Size = new System.Drawing.Size(82, 20);
-            this.chkLocation.TabIndex = 1;
-            this.chkLocation.Text = "Location";
-            this.chkLocation.UseVisualStyleBackColor = true;
-            // 
-            // chkCategory
-            // 
-            this.chkCategory.AutoSize = true;
-            this.chkCategory.Checked = true;
-            this.chkCategory.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCategory.Location = new System.Drawing.Point(8, 30);
-            this.chkCategory.Margin = new System.Windows.Forms.Padding(4);
-            this.chkCategory.Name = "chkCategory";
-            this.chkCategory.Size = new System.Drawing.Size(84, 20);
-            this.chkCategory.TabIndex = 0;
-            this.chkCategory.Text = "Category";
-            this.chkCategory.UseVisualStyleBackColor = true;
-            // 
-            // lblFilter
-            // 
-            this.lblFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lblFilter.AutoSize = true;
-            this.lblFilter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilter.Location = new System.Drawing.Point(12, 100);
-            this.lblFilter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(47, 19);
-            this.lblFilter.TabIndex = 40;
-            this.lblFilter.Text = "Filter";
-            // 
-            // cboNlevel
-            // 
-            this.cboNlevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.cboNlevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboNlevel.FormattingEnabled = true;
-            this.cboNlevel.Location = new System.Drawing.Point(101, 97);
-            this.cboNlevel.Margin = new System.Windows.Forms.Padding(4);
-            this.cboNlevel.Name = "cboNlevel";
-            this.cboNlevel.Size = new System.Drawing.Size(219, 26);
-            this.cboNlevel.TabIndex = 39;
+            this.cmbNLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cmbNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbNLevel.FormattingEnabled = true;
+            this.cmbNLevel.Location = new System.Drawing.Point(731, 48);
+            this.cmbNLevel.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbNLevel.Name = "cmbNLevel";
+            this.cmbNLevel.Size = new System.Drawing.Size(84, 26);
+            this.cmbNLevel.TabIndex = 39;
             // 
             // lblSearch
             // 
             this.lblSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(12, 61);
+            this.lblSearch.Location = new System.Drawing.Point(186, 31);
             this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(63, 19);
@@ -196,10 +135,10 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(101, 58);
+            this.txtSearch.Location = new System.Drawing.Point(275, 28);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(219, 26);
+            this.txtSearch.Size = new System.Drawing.Size(325, 26);
             this.txtSearch.TabIndex = 37;
             // 
             // dgvInventoryView
@@ -258,14 +197,81 @@ namespace SVSU_Capstone_Project.Views
             this.NLevel.MinimumWidth = 6;
             this.NLevel.Name = "NLevel";
             // 
+            // cmbCategory
+            // 
+            this.cmbCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cmbCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(8, 48);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(194, 26);
+            this.cmbCategory.TabIndex = 41;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(4, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 19);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Category:";
+            // 
+            // cmbRoom
+            // 
+            this.cmbRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cmbRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRoom.FormattingEnabled = true;
+            this.cmbRoom.Location = new System.Drawing.Point(285, 48);
+            this.cmbRoom.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbRoom.Name = "cmbRoom";
+            this.cmbRoom.Size = new System.Drawing.Size(106, 26);
+            this.cmbRoom.TabIndex = 43;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(281, 25);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 19);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Room:";
+            // 
+            // cmbVendor
+            // 
+            this.cmbVendor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cmbVendor.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbVendor.FormattingEnabled = true;
+            this.cmbVendor.Location = new System.Drawing.Point(474, 48);
+            this.cmbVendor.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbVendor.Name = "cmbVendor";
+            this.cmbVendor.Size = new System.Drawing.Size(189, 26);
+            this.cmbVendor.TabIndex = 45;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(470, 25);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 19);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "Vendor:";
+            // 
             // frmViewInventory
             // 
             this.ClientSize = new System.Drawing.Size(955, 453);
             this.Controls.Add(this.lblViewInventory);
             this.Controls.Add(this.btnExportToExcel);
             this.Controls.Add(this.grbFilterFields);
-            this.Controls.Add(this.lblFilter);
-            this.Controls.Add(this.cboNlevel);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dgvInventoryView);
@@ -285,13 +291,8 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Label lblViewInventory;
         private System.Windows.Forms.Button btnExportToExcel;
         private System.Windows.Forms.GroupBox grbFilterFields;
-        private System.Windows.Forms.CheckBox chkNLevel;
-        private System.Windows.Forms.CheckBox chkSupplier;
-        private System.Windows.Forms.CheckBox chkQuanity;
-        private System.Windows.Forms.CheckBox chkLocation;
-        private System.Windows.Forms.CheckBox chkCategory;
-        private System.Windows.Forms.Label lblFilter;
-        private System.Windows.Forms.ComboBox cboNlevel;
+        private System.Windows.Forms.Label lblNLevel;
+        private System.Windows.Forms.ComboBox cmbNLevel;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvInventoryView;
@@ -301,5 +302,11 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn NLevel;
+        private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbRoom;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbVendor;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -17,40 +17,18 @@ namespace SVSU_Capstone_Project.Views
             InitializeComponent();
         }
 
-
-        private void txtStudent_ID_TextChanged(object sender, EventArgs e)
+        private void ListBoxClicked( object sender, EventArgs e )
         {
-
-        }
-
-        private void txtStudentName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtItemName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtItemID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDateAndTime_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCheckIn_Click( object sender, EventArgs e )
-        {
-
-        }
-
-        private void txtSvsuIdCI_MaskInputRejected( object sender, MaskInputRejectedEventArgs e )
-        {
-
+            if ((sender as ListBox).Name.ToString() == "lstIn")
+            {
+                btnCheckIn.Enabled = false;
+                btnCheckOut.Enabled = true;
+            }
+            else if ((sender as ListBox).Name.ToString() == "lstOut")
+            {
+                btnCheckIn.Enabled = true;
+                btnCheckOut.Enabled = false;
+            }
         }
     }
 }
