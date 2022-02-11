@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SVSU_Capstone_Project.Model;
+using SVSU_Capstone_Project.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +26,6 @@ namespace SVSU_Capstone_Project.Views
             bool blnSVSU_ID = true, blnPassword = true;
 
             //Check if username is blank
-
             if (txtSVSU_ID.Text.Length == 0)
             {
                 blnSVSU_ID = false;
@@ -39,32 +40,39 @@ namespace SVSU_Capstone_Project.Views
             }
 
             //If there are values in both textboxes, continue to check
-
             if (blnSVSU_ID && blnPassword)
-            {
-                //Hash password
-                string strHashedPassword = HashPassword(txtPassword.Text);
+            {                
+                //Use these creds to login:
+                //ID:   500004
+                //Pass: Capstone424
+                
+                //Query db to get user's info
+                var user = ItemModel.Get<User>(
+                    x => x.strHash == HashPassword(txtPassword.Text)
+                    && x.strSvsu_id == txtSVSU_ID.Text);
 
                 //Check to see if username/password pair exists in database
-                if (true)
+                if (user != null)
                 {
-                    //GET User's info FROM DATABASE QUERY
+                    //If credentials passed, set LoggedInUser properties
+                    frmMain.LoggedInUser.intSVSU_ID = int.Parse(user.strSvsu_id);
+                    frmMain.LoggedInUser.strFName = user.strFirst_name;
+                    frmMain.LoggedInUser.strLName = user.strLast_name;
+                    frmMain.LoggedInUser.strEmail = user.strEmail;
+                    frmMain.LoggedInUser.strPhone = user.strPhone;
+                    frmMain.LoggedInUser.blnAdmin = user.blnIsAdmin;
 
-                    //If credentials pass, close the form and set username
-                    frmMain.LoggedInUser.intSVSU_ID = int.Parse(txtSVSU_ID.Text);
-                    frmMain.LoggedInUser.strFName = "John";
-                    frmMain.LoggedInUser.strLName = "Doe";
-                    frmMain.LoggedInUser.strEmail = "jdoe@svsu.edu";
-                    frmMain.LoggedInUser.strPhone = "989-765-4321";
-                    frmMain.LoggedInUser.blnAdmin = true;
-
+                    //Close the form
                     Close();
                 }
                 else
                 {
-                    //If not, alert the user and empty the textboxes
-                    //txtUsername.Text = "";
-                    //txtPassword.Text = "";
+                    //If not, alert the user
+                    MessageBox.Show("Incorrect SVSU ID and Password Combination!", "Alert");
+
+                    //Empty the textboxes
+                    txtSVSU_ID.Text = "";
+                    txtPassword.Text = "";
                 }
             }
         }
@@ -92,11 +100,6 @@ namespace SVSU_Capstone_Project.Views
         {
             //Clear the error provider
             erpPassword.Clear();
-        }
-
-        private void frmLogin_Load( object sender, EventArgs e )
-        {
-
         }
     }
 }
