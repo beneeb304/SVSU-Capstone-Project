@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------
+﻿// --------------------------------------------------------------------
 // !!! Define Schema as seperate class files under the Model folder !!!
 // --------------------------------------------------------------------
 namespace SVSU_Capstone_Project.Model
@@ -35,7 +35,7 @@ namespace SVSU_Capstone_Project.Model
         public override bool Equals( object obj )
         {
             return obj is ContextEntity entity &&
-                   uidTuid.Equals(entity.uidTuid);
+                   uidTuid.CompareTo(entity.uidTuid) == 0;
         }
 
         // override equal operator

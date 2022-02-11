@@ -22,11 +22,17 @@ namespace SVSU_Capstone_Project.Views
             // Bind Events before datasource is set to prevent null reference exception
             this.cmbAddCategory.SelectedValueChanged += cmbAddCategory_SelectedValueChanged;
             this.cmbAddCommodity.SelectedValueChanged += cmbAddCommodity_SelectedValueChanged;
-            this.cmbAddRoom.SelectedValueChanged += updateStoredQuantity;
+            this.cmbAddRoom.SelectedValueChanged += cmbAddRoom_SelectedValueChanged;
             this.cmbAddCabinet.SelectedValueChanged += updateStoredQuantity;
             this.cmbAddNLevel.SelectedValueChanged += updateStoredQuantity;
 
             this.cmbAddCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
+        }
+
+        private void cmbAddRoom_SelectedValueChanged( object sender, EventArgs e )
+        {
+            this.cmbAddCabinet.DataSource = (this.cmbAddRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
+            updateStoredQuantity();
         }
 
         private void cmbAddCommodity_SelectedValueChanged( object sender, EventArgs e )
@@ -36,16 +42,17 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddCabinet.DataSource = (this.cmbAddRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
             this.cmbAddNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
             // set quantity to quantity of selected commodity 
-            this.nudAddQty.Value = 1;           
-           updateStoredQuantity();
+            this.nudAddQty.Value = 1;
+            updateStoredQuantity();
         }
 
-        private void updateStoredQuantity(object sender = null, EventArgs e = null){
+        private void updateStoredQuantity( object sender = null, EventArgs e = null )
+        {
             // update stored quantity
             var test = ItemModel.Get<Quantity>(
-                x => x.objNLevel == this.cmbAddNLevel.SelectedValue as NLevel 
-                &&   x.objCabinet == this.cmbAddCabinet.SelectedValue as Cabinet 
-                &&   x.objCommodity == this.cmbAddCommodity.SelectedValue as Commodity);
+                x => x.objNLevel == this.cmbAddNLevel.SelectedValue as NLevel
+                && x.objCabinet == this.cmbAddCabinet.SelectedValue as Cabinet
+                && x.objCommodity == this.cmbAddCommodity.SelectedValue as Commodity);
             this.txtCurrentQty.Text = test != null ? test.intQuantity.ToString() : "0";
         }
 
