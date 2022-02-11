@@ -7,13 +7,13 @@ namespace SVSU_Capstone_Project.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class QuanityToStorage : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(QuanityToStorage));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "202202110235560_QuanityToStorage"; }
+            get { return "202202110253137_init"; }
         }
         
         string IMigrationMetadata.Source

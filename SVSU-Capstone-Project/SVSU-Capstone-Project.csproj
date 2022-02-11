@@ -71,19 +71,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202202041838095_renameColumns.cs" />
-    <Compile Include="Migrations\202202041838095_renameColumns.designer.cs">
-      <DependentUpon>202202041838095_renameColumns.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202110222519_checkedItem.cs" />
-    <Compile Include="Migrations\202202110222519_checkedItem.designer.cs">
-      <DependentUpon>202202110222519_checkedItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202110235560_QuanityToStorage.cs" />
-    <Compile Include="Migrations\202202110235560_QuanityToStorage.designer.cs">
-      <DependentUpon>202202110235560_QuanityToStorage.cs</DependentUpon>
+    <Compile Include="Migrations\202202110253137_init.cs" />
+    <Compile Include="Migrations\202202110253137_init.designer.cs">
+      <DependentUpon>202202110253137_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\CheckedItem.cs" />
+    <Compile Include="Model\Storage.cs" />
     <Compile Include="ViewModel\Authentication.cs" />
     <Compile Include="ViewModel\ItemModel.cs" />
     <Compile Include="InvDbDataSet.Designer.cs">
@@ -98,7 +91,6 @@
     <Compile Include="Model\InvDB.cs" />
     <Compile Include="Model\Log.cs" />
     <Compile Include="Model\NLevel.cs" />
-    <Compile Include="Model\Quantity.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Vendor.cs" />
@@ -156,14 +148,8 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202041838095_renameColumns.resx">
-      <DependentUpon>202202041838095_renameColumns.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202110222519_checkedItem.resx">
-      <DependentUpon>202202110222519_checkedItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202110235560_QuanityToStorage.resx">
-      <DependentUpon>202202110235560_QuanityToStorage.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202202110253137_init.resx">
+      <DependentUpon>202202110253137_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

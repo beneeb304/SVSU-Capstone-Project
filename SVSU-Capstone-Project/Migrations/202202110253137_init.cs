@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class renameColumns : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -21,7 +21,7 @@
                 .Index(t => t.objRoom_uidTuid);
             
             CreateTable(
-                "dbo.Quantities",
+                "dbo.Storages",
                 c => new
                     {
                         tuid = c.Guid(nullable: false),
@@ -42,33 +42,51 @@
                 "dbo.Commodities",
                 c => new
                     {
-                        uidTuid = c.Guid(nullable: false),
+                        tuid = c.Guid(nullable: false),
                         name = c.String(),
                         description = c.String(),
                         features = c.String(),
                         alert_quantity = c.Int(nullable: false),
+                        commodityType = c.Int(nullable: false),
                         objCategory_uidTuid = c.Guid(),
                     })
-                .PrimaryKey(t => t.uidTuid)
+                .PrimaryKey(t => t.tuid)
                 .ForeignKey("dbo.Categories", t => t.objCategory_uidTuid)
                 .Index(t => t.objCategory_uidTuid);
+            
+            CreateTable(
+                "dbo.CheckedItems",
+                c => new
+                    {
+                        tuid = c.Guid(nullable: false),
+                        objCommodities_uidTuid = c.Guid(),
+                        objUser_uidTuid = c.Guid(),
+                        objLog_uidTuid = c.Guid(),
+                    })
+                .PrimaryKey(t => t.tuid)
+                .ForeignKey("dbo.Commodities", t => t.objCommodities_uidTuid)
+                .ForeignKey("dbo.Users", t => t.objUser_uidTuid)
+                .ForeignKey("dbo.Logs", t => t.objLog_uidTuid)
+                .Index(t => t.objCommodities_uidTuid)
+                .Index(t => t.objUser_uidTuid)
+                .Index(t => t.objLog_uidTuid);
             
             CreateTable(
                 "dbo.Logs",
                 c => new
                     {
                         tuid = c.Guid(nullable: false),
-                        action = c.String(),
+                        action = c.Int(nullable: false),
                         timestamp = c.DateTime(nullable: false),
                         notes = c.String(),
                         quantityChange = c.Int(nullable: false),
-                        objCommodity_uidTuid = c.Guid(),
+                        objStorage_uidTuid = c.Guid(),
                         objUser_uidTuid = c.Guid(),
                     })
                 .PrimaryKey(t => t.tuid)
-                .ForeignKey("dbo.Commodities", t => t.objCommodity_uidTuid)
+                .ForeignKey("dbo.Storages", t => t.objStorage_uidTuid)
                 .ForeignKey("dbo.Users", t => t.objUser_uidTuid)
-                .Index(t => t.objCommodity_uidTuid)
+                .Index(t => t.objStorage_uidTuid)
                 .Index(t => t.objUser_uidTuid);
             
             CreateTable(
@@ -148,22 +166,28 @@
         public override void Down()
         {
             DropForeignKey("dbo.Cabinets", "objRoom_uidTuid", "dbo.Rooms");
-            DropForeignKey("dbo.Quantities", "objNLevel_uidTuid", "dbo.NLevels");
+            DropForeignKey("dbo.Storages", "objNLevel_uidTuid", "dbo.NLevels");
             DropForeignKey("dbo.Commodities", "objCategory_uidTuid", "dbo.Categories");
             DropForeignKey("dbo.VendorItems", "objVendor_uidTuid", "dbo.Vendors");
             DropForeignKey("dbo.VendorItems", "objCommodity_uidTuid", "dbo.Commodities");
-            DropForeignKey("dbo.Quantities", "objCommodity_uidTuid", "dbo.Commodities");
+            DropForeignKey("dbo.Storages", "objCommodity_uidTuid", "dbo.Commodities");
+            DropForeignKey("dbo.CheckedItems", "objLog_uidTuid", "dbo.Logs");
             DropForeignKey("dbo.Logs", "objUser_uidTuid", "dbo.Users");
-            DropForeignKey("dbo.Logs", "objCommodity_uidTuid", "dbo.Commodities");
-            DropForeignKey("dbo.Quantities", "objCabinet_uidTuid", "dbo.Cabinets");
+            DropForeignKey("dbo.CheckedItems", "objUser_uidTuid", "dbo.Users");
+            DropForeignKey("dbo.Logs", "objStorage_uidTuid", "dbo.Storages");
+            DropForeignKey("dbo.CheckedItems", "objCommodities_uidTuid", "dbo.Commodities");
+            DropForeignKey("dbo.Storages", "objCabinet_uidTuid", "dbo.Cabinets");
             DropIndex("dbo.VendorItems", new[] { "objVendor_uidTuid" });
             DropIndex("dbo.VendorItems", new[] { "objCommodity_uidTuid" });
             DropIndex("dbo.Logs", new[] { "objUser_uidTuid" });
-            DropIndex("dbo.Logs", new[] { "objCommodity_uidTuid" });
+            DropIndex("dbo.Logs", new[] { "objStorage_uidTuid" });
+            DropIndex("dbo.CheckedItems", new[] { "objLog_uidTuid" });
+            DropIndex("dbo.CheckedItems", new[] { "objUser_uidTuid" });
+            DropIndex("dbo.CheckedItems", new[] { "objCommodities_uidTuid" });
             DropIndex("dbo.Commodities", new[] { "objCategory_uidTuid" });
-            DropIndex("dbo.Quantities", new[] { "objNLevel_uidTuid" });
-            DropIndex("dbo.Quantities", new[] { "objCommodity_uidTuid" });
-            DropIndex("dbo.Quantities", new[] { "objCabinet_uidTuid" });
+            DropIndex("dbo.Storages", new[] { "objNLevel_uidTuid" });
+            DropIndex("dbo.Storages", new[] { "objCommodity_uidTuid" });
+            DropIndex("dbo.Storages", new[] { "objCabinet_uidTuid" });
             DropIndex("dbo.Cabinets", new[] { "objRoom_uidTuid" });
             DropTable("dbo.Rooms");
             DropTable("dbo.NLevels");
@@ -172,8 +196,9 @@
             DropTable("dbo.VendorItems");
             DropTable("dbo.Users");
             DropTable("dbo.Logs");
+            DropTable("dbo.CheckedItems");
             DropTable("dbo.Commodities");
-            DropTable("dbo.Quantities");
+            DropTable("dbo.Storages");
             DropTable("dbo.Cabinets");
         }
     }

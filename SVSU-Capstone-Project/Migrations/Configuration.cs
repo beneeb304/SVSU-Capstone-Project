@@ -222,6 +222,7 @@
                 new VendorItem() { uidTuid = new Guid("aaeaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), intCostInCents = 30, objCommodity = context.dsCommodities.First(x => x.strName == "N95 Particulate Respiratory and Surgical Mask"), objVendor = context.dsVendors.First(x => x.strName == "Medline") },
                 new VendorItem() { uidTuid = new Guid("aafaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), intCostInCents = 15000, objCommodity = context.dsCommodities.First(x => x.strName == "Manual Exam Table"), objVendor = context.dsVendors.First(x => x.strName == "Medline") }
             );
+            context.SaveChanges();
             //Create mock logs data in the Logs table
             context.dsLogs.AddOrUpdate(
                 new Log() { uidTuid = new Guid("bbbbbbbb-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), enuAction = ItemAction.Added, dtTimestamp = DateTime.Now, strNotes = "Added 250 gloves", intQuantityChange = 250, objStorage = context.dsStorage.First(x => x.uidTuid.ToString() == "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), objUser = context.dsUsers.First(x => x.strSvsu_id == "500010") },
