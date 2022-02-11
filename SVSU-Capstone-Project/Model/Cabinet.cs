@@ -13,7 +13,7 @@
         public string strDescription { get; set; }
        
         public virtual Room objRoom { get; set; }
-        public virtual List<Quantity> lstQuantities { get; set; }
+        public virtual List<Storage> lstStorage { get; set; }
 
         // override tostring with strName
         public override string ToString()

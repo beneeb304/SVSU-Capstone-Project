@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Quantity : ContextEntity
+    public class Storage : ContextEntity
     {
         [Column("quantity")]
         public int intQuantity { get; set; } = 0;

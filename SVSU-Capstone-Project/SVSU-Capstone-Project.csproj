@@ -75,6 +75,15 @@
     <Compile Include="Migrations\202202041838095_renameColumns.designer.cs">
       <DependentUpon>202202041838095_renameColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202110222519_checkedItem.cs" />
+    <Compile Include="Migrations\202202110222519_checkedItem.designer.cs">
+      <DependentUpon>202202110222519_checkedItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202110235560_QuanityToStorage.cs" />
+    <Compile Include="Migrations\202202110235560_QuanityToStorage.designer.cs">
+      <DependentUpon>202202110235560_QuanityToStorage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CheckedItem.cs" />
     <Compile Include="ViewModel\Authentication.cs" />
     <Compile Include="ViewModel\ItemModel.cs" />
     <Compile Include="InvDbDataSet.Designer.cs">
@@ -149,6 +158,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202041838095_renameColumns.resx">
       <DependentUpon>202202041838095_renameColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202110222519_checkedItem.resx">
+      <DependentUpon>202202110222519_checkedItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202110235560_QuanityToStorage.resx">
+      <DependentUpon>202202110235560_QuanityToStorage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

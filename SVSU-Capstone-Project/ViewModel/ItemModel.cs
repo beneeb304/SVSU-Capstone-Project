@@ -9,12 +9,12 @@ namespace SVSU_Capstone_Project.ViewModel
 {
     static class ItemModel
     {
-        private static InvDb db = new InvDb();
+        private static readonly InvDb db = new InvDb();
 
         public static List<T> GetMany<T>( Func<T, bool> predicate, params string[] includes ) where T : ContextEntity
         {
             var dbSet = db.Set<T>();
-            foreach( string include in includes )
+            foreach (string include in includes)
                 dbSet.Include(include);
             return dbSet.Where(predicate).ToList();
         }
@@ -23,7 +23,7 @@ namespace SVSU_Capstone_Project.ViewModel
             return db.Set<T>().ToList();
         }
 
-        public static T Get<T>( Func<T, bool> predicate) where T : ContextEntity
+        public static T Get<T>( Func<T, bool> predicate ) where T : ContextEntity
         {
             return db.Set<T>().FirstOrDefault(predicate);
         }
@@ -61,25 +61,27 @@ namespace SVSU_Capstone_Project.ViewModel
             db.SaveChanges();
         }
 
-        public static void UseItem( Quantity objUsedFrom, User objUser, uint intQuantityChange, string strNotes )
+        public static void UseItem( Storage objUsedFrom, User objUser, uint intQuantityChange, string strNotes )
         {
             if (objUsedFrom.objCommodity.enuCommodityType == ItemType.Consumable && objUsedFrom.intQuantity < intQuantityChange)
             {
                 throw new Exception("Not enough quantity in stock to use");
             }
             // create new log entry
-            Log objLog = new Log();
-            objLog.dtTimestamp = DateTime.Now;
-            objLog.enuAction = ItemAction.Used;
-            objLog.intQuantityChange = objUsedFrom.objCommodity.enuCommodityType == ItemType.Consumable ? -(int)intQuantityChange : (int)intQuantityChange;
-            objLog.objCommodity = objUsedFrom.objCommodity;
-            objLog.objUser = objUser;
-            objLog.strNotes = strNotes;
+            Log objLog = new Log
+            {
+                dtTimestamp = DateTime.Now,
+                enuAction = ItemAction.Used,
+                intQuantityChange = objUsedFrom.objCommodity.enuCommodityType == ItemType.Consumable ? -(int)intQuantityChange : (int)intQuantityChange,
+                objStorage = objUsedFrom,
+                objUser = objUser,
+                strNotes = strNotes
+            };
             // update quantity in cabinet
             objUsedFrom.intQuantity += objLog.intQuantityChange;
         }
 
-        public static void RestockItem( Quantity objUsedFrom, User objUser, uint intQuantityChange, string notes )
+        public static void RestockItem( Storage objUsedFrom, User objUser, uint intQuantityChange, string notes )
         {
             // if item is not consumable, throw exception
             if (objUsedFrom.objCommodity.enuCommodityType != ItemType.Consumable)
@@ -87,13 +89,15 @@ namespace SVSU_Capstone_Project.ViewModel
                 throw new Exception("Item is not restockable");
             }
             // create new log
-            Log objLog = new Log();
-            objLog.dtTimestamp = DateTime.Now;
-            objLog.enuAction = ItemAction.Added;
-            objLog.intQuantityChange = (int)intQuantityChange;
-            objLog.objCommodity = objUsedFrom.objCommodity;
-            objLog.objUser = objUser;
-            objLog.strNotes = notes;
+            Log objLog = new Log
+            {
+                dtTimestamp = DateTime.Now,
+                enuAction = ItemAction.Added,
+                intQuantityChange = (int)intQuantityChange,
+                objStorage = objUsedFrom,
+                objUser = objUser,
+                strNotes = notes
+            };
             // update quantity in cabinet
             objUsedFrom.intQuantity += objLog.intQuantityChange;
 
@@ -101,7 +105,7 @@ namespace SVSU_Capstone_Project.ViewModel
             Update(objUsedFrom);
         }
 
-        public static void MoveItem( Quantity objMoveFrom, Quantity objMoveTo, User objUser, uint intQuantityChange, string notes )
+        public static void MoveItem( Storage objMoveFrom, Storage objMoveTo, User objUser, uint intQuantityChange, string notes )
         {
             // check quantity available
             if (objMoveFrom.objCommodity.enuCommodityType == ItemType.Consumable && objMoveFrom.intQuantity < intQuantityChange)
@@ -110,26 +114,30 @@ namespace SVSU_Capstone_Project.ViewModel
             }
 
             // log for location quantity taken
-            Log objLogFrom = new Log();
-            objLogFrom.dtTimestamp = DateTime.Now;
-            objLogFrom.enuAction = ItemAction.Moved;
-            objLogFrom.intQuantityChange = -(int)intQuantityChange;
-            objLogFrom.objCommodity = objMoveFrom.objCommodity;
-            objLogFrom.strNotes = $"Relocated Materials from {objMoveFrom.objCabinet.objRoom.strName}.{objMoveFrom.objCabinet.strName}"
+            Log objLogFrom = new Log
+            {
+                dtTimestamp = DateTime.Now,
+                enuAction = ItemAction.Moved,
+                intQuantityChange = -(int)intQuantityChange,
+                objStorage = objMoveFrom,
+                strNotes = $"Relocated Materials from {objMoveFrom.objCabinet.objRoom.strName}.{objMoveFrom.objCabinet.strName}"
             + $" to {objMoveTo.objCabinet.objRoom.strName}.{objMoveTo.objCabinet.strName} : "
-            + notes;
-            objLogFrom.objUser = objUser;
+            + notes,
+                objUser = objUser
+            };
 
             // log for location quantity given
-            Log objLogTo = new Log();
-            objLogTo.dtTimestamp = DateTime.Now;
-            objLogTo.enuAction = ItemAction.Moved;
-            objLogTo.intQuantityChange = (int)intQuantityChange;
-            objLogTo.objCommodity = objMoveFrom.objCommodity;
-            objLogTo.strNotes = $"Relocated Materials from {objMoveFrom.objCabinet.objRoom.strName}.{objMoveFrom.objCabinet.strName}"
+            Log objLogTo = new Log
+            {
+                dtTimestamp = DateTime.Now,
+                enuAction = ItemAction.Moved,
+                intQuantityChange = (int)intQuantityChange,
+                objStorage = objMoveFrom,
+                strNotes = $"Relocated Materials from {objMoveFrom.objCabinet.objRoom.strName}.{objMoveFrom.objCabinet.strName}"
             + $" to {objMoveTo.objCabinet.objRoom.strName}.{objMoveTo.objCabinet.strName} : "
-            + notes;
-            objLogTo.objUser = objUser;
+            + notes,
+                objUser = objUser
+            };
 
             // update quantity in cabinet
             objMoveFrom.intQuantity += objLogFrom.intQuantityChange;

@@ -24,7 +24,7 @@ namespace SVSU_Capstone_Project.Model
         public DbSet<Commodity> dsCommodities { get; set; }
         public DbSet<Log> dsLogs { get; set; }
         public DbSet<User> dsUsers { get; set; }
-        public DbSet<Quantity> dsQuantities { get; set; }
+        public DbSet<Storage> dsStorage { get; set; }
         public DbSet<VendorItem> dsVendorItems { get; set; }
     }
     public class ContextEntity

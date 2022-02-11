@@ -23,6 +23,7 @@ namespace SVSU_Capstone_Project.Model
         public bool blnIsAdmin { get; set; }
 
         public virtual List<Log> lstLogs { get; set; }
+        public virtual List<CheckedItem> lstCheckedItems { get; set; }
 
         // override tostring with name
         public override string ToString()

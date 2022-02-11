@@ -7,6 +7,7 @@
 
     public class Category : ContextEntity
     {
+        [Column("name")]
         public string strName { get; set; }
         [Column("description")]
         public string strDescription { get; set; }

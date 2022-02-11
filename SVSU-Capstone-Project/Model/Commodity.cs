@@ -20,9 +20,10 @@
 
         //foreign keys       
         public virtual Category objCategory { get; set; }
-        public virtual List<Quantity> lstQuantities { get; set; }
+        public virtual List<Storage> lstStorage { get; set; }
         public virtual List<VendorItem> lstVendorItems { get; set; }
         public virtual List<Log> lstLogs { get; set; }
+        public virtual List<CheckedItem> lstCheckedItems { get; set; }
 
         // override tostring with strName
         public override string ToString()

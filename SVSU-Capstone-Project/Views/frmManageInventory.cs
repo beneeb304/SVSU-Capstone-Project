@@ -49,7 +49,7 @@ namespace SVSU_Capstone_Project.Views
         private void updateStoredQuantity( object sender = null, EventArgs e = null )
         {
             // update stored quantity
-            var test = ItemModel.Get<Quantity>(
+            var test = ItemModel.Get<Storage>(
                 x => x.objNLevel == this.cmbAddNLevel.SelectedValue as NLevel
                 && x.objCabinet == this.cmbAddCabinet.SelectedValue as Cabinet
                 && x.objCommodity == this.cmbAddCommodity.SelectedValue as Commodity);
@@ -62,18 +62,6 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddCommodity.DataSource = (this.cmbAddCategory.SelectedValue as Category).lstCommodities;
         }
 
-        //Data Binding Example || ReadOnly
-
-        //private void frmManageInventory_Load( object sender, EventArgs e )
-        //{
-        //    this.cmbAddCategory.Items.AddRange(ItemModel.GetMany<Category>(( c ) => true).Select(c => c.strName).ToArray());
-        //    this.cmbAddCategory.SelectedIndex = 0;
-        //    var x = ItemModel.GetMany<Commodity>((c) => c.objCategory.strName == "Probe").ToList();
-        //    this.cmbAddCabinet.Items.AddRange(ItemModel.GetMany<Cabinet>(( c ) => c.objRoom.strName == "abc").Select(c => c.strName).ToArray());
-        //    this.cmbAddCabinet.SelectedIndex = 0;
-        //    this.cmbAddCommodity.Items.AddRange(ItemModel.GetMany<Commodity>(( c ) => c.objCategory.strName == this.cmbAddCategory.SelectedText).Select(c => c.strName).ToArray());
-        //    var q = new List<string>() { "abc", "def" };
-        //}
         private void btnAddCancel_Click( object sender, EventArgs e )
         {
             //Clear all fields on Add tab

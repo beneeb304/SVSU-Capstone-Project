@@ -17,7 +17,7 @@
         public int intQuantityChange { get; set; }
 
         public virtual User objUser { get; set; }
-        public virtual Commodity objCommodity { get; set; }
+        public virtual Storage objStorage { get; set; }
     }
     public enum ItemAction{
         Added,
