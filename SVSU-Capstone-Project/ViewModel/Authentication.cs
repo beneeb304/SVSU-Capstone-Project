@@ -15,7 +15,7 @@ namespace SVSU_Capstone_Project.ViewModel
             // get hash from pass
             var strHash = GenerateHash(password);
             // compare hash to hash in db
-            var objUserProfile = dbContext.dsUsers.First(u => u.strSvsu_id == username && u.strHash == strHash);
+            var objUserProfile = dbContext.dsUsers.FirstOrDefault(u => u.strSvsu_id == username && u.strHash == strHash);
             // return user profile if found
             return objUserProfile;
         }

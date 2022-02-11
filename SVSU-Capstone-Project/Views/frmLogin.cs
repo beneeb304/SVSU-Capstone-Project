@@ -41,15 +41,9 @@ namespace SVSU_Capstone_Project.Views
 
             //If there are values in both textboxes, continue to check
             if (blnSVSU_ID && blnPassword)
-            {                
-                //Use these creds to login:
-                //ID:   500004
-                //Pass: Capstone424
-                
-                //Query db to get user's info
-                var user = ItemModel.Get<User>(
-                    x => x.strHash == HashPassword(txtPassword.Text)
-                    && x.strSvsu_id == txtSVSU_ID.Text);
+            {
+                //Use Authentication ViewModel to check user's ID/password combination
+                var user = Authentication.Authenticate(txtSVSU_ID.Text, txtPassword.Text);
 
                 //Check to see if username/password pair exists in database
                 if (user != null)
@@ -100,6 +94,19 @@ namespace SVSU_Capstone_Project.Views
         {
             //Clear the error provider
             erpPassword.Clear();
+        }
+
+        private void btnBypass_Click(object sender, EventArgs e)
+        {
+            frmMain.LoggedInUser.intSVSU_ID = 000001;
+            frmMain.LoggedInUser.strFName = "John";
+            frmMain.LoggedInUser.strLName = "Doe";
+            frmMain.LoggedInUser.strEmail = "john.doe@svsu.edu";
+            frmMain.LoggedInUser.strPhone = "9876543210";
+            frmMain.LoggedInUser.blnAdmin = true;
+
+            //Close the form
+            Close();
         }
     }
 }

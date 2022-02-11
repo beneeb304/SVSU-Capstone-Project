@@ -40,6 +40,7 @@ namespace SVSU_Capstone_Project.Views
             this.erpPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSVSU_ID = new System.Windows.Forms.MaskedTextBox();
+            this.btnBypass = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.erpUsername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -125,12 +126,23 @@ namespace SVSU_Capstone_Project.Views
             this.txtSVSU_ID.TabIndex = 1;
             this.txtSVSU_ID.ValidatingType = typeof(int);
             // 
+            // btnBypass
+            // 
+            this.btnBypass.Location = new System.Drawing.Point(237, 176);
+            this.btnBypass.Name = "btnBypass";
+            this.btnBypass.Size = new System.Drawing.Size(75, 44);
+            this.btnBypass.TabIndex = 14;
+            this.btnBypass.Text = "Testing bypass";
+            this.btnBypass.UseVisualStyleBackColor = true;
+            this.btnBypass.Click += new System.EventHandler(this.btnBypass_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 476);
             this.ControlBox = false;
+            this.Controls.Add(this.btnBypass);
             this.Controls.Add(this.txtSVSU_ID);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCancel);
@@ -162,5 +174,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.ErrorProvider erpPassword;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MaskedTextBox txtSVSU_ID;
+        private System.Windows.Forms.Button btnBypass;
     }
 }
