@@ -43,12 +43,12 @@ namespace SVSU_Capstone_Project.Views
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvInventoryView = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            //this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            //this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            //this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            //this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            //this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            //this.NLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grbFilterFields.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryView)).BeginInit();
             this.SuspendLayout();
@@ -215,13 +215,13 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.dgvInventoryView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInventoryView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInventoryView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
-            this.Category,
-            this.Location,
-            this.Quantity,
-            this.Supplier,
-            this.NLevel});
+            //this.dgvInventoryView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            //this.Name,
+            //this.Category,
+            //this.Location,
+            //this.Quantity,
+            //this.Supplier,
+            //this.NLevel});
             this.dgvInventoryView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvInventoryView.Location = new System.Drawing.Point(0, 152);
             this.dgvInventoryView.Margin = new System.Windows.Forms.Padding(4);
@@ -230,6 +230,7 @@ namespace SVSU_Capstone_Project.Views
             this.dgvInventoryView.RowHeadersWidth = 51;
             this.dgvInventoryView.Size = new System.Drawing.Size(955, 301);
             this.dgvInventoryView.TabIndex = 7;
+            /*
             // 
             // Name
             // 
@@ -266,6 +267,7 @@ namespace SVSU_Capstone_Project.Views
             this.NLevel.HeaderText = "N Level";
             this.NLevel.MinimumWidth = 6;
             this.NLevel.Name = "NLevel";
+            */
             // 
             // frmViewInventory
             // 
@@ -297,12 +299,12 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvInventoryView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NLevel;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn Location;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn NLevel;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbRoom;

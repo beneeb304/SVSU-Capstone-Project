@@ -184,6 +184,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label7
             // 
@@ -602,6 +603,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbDeleteCabinet.Name = "cmbDeleteCabinet";
             this.cmbDeleteCabinet.Size = new System.Drawing.Size(159, 26);
             this.cmbDeleteCabinet.TabIndex = 4;
+            this.cmbDeleteCabinet.SelectedIndexChanged += new System.EventHandler(this.cmbDeleteCabinet_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -677,6 +679,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbDeleteCategory.Name = "cmbDeleteCategory";
             this.cmbDeleteCategory.Size = new System.Drawing.Size(159, 26);
             this.cmbDeleteCategory.TabIndex = 1;
+            this.cmbDeleteCategory.SelectedIndexChanged += new System.EventHandler(this.cmbDeleteCategory_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -709,6 +712,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbDeleteCommodity.Name = "cmbDeleteCommodity";
             this.cmbDeleteCommodity.Size = new System.Drawing.Size(159, 26);
             this.cmbDeleteCommodity.TabIndex = 2;
+            this.cmbDeleteCommodity.SelectedIndexChanged += new System.EventHandler(this.cmbDeleteCommodity_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -741,6 +745,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // frmManageInventory
             // 
