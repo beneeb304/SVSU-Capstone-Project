@@ -26,7 +26,9 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddCabinet.SelectedValueChanged += updateStoredQuantity;
             this.cmbAddNLevel.SelectedValueChanged += updateStoredQuantity;
 
+            // Bind Comboboxes to the database so the user has options to select on load
             this.cmbAddCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
+            this.cmbDeleteCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
         }
 
         private void cmbAddRoom_SelectedValueChanged( object sender, EventArgs e )
@@ -123,5 +125,57 @@ namespace SVSU_Capstone_Project.Views
         {
 
         }
+
+        private void cmbDeleteCategory_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            this.cmbDeleteCommodity.SelectedIndex = -1;
+            this.cmbDeleteCommodity.DataSource = (this.cmbDeleteCategory.SelectedValue as Category).lstCommodities;
+        }
+
+        private void cmbDeleteCommodity_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            this.cmbDeleteRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
+            this.cmbDeleteCabinet.DataSource = (this.cmbDeleteRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
+            this.cmbDeleteNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
+        }
+
+        private void btnAdd_Click( object sender, EventArgs e )
+        {
+            if (cmbAddCabinet.SelectedIndex != -1 && cmbAddNLevel.SelectedIndex != -1)
+            {
+                Storage usedStock = new Storage();
+                    usedStock.objCommodity = this.cmbAddCommodity.SelectedItem as Commodity;
+                    usedStock.objCabinet = this.cmbAddCabinet.SelectedItem as Cabinet;
+                    usedStock.objNLevel = this.cmbAddNLevel.SelectedItem as NLevel;
+                User user = new User();
+                    user.strSvsu_id = frmMain.LoggedInUser.intSVSU_ID.ToString();
+                    // User info has to be passed, either globally or locally
+                ItemModel.RestockItem(usedStock, user, (uint)this.nudAddQty.Value, "Stock Added");
+            }
+        }
+
+        private void btnDelete_Click( object sender, EventArgs e )
+        {
+            if (chkDelete.Checked)
+            {
+                
+            }
+
+
+            if (cmbDeleteCabinet.SelectedIndex != -1 && cmbDeleteNLevel.SelectedIndex != -1)
+            {
+                ItemModel.Delete<Storage>(ItemModel.Get<Storage>(
+                        x => x.objNLevel == this.cmbDeleteNLevel.SelectedValue as NLevel
+                        && x.objCabinet == this.cmbDeleteCabinet.SelectedValue as Cabinet
+                        && x.objCommodity == this.cmbDeleteCommodity.SelectedValue as Commodity));
+            }         
+        }
+
+        private void cmbDeleteCabinet_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            
+        }
+
+       
     }
 }

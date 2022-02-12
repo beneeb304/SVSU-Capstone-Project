@@ -55,7 +55,7 @@ namespace SVSU_Capstone_Project.ViewModel
             db.SaveChanges();
         }
 
-        private static void Delete<T>( T obj ) where T : ContextEntity
+        public static void Delete<T>( T obj ) where T : ContextEntity
         {
             db.Set<T>().Remove(obj);
             db.SaveChanges();
