@@ -16,6 +16,7 @@
         public int intAlert_quantity { get; set; }
         [Column("commodityType")]
         public ItemType enuCommodityType { get; set; }
+        public string strBarCode { get; set; }
 
 
         //foreign keys       

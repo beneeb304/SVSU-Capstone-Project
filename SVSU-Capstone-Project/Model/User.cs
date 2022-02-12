@@ -5,21 +5,21 @@ namespace SVSU_Capstone_Project.Model
     using System.Collections.Generic;
     using System;
 
-    public class User: ContextEntity
+    public class User : ContextEntity
     {
-        [Column("svsu_id")]
+        [Column("svsu_id"), Index(IsUnique = true), MaxLength(8), Required]
         public string strSvsu_id { get; set; }
-        [Column("first_name")]
+        [Column("first_name"), Required]
         public string strFirst_name { get; set; }
-        [Column("last_name")]
+        [Column("last_name"), Required]
         public string strLast_name { get; set; }
-        [Column("email")]
+        [Column("email"), Index(IsUnique = true), MaxLength(25), Required]
         public string strEmail { get; set; }
         [Column("phone")]
         public string strPhone { get; set; }
-        [Column("hash")]
+        [Column("hash"), Required]
         public string strHash { get; set; }
-        [Column("isAdmin")]
+        [Column("isAdmin"), Required]
         public bool blnIsAdmin { get; set; }
 
         public virtual List<Log> lstLogs { get; set; }

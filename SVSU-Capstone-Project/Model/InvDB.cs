@@ -16,6 +16,12 @@ namespace SVSU_Capstone_Project.Model
 
         }
 
+        // on modelcreating override
+        protected override void OnModelCreating( DbModelBuilder modelBuilder )
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
         public DbSet<Category> dsCategories { get; set; }
         public DbSet<Room> dsRooms { get; set; }
         public DbSet<Cabinet> dsCabinets { get; set; }

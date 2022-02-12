@@ -67,11 +67,7 @@ namespace SVSU_Capstone_Project.Views
         private void btnAddCancel_Click( object sender, EventArgs e )
         {
             //Clear all fields on Add tab
-            cmbAddCabinet.SelectedIndex = -1;
-            cmbAddCategory.SelectedIndex = -1;
-            cmbAddCommodity.SelectedIndex = -1;
-            cmbAddNLevel.SelectedIndex = -1;
-            cmbAddRoom.SelectedIndex = -1;
+            cmbAddCategory.SelectedIndex = 0;
             txtCurrentQty.Text = "";
             nudAddQty.Value = 1;
         }
