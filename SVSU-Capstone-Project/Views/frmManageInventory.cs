@@ -23,18 +23,28 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddCategory.SelectedValueChanged += cmbAddCategory_SelectedValueChanged;
             this.cmbAddCommodity.SelectedValueChanged += cmbAddCommodity_SelectedValueChanged;
             this.cmbAddRoom.SelectedValueChanged += cmbAddRoom_SelectedValueChanged;
-            this.cmbAddCabinet.SelectedValueChanged += updateStoredQuantity;
-            this.cmbAddNLevel.SelectedValueChanged += updateStoredQuantity;
+            this.cmbAddCabinet.SelectedValueChanged += txtCurrentQty_DependancyUpdated;
+            this.cmbAddNLevel.SelectedValueChanged += txtCurrentQty_DependancyUpdated;
 
             // Bind Comboboxes to the database so the user has options to select on load
             this.cmbAddCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
             this.cmbDeleteCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
         }
 
+        #region Add Stock Tab
+        private void txtCurrentQty_DependancyUpdated( object sender = null, EventArgs e = null )
+        {
+            // update stored quantity
+            var test = ItemModel.Get<Storage>(
+                x => x.objNLevel == this.cmbAddNLevel.SelectedValue as NLevel
+                && x.objCabinet == this.cmbAddCabinet.SelectedValue as Cabinet
+                && x.objCommodity == this.cmbAddCommodity.SelectedValue as Commodity);
+            this.txtCurrentQty.Text = test != null ? test.intQuantity.ToString() : "0";
+        }
         private void cmbAddRoom_SelectedValueChanged( object sender, EventArgs e )
         {
             this.cmbAddCabinet.DataSource = (this.cmbAddRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
-            updateStoredQuantity();
+            txtCurrentQty_DependancyUpdated();
         }
 
         private void cmbAddCommodity_SelectedValueChanged( object sender, EventArgs e )
@@ -45,17 +55,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbAddNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
             // set quantity to quantity of selected commodity 
             this.nudAddQty.Value = 1;
-            updateStoredQuantity();
-        }
-
-        private void updateStoredQuantity( object sender = null, EventArgs e = null )
-        {
-            // update stored quantity
-            var test = ItemModel.Get<Storage>(
-                x => x.objNLevel == this.cmbAddNLevel.SelectedValue as NLevel
-                && x.objCabinet == this.cmbAddCabinet.SelectedValue as Cabinet
-                && x.objCommodity == this.cmbAddCommodity.SelectedValue as Commodity);
-            this.txtCurrentQty.Text = test != null ? test.intQuantity.ToString() : "0";
+            txtCurrentQty_DependancyUpdated();
         }
 
         private void cmbAddCategory_SelectedValueChanged( object sender, EventArgs e )
@@ -71,7 +71,24 @@ namespace SVSU_Capstone_Project.Views
             txtCurrentQty.Text = "";
             nudAddQty.Value = 1;
         }
+        private void btnAdd_Click( object sender, EventArgs e )
+        {
+            if (cmbAddCabinet.SelectedIndex != -1 && cmbAddNLevel.SelectedIndex != -1)
+            {
+                Storage usedStock = new Storage();
+                usedStock.objCommodity = this.cmbAddCommodity.SelectedItem as Commodity;
+                usedStock.objCabinet = this.cmbAddCabinet.SelectedItem as Cabinet;
+                usedStock.objNLevel = this.cmbAddNLevel.SelectedItem as NLevel;
+                User user = new User();
+                user.strSvsu_id = Authentication.ActiveUser.strSvsu_id;
+                // User info has to be passed, either globally or locally
+                ItemModel.RestockItem(usedStock, user, (uint)this.nudAddQty.Value, "Stock Added");
+            }
+        }
 
+        #endregion
+
+        #region Create New Item
         private void btnCreateCancel_Click( object sender, EventArgs e )
         {
             //Clear all fields on Create tab
@@ -85,7 +102,14 @@ namespace SVSU_Capstone_Project.Views
             nudCreateAlertQty.Value = 0;
             mtxCreateCost.Text = "";
         }
+        private void txtCreateItemName_TextChanged( object sender, EventArgs e )
+        {
 
+        }
+
+        #endregion
+
+        #region Delete Item Tab
         private void btnDeleteCancel_Click( object sender, EventArgs e )
         {
             //Clear all fields on Delete tab
@@ -95,7 +119,6 @@ namespace SVSU_Capstone_Project.Views
             cmbDeleteNLevel.SelectedIndex = -1;
             cmbDeleteRoom.SelectedIndex = -1;
         }
-
         private void chkDelete_CheckedChanged( object sender, EventArgs e )
         {
             if (chkDelete.Checked)
@@ -116,45 +139,27 @@ namespace SVSU_Capstone_Project.Views
                 lblDelete.Text = "Deleting this commodity will delete it from the selected Room, Cabinet, Nurse Level.";
             }
         }
-
-        private void txtCreateItemName_TextChanged( object sender, EventArgs e )
-        {
-
-        }
-
         private void cmbDeleteCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
             this.cmbDeleteCommodity.SelectedIndex = -1;
             this.cmbDeleteCommodity.DataSource = (this.cmbDeleteCategory.SelectedValue as Category).lstCommodities;
         }
-
         private void cmbDeleteCommodity_SelectedIndexChanged( object sender, EventArgs e )
         {
             this.cmbDeleteRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
             this.cmbDeleteCabinet.DataSource = (this.cmbDeleteRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
             this.cmbDeleteNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
         }
-
-        private void btnAdd_Click( object sender, EventArgs e )
+        private void cmbDeleteCabinet_SelectedIndexChanged( object sender, EventArgs e )
         {
-            if (cmbAddCabinet.SelectedIndex != -1 && cmbAddNLevel.SelectedIndex != -1)
-            {
-                Storage usedStock = new Storage();
-                    usedStock.objCommodity = this.cmbAddCommodity.SelectedItem as Commodity;
-                    usedStock.objCabinet = this.cmbAddCabinet.SelectedItem as Cabinet;
-                    usedStock.objNLevel = this.cmbAddNLevel.SelectedItem as NLevel;
-                User user = new User();
-                    user.strSvsu_id = frmMain.LoggedInUser.intSVSU_ID.ToString();
-                    // User info has to be passed, either globally or locally
-                ItemModel.RestockItem(usedStock, user, (uint)this.nudAddQty.Value, "Stock Added");
-            }
+
         }
 
         private void btnDelete_Click( object sender, EventArgs e )
         {
             if (chkDelete.Checked)
             {
-                
+
             }
 
 
@@ -164,14 +169,8 @@ namespace SVSU_Capstone_Project.Views
                         x => x.objNLevel == this.cmbDeleteNLevel.SelectedValue as NLevel
                         && x.objCabinet == this.cmbDeleteCabinet.SelectedValue as Cabinet
                         && x.objCommodity == this.cmbDeleteCommodity.SelectedValue as Commodity));
-            }         
+            }
         }
-
-        private void cmbDeleteCabinet_SelectedIndexChanged( object sender, EventArgs e )
-        {
-            
-        }
-
-       
+        #endregion
     }
 }
