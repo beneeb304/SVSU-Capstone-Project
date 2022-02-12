@@ -277,7 +277,6 @@ namespace SVSU_Capstone_Project.Views
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dgvInventoryView);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmViewInventory";
             this.Text = "View Inventory";
             this.Load += new System.EventHandler(this.frmViewInventory_Load);
             this.grbFilterFields.ResumeLayout(false);
