@@ -39,10 +39,5 @@ namespace SVSU_Capstone_Project.Views
         {
 
         }
-
-        private void btnUse_Click( object sender, EventArgs e )
-        {
-
-        }
     }
 }

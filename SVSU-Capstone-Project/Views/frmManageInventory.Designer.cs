@@ -303,7 +303,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnUseAccept.TabIndex = 8;
             this.btnUseAccept.Text = "Use";
             this.btnUseAccept.UseVisualStyleBackColor = true;
-            this.btnUseAccept.Click += new System.EventHandler(this.btnUse_Click);
             // 
             // tbpAddItems
             // 

@@ -1,4 +1,4 @@
-namespace SVSU_Capstone_Project.Model
+﻿namespace SVSU_Capstone_Project.Model
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;

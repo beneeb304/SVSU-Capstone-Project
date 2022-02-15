@@ -15,10 +15,36 @@ namespace SVSU_Capstone_Project.Views
         private void btnLogin_Click( object sender, EventArgs e )
         {
             User user;
+            
             //Use Authentication ViewModel to check user's ID/password combination
             try
             {
+                //Get user
                 user = Authentication.Authenticate(txtSVSU_ID.Text, txtPassword.Text);
+
+                //If user is flagged to change password
+                if(user.strHash == "Capstone2022")
+                {
+                    var f = new frmSetPassword();
+                    DialogResult result = f.ShowDialog();
+                    if(result == DialogResult.OK)
+                    {
+                        //Set user password
+                        user.strHash = frmSetPassword.strHash;
+                        
+                        //Save user
+                        ItemModel.Update<User>(user);
+
+                        //Alert user
+                        MessageBox.Show("Password Set Successfully", "Alert");
+                    }
+                    else
+                    {
+                        txtPassword.Text = "";
+                        txtSVSU_ID.Text = "";
+                        return;
+                    }
+                }
             }
             catch (ArgumentException ex)
             {
@@ -60,7 +86,6 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnBypass_Click( object sender, EventArgs e )
         {
-
             if(Authentication.SecurityBypass())
             {
                 Close();

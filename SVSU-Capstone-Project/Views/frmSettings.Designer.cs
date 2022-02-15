@@ -64,7 +64,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnModifyCabinet = new System.Windows.Forms.Button();
             this.btnAddCabinet = new System.Windows.Forms.Button();
             this.btnClearCabinet = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtCabinetDescription = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -78,7 +77,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnModifyCategory = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.btnClearCategory = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtCategoryDescription = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -90,7 +88,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnModifyVendor = new System.Windows.Forms.Button();
             this.btnAddVendor = new System.Windows.Forms.Button();
             this.btnClearVendor = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.txtVendorDescription = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -102,7 +99,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnModifyNLevel = new System.Windows.Forms.Button();
             this.btnAddNLevel = new System.Windows.Forms.Button();
             this.btnClearNLevel = new System.Windows.Forms.Button();
-            this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.txtNLevelDescription = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -110,6 +106,8 @@ namespace SVSU_Capstone_Project.Views
             this.btnDeleteNLevel = new System.Windows.Forms.Button();
             this.lstNLevel = new System.Windows.Forms.ListBox();
             this.label28 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtVendorHomepage = new System.Windows.Forms.TextBox();
             this.tbcSettings.SuspendLayout();
             this.tbpUsers.SuspendLayout();
             this.tbpRooms.SuspendLayout();
@@ -481,7 +479,6 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCabinets.Controls.Add(this.btnModifyCabinet);
             this.tbpCabinets.Controls.Add(this.btnAddCabinet);
             this.tbpCabinets.Controls.Add(this.btnClearCabinet);
-            this.tbpCabinets.Controls.Add(this.label14);
             this.tbpCabinets.Controls.Add(this.label15);
             this.tbpCabinets.Controls.Add(this.txtCabinetDescription);
             this.tbpCabinets.Controls.Add(this.label16);
@@ -509,6 +506,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnModifyCabinet.TabIndex = 6;
             this.btnModifyCabinet.Text = "Modify";
             this.btnModifyCabinet.UseVisualStyleBackColor = true;
+            this.btnModifyCabinet.Click += new System.EventHandler(this.btnModifyCabinet_Click);
             // 
             // btnAddCabinet
             // 
@@ -520,6 +518,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnAddCabinet.TabIndex = 5;
             this.btnAddCabinet.Text = "Add";
             this.btnAddCabinet.UseVisualStyleBackColor = true;
+            this.btnAddCabinet.Click += new System.EventHandler(this.btnAddCabinet_Click);
             // 
             // btnClearCabinet
             // 
@@ -532,16 +531,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnClearCabinet.Text = "Clear";
             this.btnClearCabinet.UseVisualStyleBackColor = true;
             this.btnClearCabinet.Click += new System.EventHandler(this.btnClearCabinet_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(404, 42);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(366, 16);
-            this.label14.TabIndex = 124;
-            this.label14.Text = "(NOTE: When a cabinet is selected, these fields will populate)";
             // 
             // label15
             // 
@@ -590,6 +579,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnDeleteCabinet.TabIndex = 7;
             this.btnDeleteCabinet.Text = "Delete Selected Cabinet";
             this.btnDeleteCabinet.UseVisualStyleBackColor = true;
+            this.btnDeleteCabinet.Click += new System.EventHandler(this.btnDeleteCabinet_Click);
             // 
             // lstCabinet
             // 
@@ -601,6 +591,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCabinet.Name = "lstCabinet";
             this.lstCabinet.Size = new System.Drawing.Size(210, 244);
             this.lstCabinet.TabIndex = 2;
+            this.lstCabinet.SelectedIndexChanged += new System.EventHandler(this.lstCabinet_SelectedIndexChanged);
             // 
             // label17
             // 
@@ -631,13 +622,13 @@ namespace SVSU_Capstone_Project.Views
             this.cmbRoom.Name = "cmbRoom";
             this.cmbRoom.Size = new System.Drawing.Size(121, 24);
             this.cmbRoom.TabIndex = 1;
+            this.cmbRoom.SelectedIndexChanged += new System.EventHandler(this.cmbRoom_SelectedIndexChanged);
             // 
             // tbpCategories
             // 
             this.tbpCategories.Controls.Add(this.btnModifyCategory);
             this.tbpCategories.Controls.Add(this.btnAddCategory);
             this.tbpCategories.Controls.Add(this.btnClearCategory);
-            this.tbpCategories.Controls.Add(this.label18);
             this.tbpCategories.Controls.Add(this.label19);
             this.tbpCategories.Controls.Add(this.txtCategoryDescription);
             this.tbpCategories.Controls.Add(this.label20);
@@ -687,16 +678,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnClearCategory.Text = "Clear";
             this.btnClearCategory.UseVisualStyleBackColor = true;
             this.btnClearCategory.Click += new System.EventHandler(this.btnClearCategory_Click);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(404, 42);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(374, 16);
-            this.label18.TabIndex = 124;
-            this.label18.Text = "(NOTE: When a category is selected, these fields will populate)";
             // 
             // label19
             // 
@@ -772,10 +753,11 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpVendors
             // 
+            this.tbpVendors.Controls.Add(this.label2);
+            this.tbpVendors.Controls.Add(this.txtVendorHomepage);
             this.tbpVendors.Controls.Add(this.btnModifyVendor);
             this.tbpVendors.Controls.Add(this.btnAddVendor);
             this.tbpVendors.Controls.Add(this.btnClearVendor);
-            this.tbpVendors.Controls.Add(this.label2);
             this.tbpVendors.Controls.Add(this.label22);
             this.tbpVendors.Controls.Add(this.txtVendorDescription);
             this.tbpVendors.Controls.Add(this.label23);
@@ -801,6 +783,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnModifyVendor.TabIndex = 5;
             this.btnModifyVendor.Text = "Modify";
             this.btnModifyVendor.UseVisualStyleBackColor = true;
+            this.btnModifyVendor.Click += new System.EventHandler(this.btnModifyVendor_Click);
             // 
             // btnAddVendor
             // 
@@ -812,6 +795,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnAddVendor.TabIndex = 4;
             this.btnAddVendor.Text = "Add";
             this.btnAddVendor.UseVisualStyleBackColor = true;
+            this.btnAddVendor.Click += new System.EventHandler(this.btnAddVendor_Click);
             // 
             // btnClearVendor
             // 
@@ -824,16 +808,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnClearVendor.Text = "Clear";
             this.btnClearVendor.UseVisualStyleBackColor = true;
             this.btnClearVendor.Click += new System.EventHandler(this.btnClearVendor_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(404, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(361, 16);
-            this.label2.TabIndex = 135;
-            this.label2.Text = "(NOTE: When a vendor is selected, these fields will populate)";
             // 
             // label22
             // 
@@ -882,6 +856,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnDeleteVendor.TabIndex = 6;
             this.btnDeleteVendor.Text = "Delete Selected Vendor";
             this.btnDeleteVendor.UseVisualStyleBackColor = true;
+            this.btnDeleteVendor.Click += new System.EventHandler(this.btnDeleteVendor_Click);
             // 
             // lstVendor
             // 
@@ -893,6 +868,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstVendor.Name = "lstVendor";
             this.lstVendor.Size = new System.Drawing.Size(210, 244);
             this.lstVendor.TabIndex = 1;
+            this.lstVendor.SelectedIndexChanged += new System.EventHandler(this.lstVendor_SelectedIndexChanged);
             // 
             // label24
             // 
@@ -910,7 +886,6 @@ namespace SVSU_Capstone_Project.Views
             this.tbpNLevel.Controls.Add(this.btnModifyNLevel);
             this.tbpNLevel.Controls.Add(this.btnAddNLevel);
             this.tbpNLevel.Controls.Add(this.btnClearNLevel);
-            this.tbpNLevel.Controls.Add(this.label25);
             this.tbpNLevel.Controls.Add(this.label26);
             this.tbpNLevel.Controls.Add(this.txtNLevelDescription);
             this.tbpNLevel.Controls.Add(this.label27);
@@ -936,6 +911,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnModifyNLevel.TabIndex = 5;
             this.btnModifyNLevel.Text = "Modify";
             this.btnModifyNLevel.UseVisualStyleBackColor = true;
+            this.btnModifyNLevel.Click += new System.EventHandler(this.btnModifyNLevel_Click);
             // 
             // btnAddNLevel
             // 
@@ -947,6 +923,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnAddNLevel.TabIndex = 4;
             this.btnAddNLevel.Text = "Add";
             this.btnAddNLevel.UseVisualStyleBackColor = true;
+            this.btnAddNLevel.Click += new System.EventHandler(this.btnAddNLevel_Click);
             // 
             // btnClearNLevel
             // 
@@ -959,16 +936,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnClearNLevel.Text = "Clear";
             this.btnClearNLevel.UseVisualStyleBackColor = true;
             this.btnClearNLevel.Click += new System.EventHandler(this.btnClearNLevel_Click);
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(404, 42);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(373, 16);
-            this.label25.TabIndex = 146;
-            this.label25.Text = "(NOTE: When an N-Level is selected, these fields will populate)";
             // 
             // label26
             // 
@@ -1017,6 +984,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnDeleteNLevel.TabIndex = 6;
             this.btnDeleteNLevel.Text = "Delete Selected N-Level";
             this.btnDeleteNLevel.UseVisualStyleBackColor = true;
+            this.btnDeleteNLevel.Click += new System.EventHandler(this.btnDeleteNLevel_Click);
             // 
             // lstNLevel
             // 
@@ -1028,6 +996,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstNLevel.Name = "lstNLevel";
             this.lstNLevel.Size = new System.Drawing.Size(210, 244);
             this.lstNLevel.TabIndex = 1;
+            this.lstNLevel.SelectedIndexChanged += new System.EventHandler(this.lstNLevel_SelectedIndexChanged);
             // 
             // label28
             // 
@@ -1039,6 +1008,24 @@ namespace SVSU_Capstone_Project.Views
             this.label28.Size = new System.Drawing.Size(79, 22);
             this.label28.TabIndex = 139;
             this.label28.Text = "N-Level";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(625, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 16);
+            this.label2.TabIndex = 136;
+            this.label2.Text = "Homepage:";
+            // 
+            // txtVendorHomepage
+            // 
+            this.txtVendorHomepage.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVendorHomepage.Location = new System.Drawing.Point(629, 99);
+            this.txtVendorHomepage.Name = "txtVendorHomepage";
+            this.txtVendorHomepage.Size = new System.Drawing.Size(187, 22);
+            this.txtVendorHomepage.TabIndex = 135;
             // 
             // frmSettings
             // 
@@ -1106,7 +1093,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Button btnModifyCabinet;
         private System.Windows.Forms.Button btnAddCabinet;
         private System.Windows.Forms.Button btnClearCabinet;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCabinetDescription;
         private System.Windows.Forms.Label label16;
@@ -1117,7 +1103,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Button btnModifyCategory;
         private System.Windows.Forms.Button btnAddCategory;
         private System.Windows.Forms.Button btnClearCategory;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtCategoryDescription;
         private System.Windows.Forms.Label label20;
@@ -1128,7 +1113,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Button btnModifyVendor;
         private System.Windows.Forms.Button btnAddVendor;
         private System.Windows.Forms.Button btnClearVendor;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtVendorDescription;
         private System.Windows.Forms.Label label23;
@@ -1139,7 +1123,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Button btnModifyNLevel;
         private System.Windows.Forms.Button btnAddNLevel;
         private System.Windows.Forms.Button btnClearNLevel;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtNLevelDescription;
         private System.Windows.Forms.Label label27;
@@ -1148,5 +1131,7 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.ListBox lstNLevel;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Button btnUserPassword;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtVendorHomepage;
     }
 }

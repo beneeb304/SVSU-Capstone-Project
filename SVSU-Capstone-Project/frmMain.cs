@@ -1,4 +1,5 @@
-﻿using SVSU_Capstone_Project.ViewModel;
+﻿using SVSU_Capstone_Project.Model;
+using SVSU_Capstone_Project.ViewModel;
 using SVSU_Capstone_Project.Views;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 namespace SVSU_Capstone_Project
 {
     public partial class frmMain : Form
-    {              
+    {
         public frmMain()
         {
             InitializeComponent();
@@ -89,6 +90,11 @@ namespace SVSU_Capstone_Project
                     this.Text = "Saginaw Valley Nursing Inventory System | Check In/Out Items";
                     break;
                 case "msiSettings":
+                    if (!Authentication.ActiveUser.blnIsAdmin)
+                    {
+                        MessageBox.Show("Must be an admin to access settings!", "Alert");
+                        return;
+                    }
                     newF = new frmSettings();
                     this.Text = "Saginaw Valley Nursing Inventory System | Settings";
                     break;
