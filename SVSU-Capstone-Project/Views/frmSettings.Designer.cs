@@ -31,8 +31,7 @@ namespace SVSU_Capstone_Project.Views
         {
             this.tbcSettings = new System.Windows.Forms.TabControl();
             this.tbpUsers = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtUserPassword = new System.Windows.Forms.TextBox();
+            this.btnUserPassword = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtUserPhone = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -42,8 +41,7 @@ namespace SVSU_Capstone_Project.Views
             this.label7 = new System.Windows.Forms.Label();
             this.txtUserLName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnCancelUser = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btnClearUser = new System.Windows.Forms.Button();
             this.chkUserAdmin = new System.Windows.Forms.CheckBox();
             this.btnModifyUser = new System.Windows.Forms.Button();
             this.txtUserFName = new System.Windows.Forms.TextBox();
@@ -53,9 +51,8 @@ namespace SVSU_Capstone_Project.Views
             this.label3 = new System.Windows.Forms.Label();
             this.tbpRooms = new System.Windows.Forms.TabPage();
             this.btnModifyRoom = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnCancelRoom = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
+            this.btnAddRoom = new System.Windows.Forms.Button();
+            this.btnClearRoom = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.txtRoomDescription = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -66,7 +63,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCabinets = new System.Windows.Forms.TabPage();
             this.btnModifyCabinet = new System.Windows.Forms.Button();
             this.btnAddCabinet = new System.Windows.Forms.Button();
-            this.btnCancelCabinet = new System.Windows.Forms.Button();
+            this.btnClearCabinet = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtCabinetDescription = new System.Windows.Forms.TextBox();
@@ -80,7 +77,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCategories = new System.Windows.Forms.TabPage();
             this.btnModifyCategory = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
-            this.btnCancelCategory = new System.Windows.Forms.Button();
+            this.btnClearCategory = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtCategoryDescription = new System.Windows.Forms.TextBox();
@@ -92,7 +89,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpVendors = new System.Windows.Forms.TabPage();
             this.btnModifyVendor = new System.Windows.Forms.Button();
             this.btnAddVendor = new System.Windows.Forms.Button();
-            this.btnCancelVendor = new System.Windows.Forms.Button();
+            this.btnClearVendor = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.txtVendorDescription = new System.Windows.Forms.TextBox();
@@ -104,7 +101,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpNLevel = new System.Windows.Forms.TabPage();
             this.btnModifyNLevel = new System.Windows.Forms.Button();
             this.btnAddNLevel = new System.Windows.Forms.Button();
-            this.btnCancelNLevel = new System.Windows.Forms.Button();
+            this.btnClearNLevel = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.txtNLevelDescription = new System.Windows.Forms.TextBox();
@@ -140,8 +137,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpUsers
             // 
-            this.tbpUsers.Controls.Add(this.label11);
-            this.tbpUsers.Controls.Add(this.txtUserPassword);
+            this.tbpUsers.Controls.Add(this.btnUserPassword);
             this.tbpUsers.Controls.Add(this.label9);
             this.tbpUsers.Controls.Add(this.txtUserPhone);
             this.tbpUsers.Controls.Add(this.label10);
@@ -151,8 +147,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpUsers.Controls.Add(this.label7);
             this.tbpUsers.Controls.Add(this.txtUserLName);
             this.tbpUsers.Controls.Add(this.label6);
-            this.tbpUsers.Controls.Add(this.btnCancelUser);
-            this.tbpUsers.Controls.Add(this.label5);
+            this.tbpUsers.Controls.Add(this.btnClearUser);
             this.tbpUsers.Controls.Add(this.chkUserAdmin);
             this.tbpUsers.Controls.Add(this.btnModifyUser);
             this.tbpUsers.Controls.Add(this.txtUserFName);
@@ -168,24 +163,17 @@ namespace SVSU_Capstone_Project.Views
             this.tbpUsers.Text = "Users";
             this.tbpUsers.UseVisualStyleBackColor = true;
             // 
-            // label11
+            // btnUserPassword
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(463, 228);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 16);
-            this.label11.TabIndex = 124;
-            this.label11.Text = "Password:";
-            // 
-            // txtUserPassword
-            // 
-            this.txtUserPassword.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserPassword.Location = new System.Drawing.Point(554, 225);
-            this.txtUserPassword.Name = "txtUserPassword";
-            this.txtUserPassword.PasswordChar = '*';
-            this.txtUserPassword.Size = new System.Drawing.Size(100, 22);
-            this.txtUserPassword.TabIndex = 6;
+            this.btnUserPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUserPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserPassword.Location = new System.Drawing.Point(626, 311);
+            this.btnUserPassword.Name = "btnUserPassword";
+            this.btnUserPassword.Size = new System.Drawing.Size(188, 40);
+            this.btnUserPassword.TabIndex = 125;
+            this.btnUserPassword.Text = "Change Password";
+            this.btnUserPassword.UseVisualStyleBackColor = true;
+            this.btnUserPassword.Click += new System.EventHandler(this.btnUserPassword_Click);
             // 
             // label9
             // 
@@ -269,33 +257,23 @@ namespace SVSU_Capstone_Project.Views
             this.label6.TabIndex = 114;
             this.label6.Text = "First Name:";
             // 
-            // btnCancelUser
+            // btnClearUser
             // 
-            this.btnCancelUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelUser.Location = new System.Drawing.Point(466, 324);
-            this.btnCancelUser.Name = "btnCancelUser";
-            this.btnCancelUser.Size = new System.Drawing.Size(188, 40);
-            this.btnCancelUser.TabIndex = 10;
-            this.btnCancelUser.Text = "Cancel";
-            this.btnCancelUser.UseVisualStyleBackColor = true;
-            this.btnCancelUser.Click += new System.EventHandler(this.btnCancelUser_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(404, 42);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(349, 16);
-            this.label5.TabIndex = 112;
-            this.label5.Text = "(NOTE: When a user is selected, these fields will populate)";
+            this.btnClearUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearUser.Location = new System.Drawing.Point(432, 311);
+            this.btnClearUser.Name = "btnClearUser";
+            this.btnClearUser.Size = new System.Drawing.Size(188, 40);
+            this.btnClearUser.TabIndex = 10;
+            this.btnClearUser.Text = "Clear";
+            this.btnClearUser.UseVisualStyleBackColor = true;
+            this.btnClearUser.Click += new System.EventHandler(this.btnClearUser_Click);
             // 
             // chkUserAdmin
             // 
             this.chkUserAdmin.AutoSize = true;
             this.chkUserAdmin.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkUserAdmin.Location = new System.Drawing.Point(578, 253);
+            this.chkUserAdmin.Location = new System.Drawing.Point(554, 224);
             this.chkUserAdmin.Name = "chkUserAdmin";
             this.chkUserAdmin.Size = new System.Drawing.Size(76, 20);
             this.chkUserAdmin.TabIndex = 7;
@@ -306,9 +284,9 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnModifyUser.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnModifyUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifyUser.Location = new System.Drawing.Point(563, 278);
+            this.btnModifyUser.Location = new System.Drawing.Point(626, 265);
             this.btnModifyUser.Name = "btnModifyUser";
-            this.btnModifyUser.Size = new System.Drawing.Size(91, 40);
+            this.btnModifyUser.Size = new System.Drawing.Size(188, 40);
             this.btnModifyUser.TabIndex = 9;
             this.btnModifyUser.Text = "Modify";
             this.btnModifyUser.UseVisualStyleBackColor = true;
@@ -338,9 +316,9 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnAddUser.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUser.Location = new System.Drawing.Point(466, 278);
+            this.btnAddUser.Location = new System.Drawing.Point(432, 265);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(91, 40);
+            this.btnAddUser.Size = new System.Drawing.Size(188, 40);
             this.btnAddUser.TabIndex = 8;
             this.btnAddUser.Text = "Add";
             this.btnAddUser.UseVisualStyleBackColor = true;
@@ -372,9 +350,8 @@ namespace SVSU_Capstone_Project.Views
             // tbpRooms
             // 
             this.tbpRooms.Controls.Add(this.btnModifyRoom);
-            this.tbpRooms.Controls.Add(this.button3);
-            this.tbpRooms.Controls.Add(this.btnCancelRoom);
-            this.tbpRooms.Controls.Add(this.label13);
+            this.tbpRooms.Controls.Add(this.btnAddRoom);
+            this.tbpRooms.Controls.Add(this.btnClearRoom);
             this.tbpRooms.Controls.Add(this.label12);
             this.tbpRooms.Controls.Add(this.txtRoomDescription);
             this.tbpRooms.Controls.Add(this.label4);
@@ -401,39 +378,31 @@ namespace SVSU_Capstone_Project.Views
             this.btnModifyRoom.TabIndex = 4;
             this.btnModifyRoom.Text = "Modify";
             this.btnModifyRoom.UseVisualStyleBackColor = true;
+            this.btnModifyRoom.Click += new System.EventHandler(this.btnModifyRoom_Click);
             // 
-            // button3
+            // btnAddRoom
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(466, 278);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 40);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Add";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAddRoom.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddRoom.Location = new System.Drawing.Point(466, 278);
+            this.btnAddRoom.Name = "btnAddRoom";
+            this.btnAddRoom.Size = new System.Drawing.Size(91, 40);
+            this.btnAddRoom.TabIndex = 3;
+            this.btnAddRoom.Text = "Add";
+            this.btnAddRoom.UseVisualStyleBackColor = true;
+            this.btnAddRoom.Click += new System.EventHandler(this.btnAddRoom_Click);
             // 
-            // btnCancelRoom
+            // btnClearRoom
             // 
-            this.btnCancelRoom.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelRoom.Location = new System.Drawing.Point(466, 324);
-            this.btnCancelRoom.Name = "btnCancelRoom";
-            this.btnCancelRoom.Size = new System.Drawing.Size(188, 40);
-            this.btnCancelRoom.TabIndex = 5;
-            this.btnCancelRoom.Text = "Cancel";
-            this.btnCancelRoom.UseVisualStyleBackColor = true;
-            this.btnCancelRoom.Click += new System.EventHandler(this.btnCancelRoom_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(404, 42);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(353, 16);
-            this.label13.TabIndex = 113;
-            this.label13.Text = "(NOTE: When a room is selected, these fields will populate)";
+            this.btnClearRoom.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearRoom.Location = new System.Drawing.Point(466, 324);
+            this.btnClearRoom.Name = "btnClearRoom";
+            this.btnClearRoom.Size = new System.Drawing.Size(188, 40);
+            this.btnClearRoom.TabIndex = 5;
+            this.btnClearRoom.Text = "Clear";
+            this.btnClearRoom.UseVisualStyleBackColor = true;
+            this.btnClearRoom.Click += new System.EventHandler(this.btnClearRoom_Click);
             // 
             // label12
             // 
@@ -482,6 +451,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnDeleteRoom.TabIndex = 7;
             this.btnDeleteRoom.Text = "Delete Selected Room";
             this.btnDeleteRoom.UseVisualStyleBackColor = true;
+            this.btnDeleteRoom.Click += new System.EventHandler(this.btnDeleteRoom_Click);
             // 
             // lstRoom
             // 
@@ -493,6 +463,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstRoom.Name = "lstRoom";
             this.lstRoom.Size = new System.Drawing.Size(210, 244);
             this.lstRoom.TabIndex = 6;
+            this.lstRoom.SelectedIndexChanged += new System.EventHandler(this.lstRoom_SelectedIndexChanged);
             // 
             // lblRoom
             // 
@@ -509,7 +480,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.tbpCabinets.Controls.Add(this.btnModifyCabinet);
             this.tbpCabinets.Controls.Add(this.btnAddCabinet);
-            this.tbpCabinets.Controls.Add(this.btnCancelCabinet);
+            this.tbpCabinets.Controls.Add(this.btnClearCabinet);
             this.tbpCabinets.Controls.Add(this.label14);
             this.tbpCabinets.Controls.Add(this.label15);
             this.tbpCabinets.Controls.Add(this.txtCabinetDescription);
@@ -550,17 +521,17 @@ namespace SVSU_Capstone_Project.Views
             this.btnAddCabinet.Text = "Add";
             this.btnAddCabinet.UseVisualStyleBackColor = true;
             // 
-            // btnCancelCabinet
+            // btnClearCabinet
             // 
-            this.btnCancelCabinet.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelCabinet.Location = new System.Drawing.Point(466, 324);
-            this.btnCancelCabinet.Name = "btnCancelCabinet";
-            this.btnCancelCabinet.Size = new System.Drawing.Size(188, 40);
-            this.btnCancelCabinet.TabIndex = 8;
-            this.btnCancelCabinet.Text = "Cancel";
-            this.btnCancelCabinet.UseVisualStyleBackColor = true;
-            this.btnCancelCabinet.Click += new System.EventHandler(this.btnCancelCabinet_Click);
+            this.btnClearCabinet.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearCabinet.Location = new System.Drawing.Point(466, 324);
+            this.btnClearCabinet.Name = "btnClearCabinet";
+            this.btnClearCabinet.Size = new System.Drawing.Size(188, 40);
+            this.btnClearCabinet.TabIndex = 8;
+            this.btnClearCabinet.Text = "Clear";
+            this.btnClearCabinet.UseVisualStyleBackColor = true;
+            this.btnClearCabinet.Click += new System.EventHandler(this.btnClearCabinet_Click);
             // 
             // label14
             // 
@@ -665,7 +636,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.tbpCategories.Controls.Add(this.btnModifyCategory);
             this.tbpCategories.Controls.Add(this.btnAddCategory);
-            this.tbpCategories.Controls.Add(this.btnCancelCategory);
+            this.tbpCategories.Controls.Add(this.btnClearCategory);
             this.tbpCategories.Controls.Add(this.label18);
             this.tbpCategories.Controls.Add(this.label19);
             this.tbpCategories.Controls.Add(this.txtCategoryDescription);
@@ -691,6 +662,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnModifyCategory.TabIndex = 5;
             this.btnModifyCategory.Text = "Modify";
             this.btnModifyCategory.UseVisualStyleBackColor = true;
+            this.btnModifyCategory.Click += new System.EventHandler(this.btnModifyCategory_Click);
             // 
             // btnAddCategory
             // 
@@ -702,18 +674,19 @@ namespace SVSU_Capstone_Project.Views
             this.btnAddCategory.TabIndex = 4;
             this.btnAddCategory.Text = "Add";
             this.btnAddCategory.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
-            // btnCancelCategory
+            // btnClearCategory
             // 
-            this.btnCancelCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelCategory.Location = new System.Drawing.Point(466, 324);
-            this.btnCancelCategory.Name = "btnCancelCategory";
-            this.btnCancelCategory.Size = new System.Drawing.Size(188, 40);
-            this.btnCancelCategory.TabIndex = 7;
-            this.btnCancelCategory.Text = "Cancel";
-            this.btnCancelCategory.UseVisualStyleBackColor = true;
-            this.btnCancelCategory.Click += new System.EventHandler(this.btnCancelCategory_Click);
+            this.btnClearCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearCategory.Location = new System.Drawing.Point(466, 324);
+            this.btnClearCategory.Name = "btnClearCategory";
+            this.btnClearCategory.Size = new System.Drawing.Size(188, 40);
+            this.btnClearCategory.TabIndex = 7;
+            this.btnClearCategory.Text = "Clear";
+            this.btnClearCategory.UseVisualStyleBackColor = true;
+            this.btnClearCategory.Click += new System.EventHandler(this.btnClearCategory_Click);
             // 
             // label18
             // 
@@ -772,6 +745,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnDeleteCategory.TabIndex = 6;
             this.btnDeleteCategory.Text = "Delete Selected Category";
             this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
             // 
             // lstCategory
             // 
@@ -783,6 +757,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCategory.Name = "lstCategory";
             this.lstCategory.Size = new System.Drawing.Size(210, 244);
             this.lstCategory.TabIndex = 1;
+            this.lstCategory.SelectedIndexChanged += new System.EventHandler(this.lstCategory_SelectedIndexChanged);
             // 
             // label21
             // 
@@ -799,7 +774,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.tbpVendors.Controls.Add(this.btnModifyVendor);
             this.tbpVendors.Controls.Add(this.btnAddVendor);
-            this.tbpVendors.Controls.Add(this.btnCancelVendor);
+            this.tbpVendors.Controls.Add(this.btnClearVendor);
             this.tbpVendors.Controls.Add(this.label2);
             this.tbpVendors.Controls.Add(this.label22);
             this.tbpVendors.Controls.Add(this.txtVendorDescription);
@@ -838,17 +813,17 @@ namespace SVSU_Capstone_Project.Views
             this.btnAddVendor.Text = "Add";
             this.btnAddVendor.UseVisualStyleBackColor = true;
             // 
-            // btnCancelVendor
+            // btnClearVendor
             // 
-            this.btnCancelVendor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelVendor.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelVendor.Location = new System.Drawing.Point(466, 324);
-            this.btnCancelVendor.Name = "btnCancelVendor";
-            this.btnCancelVendor.Size = new System.Drawing.Size(188, 40);
-            this.btnCancelVendor.TabIndex = 7;
-            this.btnCancelVendor.Text = "Cancel";
-            this.btnCancelVendor.UseVisualStyleBackColor = true;
-            this.btnCancelVendor.Click += new System.EventHandler(this.btnCancelVendor_Click);
+            this.btnClearVendor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearVendor.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearVendor.Location = new System.Drawing.Point(466, 324);
+            this.btnClearVendor.Name = "btnClearVendor";
+            this.btnClearVendor.Size = new System.Drawing.Size(188, 40);
+            this.btnClearVendor.TabIndex = 7;
+            this.btnClearVendor.Text = "Clear";
+            this.btnClearVendor.UseVisualStyleBackColor = true;
+            this.btnClearVendor.Click += new System.EventHandler(this.btnClearVendor_Click);
             // 
             // label2
             // 
@@ -934,7 +909,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.tbpNLevel.Controls.Add(this.btnModifyNLevel);
             this.tbpNLevel.Controls.Add(this.btnAddNLevel);
-            this.tbpNLevel.Controls.Add(this.btnCancelNLevel);
+            this.tbpNLevel.Controls.Add(this.btnClearNLevel);
             this.tbpNLevel.Controls.Add(this.label25);
             this.tbpNLevel.Controls.Add(this.label26);
             this.tbpNLevel.Controls.Add(this.txtNLevelDescription);
@@ -973,17 +948,17 @@ namespace SVSU_Capstone_Project.Views
             this.btnAddNLevel.Text = "Add";
             this.btnAddNLevel.UseVisualStyleBackColor = true;
             // 
-            // btnCancelNLevel
+            // btnClearNLevel
             // 
-            this.btnCancelNLevel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelNLevel.Location = new System.Drawing.Point(466, 324);
-            this.btnCancelNLevel.Name = "btnCancelNLevel";
-            this.btnCancelNLevel.Size = new System.Drawing.Size(188, 40);
-            this.btnCancelNLevel.TabIndex = 7;
-            this.btnCancelNLevel.Text = "Cancel";
-            this.btnCancelNLevel.UseVisualStyleBackColor = true;
-            this.btnCancelNLevel.Click += new System.EventHandler(this.btnCancelNLevel_Click);
+            this.btnClearNLevel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearNLevel.Location = new System.Drawing.Point(466, 324);
+            this.btnClearNLevel.Name = "btnClearNLevel";
+            this.btnClearNLevel.Size = new System.Drawing.Size(188, 40);
+            this.btnClearNLevel.TabIndex = 7;
+            this.btnClearNLevel.Text = "Clear";
+            this.btnClearNLevel.UseVisualStyleBackColor = true;
+            this.btnClearNLevel.Click += new System.EventHandler(this.btnClearNLevel_Click);
             // 
             // label25
             // 
@@ -1112,8 +1087,7 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnModifyUser;
         private System.Windows.Forms.CheckBox chkUserAdmin;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnCancelUser;
+        private System.Windows.Forms.Button btnClearUser;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtUserLName;
@@ -1123,18 +1097,15 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.TextBox txtUserPhone;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtUserEmail;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtUserPassword;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtRoomDescription;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btnCancelRoom;
+        private System.Windows.Forms.Button btnClearRoom;
         private System.Windows.Forms.Button btnModifyRoom;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAddRoom;
         private System.Windows.Forms.Button btnModifyCabinet;
         private System.Windows.Forms.Button btnAddCabinet;
-        private System.Windows.Forms.Button btnCancelCabinet;
+        private System.Windows.Forms.Button btnClearCabinet;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCabinetDescription;
@@ -1145,7 +1116,7 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnModifyCategory;
         private System.Windows.Forms.Button btnAddCategory;
-        private System.Windows.Forms.Button btnCancelCategory;
+        private System.Windows.Forms.Button btnClearCategory;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtCategoryDescription;
@@ -1156,7 +1127,7 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btnModifyVendor;
         private System.Windows.Forms.Button btnAddVendor;
-        private System.Windows.Forms.Button btnCancelVendor;
+        private System.Windows.Forms.Button btnClearVendor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtVendorDescription;
@@ -1167,7 +1138,7 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button btnModifyNLevel;
         private System.Windows.Forms.Button btnAddNLevel;
-        private System.Windows.Forms.Button btnCancelNLevel;
+        private System.Windows.Forms.Button btnClearNLevel;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtNLevelDescription;
@@ -1176,5 +1147,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Button btnDeleteNLevel;
         private System.Windows.Forms.ListBox lstNLevel;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Button btnUserPassword;
     }
 }

@@ -71,13 +71,6 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        private string HashPassword( string strPassword )
-        {
-            byte[] bytes = Encoding.Unicode.GetBytes(strPassword);
-            byte[] hashedBytes = HashAlgorithm.Create("SHA256").ComputeHash(bytes);
-            return Convert.ToBase64String(hashedBytes);
-        }
-
         private void btnCancel_Click( object sender, EventArgs e )
         {
             //Close application
