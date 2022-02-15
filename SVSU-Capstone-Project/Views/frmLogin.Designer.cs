@@ -72,7 +72,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(326, 31);
             this.txtPassword.TabIndex = 2;
-            this.txtPassword.GotFocus += new System.EventHandler(this.txtPassword_Focused);
+            
             // 
             // btnLogin
             // 
@@ -119,7 +119,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtSVSU_ID.Size = new System.Drawing.Size(100, 31);
             this.txtSVSU_ID.TabIndex = 1;
             this.txtSVSU_ID.ValidatingType = typeof(int);
-            this.txtSVSU_ID.GotFocus += new System.EventHandler(this.txtSVSU_ID_Focused);
+            
             // 
             // btnBypass
             // 
