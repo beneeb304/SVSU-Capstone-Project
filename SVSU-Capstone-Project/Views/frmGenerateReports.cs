@@ -48,7 +48,8 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnReportClear_Click( object sender, EventArgs e )
         {
-            calEnd.Refresh();
+            calBegin.SelectionStart = calBegin.TodayDate;
+            calEnd.SelectionStart = calEnd.TodayDate;
         }
     }
 }
