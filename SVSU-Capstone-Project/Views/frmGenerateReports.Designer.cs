@@ -30,21 +30,22 @@ namespace SVSU_Capstone_Project.Views
         private void InitializeComponent()
         {
             this.lblGenorateReports = new System.Windows.Forms.Label();
-            this.btnUseAccept = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGenorate = new System.Windows.Forms.Button();
+            this.btnReportClear = new System.Windows.Forms.Button();
             this.lblBeginDate = new System.Windows.Forms.Label();
             this.lblEndingDate = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.pcbCalBegin = new System.Windows.Forms.PictureBox();
+            this.calBegin = new System.Windows.Forms.MonthCalendar();
             this.pcbCalEnd = new System.Windows.Forms.PictureBox();
-            this.txtBeginDate = new System.Windows.Forms.MaskedTextBox();
-            this.txtEndDate = new System.Windows.Forms.MaskedTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbCalBegin)).BeginInit();
+            this.pcbCalBegin = new System.Windows.Forms.PictureBox();
+            this.calEnd = new System.Windows.Forms.MonthCalendar();
+            this.txtBeginDate = new System.Windows.Forms.TextBox();
+            this.txtEndDate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCalEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbCalBegin)).BeginInit();
             this.SuspendLayout();
             // 
             // lblGenorateReports
@@ -57,25 +58,26 @@ namespace SVSU_Capstone_Project.Views
             this.lblGenorateReports.TabIndex = 4;
             this.lblGenorateReports.Text = "Generate Reports";
             // 
-            // btnUseAccept
+            // btnGenorate
             // 
-            this.btnUseAccept.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUseAccept.Location = new System.Drawing.Point(699, 395);
-            this.btnUseAccept.Name = "btnUseAccept";
-            this.btnUseAccept.Size = new System.Drawing.Size(89, 43);
-            this.btnUseAccept.TabIndex = 9;
-            this.btnUseAccept.Text = "Generate";
-            this.btnUseAccept.UseVisualStyleBackColor = true;
+            this.btnGenorate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenorate.Location = new System.Drawing.Point(111, 372);
+            this.btnGenorate.Name = "btnGenorate";
+            this.btnGenorate.Size = new System.Drawing.Size(89, 43);
+            this.btnGenorate.TabIndex = 9;
+            this.btnGenorate.Text = "Generate";
+            this.btnGenorate.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnReportClear
             // 
-            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(604, 395);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 43);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnReportClear.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportClear.Location = new System.Drawing.Point(16, 372);
+            this.btnReportClear.Name = "btnReportClear";
+            this.btnReportClear.Size = new System.Drawing.Size(89, 43);
+            this.btnReportClear.TabIndex = 10;
+            this.btnReportClear.Text = "Clear";
+            this.btnReportClear.UseVisualStyleBackColor = true;
+            this.btnReportClear.Click += new System.EventHandler(this.btnReportClear_Click);
             // 
             // lblBeginDate
             // 
@@ -137,70 +139,87 @@ namespace SVSU_Capstone_Project.Views
             this.label8.TabIndex = 15;
             this.label8.Text = "Label:";
             // 
-            // monthCalendar1
+            // calBegin
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(344, 56);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 17;
-            this.monthCalendar1.Visible = false;
-            // 
-            // pcbCalBegin
-            // 
-            this.pcbCalBegin.Location = new System.Drawing.Point(247, 56);
-            this.pcbCalBegin.Name = "pcbCalBegin";
-            this.pcbCalBegin.Size = new System.Drawing.Size(36, 35);
-            this.pcbCalBegin.TabIndex = 18;
-            this.pcbCalBegin.TabStop = false;
+            this.calBegin.Location = new System.Drawing.Point(347, 66);
+            this.calBegin.Name = "calBegin";
+            this.calBegin.TabIndex = 17;
+            this.calBegin.Visible = false;
+            this.calBegin.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.calBegin_DateChanged);
             // 
             // pcbCalEnd
             // 
-            this.pcbCalEnd.Location = new System.Drawing.Point(247, 102);
+            this.pcbCalEnd.Image = global::SVSU_Capstone_Project.Properties.Resources.calendar;
+            this.pcbCalEnd.Location = new System.Drawing.Point(310, 112);
             this.pcbCalEnd.Name = "pcbCalEnd";
-            this.pcbCalEnd.Size = new System.Drawing.Size(36, 35);
+            this.pcbCalEnd.Size = new System.Drawing.Size(25, 26);
+            this.pcbCalEnd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbCalEnd.TabIndex = 19;
             this.pcbCalEnd.TabStop = false;
+            this.pcbCalEnd.Click += new System.EventHandler(this.pcbCalEnd_Click);
+            // 
+            // pcbCalBegin
+            // 
+            this.pcbCalBegin.Image = global::SVSU_Capstone_Project.Properties.Resources.calendar;
+            this.pcbCalBegin.Location = new System.Drawing.Point(310, 66);
+            this.pcbCalBegin.Name = "pcbCalBegin";
+            this.pcbCalBegin.Size = new System.Drawing.Size(25, 26);
+            this.pcbCalBegin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbCalBegin.TabIndex = 18;
+            this.pcbCalBegin.TabStop = false;
+            this.pcbCalBegin.Click += new System.EventHandler(this.pcbCalBegin_Click);
+            // 
+            // calEnd
+            // 
+            this.calEnd.Location = new System.Drawing.Point(347, 112);
+            this.calEnd.Name = "calEnd";
+            this.calEnd.TabIndex = 22;
+            this.calEnd.Visible = false;
+            this.calEnd.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.calEnd_DateChanged);
             // 
             // txtBeginDate
             // 
-            this.txtBeginDate.Location = new System.Drawing.Point(141, 71);
-            this.txtBeginDate.Mask = "00/00/0000 90:00";
+            this.txtBeginDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBeginDate.Location = new System.Drawing.Point(141, 66);
             this.txtBeginDate.Name = "txtBeginDate";
-            this.txtBeginDate.Size = new System.Drawing.Size(100, 20);
-            this.txtBeginDate.TabIndex = 20;
-            this.txtBeginDate.ValidatingType = typeof(System.DateTime);
+            this.txtBeginDate.ReadOnly = true;
+            this.txtBeginDate.Size = new System.Drawing.Size(163, 26);
+            this.txtBeginDate.TabIndex = 23;
             // 
             // txtEndDate
             // 
-            this.txtEndDate.Location = new System.Drawing.Point(141, 117);
-            this.txtEndDate.Mask = "00/00/0000 90:00";
+            this.txtEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEndDate.Location = new System.Drawing.Point(141, 112);
             this.txtEndDate.Name = "txtEndDate";
-            this.txtEndDate.Size = new System.Drawing.Size(100, 20);
-            this.txtEndDate.TabIndex = 21;
-            this.txtEndDate.ValidatingType = typeof(System.DateTime);
+            this.txtEndDate.ReadOnly = true;
+            this.txtEndDate.Size = new System.Drawing.Size(163, 26);
+            this.txtEndDate.TabIndex = 24;
             // 
             // frmGenerateReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(714, 444);
             this.Controls.Add(this.txtEndDate);
             this.Controls.Add(this.txtBeginDate);
             this.Controls.Add(this.pcbCalEnd);
             this.Controls.Add(this.pcbCalBegin);
-            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.calBegin);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblEndingDate);
             this.Controls.Add(this.lblBeginDate);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnUseAccept);
+            this.Controls.Add(this.btnReportClear);
+            this.Controls.Add(this.btnGenorate);
             this.Controls.Add(this.lblGenorateReports);
+            this.Controls.Add(this.calEnd);
             this.Name = "frmGenerateReports";
             this.Text = "frmGenerateReports";
-            ((System.ComponentModel.ISupportInitialize)(this.pcbCalBegin)).EndInit();
+            this.Load += new System.EventHandler(this.frmGenerateReports_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbCalEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbCalBegin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,18 +228,19 @@ namespace SVSU_Capstone_Project.Views
         #endregion
 
         private System.Windows.Forms.Label lblGenorateReports;
-        private System.Windows.Forms.Button btnUseAccept;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGenorate;
+        private System.Windows.Forms.Button btnReportClear;
         private System.Windows.Forms.Label lblBeginDate;
         private System.Windows.Forms.Label lblEndingDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar calBegin;
         private System.Windows.Forms.PictureBox pcbCalBegin;
         private System.Windows.Forms.PictureBox pcbCalEnd;
-        private System.Windows.Forms.MaskedTextBox txtBeginDate;
-        private System.Windows.Forms.MaskedTextBox txtEndDate;
+        private System.Windows.Forms.MonthCalendar calEnd;
+        private System.Windows.Forms.TextBox txtBeginDate;
+        private System.Windows.Forms.TextBox txtEndDate;
     }
 }

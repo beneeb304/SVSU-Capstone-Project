@@ -239,6 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\calendar.png" />
     <None Include="Resources\svsu top bar login.png" />
   </ItemGroup>
   <ItemGroup>
