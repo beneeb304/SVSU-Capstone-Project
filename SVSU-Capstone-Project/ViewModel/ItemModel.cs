@@ -43,6 +43,8 @@ namespace SVSU_Capstone_Project.ViewModel
 
         public static Guid Add<T>( T obj ) where T : ContextEntity
         {
+            while( Get<T>(x => x.uidTuid == obj.uidTuid) != null )
+                obj.uidTuid = Guid.NewGuid();
             T objAdded = db.Set<T>().Add(obj);
             db.SaveChanges();
             // return the tuid of the newly added object

@@ -109,6 +109,26 @@
     <Compile Include="Views\frmManageInventory.Designer.cs">
       <DependentUpon>frmManageInventory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmManageInventory.Add.cs">
+      <DependentUpon>frmManageInventory.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmManageInventory.Create.cs">
+      <DependentUpon>frmManageInventory.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmManageInventory.Move.cs">
+      <DependentUpon>frmManageInventory.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmManageInventory.Use.cs">
+      <DependentUpon>frmManageInventory.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmManageInventory.Delete.cs">
+      <DependentUpon>frmManageInventory.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\frmCheckInOutItems.cs">
       <SubType>Form</SubType>
     </Compile>
