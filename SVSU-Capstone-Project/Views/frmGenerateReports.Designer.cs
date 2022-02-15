@@ -141,7 +141,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // calBegin
             // 
-            this.calBegin.Location = new System.Drawing.Point(347, 66);
+            this.calBegin.Location = new System.Drawing.Point(367, 66);
             this.calBegin.Name = "calBegin";
             this.calBegin.TabIndex = 17;
             this.calBegin.Visible = false;
@@ -150,7 +150,7 @@ namespace SVSU_Capstone_Project.Views
             // pcbCalEnd
             // 
             this.pcbCalEnd.Image = global::SVSU_Capstone_Project.Properties.Resources.calendar;
-            this.pcbCalEnd.Location = new System.Drawing.Point(310, 112);
+            this.pcbCalEnd.Location = new System.Drawing.Point(330, 112);
             this.pcbCalEnd.Name = "pcbCalEnd";
             this.pcbCalEnd.Size = new System.Drawing.Size(25, 26);
             this.pcbCalEnd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -161,7 +161,7 @@ namespace SVSU_Capstone_Project.Views
             // pcbCalBegin
             // 
             this.pcbCalBegin.Image = global::SVSU_Capstone_Project.Properties.Resources.calendar;
-            this.pcbCalBegin.Location = new System.Drawing.Point(310, 66);
+            this.pcbCalBegin.Location = new System.Drawing.Point(330, 66);
             this.pcbCalBegin.Name = "pcbCalBegin";
             this.pcbCalBegin.Size = new System.Drawing.Size(25, 26);
             this.pcbCalBegin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -171,7 +171,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // calEnd
             // 
-            this.calEnd.Location = new System.Drawing.Point(347, 112);
+            this.calEnd.Location = new System.Drawing.Point(367, 112);
             this.calEnd.Name = "calEnd";
             this.calEnd.TabIndex = 22;
             this.calEnd.Visible = false;
@@ -183,7 +183,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtBeginDate.Location = new System.Drawing.Point(141, 66);
             this.txtBeginDate.Name = "txtBeginDate";
             this.txtBeginDate.ReadOnly = true;
-            this.txtBeginDate.Size = new System.Drawing.Size(163, 26);
+            this.txtBeginDate.Size = new System.Drawing.Size(183, 26);
             this.txtBeginDate.TabIndex = 23;
             // 
             // txtEndDate
@@ -192,7 +192,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtEndDate.Location = new System.Drawing.Point(141, 112);
             this.txtEndDate.Name = "txtEndDate";
             this.txtEndDate.ReadOnly = true;
-            this.txtEndDate.Size = new System.Drawing.Size(163, 26);
+            this.txtEndDate.Size = new System.Drawing.Size(183, 26);
             this.txtEndDate.TabIndex = 24;
             // 
             // frmGenerateReports
