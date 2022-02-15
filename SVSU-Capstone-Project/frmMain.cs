@@ -1,4 +1,5 @@
-﻿using SVSU_Capstone_Project.Views;
+﻿using SVSU_Capstone_Project.ViewModel;
+using SVSU_Capstone_Project.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,18 +13,7 @@ using System.Windows.Forms;
 namespace SVSU_Capstone_Project
 {
     public partial class frmMain : Form
-    {
-        //Global variables
-        public struct LoggedInUser
-        {
-            public static int intSVSU_ID;
-            public static string strFName;
-            public static string strLName;
-            public static string strEmail;
-            public static string strPhone;
-            public static bool blnAdmin;
-        }
-
+    {              
         public frmMain()
         {
             InitializeComponent();
@@ -53,14 +43,14 @@ namespace SVSU_Capstone_Project
             FrmLogin.ShowDialog();
 
             //Check if the user somehow closed the login form
-            if (LoggedInUser.strEmail == null)
+            if (Authentication.ActiveUser == null)
             {
                 //Close the application
                 Application.Exit();
             }
 
             //Set username in label
-            lblUser.Text = "User: " + LoggedInUser.strFName;
+            lblUser.Text = "User: " + Authentication.ActiveUser.strFirst_name;
 
             //Set user login time and current time
             lblLoggedInTime.Text = "Logged in since " + DateTime.Now.ToString("hh:mm:ss tt MM/dd/yyyy");

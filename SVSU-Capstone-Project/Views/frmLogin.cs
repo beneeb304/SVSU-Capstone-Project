@@ -1,14 +1,6 @@
 ﻿using SVSU_Capstone_Project.Model;
 using SVSU_Capstone_Project.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SVSU_Capstone_Project.Views
@@ -22,84 +14,61 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnLogin_Click( object sender, EventArgs e )
         {
-            //Boolean vars to check username and password
-            bool blnSVSU_ID = true, blnPassword = true;
-
-            //Check if username is blank
-            if (txtSVSU_ID.Text.Length == 0)
+            User user;
+            //Use Authentication ViewModel to check user's ID/password combination
+            try
             {
-                blnSVSU_ID = false;
-                erpUsername.SetError(txtSVSU_ID, "Please enter an SVSU ID");
+                user = Authentication.Authenticate(txtSVSU_ID.Text, txtPassword.Text);
             }
-
-            //Check if password is blank
-            if (txtPassword.Text.Length == 0)
+            catch (ArgumentException ex)
             {
-                blnPassword = false;
-                erpPassword.SetError(txtPassword, "Please enter a password");
+                MessageBox.Show(ex.Message, "No Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-
-            //If there are values in both textboxes, continue to check
-            if (blnSVSU_ID && blnPassword)
+            catch (UserNotFoundException ex)
             {
-                //Use Authentication ViewModel to check user's ID/password combination
-                var user = Authentication.Authenticate(txtSVSU_ID.Text, txtPassword.Text);
-
-                //Check to see if username/password pair exists in database
-                if (user != null)
-                {
-                    //If credentials passed, set LoggedInUser properties
-                    frmMain.LoggedInUser.intSVSU_ID = int.Parse(user.strSvsu_id);
-                    frmMain.LoggedInUser.strFName = user.strFirst_name;
-                    frmMain.LoggedInUser.strLName = user.strLast_name;
-                    frmMain.LoggedInUser.strEmail = user.strEmail;
-                    frmMain.LoggedInUser.strPhone = user.strPhone;
-                    frmMain.LoggedInUser.blnAdmin = user.blnIsAdmin;
-
-                    //Close the form
-                    Close();
-                }
-                else
-                {
-                    //If not, alert the user
-                    MessageBox.Show("Incorrect SVSU ID and Password Combination!", "Alert");
-
-                    //Empty the textboxes
-                    txtSVSU_ID.Text = "";
-                    txtPassword.Text = "";
-                }
+                erpLoginForm.SetError(txtSVSU_ID, ex.Message);
+                return;
             }
+            catch (PasswordInvalidException ex)
+            {
+                erpLoginForm.SetError(txtPassword, ex.Message);
+                return;
+            }
+            erpLoginForm.Clear();
+
+            //Close the form
+            Close();
         }
-
         private void btnCancel_Click( object sender, EventArgs e )
         {
             //Close application
             Application.Exit();
         }
 
-        private void txtUsername_Click( object sender, EventArgs e )
+        private void txtSVSU_ID_Focused( object sender, EventArgs e )
         {
             //Clear the error provider
-            erpUsername.Clear();
+            erpLoginForm.Clear();
         }
 
-        private void txtPassword_Click( object sender, EventArgs e )
+        private void txtPassword_Focused( object sender, EventArgs e )
         {
             //Clear the error provider
-            erpPassword.Clear();
+            erpLoginForm.Clear();
         }
 
-        private void btnBypass_Click(object sender, EventArgs e)
+        private void btnBypass_Click( object sender, EventArgs e )
         {
-            frmMain.LoggedInUser.intSVSU_ID = 000001;
-            frmMain.LoggedInUser.strFName = "John";
-            frmMain.LoggedInUser.strLName = "Doe";
-            frmMain.LoggedInUser.strEmail = "john.doe@svsu.edu";
-            frmMain.LoggedInUser.strPhone = "9876543210";
-            frmMain.LoggedInUser.blnAdmin = true;
 
-            //Close the form
-            Close();
+            if(Authentication.SecurityBypass())
+            {
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Security Bypass Failed: Cannot contact DB", "Security Bypass Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
     }
 }

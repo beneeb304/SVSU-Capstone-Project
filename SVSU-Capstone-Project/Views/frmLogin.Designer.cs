@@ -12,7 +12,7 @@ namespace SVSU_Capstone_Project.Views
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        protected override void Dispose( bool disposing )
         {
             if (disposing && (components != null))
             {
@@ -31,40 +31,38 @@ namespace SVSU_Capstone_Project.Views
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            this.Label3 = new System.Windows.Forms.Label();
-            this.Label2 = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.erpUsername = new System.Windows.Forms.ErrorProvider(this.components);
-            this.erpPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.erpLoginForm = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSVSU_ID = new System.Windows.Forms.MaskedTextBox();
             this.btnBypass = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.erpUsername)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpLoginForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // Label3
+            // lblPassword
             // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(8, 222);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(116, 24);
-            this.Label3.TabIndex = 8;
-            this.Label3.Text = "Password:";
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(8, 222);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(116, 24);
+            this.lblPassword.TabIndex = 8;
+            this.lblPassword.Text = "Password:";
             // 
-            // Label2
+            // lblUserName
             // 
-            this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(8, 132);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(191, 24);
-            this.Label2.TabIndex = 7;
-            this.Label2.Text = "SVSU ID (6 digits):";
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Location = new System.Drawing.Point(8, 132);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(191, 24);
+            this.lblUserName.TabIndex = 7;
+            this.lblUserName.Text = "SVSU ID (6 digits):";
             // 
             // txtPassword
             // 
@@ -74,7 +72,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(326, 31);
             this.txtPassword.TabIndex = 2;
-            this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
+            this.txtPassword.GotFocus += new System.EventHandler(this.txtPassword_Focused);
             // 
             // btnLogin
             // 
@@ -98,13 +96,9 @@ namespace SVSU_Capstone_Project.Views
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // erpUsername
+            // erpLoginForm
             // 
-            this.erpUsername.ContainerControl = this;
-            // 
-            // erpPassword
-            // 
-            this.erpPassword.ContainerControl = this;
+            this.erpLoginForm.ContainerControl = this;
             // 
             // pictureBox1
             // 
@@ -125,6 +119,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtSVSU_ID.Size = new System.Drawing.Size(100, 31);
             this.txtSVSU_ID.TabIndex = 1;
             this.txtSVSU_ID.ValidatingType = typeof(int);
+            this.txtSVSU_ID.GotFocus += new System.EventHandler(this.txtSVSU_ID_Focused);
             // 
             // btnBypass
             // 
@@ -147,16 +142,15 @@ namespace SVSU_Capstone_Project.Views
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.Label3);
-            this.Controls.Add(this.Label2);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.txtPassword);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
-            ((System.ComponentModel.ISupportInitialize)(this.erpUsername)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpLoginForm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -165,13 +159,12 @@ namespace SVSU_Capstone_Project.Views
 
         #endregion
 
-        internal System.Windows.Forms.Label Label3;
-        internal System.Windows.Forms.Label Label2;
+        internal System.Windows.Forms.Label lblPassword;
+        internal System.Windows.Forms.Label lblUserName;
         internal System.Windows.Forms.TextBox txtPassword;
         internal System.Windows.Forms.Button btnLogin;
         internal System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.ErrorProvider erpUsername;
-        private System.Windows.Forms.ErrorProvider erpPassword;
+        private System.Windows.Forms.ErrorProvider erpLoginForm;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MaskedTextBox txtSVSU_ID;
         private System.Windows.Forms.Button btnBypass;
