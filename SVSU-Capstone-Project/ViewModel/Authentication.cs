@@ -9,7 +9,6 @@ namespace SVSU_Capstone_Project.ViewModel
 {
     public static class Authentication
     {
-        private static InvDb dbContext = new InvDb();
         public static User ActiveUser { get; set; }
         /// <summary>
         /// Authenticates a user's credentials
@@ -40,7 +39,7 @@ namespace SVSU_Capstone_Project.ViewModel
             }
 
             // compare hash to hash in db
-            var objUserProfile = dbContext.dsUsers.FirstOrDefault(u => u.strSvsu_id == username);
+            var objUserProfile = ItemModel.Get<User>(u => u.strSvsu_id == username);
             // return user profile if found
             if (objUserProfile == null) throw new UserNotFoundException("User does not exist");
             if (objUserProfile.strHash != strHash) throw new PasswordInvalidException($"Password does not match for {objUserProfile.strSvsu_id}");
@@ -57,7 +56,7 @@ namespace SVSU_Capstone_Project.ViewModel
         }
         public static bool SecurityBypass()
         {
-            ActiveUser = dbContext.dsUsers.FirstOrDefault();
+            ActiveUser = ItemModel.Get<User>(x => true);
             if (ActiveUser == null) return false;
             else return true;
         }

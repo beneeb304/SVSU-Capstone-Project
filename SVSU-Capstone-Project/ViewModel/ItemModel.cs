@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,7 +63,7 @@ namespace SVSU_Capstone_Project.ViewModel
 
         public static void Update<T>( T obj ) where T : ContextEntity
         {
-            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;            
             db.SaveChanges();
         }
 
