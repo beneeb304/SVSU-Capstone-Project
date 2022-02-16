@@ -42,12 +42,23 @@ namespace SVSU_Capstone_Project.Views
                     //populate checked in assets listbox
                     lstCheckedIn.DataSource = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset").OrderBy(x => x.strName).ToList();
                     break;
-
                 case "tbpConsumables":
                     //populate category dropdown
-                    drpCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Consumable").OrderBy(x => x.strName).ToList();
+                    cmbCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Consumable").OrderBy(x => x.strName).ToList();
+                    cmbCommodity.DataSource = (cmbCategory.SelectedValue as Category).lstCommodities;
                     break;
             }
         }
+
+        private void cmbCommodity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var commodityTuid = (cmbCommodity.SelectedValue as Commodity).uidTuid;
+            cmbRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
+            txtConsumableNotes.Text = cmbCommodity.SelectedValue.ToString() + " " + commodityTuid;
+            cmbCabinet.DataSource = ItemModel.GetMany<Cabinet>().OrderBy(x => x.strName).ToList();
+            cmbNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
+        }
+
+
     }
 }

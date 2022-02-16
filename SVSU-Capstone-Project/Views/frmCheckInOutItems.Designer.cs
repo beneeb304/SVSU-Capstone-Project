@@ -42,12 +42,12 @@ namespace SVSU_Capstone_Project.Views
             this.txtSvsuIdCI = new System.Windows.Forms.MaskedTextBox();
             this.lblSvsuIdCI = new System.Windows.Forms.Label();
             this.tbpConsumables = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtConsumableNotes = new System.Windows.Forms.RichTextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.drpCategory = new System.Windows.Forms.ComboBox();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnHandOut = new System.Windows.Forms.Button();
@@ -56,13 +56,13 @@ namespace SVSU_Capstone_Project.Views
             this.nudAddQty = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCurrentQty = new System.Windows.Forms.TextBox();
-            this.drpCommodity = new System.Windows.Forms.ComboBox();
+            this.cmbCommodity = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.drpCabinet = new System.Windows.Forms.ComboBox();
+            this.cmbCabinet = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.drpNLevel = new System.Windows.Forms.ComboBox();
+            this.cmbNLevel = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.drpRoom = new System.Windows.Forms.ComboBox();
+            this.cmbRoom = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tbcCheckInOut.SuspendLayout();
             this.tbpAssets.SuspendLayout();
@@ -76,11 +76,12 @@ namespace SVSU_Capstone_Project.Views
             this.tbcCheckInOut.Controls.Add(this.tbpConsumables);
             this.tbcCheckInOut.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcCheckInOut.Location = new System.Drawing.Point(16, 15);
-            this.tbcCheckInOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbcCheckInOut.Margin = new System.Windows.Forms.Padding(4);
             this.tbcCheckInOut.Name = "tbcCheckInOut";
             this.tbcCheckInOut.SelectedIndex = 0;
             this.tbcCheckInOut.Size = new System.Drawing.Size(1241, 528);
             this.tbcCheckInOut.TabIndex = 43;
+            this.tbcCheckInOut.SelectedIndexChanged += new System.EventHandler(this.tbcCheckInOut_SelectedIndexChanged);
             // 
             // tbpAssets
             // 
@@ -95,9 +96,9 @@ namespace SVSU_Capstone_Project.Views
             this.tbpAssets.Controls.Add(this.txtSvsuIdCI);
             this.tbpAssets.Controls.Add(this.lblSvsuIdCI);
             this.tbpAssets.Location = new System.Drawing.Point(4, 27);
-            this.tbpAssets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbpAssets.Margin = new System.Windows.Forms.Padding(4);
             this.tbpAssets.Name = "tbpAssets";
-            this.tbpAssets.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbpAssets.Padding = new System.Windows.Forms.Padding(4);
             this.tbpAssets.Size = new System.Drawing.Size(1233, 497);
             this.tbpAssets.TabIndex = 0;
             this.tbpAssets.Text = "Assets";
@@ -108,7 +109,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCheckIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCheckIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckIn.Location = new System.Drawing.Point(932, 428);
-            this.btnCheckIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCheckIn.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(132, 57);
             this.btnCheckIn.TabIndex = 134;
@@ -120,7 +121,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCheckOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCheckOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckOut.Location = new System.Drawing.Point(1091, 428);
-            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(132, 57);
             this.btnCheckOut.TabIndex = 135;
@@ -131,7 +132,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtAssetNotes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAssetNotes.Location = new System.Drawing.Point(796, 169);
-            this.txtAssetNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAssetNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtAssetNotes.Name = "txtAssetNotes";
             this.txtAssetNotes.Size = new System.Drawing.Size(337, 227);
             this.txtAssetNotes.TabIndex = 132;
@@ -175,7 +176,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCheckedOut.FormattingEnabled = true;
             this.lstCheckedOut.ItemHeight = 23;
             this.lstCheckedOut.Location = new System.Drawing.Point(344, 69);
-            this.lstCheckedOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstCheckedOut.Margin = new System.Windows.Forms.Padding(4);
             this.lstCheckedOut.Name = "lstCheckedOut";
             this.lstCheckedOut.Size = new System.Drawing.Size(256, 372);
             this.lstCheckedOut.TabIndex = 70;
@@ -187,7 +188,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCheckedIn.FormattingEnabled = true;
             this.lstCheckedIn.ItemHeight = 23;
             this.lstCheckedIn.Location = new System.Drawing.Point(48, 69);
-            this.lstCheckedIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstCheckedIn.Margin = new System.Windows.Forms.Padding(4);
             this.lstCheckedIn.Name = "lstCheckedIn";
             this.lstCheckedIn.Size = new System.Drawing.Size(256, 372);
             this.lstCheckedIn.TabIndex = 69;
@@ -197,7 +198,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSvsuIdCI.Location = new System.Drawing.Point(796, 97);
-            this.txtSvsuIdCI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSvsuIdCI.Margin = new System.Windows.Forms.Padding(4);
             this.txtSvsuIdCI.Mask = "000000";
             this.txtSvsuIdCI.Name = "txtSvsuIdCI";
             this.txtSvsuIdCI.Size = new System.Drawing.Size(132, 30);
@@ -218,12 +219,12 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpConsumables
             // 
-            this.tbpConsumables.Controls.Add(this.richTextBox1);
+            this.tbpConsumables.Controls.Add(this.txtConsumableNotes);
             this.tbpConsumables.Controls.Add(this.label12);
             this.tbpConsumables.Controls.Add(this.maskedTextBox1);
             this.tbpConsumables.Controls.Add(this.label13);
             this.tbpConsumables.Controls.Add(this.label10);
-            this.tbpConsumables.Controls.Add(this.drpCategory);
+            this.tbpConsumables.Controls.Add(this.cmbCategory);
             this.tbpConsumables.Controls.Add(this.label9);
             this.tbpConsumables.Controls.Add(this.btnCancel);
             this.tbpConsumables.Controls.Add(this.btnHandOut);
@@ -232,32 +233,32 @@ namespace SVSU_Capstone_Project.Views
             this.tbpConsumables.Controls.Add(this.nudAddQty);
             this.tbpConsumables.Controls.Add(this.label5);
             this.tbpConsumables.Controls.Add(this.txtCurrentQty);
-            this.tbpConsumables.Controls.Add(this.drpCommodity);
+            this.tbpConsumables.Controls.Add(this.cmbCommodity);
             this.tbpConsumables.Controls.Add(this.label4);
-            this.tbpConsumables.Controls.Add(this.drpCabinet);
+            this.tbpConsumables.Controls.Add(this.cmbCabinet);
             this.tbpConsumables.Controls.Add(this.label3);
-            this.tbpConsumables.Controls.Add(this.drpNLevel);
+            this.tbpConsumables.Controls.Add(this.cmbNLevel);
             this.tbpConsumables.Controls.Add(this.label8);
-            this.tbpConsumables.Controls.Add(this.drpRoom);
+            this.tbpConsumables.Controls.Add(this.cmbRoom);
             this.tbpConsumables.Controls.Add(this.label11);
             this.tbpConsumables.Location = new System.Drawing.Point(4, 27);
-            this.tbpConsumables.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbpConsumables.Margin = new System.Windows.Forms.Padding(4);
             this.tbpConsumables.Name = "tbpConsumables";
-            this.tbpConsumables.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbpConsumables.Padding = new System.Windows.Forms.Padding(4);
             this.tbpConsumables.Size = new System.Drawing.Size(1233, 497);
             this.tbpConsumables.TabIndex = 1;
             this.tbpConsumables.Text = "Consumables";
             this.tbpConsumables.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // txtConsumableNotes
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(884, 100);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(337, 227);
-            this.richTextBox1.TabIndex = 175;
-            this.richTextBox1.Text = "";
+            this.txtConsumableNotes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsumableNotes.Location = new System.Drawing.Point(884, 100);
+            this.txtConsumableNotes.Margin = new System.Windows.Forms.Padding(4);
+            this.txtConsumableNotes.Name = "txtConsumableNotes";
+            this.txtConsumableNotes.Size = new System.Drawing.Size(337, 227);
+            this.txtConsumableNotes.TabIndex = 175;
+            this.txtConsumableNotes.Text = "";
             // 
             // label12
             // 
@@ -273,7 +274,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.maskedTextBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedTextBox1.Location = new System.Drawing.Point(884, 28);
-            this.maskedTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.maskedTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.maskedTextBox1.Mask = "000000";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(132, 30);
@@ -303,15 +304,15 @@ namespace SVSU_Capstone_Project.Views
             this.label10.TabIndex = 172;
             this.label10.Text = "Hand Out Consumable Item";
             // 
-            // drpCategory
+            // cmbCategory
             // 
-            this.drpCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drpCategory.FormattingEnabled = true;
-            this.drpCategory.Location = new System.Drawing.Point(200, 74);
-            this.drpCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.drpCategory.Name = "drpCategory";
-            this.drpCategory.Size = new System.Drawing.Size(211, 31);
-            this.drpCategory.TabIndex = 155;
+            this.cmbCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(200, 74);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(211, 31);
+            this.cmbCategory.TabIndex = 155;
             // 
             // label9
             // 
@@ -327,7 +328,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(911, 432);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(152, 53);
             this.btnCancel.TabIndex = 163;
@@ -338,7 +339,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnHandOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHandOut.Location = new System.Drawing.Point(1071, 432);
-            this.btnHandOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHandOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnHandOut.Name = "btnHandOut";
             this.btnHandOut.Size = new System.Drawing.Size(152, 53);
             this.btnHandOut.TabIndex = 164;
@@ -371,7 +372,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.nudAddQty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudAddQty.Location = new System.Drawing.Point(700, 297);
-            this.nudAddQty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudAddQty.Margin = new System.Windows.Forms.Padding(4);
             this.nudAddQty.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -406,21 +407,22 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtCurrentQty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentQty.Location = new System.Drawing.Point(700, 236);
-            this.txtCurrentQty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCurrentQty.Margin = new System.Windows.Forms.Padding(4);
             this.txtCurrentQty.Name = "txtCurrentQty";
             this.txtCurrentQty.ReadOnly = true;
             this.txtCurrentQty.Size = new System.Drawing.Size(159, 30);
             this.txtCurrentQty.TabIndex = 161;
             // 
-            // drpCommodity
+            // cmbCommodity
             // 
-            this.drpCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drpCommodity.FormattingEnabled = true;
-            this.drpCommodity.Location = new System.Drawing.Point(200, 126);
-            this.drpCommodity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.drpCommodity.Name = "drpCommodity";
-            this.drpCommodity.Size = new System.Drawing.Size(211, 31);
-            this.drpCommodity.TabIndex = 157;
+            this.cmbCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCommodity.FormattingEnabled = true;
+            this.cmbCommodity.Location = new System.Drawing.Point(200, 126);
+            this.cmbCommodity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbCommodity.Name = "cmbCommodity";
+            this.cmbCommodity.Size = new System.Drawing.Size(211, 31);
+            this.cmbCommodity.TabIndex = 157;
+            this.cmbCommodity.SelectedIndexChanged += new System.EventHandler(this.cmbCommodity_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -432,15 +434,15 @@ namespace SVSU_Capstone_Project.Views
             this.label4.TabIndex = 168;
             this.label4.Text = "Commodity:";
             // 
-            // drpCabinet
+            // cmbCabinet
             // 
-            this.drpCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drpCabinet.FormattingEnabled = true;
-            this.drpCabinet.Location = new System.Drawing.Point(200, 295);
-            this.drpCabinet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.drpCabinet.Name = "drpCabinet";
-            this.drpCabinet.Size = new System.Drawing.Size(211, 31);
-            this.drpCabinet.TabIndex = 159;
+            this.cmbCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCabinet.FormattingEnabled = true;
+            this.cmbCabinet.Location = new System.Drawing.Point(200, 295);
+            this.cmbCabinet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbCabinet.Name = "cmbCabinet";
+            this.cmbCabinet.Size = new System.Drawing.Size(211, 31);
+            this.cmbCabinet.TabIndex = 159;
             // 
             // label3
             // 
@@ -452,15 +454,15 @@ namespace SVSU_Capstone_Project.Views
             this.label3.TabIndex = 167;
             this.label3.Text = "Cabinet:";
             // 
-            // drpNLevel
+            // cmbNLevel
             // 
-            this.drpNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drpNLevel.FormattingEnabled = true;
-            this.drpNLevel.Location = new System.Drawing.Point(200, 354);
-            this.drpNLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.drpNLevel.Name = "drpNLevel";
-            this.drpNLevel.Size = new System.Drawing.Size(71, 31);
-            this.drpNLevel.TabIndex = 160;
+            this.cmbNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbNLevel.FormattingEnabled = true;
+            this.cmbNLevel.Location = new System.Drawing.Point(200, 354);
+            this.cmbNLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbNLevel.Name = "cmbNLevel";
+            this.cmbNLevel.Size = new System.Drawing.Size(71, 31);
+            this.cmbNLevel.TabIndex = 160;
             // 
             // label8
             // 
@@ -472,15 +474,15 @@ namespace SVSU_Capstone_Project.Views
             this.label8.TabIndex = 166;
             this.label8.Text = "N Level:";
             // 
-            // drpRoom
+            // cmbRoom
             // 
-            this.drpRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drpRoom.FormattingEnabled = true;
-            this.drpRoom.Location = new System.Drawing.Point(200, 236);
-            this.drpRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.drpRoom.Name = "drpRoom";
-            this.drpRoom.Size = new System.Drawing.Size(211, 31);
-            this.drpRoom.TabIndex = 158;
+            this.cmbRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRoom.FormattingEnabled = true;
+            this.cmbRoom.Location = new System.Drawing.Point(200, 236);
+            this.cmbRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbRoom.Name = "cmbRoom";
+            this.cmbRoom.Size = new System.Drawing.Size(211, 31);
+            this.cmbRoom.TabIndex = 158;
             // 
             // label11
             // 
@@ -498,7 +500,7 @@ namespace SVSU_Capstone_Project.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1273, 558);
             this.Controls.Add(this.tbcCheckInOut);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCheckInOutItems";
             this.Text = "Check-In/Out Items";
             this.tbcCheckInOut.ResumeLayout(false);
@@ -527,7 +529,7 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Button btnCheckIn;
         private System.Windows.Forms.Button btnCheckOut;
         private System.Windows.Forms.Label label10;
-        internal System.Windows.Forms.ComboBox drpCategory;
+        internal System.Windows.Forms.ComboBox cmbCategory;
         internal System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnHandOut;
@@ -536,15 +538,15 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.NumericUpDown nudAddQty;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCurrentQty;
-        internal System.Windows.Forms.ComboBox drpCommodity;
+        internal System.Windows.Forms.ComboBox cmbCommodity;
         internal System.Windows.Forms.Label label4;
-        internal System.Windows.Forms.ComboBox drpCabinet;
+        internal System.Windows.Forms.ComboBox cmbCabinet;
         internal System.Windows.Forms.Label label3;
-        internal System.Windows.Forms.ComboBox drpNLevel;
+        internal System.Windows.Forms.ComboBox cmbNLevel;
         internal System.Windows.Forms.Label label8;
-        internal System.Windows.Forms.ComboBox drpRoom;
+        internal System.Windows.Forms.ComboBox cmbRoom;
         internal System.Windows.Forms.Label label11;
-        internal System.Windows.Forms.RichTextBox richTextBox1;
+        internal System.Windows.Forms.RichTextBox txtConsumableNotes;
         internal System.Windows.Forms.Label label12;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Label label13;
