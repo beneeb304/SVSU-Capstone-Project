@@ -52,11 +52,22 @@ namespace SVSU_Capstone_Project.Views
 
         private void cmbCommodity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var commodityTuid = (cmbCommodity.SelectedValue as Commodity).uidTuid;
-            cmbRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
-            txtConsumableNotes.Text = cmbCommodity.SelectedValue.ToString() + " " + commodityTuid;
-            cmbCabinet.DataSource = ItemModel.GetMany<Cabinet>().OrderBy(x => x.strName).ToList();
-            cmbNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
+            //var commodityTuid = (cmbCommodity.SelectedValue as Commodity).uidTuid;
+            //cmbRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
+            //txtConsumableNotes.Text = cmbCommodity.SelectedValue.ToString() + " " + commodityTuid;
+            //cmbCabinet.DataSource = ItemModel.GetMany<Cabinet>().OrderBy(x => x.strName).ToList();
+            //cmbNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
+
+            var objSelectedCommodity = cmbCommodity.SelectedValue as Commodity;
+            cmbRoom.DataSource = objSelectedCommodity.lstStorage.Select(x => x.objCabinet.objRoom).Distinct().OrderBy(x => x.strName).ToList();
+        }
+
+        private void cmbRoom_SelectedIndexChanged(object sender, EventArgs e){
+            var objSelectedRoom = cmbRoom.SelectedValue as Room;
+            cmbCabinet.DataSource = (cmbCommodity.SelectedItem as Commodity).lstStorage
+            .Where(x => x.objCabinet.objRoom.uidTuid == objSelectedRoom.uidTuid)
+            .Select(x => x.objCabinet).Distinct()
+            .OrderBy(x => x.strName).ToList();
         }
 
 
