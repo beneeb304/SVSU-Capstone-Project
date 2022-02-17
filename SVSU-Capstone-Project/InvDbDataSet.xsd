@@ -10,64 +10,87 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LogsTableAdapter" GeneratorDataComponentClassName="LogsTableAdapter" Name="Logs" UserDataComponentName="LogsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Logs" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Logs.timestamp, Users.svsu_id, Users.first_name, Users.last_name, Logs.action, Commodities.name, Logs.notes
+FROM     Logs INNER JOIN
+                  Users ON Logs.objUser_uidTuid = Users.tuid INNER JOIN
+                  Storages ON Logs.objStorage_uidTuid = Storages.tuid INNER JOIN
+                  Commodities ON Commodities.tuid = Storages.objCommodity_uidTuid</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="action" DataSetColumn="action" />
+              <Mapping SourceColumn="timestamp" DataSetColumn="timestamp" />
+              <Mapping SourceColumn="notes" DataSetColumn="notes" />
+              <Mapping SourceColumn="svsu_id" DataSetColumn="svsu_id" />
+              <Mapping SourceColumn="first_name" DataSetColumn="first_name" />
+              <Mapping SourceColumn="last_name" DataSetColumn="last_name" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Logs.timestamp, Users.svsu_id, Users.first_name, Users.last_name, Logs.action, Commodities.name, Logs.notes
+FROM     Logs INNER JOIN
+                  Users ON Logs.objUser_uidTuid = Users.tuid INNER JOIN
+                  Storages ON Logs.objStorage_uidTuid = Storages.tuid INNER JOIN
+                  Commodities ON Commodities.tuid = Storages.objCommodity_uidTuid</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CabinetsTableAdapter" GeneratorDataComponentClassName="CabinetsTableAdapter" Name="Cabinets" UserDataComponentName="CabinetsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Cabinets" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [Logs] WHERE (([tuid] = @Original_tuid) AND ([action] = @Original_action) AND ([timestamp] = @Original_timestamp) AND ([quantityChange] = @Original_quantityChange) AND ((@IsNull_objStorage_uidTuid = 1 AND [objStorage_uidTuid] IS NULL) OR ([objStorage_uidTuid] = @Original_objStorage_uidTuid)) AND ((@IsNull_objUser_uidTuid = 1 AND [objUser_uidTuid] IS NULL) OR ([objUser_uidTuid] = @Original_objUser_uidTuid)))</CommandText>
+                    <CommandText>DELETE FROM [Cabinets] WHERE (([tuid] = @Original_tuid) AND ((@IsNull_objRoom_uidTuid = 1 AND [objRoom_uidTuid] IS NULL) OR ([objRoom_uidTuid] = @Original_objRoom_uidTuid)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_action" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="action" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_timestamp" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="timestamp" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_quantityChange" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantityChange" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objStorage_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objStorage_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objStorage_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objStorage_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objUser_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objUser_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objRoom_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objRoom_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objRoom_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objRoom_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [Logs] ([tuid], [action], [timestamp], [notes], [quantityChange], [objStorage_uidTuid], [objUser_uidTuid]) VALUES (@tuid, @action, @timestamp, @notes, @quantityChange, @objStorage_uidTuid, @objUser_uidTuid);
-SELECT tuid, action, timestamp, notes, quantityChange, objStorage_uidTuid, objUser_uidTuid FROM Logs WHERE (tuid = @tuid)</CommandText>
+                    <CommandText>INSERT INTO [Cabinets] ([tuid], [name], [description], [objRoom_uidTuid]) VALUES (@tuid, @name, @description, @objRoom_uidTuid);
+SELECT tuid, name, description, objRoom_uidTuid FROM Cabinets WHERE (tuid = @tuid)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@action" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="action" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@timestamp" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="timestamp" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@notes" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="notes" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@quantityChange" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantityChange" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objStorage_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objStorage_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objUser_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objRoom_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objRoom_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Logs.*
-FROM     Logs</CommandText>
+                    <CommandText>SELECT Cabinets.*
+FROM     Cabinets</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [Logs] SET [tuid] = @tuid, [action] = @action, [timestamp] = @timestamp, [notes] = @notes, [quantityChange] = @quantityChange, [objStorage_uidTuid] = @objStorage_uidTuid, [objUser_uidTuid] = @objUser_uidTuid WHERE (([tuid] = @Original_tuid) AND ([action] = @Original_action) AND ([timestamp] = @Original_timestamp) AND ([quantityChange] = @Original_quantityChange) AND ((@IsNull_objStorage_uidTuid = 1 AND [objStorage_uidTuid] IS NULL) OR ([objStorage_uidTuid] = @Original_objStorage_uidTuid)) AND ((@IsNull_objUser_uidTuid = 1 AND [objUser_uidTuid] IS NULL) OR ([objUser_uidTuid] = @Original_objUser_uidTuid)));
-SELECT tuid, action, timestamp, notes, quantityChange, objStorage_uidTuid, objUser_uidTuid FROM Logs WHERE (tuid = @tuid)</CommandText>
+                    <CommandText>UPDATE [Cabinets] SET [tuid] = @tuid, [name] = @name, [description] = @description, [objRoom_uidTuid] = @objRoom_uidTuid WHERE (([tuid] = @Original_tuid) AND ((@IsNull_objRoom_uidTuid = 1 AND [objRoom_uidTuid] IS NULL) OR ([objRoom_uidTuid] = @Original_objRoom_uidTuid)));
+SELECT tuid, name, description, objRoom_uidTuid FROM Cabinets WHERE (tuid = @tuid)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@action" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="action" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@timestamp" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="timestamp" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@notes" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="notes" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@quantityChange" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantityChange" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objStorage_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objStorage_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objUser_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objRoom_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objRoom_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_action" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="action" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_timestamp" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="timestamp" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_quantityChange" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantityChange" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objStorage_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objStorage_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objStorage_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objStorage_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objUser_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objUser_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objRoom_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objRoom_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objRoom_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objRoom_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -75,12 +98,557 @@ SELECT tuid, action, timestamp, notes, quantityChange, objStorage_uidTuid, objUs
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="tuid" DataSetColumn="tuid" />
-              <Mapping SourceColumn="action" DataSetColumn="action" />
-              <Mapping SourceColumn="timestamp" DataSetColumn="timestamp" />
-              <Mapping SourceColumn="notes" DataSetColumn="notes" />
-              <Mapping SourceColumn="quantityChange" DataSetColumn="quantityChange" />
-              <Mapping SourceColumn="objStorage_uidTuid" DataSetColumn="objStorage_uidTuid" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="description" DataSetColumn="description" />
+              <Mapping SourceColumn="objRoom_uidTuid" DataSetColumn="objRoom_uidTuid" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CategoriesTableAdapter" GeneratorDataComponentClassName="CategoriesTableAdapter" Name="Categories" UserDataComponentName="CategoriesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Categories" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Categories] WHERE (([tuid] = @Original_tuid))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Categories] ([tuid], [name], [description]) VALUES (@tuid, @name, @description);
+SELECT tuid, name, description FROM Categories WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Categories.*
+FROM     Categories</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Categories] SET [tuid] = @tuid, [name] = @name, [description] = @description WHERE (([tuid] = @Original_tuid));
+SELECT tuid, name, description FROM Categories WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tuid" DataSetColumn="tuid" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="description" DataSetColumn="description" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CheckedItemsTableAdapter" GeneratorDataComponentClassName="CheckedItemsTableAdapter" Name="CheckedItems" UserDataComponentName="CheckedItemsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.CheckedItems" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [CheckedItems] WHERE (([tuid] = @Original_tuid) AND ((@IsNull_objCommodities_uidTuid = 1 AND [objCommodities_uidTuid] IS NULL) OR ([objCommodities_uidTuid] = @Original_objCommodities_uidTuid)) AND ((@IsNull_objUser_uidTuid = 1 AND [objUser_uidTuid] IS NULL) OR ([objUser_uidTuid] = @Original_objUser_uidTuid)) AND ((@IsNull_objLog_uidTuid = 1 AND [objLog_uidTuid] IS NULL) OR ([objLog_uidTuid] = @Original_objLog_uidTuid)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objCommodities_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objCommodities_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objCommodities_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodities_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objUser_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objUser_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objLog_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objLog_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objLog_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objLog_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [CheckedItems] ([tuid], [objCommodities_uidTuid], [objUser_uidTuid], [objLog_uidTuid]) VALUES (@tuid, @objCommodities_uidTuid, @objUser_uidTuid, @objLog_uidTuid);
+SELECT tuid, objCommodities_uidTuid, objUser_uidTuid, objLog_uidTuid FROM CheckedItems WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objCommodities_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodities_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objUser_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objLog_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objLog_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT CheckedItems.*
+FROM     CheckedItems</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [CheckedItems] SET [tuid] = @tuid, [objCommodities_uidTuid] = @objCommodities_uidTuid, [objUser_uidTuid] = @objUser_uidTuid, [objLog_uidTuid] = @objLog_uidTuid WHERE (([tuid] = @Original_tuid) AND ((@IsNull_objCommodities_uidTuid = 1 AND [objCommodities_uidTuid] IS NULL) OR ([objCommodities_uidTuid] = @Original_objCommodities_uidTuid)) AND ((@IsNull_objUser_uidTuid = 1 AND [objUser_uidTuid] IS NULL) OR ([objUser_uidTuid] = @Original_objUser_uidTuid)) AND ((@IsNull_objLog_uidTuid = 1 AND [objLog_uidTuid] IS NULL) OR ([objLog_uidTuid] = @Original_objLog_uidTuid)));
+SELECT tuid, objCommodities_uidTuid, objUser_uidTuid, objLog_uidTuid FROM CheckedItems WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objCommodities_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodities_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objUser_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objLog_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objLog_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objCommodities_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objCommodities_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objCommodities_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodities_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objUser_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objUser_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objUser_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objLog_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objLog_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objLog_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objLog_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tuid" DataSetColumn="tuid" />
+              <Mapping SourceColumn="objCommodities_uidTuid" DataSetColumn="objCommodities_uidTuid" />
               <Mapping SourceColumn="objUser_uidTuid" DataSetColumn="objUser_uidTuid" />
+              <Mapping SourceColumn="objLog_uidTuid" DataSetColumn="objLog_uidTuid" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CommoditiesTableAdapter" GeneratorDataComponentClassName="CommoditiesTableAdapter" Name="Commodities" UserDataComponentName="CommoditiesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Commodities" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Commodities] WHERE (([tuid] = @Original_tuid) AND ([alert_quantity] = @Original_alert_quantity) AND ([commodityType] = @Original_commodityType) AND ((@IsNull_objCategory_uidTuid = 1 AND [objCategory_uidTuid] IS NULL) OR ([objCategory_uidTuid] = @Original_objCategory_uidTuid)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_alert_quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="alert_quantity" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_commodityType" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="commodityType" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objCategory_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objCategory_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objCategory_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCategory_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Commodities] ([tuid], [name], [description], [features], [alert_quantity], [commodityType], [objCategory_uidTuid], [strBarCode]) VALUES (@tuid, @name, @description, @features, @alert_quantity, @commodityType, @objCategory_uidTuid, @strBarCode);
+SELECT tuid, name, description, features, alert_quantity, commodityType, objCategory_uidTuid, strBarCode FROM Commodities WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@features" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="features" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@alert_quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="alert_quantity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@commodityType" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="commodityType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objCategory_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCategory_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@strBarCode" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="strBarCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Commodities.*
+FROM     Commodities</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Commodities] SET [tuid] = @tuid, [name] = @name, [description] = @description, [features] = @features, [alert_quantity] = @alert_quantity, [commodityType] = @commodityType, [objCategory_uidTuid] = @objCategory_uidTuid, [strBarCode] = @strBarCode WHERE (([tuid] = @Original_tuid) AND ([alert_quantity] = @Original_alert_quantity) AND ([commodityType] = @Original_commodityType) AND ((@IsNull_objCategory_uidTuid = 1 AND [objCategory_uidTuid] IS NULL) OR ([objCategory_uidTuid] = @Original_objCategory_uidTuid)));
+SELECT tuid, name, description, features, alert_quantity, commodityType, objCategory_uidTuid, strBarCode FROM Commodities WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@features" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="features" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@alert_quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="alert_quantity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@commodityType" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="commodityType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objCategory_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCategory_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@strBarCode" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="strBarCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_alert_quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="alert_quantity" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_commodityType" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="commodityType" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objCategory_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objCategory_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objCategory_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCategory_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tuid" DataSetColumn="tuid" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="description" DataSetColumn="description" />
+              <Mapping SourceColumn="features" DataSetColumn="features" />
+              <Mapping SourceColumn="alert_quantity" DataSetColumn="alert_quantity" />
+              <Mapping SourceColumn="commodityType" DataSetColumn="commodityType" />
+              <Mapping SourceColumn="objCategory_uidTuid" DataSetColumn="objCategory_uidTuid" />
+              <Mapping SourceColumn="strBarCode" DataSetColumn="strBarCode" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NLevelsTableAdapter" GeneratorDataComponentClassName="NLevelsTableAdapter" Name="NLevels" UserDataComponentName="NLevelsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.NLevels" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [NLevels] WHERE (([tuid] = @Original_tuid))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [NLevels] ([tuid], [name], [description]) VALUES (@tuid, @name, @description);
+SELECT tuid, name, description FROM NLevels WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT NLevels.*
+FROM     NLevels</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [NLevels] SET [tuid] = @tuid, [name] = @name, [description] = @description WHERE (([tuid] = @Original_tuid));
+SELECT tuid, name, description FROM NLevels WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tuid" DataSetColumn="tuid" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="description" DataSetColumn="description" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RoomsTableAdapter" GeneratorDataComponentClassName="RoomsTableAdapter" Name="Rooms" UserDataComponentName="RoomsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Rooms" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Rooms] WHERE (([tuid] = @Original_tuid))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Rooms] ([tuid], [name], [description]) VALUES (@tuid, @name, @description);
+SELECT tuid, name, description FROM Rooms WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Rooms.*
+FROM     Rooms</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Rooms] SET [tuid] = @tuid, [name] = @name, [description] = @description WHERE (([tuid] = @Original_tuid));
+SELECT tuid, name, description FROM Rooms WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tuid" DataSetColumn="tuid" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="description" DataSetColumn="description" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StoragesTableAdapter" GeneratorDataComponentClassName="StoragesTableAdapter" Name="Storages" UserDataComponentName="StoragesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Storages" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Storages] WHERE (([tuid] = @Original_tuid) AND ([quantity] = @Original_quantity) AND ((@IsNull_objCabinet_uidTuid = 1 AND [objCabinet_uidTuid] IS NULL) OR ([objCabinet_uidTuid] = @Original_objCabinet_uidTuid)) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objNLevel_uidTuid = 1 AND [objNLevel_uidTuid] IS NULL) OR ([objNLevel_uidTuid] = @Original_objNLevel_uidTuid)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantity" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objCabinet_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objCabinet_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objCabinet_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCabinet_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objCommodity_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objCommodity_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objNLevel_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objNLevel_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objNLevel_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objNLevel_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Storages] ([tuid], [quantity], [objCabinet_uidTuid], [objCommodity_uidTuid], [objNLevel_uidTuid]) VALUES (@tuid, @quantity, @objCabinet_uidTuid, @objCommodity_uidTuid, @objNLevel_uidTuid);
+SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTuid FROM Storages WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objCabinet_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCabinet_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objCommodity_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objNLevel_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objNLevel_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Storages.*
+FROM     Storages</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Storages] SET [tuid] = @tuid, [quantity] = @quantity, [objCabinet_uidTuid] = @objCabinet_uidTuid, [objCommodity_uidTuid] = @objCommodity_uidTuid, [objNLevel_uidTuid] = @objNLevel_uidTuid WHERE (([tuid] = @Original_tuid) AND ([quantity] = @Original_quantity) AND ((@IsNull_objCabinet_uidTuid = 1 AND [objCabinet_uidTuid] IS NULL) OR ([objCabinet_uidTuid] = @Original_objCabinet_uidTuid)) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objNLevel_uidTuid = 1 AND [objNLevel_uidTuid] IS NULL) OR ([objNLevel_uidTuid] = @Original_objNLevel_uidTuid)));
+SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTuid FROM Storages WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objCabinet_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCabinet_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objCommodity_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objNLevel_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objNLevel_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantity" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objCabinet_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objCabinet_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objCabinet_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCabinet_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objCommodity_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objCommodity_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objNLevel_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objNLevel_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objNLevel_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objNLevel_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tuid" DataSetColumn="tuid" />
+              <Mapping SourceColumn="quantity" DataSetColumn="quantity" />
+              <Mapping SourceColumn="objCabinet_uidTuid" DataSetColumn="objCabinet_uidTuid" />
+              <Mapping SourceColumn="objCommodity_uidTuid" DataSetColumn="objCommodity_uidTuid" />
+              <Mapping SourceColumn="objNLevel_uidTuid" DataSetColumn="objNLevel_uidTuid" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UsersTableAdapter" GeneratorDataComponentClassName="UsersTableAdapter" Name="Users" UserDataComponentName="UsersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Users" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Users] WHERE (([tuid] = @Original_tuid) AND ([svsu_id] = @Original_svsu_id) AND ([email] = @Original_email) AND ([isAdmin] = @Original_isAdmin))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_svsu_id" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="svsu_id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_email" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="email" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_isAdmin" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="isAdmin" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Users] ([tuid], [svsu_id], [first_name], [last_name], [email], [phone], [hash], [isAdmin]) VALUES (@tuid, @svsu_id, @first_name, @last_name, @email, @phone, @hash, @isAdmin);
+SELECT tuid, svsu_id, first_name, last_name, email, phone, hash, isAdmin FROM Users WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@svsu_id" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="svsu_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@first_name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="first_name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@last_name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="last_name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@email" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="email" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@phone" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="phone" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@hash" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="hash" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@isAdmin" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="isAdmin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Users.*
+FROM     Users</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Users] SET [tuid] = @tuid, [svsu_id] = @svsu_id, [first_name] = @first_name, [last_name] = @last_name, [email] = @email, [phone] = @phone, [hash] = @hash, [isAdmin] = @isAdmin WHERE (([tuid] = @Original_tuid) AND ([svsu_id] = @Original_svsu_id) AND ([email] = @Original_email) AND ([isAdmin] = @Original_isAdmin));
+SELECT tuid, svsu_id, first_name, last_name, email, phone, hash, isAdmin FROM Users WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@svsu_id" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="svsu_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@first_name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="first_name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@last_name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="last_name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@email" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="email" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@phone" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="phone" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@hash" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="hash" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@isAdmin" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="isAdmin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_svsu_id" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="svsu_id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_email" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="email" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_isAdmin" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="isAdmin" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tuid" DataSetColumn="tuid" />
+              <Mapping SourceColumn="svsu_id" DataSetColumn="svsu_id" />
+              <Mapping SourceColumn="first_name" DataSetColumn="first_name" />
+              <Mapping SourceColumn="last_name" DataSetColumn="last_name" />
+              <Mapping SourceColumn="email" DataSetColumn="email" />
+              <Mapping SourceColumn="phone" DataSetColumn="phone" />
+              <Mapping SourceColumn="hash" DataSetColumn="hash" />
+              <Mapping SourceColumn="isAdmin" DataSetColumn="isAdmin" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VendorItemsTableAdapter" GeneratorDataComponentClassName="VendorItemsTableAdapter" Name="VendorItems" UserDataComponentName="VendorItemsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.VendorItems" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [VendorItems] WHERE (([tuid] = @Original_tuid) AND ([costInCents] = @Original_costInCents) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objVendor_uidTuid = 1 AND [objVendor_uidTuid] IS NULL) OR ([objVendor_uidTuid] = @Original_objVendor_uidTuid)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_costInCents" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="costInCents" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objCommodity_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objCommodity_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objVendor_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objVendor_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objVendor_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objVendor_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [VendorItems] ([tuid], [costInCents], [itemUrl], [objCommodity_uidTuid], [objVendor_uidTuid]) VALUES (@tuid, @costInCents, @itemUrl, @objCommodity_uidTuid, @objVendor_uidTuid);
+SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM VendorItems WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@costInCents" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="costInCents" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@itemUrl" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="itemUrl" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objCommodity_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objVendor_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objVendor_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT VendorItems.*
+FROM     VendorItems</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [VendorItems] SET [tuid] = @tuid, [costInCents] = @costInCents, [itemUrl] = @itemUrl, [objCommodity_uidTuid] = @objCommodity_uidTuid, [objVendor_uidTuid] = @objVendor_uidTuid WHERE (([tuid] = @Original_tuid) AND ([costInCents] = @Original_costInCents) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objVendor_uidTuid = 1 AND [objVendor_uidTuid] IS NULL) OR ([objVendor_uidTuid] = @Original_objVendor_uidTuid)));
+SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM VendorItems WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@costInCents" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="costInCents" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@itemUrl" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="itemUrl" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objCommodity_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@objVendor_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objVendor_uidTuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_costInCents" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="costInCents" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objCommodity_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objCommodity_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objCommodity_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_objVendor_uidTuid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="objVendor_uidTuid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_objVendor_uidTuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="objVendor_uidTuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tuid" DataSetColumn="tuid" />
+              <Mapping SourceColumn="costInCents" DataSetColumn="costInCents" />
+              <Mapping SourceColumn="itemUrl" DataSetColumn="itemUrl" />
+              <Mapping SourceColumn="objCommodity_uidTuid" DataSetColumn="objCommodity_uidTuid" />
+              <Mapping SourceColumn="objVendor_uidTuid" DataSetColumn="objVendor_uidTuid" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VendorsTableAdapter" GeneratorDataComponentClassName="VendorsTableAdapter" Name="Vendors" UserDataComponentName="VendorsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Vendors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Vendors] WHERE (([tuid] = @Original_tuid))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Vendors] ([tuid], [name], [homepage], [description]) VALUES (@tuid, @name, @homepage, @description);
+SELECT tuid, name, homepage, description FROM Vendors WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@homepage" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="homepage" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Vendors.*
+FROM     Vendors</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Vendors] SET [tuid] = @tuid, [name] = @name, [homepage] = @homepage, [description] = @description WHERE (([tuid] = @Original_tuid));
+SELECT tuid, name, homepage, description FROM Vendors WHERE (tuid = @tuid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@homepage" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="homepage" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tuid" DataSetColumn="tuid" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="homepage" DataSetColumn="homepage" />
+              <Mapping SourceColumn="description" DataSetColumn="description" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -92,10 +660,9 @@ SELECT tuid, action, timestamp, notes, quantityChange, objStorage_uidTuid, objUs
   <xs:element name="InvDbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="InvDbDataSet" msprop:Generator_UserDSName="InvDbDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Logs" msprop:Generator_TableClassName="LogsDataTable" msprop:Generator_TableVarName="tableLogs" msprop:Generator_TablePropName="Logs" msprop:Generator_RowDeletingName="LogsRowDeleting" msprop:Generator_RowChangingName="LogsRowChanging" msprop:Generator_RowEvHandlerName="LogsRowChangeEventHandler" msprop:Generator_RowDeletedName="LogsRowDeleted" msprop:Generator_UserTableName="Logs" msprop:Generator_RowChangedName="LogsRowChanged" msprop:Generator_RowEvArgName="LogsRowChangeEvent" msprop:Generator_RowClassName="LogsRow">
+        <xs:element name="Logs" msprop:Generator_TableClassName="LogsDataTable" msprop:Generator_TableVarName="tableLogs" msprop:Generator_RowChangedName="LogsRowChanged" msprop:Generator_TablePropName="Logs" msprop:Generator_RowDeletingName="LogsRowDeleting" msprop:Generator_RowChangingName="LogsRowChanging" msprop:Generator_RowEvHandlerName="LogsRowChangeEventHandler" msprop:Generator_RowDeletedName="LogsRowDeleted" msprop:Generator_RowClassName="LogsRow" msprop:Generator_UserTableName="Logs" msprop:Generator_RowEvArgName="LogsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
               <xs:element name="action" msprop:Generator_ColumnVarNameInTable="columnaction" msprop:Generator_ColumnPropNameInRow="action" msprop:Generator_ColumnPropNameInTable="actionColumn" msprop:Generator_UserColumnName="action" type="xs:int" />
               <xs:element name="timestamp" msprop:Generator_ColumnVarNameInTable="columntimestamp" msprop:Generator_ColumnPropNameInRow="timestamp" msprop:Generator_ColumnPropNameInTable="timestampColumn" msprop:Generator_UserColumnName="timestamp" type="xs:dateTime" />
               <xs:element name="notes" msprop:Generator_ColumnVarNameInTable="columnnotes" msprop:Generator_ColumnPropNameInRow="notes" msprop:Generator_ColumnPropNameInTable="notesColumn" msprop:Generator_UserColumnName="notes" minOccurs="0">
@@ -105,17 +672,330 @@ SELECT tuid, action, timestamp, notes, quantityChange, objStorage_uidTuid, objUs
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="quantityChange" msprop:Generator_ColumnVarNameInTable="columnquantityChange" msprop:Generator_ColumnPropNameInRow="quantityChange" msprop:Generator_ColumnPropNameInTable="quantityChangeColumn" msprop:Generator_UserColumnName="quantityChange" type="xs:int" />
-              <xs:element name="objStorage_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjStorage_uidTuid" msprop:Generator_ColumnPropNameInRow="objStorage_uidTuid" msprop:Generator_ColumnPropNameInTable="objStorage_uidTuidColumn" msprop:Generator_UserColumnName="objStorage_uidTuid" type="xs:string" minOccurs="0" />
+              <xs:element name="svsu_id" msprop:Generator_ColumnVarNameInTable="columnsvsu_id" msprop:Generator_ColumnPropNameInRow="svsu_id" msprop:Generator_ColumnPropNameInTable="svsu_idColumn" msprop:Generator_UserColumnName="svsu_id">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="first_name" msprop:Generator_ColumnVarNameInTable="columnfirst_name" msprop:Generator_ColumnPropNameInRow="first_name" msprop:Generator_ColumnPropNameInTable="first_nameColumn" msprop:Generator_UserColumnName="first_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="last_name" msprop:Generator_ColumnVarNameInTable="columnlast_name" msprop:Generator_ColumnPropNameInRow="last_name" msprop:Generator_ColumnPropNameInTable="last_nameColumn" msprop:Generator_UserColumnName="last_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Cabinets" msprop:Generator_TableClassName="CabinetsDataTable" msprop:Generator_TableVarName="tableCabinets" msprop:Generator_TablePropName="Cabinets" msprop:Generator_RowDeletingName="CabinetsRowDeleting" msprop:Generator_RowChangingName="CabinetsRowChanging" msprop:Generator_RowEvHandlerName="CabinetsRowChangeEventHandler" msprop:Generator_RowDeletedName="CabinetsRowDeleted" msprop:Generator_UserTableName="Cabinets" msprop:Generator_RowChangedName="CabinetsRowChanged" msprop:Generator_RowEvArgName="CabinetsRowChangeEvent" msprop:Generator_RowClassName="CabinetsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="objRoom_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjRoom_uidTuid" msprop:Generator_ColumnPropNameInRow="objRoom_uidTuid" msprop:Generator_ColumnPropNameInTable="objRoom_uidTuidColumn" msprop:Generator_UserColumnName="objRoom_uidTuid" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Categories" msprop:Generator_TableClassName="CategoriesDataTable" msprop:Generator_TableVarName="tableCategories" msprop:Generator_TablePropName="Categories" msprop:Generator_RowDeletingName="CategoriesRowDeleting" msprop:Generator_RowChangingName="CategoriesRowChanging" msprop:Generator_RowEvHandlerName="CategoriesRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoriesRowDeleted" msprop:Generator_UserTableName="Categories" msprop:Generator_RowChangedName="CategoriesRowChanged" msprop:Generator_RowEvArgName="CategoriesRowChangeEvent" msprop:Generator_RowClassName="CategoriesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckedItems" msprop:Generator_TableClassName="CheckedItemsDataTable" msprop:Generator_TableVarName="tableCheckedItems" msprop:Generator_TablePropName="CheckedItems" msprop:Generator_RowDeletingName="CheckedItemsRowDeleting" msprop:Generator_RowChangingName="CheckedItemsRowChanging" msprop:Generator_RowEvHandlerName="CheckedItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="CheckedItemsRowDeleted" msprop:Generator_UserTableName="CheckedItems" msprop:Generator_RowChangedName="CheckedItemsRowChanged" msprop:Generator_RowEvArgName="CheckedItemsRowChangeEvent" msprop:Generator_RowClassName="CheckedItemsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
+              <xs:element name="objCommodities_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjCommodities_uidTuid" msprop:Generator_ColumnPropNameInRow="objCommodities_uidTuid" msprop:Generator_ColumnPropNameInTable="objCommodities_uidTuidColumn" msprop:Generator_UserColumnName="objCommodities_uidTuid" type="xs:string" minOccurs="0" />
               <xs:element name="objUser_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjUser_uidTuid" msprop:Generator_ColumnPropNameInRow="objUser_uidTuid" msprop:Generator_ColumnPropNameInTable="objUser_uidTuidColumn" msprop:Generator_UserColumnName="objUser_uidTuid" type="xs:string" minOccurs="0" />
+              <xs:element name="objLog_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjLog_uidTuid" msprop:Generator_ColumnPropNameInRow="objLog_uidTuid" msprop:Generator_ColumnPropNameInTable="objLog_uidTuidColumn" msprop:Generator_UserColumnName="objLog_uidTuid" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Commodities" msprop:Generator_TableClassName="CommoditiesDataTable" msprop:Generator_TableVarName="tableCommodities" msprop:Generator_TablePropName="Commodities" msprop:Generator_RowDeletingName="CommoditiesRowDeleting" msprop:Generator_RowChangingName="CommoditiesRowChanging" msprop:Generator_RowEvHandlerName="CommoditiesRowChangeEventHandler" msprop:Generator_RowDeletedName="CommoditiesRowDeleted" msprop:Generator_UserTableName="Commodities" msprop:Generator_RowChangedName="CommoditiesRowChanged" msprop:Generator_RowEvArgName="CommoditiesRowChangeEvent" msprop:Generator_RowClassName="CommoditiesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="features" msprop:Generator_ColumnVarNameInTable="columnfeatures" msprop:Generator_ColumnPropNameInRow="features" msprop:Generator_ColumnPropNameInTable="featuresColumn" msprop:Generator_UserColumnName="features" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="alert_quantity" msprop:Generator_ColumnVarNameInTable="columnalert_quantity" msprop:Generator_ColumnPropNameInRow="alert_quantity" msprop:Generator_ColumnPropNameInTable="alert_quantityColumn" msprop:Generator_UserColumnName="alert_quantity" type="xs:int" />
+              <xs:element name="commodityType" msprop:Generator_ColumnVarNameInTable="columncommodityType" msprop:Generator_ColumnPropNameInRow="commodityType" msprop:Generator_ColumnPropNameInTable="commodityTypeColumn" msprop:Generator_UserColumnName="commodityType" type="xs:int" />
+              <xs:element name="objCategory_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjCategory_uidTuid" msprop:Generator_ColumnPropNameInRow="objCategory_uidTuid" msprop:Generator_ColumnPropNameInTable="objCategory_uidTuidColumn" msprop:Generator_UserColumnName="objCategory_uidTuid" type="xs:string" minOccurs="0" />
+              <xs:element name="strBarCode" msprop:Generator_ColumnVarNameInTable="columnstrBarCode" msprop:Generator_ColumnPropNameInRow="strBarCode" msprop:Generator_ColumnPropNameInTable="strBarCodeColumn" msprop:Generator_UserColumnName="strBarCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NLevels" msprop:Generator_TableClassName="NLevelsDataTable" msprop:Generator_TableVarName="tableNLevels" msprop:Generator_TablePropName="NLevels" msprop:Generator_RowDeletingName="NLevelsRowDeleting" msprop:Generator_RowChangingName="NLevelsRowChanging" msprop:Generator_RowEvHandlerName="NLevelsRowChangeEventHandler" msprop:Generator_RowDeletedName="NLevelsRowDeleted" msprop:Generator_UserTableName="NLevels" msprop:Generator_RowChangedName="NLevelsRowChanged" msprop:Generator_RowEvArgName="NLevelsRowChangeEvent" msprop:Generator_RowClassName="NLevelsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Rooms" msprop:Generator_TableClassName="RoomsDataTable" msprop:Generator_TableVarName="tableRooms" msprop:Generator_TablePropName="Rooms" msprop:Generator_RowDeletingName="RoomsRowDeleting" msprop:Generator_RowChangingName="RoomsRowChanging" msprop:Generator_RowEvHandlerName="RoomsRowChangeEventHandler" msprop:Generator_RowDeletedName="RoomsRowDeleted" msprop:Generator_UserTableName="Rooms" msprop:Generator_RowChangedName="RoomsRowChanged" msprop:Generator_RowEvArgName="RoomsRowChangeEvent" msprop:Generator_RowClassName="RoomsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Storages" msprop:Generator_TableClassName="StoragesDataTable" msprop:Generator_TableVarName="tableStorages" msprop:Generator_TablePropName="Storages" msprop:Generator_RowDeletingName="StoragesRowDeleting" msprop:Generator_RowChangingName="StoragesRowChanging" msprop:Generator_RowEvHandlerName="StoragesRowChangeEventHandler" msprop:Generator_RowDeletedName="StoragesRowDeleted" msprop:Generator_UserTableName="Storages" msprop:Generator_RowChangedName="StoragesRowChanged" msprop:Generator_RowEvArgName="StoragesRowChangeEvent" msprop:Generator_RowClassName="StoragesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
+              <xs:element name="quantity" msprop:Generator_ColumnVarNameInTable="columnquantity" msprop:Generator_ColumnPropNameInRow="quantity" msprop:Generator_ColumnPropNameInTable="quantityColumn" msprop:Generator_UserColumnName="quantity" type="xs:int" />
+              <xs:element name="objCabinet_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjCabinet_uidTuid" msprop:Generator_ColumnPropNameInRow="objCabinet_uidTuid" msprop:Generator_ColumnPropNameInTable="objCabinet_uidTuidColumn" msprop:Generator_UserColumnName="objCabinet_uidTuid" type="xs:string" minOccurs="0" />
+              <xs:element name="objCommodity_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjCommodity_uidTuid" msprop:Generator_ColumnPropNameInRow="objCommodity_uidTuid" msprop:Generator_ColumnPropNameInTable="objCommodity_uidTuidColumn" msprop:Generator_UserColumnName="objCommodity_uidTuid" type="xs:string" minOccurs="0" />
+              <xs:element name="objNLevel_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjNLevel_uidTuid" msprop:Generator_ColumnPropNameInRow="objNLevel_uidTuid" msprop:Generator_ColumnPropNameInTable="objNLevel_uidTuidColumn" msprop:Generator_UserColumnName="objNLevel_uidTuid" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Users" msprop:Generator_TableClassName="UsersDataTable" msprop:Generator_TableVarName="tableUsers" msprop:Generator_TablePropName="Users" msprop:Generator_RowDeletingName="UsersRowDeleting" msprop:Generator_RowChangingName="UsersRowChanging" msprop:Generator_RowEvHandlerName="UsersRowChangeEventHandler" msprop:Generator_RowDeletedName="UsersRowDeleted" msprop:Generator_UserTableName="Users" msprop:Generator_RowChangedName="UsersRowChanged" msprop:Generator_RowEvArgName="UsersRowChangeEvent" msprop:Generator_RowClassName="UsersRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
+              <xs:element name="svsu_id" msprop:Generator_ColumnVarNameInTable="columnsvsu_id" msprop:Generator_ColumnPropNameInRow="svsu_id" msprop:Generator_ColumnPropNameInTable="svsu_idColumn" msprop:Generator_UserColumnName="svsu_id">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="first_name" msprop:Generator_ColumnVarNameInTable="columnfirst_name" msprop:Generator_ColumnPropNameInRow="first_name" msprop:Generator_ColumnPropNameInTable="first_nameColumn" msprop:Generator_UserColumnName="first_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="last_name" msprop:Generator_ColumnVarNameInTable="columnlast_name" msprop:Generator_ColumnPropNameInRow="last_name" msprop:Generator_ColumnPropNameInTable="last_nameColumn" msprop:Generator_UserColumnName="last_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="email" msprop:Generator_ColumnVarNameInTable="columnemail" msprop:Generator_ColumnPropNameInRow="email" msprop:Generator_ColumnPropNameInTable="emailColumn" msprop:Generator_UserColumnName="email">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="phone" msprop:Generator_ColumnVarNameInTable="columnphone" msprop:Generator_ColumnPropNameInRow="phone" msprop:Generator_ColumnPropNameInTable="phoneColumn" msprop:Generator_UserColumnName="phone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="hash" msprop:Generator_ColumnVarNameInTable="columnhash" msprop:Generator_ColumnPropNameInRow="hash" msprop:Generator_ColumnPropNameInTable="hashColumn" msprop:Generator_UserColumnName="hash">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="isAdmin" msprop:Generator_ColumnVarNameInTable="columnisAdmin" msprop:Generator_ColumnPropNameInRow="isAdmin" msprop:Generator_ColumnPropNameInTable="isAdminColumn" msprop:Generator_UserColumnName="isAdmin" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VendorItems" msprop:Generator_TableClassName="VendorItemsDataTable" msprop:Generator_TableVarName="tableVendorItems" msprop:Generator_TablePropName="VendorItems" msprop:Generator_RowDeletingName="VendorItemsRowDeleting" msprop:Generator_RowChangingName="VendorItemsRowChanging" msprop:Generator_RowEvHandlerName="VendorItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="VendorItemsRowDeleted" msprop:Generator_UserTableName="VendorItems" msprop:Generator_RowChangedName="VendorItemsRowChanged" msprop:Generator_RowEvArgName="VendorItemsRowChangeEvent" msprop:Generator_RowClassName="VendorItemsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
+              <xs:element name="costInCents" msprop:Generator_ColumnVarNameInTable="columncostInCents" msprop:Generator_ColumnPropNameInRow="costInCents" msprop:Generator_ColumnPropNameInTable="costInCentsColumn" msprop:Generator_UserColumnName="costInCents" type="xs:int" />
+              <xs:element name="itemUrl" msprop:Generator_ColumnVarNameInTable="columnitemUrl" msprop:Generator_ColumnPropNameInRow="itemUrl" msprop:Generator_ColumnPropNameInTable="itemUrlColumn" msprop:Generator_UserColumnName="itemUrl" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="objCommodity_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjCommodity_uidTuid" msprop:Generator_ColumnPropNameInRow="objCommodity_uidTuid" msprop:Generator_ColumnPropNameInTable="objCommodity_uidTuidColumn" msprop:Generator_UserColumnName="objCommodity_uidTuid" type="xs:string" minOccurs="0" />
+              <xs:element name="objVendor_uidTuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnobjVendor_uidTuid" msprop:Generator_ColumnPropNameInRow="objVendor_uidTuid" msprop:Generator_ColumnPropNameInTable="objVendor_uidTuidColumn" msprop:Generator_UserColumnName="objVendor_uidTuid" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Vendors" msprop:Generator_TableClassName="VendorsDataTable" msprop:Generator_TableVarName="tableVendors" msprop:Generator_TablePropName="Vendors" msprop:Generator_RowDeletingName="VendorsRowDeleting" msprop:Generator_RowChangingName="VendorsRowChanging" msprop:Generator_RowEvHandlerName="VendorsRowChangeEventHandler" msprop:Generator_RowDeletedName="VendorsRowDeleted" msprop:Generator_UserTableName="Vendors" msprop:Generator_RowChangedName="VendorsRowChanged" msprop:Generator_RowEvArgName="VendorsRowChangeEvent" msprop:Generator_RowClassName="VendorsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="homepage" msprop:Generator_ColumnVarNameInTable="columnhomepage" msprop:Generator_ColumnPropNameInRow="homepage" msprop:Generator_ColumnPropNameInTable="homepageColumn" msprop:Generator_UserColumnName="homepage" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Logs" />
+      <xs:selector xpath=".//mstns:Cabinets" />
+      <xs:field xpath="mstns:tuid" />
+    </xs:unique>
+    <xs:unique name="Categories_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Categories" />
+      <xs:field xpath="mstns:tuid" />
+    </xs:unique>
+    <xs:unique name="CheckedItems_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CheckedItems" />
+      <xs:field xpath="mstns:tuid" />
+    </xs:unique>
+    <xs:unique name="Commodities_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Commodities" />
+      <xs:field xpath="mstns:tuid" />
+    </xs:unique>
+    <xs:unique name="NLevels_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:NLevels" />
+      <xs:field xpath="mstns:tuid" />
+    </xs:unique>
+    <xs:unique name="Rooms_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Rooms" />
+      <xs:field xpath="mstns:tuid" />
+    </xs:unique>
+    <xs:unique name="Storages_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Storages" />
+      <xs:field xpath="mstns:tuid" />
+    </xs:unique>
+    <xs:unique name="Users_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Users" />
+      <xs:field xpath="mstns:tuid" />
+    </xs:unique>
+    <xs:unique name="VendorItems_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VendorItems" />
+      <xs:field xpath="mstns:tuid" />
+    </xs:unique>
+    <xs:unique name="Vendors_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Vendors" />
       <xs:field xpath="mstns:tuid" />
     </xs:unique>
   </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK_dbo.CheckedItems_dbo.Commodities_objCommodities_uidTuid" msdata:parent="Commodities" msdata:child="CheckedItems" msdata:parentkey="tuid" msdata:childkey="objCommodities_uidTuid" msprop:Generator_UserChildTable="CheckedItems" msprop:Generator_ChildPropName="GetCheckedItemsRows" msprop:Generator_UserRelationName="FK_dbo.CheckedItems_dbo.Commodities_objCommodities_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_CheckedItems_dbo_Commodities_objCommodities_uidTuid" msprop:Generator_UserParentTable="Commodities" msprop:Generator_ParentPropName="CommoditiesRow" />
+      <msdata:Relationship name="FK_dbo.Commodities_dbo.Categories_objCategory_uidTuid" msdata:parent="Categories" msdata:child="Commodities" msdata:parentkey="tuid" msdata:childkey="objCategory_uidTuid" msprop:Generator_UserChildTable="Commodities" msprop:Generator_ChildPropName="GetCommoditiesRows" msprop:Generator_UserRelationName="FK_dbo.Commodities_dbo.Categories_objCategory_uidTuid" msprop:Generator_ParentPropName="CategoriesRow" msprop:Generator_RelationVarName="_relationFK_dbo_Commodities_dbo_Categories_objCategory_uidTuid" msprop:Generator_UserParentTable="Categories" />
+      <msdata:Relationship name="FK_dbo.Cabinets_dbo.Rooms_objRoom_uidTuid" msdata:parent="Rooms" msdata:child="Cabinets" msdata:parentkey="tuid" msdata:childkey="objRoom_uidTuid" msprop:Generator_UserChildTable="Cabinets" msprop:Generator_ChildPropName="GetCabinetsRows" msprop:Generator_UserRelationName="FK_dbo.Cabinets_dbo.Rooms_objRoom_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_Cabinets_dbo_Rooms_objRoom_uidTuid" msprop:Generator_UserParentTable="Rooms" msprop:Generator_ParentPropName="RoomsRow" />
+      <msdata:Relationship name="FK_dbo.Storages_dbo.Cabinets_objCabinet_uidTuid" msdata:parent="Cabinets" msdata:child="Storages" msdata:parentkey="tuid" msdata:childkey="objCabinet_uidTuid" msprop:Generator_UserChildTable="Storages" msprop:Generator_ChildPropName="GetStoragesRows" msprop:Generator_UserRelationName="FK_dbo.Storages_dbo.Cabinets_objCabinet_uidTuid" msprop:Generator_ParentPropName="CabinetsRow" msprop:Generator_RelationVarName="_relationFK_dbo_Storages_dbo_Cabinets_objCabinet_uidTuid" msprop:Generator_UserParentTable="Cabinets" />
+      <msdata:Relationship name="FK_dbo.Storages_dbo.Commodities_objCommodity_uidTuid" msdata:parent="Commodities" msdata:child="Storages" msdata:parentkey="tuid" msdata:childkey="objCommodity_uidTuid" msprop:Generator_UserChildTable="Storages" msprop:Generator_ChildPropName="GetStoragesRows" msprop:Generator_UserRelationName="FK_dbo.Storages_dbo.Commodities_objCommodity_uidTuid" msprop:Generator_ParentPropName="CommoditiesRow" msprop:Generator_RelationVarName="_relationFK_dbo_Storages_dbo_Commodities_objCommodity_uidTuid" msprop:Generator_UserParentTable="Commodities" />
+      <msdata:Relationship name="FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid" msdata:parent="NLevels" msdata:child="Storages" msdata:parentkey="tuid" msdata:childkey="objNLevel_uidTuid" msprop:Generator_UserChildTable="Storages" msprop:Generator_ChildPropName="GetStoragesRows" msprop:Generator_UserRelationName="FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid" msprop:Generator_ParentPropName="NLevelsRow" msprop:Generator_RelationVarName="_relationFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid" msprop:Generator_UserParentTable="NLevels" />
+      <msdata:Relationship name="FK_dbo.CheckedItems_dbo.Users_objUser_uidTuid" msdata:parent="Users" msdata:child="CheckedItems" msdata:parentkey="tuid" msdata:childkey="objUser_uidTuid" msprop:Generator_UserChildTable="CheckedItems" msprop:Generator_ChildPropName="GetCheckedItemsRows" msprop:Generator_UserRelationName="FK_dbo.CheckedItems_dbo.Users_objUser_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_CheckedItems_dbo_Users_objUser_uidTuid" msprop:Generator_UserParentTable="Users" msprop:Generator_ParentPropName="UsersRow" />
+      <msdata:Relationship name="FK_dbo.VendorItems_dbo.Commodities_objCommodity_uidTuid" msdata:parent="Commodities" msdata:child="VendorItems" msdata:parentkey="tuid" msdata:childkey="objCommodity_uidTuid" msprop:Generator_UserChildTable="VendorItems" msprop:Generator_ChildPropName="GetVendorItemsRows" msprop:Generator_UserRelationName="FK_dbo.VendorItems_dbo.Commodities_objCommodity_uidTuid" msprop:Generator_ParentPropName="CommoditiesRow" msprop:Generator_RelationVarName="_relationFK_dbo_VendorItems_dbo_Commodities_objCommodity_uidTuid" msprop:Generator_UserParentTable="Commodities" />
+      <msdata:Relationship name="FK_dbo.VendorItems_dbo.Vendors_objVendor_uidTuid" msdata:parent="Vendors" msdata:child="VendorItems" msdata:parentkey="tuid" msdata:childkey="objVendor_uidTuid" msprop:Generator_UserChildTable="VendorItems" msprop:Generator_ChildPropName="GetVendorItemsRows" msprop:Generator_UserRelationName="FK_dbo.VendorItems_dbo.Vendors_objVendor_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_VendorItems_dbo_Vendors_objVendor_uidTuid" msprop:Generator_UserParentTable="Vendors" msprop:Generator_ParentPropName="VendorsRow" />
+    </xs:appinfo>
+  </xs:annotation>
 </xs:schema>

@@ -19,37 +19,41 @@ namespace SVSU_Capstone_Project.Views
 
         private void pcbCalBegin_Click( object sender, EventArgs e )
         {
-            calBegin.Visible = true;
-            calEnd.Visible = false;
+          
         }
 
         private void calBegin_DateChanged( object sender, DateRangeEventArgs e )
         {
-            txtBeginDate.Text = calBegin.SelectionStart.ToString();
+           
         }
 
         private void pcbCalEnd_Click( object sender, EventArgs e )
         {
-            calBegin.Visible = false;
-            calEnd.Visible = true;
+           
         }
 
         private void calEnd_DateChanged( object sender, DateRangeEventArgs e )
         {
-            txtEndDate.Text = calEnd.SelectionStart.ToString();
+            
         }
 
         private void frmGenerateReports_Load( object sender, EventArgs e )
         {
-            txtBeginDate.Text = calBegin.SelectionStart.ToString();
-            txtEndDate.Text = calEnd.SelectionStart.ToString();
-            
+            // TODO: This line of code loads data into the 'invDbDataSet1.Logs' table. You can move, or remove it, as needed.
+            this.logsTableAdapter.Fill(this.invDbDataSet1.Logs);
+
+
+            this.reportViewer1.RefreshReport();
         }
 
         private void btnReportClear_Click( object sender, EventArgs e )
         {
-            calBegin.SelectionStart = calBegin.TodayDate;
-            calEnd.SelectionStart = calEnd.TodayDate;
+            
+        }
+
+        private void reportViewer1_Load( object sender, EventArgs e )
+        {
+
         }
     }
 }
