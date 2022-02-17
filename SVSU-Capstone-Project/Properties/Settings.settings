@@ -2,13 +2,21 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SVSU_Capstone_Project.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="InvDbConnectionString" Type="(Connection string)" Scope="Application">
+    <Setting Name="InvDbConnectionString1" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=sql.dvlin.me;Initial Catalog=InvDb;User ID=sa&lt;/ConnectionString&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=sql.dvlin.me;Initial Catalog=InvDb;Persist Security Info=True;User ID=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=sql.dvlin.me;Initial Catalog=InvDb;User ID=sa</Value>
+      <Value Profile="(Default)">Data Source=sql.dvlin.me;Initial Catalog=InvDb;Persist Security Info=True;User ID=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M</Value>
+    </Setting>
+    <Setting Name="InvDbConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=sql.dvlin.me;Initial Catalog=InvDb;Persist Security Info=True;User ID=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=sql.dvlin.me;Initial Catalog=InvDb;Persist Security Info=True;User ID=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M</Value>
     </Setting>
   </Settings>
 </SettingsFile>
