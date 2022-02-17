@@ -1,10 +1,12 @@
-﻿using SVSU_Capstone_Project.Model;
+﻿using Microsoft.VisualBasic.FileIO;
+using SVSU_Capstone_Project.Model;
 using SVSU_Capstone_Project.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -170,7 +172,7 @@ namespace SVSU_Capstone_Project.Views
                 {
                     MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid user information!", "Alert");
                 }
-
+                
                 //Clear fields
                 btnClearUser_Click(sender, e);
             }
@@ -246,16 +248,23 @@ namespace SVSU_Capstone_Project.Views
                         //Get user
                         User user = ItemModel.Get<User>(x => x.strEmail == lstUser.SelectedItem.ToString());
 
-                        //Modify user password
-                        user.strHash = "Capstone2022";
+                        if (user.blnIsAdmin)
+                        {
+                            //Modify user password
+                            user.strHash = "Capstone2022";
 
-                        //Save user
-                        ItemModel.Update<User>(user);
+                            //Save user
+                            ItemModel.Update<User>(user);
 
-                        //Alert user
-                        MessageBox.Show("Successful Reset\r\n\r\n"
-                            + txtUserEmail.Text + " will be prompted to reset their password on their next login\r\n" +
-                            "Their temporary password is 'Capstone2022'", "Alert");
+                            //Alert user
+                            MessageBox.Show("Successful Reset\r\n\r\n"
+                                + txtUserEmail.Text + " will be prompted to reset their password on their next login\r\n" +
+                                "Their temporary password is 'Capstone2022'", "Alert");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot change non-admin password", "Alert");
+                        }
 
                         //Refresh list
                         tbcSettings_SelectedIndexChanged(sender, e);
@@ -1012,6 +1021,117 @@ namespace SVSU_Capstone_Project.Views
 
                 //Clear fields
                 btnClearCabinet_Click(sender, e);
+            }
+        }
+
+        private void btnUpload_Click( object sender, EventArgs e )
+        {
+            //Make file dialog
+            OpenFileDialog fd = new OpenFileDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                Title = "Student Upload File",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                DefaultExt = "csv",
+                Filter = "csv files (*.csv)|*.csv"
+            };
+
+            //Show dialog
+            if(fd.ShowDialog() == DialogResult.OK)
+            {
+                //Read file
+                UploadStudents(ReadCSVFile(fd.FileName));
+            }
+
+            //Refresh list
+            tbcSettings_SelectedIndexChanged(sender, e);
+
+            //Clear fields
+            btnClearUser_Click(sender, e);
+        }
+
+        private List<string[]> ReadCSVFile(string strPath)
+        {
+            //List to hold row data
+            List<string[]> lstRows = new List<string[]>();
+
+            //Read file to 2d array
+            try
+            {
+                TextFieldParser parser = new TextFieldParser(strPath);
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+                
+                while (!parser.EndOfData)
+                {
+                    //Add to list
+                    lstRows.Add(parser.ReadFields());
+                }
+
+                //Close file parser
+                parser.Close();
+
+                //Remove header row
+                lstRows.RemoveAt(0);
+
+                DialogResult result = MessageBox.Show("Attempting to add " + lstRows.Count + " students from CSV file\r\n\r\nContinue?",
+                    "Alert", MessageBoxButtons.OKCancel);
+                if(result == DialogResult.Cancel)
+                {
+                    lstRows.Clear();
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Error reading CSV file", "Error");
+            }
+
+            return lstRows;
+        }
+
+        private void UploadStudents(List<string[]> lstRows)
+        {
+            int intBadCtr = 0, intGoodCtr = 0;
+
+            //Use list to add users
+            foreach (string[] row in lstRows)
+            {
+                try
+                {
+                    //Make user
+                    User user = new User()
+                    {
+                        //Default fields
+                        blnIsAdmin = false,
+                        strPhone = "",
+                        strHash = "Capstone2022",
+
+                        //Row fields
+                        strSvsu_id = row[2],
+                        strFirst_name = row[0].Substring(row[0].IndexOf(",") + 1),
+                        strLast_name = row[0].Substring(0, row[0].IndexOf(",")),
+                        strEmail = row[3] + "@svsu.edu"
+                    };
+
+                    //Add to db
+                    ItemModel.Add<User>(user);
+                    intGoodCtr++;
+                }
+                catch (Exception)
+                {
+                    intBadCtr++;
+                }
+            }
+
+            if (intBadCtr > 0)
+            {
+                MessageBox.Show("Error adding " + intBadCtr + " users from CSV file", "Error");
+            }
+
+            if (intGoodCtr > 0)
+            {
+                MessageBox.Show("Successfully added " + intGoodCtr + " users from CSV file", "Success");
             }
         }
     }

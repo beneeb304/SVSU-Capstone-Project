@@ -34,9 +34,14 @@ namespace SVSU_Capstone_Project.Views
             {
                 //Get user
                 user = Authentication.Authenticate(txtSVSU_ID.Text, txtPassword.Text);
-
+                                
+                //If user isn't admin and somehow got this far, don't let them login
+                if(user.blnIsAdmin == false)
+                {
+                    throw new UserNotFoundException("Must be admin to login");
+                }
                 //If user is flagged to change password
-                if (user.strHash == "Capstone2022")
+                else if (user.strHash == "Capstone2022")
                 {
                     var f = new frmSetPassword();
                     DialogResult result = f.ShowDialog();
