@@ -44,7 +44,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpConsumables = new System.Windows.Forms.TabPage();
             this.txtConsumableNotes = new System.Windows.Forms.RichTextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtConsumableSvsuID = new System.Windows.Forms.MaskedTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
@@ -221,7 +221,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.tbpConsumables.Controls.Add(this.txtConsumableNotes);
             this.tbpConsumables.Controls.Add(this.label12);
-            this.tbpConsumables.Controls.Add(this.maskedTextBox1);
+            this.tbpConsumables.Controls.Add(this.txtConsumableSvsuID);
             this.tbpConsumables.Controls.Add(this.label13);
             this.tbpConsumables.Controls.Add(this.label10);
             this.tbpConsumables.Controls.Add(this.cmbCategory);
@@ -270,16 +270,16 @@ namespace SVSU_Capstone_Project.Views
             this.label12.TabIndex = 176;
             this.label12.Text = "Notes:";
             // 
-            // maskedTextBox1
+            // txtConsumableSvsuID
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(884, 28);
-            this.maskedTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.maskedTextBox1.Mask = "000000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(132, 30);
-            this.maskedTextBox1.TabIndex = 173;
-            this.maskedTextBox1.ValidatingType = typeof(int);
+            this.txtConsumableSvsuID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsumableSvsuID.Location = new System.Drawing.Point(884, 28);
+            this.txtConsumableSvsuID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtConsumableSvsuID.Mask = "000000";
+            this.txtConsumableSvsuID.Name = "txtConsumableSvsuID";
+            this.txtConsumableSvsuID.Size = new System.Drawing.Size(132, 30);
+            this.txtConsumableSvsuID.TabIndex = 173;
+            this.txtConsumableSvsuID.ValidatingType = typeof(int);
             // 
             // label13
             // 
@@ -334,6 +334,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCancel.TabIndex = 163;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnHandOut
             // 
@@ -443,6 +444,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbCabinet.Name = "cmbCabinet";
             this.cmbCabinet.Size = new System.Drawing.Size(211, 31);
             this.cmbCabinet.TabIndex = 159;
+            this.cmbCabinet.SelectedIndexChanged += new System.EventHandler(this.cmbCabinet_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -483,6 +485,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbRoom.Name = "cmbRoom";
             this.cmbRoom.Size = new System.Drawing.Size(211, 31);
             this.cmbRoom.TabIndex = 158;
+            this.cmbRoom.SelectedIndexChanged += new System.EventHandler(this.cmbRoom_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -548,7 +551,7 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.Label label11;
         internal System.Windows.Forms.RichTextBox txtConsumableNotes;
         internal System.Windows.Forms.Label label12;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtConsumableSvsuID;
         private System.Windows.Forms.Label label13;
     }
 }

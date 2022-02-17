@@ -20,6 +20,15 @@ namespace SVSU_Capstone_Project.Views
             tbcCheckInOut_SelectedIndexChanged(null, null);
         }
 
+        //private void txtQuantity_Display( object sender = null, EventArgs e = null )
+        //{
+        //    var quantity = ItemModel.Get<Storage>(
+        //       x => x.objCabinet == this.objSelectedCabinet
+        //       && x.objCommodity == this.objSelectedCommodity
+        //       );
+        //    this.txtCurrentQty.Text = quantity != null ? quantity.intQuantity.ToString() : "0";
+        //}
+
         private void ListBoxClicked( object sender, EventArgs e )
         {
             if ((sender as ListBox).Name.ToString() == "lstIn")
@@ -52,13 +61,41 @@ namespace SVSU_Capstone_Project.Views
 
         private void cmbCommodity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var commodityTuid = (cmbCommodity.SelectedValue as Commodity).uidTuid;
-            cmbRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
-            txtConsumableNotes.Text = cmbCommodity.SelectedValue.ToString() + " " + commodityTuid;
-            cmbCabinet.DataSource = ItemModel.GetMany<Cabinet>().OrderBy(x => x.strName).ToList();
-            cmbNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
+            var objSelectedCommodity = cmbCommodity.SelectedValue as Commodity;
+            cmbRoom.DataSource = objSelectedCommodity.lstStorage.Select(x => x.objCabinet.objRoom).Distinct().OrderBy(x => x.strName).ToList();
         }
 
+        private void cmbRoom_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            var objSelectedRoom = cmbRoom.SelectedValue as Room;
+            var objSelectedCommodity = cmbCommodity.SelectedValue as Commodity;
+            cmbCabinet.DataSource = objSelectedCommodity.lstStorage
+            .Where(x => x.objCabinet.objRoom.uidTuid == objSelectedRoom.uidTuid)
+            .Select(x => x.objCabinet).Distinct()
+            .OrderBy(x => x.strName).ToList();
+        }
 
+        private void cmbCabinet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var objSelectedCommodity = cmbCommodity.SelectedValue as Commodity;
+            var quantity = ItemModel.Get<Storage>(
+                 x => x.objCabinet == (cmbCabinet.SelectedValue as Cabinet)
+                 && x.objCommodity == (cmbCommodity.SelectedValue as Commodity)
+               );
+
+            
+            this.txtCurrentQty.Text = quantity != null ? quantity.intQuantity.ToString() : "0";
+
+            //Populate N-Level dropdown
+            cmbNLevel.DataSource = objSelectedCommodity.lstStorage.Select(x => x.objNLevel.strName).Distinct().ToList();
+        }
+
+        private void btnCancel_Click( object sender, EventArgs e )
+        {
+            cmbCategory.SelectedIndex = -0;
+            cmbCommodity.SelectedIndex = -0;
+            txtConsumableSvsuID.Text = "";
+            txtConsumableNotes.Text = "";
+        }
     }
 }
