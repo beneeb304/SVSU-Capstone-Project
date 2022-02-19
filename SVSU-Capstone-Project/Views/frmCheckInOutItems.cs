@@ -16,17 +16,40 @@ namespace SVSU_Capstone_Project.Views
     {
         public frmCheckInOutItems()
         {
+            /* Function: frmCheckInOutItems
+             * -----------------------------------------------------------------------------
+             * Description: Initializes the form when called upon
+             * -----------------------------------------------------------------------------
+             */
+
             InitializeComponent();
+            // checked in/out status set to null
             tbcCheckInOut_SelectedIndexChanged(null, null);
         }
 
         private void ListBoxClicked( object sender, EventArgs e )
         {
+            /* Function: ListBoxClicked
+              * -----------------------------------------------------------------------------
+              * Description: This function is used to set wehter an object is checked in or out
+              * and will set the statue accordingly. If it is checked in, the checked out button 
+              * will appear to allow user to check it out. If the item is checked out, the 
+              * checked in button will appear to allow user to check it in.
+              * -----------------------------------------------------------------------------
+              *  Parameter Dictionary (in parameter order):  
+              *  EventArgs e; Information passed by the sender object about the method call.
+              *  object sender; The object calling the method.
+              * -----------------------------------------------------------------------------
+              * Local Variables
+              */
+
+            // if the item is checked in allow user to check out the item by check out btn
             if ((sender as ListBox).Name.ToString() == "lstIn")
             {
                 btnCheckIn.Enabled = false;
                 btnCheckOut.Enabled = true;
             }
+            // if the item is checked out allow user to check in the item by check in btn
             else if ((sender as ListBox).Name.ToString() == "lstOut")
             {
                 btnCheckIn.Enabled = true;
@@ -36,6 +59,18 @@ namespace SVSU_Capstone_Project.Views
 
         private void tbcCheckInOut_SelectedIndexChanged(object sender,EventArgs e)
         {
+            /* Function: tbcCheckInOut_SelectedIndexChanged
+            * -----------------------------------------------------------------------------
+            * Description: This ucntion will populate either the assets tab with data or the 
+            * Consumable tab with data depending on which tab is clicked. 
+            * -----------------------------------------------------------------------------
+            *  Parameter Dictionary (in parameter order):  
+            *  EventArgs e; Information passed by the sender object about the method call.
+            *  object sender; The object calling the method. 
+            * -----------------------------------------------------------------------------
+            * Local Variables
+            */
+
             switch (tbcCheckInOut.SelectedTab.Name)
             {
                 case "tbpAssets":
@@ -52,17 +87,48 @@ namespace SVSU_Capstone_Project.Views
 
         private void cmbCommodity_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /* Function: cmbCommodity_SelectedIndexChanged
+              * -----------------------------------------------------------------------------
+              * Description: This fucntion will populate the data within the consumables
+              * table depending on the commodity index slected. All fields below it will be populated 
+              * and sorted by name
+              * -----------------------------------------------------------------------------
+              *  Parameter Dictionary (in parameter order):  
+              *  EventArgs e; Information passed by the sender object about the method call.
+              *  object sender; The object calling the method.
+              * -----------------------------------------------------------------------------
+              * Local Variables
+              * objSelectedCommodity; used to store the selected value of the commodity
+              */
+
             //var commodityTuid = (cmbCommodity.SelectedValue as Commodity).uidTuid;
             //cmbRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
             //txtConsumableNotes.Text = cmbCommodity.SelectedValue.ToString() + " " + commodityTuid;
             //cmbCabinet.DataSource = ItemModel.GetMany<Cabinet>().OrderBy(x => x.strName).ToList();
             //cmbNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
 
+            // stores the selected index stored in the commodity combo box
             var objSelectedCommodity = cmbCommodity.SelectedValue as Commodity;
+            // set the data fields in order by name
             cmbRoom.DataSource = objSelectedCommodity.lstStorage.Select(x => x.objCabinet.objRoom).Distinct().OrderBy(x => x.strName).ToList();
         }
 
         private void cmbRoom_SelectedIndexChanged(object sender, EventArgs e){
+            /* Function: cmbRoom_SelectedIndexChanged
+            * -----------------------------------------------------------------------------
+            * Description: This fucntion will populate the data within the consumables
+            * table depending on the room index selected. All fields below it will be populated 
+            * and sorted by name
+            * -----------------------------------------------------------------------------
+            *  Parameter Dictionary (in parameter order):  
+            *  EventArgs e; Information passed by the sender object about the method call.
+            *  object sender; The object calling the method. 
+            * -----------------------------------------------------------------------------
+            * Local Variables
+            * objSelectedRoom; used to store the selected value or the room 
+            */
+
+            // stores the seleceted room object
             var objSelectedRoom = cmbRoom.SelectedValue as Room;
             cmbCabinet.DataSource = (cmbCommodity.SelectedItem as Commodity).lstStorage
             .Where(x => x.objCabinet.objRoom.uidTuid == objSelectedRoom.uidTuid)
