@@ -17,6 +17,11 @@ namespace SVSU_Capstone_Project.Views
 {
     public partial class frmSettings : Form
     {
+        /* Funtion: frmSettings
+         * Description: Initializes the settings form and sets the tab index to default.
+         * 
+         * No Local Variables.
+         */
         public frmSettings()
         {
             InitializeComponent();
@@ -738,12 +743,13 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: lstCategory_SelectedIndexChanged
+         * Description: Sets the fields of the category settings page to reflect information of the selected category.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * Category category; Represents a category object.
          */
         private void lstCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
@@ -759,12 +765,13 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: lstVendor_SelectedIndexChanged
+         * Description: Sets the fields of the vendor settings page to reflect the information of a selected vendor.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * Vendor vendor; Represents a vendor object.
          */
         private void lstVendor_SelectedIndexChanged( object sender, EventArgs e )
         {
@@ -781,12 +788,17 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: btnDeleteVendor_Click
+         * Description: Deletes the selected vendor from the database.
+         * Asks for confirmation from the user before deleting the vendor.
+         * Ensures no commoditites have that vendor in use as its vendor.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * DialogResult result; MessageBox confirmation to the user.
+         * Vendor vendor; Represents a vendor object.
+         * VendorItem vItem; Represents all items using a selected vendor in its description.
          */
         private void btnDeleteVendor_Click( object sender, EventArgs e )
         {
@@ -835,12 +847,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: btnAddVendor_Click
+         * Description: Adds a new vendor to the database with the provided information.
+         * Asks for confirmation from the user before adding the new vendor.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * DialogResult result; MessageBox confirmation to the user.
+         * Vendor vendor; Represents a vendor object.
          */
         private void btnAddVendor_Click( object sender, EventArgs e )
         {
@@ -883,12 +898,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: btnModifyVendor_Click
+         * Description: Modifies the selected vendor in the database to reflect the newly given information.
+         * Asks the user for confirmation before modifying the vendor.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * DialogResult result; MessageBox confirmation to the user.
+         * Vendor vendor; Represents a vendor object.
          */
         private void btnModifyVendor_Click( object sender, EventArgs e )
         {
@@ -932,12 +950,13 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: lstNLevel_SelectedIndexChanged
+         * Description: Reflects the fields in the NLevel settings page to reflect the selected NLevel.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * NLevel nLevel; Represents an NLevel object.
          */
         private void lstNLevel_SelectedIndexChanged( object sender, EventArgs e )
         {
@@ -953,13 +972,16 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-             * Description:
-             * 
-             * Local Variables
-             * object sender; The object calling the method.
-             * EventArgs e; Information passed by the sender object about the method call.
-             */
+        /* Function: btnAddNLevel_Click
+         * Description: Adds a new NLevel to the database with the provided information.
+         * Asks the user for confirmation before adding the NLevel.
+         * 
+         * Local Variables
+         * object sender; The object calling the method.
+         * EventArgs e; Information passed by the sender object about the method call.
+         * DialogResult result; MessageBox confirmation to the user.
+         * NLevel nLevel; Represents an NLevel object.
+         */
         private void btnAddNLevel_Click( object sender, EventArgs e )
         {
             if (txtNLevelName.Text.Length > 0)
@@ -1000,12 +1022,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: btnModifyNLevel_Click
+         * Description: Modifies a selected NLevel in the database.
+         * Asks the user for confirmation before modifying the NLevel.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * DialogResult result; MessageBox confirmation to the user.
+         * NLevel nLevel; Represents an NLevel object.
          */
         private void btnModifyNLevel_Click( object sender, EventArgs e )
         {
@@ -1048,12 +1073,17 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: btnDeleteNLevel_Click
+         * Description: Deletes the selected NLevel from the database.
+         * Asks the user for confirmation before deleting.
+         * Ensures no commodity items are using the selected NLevel.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * DialogResult result; MessageBox confirmation to the user.
+         * NLevel nLevel; Represents an NLevel object.
+         * Storage storage; Represents the inventory to check for items using the selected NLevel.
          */
         private void btnDeleteNLevel_Click( object sender, EventArgs e )
         {
@@ -1102,8 +1132,8 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: cmbRoom_SelectedIndexChanged
+         * Description: Reflects the fields in the room settings page to have information of the selected room.
          * 
          * Local Variables
          * object sender; The object calling the method.
@@ -1118,12 +1148,13 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: lstCabinet_SelectedIndexChanged
+         * Description: Reflects the fields in the cabinet settings page to show information of the selected cabinet.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * Cabinet cabinet; Represents the selected cabinet object.
          */
         private void lstCabinet_SelectedIndexChanged( object sender, EventArgs e )
         {
@@ -1139,12 +1170,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: btnAddCabinet_Click
+         * Description: Adds a cabinet to the database with the provided information.
+         * Asks the user for confirmation before adding the cabinet.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * DialogResult result; MessageBox confirmation to the user.
+         * Cabinet cabinet; Represents the new cabinet as an object to pass to the database.
          */
         private void btnAddCabinet_Click( object sender, EventArgs e )
         {
@@ -1187,12 +1221,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: btnModifyCabinet_Click
+         * Description: Modifies the selected cabinet to reflect new information in the database.
+         * Asks the user for confirmation before modifying the cabinet.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * DialogResult result; MessageBox confirmation to the user.
+         * Cabinet cabinet; Represents the cabinet being modified in the database.
          */
         private void btnModifyCabinet_Click( object sender, EventArgs e )
         {
@@ -1236,12 +1273,17 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: btnDeleteCabinet_Click
+         * Description: Deletes the selected cabinet from the database.
+         * Asks the user for confirmation before deleting the cabinet.
+         * Ensures no commodities are using the cabinet in its information.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * DialogResult result; MessageBox confirmation to the user.
+         * Cabinet cabinet; Represents the cabinet being deleted from the database.
+         * Storage storage; Represents all items to see if they are using the cabinet.
          */
         private void btnDeleteCabinet_Click( object sender, EventArgs e )
         {
@@ -1292,12 +1334,13 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function:
-         * Description:
+        /* Function: btnUpload_Click
+         * Description: Uploads a csv file of student information to mass upload users.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
+         * OpenfileDialog fd; Lets the user select the file to use for the upload.
          */
         private void btnUpload_Click( object sender, EventArgs e )
         {
@@ -1326,12 +1369,13 @@ namespace SVSU_Capstone_Project.Views
             btnClearUser_Click(sender, e);
         }
 
-        /* Function:
-         * Description:
+        /* Function: ReadCSVFile
+         * Description: Reads the file given by the user to upload multiple users at once.
          * 
          * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
+         * string strPath; Path to the file given by the user.
+         * List<string[]> lstRows; Holds the list read from the file to be uploaded.
+         * TextFieldParser parser; Reads the information from the uploaded file to the List.
          */
         private List<string[]> ReadCSVFile(string strPath)
         {
@@ -1372,12 +1416,13 @@ namespace SVSU_Capstone_Project.Views
             return lstRows;
         }
 
-        /* Function:
-         * Description:
+        /* Function: UploadStudents
+         * Description: Uploads the student list from the provided csv file to the database of users.
          * 
          * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
+         * List<string[]> lstRows; Passes the read-in information to the method of users.
+         * int intBadCtr, intGoodctr; Counts the amount of invalid and valid uploaded users respectively.
+         * User user; Passes the uploaded information as an object to the database.
          */
         private void UploadStudents(List<string[]> lstRows)
         {

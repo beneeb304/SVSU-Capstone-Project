@@ -15,6 +15,14 @@ namespace SVSU_Capstone_Project.Views
 {
     public partial class frmManageInventory : Form
     {
+
+        /* Function: btnCreateCancel_Click
+         * Description: Clears all fields on the create commodity page when cancel is clicked.
+         * 
+         * Local Variables
+         * object sender; The object calling the method.
+         * EventArgs e; Information passed by the sender object about the method call.
+         */
         private void btnCreateCancel_Click( object sender, EventArgs e )
         {
             //Clear all fields on Create tab
@@ -28,10 +36,26 @@ namespace SVSU_Capstone_Project.Views
             nudCreateAlertQty.Value = 0;
             mtxCreateCost.Text = "";
         }
+
+        /* Function: txtCreateItemName_TextChanged
+        * Description:
+        * 
+        * Local Variables
+        * object sender; The object calling the method.
+        * EventArgs e; Information passed by the sender object about the method call.
+        */
         private void txtCreateItemName_TextChanged( object sender, EventArgs e )
         {
 
-        }       
+        }
+
+        /* Function: label12_Click
+        * Description:
+        * 
+        * Local Variables
+        * object sender; The object calling the method.
+        * EventArgs e; Information passed by the sender object about the method call.
+        */
         private void label12_Click( object sender, EventArgs e )
         {
 

@@ -15,17 +15,36 @@ namespace SVSU_Capstone_Project
     {
         public static string strHash { get; set; }
         
+        /* Function: frmSetPassword
+         * Description: Initializes the form
+         *
+         * No Local Variables
+         */
         public frmSetPassword()
         {
             InitializeComponent();
         }
 
+        /* Function: brnCancel_Click
+         * Description: Cancels the form and closes the dialog.
+         *
+         * Local Variables
+         * object sender; The object calling the method.
+         * EventArgs e; Information passed by the sender object about the method call.
+         */
         private void btnCancel_Click( object sender, EventArgs e )
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
+        /* Function: btnSet_Click
+         * Description: Sets the newly entered password. Ensures both fields match.
+         *
+         * Local Variables
+         * object sender; The object calling the method.
+         * EventArgs e; Information passed by the sender object about the method call.
+         */
         private void btnSet_Click( object sender, EventArgs e )
         {
             //Make sure passwords match
