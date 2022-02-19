@@ -25,6 +25,14 @@ namespace SVSU_Capstone_Project
             InitializeComponent();
         }
 
+        /* Function: frmMain_Load
+         * Description: Shows the splash screen on load and calls the method to begin
+         * a new login. Sets the main form to a MDI parent.
+         * 
+         * Local Variables
+         * object sender; The object calling the method.
+         * EventArgs e; Information passed by the sender object about the method call.
+         */
         private void frmMain_Load(object sender, EventArgs e)
         {
             /* Function: frmMain_Load
@@ -54,6 +62,14 @@ namespace SVSU_Capstone_Project
             IsMdiContainer = true;
         }
 
+        /* Function: InitiateLogin
+         * Description: Initiates frmLogin to start a new login.
+         * Once logged in, set the logged in user's information onto the form.
+         * Start a timer to indicate login time.
+         * 
+         * Local Variables
+         * Form frmLogin; Login form. Passes user information back if successful.
+         */
         private void InitiateLogin()
         {
             /* Function: InitiateLogin
@@ -91,6 +107,17 @@ namespace SVSU_Capstone_Project
             tmrTime.Start();
         }
 
+        /* Function: PageController
+         * Description: Brings up child forms within the main form's window when their
+         * respective options are selected.
+         * 
+         * Local Variables
+         * object sender; The object calling the method.
+         * EventArgs e; Information passed by the sender object about the method call.
+         * Form oldF; Stores the previous child form.
+         * Form newF; Stores the new child form.
+         * ToolStripMenuItem sender; Menu options for the user to select from.
+         */
         private void PageController(object sender, EventArgs e)
         {
             /* Function: PageController
@@ -165,6 +192,14 @@ namespace SVSU_Capstone_Project
             newF.Size = new Size(969, 490);
         }
 
+        /* Function: tmrTime_Tick
+         * Description: Ticks the timer representing login time.
+         * Updates the time to the user.
+         * 
+         * Local Variables
+         * object sender; The object calling the method.
+         * EventArgs e; Information passed by the sender object about the method call.
+         */
         private void tmrTime_Tick(object sender, EventArgs e)
         {
             /* Function: tmrTime_Tick
@@ -182,6 +217,13 @@ namespace SVSU_Capstone_Project
             lblDateTime.Text = DateTime.Now.ToString("hh:mm:ss tt MM/dd/yyyy");
         }
 
+        /* Function: btnLogout_Click
+         * Description: Restarts the application when a logout is initiated.
+         * 
+         * Local Variables
+         * object sender; The object calling the method.
+         * EventArgs e; Information passed by the sender object about the method call.
+         */
         private void btnLogout_Click(object sender, EventArgs e)
         {
              /* Function: btnLogout_Click
