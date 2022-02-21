@@ -132,5 +132,10 @@ namespace SVSU_Capstone_Project.Views
             txtConsumableSvsuID.Text = "";
             txtConsumableNotes.Text = "";
         }
+
+        private void frmCheckInOutItems_Load( object sender, EventArgs e )
+        {
+
+        }
     }
 }

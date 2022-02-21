@@ -506,6 +506,7 @@ namespace SVSU_Capstone_Project.Views
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCheckInOutItems";
             this.Text = "Check-In/Out Items";
+            this.Load += new System.EventHandler(this.frmCheckInOutItems_Load);
             this.tbcCheckInOut.ResumeLayout(false);
             this.tbpAssets.ResumeLayout(false);
             this.tbpAssets.PerformLayout();
