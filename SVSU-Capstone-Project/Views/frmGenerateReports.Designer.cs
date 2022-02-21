@@ -31,6 +31,7 @@ namespace SVSU_Capstone_Project.Views
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.logsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invDbDataSet1 = new SVSU_Capstone_Project.InvDbDataSet();
             this.lblGenorateReports = new System.Windows.Forms.Label();
@@ -40,7 +41,7 @@ namespace SVSU_Capstone_Project.Views
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SimulatorUse = new System.Windows.Forms.TabPage();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.simulatorUseTableAdapter = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.SimulatorUseTableAdapter();
+            this.simulatorUseTableAdapter1 = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.SimulatorUseTableAdapter();
             this.simulatorUseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.logsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invDbDataSet1)).BeginInit();
@@ -123,23 +124,24 @@ namespace SVSU_Capstone_Project.Views
             // 
             // reportViewer2
             // 
-            this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer2.LocalReport.ReportEmbeddedResource = "SVSU_Capstone_Project.Reports.SimulatorUse.rdlc";
+            reportDataSource2.Name = "SimulatorUse";
+            reportDataSource2.Value = this.simulatorUseBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "SVSU_Capstone_Project.Reports.SimulatorUses.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(3, 3);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.Size = new System.Drawing.Size(1501, 784);
+            this.reportViewer2.Size = new System.Drawing.Size(1504, 784);
             this.reportViewer2.TabIndex = 0;
             // 
-            // simulatorUseTableAdapter
+            // simulatorUseTableAdapter1
             // 
-            this.simulatorUseTableAdapter.ClearBeforeFill = true;
+            this.simulatorUseTableAdapter1.ClearBeforeFill = true;
             // 
             // simulatorUseBindingSource
             // 
             this.simulatorUseBindingSource.DataMember = "SimulatorUse";
             this.simulatorUseBindingSource.DataSource = this.invDbDataSet1;
-            this.simulatorUseBindingSource.CurrentChanged += new System.EventHandler(this.simulatorUseBindingSource_CurrentChanged);
             // 
             // frmGenerateReports
             // 
@@ -173,8 +175,8 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.TabPage ActivityLog;
         private System.Windows.Forms.TabPage SimulatorUse;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private InvDbDataSetTableAdapters.SimulatorUseTableAdapter simulatorUseTableAdapter;
-        private System.Windows.Forms.BindingSource simulatorUseBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private InvDbDataSetTableAdapters.SimulatorUseTableAdapter simulatorUseTableAdapter1;
+        private System.Windows.Forms.BindingSource simulatorUseBindingSource;
     }
 }

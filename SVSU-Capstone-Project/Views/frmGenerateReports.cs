@@ -40,7 +40,7 @@ namespace SVSU_Capstone_Project.Views
         private void frmGenerateReports_Load( object sender, EventArgs e )
         {
             // TODO: This line of code loads data into the 'invDbDataSet1.Logs' table. You can move, or remove it, as needed.
-            this.simulatorUseTableAdapter.Fill(this.invDbDataSet1.SimulatorUse);
+            this.simulatorUseTableAdapter1.Fill(this.invDbDataSet1.SimulatorUse);
             this.logsTableAdapter.Fill(this.invDbDataSet1.Logs);
             
             this.reportViewer1.RefreshReport();
