@@ -16,7 +16,14 @@ namespace SVSU_Capstone_Project.Views
     {
         public frmCheckInOutItems()
         {
+            /* Function: frmCheckInOutItems
+             * -----------------------------------------------------------------------------
+             * Description: Initializes the form when called upon
+             * -----------------------------------------------------------------------------
+             */
+
             InitializeComponent();
+            // checked in/out status set to null
             tbcCheckInOut_SelectedIndexChanged(null, null);
         }
 
@@ -31,11 +38,27 @@ namespace SVSU_Capstone_Project.Views
 
         private void ListBoxClicked( object sender, EventArgs e )
         {
+            /* Function: ListBoxClicked
+              * -----------------------------------------------------------------------------
+              * Description: This function is used to set wehter an object is checked in or out
+              * and will set the statue accordingly. If it is checked in, the checked out button 
+              * will appear to allow user to check it out. If the item is checked out, the 
+              * checked in button will appear to allow user to check it in.
+              * -----------------------------------------------------------------------------
+              *  Parameter Dictionary (in parameter order):  
+              *  EventArgs e; Information passed by the sender object about the method call.
+              *  object sender; The object calling the method.
+              * -----------------------------------------------------------------------------
+              * Local Variables
+              */
+
+            // if the item is checked in allow user to check out the item by check out btn
             if ((sender as ListBox).Name.ToString() == "lstIn")
             {
                 btnCheckIn.Enabled = false;
                 btnCheckOut.Enabled = true;
             }
+            // if the item is checked out allow user to check in the item by check in btn
             else if ((sender as ListBox).Name.ToString() == "lstOut")
             {
                 btnCheckIn.Enabled = true;
@@ -45,6 +68,18 @@ namespace SVSU_Capstone_Project.Views
 
         private void tbcCheckInOut_SelectedIndexChanged(object sender,EventArgs e)
         {
+            /* Function: tbcCheckInOut_SelectedIndexChanged
+            * -----------------------------------------------------------------------------
+            * Description: This ucntion will populate either the assets tab with data or the 
+            * Consumable tab with data depending on which tab is clicked. 
+            * -----------------------------------------------------------------------------
+            *  Parameter Dictionary (in parameter order):  
+            *  EventArgs e; Information passed by the sender object about the method call.
+            *  object sender; The object calling the method. 
+            * -----------------------------------------------------------------------------
+            * Local Variables
+            */
+
             switch (tbcCheckInOut.SelectedTab.Name)
             {
                 case "tbpAssets":

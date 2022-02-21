@@ -31,6 +31,7 @@ namespace SVSU_Capstone_Project.Views
         {
             this.tbcSettings = new System.Windows.Forms.TabControl();
             this.tbpUsers = new System.Windows.Forms.TabPage();
+            this.btnUpload = new System.Windows.Forms.Button();
             this.btnUserPassword = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtUserPhone = new System.Windows.Forms.TextBox();
@@ -85,6 +86,8 @@ namespace SVSU_Capstone_Project.Views
             this.lstCategory = new System.Windows.Forms.ListBox();
             this.label21 = new System.Windows.Forms.Label();
             this.tbpVendors = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtVendorHomepage = new System.Windows.Forms.TextBox();
             this.btnModifyVendor = new System.Windows.Forms.Button();
             this.btnAddVendor = new System.Windows.Forms.Button();
             this.btnClearVendor = new System.Windows.Forms.Button();
@@ -106,8 +109,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnDeleteNLevel = new System.Windows.Forms.Button();
             this.lstNLevel = new System.Windows.Forms.ListBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtVendorHomepage = new System.Windows.Forms.TextBox();
             this.tbcSettings.SuspendLayout();
             this.tbpUsers.SuspendLayout();
             this.tbpRooms.SuspendLayout();
@@ -135,6 +136,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpUsers
             // 
+            this.tbpUsers.Controls.Add(this.btnUpload);
             this.tbpUsers.Controls.Add(this.btnUserPassword);
             this.tbpUsers.Controls.Add(this.label9);
             this.tbpUsers.Controls.Add(this.txtUserPhone);
@@ -160,6 +162,18 @@ namespace SVSU_Capstone_Project.Views
             this.tbpUsers.TabIndex = 0;
             this.tbpUsers.Text = "Users";
             this.tbpUsers.UseVisualStyleBackColor = true;
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUpload.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.Location = new System.Drawing.Point(432, 311);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(188, 40);
+            this.btnUpload.TabIndex = 126;
+            this.btnUpload.Text = "Student Upload";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // btnUserPassword
             // 
@@ -259,7 +273,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnClearUser.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnClearUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearUser.Location = new System.Drawing.Point(432, 311);
+            this.btnClearUser.Location = new System.Drawing.Point(432, 357);
             this.btnClearUser.Name = "btnClearUser";
             this.btnClearUser.Size = new System.Drawing.Size(188, 40);
             this.btnClearUser.TabIndex = 10;
@@ -773,6 +787,24 @@ namespace SVSU_Capstone_Project.Views
             this.tbpVendors.Text = "Vendors";
             this.tbpVendors.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(625, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 16);
+            this.label2.TabIndex = 136;
+            this.label2.Text = "Homepage:";
+            // 
+            // txtVendorHomepage
+            // 
+            this.txtVendorHomepage.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVendorHomepage.Location = new System.Drawing.Point(629, 99);
+            this.txtVendorHomepage.Name = "txtVendorHomepage";
+            this.txtVendorHomepage.Size = new System.Drawing.Size(187, 22);
+            this.txtVendorHomepage.TabIndex = 135;
+            // 
             // btnModifyVendor
             // 
             this.btnModifyVendor.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1009,24 +1041,6 @@ namespace SVSU_Capstone_Project.Views
             this.label28.TabIndex = 139;
             this.label28.Text = "N-Level";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(625, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 16);
-            this.label2.TabIndex = 136;
-            this.label2.Text = "Homepage:";
-            // 
-            // txtVendorHomepage
-            // 
-            this.txtVendorHomepage.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVendorHomepage.Location = new System.Drawing.Point(629, 99);
-            this.txtVendorHomepage.Name = "txtVendorHomepage";
-            this.txtVendorHomepage.Size = new System.Drawing.Size(187, 22);
-            this.txtVendorHomepage.TabIndex = 135;
-            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1133,5 +1147,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Button btnUserPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtVendorHomepage;
+        private System.Windows.Forms.Button btnUpload;
     }
 }
