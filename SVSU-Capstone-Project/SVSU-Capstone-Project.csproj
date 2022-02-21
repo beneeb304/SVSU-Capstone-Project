@@ -197,6 +197,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ActivityLog.rdlc" />
+    <EmbeddedResource Include="Reports\SimulatorUse.rdlc" />
     <EmbeddedResource Include="Views\frmSetPassword.resx">
       <DependentUpon>frmSetPassword.cs</DependentUpon>
     </EmbeddedResource>
