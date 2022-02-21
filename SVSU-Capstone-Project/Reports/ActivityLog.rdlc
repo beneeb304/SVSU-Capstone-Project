@@ -54,7 +54,7 @@
                       <rd:DefaultName>Textbox7</rd:DefaultName>
                       <Style>
                         <Border />
-                        <BackgroundColor>#003663</BackgroundColor>
+                        <BackgroundColor>#00243f</BackgroundColor>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>19pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -62,6 +62,7 @@
                       </Style>
                     </Textbox>
                     <ColSpan>7</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />

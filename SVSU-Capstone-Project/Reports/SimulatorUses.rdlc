@@ -88,7 +88,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>#00243f</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingLeft>10pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
@@ -281,7 +281,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -385,6 +384,7 @@
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
                       </ChartDataLabel>
                       <Style>
                         <Color>#00243f</Color>
