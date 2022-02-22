@@ -59,7 +59,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.40833in</Height>
+                  <Height>0.475in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -88,6 +88,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>#00243f</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>10pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -95,6 +96,7 @@
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
@@ -341,7 +343,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>SimulatorUse</DataSetName>
-            <Height>1.025in</Height>
+            <Height>1.09167in</Height>
             <Width>9.73332in</Width>
             <Style>
               <Border>

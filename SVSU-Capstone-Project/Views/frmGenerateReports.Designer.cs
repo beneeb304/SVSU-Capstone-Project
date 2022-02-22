@@ -33,6 +33,11 @@ namespace SVSU_Capstone_Project.Views
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.logsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invDbDataSet1 = new SVSU_Capstone_Project.InvDbDataSet();
+            this.simulatorUseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.LowStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblGenorateReports = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabActivityLog = new System.Windows.Forms.TabPage();
@@ -41,23 +46,46 @@ namespace SVSU_Capstone_Project.Views
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tabLowStock = new System.Windows.Forms.TabPage();
             this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.logsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invDbDataSet1 = new SVSU_Capstone_Project.InvDbDataSet();
-            this.simulatorUseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.logsTableAdapter = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.LogsTableAdapter();
             this.simulatorUseTableAdapter1 = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.SimulatorUseTableAdapter();
-            this.LowStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lowStockTableAdapter = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.LowStockTableAdapter();
             this.cabinetsTableAdapter1 = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.CabinetsTableAdapter();
-            this.tabControl1.SuspendLayout();
-            this.tabActivityLog.SuspendLayout();
-            this.tabSimulatorUse.SuspendLayout();
-            this.tabLowStock.SuspendLayout();
+            this.tabDynamicItems = new System.Windows.Forms.TabPage();
+            this.reportViewer4 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.dynamicItemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dynamicItemsTableAdapter = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.DynamicItemsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.logsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invDbDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simulatorUseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LowStockBindingSource)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabActivityLog.SuspendLayout();
+            this.tabSimulatorUse.SuspendLayout();
+            this.tabLowStock.SuspendLayout();
+            this.tabDynamicItems.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dynamicItemsBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // logsBindingSource
+            // 
+            this.logsBindingSource.DataMember = "Logs";
+            this.logsBindingSource.DataSource = this.invDbDataSet1;
+            this.logsBindingSource.CurrentChanged += new System.EventHandler(this.logsBindingSource_CurrentChanged);
+            // 
+            // invDbDataSet1
+            // 
+            this.invDbDataSet1.DataSetName = "InvDbDataSet";
+            this.invDbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // simulatorUseBindingSource
+            // 
+            this.simulatorUseBindingSource.DataMember = "SimulatorUse";
+            this.simulatorUseBindingSource.DataSource = this.invDbDataSet1;
+            // 
+            // LowStockBindingSource
+            // 
+            this.LowStockBindingSource.DataMember = "LowStock";
+            this.LowStockBindingSource.DataSource = this.invDbDataSet1;
             // 
             // lblGenorateReports
             // 
@@ -75,6 +103,7 @@ namespace SVSU_Capstone_Project.Views
             this.tabControl1.Controls.Add(this.tabActivityLog);
             this.tabControl1.Controls.Add(this.tabSimulatorUse);
             this.tabControl1.Controls.Add(this.tabLowStock);
+            this.tabControl1.Controls.Add(this.tabDynamicItems);
             this.tabControl1.Location = new System.Drawing.Point(3, 59);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -152,22 +181,6 @@ namespace SVSU_Capstone_Project.Views
             this.reportViewer3.Size = new System.Drawing.Size(1501, 784);
             this.reportViewer3.TabIndex = 0;
             // 
-            // logsBindingSource
-            // 
-            this.logsBindingSource.DataMember = "Logs";
-            this.logsBindingSource.DataSource = this.invDbDataSet1;
-            this.logsBindingSource.CurrentChanged += new System.EventHandler(this.logsBindingSource_CurrentChanged);
-            // 
-            // invDbDataSet1
-            // 
-            this.invDbDataSet1.DataSetName = "InvDbDataSet";
-            this.invDbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // simulatorUseBindingSource
-            // 
-            this.simulatorUseBindingSource.DataMember = "SimulatorUse";
-            this.simulatorUseBindingSource.DataSource = this.invDbDataSet1;
-            // 
             // logsTableAdapter
             // 
             this.logsTableAdapter.ClearBeforeFill = true;
@@ -176,11 +189,6 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.simulatorUseTableAdapter1.ClearBeforeFill = true;
             // 
-            // LowStockBindingSource
-            // 
-            this.LowStockBindingSource.DataMember = "LowStock";
-            this.LowStockBindingSource.DataSource = this.invDbDataSet1;
-            // 
             // lowStockTableAdapter
             // 
             this.lowStockTableAdapter.ClearBeforeFill = true;
@@ -188,6 +196,39 @@ namespace SVSU_Capstone_Project.Views
             // cabinetsTableAdapter1
             // 
             this.cabinetsTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tabDynamicItems
+            // 
+            this.tabDynamicItems.Controls.Add(this.reportViewer4);
+            this.tabDynamicItems.Location = new System.Drawing.Point(4, 25);
+            this.tabDynamicItems.Name = "tabDynamicItems";
+            this.tabDynamicItems.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDynamicItems.Size = new System.Drawing.Size(1507, 790);
+            this.tabDynamicItems.TabIndex = 3;
+            this.tabDynamicItems.Text = "Dynamic Items";
+            this.tabDynamicItems.UseVisualStyleBackColor = true;
+            // 
+            // reportViewer4
+            // 
+            reportDataSource4.Name = "DynamicItems";
+            reportDataSource4.Value = this.dynamicItemsBindingSource;
+            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer4.LocalReport.ReportEmbeddedResource = "SVSU_Capstone_Project.Reports.DynamicItems.rdlc";
+            this.reportViewer4.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer4.Name = "reportViewer4";
+            this.reportViewer4.ServerReport.BearerToken = null;
+            this.reportViewer4.Size = new System.Drawing.Size(1501, 645);
+            this.reportViewer4.TabIndex = 0;
+            // 
+            // dynamicItemsBindingSource
+            // 
+            this.dynamicItemsBindingSource.DataMember = "DynamicItemsTable";
+            this.dynamicItemsBindingSource.DataSource = this.invDbDataSet1;
+            this.dynamicItemsBindingSource.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
+            // 
+            // dynamicItemsTableAdapter
+            // 
+            this.dynamicItemsTableAdapter.ClearBeforeFill = true;
             // 
             // frmGenerateReports
             // 
@@ -200,14 +241,16 @@ namespace SVSU_Capstone_Project.Views
             this.Name = "frmGenerateReports";
             this.Text = "frmGenerateReports";
             this.Load += new System.EventHandler(this.frmGenerateReports_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabActivityLog.ResumeLayout(false);
-            this.tabSimulatorUse.ResumeLayout(false);
-            this.tabLowStock.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invDbDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simulatorUseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LowStockBindingSource)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabActivityLog.ResumeLayout(false);
+            this.tabSimulatorUse.ResumeLayout(false);
+            this.tabLowStock.ResumeLayout(false);
+            this.tabDynamicItems.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dynamicItemsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,5 +274,9 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.BindingSource LowStockBindingSource;
         private InvDbDataSetTableAdapters.LowStockTableAdapter lowStockTableAdapter;
         private InvDbDataSetTableAdapters.CabinetsTableAdapter cabinetsTableAdapter1;
+        private System.Windows.Forms.TabPage tabDynamicItems;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer4;
+        private System.Windows.Forms.BindingSource dynamicItemsBindingSource;
+        private InvDbDataSetTableAdapters.DynamicItemsTableAdapter dynamicItemsTableAdapter;
     }
 }

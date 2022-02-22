@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.36667in</Width>
+              <Width>3.02083in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.36667in</Width>
+              <Width>3.02083in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -32,9 +32,7 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
+                          <Style />
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox10</rd:DefaultName>
@@ -201,7 +199,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -229,7 +226,7 @@
         </TablixRowHierarchy>
         <DataSetName>LowStock</DataSetName>
         <Height>1.68333in</Height>
-        <Width>4.73333in</Width>
+        <Width>6.04166in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -240,7 +237,7 @@
     <Height>4.275in</Height>
     <Style />
   </Body>
-  <Width>10.23333in</Width>
+  <Width>6.04166in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>

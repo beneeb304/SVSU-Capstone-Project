@@ -79,16 +79,20 @@ namespace SVSU_Capstone_Project.Views
          */
         private void frmGenerateReports_Load( object sender, EventArgs e )
         {
+            // TODO: This line of code loads data into the 'invDbDataSet1.DynamicItemsTable' table. You can move, or remove it, as needed.
+            this.dynamicItemsTableAdapter.Fill(this.invDbDataSet1.DynamicItemsTable);
             // TODO: This line of code loads data into the 'invDbDataSet1.LowStock' table. You can move, or remove it, as needed.
             this.lowStockTableAdapter.Fill(this.invDbDataSet1.LowStock);
-            // TODO: This line of code loads data into the 'invDbDataSet1.Logs' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'invDbDataSet1.SimulatorUse' table. You can move, or remove it, as needed.
             this.simulatorUseTableAdapter1.Fill(this.invDbDataSet1.SimulatorUse);
+            // TODO: This line of code loads data into the 'invDbDataset1.Logs' table. You can move, or remove it, as needed.
             this.logsTableAdapter.Fill(this.invDbDataSet1.Logs);
             
             this.reportViewer1.RefreshReport();
 
             this.reportViewer2.RefreshReport();
             this.reportViewer3.RefreshReport();
+            this.reportViewer4.RefreshReport();
         }
 
         /* Function: btnReportClear_Click
@@ -114,6 +118,11 @@ namespace SVSU_Capstone_Project.Views
         }
 
         private void simulatorUseBindingSource_CurrentChanged( object sender, EventArgs e )
+        {
+
+        }
+
+        private void bindingSource1_CurrentChanged( object sender, EventArgs e )
         {
 
         }
