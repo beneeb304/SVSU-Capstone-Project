@@ -82,6 +82,7 @@ namespace SVSU_Capstone_Project.Views
                     //populate category dropdown
                     cmbCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Consumable").OrderBy(x => x.strName).ToList();
                     cmbCommodity.DataSource = (cmbCategory.SelectedValue as Category).lstCommodities;
+                    cmbStudents.DataSource = ItemModel.GetMany<User>(x => x.blnIsAdmin == false).OrderBy(x => x.strLast_name).ToList();
                     break;
             }
         }
@@ -161,10 +162,10 @@ namespace SVSU_Capstone_Project.Views
 
         private void clearFields()
         {
-            cmbCategory.SelectedIndex = -0;
-            cmbCommodity.SelectedIndex = -0;
+            cmbCategory.SelectedIndex = 0;
+            cmbCommodity.SelectedIndex = 0;
             txtConsumableSvsuID.Text = "";
-            txtConsumableNotes.Text = "";
+            cmbStudents.SelectedIndex = 0;
             nudAddQty.Value = 1;
         }
 
@@ -175,8 +176,13 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnHandOut_Click( object sender, EventArgs e )
         {
-            if(cmbCommodity.SelectedIndex >= 0 && cmbRoom.SelectedIndex >= 0 && cmbCabinet.SelectedIndex >= 0 &&
-                cmbNLevel.SelectedIndex >= 0 && txtConsumableSvsuID.Text.Length >= 0)
+            var quantity = ItemModel.Get<Storage>(
+                 x => x.objCabinet == (cmbCabinet.SelectedValue as Cabinet)
+                 && x.objCommodity == (cmbCommodity.SelectedValue as Commodity)
+               );
+
+            if (cmbCommodity.SelectedIndex >= 0 && cmbRoom.SelectedIndex >= 0 && cmbCabinet.SelectedIndex >= 0 &&
+                cmbNLevel.SelectedIndex >= 0 && cmbStudents.SelectedIndex >= 0 && nudAddQty.Value < quantity.intQuantity)
             {
                 try
                 {
@@ -189,8 +195,10 @@ namespace SVSU_Capstone_Project.Views
                             x => x.objCommodity.uidTuid == objCommodity_Tuid.uidTuid
                                 );
 
-                        var objUser_Tuid = ItemModel.Get<User>(
-                            x => x.strSvsu_id == (txtConsumableSvsuID.Text));
+
+                        var objUser_Tuid = cmbStudents.SelectedValue as User;
+
+
 
                         Log log = new Log()
                         {
@@ -214,7 +222,7 @@ namespace SVSU_Capstone_Project.Views
                             objUser = objUser_Tuid
                         };
 
-                        ItemModel.Add<CheckedItem>(checkedItem);
+                       ItemModel.Add<CheckedItem>(checkedItem);
 
                         Storage storage = ItemModel.Get<Storage>(x => x.uidTuid == objStorage_Tuid.uidTuid);
 
@@ -222,7 +230,7 @@ namespace SVSU_Capstone_Project.Views
 
                         ItemModel.Update<Storage>(storage);
 
-                        MessageBox.Show("Item successfully handed out!", "Alert");
+                       MessageBox.Show("Item successfully handed out!", "Alert");
 
                         clearFields();
                         tbcCheckInOut_SelectedIndexChanged(null, null);
@@ -231,7 +239,7 @@ namespace SVSU_Capstone_Project.Views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Please ensure that you fill out all information on page", "Alert");
+                    MessageBox.Show("Please ensure that all fields are filled in!", "Alert");
                 }
             }
         }
