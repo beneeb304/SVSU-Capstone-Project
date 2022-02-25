@@ -175,73 +175,63 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnHandOut_Click( object sender, EventArgs e )
         {
-            if (cmbCommodity.SelectedIndex >= 0)
+            if(cmbCommodity.SelectedIndex >= 0 && cmbRoom.SelectedIndex >= 0 && cmbCabinet.SelectedIndex >= 0 &&
+                cmbNLevel.SelectedIndex >= 0 && txtConsumableSvsuID.Text.Length >= 0)
             {
-                if (cmbRoom.SelectedIndex >= 0)
+                try
                 {
-                    if (cmbCabinet.SelectedIndex >= 0)
+                    DialogResult result = MessageBox.Show("Are tou sure you want to check out " +
+                        cmbCommodity.SelectedItem.ToString() + "s?", "Confirm", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        if (cmbNLevel.SelectedIndex >= 0)
+                        var objCommodity_Tuid = cmbCommodity.SelectedValue as Commodity;
+                        var objStorage_Tuid = ItemModel.Get<Storage>(
+                            x => x.objCommodity.uidTuid == objCommodity_Tuid.uidTuid
+                                );
+
+                        var objUser_Tuid = ItemModel.Get<User>(
+                            x => x.strSvsu_id == (txtConsumableSvsuID.Text));
+
+                        Log log = new Log()
                         {
-                            if (txtConsumableSvsuID.Text != "")
-                            {
-                                try
-                                {
-                                    DialogResult result = MessageBox.Show("Are tou sure you want to check out " +
-                                        cmbCommodity.SelectedItem.ToString() + "s?", "Confirm", MessageBoxButtons.YesNo);
-                                    if (result == DialogResult.Yes)
-                                    {
-                                        var objCommodity_Tuid = cmbCommodity.SelectedValue as Commodity;
-                                        var objStorage_Tuid = ItemModel.Get<Storage>(
-                                            x => x.objCommodity.uidTuid == objCommodity_Tuid.uidTuid
-                                                );
+                            enuAction = ItemAction.CheckedOut,
+                            dtTimestamp = DateTime.Now,
+                            strNotes = txtConsumableNotes.Text,
+                            intQuantityChange = (int)nudAddQty.Value * -1,
+                            objStorage = objStorage_Tuid,
+                            objUser = objUser_Tuid
+                        };
 
-                                        var objUser_Tuid = ItemModel.Get<User>(
-                                            x => x.strSvsu_id == (txtConsumableSvsuID.Text));
+                        ItemModel.Add<Log>(log);
 
-                                        Log log = new Log()
-                                        {
-                                            enuAction = ItemAction.CheckedOut,
-                                            dtTimestamp = DateTime.Now,
-                                            strNotes = txtConsumableNotes.Text,
-                                            intQuantityChange = (int)nudAddQty.Value * -1,
-                                            objStorage = objStorage_Tuid,
-                                            objUser = objUser_Tuid
-                                        };
+                        var objLog_Tuid = ItemModel.Get<Log>(
+                            x => x.objStorage.uidTuid == objStorage_Tuid.uidTuid);
 
-                                        ItemModel.Add<Log>(log);
+                        CheckedItem checkedItem = new CheckedItem()
+                        {
+                            objCommodities = objCommodity_Tuid,
+                            objLog = objLog_Tuid,
+                            objUser = objUser_Tuid
+                        };
 
-                                        var objLog_Tuid = ItemModel.Get<Log>(
-                                            x => x.objStorage.uidTuid == objStorage_Tuid.uidTuid);
+                        ItemModel.Add<CheckedItem>(checkedItem);
 
-                                        CheckedItem checkedItem = new CheckedItem()
-                                        {
-                                            objCommodities = objCommodity_Tuid,
-                                            objLog = objLog_Tuid,
-                                            objUser = objUser_Tuid
-                                        };
+                        Storage storage = ItemModel.Get<Storage>(x => x.uidTuid == objStorage_Tuid.uidTuid);
 
-                                        ItemModel.Add<CheckedItem>(checkedItem);
+                        storage.intQuantity = storage.intQuantity + log.intQuantityChange;
 
-                                        Storage storage = ItemModel.Get<Storage>(x => x.uidTuid == objStorage_Tuid.uidTuid);
+                        ItemModel.Update<Storage>(storage);
 
-                                        storage.intQuantity = storage.intQuantity + log.intQuantityChange;
+                        MessageBox.Show("Item successfully handed out!", "Alert");
 
-                                        ItemModel.Update<Storage>(storage);
-
-                                        MessageBox.Show("Item successfully handed out!", "Alert");
-
-                                        clearFields();
-                                        tbcCheckInOut_SelectedIndexChanged(null, null);
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show("Please ensure that you fill out all information on page", "Alert");
-                                }
-                            }
-                        }
+                        clearFields();
+                        tbcCheckInOut_SelectedIndexChanged(null, null);
+                        cmbCommodity_SelectedIndexChanged(sender, e);
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Please ensure that you fill out all information on page", "Alert");
                 }
             }
         }
