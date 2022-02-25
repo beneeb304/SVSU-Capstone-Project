@@ -41,21 +41,15 @@ namespace SVSU_Capstone_Project.Views
         * 
         */
 
-            //Set datasource for each combobox
+            //Set datasource for category each combobox
             cmbCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
-            cmbNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
-            cmbRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
-            cmbVendor.DataSource = ItemModel.GetMany<Vendor>().OrderBy(x => x.strName).ToList();
-
-            //Click on the category combobox
-            ClickCmb(cmbCategory, e);
         }
 
         private void btnPrintBarcode_Click( object sender, EventArgs e )
         {
-            if (dgvInventoryView.SelectedRows.Count > 0)
+            if (dgvCommodity.SelectedRows.Count > 0)
             {
-                Commodity commodity = ItemModel.Get<Commodity>(x => x.uidTuid.ToString() == dgvInventoryView.Columns[7].HeaderCell.ToString());
+                Commodity commodity = ItemModel.Get<Commodity>(x => x.uidTuid.ToString() == dgvCommodity.Columns[7].HeaderCell.ToString());
 
                 try
                 {
@@ -69,43 +63,19 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        private void ClickCmb( object sender, EventArgs e )
-        {
-            //Get the clicked combobox
-            var cmbCurrent = sender as ComboBox;
-            
-            //Empty all others
-            foreach (var cmb in Controls.OfType<GroupBox>().SelectMany(groupBox => groupBox.Controls.OfType<ComboBox>()))
-            {
-                if (cmb != cmbCurrent)
-                {
-                    cmb.SelectedIndex = -1;
-                }
-            }
-        }
-
         private void cmbCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
             //Get list
             lstCommodities = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == cmbCategory.Text).OrderBy(x => x.strName).ToList();
             
             //Set dgv
-            dgvInventoryView.DataSource = lstCommodities;
-        }
+            dgvCommodity.DataSource = lstCommodities;
 
-        private void cmbRoom_SelectedIndexChanged( object sender, EventArgs e )
-        {
-            
-        }
-
-        private void cmbVendor_SelectedIndexChanged( object sender, EventArgs e )
-        {
-
-        }
-
-        private void cmbNLevel_SelectedIndexChanged( object sender, EventArgs e )
-        {
-
+            //Get rid of useless columns
+            dgvCommodity.Columns[4].Visible = false;
+            dgvCommodity.Columns[5].Visible = false;
+            dgvCommodity.Columns[6].Visible = false;
+            dgvCommodity.Columns[7].Visible = false;
         }
 
         private void txtSearch_TextChanged( object sender, EventArgs e )
@@ -116,13 +86,31 @@ namespace SVSU_Capstone_Project.Views
                 List<Commodity> lstTemp = lstCommodities.Where(x => x.strName.IndexOf(txtSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
 
                 //Set dgv with filtered datasource
-                dgvInventoryView.DataSource = lstTemp;
+                dgvCommodity.DataSource = lstTemp;
             }
             else
             {
                 //Set dgv back to normal
-                dgvInventoryView.DataSource = lstCommodities;
+                dgvCommodity.DataSource = lstCommodities;
             }
+        }
+
+        private void dgvCommodity_CellContentClick( object sender, DataGridViewCellEventArgs e )
+        {
+            //Get the selected category and commodity
+            string strCategory = cmbCategory.Text;
+            string strCommodity = dgvCommodity.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
+            
+            VendorItem vendorItem = ItemModel.Get<VendorItem>(x => x.objCommodity.strName == strCommodity && 
+            x.objCommodity.objCategory.strName == strCategory);
+
+
+
+
+
+
+            //cmbNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
+            //cmbRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
         }
     }
 }
