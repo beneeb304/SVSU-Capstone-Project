@@ -164,7 +164,7 @@ namespace SVSU_Capstone_Project.Views
         {
             cmbCategory.SelectedIndex = 0;
             cmbCommodity.SelectedIndex = 0;
-            txtConsumableSvsuID.Text = "";
+            cmbStudents.SelectedIndex = 0;
             cmbStudents.SelectedIndex = 0;
             nudAddQty.Value = 1;
         }
