@@ -187,7 +187,7 @@ namespace SVSU_Capstone_Project.Views
                 try
                 {
                     DialogResult result = MessageBox.Show("Are tou sure you want to check out " +
-                        cmbCommodity.SelectedItem.ToString() + "s?", "Confirm", MessageBoxButtons.YesNo);
+                        cmbCommodity.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
                         var objCommodity_Tuid = cmbCommodity.SelectedValue as Commodity;
