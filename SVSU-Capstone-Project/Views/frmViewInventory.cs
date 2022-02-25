@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SVSU_Capstone_Project.Model;
+using SVSU_Capstone_Project.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +28,7 @@ namespace SVSU_Capstone_Project.Views
         {
             /* Function: frmViewInventory_Load
         * -----------------------------------------------------------------------------
-        * Description: This function is called whever the view inventory form is loaded
+        * Description: This function is called whenever the view inventory form is loaded
         * -----------------------------------------------------------------------------
         *  Parameter Dictionary (in parameter order):  
         *  EventArgs e; Information passed by the sender object about the method call.
@@ -36,6 +38,12 @@ namespace SVSU_Capstone_Project.Views
         * 
         */
 
+            //populate category dropdown
+            cmbCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Consumable").OrderBy(x => x.strName).ToList();
+            //cmbCommodity.DataSource = (cmbCategory.SelectedValue as Category).lstCommodities;
+
+            //assets
+            dgvInventoryView.DataSource = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset").OrderBy(x => x.strName).ToList();
 
         }
     }
