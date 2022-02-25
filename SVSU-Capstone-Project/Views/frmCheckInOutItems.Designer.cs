@@ -346,6 +346,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnHandOut.TabIndex = 164;
             this.btnHandOut.Text = "Hand Out";
             this.btnHandOut.UseVisualStyleBackColor = true;
+            this.btnHandOut.Click += new System.EventHandler(this.btnHandOut_Click);
             // 
             // label7
             // 
