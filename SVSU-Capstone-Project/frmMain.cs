@@ -68,6 +68,9 @@ namespace SVSU_Capstone_Project
             {
                 //Close the application
                 Application.Exit();
+
+                //Don't let program continue here (which it does for some reason)
+                return;
             }
 
             //Set username in label
