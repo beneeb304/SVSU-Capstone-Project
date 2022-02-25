@@ -71,9 +71,15 @@ namespace SVSU_Capstone_Project.Views
             //Set dgv
             dgvCommodity.DataSource = lstCommodities;
 
-            //Get rid of useless columns
+            //Rename useful columns
+            dgvCommodity.Columns[0].HeaderText = "Name";
+            dgvCommodity.Columns[1].HeaderText = "Description";
+            dgvCommodity.Columns[2].HeaderText = "Features";
+            dgvCommodity.Columns[3].HeaderText = "Low Alert";
+            dgvCommodity.Columns[5].HeaderText = "Barcode";
+
+            //Hide useless columns
             dgvCommodity.Columns[4].Visible = false;
-            dgvCommodity.Columns[5].Visible = false;
             dgvCommodity.Columns[6].Visible = false;
             dgvCommodity.Columns[7].Visible = false;
         }
