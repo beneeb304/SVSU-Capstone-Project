@@ -166,6 +166,7 @@ namespace SVSU_Capstone_Project.Views
             cmbCommodity.SelectedIndex = 0;
             txtConsumableNotes.Text = "";
             cmbStudents.SelectedIndex = 0;
+            cmbStudents.SelectedIndex = 0;
             nudAddQty.Value = 1;
         }
 
@@ -187,7 +188,7 @@ namespace SVSU_Capstone_Project.Views
                 try
                 {
                     DialogResult result = MessageBox.Show("Are tou sure you want to check out " +
-                        cmbCommodity.SelectedItem.ToString() + "s?", "Confirm", MessageBoxButtons.YesNo);
+                        cmbCommodity.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
                         var objCommodity_Tuid = cmbCommodity.SelectedValue as Commodity;
