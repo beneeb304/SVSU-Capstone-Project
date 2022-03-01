@@ -17,10 +17,8 @@ namespace SVSU_Capstone_Project
     {
         public frmMain()
         {
-            /* Function: frmMain
-           * -----------------------------------------------------------------------------
+          /* Function: frmMain
            * Description: Initializes the form on program load.
-           * -----------------------------------------------------------------------------
            */
             InitializeComponent();
         }
@@ -35,19 +33,6 @@ namespace SVSU_Capstone_Project
          */
         private void frmMain_Load(object sender, EventArgs e)
         {
-            /* Function: frmMain_Load
-           * -----------------------------------------------------------------------------
-           * Description: Once the program is booted up it will call the splash screen and 
-           * initiate the login screen and set the form as the MDI parent
-           * -----------------------------------------------------------------------------
-           *  Parameter Dictionary (in parameter order):  
-           *  EventArgs e; Information passed by the sender object about the method call.
-           *  object sender; The object calling the method.
-           * -----------------------------------------------------------------------------
-           * Local Variables
-           * FrmSplash; New splash screen container.
-           */
-
 
             //Instantiate splash screen
             Form FrmSplash = new frmSplash();
@@ -72,17 +57,6 @@ namespace SVSU_Capstone_Project
          */
         private void InitiateLogin()
         {
-            /* Function: InitiateLogin
-             * -----------------------------------------------------------------------------
-             * Description: This function is used to instantiate and call the login screen upon 
-             * startup of the program.
-             * -----------------------------------------------------------------------------
-             *  Parameter Dictionary (in parameter order):  
-             * -----------------------------------------------------------------------------
-             * Local Variables
-             * FrmLogin; New Login form container.
-             */
-
             //Instantiate login screen
             Form FrmLogin = new frmLogin();
 
@@ -94,6 +68,9 @@ namespace SVSU_Capstone_Project
             {
                 //Close the application
                 Application.Exit();
+
+                //Don't let program continue here (which it does for some reason)
+                return;
             }
 
             //Set username in label
@@ -120,20 +97,6 @@ namespace SVSU_Capstone_Project
          */
         private void PageController(object sender, EventArgs e)
         {
-            /* Function: PageController
-           * -----------------------------------------------------------------------------
-           * Description: This function is used to assigne the correct child form to the new
-           * formed based on the clicked menu button. 
-           * -----------------------------------------------------------------------------
-           *  Parameter Dictionary (in parameter order):  
-           *   EventArgs e; Information passed by the sender object about the method call.
-           * object sender; The object calling the method.
-           * -----------------------------------------------------------------------------
-           * Local Variables
-           * newF; New MDI form
-           * oldF; Old MDI form (active form).
-           */
-
             //Instantiate two forms (old and new)
             Form oldF = ActiveMdiChild, newF = null;
 
@@ -202,17 +165,6 @@ namespace SVSU_Capstone_Project
          */
         private void tmrTime_Tick(object sender, EventArgs e)
         {
-            /* Function: tmrTime_Tick
-            * -----------------------------------------------------------------------------
-            * Description: This function is used to set the current time and date
-            * -----------------------------------------------------------------------------
-            *  Parameter Dictionary (in parameter order):  
-            *   EventArgs e; Information passed by the sender object about the method call.
-            * object sender; The object calling the method. 
-            * -----------------------------------------------------------------------------
-            * Local Variables
-            */
-
             //Set time and date
             lblDateTime.Text = DateTime.Now.ToString("hh:mm:ss tt MM/dd/yyyy");
         }
@@ -226,17 +178,6 @@ namespace SVSU_Capstone_Project
          */
         private void btnLogout_Click(object sender, EventArgs e)
         {
-             /* Function: btnLogout_Click
-             * -----------------------------------------------------------------------------
-             * Description: This function is used to logout and restart the program
-             * -----------------------------------------------------------------------------
-             *  Parameter Dictionary (in parameter order):  
-             *   EventArgs e; Information passed by the sender object about the method call.
-             * object sender; The object calling the method. 
-             * -----------------------------------------------------------------------------
-             * Local Variables
-             */
-            
             //Restart the program
             Application.Restart();
         }
