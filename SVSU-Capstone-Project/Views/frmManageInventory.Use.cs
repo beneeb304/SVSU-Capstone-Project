@@ -33,11 +33,21 @@ namespace SVSU_Capstone_Project.Views
         }
         private void cmbUseCommodity_SelectedValueChanged( object sender, EventArgs e )
         {
-
+            this.cmbUseRoom.DataSource = (cmbUseCommodity.SelectedItem as Commodity).lstStorage.Select(x => x.objCabinet.objRoom).OrderBy(x => x.strName).ToList();
+            this.cmbUseRoom.SelectedIndex = -1;
         }
         private void cmbUseCabinet_SelectedValueChanged( object sender, EventArgs e )
         {
-
+            this.cmbUseNLevel.DataSource = (cmbUseCabinet.SelectedItem as Cabinet).lstStorage
+                .Where(x => x.objCommodity == cmbUseCommodity.SelectedItem as Commodity)
+                .Select(x => x.objNLevel)
+                .Distinct()
+                .OrderBy(x => x.strName)
+                .ToList();
+        }
+        private void cmbUseNLevel_SelectedValueChanged( object sender, EventArgs e )
+        {
+            
         }
     }
 }
