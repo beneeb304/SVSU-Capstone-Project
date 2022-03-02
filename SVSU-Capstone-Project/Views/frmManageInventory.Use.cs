@@ -26,11 +26,27 @@ namespace SVSU_Capstone_Project.Views
         private void btnUseCancel_Click( object sender, EventArgs e )
         {
             //Clear all fields on Use tab
-            cmbUseCabinet.SelectedIndex = -1;
             cmbUseCategory.SelectedIndex = -1;
-            cmbUseCommodity.SelectedIndex = -1;
-            cmbUseNLevel.SelectedIndex = -1;
-            cmbUseRoom.SelectedIndex = -1;
+            nudUseDeduct.Value = 0;
+        }
+
+        private void btnUse_Click( object sender, EventArgs e )
+        {
+            //Check if all fields are filled out
+            if (cmbUseCategory.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please fill out all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            ItemModel.UseItem(ItemModel.Get<Storage>(x =>
+               x.objCabinet == (cmbUseCabinet.SelectedItem as Cabinet) &&
+               x.objCommodity == (cmbUseCommodity.SelectedItem as Commodity) &&
+               x.objNLevel == (cmbUseNLevel.SelectedItem as NLevel)),
+                Authentication.ActiveUser,
+                Convert.ToUInt32(nudUseDeduct.Value),
+                "Item Used via Manage Inventory Tab"
+            );
+
         }
 
         /* Function: cmbUseCategory_SelectedValueChanged
@@ -42,8 +58,7 @@ namespace SVSU_Capstone_Project.Views
          */
         private void cmbUseCategory_SelectedValueChanged( object sender, EventArgs e )
         {
-            this.cmbUseCommodity.SelectedIndex = -1;
-            this.cmbUseCommodity.DataSource = (cmbUseCategory.SelectedItem as Category).lstCommodities.OrderBy(x => x.strName).ToList();
+            Category_SelectedValueChanged(cmbUseCategory, cmbUseCommodity);
         }
 
         /* Function: cmbUseCommodity_SelectedValueChanged
@@ -55,8 +70,12 @@ namespace SVSU_Capstone_Project.Views
          */
         private void cmbUseCommodity_SelectedValueChanged( object sender, EventArgs e )
         {
-            this.cmbUseRoom.DataSource = (cmbUseCommodity.SelectedItem as Commodity).lstStorage.Select(x => x.objCabinet.objRoom).OrderBy(x => x.strName).ToList();
-            this.cmbUseRoom.SelectedIndex = -1;
+            Commodity_SelectedValueChanged(cmbUseCommodity, cmbUseRoom);
+        }
+
+        private void cmbUseRoom_SelectedValueChanged( object sender, EventArgs e )
+        {
+            Room_SelectedValueChanged(cmbUseRoom, cmbUseCabinet, cmbUseCabinet);
         }
 
         /* Function: cmbUseCabinet_SelectedValueChanged
@@ -68,16 +87,17 @@ namespace SVSU_Capstone_Project.Views
          */
         private void cmbUseCabinet_SelectedValueChanged( object sender, EventArgs e )
         {
-            this.cmbUseNLevel.DataSource = (cmbUseCabinet.SelectedItem as Cabinet).lstStorage
-                .Where(x => x.objCommodity == cmbUseCommodity.SelectedItem as Commodity)
-                .Select(x => x.objNLevel)
-                .Distinct()
-                .OrderBy(x => x.strName)
-                .ToList();
+            Cabinet_SelectedValueChanged(cmbUseCabinet, cmbUseCommodity, cmbUseNLevel);
         }
         private void cmbUseNLevel_SelectedValueChanged( object sender, EventArgs e )
         {
-            
+            NLevel_SelectedValueChanged(cmbUseCommodity, cmbUseCabinet, cmbUseNLevel, txtUseAvailable, nudUseDeduct);
+        }
+
+        private void nudUseDeduct_ValueChanged( object sender, EventArgs e )
+        {
+            var remaining = Convert.ToInt32(txtUseAvailable.Text) - Convert.ToInt32(nudUseDeduct.Value);
+            txtUseRemaining.Text = remaining.ToString();
         }
     }
 }

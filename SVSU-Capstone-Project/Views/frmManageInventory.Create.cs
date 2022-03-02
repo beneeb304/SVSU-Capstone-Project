@@ -44,9 +44,16 @@ namespace SVSU_Capstone_Project.Views
         * object sender; The object calling the method.
         * EventArgs e; Information passed by the sender object about the method call.
         */
-        private void txtCreateItemName_TextChanged( object sender, EventArgs e )
+        private void txtCreateItemName_Leave( object sender, EventArgs e )
         {
-
+            // Check if the item name is already in use if also not blank
+            var filteredItem = txtCreateItemName.Text != "" ? ItemModel.Get<Commodity>(x => x.strName == txtCreateItemName.Text) : null;
+            if (filteredItem != null)
+            {
+                MessageBox.Show("Item name already in use. Please choose a different name or modify item.");
+                btnCreate.Text = "Modify";
+                cmbCreateCategory.SelectedItem = filteredItem.objCategory;
+            }
         }
     }
 }

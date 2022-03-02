@@ -42,11 +42,11 @@ namespace SVSU_Capstone_Project.ViewModel
             return parent;
         }
 
-        public static Guid Add<T>( T obj ) where T : ContextEntity
+        public static Guid Add<T>( T obj, out T item ) where T : ContextEntity
         {
             //Set tuid
             obj.uidTuid = Guid.NewGuid();
-            
+
             //Look for duplicate tuid
             while (Get<T>(x => x.uidTuid == obj.uidTuid) != null)
             {
@@ -54,16 +54,22 @@ namespace SVSU_Capstone_Project.ViewModel
                 obj.uidTuid = Guid.NewGuid();
             }
 
-            T objAdded = db.Set<T>().Add(obj);
+            item = db.Set<T>().Add(obj);
             db.SaveChanges();
 
             // return the tuid of the newly added object
-            return objAdded.uidTuid;
+            return item.uidTuid;
         }
+
+        public static Guid Add<T> ( T obj ) where T : ContextEntity
+        {
+            return Add(obj, out T item);
+        }
+        
 
         public static void Update<T>( T obj ) where T : ContextEntity
         {
-            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;            
+            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
         }
 
