@@ -7,14 +7,14 @@ namespace SVSU_Capstone_Project.Model
 
     public class Vendor: ContextEntity
     {
-        [Column("name")]
+        [Column("name"), Index(IsUnique = true), MaxLength(255)]
         public string strName { get; set; }
         [Column("homepage")]
         public string strHomepage { get; set; }
         [Column("description")]
         public string strDescription { get; set; }
 
-        public virtual List<VendorItem> lstItemsSold { get; set; }
+        public virtual List<Commodity> lstItemsSold { get; set; }
         
         // override tostring with strName
         public override string ToString()

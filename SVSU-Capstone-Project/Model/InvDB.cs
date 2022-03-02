@@ -19,7 +19,7 @@ namespace SVSU_Capstone_Project.Model
         // on modelcreating override
         protected override void OnModelCreating( DbModelBuilder modelBuilder )
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);            
         }
 
         public DbSet<Category> dsCategories { get; set; }
@@ -31,7 +31,6 @@ namespace SVSU_Capstone_Project.Model
         public DbSet<Log> dsLogs { get; set; }
         public DbSet<User> dsUsers { get; set; }
         public DbSet<Storage> dsStorage { get; set; }
-        public DbSet<VendorItem> dsVendorItems { get; set; }
         public DbSet<CheckedItem> dsCheckedItems { get; set; }
     }
     public class ContextEntity

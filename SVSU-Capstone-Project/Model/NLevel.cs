@@ -5,10 +5,10 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-
-    public class NLevel: ContextEntity
+    [Table("NLevel")]
+    public class NLevel : ContextEntity
     {
-        [Column("name")]
+        [Column("name"), Index(IsUnique = true), MaxLength(255)]
         public string strName { get; set; }
         [Column("description")]
         public string strDescription { get; set; }

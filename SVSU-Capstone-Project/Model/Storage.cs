@@ -4,6 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("Storage")]
     public class Storage : ContextEntity
     {
         [Column("quantity")]
