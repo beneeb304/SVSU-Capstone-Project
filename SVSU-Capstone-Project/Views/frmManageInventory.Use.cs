@@ -23,14 +23,14 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnUseCancel_Click( object sender, EventArgs e )
+        private void btnUseCancel_Click( object sender = null, EventArgs e = null )
         {
             //Clear all fields on Use tab
             cmbUseCategory.SelectedIndex = -1;
-            nudUseDeduct.Value = 0;
+            nudUseDeduct.Value = 1;
         }
 
-        private void btnUse_Click( object sender, EventArgs e )
+        private void btnUse_Click( object sender = null, EventArgs e = null )
         {
             //Check if all fields are filled out
             if (cmbUseCategory.SelectedIndex == -1)
@@ -46,6 +46,7 @@ namespace SVSU_Capstone_Project.Views
                 Convert.ToUInt32(nudUseDeduct.Value),
                 "Item Used via Manage Inventory Tab"
             );
+            btnUseCancel_Click();
 
         }
 
@@ -56,7 +57,7 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void cmbUseCategory_SelectedValueChanged( object sender, EventArgs e )
+        private void cmbUseCategory_SelectedValueChanged( object sender = null, EventArgs e = null )
         {
             Category_SelectedValueChanged(cmbUseCategory, cmbUseCommodity);
         }
@@ -68,14 +69,14 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void cmbUseCommodity_SelectedValueChanged( object sender, EventArgs e )
+        private void cmbUseCommodity_SelectedValueChanged( object sender = null, EventArgs e = null )
         {
             Commodity_SelectedValueChanged(cmbUseCommodity, cmbUseRoom);
         }
 
-        private void cmbUseRoom_SelectedValueChanged( object sender, EventArgs e )
+        private void cmbUseRoom_SelectedValueChanged( object sender = null, EventArgs e = null )
         {
-            Room_SelectedValueChanged(cmbUseRoom, cmbUseCabinet, cmbUseCabinet);
+            Room_SelectedValueChanged(cmbUseRoom, cmbUseCabinet, cmbUseCommodity);
         }
 
         /* Function: cmbUseCabinet_SelectedValueChanged
@@ -85,19 +86,26 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void cmbUseCabinet_SelectedValueChanged( object sender, EventArgs e )
+        private void cmbUseCabinet_SelectedValueChanged( object sender = null, EventArgs e = null )
         {
             Cabinet_SelectedValueChanged(cmbUseCabinet, cmbUseCommodity, cmbUseNLevel);
         }
-        private void cmbUseNLevel_SelectedValueChanged( object sender, EventArgs e )
+
+        private void cmbUseNLevel_SelectedValueChanged( object sender = null, EventArgs e = null )
         {
-            NLevel_SelectedValueChanged(cmbUseCommodity, cmbUseCabinet, cmbUseNLevel, txtUseAvailable, nudUseDeduct);
+            NLevel_SelectedValueChanged(cmbUseCommodity, cmbUseCabinet, cmbUseNLevel, txtUseAvailable, nudUseDeduct, txtUseRemaining);
         }
 
-        private void nudUseDeduct_ValueChanged( object sender, EventArgs e )
+        private void nudUseDeduct_ValueChanged( object sender = null, EventArgs e = null )
         {
-            var remaining = Convert.ToInt32(txtUseAvailable.Text) - Convert.ToInt32(nudUseDeduct.Value);
-            txtUseRemaining.Text = remaining.ToString();
+            if(int.TryParse(txtUseAvailable.Text, out int available))
+            {
+                txtUseRemaining.Text = (available - nudUseDeduct.Value).ToString();
+            }
+            else{
+                txtUseRemaining.Text = "";
+            }
+            
         }
     }
 }

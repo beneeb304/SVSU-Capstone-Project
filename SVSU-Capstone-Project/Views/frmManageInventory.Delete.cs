@@ -29,9 +29,12 @@ namespace SVSU_Capstone_Project.Views
                 {
                     room = x.Key.strName,
                     count = x.Select(y => y.intQuantity).Sum()
-                });
-            dgvDeletionDelta.Columns[0].HeaderText = "Room";
-            dgvDeletionDelta.Columns[1].HeaderText = "Purge Quantity";
+                }).ToList();
+            if (dgvDeletionDelta.Rows.Count > 0)
+            {
+                dgvDeletionDelta.Columns[0].HeaderText = "Room";
+                dgvDeletionDelta.Columns[1].HeaderText = "# To Purge";
+            }
         }
 
         private void btnDeleteConfirm_Click( object sender, EventArgs e )

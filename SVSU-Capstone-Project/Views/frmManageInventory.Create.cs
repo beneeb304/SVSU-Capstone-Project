@@ -55,5 +55,41 @@ namespace SVSU_Capstone_Project.Views
                 cmbCreateCategory.SelectedItem = filteredItem.objCategory;
             }
         }
+        private void trvCreateSelectByCategory_Populate()
+        {
+            trvCreateSelectByCategory.Nodes.Clear();
+            var lstCategories = ItemModel.GetMany<Category>();
+            lstCategories.ForEach(cat =>
+            {
+                var node = new TreeNode(cat.strName) { Tag = cat };
+                cat.lstCommodities.ForEach(comm => { node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = comm }); });
+                trvCreateSelectByCategory.Nodes.Add(node);
+            });
+        }
+
+        private void trvCreateSelectByRoom_Populate()
+        {
+            trvCreateSelectByRoom.Nodes.Clear();
+            var lstRooms = ItemModel.GetMany<Room>();
+            lstRooms.OrderBy(x => x.strName).ToList().ForEach(room =>
+            {
+                var roomNode = new TreeNode(room.strName) { Tag = room };
+                room.lstCabinets.OrderBy(x => x.strName).ToList().ForEach(cab =>
+                {
+                    var cabinetNode = new TreeNode(cab.strName) { Tag = cab };
+                    cab.lstStorage.GroupBy(x => x.objNLevel).ToList().ForEach(grp =>
+                    {
+                        var nlevelNode = new TreeNode(grp.Key.strName) { Tag = grp.Key };
+                        grp.ToList().ForEach(stor =>
+                        {
+                            nlevelNode.Nodes.Add(new TreeNode($"{stor.objCommodity.strName} ({stor.intQuantity})") { Tag = stor.objCommodity });
+                        });
+                        cabinetNode.Nodes.Add(nlevelNode);
+                    });
+                    roomNode.Nodes.Add(cabinetNode);
+                });
+                trvCreateSelectByRoom.Nodes.Add(roomNode);
+            });
+        }
     }
 }

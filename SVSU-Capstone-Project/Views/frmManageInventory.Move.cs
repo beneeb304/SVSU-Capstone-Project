@@ -22,9 +22,10 @@ namespace SVSU_Capstone_Project.Views
 
         private void cmbMoveCommodity_SelectedIndexChanged( object sender, EventArgs e )
         {
+            if (blnEventBlock) return;
             Commodity_SelectedValueChanged(cmbMoveCommodity, cmbMoveRoomFrom);
-            if(cmbMoveRoomFrom.SelectedIndex != -1)
-            cmbMoveRoomTo.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
+            if (cmbMoveCommodity.SelectedIndex != -1)
+                nonTriggeringCall(() => cmbMoveRoomTo.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList());
             cmbMoveRoomTo.SelectedIndex = -1;
         }
 
@@ -45,22 +46,29 @@ namespace SVSU_Capstone_Project.Views
 
         private void cmbMoveRoomTo_SelectedIndexChanged( object sender, EventArgs e )
         {
-            if(cmbMoveCabinetTo.SelectedIndex != -1)
-            cmbMoveCabinetTo.DataSource = (cmbMoveRoomTo.SelectedItem as Room).lstCabinets.OrderBy(x => x.strName).ToList();
+            if (blnEventBlock) return;
+            if (cmbMoveRoomTo.SelectedIndex != -1)                
+                nonTriggeringCall(() => cmbMoveCabinetTo.DataSource = (cmbMoveRoomTo.SelectedItem as Room).lstCabinets.OrderBy(x => x.strName).ToList());
+            else
+                cmbMoveCabinetTo.DataSource = null;
             cmbMoveCabinetTo.SelectedIndex = -1;
+
         }
 
         private void cmbMoveCabinetTo_SelectedIndexChanged( object sender, EventArgs e )
         {
-            if(cmbMoveCabinetTo.SelectedIndex != -1)
-            cmbMoveCabinetTo.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
+            if (blnEventBlock) return;
+            if (cmbMoveCabinetTo.SelectedIndex != -1)
+                nonTriggeringCall(() => cmbMoveNLevelTo.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList());
+            else
+                cmbMoveNLevelTo.DataSource = null;
             cmbMoveNLevelTo.SelectedIndex = -1;
         }
 
         private void cmbMoveReset_Click( object sender, EventArgs e )
         {
             cmbMoveCategory.SelectedIndex = -1;
-            nudMoveQuantity.Value = 1;
+            cmbMoveRoomTo.SelectedIndex = -1;
         }
 
         private void btnMove_Click( object sender, EventArgs e )
@@ -81,7 +89,8 @@ namespace SVSU_Capstone_Project.Views
             }
             var storageSource = ItemModel.Get<Storage>(x => x.objCommodity == (cmbMoveCommodity.SelectedItem as Commodity) && x.objCabinet == (cmbMoveCabinetFrom.SelectedItem as Cabinet) && x.objNLevel == (cmbMoveNLevelFrom.SelectedItem as NLevel));
             var storageDestination = ItemModel.Get<Storage>(x => x.objCommodity == (cmbMoveCommodity.SelectedItem as Commodity) && x.objCabinet == (cmbMoveCabinetTo.SelectedItem as Cabinet) && x.objNLevel == (cmbMoveNLevelTo.SelectedItem as NLevel));
-            if (storageDestination == null){
+            if (storageDestination == null)
+            {
                 // create new storage
                 ItemModel.Add<Storage>(new Storage()
                 {
@@ -89,7 +98,7 @@ namespace SVSU_Capstone_Project.Views
                     objCabinet = (cmbMoveCabinetTo.SelectedItem as Cabinet),
                     objNLevel = (cmbMoveNLevelTo.SelectedItem as NLevel),
                     intQuantity = 0
-                },out storageDestination);
+                }, out storageDestination);
             }
             ItemModel.MoveItem(
                 storageSource,
