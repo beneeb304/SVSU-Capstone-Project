@@ -76,13 +76,16 @@ namespace SVSU_Capstone_Project.Views
             {
                 case "tbpAssets":
                     //populate checked in assets listbox
-                    lstCheckedIn.DataSource = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset").OrderBy(x => x.strName).ToList();
+                    //cmbAssetCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Asset").OrderBy(x => x.strName).ToList();
+                    //lstCheckedOut.DataSource = ItemModel.GetMany<Storage>().OrderBy(x => x.objCommodity.strName).ToList();
+                    lstCheckedIn.DataSource = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset" ).OrderBy(x => x.strName).ToList();
+                   cmbAssetsStudents.DataSource = ItemModel.GetMany<User>().OrderBy(x => x.strLast_name).ToList();
                     break;
                 case "tbpConsumables":
                     //populate category dropdown
                     cmbCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Consumable").OrderBy(x => x.strName).ToList();
                     cmbCommodity.DataSource = (cmbCategory.SelectedValue as Category).lstCommodities;
-                    cmbStudents.DataSource = ItemModel.GetMany<User>(x => x.blnIsAdmin == false).OrderBy(x => x.strLast_name).ToList();
+                    cmbStudents.DataSource = ItemModel.GetMany<User>().OrderBy(x => x.strLast_name).ToList();
                     break;
             }
         }
@@ -102,13 +105,6 @@ namespace SVSU_Capstone_Project.Views
              * Local Variables
              * objSelectedCommodity; used to store the selected value of the commodity
              */
-
-            //var commodityTuid = (cmbCommodity.SelectedValue as Commodity).uidTuid;
-            //cmbRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
-            //txtConsumableNotes.Text = cmbCommodity.SelectedValue.ToString() + " " + commodityTuid;
-            //cmbCabinet.DataSource = ItemModel.GetMany<Cabinet>().OrderBy(x => x.strName).ToList();
-            //cmbNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
-
             // stores the selected index stored in the commodity combo box
             var objSelectedCommodity = cmbCommodity.SelectedValue as Commodity;
             // set the data fields in order by name
@@ -242,6 +238,24 @@ namespace SVSU_Capstone_Project.Views
                     MessageBox.Show("Please ensure that all fields are filled in!", "Alert");
                 }
             }
+        }
+
+        private void btnCheckOut_Click( object sender, EventArgs e )
+        {
+            var objCommodity_tuid = lstCheckedIn.SelectedValue as Commodity;
+            var objStorage_tuid = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == objCommodity_tuid.uidTuid);
+            var objUser_tuid = cmbAssetsStudents.SelectedValue as User;
+
+            if(objStorage_tuid.intQuantity >= 0)
+            {
+                lstCheckedOut.Items.Add(objCommodity_tuid.strName);
+
+            }
+        }
+
+        private void lstCheckedIn_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            cmbAssetsStudents.Enabled = true;
         }
     }
 }
