@@ -41,7 +41,7 @@ namespace SVSU_Capstone_Project.Views
             try
             {
                 //Get user
-                user = Authentication.Authenticate(txtSVSU_ID.Text, txtPassword.Text);
+                user = Authentication.Authenticate(txtEmail.Text, txtPassword.Text);
                                 
                 //If user isn't admin and somehow got this far, don't let them login
                 if(user.blnIsAdmin == false)
@@ -67,7 +67,7 @@ namespace SVSU_Capstone_Project.Views
                     else
                     {
                         txtPassword.Text = "";
-                        txtSVSU_ID.Text = "";
+                        txtEmail.Text = "";
                         return;
                     }
                 }
@@ -79,7 +79,7 @@ namespace SVSU_Capstone_Project.Views
             }
             catch (UserNotFoundException ex)
             {
-                erpLoginForm.SetError(txtSVSU_ID, ex.Message);
+                erpLoginForm.SetError(txtEmail, ex.Message);
                 return;
             }
             catch (PasswordInvalidException ex)
