@@ -76,12 +76,11 @@ namespace SVSU_Capstone_Project.Views
             {
                 case "tbpAssets":
                     //populate checked in assets listbox
-                    var checkeditems = ItemModel.GetMany<CheckedItem>().OrderBy(x => x.uidTuid).ToList();
-                    //var items = ItemModel.GetMany<Log>(x => x.uidTuid == checkeditems);
+                   lstCheckedOut.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).Select(x => x.objLog.objStorage.objCommodity.strName).ToList();
 
                    lstCheckedIn.DataSource = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset" ).OrderBy(x => x.strName).ToList();
                    cmbAssetsStudents.DataSource = ItemModel.GetMany<User>().OrderBy(x => x.strLast_name).ToList();
-                   lstCheckedOut.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).OrderBy(x => x.objCommodities.strName).ToList();
+                   //lstCheckedOut.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).OrderBy(x => x.objCommodities.strName).ToList();
                     break;
                 case "tbpConsumables":
                     //populate category dropdown
@@ -169,7 +168,8 @@ namespace SVSU_Capstone_Project.Views
 
         private void frmCheckInOutItems_Load( object sender, EventArgs e )
         {
-
+            lstCheckedIn.SelectedIndex = -1;
+            lstCheckedOut.SelectedIndex = -1;
         }
 
         private void btnHandOut_Click( object sender, EventArgs e )
@@ -229,7 +229,8 @@ namespace SVSU_Capstone_Project.Views
                         ItemModel.Update<Storage>(storage);
 
                        MessageBox.Show("Item successfully handed out!", "Alert");
-
+                        lstCheckedIn.SelectedIndex = -1;
+                        lstCheckedOut.SelectedIndex = -1;
                         clearFields();
                         tbcCheckInOut_SelectedIndexChanged(null, null);
                         cmbCommodity_SelectedIndexChanged(sender, e);
@@ -247,13 +248,13 @@ namespace SVSU_Capstone_Project.Views
             var objCommodity_tuid = lstCheckedIn.SelectedValue as Commodity;
             var objStorage_tuid = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == objCommodity_tuid.uidTuid);
             var objUser_tuid = cmbAssetsStudents.SelectedValue as User;
-
+            var timestamp = DateTime.Now;
             if(objStorage_tuid.intQuantity > 0)
             {
                 Log log = new Log()
                 {
                     enuAction = ItemAction.CheckedOut,
-                    dtTimestamp = DateTime.Now,
+                    dtTimestamp = timestamp,
                     strNotes = txtAssetNotes.Text,
                     intQuantityChange = -1,
                     objStorage = objStorage_tuid,
@@ -263,7 +264,7 @@ namespace SVSU_Capstone_Project.Views
                 ItemModel.Add<Log>(log);
 
                 var objLog_Tuid = ItemModel.Get<Log>(
-                    x => x.objStorage.uidTuid == objStorage_tuid.uidTuid);
+                    x => x.objStorage.uidTuid == objStorage_tuid.uidTuid && x.dtTimestamp == timestamp && x.objUser.uidTuid == objUser_tuid.uidTuid);
 
                 CheckedItem checkedItem = new CheckedItem()
                 {
@@ -289,6 +290,36 @@ namespace SVSU_Capstone_Project.Views
         private void lstCheckedIn_SelectedIndexChanged( object sender, EventArgs e )
         {
             cmbAssetsStudents.Enabled = true;
+            txtAssetNotes.Enabled = true;
+            lstCheckedOut.SelectedIndex = -1;
+        }
+
+        private void lstCheckedOut_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            //var commodity_tuid = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset").OrderBy(x => x.strName).ToList();
+            //var user_tuid = ItemModel.GetMany<User>().OrderBy(x => x.strFirst_name).ToList();
+            //var log_tuid = ItemModel.GetMany<Log>().ToList(); 
+
+            //var selectedItem = lstCheckedOut.SelectedValue as Commodity;
+            //txtAssetNotes.Text = selectedItem.objLog.strNotes.ToString();
+            //cmbAssetsStudents.SelectedValue = user_tuid.Where(x => x.uidTuid == selectedItem.objUser.uidTuid);
+            txtAssetNotes.Enabled = false;
+            cmbAssetsStudents.Enabled = false;
+            txtAssetNotes.Text = "";
+            cmbAssetsStudents.SelectedIndex = -1;
+            lstCheckedIn.SelectedIndex = -1;
+        }
+
+        private void btnCheckIn_Click( object sender, EventArgs e )
+        {
+            //lstCheckedIn.SelectedIndex = -1;
+            //lstCheckedOut.SelectedIndex = -1;
+
+            var objselectedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.strName == lstCheckedOut.SelectedValue.ToString());
+            var objLog = ItemModel.GetMany<Log>();
+
+
+            //var checkedItem = ItemModel.GetMany<CheckedItem>().Where(x => x.objCommodities.strName == objselectedItem).ToList();
         }
     }
 }

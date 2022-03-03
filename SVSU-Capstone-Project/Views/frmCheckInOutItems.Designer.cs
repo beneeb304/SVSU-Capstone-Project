@@ -31,6 +31,8 @@ namespace SVSU_Capstone_Project.Views
         {
             this.tbcCheckInOut = new System.Windows.Forms.TabControl();
             this.tbpAssets = new System.Windows.Forms.TabPage();
+            this.cmbAssetCategory = new System.Windows.Forms.ComboBox();
+            this.cmbAssetsStudents = new System.Windows.Forms.ComboBox();
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.btnCheckOut = new System.Windows.Forms.Button();
             this.txtAssetNotes = new System.Windows.Forms.RichTextBox();
@@ -63,8 +65,6 @@ namespace SVSU_Capstone_Project.Views
             this.label8 = new System.Windows.Forms.Label();
             this.cmbRoom = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.cmbAssetsStudents = new System.Windows.Forms.ComboBox();
-            this.cmbAssetCategory = new System.Windows.Forms.ComboBox();
             this.tbcCheckInOut.SuspendLayout();
             this.tbpAssets.SuspendLayout();
             this.tbpConsumables.SuspendLayout();
@@ -106,6 +106,25 @@ namespace SVSU_Capstone_Project.Views
             this.tbpAssets.Text = "Assets";
             this.tbpAssets.UseVisualStyleBackColor = true;
             // 
+            // cmbAssetCategory
+            // 
+            this.cmbAssetCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAssetCategory.FormattingEnabled = true;
+            this.cmbAssetCategory.Location = new System.Drawing.Point(796, 46);
+            this.cmbAssetCategory.Name = "cmbAssetCategory";
+            this.cmbAssetCategory.Size = new System.Drawing.Size(337, 26);
+            this.cmbAssetCategory.TabIndex = 137;
+            this.cmbAssetCategory.Visible = false;
+            // 
+            // cmbAssetsStudents
+            // 
+            this.cmbAssetsStudents.Enabled = false;
+            this.cmbAssetsStudents.FormattingEnabled = true;
+            this.cmbAssetsStudents.Location = new System.Drawing.Point(796, 101);
+            this.cmbAssetsStudents.Name = "cmbAssetsStudents";
+            this.cmbAssetsStudents.Size = new System.Drawing.Size(337, 26);
+            this.cmbAssetsStudents.TabIndex = 136;
+            // 
             // btnCheckIn
             // 
             this.btnCheckIn.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -117,6 +136,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCheckIn.TabIndex = 134;
             this.btnCheckIn.Text = "Check In";
             this.btnCheckIn.UseVisualStyleBackColor = true;
+            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
             // btnCheckOut
             // 
@@ -184,6 +204,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCheckedOut.Size = new System.Drawing.Size(256, 372);
             this.lstCheckedOut.TabIndex = 70;
             this.lstCheckedOut.Click += new System.EventHandler(this.ListBoxClicked);
+            this.lstCheckedOut.SelectedIndexChanged += new System.EventHandler(this.lstCheckedOut_SelectedIndexChanged);
             // 
             // lstCheckedIn
             // 
@@ -489,25 +510,6 @@ namespace SVSU_Capstone_Project.Views
             this.label11.Size = new System.Drawing.Size(72, 24);
             this.label11.TabIndex = 165;
             this.label11.Text = "Room:";
-            // 
-            // cmbAssetsStudents
-            // 
-            this.cmbAssetsStudents.Enabled = false;
-            this.cmbAssetsStudents.FormattingEnabled = true;
-            this.cmbAssetsStudents.Location = new System.Drawing.Point(796, 99);
-            this.cmbAssetsStudents.Name = "cmbAssetsStudents";
-            this.cmbAssetsStudents.Size = new System.Drawing.Size(337, 26);
-            this.cmbAssetsStudents.TabIndex = 136;
-            // 
-            // cmbAssetCategory
-            // 
-            this.cmbAssetCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAssetCategory.FormattingEnabled = true;
-            this.cmbAssetCategory.Location = new System.Drawing.Point(796, 46);
-            this.cmbAssetCategory.Name = "cmbAssetCategory";
-            this.cmbAssetCategory.Size = new System.Drawing.Size(337, 26);
-            this.cmbAssetCategory.TabIndex = 137;
-            this.cmbAssetCategory.Visible = false;
             // 
             // frmCheckInOutItems
             // 
