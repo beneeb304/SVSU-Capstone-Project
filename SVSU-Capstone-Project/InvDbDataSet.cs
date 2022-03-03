@@ -4,6 +4,9 @@
 
     partial class InvDbDataSet
     {
+        partial class NLevelDataTable
+        {
+        }
     }
 }
 
