@@ -76,10 +76,12 @@ namespace SVSU_Capstone_Project.Views
             {
                 case "tbpAssets":
                     //populate checked in assets listbox
-                    //cmbAssetCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Asset").OrderBy(x => x.strName).ToList();
-                    //lstCheckedOut.DataSource = ItemModel.GetMany<Storage>().OrderBy(x => x.objCommodity.strName).ToList();
-                    lstCheckedIn.DataSource = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset" ).OrderBy(x => x.strName).ToList();
+                    var checkeditems = ItemModel.GetMany<CheckedItem>().OrderBy(x => x.uidTuid).ToList();
+                    //var items = ItemModel.GetMany<Log>(x => x.uidTuid == checkeditems);
+
+                   lstCheckedIn.DataSource = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset" ).OrderBy(x => x.strName).ToList();
                    cmbAssetsStudents.DataSource = ItemModel.GetMany<User>().OrderBy(x => x.strLast_name).ToList();
+                   lstCheckedOut.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).OrderBy(x => x.objCommodities.strName).ToList();
                     break;
                 case "tbpConsumables":
                     //populate category dropdown
@@ -279,7 +281,7 @@ namespace SVSU_Capstone_Project.Views
                 var checkedOut = ItemModel.Get<Log>(x => x.objStorage.uidTuid == objStorage_tuid.uidTuid);
                 var item = ItemModel.Get<Storage>(x => x.uidTuid == checkedOut.objStorage.uidTuid);
                 
-                lstCheckedOut.Items.Add(item.objCommodity.strName);
+                //lstCheckedOut.Items.Add(item.objCommodity.strName);
 
             }
         }
