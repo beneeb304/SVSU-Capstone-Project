@@ -34,11 +34,11 @@ namespace SVSU_Capstone_Project {
         
         private CommoditiesDataTable tableCommodities;
         
-        private NLevelsDataTable tableNLevels;
+        private NLevelDataTable tableNLevel;
         
         private RoomsDataTable tableRooms;
         
-        private StoragesDataTable tableStorages;
+        private StorageDataTable tableStorage;
         
         private UsersDataTable tableUsers;
         
@@ -113,14 +113,14 @@ namespace SVSU_Capstone_Project {
                 if ((ds.Tables["Commodities"] != null)) {
                     base.Tables.Add(new CommoditiesDataTable(ds.Tables["Commodities"]));
                 }
-                if ((ds.Tables["NLevels"] != null)) {
-                    base.Tables.Add(new NLevelsDataTable(ds.Tables["NLevels"]));
+                if ((ds.Tables["NLevel"] != null)) {
+                    base.Tables.Add(new NLevelDataTable(ds.Tables["NLevel"]));
                 }
                 if ((ds.Tables["Rooms"] != null)) {
                     base.Tables.Add(new RoomsDataTable(ds.Tables["Rooms"]));
                 }
-                if ((ds.Tables["Storages"] != null)) {
-                    base.Tables.Add(new StoragesDataTable(ds.Tables["Storages"]));
+                if ((ds.Tables["Storage"] != null)) {
+                    base.Tables.Add(new StorageDataTable(ds.Tables["Storage"]));
                 }
                 if ((ds.Tables["Users"] != null)) {
                     base.Tables.Add(new UsersDataTable(ds.Tables["Users"]));
@@ -212,9 +212,9 @@ namespace SVSU_Capstone_Project {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public NLevelsDataTable NLevels {
+        public NLevelDataTable NLevel {
             get {
-                return this.tableNLevels;
+                return this.tableNLevel;
             }
         }
         
@@ -232,9 +232,9 @@ namespace SVSU_Capstone_Project {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public StoragesDataTable Storages {
+        public StorageDataTable Storage {
             get {
-                return this.tableStorages;
+                return this.tableStorage;
             }
         }
         
@@ -380,14 +380,14 @@ namespace SVSU_Capstone_Project {
                 if ((ds.Tables["Commodities"] != null)) {
                     base.Tables.Add(new CommoditiesDataTable(ds.Tables["Commodities"]));
                 }
-                if ((ds.Tables["NLevels"] != null)) {
-                    base.Tables.Add(new NLevelsDataTable(ds.Tables["NLevels"]));
+                if ((ds.Tables["NLevel"] != null)) {
+                    base.Tables.Add(new NLevelDataTable(ds.Tables["NLevel"]));
                 }
                 if ((ds.Tables["Rooms"] != null)) {
                     base.Tables.Add(new RoomsDataTable(ds.Tables["Rooms"]));
                 }
-                if ((ds.Tables["Storages"] != null)) {
-                    base.Tables.Add(new StoragesDataTable(ds.Tables["Storages"]));
+                if ((ds.Tables["Storage"] != null)) {
+                    base.Tables.Add(new StorageDataTable(ds.Tables["Storage"]));
                 }
                 if ((ds.Tables["Users"] != null)) {
                     base.Tables.Add(new UsersDataTable(ds.Tables["Users"]));
@@ -470,10 +470,10 @@ namespace SVSU_Capstone_Project {
                     this.tableCommodities.InitVars();
                 }
             }
-            this.tableNLevels = ((NLevelsDataTable)(base.Tables["NLevels"]));
+            this.tableNLevel = ((NLevelDataTable)(base.Tables["NLevel"]));
             if ((initTable == true)) {
-                if ((this.tableNLevels != null)) {
-                    this.tableNLevels.InitVars();
+                if ((this.tableNLevel != null)) {
+                    this.tableNLevel.InitVars();
                 }
             }
             this.tableRooms = ((RoomsDataTable)(base.Tables["Rooms"]));
@@ -482,10 +482,10 @@ namespace SVSU_Capstone_Project {
                     this.tableRooms.InitVars();
                 }
             }
-            this.tableStorages = ((StoragesDataTable)(base.Tables["Storages"]));
+            this.tableStorage = ((StorageDataTable)(base.Tables["Storage"]));
             if ((initTable == true)) {
-                if ((this.tableStorages != null)) {
-                    this.tableStorages.InitVars();
+                if ((this.tableStorage != null)) {
+                    this.tableStorage.InitVars();
                 }
             }
             this.tableUsers = ((UsersDataTable)(base.Tables["Users"]));
@@ -553,12 +553,12 @@ namespace SVSU_Capstone_Project {
             base.Tables.Add(this.tableCheckedItems);
             this.tableCommodities = new CommoditiesDataTable();
             base.Tables.Add(this.tableCommodities);
-            this.tableNLevels = new NLevelsDataTable();
-            base.Tables.Add(this.tableNLevels);
+            this.tableNLevel = new NLevelDataTable();
+            base.Tables.Add(this.tableNLevel);
             this.tableRooms = new RoomsDataTable();
             base.Tables.Add(this.tableRooms);
-            this.tableStorages = new StoragesDataTable();
-            base.Tables.Add(this.tableStorages);
+            this.tableStorage = new StorageDataTable();
+            base.Tables.Add(this.tableStorage);
             this.tableUsers = new UsersDataTable();
             base.Tables.Add(this.tableUsers);
             this.tableVendorItems = new VendorItemsDataTable();
@@ -585,15 +585,15 @@ namespace SVSU_Capstone_Project {
             this.Relations.Add(this._relationFK_dbo_Cabinets_dbo_Rooms_objRoom_uidTuid);
             this._relationFK_dbo_Storages_dbo_Cabinets_objCabinet_uidTuid = new global::System.Data.DataRelation("FK_dbo.Storages_dbo.Cabinets_objCabinet_uidTuid", new global::System.Data.DataColumn[] {
                         this.tableCabinets.tuidColumn}, new global::System.Data.DataColumn[] {
-                        this.tableStorages.objCabinet_uidTuidColumn}, false);
+                        this.tableStorage.objCabinet_uidTuidColumn}, false);
             this.Relations.Add(this._relationFK_dbo_Storages_dbo_Cabinets_objCabinet_uidTuid);
             this._relationFK_dbo_Storages_dbo_Commodities_objCommodity_uidTuid = new global::System.Data.DataRelation("FK_dbo.Storages_dbo.Commodities_objCommodity_uidTuid", new global::System.Data.DataColumn[] {
                         this.tableCommodities.tuidColumn}, new global::System.Data.DataColumn[] {
-                        this.tableStorages.objCommodity_uidTuidColumn}, false);
+                        this.tableStorage.objCommodity_uidTuidColumn}, false);
             this.Relations.Add(this._relationFK_dbo_Storages_dbo_Commodities_objCommodity_uidTuid);
             this._relationFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid = new global::System.Data.DataRelation("FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid", new global::System.Data.DataColumn[] {
-                        this.tableNLevels.tuidColumn}, new global::System.Data.DataColumn[] {
-                        this.tableStorages.objNLevel_uidTuidColumn}, false);
+                        this.tableNLevel.tuidColumn}, new global::System.Data.DataColumn[] {
+                        this.tableStorage.objNLevel_uidTuidColumn}, false);
             this.Relations.Add(this._relationFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid);
             this._relationFK_dbo_CheckedItems_dbo_Users_objUser_uidTuid = new global::System.Data.DataRelation("FK_dbo.CheckedItems_dbo.Users_objUser_uidTuid", new global::System.Data.DataColumn[] {
                         this.tableUsers.tuidColumn}, new global::System.Data.DataColumn[] {
@@ -641,7 +641,7 @@ namespace SVSU_Capstone_Project {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeNLevels() {
+        private bool ShouldSerializeNLevel() {
             return false;
         }
         
@@ -653,7 +653,7 @@ namespace SVSU_Capstone_Project {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeStorages() {
+        private bool ShouldSerializeStorage() {
             return false;
         }
         
@@ -764,13 +764,13 @@ namespace SVSU_Capstone_Project {
         public delegate void CommoditiesRowChangeEventHandler(object sender, CommoditiesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void NLevelsRowChangeEventHandler(object sender, NLevelsRowChangeEvent e);
+        public delegate void NLevelRowChangeEventHandler(object sender, NLevelRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void RoomsRowChangeEventHandler(object sender, RoomsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void StoragesRowChangeEventHandler(object sender, StoragesRowChangeEvent e);
+        public delegate void StorageRowChangeEventHandler(object sender, StorageRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void UsersRowChangeEventHandler(object sender, UsersRowChangeEvent e);
@@ -2385,7 +2385,7 @@ namespace SVSU_Capstone_Project {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class NLevelsDataTable : global::System.Data.TypedTableBase<NLevelsRow> {
+        public partial class NLevelDataTable : global::System.Data.TypedTableBase<NLevelRow> {
             
             private global::System.Data.DataColumn columntuid;
             
@@ -2395,8 +2395,8 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NLevelsDataTable() {
-                this.TableName = "NLevels";
+            public NLevelDataTable() {
+                this.TableName = "NLevel";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2404,7 +2404,7 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal NLevelsDataTable(global::System.Data.DataTable table) {
+            internal NLevelDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2421,7 +2421,7 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected NLevelsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected NLevelDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -2461,54 +2461,54 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NLevelsRow this[int index] {
+            public NLevelRow this[int index] {
                 get {
-                    return ((NLevelsRow)(this.Rows[index]));
+                    return ((NLevelRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event NLevelsRowChangeEventHandler NLevelsRowChanging;
+            public event NLevelRowChangeEventHandler NLevelRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event NLevelsRowChangeEventHandler NLevelsRowChanged;
+            public event NLevelRowChangeEventHandler NLevelRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event NLevelsRowChangeEventHandler NLevelsRowDeleting;
+            public event NLevelRowChangeEventHandler NLevelRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event NLevelsRowChangeEventHandler NLevelsRowDeleted;
+            public event NLevelRowChangeEventHandler NLevelRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddNLevelsRow(NLevelsRow row) {
+            public void AddNLevelRow(NLevelRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NLevelsRow AddNLevelsRow(System.Guid tuid, string name, string description) {
-                NLevelsRow rowNLevelsRow = ((NLevelsRow)(this.NewRow()));
+            public NLevelRow AddNLevelRow(System.Guid tuid, string name, string description) {
+                NLevelRow rowNLevelRow = ((NLevelRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         tuid,
                         name,
                         description};
-                rowNLevelsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowNLevelsRow);
-                return rowNLevelsRow;
+                rowNLevelRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNLevelRow);
+                return rowNLevelRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NLevelsRow FindBytuid(System.Guid tuid) {
-                return ((NLevelsRow)(this.Rows.Find(new object[] {
+            public NLevelRow FindBytuid(System.Guid tuid) {
+                return ((NLevelRow)(this.Rows.Find(new object[] {
                             tuid})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                NLevelsDataTable cln = ((NLevelsDataTable)(base.Clone()));
+                NLevelDataTable cln = ((NLevelDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2516,7 +2516,7 @@ namespace SVSU_Capstone_Project {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new NLevelsDataTable();
+                return new NLevelDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2546,28 +2546,28 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NLevelsRow NewNLevelsRow() {
-                return ((NLevelsRow)(this.NewRow()));
+            public NLevelRow NewNLevelRow() {
+                return ((NLevelRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new NLevelsRow(builder);
+                return new NLevelRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(NLevelsRow);
+                return typeof(NLevelRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.NLevelsRowChanged != null)) {
-                    this.NLevelsRowChanged(this, new NLevelsRowChangeEvent(((NLevelsRow)(e.Row)), e.Action));
+                if ((this.NLevelRowChanged != null)) {
+                    this.NLevelRowChanged(this, new NLevelRowChangeEvent(((NLevelRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2575,8 +2575,8 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.NLevelsRowChanging != null)) {
-                    this.NLevelsRowChanging(this, new NLevelsRowChangeEvent(((NLevelsRow)(e.Row)), e.Action));
+                if ((this.NLevelRowChanging != null)) {
+                    this.NLevelRowChanging(this, new NLevelRowChangeEvent(((NLevelRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2584,8 +2584,8 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.NLevelsRowDeleted != null)) {
-                    this.NLevelsRowDeleted(this, new NLevelsRowChangeEvent(((NLevelsRow)(e.Row)), e.Action));
+                if ((this.NLevelRowDeleted != null)) {
+                    this.NLevelRowDeleted(this, new NLevelRowChangeEvent(((NLevelRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2593,14 +2593,14 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.NLevelsRowDeleting != null)) {
-                    this.NLevelsRowDeleting(this, new NLevelsRowChangeEvent(((NLevelsRow)(e.Row)), e.Action));
+                if ((this.NLevelRowDeleting != null)) {
+                    this.NLevelRowDeleting(this, new NLevelRowChangeEvent(((NLevelRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveNLevelsRow(NLevelsRow row) {
+            public void RemoveNLevelRow(NLevelRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2627,7 +2627,7 @@ namespace SVSU_Capstone_Project {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "NLevelsDataTable";
+                attribute2.FixedValue = "NLevelDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2961,7 +2961,7 @@ namespace SVSU_Capstone_Project {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class StoragesDataTable : global::System.Data.TypedTableBase<StoragesRow> {
+        public partial class StorageDataTable : global::System.Data.TypedTableBase<StorageRow> {
             
             private global::System.Data.DataColumn columntuid;
             
@@ -2975,8 +2975,8 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StoragesDataTable() {
-                this.TableName = "Storages";
+            public StorageDataTable() {
+                this.TableName = "Storage";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2984,7 +2984,7 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal StoragesDataTable(global::System.Data.DataTable table) {
+            internal StorageDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -3001,7 +3001,7 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected StoragesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected StorageDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -3057,34 +3057,34 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StoragesRow this[int index] {
+            public StorageRow this[int index] {
                 get {
-                    return ((StoragesRow)(this.Rows[index]));
+                    return ((StorageRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event StoragesRowChangeEventHandler StoragesRowChanging;
+            public event StorageRowChangeEventHandler StorageRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event StoragesRowChangeEventHandler StoragesRowChanged;
+            public event StorageRowChangeEventHandler StorageRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event StoragesRowChangeEventHandler StoragesRowDeleting;
+            public event StorageRowChangeEventHandler StorageRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event StoragesRowChangeEventHandler StoragesRowDeleted;
+            public event StorageRowChangeEventHandler StorageRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddStoragesRow(StoragesRow row) {
+            public void AddStorageRow(StorageRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StoragesRow AddStoragesRow(System.Guid tuid, int quantity, CabinetsRow _parentCabinetsRowByFK_dbo_Storages_dbo_Cabinets_objCabinet_uidTuid, CommoditiesRow _parentCommoditiesRowByFK_dbo_Storages_dbo_Commodities_objCommodity_uidTuid, NLevelsRow _parentNLevelsRowByFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid) {
-                StoragesRow rowStoragesRow = ((StoragesRow)(this.NewRow()));
+            public StorageRow AddStorageRow(System.Guid tuid, int quantity, CabinetsRow _parentCabinetsRowByFK_dbo_Storages_dbo_Cabinets_objCabinet_uidTuid, CommoditiesRow _parentCommoditiesRowByFK_dbo_Storages_dbo_Commodities_objCommodity_uidTuid, NLevelRow _parentNLevelRowByFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid) {
+                StorageRow rowStorageRow = ((StorageRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         tuid,
                         quantity,
@@ -3097,25 +3097,25 @@ namespace SVSU_Capstone_Project {
                 if ((_parentCommoditiesRowByFK_dbo_Storages_dbo_Commodities_objCommodity_uidTuid != null)) {
                     columnValuesArray[3] = _parentCommoditiesRowByFK_dbo_Storages_dbo_Commodities_objCommodity_uidTuid[0];
                 }
-                if ((_parentNLevelsRowByFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid != null)) {
-                    columnValuesArray[4] = _parentNLevelsRowByFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid[0];
+                if ((_parentNLevelRowByFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid != null)) {
+                    columnValuesArray[4] = _parentNLevelRowByFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid[0];
                 }
-                rowStoragesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowStoragesRow);
-                return rowStoragesRow;
+                rowStorageRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowStorageRow);
+                return rowStorageRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StoragesRow FindBytuid(System.Guid tuid) {
-                return ((StoragesRow)(this.Rows.Find(new object[] {
+            public StorageRow FindBytuid(System.Guid tuid) {
+                return ((StorageRow)(this.Rows.Find(new object[] {
                             tuid})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                StoragesDataTable cln = ((StoragesDataTable)(base.Clone()));
+                StorageDataTable cln = ((StorageDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -3123,7 +3123,7 @@ namespace SVSU_Capstone_Project {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new StoragesDataTable();
+                return new StorageDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3158,28 +3158,28 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StoragesRow NewStoragesRow() {
-                return ((StoragesRow)(this.NewRow()));
+            public StorageRow NewStorageRow() {
+                return ((StorageRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new StoragesRow(builder);
+                return new StorageRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(StoragesRow);
+                return typeof(StorageRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.StoragesRowChanged != null)) {
-                    this.StoragesRowChanged(this, new StoragesRowChangeEvent(((StoragesRow)(e.Row)), e.Action));
+                if ((this.StorageRowChanged != null)) {
+                    this.StorageRowChanged(this, new StorageRowChangeEvent(((StorageRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3187,8 +3187,8 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.StoragesRowChanging != null)) {
-                    this.StoragesRowChanging(this, new StoragesRowChangeEvent(((StoragesRow)(e.Row)), e.Action));
+                if ((this.StorageRowChanging != null)) {
+                    this.StorageRowChanging(this, new StorageRowChangeEvent(((StorageRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3196,8 +3196,8 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.StoragesRowDeleted != null)) {
-                    this.StoragesRowDeleted(this, new StoragesRowChangeEvent(((StoragesRow)(e.Row)), e.Action));
+                if ((this.StorageRowDeleted != null)) {
+                    this.StorageRowDeleted(this, new StorageRowChangeEvent(((StorageRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3205,14 +3205,14 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.StoragesRowDeleting != null)) {
-                    this.StoragesRowDeleting(this, new StoragesRowChangeEvent(((StoragesRow)(e.Row)), e.Action));
+                if ((this.StorageRowDeleting != null)) {
+                    this.StorageRowDeleting(this, new StorageRowChangeEvent(((StorageRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveStoragesRow(StoragesRow row) {
+            public void RemoveStorageRow(StorageRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -3239,7 +3239,7 @@ namespace SVSU_Capstone_Project {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "StoragesDataTable";
+                attribute2.FixedValue = "StorageDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5394,12 +5394,12 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StoragesRow[] GetStoragesRows() {
+            public StorageRow[] GetStorageRows() {
                 if ((this.Table.ChildRelations["FK_dbo.Storages_dbo.Cabinets_objCabinet_uidTuid"] == null)) {
-                    return new StoragesRow[0];
+                    return new StorageRow[0];
                 }
                 else {
-                    return ((StoragesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.Storages_dbo.Cabinets_objCabinet_uidTuid"])));
+                    return ((StorageRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.Storages_dbo.Cabinets_objCabinet_uidTuid"])));
                 }
             }
         }
@@ -5840,12 +5840,12 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StoragesRow[] GetStoragesRows() {
+            public StorageRow[] GetStorageRows() {
                 if ((this.Table.ChildRelations["FK_dbo.Storages_dbo.Commodities_objCommodity_uidTuid"] == null)) {
-                    return new StoragesRow[0];
+                    return new StorageRow[0];
                 }
                 else {
-                    return ((StoragesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.Storages_dbo.Commodities_objCommodity_uidTuid"])));
+                    return ((StorageRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.Storages_dbo.Commodities_objCommodity_uidTuid"])));
                 }
             }
             
@@ -5864,25 +5864,25 @@ namespace SVSU_Capstone_Project {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class NLevelsRow : global::System.Data.DataRow {
+        public partial class NLevelRow : global::System.Data.DataRow {
             
-            private NLevelsDataTable tableNLevels;
+            private NLevelDataTable tableNLevel;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal NLevelsRow(global::System.Data.DataRowBuilder rb) : 
+            internal NLevelRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableNLevels = ((NLevelsDataTable)(this.Table));
+                this.tableNLevel = ((NLevelDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.Guid tuid {
                 get {
-                    return ((global::System.Guid)(this[this.tableNLevels.tuidColumn]));
+                    return ((global::System.Guid)(this[this.tableNLevel.tuidColumn]));
                 }
                 set {
-                    this[this.tableNLevels.tuidColumn] = value;
+                    this[this.tableNLevel.tuidColumn] = value;
                 }
             }
             
@@ -5891,14 +5891,14 @@ namespace SVSU_Capstone_Project {
             public string name {
                 get {
                     try {
-                        return ((string)(this[this.tableNLevels.nameColumn]));
+                        return ((string)(this[this.tableNLevel.nameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'name\' in table \'NLevels\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'name\' in table \'NLevel\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNLevels.nameColumn] = value;
+                    this[this.tableNLevel.nameColumn] = value;
                 }
             }
             
@@ -5907,49 +5907,49 @@ namespace SVSU_Capstone_Project {
             public string description {
                 get {
                     try {
-                        return ((string)(this[this.tableNLevels.descriptionColumn]));
+                        return ((string)(this[this.tableNLevel.descriptionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'description\' in table \'NLevels\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'description\' in table \'NLevel\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNLevels.descriptionColumn] = value;
+                    this[this.tableNLevel.descriptionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsnameNull() {
-                return this.IsNull(this.tableNLevels.nameColumn);
+                return this.IsNull(this.tableNLevel.nameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetnameNull() {
-                this[this.tableNLevels.nameColumn] = global::System.Convert.DBNull;
+                this[this.tableNLevel.nameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsdescriptionNull() {
-                return this.IsNull(this.tableNLevels.descriptionColumn);
+                return this.IsNull(this.tableNLevel.descriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetdescriptionNull() {
-                this[this.tableNLevels.descriptionColumn] = global::System.Convert.DBNull;
+                this[this.tableNLevel.descriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StoragesRow[] GetStoragesRows() {
+            public StorageRow[] GetStorageRows() {
                 if ((this.Table.ChildRelations["FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid"] == null)) {
-                    return new StoragesRow[0];
+                    return new StorageRow[0];
                 }
                 else {
-                    return ((StoragesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid"])));
+                    return ((StorageRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid"])));
                 }
             }
         }
@@ -6050,25 +6050,25 @@ namespace SVSU_Capstone_Project {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class StoragesRow : global::System.Data.DataRow {
+        public partial class StorageRow : global::System.Data.DataRow {
             
-            private StoragesDataTable tableStorages;
+            private StorageDataTable tableStorage;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal StoragesRow(global::System.Data.DataRowBuilder rb) : 
+            internal StorageRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableStorages = ((StoragesDataTable)(this.Table));
+                this.tableStorage = ((StorageDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.Guid tuid {
                 get {
-                    return ((global::System.Guid)(this[this.tableStorages.tuidColumn]));
+                    return ((global::System.Guid)(this[this.tableStorage.tuidColumn]));
                 }
                 set {
-                    this[this.tableStorages.tuidColumn] = value;
+                    this[this.tableStorage.tuidColumn] = value;
                 }
             }
             
@@ -6076,10 +6076,10 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int quantity {
                 get {
-                    return ((int)(this[this.tableStorages.quantityColumn]));
+                    return ((int)(this[this.tableStorage.quantityColumn]));
                 }
                 set {
-                    this[this.tableStorages.quantityColumn] = value;
+                    this[this.tableStorage.quantityColumn] = value;
                 }
             }
             
@@ -6088,14 +6088,14 @@ namespace SVSU_Capstone_Project {
             public System.Guid objCabinet_uidTuid {
                 get {
                     try {
-                        return ((global::System.Guid)(this[this.tableStorages.objCabinet_uidTuidColumn]));
+                        return ((global::System.Guid)(this[this.tableStorage.objCabinet_uidTuidColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'objCabinet_uidTuid\' in table \'Storages\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'objCabinet_uidTuid\' in table \'Storage\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableStorages.objCabinet_uidTuidColumn] = value;
+                    this[this.tableStorage.objCabinet_uidTuidColumn] = value;
                 }
             }
             
@@ -6104,14 +6104,14 @@ namespace SVSU_Capstone_Project {
             public System.Guid objCommodity_uidTuid {
                 get {
                     try {
-                        return ((global::System.Guid)(this[this.tableStorages.objCommodity_uidTuidColumn]));
+                        return ((global::System.Guid)(this[this.tableStorage.objCommodity_uidTuidColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'objCommodity_uidTuid\' in table \'Storages\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'objCommodity_uidTuid\' in table \'Storage\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableStorages.objCommodity_uidTuidColumn] = value;
+                    this[this.tableStorage.objCommodity_uidTuidColumn] = value;
                 }
             }
             
@@ -6120,14 +6120,14 @@ namespace SVSU_Capstone_Project {
             public System.Guid objNLevel_uidTuid {
                 get {
                     try {
-                        return ((global::System.Guid)(this[this.tableStorages.objNLevel_uidTuidColumn]));
+                        return ((global::System.Guid)(this[this.tableStorage.objNLevel_uidTuidColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'objNLevel_uidTuid\' in table \'Storages\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'objNLevel_uidTuid\' in table \'Storage\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableStorages.objNLevel_uidTuidColumn] = value;
+                    this[this.tableStorage.objNLevel_uidTuidColumn] = value;
                 }
             }
             
@@ -6155,9 +6155,9 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NLevelsRow NLevelsRow {
+            public NLevelRow NLevelsRow {
                 get {
-                    return ((NLevelsRow)(this.GetParentRow(this.Table.ParentRelations["FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid"])));
+                    return ((NLevelRow)(this.GetParentRow(this.Table.ParentRelations["FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid"]);
@@ -6167,37 +6167,37 @@ namespace SVSU_Capstone_Project {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsobjCabinet_uidTuidNull() {
-                return this.IsNull(this.tableStorages.objCabinet_uidTuidColumn);
+                return this.IsNull(this.tableStorage.objCabinet_uidTuidColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetobjCabinet_uidTuidNull() {
-                this[this.tableStorages.objCabinet_uidTuidColumn] = global::System.Convert.DBNull;
+                this[this.tableStorage.objCabinet_uidTuidColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsobjCommodity_uidTuidNull() {
-                return this.IsNull(this.tableStorages.objCommodity_uidTuidColumn);
+                return this.IsNull(this.tableStorage.objCommodity_uidTuidColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetobjCommodity_uidTuidNull() {
-                this[this.tableStorages.objCommodity_uidTuidColumn] = global::System.Convert.DBNull;
+                this[this.tableStorage.objCommodity_uidTuidColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsobjNLevel_uidTuidNull() {
-                return this.IsNull(this.tableStorages.objNLevel_uidTuidColumn);
+                return this.IsNull(this.tableStorage.objNLevel_uidTuidColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetobjNLevel_uidTuidNull() {
-                this[this.tableStorages.objNLevel_uidTuidColumn] = global::System.Convert.DBNull;
+                this[this.tableStorage.objNLevel_uidTuidColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7027,22 +7027,22 @@ namespace SVSU_Capstone_Project {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class NLevelsRowChangeEvent : global::System.EventArgs {
+        public class NLevelRowChangeEvent : global::System.EventArgs {
             
-            private NLevelsRow eventRow;
+            private NLevelRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NLevelsRowChangeEvent(NLevelsRow row, global::System.Data.DataRowAction action) {
+            public NLevelRowChangeEvent(NLevelRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NLevelsRow Row {
+            public NLevelRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7095,22 +7095,22 @@ namespace SVSU_Capstone_Project {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class StoragesRowChangeEvent : global::System.EventArgs {
+        public class StorageRowChangeEvent : global::System.EventArgs {
             
-            private StoragesRow eventRow;
+            private StorageRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StoragesRowChangeEvent(StoragesRow row, global::System.Data.DataRowAction action) {
+            public StorageRowChangeEvent(StorageRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StoragesRow Row {
+            public StorageRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7485,16 +7485,16 @@ ELSE ''
 END AS 'action', Commodities.name, Logs.notes
 FROM     Logs INNER JOIN
                   Users ON Logs.objUser_uidTuid = Users.tuid INNER JOIN
-                  Storages ON Logs.objStorage_uidTuid = Storages.tuid INNER JOIN
-                  Commodities ON Commodities.tuid = Storages.objCommodity_uidTuid";
+                  Storage ON Logs.objStorage_uidTuid = Storage.tuid INNER JOIN
+                  Commodities ON Commodities.tuid = Storage.objCommodity_uidTuid";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"SELECT Logs.timestamp, Users.svsu_id, CONCAT(Users.first_name,' ', Users.last_name) AS [UserName], Logs.action, Commodities.name, Logs.notes
 FROM     Logs INNER JOIN
                   Users ON Logs.objUser_uidTuid = Users.tuid INNER JOIN
-                  Storages ON Logs.objStorage_uidTuid = Storages.tuid INNER JOIN
-                  Commodities ON Commodities.tuid = Storages.objCommodity_uidTuid";
+                  Storage ON Logs.objStorage_uidTuid = Storage.tuid INNER JOIN
+                  Commodities ON Commodities.tuid = Storage.objCommodity_uidTuid";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9060,7 +9060,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class NLevelsTableAdapter : global::System.ComponentModel.Component {
+    public partial class NLevelTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -9074,7 +9074,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public NLevelsTableAdapter() {
+        public NLevelTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -9171,34 +9171,40 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "NLevels";
+            tableMapping.DataSetTable = "NLevel";
             tableMapping.ColumnMappings.Add("tuid", "tuid");
             tableMapping.ColumnMappings.Add("name", "name");
             tableMapping.ColumnMappings.Add("description", "description");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [NLevels] WHERE (([tuid] = @Original_tuid))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [NLevel] WHERE (([tuid] = @Original_tuid) AND ((@IsNull_name = 1 AND " +
+                "[name] IS NULL) OR ([name] = @Original_name)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tuid", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tuid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [NLevels] ([tuid], [name], [description]) VALUES (@tuid, @name, @desc" +
-                "ription);\r\nSELECT tuid, name, description FROM NLevels WHERE (tuid = @tuid)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [NLevel] ([tuid], [name], [description]) VALUES (@tuid, @name, @descr" +
+                "iption);\r\nSELECT tuid, name, description FROM NLevel WHERE (tuid = @tuid)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tuid", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [NLevels] SET [tuid] = @tuid, [name] = @name, [description] = @description" +
-                " WHERE (([tuid] = @Original_tuid));\r\nSELECT tuid, name, description FROM NLevels" +
-                " WHERE (tuid = @tuid)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [NLevel] SET [tuid] = @tuid, [name] = @name, [description] = @description " +
+                "WHERE (([tuid] = @Original_tuid) AND ((@IsNull_name = 1 AND [name] IS NULL) OR (" +
+                "[name] = @Original_name)));\r\nSELECT tuid, name, description FROM NLevel WHERE (t" +
+                "uid = @tuid)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tuid", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tuid", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tuid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9214,7 +9220,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT NLevels.*\r\nFROM     NLevels";
+            this._commandCollection[0].CommandText = "SELECT NLevel.*\r\nFROM     NLevel";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9222,7 +9228,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(InvDbDataSet.NLevelsDataTable dataTable) {
+        public virtual int Fill(InvDbDataSet.NLevelDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9235,9 +9241,9 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual InvDbDataSet.NLevelsDataTable GetData() {
+        public virtual InvDbDataSet.NLevelDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            InvDbDataSet.NLevelsDataTable dataTable = new InvDbDataSet.NLevelsDataTable();
+            InvDbDataSet.NLevelDataTable dataTable = new InvDbDataSet.NLevelDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9245,7 +9251,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(InvDbDataSet.NLevelsDataTable dataTable) {
+        public virtual int Update(InvDbDataSet.NLevelDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -9253,7 +9259,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(InvDbDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "NLevels");
+            return this.Adapter.Update(dataSet, "NLevel");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9275,8 +9281,16 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_tuid) {
+        public virtual int Delete(System.Guid Original_tuid, string Original_name) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_tuid));
+            if ((Original_name == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_name));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9331,7 +9345,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.Guid tuid, string name, string description, System.Guid Original_tuid) {
+        public virtual int Update(System.Guid tuid, string name, string description, System.Guid Original_tuid, string Original_name) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(tuid));
             if ((name == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -9346,6 +9360,14 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(description));
             }
             this.Adapter.UpdateCommand.Parameters[3].Value = ((System.Guid)(Original_tuid));
+            if ((Original_name == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_name));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9366,8 +9388,8 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string name, string description, System.Guid Original_tuid) {
-            return this.Update(Original_tuid, name, description, Original_tuid);
+        public virtual int Update(string name, string description, System.Guid Original_tuid, string Original_name) {
+            return this.Update(Original_tuid, name, description, Original_tuid, Original_name);
         }
     }
     
@@ -9700,7 +9722,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class StoragesTableAdapter : global::System.ComponentModel.Component {
+    public partial class StorageTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -9714,7 +9736,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public StoragesTableAdapter() {
+        public StorageTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -9811,7 +9833,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Storages";
+            tableMapping.DataSetTable = "Storage";
             tableMapping.ColumnMappings.Add("tuid", "tuid");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
             tableMapping.ColumnMappings.Add("objCabinet_uidTuid", "objCabinet_uidTuid");
@@ -9820,7 +9842,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Storages] WHERE (([tuid] = @Original_tuid) AND ([quantity] = @Original_quantity) AND ((@IsNull_objCabinet_uidTuid = 1 AND [objCabinet_uidTuid] IS NULL) OR ([objCabinet_uidTuid] = @Original_objCabinet_uidTuid)) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objNLevel_uidTuid = 1 AND [objNLevel_uidTuid] IS NULL) OR ([objNLevel_uidTuid] = @Original_objNLevel_uidTuid)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Storage] WHERE (([tuid] = @Original_tuid) AND ([quantity] = @Original_quantity) AND ((@IsNull_objCabinet_uidTuid = 1 AND [objCabinet_uidTuid] IS NULL) OR ([objCabinet_uidTuid] = @Original_objCabinet_uidTuid)) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objNLevel_uidTuid = 1 AND [objNLevel_uidTuid] IS NULL) OR ([objNLevel_uidTuid] = @Original_objNLevel_uidTuid)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tuid", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tuid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -9832,8 +9854,8 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_objNLevel_uidTuid", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "objNLevel_uidTuid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Storages] ([tuid], [quantity], [objCabinet_uidTuid], [objCommodity_uidTuid], [objNLevel_uidTuid]) VALUES (@tuid, @quantity, @objCabinet_uidTuid, @objCommodity_uidTuid, @objNLevel_uidTuid);
-SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTuid FROM Storages WHERE (tuid = @tuid)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Storage] ([tuid], [quantity], [objCabinet_uidTuid], [objCommodity_uidTuid], [objNLevel_uidTuid]) VALUES (@tuid, @quantity, @objCabinet_uidTuid, @objCommodity_uidTuid, @objNLevel_uidTuid);
+SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTuid FROM Storage WHERE (tuid = @tuid)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tuid", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9842,8 +9864,8 @@ SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTu
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@objNLevel_uidTuid", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "objNLevel_uidTuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Storages] SET [tuid] = @tuid, [quantity] = @quantity, [objCabinet_uidTuid] = @objCabinet_uidTuid, [objCommodity_uidTuid] = @objCommodity_uidTuid, [objNLevel_uidTuid] = @objNLevel_uidTuid WHERE (([tuid] = @Original_tuid) AND ([quantity] = @Original_quantity) AND ((@IsNull_objCabinet_uidTuid = 1 AND [objCabinet_uidTuid] IS NULL) OR ([objCabinet_uidTuid] = @Original_objCabinet_uidTuid)) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objNLevel_uidTuid = 1 AND [objNLevel_uidTuid] IS NULL) OR ([objNLevel_uidTuid] = @Original_objNLevel_uidTuid)));
-SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTuid FROM Storages WHERE (tuid = @tuid)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Storage] SET [tuid] = @tuid, [quantity] = @quantity, [objCabinet_uidTuid] = @objCabinet_uidTuid, [objCommodity_uidTuid] = @objCommodity_uidTuid, [objNLevel_uidTuid] = @objNLevel_uidTuid WHERE (([tuid] = @Original_tuid) AND ([quantity] = @Original_quantity) AND ((@IsNull_objCabinet_uidTuid = 1 AND [objCabinet_uidTuid] IS NULL) OR ([objCabinet_uidTuid] = @Original_objCabinet_uidTuid)) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objNLevel_uidTuid = 1 AND [objNLevel_uidTuid] IS NULL) OR ([objNLevel_uidTuid] = @Original_objNLevel_uidTuid)));
+SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTuid FROM Storage WHERE (tuid = @tuid)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tuid", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9873,7 +9895,7 @@ SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTu
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Storages.*\r\nFROM     Storages";
+            this._commandCollection[0].CommandText = "SELECT Storage.*\r\nFROM     Storage";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9881,7 +9903,7 @@ SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTu
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(InvDbDataSet.StoragesDataTable dataTable) {
+        public virtual int Fill(InvDbDataSet.StorageDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9894,9 +9916,9 @@ SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTu
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual InvDbDataSet.StoragesDataTable GetData() {
+        public virtual InvDbDataSet.StorageDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            InvDbDataSet.StoragesDataTable dataTable = new InvDbDataSet.StoragesDataTable();
+            InvDbDataSet.StorageDataTable dataTable = new InvDbDataSet.StorageDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9904,7 +9926,7 @@ SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTu
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(InvDbDataSet.StoragesDataTable dataTable) {
+        public virtual int Update(InvDbDataSet.StorageDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -9912,7 +9934,7 @@ SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTu
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(InvDbDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Storages");
+            return this.Adapter.Update(dataSet, "Storage");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11571,9 +11593,9 @@ SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Commodities.name, Storages.quantity, Commodities.alert_quantity\r\nFROM     " +
-                "Commodities INNER JOIN\r\n                  Storages ON Commodities.tuid = Storage" +
-                "s.objCommodity_uidTuid\r\nWHERE Storages.quantity <= Commodities.alert_quantity";
+            this._commandCollection[0].CommandText = "SELECT Commodities.name, Storage.quantity, Commodities.alert_quantity\r\nFROM     C" +
+                "ommodities INNER JOIN\r\n                  Storage ON Commodities.tuid = Storage.o" +
+                "bjCommodity_uidTuid\r\nWHERE Storage.quantity <= Commodities.alert_quantity";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11753,7 +11775,7 @@ SELECT
 	0 AS 'numberConsumed',
 	l.[action]
 FROM Commodities c
-LEFT JOIN Storages s on s.objCommodity_uidTuid = c.tuid
+LEFT JOIN Storage s on s.objCommodity_uidTuid = c.tuid
 LEFT JOIN Logs l on l.objStorage_uidTuid = s.tuid
 WHERE l.action = 0
 UNION
@@ -11764,7 +11786,7 @@ SELECT
 	l.quantityChange AS 'numberConsumed',
 	l.[action]
 FROM Commodities c
-LEFT JOIN Storages s on s.objCommodity_uidTuid = c.tuid
+LEFT JOIN Storage s on s.objCommodity_uidTuid = c.tuid
 LEFT JOIN Logs l on l.objStorage_uidTuid = s.tuid
 WHERE l.action = 1
 )A
@@ -11820,11 +11842,11 @@ GROUP BY A.name
         
         private CommoditiesTableAdapter _commoditiesTableAdapter;
         
-        private NLevelsTableAdapter _nLevelsTableAdapter;
+        private NLevelTableAdapter _nLevelTableAdapter;
         
         private RoomsTableAdapter _roomsTableAdapter;
         
-        private StoragesTableAdapter _storagesTableAdapter;
+        private StorageTableAdapter _storageTableAdapter;
         
         private UsersTableAdapter _usersTableAdapter;
         
@@ -11908,12 +11930,12 @@ GROUP BY A.name
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public NLevelsTableAdapter NLevelsTableAdapter {
+        public NLevelTableAdapter NLevelTableAdapter {
             get {
-                return this._nLevelsTableAdapter;
+                return this._nLevelTableAdapter;
             }
             set {
-                this._nLevelsTableAdapter = value;
+                this._nLevelTableAdapter = value;
             }
         }
         
@@ -11936,12 +11958,12 @@ GROUP BY A.name
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public StoragesTableAdapter StoragesTableAdapter {
+        public StorageTableAdapter StorageTableAdapter {
             get {
-                return this._storagesTableAdapter;
+                return this._storageTableAdapter;
             }
             set {
-                this._storagesTableAdapter = value;
+                this._storageTableAdapter = value;
             }
         }
         
@@ -12022,17 +12044,17 @@ GROUP BY A.name
                             && (this._commoditiesTableAdapter.Connection != null))) {
                     return this._commoditiesTableAdapter.Connection;
                 }
-                if (((this._nLevelsTableAdapter != null) 
-                            && (this._nLevelsTableAdapter.Connection != null))) {
-                    return this._nLevelsTableAdapter.Connection;
+                if (((this._nLevelTableAdapter != null) 
+                            && (this._nLevelTableAdapter.Connection != null))) {
+                    return this._nLevelTableAdapter.Connection;
                 }
                 if (((this._roomsTableAdapter != null) 
                             && (this._roomsTableAdapter.Connection != null))) {
                     return this._roomsTableAdapter.Connection;
                 }
-                if (((this._storagesTableAdapter != null) 
-                            && (this._storagesTableAdapter.Connection != null))) {
-                    return this._storagesTableAdapter.Connection;
+                if (((this._storageTableAdapter != null) 
+                            && (this._storageTableAdapter.Connection != null))) {
+                    return this._storageTableAdapter.Connection;
                 }
                 if (((this._usersTableAdapter != null) 
                             && (this._usersTableAdapter.Connection != null))) {
@@ -12071,13 +12093,13 @@ GROUP BY A.name
                 if ((this._commoditiesTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._nLevelsTableAdapter != null)) {
+                if ((this._nLevelTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._roomsTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._storagesTableAdapter != null)) {
+                if ((this._storageTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._usersTableAdapter != null)) {
@@ -12136,12 +12158,12 @@ GROUP BY A.name
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._nLevelsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.NLevels.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._nLevelTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.NLevel.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._nLevelsTableAdapter.Update(updatedRows));
+                    result = (result + this._nLevelTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -12172,12 +12194,12 @@ GROUP BY A.name
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._storagesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Storages.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._storageTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Storage.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._storagesTableAdapter.Update(updatedRows));
+                    result = (result + this._storageTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -12232,11 +12254,11 @@ GROUP BY A.name
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._nLevelsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.NLevels.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._nLevelTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.NLevel.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._nLevelsTableAdapter.Update(addedRows));
+                    result = (result + this._nLevelTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -12264,11 +12286,11 @@ GROUP BY A.name
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._storagesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Storages.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._storageTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Storage.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._storagesTableAdapter.Update(addedRows));
+                    result = (result + this._storageTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -12298,11 +12320,11 @@ GROUP BY A.name
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._storagesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Storages.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._storageTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Storage.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._storagesTableAdapter.Update(deletedRows));
+                    result = (result + this._storageTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12330,11 +12352,11 @@ GROUP BY A.name
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._nLevelsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.NLevels.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._nLevelTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.NLevel.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._nLevelsTableAdapter.Update(deletedRows));
+                    result = (result + this._nLevelTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12429,8 +12451,8 @@ GROUP BY A.name
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._nLevelsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._nLevelsTableAdapter.Connection) == false))) {
+            if (((this._nLevelTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._nLevelTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -12439,8 +12461,8 @@ GROUP BY A.name
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._storagesTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._storagesTableAdapter.Connection) == false))) {
+            if (((this._storageTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._storageTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -12527,13 +12549,13 @@ GROUP BY A.name
                         adaptersWithAcceptChangesDuringUpdate.Add(this._commoditiesTableAdapter.Adapter);
                     }
                 }
-                if ((this._nLevelsTableAdapter != null)) {
-                    revertConnections.Add(this._nLevelsTableAdapter, this._nLevelsTableAdapter.Connection);
-                    this._nLevelsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._nLevelsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._nLevelsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._nLevelsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._nLevelsTableAdapter.Adapter);
+                if ((this._nLevelTableAdapter != null)) {
+                    revertConnections.Add(this._nLevelTableAdapter, this._nLevelTableAdapter.Connection);
+                    this._nLevelTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._nLevelTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._nLevelTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._nLevelTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._nLevelTableAdapter.Adapter);
                     }
                 }
                 if ((this._roomsTableAdapter != null)) {
@@ -12545,13 +12567,13 @@ GROUP BY A.name
                         adaptersWithAcceptChangesDuringUpdate.Add(this._roomsTableAdapter.Adapter);
                     }
                 }
-                if ((this._storagesTableAdapter != null)) {
-                    revertConnections.Add(this._storagesTableAdapter, this._storagesTableAdapter.Connection);
-                    this._storagesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._storagesTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._storagesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._storagesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._storagesTableAdapter.Adapter);
+                if ((this._storageTableAdapter != null)) {
+                    revertConnections.Add(this._storageTableAdapter, this._storageTableAdapter.Connection);
+                    this._storageTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._storageTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._storageTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._storageTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._storageTableAdapter.Adapter);
                     }
                 }
                 if ((this._usersTableAdapter != null)) {
@@ -12655,17 +12677,17 @@ GROUP BY A.name
                     this._commoditiesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._commoditiesTableAdapter]));
                     this._commoditiesTableAdapter.Transaction = null;
                 }
-                if ((this._nLevelsTableAdapter != null)) {
-                    this._nLevelsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._nLevelsTableAdapter]));
-                    this._nLevelsTableAdapter.Transaction = null;
+                if ((this._nLevelTableAdapter != null)) {
+                    this._nLevelTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._nLevelTableAdapter]));
+                    this._nLevelTableAdapter.Transaction = null;
                 }
                 if ((this._roomsTableAdapter != null)) {
                     this._roomsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._roomsTableAdapter]));
                     this._roomsTableAdapter.Transaction = null;
                 }
-                if ((this._storagesTableAdapter != null)) {
-                    this._storagesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._storagesTableAdapter]));
-                    this._storagesTableAdapter.Transaction = null;
+                if ((this._storageTableAdapter != null)) {
+                    this._storageTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._storageTableAdapter]));
+                    this._storageTableAdapter.Transaction = null;
                 }
                 if ((this._usersTableAdapter != null)) {
                     this._usersTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._usersTableAdapter]));

@@ -39,9 +39,9 @@ namespace SVSU_Capstone_Project.Views
             this.label1 = new System.Windows.Forms.Label();
             this.lstCheckedOut = new System.Windows.Forms.ListBox();
             this.lstCheckedIn = new System.Windows.Forms.ListBox();
-            this.txtSvsuIdCI = new System.Windows.Forms.MaskedTextBox();
             this.lblSvsuIdCI = new System.Windows.Forms.Label();
             this.tbpConsumables = new System.Windows.Forms.TabPage();
+            this.cmbStudents = new System.Windows.Forms.ComboBox();
             this.txtConsumableNotes = new System.Windows.Forms.RichTextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -63,7 +63,8 @@ namespace SVSU_Capstone_Project.Views
             this.label8 = new System.Windows.Forms.Label();
             this.cmbRoom = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.cmbStudents = new System.Windows.Forms.ComboBox();
+            this.cmbAssetsStudents = new System.Windows.Forms.ComboBox();
+            this.cmbAssetCategory = new System.Windows.Forms.ComboBox();
             this.tbcCheckInOut.SuspendLayout();
             this.tbpAssets.SuspendLayout();
             this.tbpConsumables.SuspendLayout();
@@ -85,6 +86,8 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpAssets
             // 
+            this.tbpAssets.Controls.Add(this.cmbAssetCategory);
+            this.tbpAssets.Controls.Add(this.cmbAssetsStudents);
             this.tbpAssets.Controls.Add(this.btnCheckIn);
             this.tbpAssets.Controls.Add(this.btnCheckOut);
             this.tbpAssets.Controls.Add(this.txtAssetNotes);
@@ -93,7 +96,6 @@ namespace SVSU_Capstone_Project.Views
             this.tbpAssets.Controls.Add(this.label1);
             this.tbpAssets.Controls.Add(this.lstCheckedOut);
             this.tbpAssets.Controls.Add(this.lstCheckedIn);
-            this.tbpAssets.Controls.Add(this.txtSvsuIdCI);
             this.tbpAssets.Controls.Add(this.lblSvsuIdCI);
             this.tbpAssets.Location = new System.Drawing.Point(4, 27);
             this.tbpAssets.Margin = new System.Windows.Forms.Padding(4);
@@ -127,6 +129,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCheckOut.TabIndex = 135;
             this.btnCheckOut.Text = "Check Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // txtAssetNotes
             // 
@@ -193,17 +196,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCheckedIn.Size = new System.Drawing.Size(256, 372);
             this.lstCheckedIn.TabIndex = 69;
             this.lstCheckedIn.Click += new System.EventHandler(this.ListBoxClicked);
-            // 
-            // txtSvsuIdCI
-            // 
-            this.txtSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSvsuIdCI.Location = new System.Drawing.Point(796, 97);
-            this.txtSvsuIdCI.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSvsuIdCI.Mask = "000000";
-            this.txtSvsuIdCI.Name = "txtSvsuIdCI";
-            this.txtSvsuIdCI.Size = new System.Drawing.Size(132, 30);
-            this.txtSvsuIdCI.TabIndex = 1;
-            this.txtSvsuIdCI.ValidatingType = typeof(int);
+            this.lstCheckedIn.SelectedIndexChanged += new System.EventHandler(this.lstCheckedIn_SelectedIndexChanged);
             // 
             // lblSvsuIdCI
             // 
@@ -213,9 +206,9 @@ namespace SVSU_Capstone_Project.Views
             this.lblSvsuIdCI.Location = new System.Drawing.Point(632, 101);
             this.lblSvsuIdCI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSvsuIdCI.Name = "lblSvsuIdCI";
-            this.lblSvsuIdCI.Size = new System.Drawing.Size(109, 24);
+            this.lblSvsuIdCI.Size = new System.Drawing.Size(91, 24);
             this.lblSvsuIdCI.TabIndex = 62;
-            this.lblSvsuIdCI.Text = "Student ID";
+            this.lblSvsuIdCI.Text = "Student:";
             // 
             // tbpConsumables
             // 
@@ -249,6 +242,16 @@ namespace SVSU_Capstone_Project.Views
             this.tbpConsumables.TabIndex = 1;
             this.tbpConsumables.Text = "Consumables";
             this.tbpConsumables.UseVisualStyleBackColor = true;
+            // 
+            // cmbStudents
+            // 
+            this.cmbStudents.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStudents.FormattingEnabled = true;
+            this.cmbStudents.Location = new System.Drawing.Point(884, 32);
+            this.cmbStudents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbStudents.Name = "cmbStudents";
+            this.cmbStudents.Size = new System.Drawing.Size(337, 31);
+            this.cmbStudents.TabIndex = 177;
             // 
             // txtConsumableNotes
             // 
@@ -487,15 +490,24 @@ namespace SVSU_Capstone_Project.Views
             this.label11.TabIndex = 165;
             this.label11.Text = "Room:";
             // 
-            // cmbStudents
+            // cmbAssetsStudents
             // 
-            this.cmbStudents.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStudents.FormattingEnabled = true;
-            this.cmbStudents.Location = new System.Drawing.Point(884, 32);
-            this.cmbStudents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbStudents.Name = "cmbStudents";
-            this.cmbStudents.Size = new System.Drawing.Size(337, 31);
-            this.cmbStudents.TabIndex = 177;
+            this.cmbAssetsStudents.Enabled = false;
+            this.cmbAssetsStudents.FormattingEnabled = true;
+            this.cmbAssetsStudents.Location = new System.Drawing.Point(796, 99);
+            this.cmbAssetsStudents.Name = "cmbAssetsStudents";
+            this.cmbAssetsStudents.Size = new System.Drawing.Size(337, 26);
+            this.cmbAssetsStudents.TabIndex = 136;
+            // 
+            // cmbAssetCategory
+            // 
+            this.cmbAssetCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAssetCategory.FormattingEnabled = true;
+            this.cmbAssetCategory.Location = new System.Drawing.Point(796, 46);
+            this.cmbAssetCategory.Name = "cmbAssetCategory";
+            this.cmbAssetCategory.Size = new System.Drawing.Size(337, 26);
+            this.cmbAssetCategory.TabIndex = 137;
+            this.cmbAssetCategory.Visible = false;
             // 
             // frmCheckInOutItems
             // 
@@ -523,7 +535,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.TabPage tbpAssets;
         private System.Windows.Forms.TabPage tbpConsumables;
         private System.Windows.Forms.Label lblSvsuIdCI;
-        private System.Windows.Forms.MaskedTextBox txtSvsuIdCI;
         private System.Windows.Forms.ListBox lstCheckedOut;
         private System.Windows.Forms.ListBox lstCheckedIn;
         private System.Windows.Forms.Label label2;
@@ -554,5 +565,7 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         internal System.Windows.Forms.ComboBox cmbStudents;
+        private System.Windows.Forms.ComboBox cmbAssetsStudents;
+        private System.Windows.Forms.ComboBox cmbAssetCategory;
     }
 }

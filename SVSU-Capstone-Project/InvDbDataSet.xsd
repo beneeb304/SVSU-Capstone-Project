@@ -22,8 +22,8 @@ ELSE ''
 END AS 'action', Commodities.name, Logs.notes
 FROM     Logs INNER JOIN
                   Users ON Logs.objUser_uidTuid = Users.tuid INNER JOIN
-                  Storages ON Logs.objStorage_uidTuid = Storages.tuid INNER JOIN
-                  Commodities ON Commodities.tuid = Storages.objCommodity_uidTuid</CommandText>
+                  Storage ON Logs.objStorage_uidTuid = Storage.tuid INNER JOIN
+                  Commodities ON Commodities.tuid = Storage.objCommodity_uidTuid</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -44,8 +44,8 @@ FROM     Logs INNER JOIN
                     <CommandText>SELECT Logs.timestamp, Users.svsu_id, CONCAT(Users.first_name,' ', Users.last_name) AS [UserName], Logs.action, Commodities.name, Logs.notes
 FROM     Logs INNER JOIN
                   Users ON Logs.objUser_uidTuid = Users.tuid INNER JOIN
-                  Storages ON Logs.objStorage_uidTuid = Storages.tuid INNER JOIN
-                  Commodities ON Commodities.tuid = Storages.objCommodity_uidTuid</CommandText>
+                  Storage ON Logs.objStorage_uidTuid = Storage.tuid INNER JOIN
+                  Commodities ON Commodities.tuid = Storage.objCommodity_uidTuid</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -296,7 +296,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
               <Mapping SourceColumn="strBarCode" DataSetColumn="strBarCode" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Commodities" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Commodities.name, Storages.quantity, Commodities.alert_quantity
@@ -309,21 +309,23 @@ WHERE Storages.quantity &lt;= Commodities.alert_quantity</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NLevelsTableAdapter" GeneratorDataComponentClassName="NLevelsTableAdapter" Name="NLevels" UserDataComponentName="NLevelsTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NLevelTableAdapter" GeneratorDataComponentClassName="NLevelTableAdapter" Name="NLevel" UserDataComponentName="NLevelTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.NLevels" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.NLevel" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [NLevels] WHERE (([tuid] = @Original_tuid))</CommandText>
+                    <CommandText>DELETE FROM [NLevel] WHERE (([tuid] = @Original_tuid) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [NLevels] ([tuid], [name], [description]) VALUES (@tuid, @name, @description);
-SELECT tuid, name, description FROM NLevels WHERE (tuid = @tuid)</CommandText>
+                    <CommandText>INSERT INTO [NLevel] ([tuid], [name], [description]) VALUES (@tuid, @name, @description);
+SELECT tuid, name, description FROM NLevel WHERE (tuid = @tuid)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -333,20 +335,22 @@ SELECT tuid, name, description FROM NLevels WHERE (tuid = @tuid)</CommandText>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT NLevels.*
-FROM     NLevels</CommandText>
+                    <CommandText>SELECT NLevel.*
+FROM     NLevel</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [NLevels] SET [tuid] = @tuid, [name] = @name, [description] = @description WHERE (([tuid] = @Original_tuid));
-SELECT tuid, name, description FROM NLevels WHERE (tuid = @tuid)</CommandText>
+                    <CommandText>UPDATE [NLevel] SET [tuid] = @tuid, [name] = @name, [description] = @description WHERE (([tuid] = @Original_tuid) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)));
+SELECT tuid, name, description FROM NLevel WHERE (tuid = @tuid)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@description" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="description" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -409,12 +413,12 @@ SELECT tuid, name, description FROM Rooms WHERE (tuid = @tuid)</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StoragesTableAdapter" GeneratorDataComponentClassName="StoragesTableAdapter" Name="Storages" UserDataComponentName="StoragesTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StorageTableAdapter" GeneratorDataComponentClassName="StorageTableAdapter" Name="Storage" UserDataComponentName="StorageTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Storages" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="InvDb.dbo.Storage" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [Storages] WHERE (([tuid] = @Original_tuid) AND ([quantity] = @Original_quantity) AND ((@IsNull_objCabinet_uidTuid = 1 AND [objCabinet_uidTuid] IS NULL) OR ([objCabinet_uidTuid] = @Original_objCabinet_uidTuid)) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objNLevel_uidTuid = 1 AND [objNLevel_uidTuid] IS NULL) OR ([objNLevel_uidTuid] = @Original_objNLevel_uidTuid)))</CommandText>
+                    <CommandText>DELETE FROM [Storage] WHERE (([tuid] = @Original_tuid) AND ([quantity] = @Original_quantity) AND ((@IsNull_objCabinet_uidTuid = 1 AND [objCabinet_uidTuid] IS NULL) OR ([objCabinet_uidTuid] = @Original_objCabinet_uidTuid)) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objNLevel_uidTuid = 1 AND [objNLevel_uidTuid] IS NULL) OR ([objNLevel_uidTuid] = @Original_objNLevel_uidTuid)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantity" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -429,8 +433,8 @@ SELECT tuid, name, description FROM Rooms WHERE (tuid = @tuid)</CommandText>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [Storages] ([tuid], [quantity], [objCabinet_uidTuid], [objCommodity_uidTuid], [objNLevel_uidTuid]) VALUES (@tuid, @quantity, @objCabinet_uidTuid, @objCommodity_uidTuid, @objNLevel_uidTuid);
-SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTuid FROM Storages WHERE (tuid = @tuid)</CommandText>
+                    <CommandText>INSERT INTO [Storage] ([tuid], [quantity], [objCabinet_uidTuid], [objCommodity_uidTuid], [objNLevel_uidTuid]) VALUES (@tuid, @quantity, @objCabinet_uidTuid, @objCommodity_uidTuid, @objNLevel_uidTuid);
+SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTuid FROM Storage WHERE (tuid = @tuid)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantity" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -442,15 +446,15 @@ SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTu
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Storages.*
-FROM     Storages</CommandText>
+                    <CommandText>SELECT Storage.*
+FROM     Storage</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [Storages] SET [tuid] = @tuid, [quantity] = @quantity, [objCabinet_uidTuid] = @objCabinet_uidTuid, [objCommodity_uidTuid] = @objCommodity_uidTuid, [objNLevel_uidTuid] = @objNLevel_uidTuid WHERE (([tuid] = @Original_tuid) AND ([quantity] = @Original_quantity) AND ((@IsNull_objCabinet_uidTuid = 1 AND [objCabinet_uidTuid] IS NULL) OR ([objCabinet_uidTuid] = @Original_objCabinet_uidTuid)) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objNLevel_uidTuid = 1 AND [objNLevel_uidTuid] IS NULL) OR ([objNLevel_uidTuid] = @Original_objNLevel_uidTuid)));
-SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTuid FROM Storages WHERE (tuid = @tuid)</CommandText>
+                    <CommandText>UPDATE [Storage] SET [tuid] = @tuid, [quantity] = @quantity, [objCabinet_uidTuid] = @objCabinet_uidTuid, [objCommodity_uidTuid] = @objCommodity_uidTuid, [objNLevel_uidTuid] = @objNLevel_uidTuid WHERE (([tuid] = @Original_tuid) AND ([quantity] = @Original_quantity) AND ((@IsNull_objCabinet_uidTuid = 1 AND [objCabinet_uidTuid] IS NULL) OR ([objCabinet_uidTuid] = @Original_objCabinet_uidTuid)) AND ((@IsNull_objCommodity_uidTuid = 1 AND [objCommodity_uidTuid] IS NULL) OR ([objCommodity_uidTuid] = @Original_objCommodity_uidTuid)) AND ((@IsNull_objNLevel_uidTuid = 1 AND [objNLevel_uidTuid] IS NULL) OR ([objNLevel_uidTuid] = @Original_objNLevel_uidTuid)));
+SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTuid FROM Storage WHERE (tuid = @tuid)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@tuid" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="tuid" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@quantity" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="quantity" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -702,13 +706,13 @@ FROM     SimulatorUse INNER JOIN
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LowStockTableAdapter" GeneratorDataComponentClassName="LowStockTableAdapter" Name="LowStock" UserDataComponentName="LowStockTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Commodities.name, Storages.quantity, Commodities.alert_quantity
+                    <CommandText>SELECT Commodities.name, Storage.quantity, Commodities.alert_quantity
 FROM     Commodities INNER JOIN
-                  Storages ON Commodities.tuid = Storages.objCommodity_uidTuid
-WHERE Storages.quantity &lt;= Commodities.alert_quantity</CommandText>
+                  Storage ON Commodities.tuid = Storage.objCommodity_uidTuid
+WHERE Storage.quantity &lt;= Commodities.alert_quantity</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -723,7 +727,7 @@ WHERE Storages.quantity &lt;= Commodities.alert_quantity</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DynamicItemsTableAdapter" GeneratorDataComponentClassName="DynamicItemsTableAdapter" Name="DynamicItemsTable" UserDataComponentName="DynamicItemsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="SELECT c.[name], s.[quantity], l.quantityChange AS 'numberAdded', 0 AS 'numberConsumed', l.[action] FROM Commodities c LEFT JOIN Storages s ON s.objCommodity_uidTuid = c.tuid LEFT JOIN Logs l ON l.objStorage_uidTuid = s.tuid WHERE l.action = 0 UNION SELECT c.[name], s.[quantity], 0 AS 'numberAdded', l.quantityChange AS 'numberConsumed', l.[action] FROM Commodities c LEFT JOIN Storages s ON s.objCommodity_uidTuid = c.tuid LEFT JOIN Logs l ON l.objStorage_uidTuid = s.tuid WHERE l.action = 1" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="SELECT c.[name], s.[quantity], l.quantityChange AS 'numberAdded', 0 AS 'numberConsumed', l.[action] FROM Commodities c LEFT JOIN Storage s ON s.objCommodity_uidTuid = c.tuid LEFT JOIN Logs l ON l.objStorage_uidTuid = s.tuid WHERE l.action = 0 UNION SELECT c.[name], s.[quantity], 0 AS 'numberAdded', l.quantityChange AS 'numberConsumed', l.[action] FROM Commodities c LEFT JOIN Storage s ON s.objCommodity_uidTuid = c.tuid LEFT JOIN Logs l ON l.objStorage_uidTuid = s.tuid WHERE l.action = 1" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT
@@ -736,7 +740,7 @@ SELECT
 	0 AS 'numberConsumed',
 	l.[action]
 FROM Commodities c
-LEFT JOIN Storages s on s.objCommodity_uidTuid = c.tuid
+LEFT JOIN Storage s on s.objCommodity_uidTuid = c.tuid
 LEFT JOIN Logs l on l.objStorage_uidTuid = s.tuid
 WHERE l.action = 0
 UNION
@@ -747,7 +751,7 @@ SELECT
 	l.quantityChange AS 'numberConsumed',
 	l.[action]
 FROM Commodities c
-LEFT JOIN Storages s on s.objCommodity_uidTuid = c.tuid
+LEFT JOIN Storage s on s.objCommodity_uidTuid = c.tuid
 LEFT JOIN Logs l on l.objStorage_uidTuid = s.tuid
 WHERE l.action = 1
 )A
@@ -776,7 +780,7 @@ GROUP BY A.name
   <xs:element name="InvDbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="InvDbDataSet" msprop:Generator_UserDSName="InvDbDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Logs" msprop:Generator_TableClassName="LogsDataTable" msprop:Generator_TableVarName="tableLogs" msprop:Generator_RowChangedName="LogsRowChanged" msprop:Generator_TablePropName="Logs" msprop:Generator_RowDeletingName="LogsRowDeleting" msprop:Generator_RowChangingName="LogsRowChanging" msprop:Generator_RowEvHandlerName="LogsRowChangeEventHandler" msprop:Generator_RowDeletedName="LogsRowDeleted" msprop:Generator_RowClassName="LogsRow" msprop:Generator_UserTableName="Logs" msprop:Generator_RowEvArgName="LogsRowChangeEvent">
+        <xs:element name="Logs" msprop:Generator_TableClassName="LogsDataTable" msprop:Generator_TableVarName="tableLogs" msprop:Generator_TablePropName="Logs" msprop:Generator_RowDeletingName="LogsRowDeleting" msprop:Generator_RowChangingName="LogsRowChanging" msprop:Generator_RowEvHandlerName="LogsRowChangeEventHandler" msprop:Generator_RowDeletedName="LogsRowDeleted" msprop:Generator_UserTableName="Logs" msprop:Generator_RowChangedName="LogsRowChanged" msprop:Generator_RowEvArgName="LogsRowChangeEvent" msprop:Generator_RowClassName="LogsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="timestamp" msprop:Generator_ColumnVarNameInTable="columntimestamp" msprop:Generator_ColumnPropNameInRow="timestamp" msprop:Generator_ColumnPropNameInTable="timestampColumn" msprop:Generator_UserColumnName="timestamp" type="xs:dateTime" />
@@ -818,7 +822,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Cabinets" msprop:Generator_TableClassName="CabinetsDataTable" msprop:Generator_TableVarName="tableCabinets" msprop:Generator_TablePropName="Cabinets" msprop:Generator_RowDeletingName="CabinetsRowDeleting" msprop:Generator_RowChangingName="CabinetsRowChanging" msprop:Generator_RowEvHandlerName="CabinetsRowChangeEventHandler" msprop:Generator_RowDeletedName="CabinetsRowDeleted" msprop:Generator_UserTableName="Cabinets" msprop:Generator_RowChangedName="CabinetsRowChanged" msprop:Generator_RowEvArgName="CabinetsRowChangeEvent" msprop:Generator_RowClassName="CabinetsRow">
+        <xs:element name="Cabinets" msprop:Generator_TableClassName="CabinetsDataTable" msprop:Generator_TableVarName="tableCabinets" msprop:Generator_RowChangedName="CabinetsRowChanged" msprop:Generator_TablePropName="Cabinets" msprop:Generator_RowDeletingName="CabinetsRowDeleting" msprop:Generator_RowChangingName="CabinetsRowChanging" msprop:Generator_RowEvHandlerName="CabinetsRowChangeEventHandler" msprop:Generator_RowDeletedName="CabinetsRowDeleted" msprop:Generator_RowClassName="CabinetsRow" msprop:Generator_UserTableName="Cabinets" msprop:Generator_RowEvArgName="CabinetsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
@@ -840,7 +844,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Categories" msprop:Generator_TableClassName="CategoriesDataTable" msprop:Generator_TableVarName="tableCategories" msprop:Generator_TablePropName="Categories" msprop:Generator_RowDeletingName="CategoriesRowDeleting" msprop:Generator_RowChangingName="CategoriesRowChanging" msprop:Generator_RowEvHandlerName="CategoriesRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoriesRowDeleted" msprop:Generator_UserTableName="Categories" msprop:Generator_RowChangedName="CategoriesRowChanged" msprop:Generator_RowEvArgName="CategoriesRowChangeEvent" msprop:Generator_RowClassName="CategoriesRow">
+        <xs:element name="Categories" msprop:Generator_TableClassName="CategoriesDataTable" msprop:Generator_TableVarName="tableCategories" msprop:Generator_RowChangedName="CategoriesRowChanged" msprop:Generator_TablePropName="Categories" msprop:Generator_RowDeletingName="CategoriesRowDeleting" msprop:Generator_RowChangingName="CategoriesRowChanging" msprop:Generator_RowEvHandlerName="CategoriesRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoriesRowDeleted" msprop:Generator_RowClassName="CategoriesRow" msprop:Generator_UserTableName="Categories" msprop:Generator_RowEvArgName="CategoriesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
@@ -861,7 +865,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CheckedItems" msprop:Generator_TableClassName="CheckedItemsDataTable" msprop:Generator_TableVarName="tableCheckedItems" msprop:Generator_TablePropName="CheckedItems" msprop:Generator_RowDeletingName="CheckedItemsRowDeleting" msprop:Generator_RowChangingName="CheckedItemsRowChanging" msprop:Generator_RowEvHandlerName="CheckedItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="CheckedItemsRowDeleted" msprop:Generator_UserTableName="CheckedItems" msprop:Generator_RowChangedName="CheckedItemsRowChanged" msprop:Generator_RowEvArgName="CheckedItemsRowChangeEvent" msprop:Generator_RowClassName="CheckedItemsRow">
+        <xs:element name="CheckedItems" msprop:Generator_TableClassName="CheckedItemsDataTable" msprop:Generator_TableVarName="tableCheckedItems" msprop:Generator_RowChangedName="CheckedItemsRowChanged" msprop:Generator_TablePropName="CheckedItems" msprop:Generator_RowDeletingName="CheckedItemsRowDeleting" msprop:Generator_RowChangingName="CheckedItemsRowChanging" msprop:Generator_RowEvHandlerName="CheckedItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="CheckedItemsRowDeleted" msprop:Generator_RowClassName="CheckedItemsRow" msprop:Generator_UserTableName="CheckedItems" msprop:Generator_RowEvArgName="CheckedItemsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
@@ -871,7 +875,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Commodities" msprop:Generator_TableClassName="CommoditiesDataTable" msprop:Generator_TableVarName="tableCommodities" msprop:Generator_TablePropName="Commodities" msprop:Generator_RowDeletingName="CommoditiesRowDeleting" msprop:Generator_RowChangingName="CommoditiesRowChanging" msprop:Generator_RowEvHandlerName="CommoditiesRowChangeEventHandler" msprop:Generator_RowDeletedName="CommoditiesRowDeleted" msprop:Generator_UserTableName="Commodities" msprop:Generator_RowChangedName="CommoditiesRowChanged" msprop:Generator_RowEvArgName="CommoditiesRowChangeEvent" msprop:Generator_RowClassName="CommoditiesRow">
+        <xs:element name="Commodities" msprop:Generator_TableClassName="CommoditiesDataTable" msprop:Generator_TableVarName="tableCommodities" msprop:Generator_RowChangedName="CommoditiesRowChanged" msprop:Generator_TablePropName="Commodities" msprop:Generator_RowDeletingName="CommoditiesRowDeleting" msprop:Generator_RowChangingName="CommoditiesRowChanging" msprop:Generator_RowEvHandlerName="CommoditiesRowChangeEventHandler" msprop:Generator_RowDeletedName="CommoditiesRowDeleted" msprop:Generator_RowClassName="CommoditiesRow" msprop:Generator_UserTableName="Commodities" msprop:Generator_RowEvArgName="CommoditiesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
@@ -909,7 +913,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NLevels" msprop:Generator_TableClassName="NLevelsDataTable" msprop:Generator_TableVarName="tableNLevels" msprop:Generator_TablePropName="NLevels" msprop:Generator_RowDeletingName="NLevelsRowDeleting" msprop:Generator_RowChangingName="NLevelsRowChanging" msprop:Generator_RowEvHandlerName="NLevelsRowChangeEventHandler" msprop:Generator_RowDeletedName="NLevelsRowDeleted" msprop:Generator_UserTableName="NLevels" msprop:Generator_RowChangedName="NLevelsRowChanged" msprop:Generator_RowEvArgName="NLevelsRowChangeEvent" msprop:Generator_RowClassName="NLevelsRow">
+        <xs:element name="NLevel" msprop:Generator_TableClassName="NLevelDataTable" msprop:Generator_TableVarName="tableNLevel" msprop:Generator_RowChangedName="NLevelRowChanged" msprop:Generator_TablePropName="NLevel" msprop:Generator_RowDeletingName="NLevelRowDeleting" msprop:Generator_RowChangingName="NLevelRowChanging" msprop:Generator_RowEvHandlerName="NLevelRowChangeEventHandler" msprop:Generator_RowDeletedName="NLevelRowDeleted" msprop:Generator_RowClassName="NLevelRow" msprop:Generator_UserTableName="NLevel" msprop:Generator_RowEvArgName="NLevelRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
@@ -930,7 +934,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Rooms" msprop:Generator_TableClassName="RoomsDataTable" msprop:Generator_TableVarName="tableRooms" msprop:Generator_TablePropName="Rooms" msprop:Generator_RowDeletingName="RoomsRowDeleting" msprop:Generator_RowChangingName="RoomsRowChanging" msprop:Generator_RowEvHandlerName="RoomsRowChangeEventHandler" msprop:Generator_RowDeletedName="RoomsRowDeleted" msprop:Generator_UserTableName="Rooms" msprop:Generator_RowChangedName="RoomsRowChanged" msprop:Generator_RowEvArgName="RoomsRowChangeEvent" msprop:Generator_RowClassName="RoomsRow">
+        <xs:element name="Rooms" msprop:Generator_TableClassName="RoomsDataTable" msprop:Generator_TableVarName="tableRooms" msprop:Generator_RowChangedName="RoomsRowChanged" msprop:Generator_TablePropName="Rooms" msprop:Generator_RowDeletingName="RoomsRowDeleting" msprop:Generator_RowChangingName="RoomsRowChanging" msprop:Generator_RowEvHandlerName="RoomsRowChangeEventHandler" msprop:Generator_RowDeletedName="RoomsRowDeleted" msprop:Generator_RowClassName="RoomsRow" msprop:Generator_UserTableName="Rooms" msprop:Generator_RowEvArgName="RoomsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
@@ -951,7 +955,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Storages" msprop:Generator_TableClassName="StoragesDataTable" msprop:Generator_TableVarName="tableStorages" msprop:Generator_TablePropName="Storages" msprop:Generator_RowDeletingName="StoragesRowDeleting" msprop:Generator_RowChangingName="StoragesRowChanging" msprop:Generator_RowEvHandlerName="StoragesRowChangeEventHandler" msprop:Generator_RowDeletedName="StoragesRowDeleted" msprop:Generator_UserTableName="Storages" msprop:Generator_RowChangedName="StoragesRowChanged" msprop:Generator_RowEvArgName="StoragesRowChangeEvent" msprop:Generator_RowClassName="StoragesRow">
+        <xs:element name="Storage" msprop:Generator_TableClassName="StorageDataTable" msprop:Generator_TableVarName="tableStorage" msprop:Generator_RowChangedName="StorageRowChanged" msprop:Generator_TablePropName="Storage" msprop:Generator_RowDeletingName="StorageRowDeleting" msprop:Generator_RowChangingName="StorageRowChanging" msprop:Generator_RowEvHandlerName="StorageRowChangeEventHandler" msprop:Generator_RowDeletedName="StorageRowDeleted" msprop:Generator_RowClassName="StorageRow" msprop:Generator_UserTableName="Storage" msprop:Generator_RowEvArgName="StorageRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
@@ -962,7 +966,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Users" msprop:Generator_TableClassName="UsersDataTable" msprop:Generator_TableVarName="tableUsers" msprop:Generator_TablePropName="Users" msprop:Generator_RowDeletingName="UsersRowDeleting" msprop:Generator_RowChangingName="UsersRowChanging" msprop:Generator_RowEvHandlerName="UsersRowChangeEventHandler" msprop:Generator_RowDeletedName="UsersRowDeleted" msprop:Generator_UserTableName="Users" msprop:Generator_RowChangedName="UsersRowChanged" msprop:Generator_RowEvArgName="UsersRowChangeEvent" msprop:Generator_RowClassName="UsersRow">
+        <xs:element name="Users" msprop:Generator_TableClassName="UsersDataTable" msprop:Generator_TableVarName="tableUsers" msprop:Generator_RowChangedName="UsersRowChanged" msprop:Generator_TablePropName="Users" msprop:Generator_RowDeletingName="UsersRowDeleting" msprop:Generator_RowChangingName="UsersRowChanging" msprop:Generator_RowEvHandlerName="UsersRowChangeEventHandler" msprop:Generator_RowDeletedName="UsersRowDeleted" msprop:Generator_RowClassName="UsersRow" msprop:Generator_UserTableName="Users" msprop:Generator_RowEvArgName="UsersRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
@@ -1012,7 +1016,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VendorItems" msprop:Generator_TableClassName="VendorItemsDataTable" msprop:Generator_TableVarName="tableVendorItems" msprop:Generator_TablePropName="VendorItems" msprop:Generator_RowDeletingName="VendorItemsRowDeleting" msprop:Generator_RowChangingName="VendorItemsRowChanging" msprop:Generator_RowEvHandlerName="VendorItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="VendorItemsRowDeleted" msprop:Generator_UserTableName="VendorItems" msprop:Generator_RowChangedName="VendorItemsRowChanged" msprop:Generator_RowEvArgName="VendorItemsRowChangeEvent" msprop:Generator_RowClassName="VendorItemsRow">
+        <xs:element name="VendorItems" msprop:Generator_TableClassName="VendorItemsDataTable" msprop:Generator_TableVarName="tableVendorItems" msprop:Generator_RowChangedName="VendorItemsRowChanged" msprop:Generator_TablePropName="VendorItems" msprop:Generator_RowDeletingName="VendorItemsRowDeleting" msprop:Generator_RowChangingName="VendorItemsRowChanging" msprop:Generator_RowEvHandlerName="VendorItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="VendorItemsRowDeleted" msprop:Generator_RowClassName="VendorItemsRow" msprop:Generator_UserTableName="VendorItems" msprop:Generator_RowEvArgName="VendorItemsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
@@ -1029,7 +1033,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Vendors" msprop:Generator_TableClassName="VendorsDataTable" msprop:Generator_TableVarName="tableVendors" msprop:Generator_TablePropName="Vendors" msprop:Generator_RowDeletingName="VendorsRowDeleting" msprop:Generator_RowChangingName="VendorsRowChanging" msprop:Generator_RowEvHandlerName="VendorsRowChangeEventHandler" msprop:Generator_RowDeletedName="VendorsRowDeleted" msprop:Generator_UserTableName="Vendors" msprop:Generator_RowChangedName="VendorsRowChanged" msprop:Generator_RowEvArgName="VendorsRowChangeEvent" msprop:Generator_RowClassName="VendorsRow">
+        <xs:element name="Vendors" msprop:Generator_TableClassName="VendorsDataTable" msprop:Generator_TableVarName="tableVendors" msprop:Generator_RowChangedName="VendorsRowChanged" msprop:Generator_TablePropName="Vendors" msprop:Generator_RowDeletingName="VendorsRowDeleting" msprop:Generator_RowChangingName="VendorsRowChanging" msprop:Generator_RowEvHandlerName="VendorsRowChangeEventHandler" msprop:Generator_RowDeletedName="VendorsRowDeleted" msprop:Generator_RowClassName="VendorsRow" msprop:Generator_UserTableName="Vendors" msprop:Generator_RowEvArgName="VendorsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntuid" msprop:Generator_ColumnPropNameInRow="tuid" msprop:Generator_ColumnPropNameInTable="tuidColumn" msprop:Generator_UserColumnName="tuid" type="xs:string" />
@@ -1057,7 +1061,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SimulatorUse" msprop:Generator_TableClassName="SimulatorUseDataTable" msprop:Generator_TableVarName="tableSimulatorUse" msprop:Generator_RowChangedName="SimulatorUseRowChanged" msprop:Generator_TablePropName="SimulatorUse" msprop:Generator_RowDeletingName="SimulatorUseRowDeleting" msprop:Generator_RowChangingName="SimulatorUseRowChanging" msprop:Generator_RowEvHandlerName="SimulatorUseRowChangeEventHandler" msprop:Generator_RowDeletedName="SimulatorUseRowDeleted" msprop:Generator_RowClassName="SimulatorUseRow" msprop:Generator_UserTableName="SimulatorUse" msprop:Generator_RowEvArgName="SimulatorUseRowChangeEvent">
+        <xs:element name="SimulatorUse" msprop:Generator_TableClassName="SimulatorUseDataTable" msprop:Generator_TableVarName="tableSimulatorUse" msprop:Generator_TablePropName="SimulatorUse" msprop:Generator_RowDeletingName="SimulatorUseRowDeleting" msprop:Generator_RowChangingName="SimulatorUseRowChanging" msprop:Generator_RowEvHandlerName="SimulatorUseRowChangeEventHandler" msprop:Generator_RowDeletedName="SimulatorUseRowDeleted" msprop:Generator_UserTableName="SimulatorUse" msprop:Generator_RowChangedName="SimulatorUseRowChanged" msprop:Generator_RowEvArgName="SimulatorUseRowChangeEvent" msprop:Generator_RowClassName="SimulatorUseRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="hoursUsed" msprop:Generator_ColumnVarNameInTable="columnhoursUsed" msprop:Generator_ColumnPropNameInRow="hoursUsed" msprop:Generator_ColumnPropNameInTable="hoursUsedColumn" msprop:Generator_UserColumnName="hoursUsed" type="xs:int" />
@@ -1072,7 +1076,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LowStock" msprop:Generator_TableClassName="LowStockDataTable" msprop:Generator_TableVarName="tableLowStock" msprop:Generator_TablePropName="LowStock" msprop:Generator_RowDeletingName="LowStockRowDeleting" msprop:Generator_RowChangingName="LowStockRowChanging" msprop:Generator_RowEvHandlerName="LowStockRowChangeEventHandler" msprop:Generator_RowDeletedName="LowStockRowDeleted" msprop:Generator_UserTableName="LowStock" msprop:Generator_RowChangedName="LowStockRowChanged" msprop:Generator_RowEvArgName="LowStockRowChangeEvent" msprop:Generator_RowClassName="LowStockRow">
+        <xs:element name="LowStock" msprop:Generator_TableClassName="LowStockDataTable" msprop:Generator_TableVarName="tableLowStock" msprop:Generator_RowChangedName="LowStockRowChanged" msprop:Generator_TablePropName="LowStock" msprop:Generator_RowDeletingName="LowStockRowDeleting" msprop:Generator_RowChangingName="LowStockRowChanging" msprop:Generator_RowEvHandlerName="LowStockRowChangeEventHandler" msprop:Generator_RowDeletedName="LowStockRowDeleted" msprop:Generator_RowClassName="LowStockRow" msprop:Generator_UserTableName="LowStock" msprop:Generator_RowEvArgName="LowStockRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
@@ -1087,7 +1091,7 @@ GROUP BY A.name
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DynamicItemsTable" msprop:Generator_TableClassName="DynamicItemsTableDataTable" msprop:Generator_TableVarName="tableDynamicItemsTable" msprop:Generator_RowChangedName="DynamicItemsTableRowChanged" msprop:Generator_TablePropName="DynamicItemsTable" msprop:Generator_RowDeletingName="DynamicItemsTableRowDeleting" msprop:Generator_RowChangingName="DynamicItemsTableRowChanging" msprop:Generator_RowEvHandlerName="DynamicItemsTableRowChangeEventHandler" msprop:Generator_RowDeletedName="DynamicItemsTableRowDeleted" msprop:Generator_RowClassName="DynamicItemsTableRow" msprop:Generator_UserTableName="DynamicItemsTable" msprop:Generator_RowEvArgName="DynamicItemsTableRowChangeEvent">
+        <xs:element name="DynamicItemsTable" msprop:Generator_TableClassName="DynamicItemsTableDataTable" msprop:Generator_TableVarName="tableDynamicItemsTable" msprop:Generator_TablePropName="DynamicItemsTable" msprop:Generator_RowDeletingName="DynamicItemsTableRowDeleting" msprop:Generator_RowChangingName="DynamicItemsTableRowChanging" msprop:Generator_RowEvHandlerName="DynamicItemsTableRowChangeEventHandler" msprop:Generator_RowDeletedName="DynamicItemsTableRowDeleted" msprop:Generator_UserTableName="DynamicItemsTable" msprop:Generator_RowChangedName="DynamicItemsTableRowChanged" msprop:Generator_RowEvArgName="DynamicItemsTableRowChangeEvent" msprop:Generator_RowClassName="DynamicItemsTableRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
@@ -1121,16 +1125,16 @@ GROUP BY A.name
       <xs:selector xpath=".//mstns:Commodities" />
       <xs:field xpath="mstns:tuid" />
     </xs:unique>
-    <xs:unique name="NLevels_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:NLevels" />
+    <xs:unique name="NLevel_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:NLevel" />
       <xs:field xpath="mstns:tuid" />
     </xs:unique>
     <xs:unique name="Rooms_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Rooms" />
       <xs:field xpath="mstns:tuid" />
     </xs:unique>
-    <xs:unique name="Storages_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Storages" />
+    <xs:unique name="Storage_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Storage" />
       <xs:field xpath="mstns:tuid" />
     </xs:unique>
     <xs:unique name="Users_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
@@ -1148,15 +1152,15 @@ GROUP BY A.name
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_dbo.CheckedItems_dbo.Commodities_objCommodities_uidTuid" msdata:parent="Commodities" msdata:child="CheckedItems" msdata:parentkey="tuid" msdata:childkey="objCommodities_uidTuid" msprop:Generator_UserChildTable="CheckedItems" msprop:Generator_ChildPropName="GetCheckedItemsRows" msprop:Generator_UserRelationName="FK_dbo.CheckedItems_dbo.Commodities_objCommodities_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_CheckedItems_dbo_Commodities_objCommodities_uidTuid" msprop:Generator_UserParentTable="Commodities" msprop:Generator_ParentPropName="CommoditiesRow" />
-      <msdata:Relationship name="FK_dbo.Commodities_dbo.Categories_objCategory_uidTuid" msdata:parent="Categories" msdata:child="Commodities" msdata:parentkey="tuid" msdata:childkey="objCategory_uidTuid" msprop:Generator_UserChildTable="Commodities" msprop:Generator_ChildPropName="GetCommoditiesRows" msprop:Generator_UserRelationName="FK_dbo.Commodities_dbo.Categories_objCategory_uidTuid" msprop:Generator_ParentPropName="CategoriesRow" msprop:Generator_RelationVarName="_relationFK_dbo_Commodities_dbo_Categories_objCategory_uidTuid" msprop:Generator_UserParentTable="Categories" />
-      <msdata:Relationship name="FK_dbo.Cabinets_dbo.Rooms_objRoom_uidTuid" msdata:parent="Rooms" msdata:child="Cabinets" msdata:parentkey="tuid" msdata:childkey="objRoom_uidTuid" msprop:Generator_UserChildTable="Cabinets" msprop:Generator_ChildPropName="GetCabinetsRows" msprop:Generator_UserRelationName="FK_dbo.Cabinets_dbo.Rooms_objRoom_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_Cabinets_dbo_Rooms_objRoom_uidTuid" msprop:Generator_UserParentTable="Rooms" msprop:Generator_ParentPropName="RoomsRow" />
-      <msdata:Relationship name="FK_dbo.Storages_dbo.Cabinets_objCabinet_uidTuid" msdata:parent="Cabinets" msdata:child="Storages" msdata:parentkey="tuid" msdata:childkey="objCabinet_uidTuid" msprop:Generator_UserChildTable="Storages" msprop:Generator_ChildPropName="GetStoragesRows" msprop:Generator_UserRelationName="FK_dbo.Storages_dbo.Cabinets_objCabinet_uidTuid" msprop:Generator_ParentPropName="CabinetsRow" msprop:Generator_RelationVarName="_relationFK_dbo_Storages_dbo_Cabinets_objCabinet_uidTuid" msprop:Generator_UserParentTable="Cabinets" />
-      <msdata:Relationship name="FK_dbo.Storages_dbo.Commodities_objCommodity_uidTuid" msdata:parent="Commodities" msdata:child="Storages" msdata:parentkey="tuid" msdata:childkey="objCommodity_uidTuid" msprop:Generator_UserChildTable="Storages" msprop:Generator_ChildPropName="GetStoragesRows" msprop:Generator_UserRelationName="FK_dbo.Storages_dbo.Commodities_objCommodity_uidTuid" msprop:Generator_ParentPropName="CommoditiesRow" msprop:Generator_RelationVarName="_relationFK_dbo_Storages_dbo_Commodities_objCommodity_uidTuid" msprop:Generator_UserParentTable="Commodities" />
-      <msdata:Relationship name="FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid" msdata:parent="NLevels" msdata:child="Storages" msdata:parentkey="tuid" msdata:childkey="objNLevel_uidTuid" msprop:Generator_UserChildTable="Storages" msprop:Generator_ChildPropName="GetStoragesRows" msprop:Generator_UserRelationName="FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid" msprop:Generator_ParentPropName="NLevelsRow" msprop:Generator_RelationVarName="_relationFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid" msprop:Generator_UserParentTable="NLevels" />
-      <msdata:Relationship name="FK_dbo.CheckedItems_dbo.Users_objUser_uidTuid" msdata:parent="Users" msdata:child="CheckedItems" msdata:parentkey="tuid" msdata:childkey="objUser_uidTuid" msprop:Generator_UserChildTable="CheckedItems" msprop:Generator_ChildPropName="GetCheckedItemsRows" msprop:Generator_UserRelationName="FK_dbo.CheckedItems_dbo.Users_objUser_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_CheckedItems_dbo_Users_objUser_uidTuid" msprop:Generator_UserParentTable="Users" msprop:Generator_ParentPropName="UsersRow" />
-      <msdata:Relationship name="FK_dbo.VendorItems_dbo.Commodities_objCommodity_uidTuid" msdata:parent="Commodities" msdata:child="VendorItems" msdata:parentkey="tuid" msdata:childkey="objCommodity_uidTuid" msprop:Generator_UserChildTable="VendorItems" msprop:Generator_ChildPropName="GetVendorItemsRows" msprop:Generator_UserRelationName="FK_dbo.VendorItems_dbo.Commodities_objCommodity_uidTuid" msprop:Generator_ParentPropName="CommoditiesRow" msprop:Generator_RelationVarName="_relationFK_dbo_VendorItems_dbo_Commodities_objCommodity_uidTuid" msprop:Generator_UserParentTable="Commodities" />
-      <msdata:Relationship name="FK_dbo.VendorItems_dbo.Vendors_objVendor_uidTuid" msdata:parent="Vendors" msdata:child="VendorItems" msdata:parentkey="tuid" msdata:childkey="objVendor_uidTuid" msprop:Generator_UserChildTable="VendorItems" msprop:Generator_ChildPropName="GetVendorItemsRows" msprop:Generator_UserRelationName="FK_dbo.VendorItems_dbo.Vendors_objVendor_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_VendorItems_dbo_Vendors_objVendor_uidTuid" msprop:Generator_UserParentTable="Vendors" msprop:Generator_ParentPropName="VendorsRow" />
+      <msdata:Relationship name="FK_dbo.CheckedItems_dbo.Commodities_objCommodities_uidTuid" msdata:parent="Commodities" msdata:child="CheckedItems" msdata:parentkey="tuid" msdata:childkey="objCommodities_uidTuid" msprop:Generator_UserChildTable="CheckedItems" msprop:Generator_ChildPropName="GetCheckedItemsRows" msprop:Generator_UserRelationName="FK_dbo.CheckedItems_dbo.Commodities_objCommodities_uidTuid" msprop:Generator_ParentPropName="CommoditiesRow" msprop:Generator_RelationVarName="_relationFK_dbo_CheckedItems_dbo_Commodities_objCommodities_uidTuid" msprop:Generator_UserParentTable="Commodities" />
+      <msdata:Relationship name="FK_dbo.Commodities_dbo.Categories_objCategory_uidTuid" msdata:parent="Categories" msdata:child="Commodities" msdata:parentkey="tuid" msdata:childkey="objCategory_uidTuid" msprop:Generator_UserChildTable="Commodities" msprop:Generator_ChildPropName="GetCommoditiesRows" msprop:Generator_UserRelationName="FK_dbo.Commodities_dbo.Categories_objCategory_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_Commodities_dbo_Categories_objCategory_uidTuid" msprop:Generator_UserParentTable="Categories" msprop:Generator_ParentPropName="CategoriesRow" />
+      <msdata:Relationship name="FK_dbo.Cabinets_dbo.Rooms_objRoom_uidTuid" msdata:parent="Rooms" msdata:child="Cabinets" msdata:parentkey="tuid" msdata:childkey="objRoom_uidTuid" msprop:Generator_UserChildTable="Cabinets" msprop:Generator_ChildPropName="GetCabinetsRows" msprop:Generator_UserRelationName="FK_dbo.Cabinets_dbo.Rooms_objRoom_uidTuid" msprop:Generator_ParentPropName="RoomsRow" msprop:Generator_RelationVarName="_relationFK_dbo_Cabinets_dbo_Rooms_objRoom_uidTuid" msprop:Generator_UserParentTable="Rooms" />
+      <msdata:Relationship name="FK_dbo.Storages_dbo.Cabinets_objCabinet_uidTuid" msdata:parent="Cabinets" msdata:child="Storage" msdata:parentkey="tuid" msdata:childkey="objCabinet_uidTuid" msprop:Generator_UserChildTable="Storage" msprop:Generator_ChildPropName="GetStorageRows" msprop:Generator_UserRelationName="FK_dbo.Storages_dbo.Cabinets_objCabinet_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_Storages_dbo_Cabinets_objCabinet_uidTuid" msprop:Generator_UserParentTable="Cabinets" msprop:Generator_ParentPropName="CabinetsRow" />
+      <msdata:Relationship name="FK_dbo.Storages_dbo.Commodities_objCommodity_uidTuid" msdata:parent="Commodities" msdata:child="Storage" msdata:parentkey="tuid" msdata:childkey="objCommodity_uidTuid" msprop:Generator_UserChildTable="Storage" msprop:Generator_ChildPropName="GetStorageRows" msprop:Generator_UserRelationName="FK_dbo.Storages_dbo.Commodities_objCommodity_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_Storages_dbo_Commodities_objCommodity_uidTuid" msprop:Generator_UserParentTable="Commodities" msprop:Generator_ParentPropName="CommoditiesRow" />
+      <msdata:Relationship name="FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid" msdata:parent="NLevel" msdata:child="Storage" msdata:parentkey="tuid" msdata:childkey="objNLevel_uidTuid" msprop:Generator_UserChildTable="Storage" msprop:Generator_ChildPropName="GetStorageRows" msprop:Generator_UserRelationName="FK_dbo.Storages_dbo.NLevels_objNLevel_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_Storages_dbo_NLevels_objNLevel_uidTuid" msprop:Generator_UserParentTable="NLevel" msprop:Generator_ParentPropName="NLevelsRow" />
+      <msdata:Relationship name="FK_dbo.CheckedItems_dbo.Users_objUser_uidTuid" msdata:parent="Users" msdata:child="CheckedItems" msdata:parentkey="tuid" msdata:childkey="objUser_uidTuid" msprop:Generator_UserChildTable="CheckedItems" msprop:Generator_ChildPropName="GetCheckedItemsRows" msprop:Generator_UserRelationName="FK_dbo.CheckedItems_dbo.Users_objUser_uidTuid" msprop:Generator_ParentPropName="UsersRow" msprop:Generator_RelationVarName="_relationFK_dbo_CheckedItems_dbo_Users_objUser_uidTuid" msprop:Generator_UserParentTable="Users" />
+      <msdata:Relationship name="FK_dbo.VendorItems_dbo.Commodities_objCommodity_uidTuid" msdata:parent="Commodities" msdata:child="VendorItems" msdata:parentkey="tuid" msdata:childkey="objCommodity_uidTuid" msprop:Generator_UserChildTable="VendorItems" msprop:Generator_ChildPropName="GetVendorItemsRows" msprop:Generator_UserRelationName="FK_dbo.VendorItems_dbo.Commodities_objCommodity_uidTuid" msprop:Generator_RelationVarName="_relationFK_dbo_VendorItems_dbo_Commodities_objCommodity_uidTuid" msprop:Generator_UserParentTable="Commodities" msprop:Generator_ParentPropName="CommoditiesRow" />
+      <msdata:Relationship name="FK_dbo.VendorItems_dbo.Vendors_objVendor_uidTuid" msdata:parent="Vendors" msdata:child="VendorItems" msdata:parentkey="tuid" msdata:childkey="objVendor_uidTuid" msprop:Generator_UserChildTable="VendorItems" msprop:Generator_ChildPropName="GetVendorItemsRows" msprop:Generator_UserRelationName="FK_dbo.VendorItems_dbo.Vendors_objVendor_uidTuid" msprop:Generator_ParentPropName="VendorsRow" msprop:Generator_RelationVarName="_relationFK_dbo_VendorItems_dbo_Vendors_objVendor_uidTuid" msprop:Generator_UserParentTable="Vendors" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
