@@ -246,9 +246,40 @@ namespace SVSU_Capstone_Project.Views
             var objStorage_tuid = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == objCommodity_tuid.uidTuid);
             var objUser_tuid = cmbAssetsStudents.SelectedValue as User;
 
-            if(objStorage_tuid.intQuantity >= 0)
+            if(objStorage_tuid.intQuantity > 0)
             {
-                lstCheckedOut.Items.Add(objCommodity_tuid.strName);
+                Log log = new Log()
+                {
+                    enuAction = ItemAction.CheckedOut,
+                    dtTimestamp = DateTime.Now,
+                    strNotes = txtAssetNotes.Text,
+                    intQuantityChange = -1,
+                    objStorage = objStorage_tuid,
+                    objUser = objUser_tuid
+                };
+
+                ItemModel.Add<Log>(log);
+
+                var objLog_Tuid = ItemModel.Get<Log>(
+                    x => x.objStorage.uidTuid == objStorage_tuid.uidTuid);
+
+                CheckedItem checkedItem = new CheckedItem()
+                {
+                    objCommodities = objCommodity_tuid,
+                    objLog = objLog_Tuid,
+                    objUser = objUser_tuid
+                };
+
+                ItemModel.Add<CheckedItem>(checkedItem);
+
+                Storage storage = ItemModel.Get<Storage>(x => x.uidTuid == objStorage_tuid.uidTuid);
+                storage.intQuantity = storage.intQuantity - 1;
+                ItemModel.Update<Storage>(storage);
+
+                var checkedOut = ItemModel.Get<Log>(x => x.objStorage.uidTuid == objStorage_tuid.uidTuid);
+                var item = ItemModel.Get<Storage>(x => x.uidTuid == checkedOut.objStorage.uidTuid);
+                
+                lstCheckedOut.Items.Add(item.objCommodity.strName);
 
             }
         }
