@@ -39,10 +39,10 @@ namespace SVSU_Capstone_Project.ViewModel
             }
 
             // compare hash to hash in db
-            var objUserProfile = ItemModel.Get<User>(u => u.strSvsu_id == username);
+            var objUserProfile = ItemModel.Get<User>(u => u.strEmail == username);
             // return user profile if found
             if (objUserProfile == null) throw new UserNotFoundException("User does not exist");
-            if (objUserProfile.strHash != strHash) throw new PasswordInvalidException($"Password does not match for {objUserProfile.strSvsu_id}");
+            if (objUserProfile.strHash != strHash) throw new PasswordInvalidException($"Password does not match for {objUserProfile.strEmail}");
             ActiveUser = objUserProfile;
             return ActiveUser;
         }

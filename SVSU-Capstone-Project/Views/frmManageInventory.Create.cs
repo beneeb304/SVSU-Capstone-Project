@@ -44,21 +44,52 @@ namespace SVSU_Capstone_Project.Views
         * object sender; The object calling the method.
         * EventArgs e; Information passed by the sender object about the method call.
         */
-        private void txtCreateItemName_TextChanged( object sender, EventArgs e )
+        private void txtCreateItemName_Leave( object sender, EventArgs e )
         {
-
+            // Check if the item name is already in use if also not blank
+            var filteredItem = txtCreateItemName.Text != "" ? ItemModel.Get<Commodity>(x => x.strName == txtCreateItemName.Text) : null;
+            if (filteredItem != null)
+            {
+                MessageBox.Show("Item name already in use. Please choose a different name or modify item.");
+                btnCreate.Text = "Modify";
+                cmbCreateCategory.SelectedItem = filteredItem.objCategory;
+            }
+        }
+        private void trvCreateSelectByCategory_Populate()
+        {
+            trvCreateSelectByCategory.Nodes.Clear();
+            var lstCategories = ItemModel.GetMany<Category>();
+            lstCategories.ForEach(cat =>
+            {
+                var node = new TreeNode(cat.strName) { Tag = cat };
+                cat.lstCommodities.ForEach(comm => { node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = comm }); });
+                trvCreateSelectByCategory.Nodes.Add(node);
+            });
         }
 
-        /* Function: label12_Click
-        * Description:
-        * 
-        * Local Variables
-        * object sender; The object calling the method.
-        * EventArgs e; Information passed by the sender object about the method call.
-        */
-        private void label12_Click( object sender, EventArgs e )
+        private void trvCreateSelectByRoom_Populate()
         {
-
+            trvCreateSelectByRoom.Nodes.Clear();
+            var lstRooms = ItemModel.GetMany<Room>();
+            lstRooms.OrderBy(x => x.strName).ToList().ForEach(room =>
+            {
+                var roomNode = new TreeNode(room.strName) { Tag = room };
+                room.lstCabinets.OrderBy(x => x.strName).ToList().ForEach(cab =>
+                {
+                    var cabinetNode = new TreeNode(cab.strName) { Tag = cab };
+                    cab.lstStorage.GroupBy(x => x.objNLevel).ToList().ForEach(grp =>
+                    {
+                        var nlevelNode = new TreeNode(grp.Key.strName) { Tag = grp.Key };
+                        grp.ToList().ForEach(stor =>
+                        {
+                            nlevelNode.Nodes.Add(new TreeNode($"{stor.objCommodity.strName} ({stor.intQuantity})") { Tag = stor.objCommodity });
+                        });
+                        cabinetNode.Nodes.Add(nlevelNode);
+                    });
+                    roomNode.Nodes.Add(cabinetNode);
+                });
+                trvCreateSelectByRoom.Nodes.Add(roomNode);
+            });
         }
     }
 }

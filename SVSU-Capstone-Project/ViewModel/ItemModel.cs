@@ -11,6 +11,7 @@ namespace SVSU_Capstone_Project.ViewModel
     static class ItemModel
     {
         private static readonly InvDb db = new InvDb();
+        private static bool blnCommitHold = false;
 
         public static List<T> GetMany<T>( Func<T, bool> predicate, params string[] includes ) where T : ContextEntity
         {
@@ -42,11 +43,11 @@ namespace SVSU_Capstone_Project.ViewModel
             return parent;
         }
 
-        public static Guid Add<T>( T obj ) where T : ContextEntity
+        public static Guid Add<T>( T obj, out T item ) where T : ContextEntity
         {
             //Set tuid
             obj.uidTuid = Guid.NewGuid();
-            
+
             //Look for duplicate tuid
             while (Get<T>(x => x.uidTuid == obj.uidTuid) != null)
             {
@@ -54,26 +55,43 @@ namespace SVSU_Capstone_Project.ViewModel
                 obj.uidTuid = Guid.NewGuid();
             }
 
-            T objAdded = db.Set<T>().Add(obj);
-            db.SaveChanges();
+            item = db.Set<T>().Add(obj);
+            if (!blnCommitHold) db.SaveChanges();
 
             // return the tuid of the newly added object
-            return objAdded.uidTuid;
+            return item.uidTuid;
         }
+
+        public static Guid Add<T>( T obj ) where T : ContextEntity
+        {
+            return Add(obj, out T item);
+        }
+
 
         public static void Update<T>( T obj ) where T : ContextEntity
         {
-            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;            
-            db.SaveChanges();
+            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+            if (!blnCommitHold) db.SaveChanges();
         }
 
         public static void Delete<T>( T obj ) where T : ContextEntity
         {
             db.Set<T>().Remove(obj);
-            db.SaveChanges();
+            if (!blnCommitHold) db.SaveChanges();
         }
 
-        public static void UseItem( Storage objUsedFrom, User objUser, uint intQuantityChange, string strNotes )
+        public static void StartTransaction()
+        {
+            blnCommitHold = true;
+        }
+
+        public static int CommitTransaction()
+        {
+            blnCommitHold = false;
+            return db.SaveChanges();
+        }
+
+        public static bool UseItem( Storage objUsedFrom, User objUser, uint intQuantityChange, string strNotes )
         {
             if (objUsedFrom.objCommodity.enuCommodityType == ItemType.Consumable && objUsedFrom.intQuantity < intQuantityChange)
             {
@@ -91,9 +109,15 @@ namespace SVSU_Capstone_Project.ViewModel
             };
             // update quantity in cabinet
             objUsedFrom.intQuantity += objLog.intQuantityChange;
+
+            StartTransaction();
+            Add(objLog);
+            if (objUsedFrom.intQuantity == 0) Delete(objUsedFrom);
+            else Update(objUsedFrom);
+            return CommitTransaction() > 0;
         }
 
-        public static void RestockItem( Storage objUsedFrom, User objUser, uint intQuantityChange, string notes )
+        public static bool RestockItem( Storage objUsedFrom, User objUser, uint intQuantityChange, string notes )
         {
             // if item is not consumable, throw exception
             if (objUsedFrom.objCommodity.enuCommodityType != ItemType.Consumable)
@@ -113,11 +137,13 @@ namespace SVSU_Capstone_Project.ViewModel
             // update quantity in cabinet
             objUsedFrom.intQuantity += objLog.intQuantityChange;
 
+            StartTransaction();
             Add(objLog);
             Update(objUsedFrom);
+            return CommitTransaction() > 0;
         }
 
-        public static void MoveItem( Storage objMoveFrom, Storage objMoveTo, User objUser, uint intQuantityChange, string notes )
+        public static bool MoveItem( Storage objMoveFrom, Storage objMoveTo, User objUser, uint intQuantityChange, string notes )
         {
             // check quantity available
             if (objMoveFrom.objCommodity.enuCommodityType == ItemType.Consumable && objMoveFrom.intQuantity < intQuantityChange)
@@ -156,11 +182,13 @@ namespace SVSU_Capstone_Project.ViewModel
             objMoveTo.intQuantity += objLogTo.intQuantityChange;
 
             // add logs and update quantities
+            StartTransaction();
             Add(objLogFrom);
             Add(objLogTo);
             Update(objMoveTo);
             if (objMoveFrom.intQuantity == 0) Delete(objMoveFrom);
             else Update(objMoveFrom);
+            return CommitTransaction() > 0;
         }
     }
 }

@@ -5,13 +5,14 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    
     public class Cabinet : ContextEntity
-    {        
-        [Column("name")]
+    {
+        [Column("name"), MaxLength(255)]
         public string strName { get; set; }
         [Column("description")]
         public string strDescription { get; set; }
-       
+
         public virtual Room objRoom { get; set; }
         public virtual List<Storage> lstStorage { get; set; }
 

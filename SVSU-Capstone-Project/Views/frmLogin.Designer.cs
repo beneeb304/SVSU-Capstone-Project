@@ -38,8 +38,8 @@ namespace SVSU_Capstone_Project.Views
             this.btnCancel = new System.Windows.Forms.Button();
             this.erpLoginForm = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtSVSU_ID = new System.Windows.Forms.MaskedTextBox();
             this.btnBypass = new System.Windows.Forms.Button();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.erpLoginForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -60,9 +60,9 @@ namespace SVSU_Capstone_Project.Views
             this.lblUserName.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.Location = new System.Drawing.Point(8, 132);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(191, 24);
+            this.lblUserName.Size = new System.Drawing.Size(133, 24);
             this.lblUserName.TabIndex = 7;
-            this.lblUserName.Text = "SVSU ID (6 digits):";
+            this.lblUserName.Text = "SVSU Email:";
             // 
             // txtPassword
             // 
@@ -70,9 +70,8 @@ namespace SVSU_Capstone_Project.Views
             this.txtPassword.Location = new System.Drawing.Point(12, 249);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(326, 31);
+            this.txtPassword.Size = new System.Drawing.Size(311, 31);
             this.txtPassword.TabIndex = 2;
-            
             // 
             // btnLogin
             // 
@@ -110,20 +109,9 @@ namespace SVSU_Capstone_Project.Views
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
-            // txtSVSU_ID
-            // 
-            this.txtSVSU_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSVSU_ID.Location = new System.Drawing.Point(12, 159);
-            this.txtSVSU_ID.Mask = "000000";
-            this.txtSVSU_ID.Name = "txtSVSU_ID";
-            this.txtSVSU_ID.Size = new System.Drawing.Size(100, 31);
-            this.txtSVSU_ID.TabIndex = 1;
-            this.txtSVSU_ID.ValidatingType = typeof(int);
-            
-            // 
             // btnBypass
             // 
-            this.btnBypass.Location = new System.Drawing.Point(237, 176);
+            this.btnBypass.Location = new System.Drawing.Point(248, 196);
             this.btnBypass.Name = "btnBypass";
             this.btnBypass.Size = new System.Drawing.Size(75, 44);
             this.btnBypass.TabIndex = 14;
@@ -131,14 +119,22 @@ namespace SVSU_Capstone_Project.Views
             this.btnBypass.UseVisualStyleBackColor = true;
             this.btnBypass.Click += new System.EventHandler(this.btnBypass_Click);
             // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(12, 159);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(311, 31);
+            this.txtEmail.TabIndex = 1;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 476);
             this.ControlBox = false;
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.btnBypass);
-            this.Controls.Add(this.txtSVSU_ID);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
@@ -166,7 +162,7 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ErrorProvider erpLoginForm;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.MaskedTextBox txtSVSU_ID;
         private System.Windows.Forms.Button btnBypass;
+        internal System.Windows.Forms.TextBox txtEmail;
     }
 }

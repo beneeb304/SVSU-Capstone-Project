@@ -6,7 +6,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     public class Commodity : ContextEntity
     {
-        [Column("name")]
+        [Column("name"), Index(IsUnique = true), MaxLength(255)]
         public string strName { get; set; }
         [Column("description")]
         public string strDescription { get; set; }
@@ -15,14 +15,18 @@
         [Column("alert_quantity")]
         public int intAlert_quantity { get; set; }
         [Column("commodityType")]
-        public ItemType enuCommodityType { get; set; }
+        public ItemType enuCommodityType { get; set; }        
         public string strBarCode { get; set; }
+        [Column("costInCents")]
+        public int intCostInCents { get; set; }
+        [Column("itemUrl")]
+        public string strItemUrl { get; set; }
 
 
         //foreign keys       
         public virtual Category objCategory { get; set; }
         public virtual List<Storage> lstStorage { get; set; }
-        public virtual List<VendorItem> lstVendorItems { get; set; }
+        public virtual Vendor objVendor { get; set; }
         public virtual List<CheckedItem> lstCheckedItems { get; set; }
 
         // override tostring with strName

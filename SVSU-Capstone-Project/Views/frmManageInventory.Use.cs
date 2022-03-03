@@ -23,14 +23,31 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnUseCancel_Click( object sender, EventArgs e )
+        private void btnUseCancel_Click( object sender = null, EventArgs e = null )
         {
             //Clear all fields on Use tab
-            cmbUseCabinet.SelectedIndex = -1;
             cmbUseCategory.SelectedIndex = -1;
-            cmbUseCommodity.SelectedIndex = -1;
-            cmbUseNLevel.SelectedIndex = -1;
-            cmbUseRoom.SelectedIndex = -1;
+            nudUseDeduct.Value = 1;
+        }
+
+        private void btnUse_Click( object sender = null, EventArgs e = null )
+        {
+            //Check if all fields are filled out
+            if (cmbUseCategory.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please fill out all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            ItemModel.UseItem(ItemModel.Get<Storage>(x =>
+               x.objCabinet == (cmbUseCabinet.SelectedItem as Cabinet) &&
+               x.objCommodity == (cmbUseCommodity.SelectedItem as Commodity) &&
+               x.objNLevel == (cmbUseNLevel.SelectedItem as NLevel)),
+                Authentication.ActiveUser,
+                Convert.ToUInt32(nudUseDeduct.Value),
+                "Item Used via Manage Inventory Tab"
+            );
+            btnUseCancel_Click();
+
         }
 
         /* Function: cmbUseCategory_SelectedValueChanged
@@ -40,10 +57,9 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void cmbUseCategory_SelectedValueChanged( object sender, EventArgs e )
+        private void cmbUseCategory_SelectedValueChanged( object sender = null, EventArgs e = null )
         {
-            this.cmbUseCommodity.SelectedIndex = -1;
-            this.cmbUseCommodity.DataSource = (cmbUseCategory.SelectedItem as Category).lstCommodities.OrderBy(x => x.strName).ToList();
+            Category_SelectedValueChanged(cmbUseCategory, cmbUseCommodity);
         }
 
         /* Function: cmbUseCommodity_SelectedValueChanged
@@ -53,9 +69,14 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void cmbUseCommodity_SelectedValueChanged( object sender, EventArgs e )
+        private void cmbUseCommodity_SelectedValueChanged( object sender = null, EventArgs e = null )
         {
+            Commodity_SelectedValueChanged(cmbUseCommodity, cmbUseRoom);
+        }
 
+        private void cmbUseRoom_SelectedValueChanged( object sender = null, EventArgs e = null )
+        {
+            Room_SelectedValueChanged(cmbUseRoom, cmbUseCabinet, cmbUseCommodity);
         }
 
         /* Function: cmbUseCabinet_SelectedValueChanged
@@ -65,9 +86,26 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void cmbUseCabinet_SelectedValueChanged( object sender, EventArgs e )
+        private void cmbUseCabinet_SelectedValueChanged( object sender = null, EventArgs e = null )
         {
+            Cabinet_SelectedValueChanged(cmbUseCabinet, cmbUseCommodity, cmbUseNLevel);
+        }
 
+        private void cmbUseNLevel_SelectedValueChanged( object sender = null, EventArgs e = null )
+        {
+            NLevel_SelectedValueChanged(cmbUseCommodity, cmbUseCabinet, cmbUseNLevel, txtUseAvailable, nudUseDeduct, txtUseRemaining);
+        }
+
+        private void nudUseDeduct_ValueChanged( object sender = null, EventArgs e = null )
+        {
+            if(int.TryParse(txtUseAvailable.Text, out int available))
+            {
+                txtUseRemaining.Text = (available - nudUseDeduct.Value).ToString();
+            }
+            else{
+                txtUseRemaining.Text = "";
+            }
+            
         }
     }
 }

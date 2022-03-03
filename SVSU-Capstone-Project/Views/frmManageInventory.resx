@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Deletion of this commodity will log all inventory as disposed of and 
+will no longer be available to use.
+Below is a change report, please review below before proceeding. 
+This action is PERMENANT and cannot be reversed.</value>
+  </data>
 </root>

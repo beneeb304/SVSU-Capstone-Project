@@ -204,6 +204,7 @@
                 new Storage() { uidTuid = new Guid("aafaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), intQuantity = 3, objCabinet = context.dsCabinets.First(x => x.strName == "Floor Item" && x.objRoom.strName == "HE 516"), objCommodity = context.dsCommodities.First(x => x.strName == "Manual Exam Table"), objNLevel = context.dsNLevels.First(x => x.strName == "NP") }
             );
             //Create mock vendoritems data in the VendorItems table
+            /*
             context.dsVendorItems.AddOrUpdate(
                 new VendorItem() { uidTuid = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), intCostInCents = 25, objCommodity = context.dsCommodities.First(x => x.strName == "Non-Latex Gloves"), objVendor = context.dsVendors.First(x => x.strName == "Medline") },
                 new VendorItem() { uidTuid = new Guid("baaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), intCostInCents = 25, objCommodity = context.dsCommodities.First(x => x.strName == "Cotton Balls"), objVendor = context.dsVendors.First(x => x.strName == "Medline") },
@@ -222,6 +223,7 @@
                 new VendorItem() { uidTuid = new Guid("aaeaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), intCostInCents = 30, objCommodity = context.dsCommodities.First(x => x.strName == "N95 Particulate Respiratory and Surgical Mask"), objVendor = context.dsVendors.First(x => x.strName == "Medline") },
                 new VendorItem() { uidTuid = new Guid("aafaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), intCostInCents = 15000, objCommodity = context.dsCommodities.First(x => x.strName == "Manual Exam Table"), objVendor = context.dsVendors.First(x => x.strName == "Medline") }
             );
+            */
             context.SaveChanges();
             //Create mock logs data in the Logs table
             context.dsLogs.AddOrUpdate(

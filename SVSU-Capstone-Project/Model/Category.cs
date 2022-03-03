@@ -7,7 +7,7 @@
 
     public class Category : ContextEntity
     {
-        [Column("name")]
+        [Column("name"), Index(IsUnique = true), MaxLength(255)]
         public string strName { get; set; }
         [Column("description")]
         public string strDescription { get; set; }

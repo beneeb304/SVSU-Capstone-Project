@@ -93,6 +93,10 @@
     <Compile Include="InvDbDataSet.cs">
       <DependentUpon>InvDbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203022316526_uniqueIndexed.cs" />
+    <Compile Include="Migrations\202203022316526_uniqueIndexed.designer.cs">
+      <DependentUpon>202203022316526_uniqueIndexed.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Views\frmSetPassword.cs">
       <SubType>Form</SubType>
@@ -196,6 +200,9 @@
     </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203022316526_uniqueIndexed.resx">
+      <DependentUpon>202203022316526_uniqueIndexed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ActivityLog.rdlc" />
     <EmbeddedResource Include="Reports\DynamicItems.rdlc" />
