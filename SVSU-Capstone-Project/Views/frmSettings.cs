@@ -183,7 +183,7 @@ namespace SVSU_Capstone_Project.Views
                 }
 
                 //Clear fields
-                btnClearUser_Click(sender, e);
+                ClearUserFields();
             }
         }
 
@@ -200,50 +200,21 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnAddUser_Click( object sender, EventArgs e )
         {
-            if (txtUserEmail.Text.Length > 0)
-            {
-                try
-                {
-                    //Valid email
-                    MailAddress mailAddress = new MailAddress(txtUserEmail.Text);
+            //Disable buttons
+            btnUserUpload.Enabled = false;
+            btnUserModify.Enabled = false;
+            btnUserPassword.Enabled = false;
+            btnUserDelete.Enabled = false;
 
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                        txtUserEmail.Text + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Set user properties                        
-                        User user = new User
-                        {
-                            strSvsu_id = txtUserSVSUID.Text,
-                            strFirst_name = txtUserFName.Text,
-                            strLast_name = txtUserLName.Text,
-                            strEmail = mailAddress.ToString(),
-                            strPhone = txtUserPhone.Text,
-                            strHash = "Capstone2022",
-                            blnIsAdmin = chkUserAdmin.Checked
-                        };
+            //Show buttons
+            btnUserSave.Visible = true;
+            btnUserCancel.Visible = true;
 
-                        //Add user
-                        ItemModel.Add<User>(user);
+            //Enable fields
+            EnableDisableUserFields(true);
 
-                        //Alert user
-                        MessageBox.Show("Successful Add\r\n\r\n"
-                            + txtUserEmail.Text + " will be prompted to set their password on their fist login\r\n" +
-                            "Their temporary password is 'Capstone2022'", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid user information!", "Alert");
-                }
-
-                //Clear fields
-                btnClearUser_Click(sender, e);
-            }
+            //Clear fields
+            ClearUserFields();
         }
 
         /* Function: btnModifyUser_Click
@@ -258,55 +229,27 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyUser_Click( object sender, EventArgs e )
         {
-            //If a user is selected
-            if (lstUser.SelectedIndex >= 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                        lstUser.SelectedItem.ToString() + "'s user profile?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Get user
-                        User user = ItemModel.Get<User>(x => x.strEmail == lstUser.SelectedItem.ToString());
+            //Disable buttons
+            btnUserAdd.Enabled = false;
+            btnUserUpload.Enabled = false;
+            btnUserPassword.Enabled = false;
+            btnUserDelete.Enabled = false;
 
-                        //Modify user
-                        user.strSvsu_id = txtUserSVSUID.Text;
-                        user.strFirst_name = txtUserFName.Text;
-                        user.strLast_name = txtUserLName.Text;
-                        user.strEmail = txtUserEmail.Text;
-                        user.strPhone = txtUserPhone.Text;
-                        user.blnIsAdmin = chkUserAdmin.Checked;
+            //Show buttons
+            btnUserSave.Visible = true;
+            btnUserCancel.Visible = true;
 
-                        //Save user
-                        ItemModel.Update<User>(user);
+            //Enable fields
+            EnableDisableUserFields(true);
 
-                        //Alert user
-                        MessageBox.Show("Successful Modification", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
-                }
-
-                //Clear fields
-                btnClearUser_Click(sender, e);
-            }
+            //Clear fields
+            ClearUserFields();
         }
 
-        /* Function: btnClearUser_Click
+        /* Function: ClearUserFields
          * Description: Clears all fields in the user settings page.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearUser_Click( object sender, EventArgs e )
+        private void ClearUserFields()
         {
             //Clear fields
             txtUserSVSUID.Text = "";
@@ -371,7 +314,7 @@ namespace SVSU_Capstone_Project.Views
                 }
 
                 //Clear fields
-                btnClearUser_Click(sender, e);
+                ClearUserFields();
             }
         }
 
@@ -1366,7 +1309,7 @@ namespace SVSU_Capstone_Project.Views
             tbcSettings_SelectedIndexChanged(sender, e);
 
             //Clear fields
-            btnClearUser_Click(sender, e);
+            ClearUserFields();
         }
 
         /* Function: ReadCSVFile
@@ -1467,6 +1410,167 @@ namespace SVSU_Capstone_Project.Views
             {
                 MessageBox.Show("Successfully added " + intGoodCtr + " users from CSV file", "Success");
             }
+        }
+
+        private void EnableDisableUserFields(bool blnEnable)
+        {
+            if (blnEnable)
+            {
+                txtUserEmail.Enabled = true;
+                txtUserFName.Enabled = true;
+                txtUserLName.Enabled = true;
+                txtUserPhone.Enabled = true;
+                txtUserSVSUID.Enabled = true;
+                chkUserAdmin.Enabled = true;
+            }
+            else
+            {
+                txtUserEmail.Enabled = false;
+                txtUserFName.Enabled = false;
+                txtUserLName.Enabled = false;
+                txtUserPhone.Enabled = false;
+                txtUserSVSUID.Enabled = false;
+                chkUserAdmin.Enabled = false;
+            }
+        }
+
+        private void btnUserSave_Click( object sender, EventArgs e )
+        {
+            if (btnUserAdd.Enabled)
+            {
+                if (txtUserEmail.Text.Length > 0 && txtUserFName.Text.Length > 0 && txtUserLName.Text.Length > 0 && txtUserSVSUID.Text.Length > 0)
+                {
+                    try
+                    {
+                        //Valid email
+                        MailAddress mailAddress = new MailAddress(txtUserEmail.Text);
+
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                            txtUserEmail.Text + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Set user properties                        
+                            User user = new User
+                            {
+                                strSvsu_id = txtUserSVSUID.Text,
+                                strFirst_name = txtUserFName.Text,
+                                strLast_name = txtUserLName.Text,
+                                strEmail = mailAddress.ToString(),
+                                strPhone = txtUserPhone.Text,
+                                strHash = "Capstone2022",
+                                blnIsAdmin = chkUserAdmin.Checked
+                            };
+
+                            //Add user
+                            ItemModel.Add<User>(user);
+
+                            //Alert user
+                            MessageBox.Show("Successful Add\r\n\r\n"
+                                + txtUserEmail.Text + " will be prompted to set their password on their fist login\r\n" +
+                                "Their temporary password is 'Capstone2022'", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnUserSave.Visible = false;
+                            btnUserCancel.Visible = false;
+
+                            //Enable buttons
+                            btnUserUpload.Enabled = true;
+                            btnUserModify.Enabled = true;
+                            btnUserPassword.Enabled = true;
+                            btnUserDelete.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid user information!", "Alert");
+                    }
+
+                    //Clear fields
+                    ClearUserFields();
+
+                    //Disable fields
+                    EnableDisableUserFields(false);
+                }
+            }
+            else if (btnUserModify.Enabled)
+            {
+                //If a user is selected
+                if (lstUser.SelectedIndex >= 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstUser.SelectedItem.ToString() + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Get user
+                            User user = ItemModel.Get<User>(x => x.strEmail == lstUser.SelectedItem.ToString());
+
+                            //Modify user
+                            user.strSvsu_id = txtUserSVSUID.Text;
+                            user.strFirst_name = txtUserFName.Text;
+                            user.strLast_name = txtUserLName.Text;
+                            user.strEmail = txtUserEmail.Text;
+                            user.strPhone = txtUserPhone.Text;
+                            user.blnIsAdmin = chkUserAdmin.Checked;
+
+                            //Save user
+                            ItemModel.Update<User>(user);
+
+                            //Alert user
+                            MessageBox.Show("Successful Modification", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnUserSave.Visible = false;
+                            btnUserCancel.Visible = false;
+
+                            //Enable buttons
+                            btnUserAdd.Enabled = true;
+                            btnUserUpload.Enabled = true;
+                            btnUserPassword.Enabled = true;
+                            btnUserDelete.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
+                    }
+
+                    //Clear fields
+                    ClearUserFields();
+
+                    //Disable fields
+                    EnableDisableUserFields(false);
+                }
+            }
+        }
+
+        private void btnUserCancel_Click( object sender, EventArgs e )
+        {
+            //Hide buttons
+            btnUserSave.Visible = false;
+            btnUserCancel.Visible = false;
+
+            //Enable buttons
+            btnUserAdd.Enabled = true;
+            btnUserUpload.Enabled = true;
+            btnUserModify.Enabled = true;
+            btnUserPassword.Enabled = true;
+            btnUserDelete.Enabled = true;
+
+            //Clear fields
+            ClearUserFields();
+
+            //Disable fields
+            EnableDisableUserFields(false);
         }
     }
 }

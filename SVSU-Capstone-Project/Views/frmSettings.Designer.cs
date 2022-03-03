@@ -31,7 +31,8 @@ namespace SVSU_Capstone_Project.Views
         {
             this.tbcSettings = new System.Windows.Forms.TabControl();
             this.tbpUsers = new System.Windows.Forms.TabPage();
-            this.btnUpload = new System.Windows.Forms.Button();
+            this.btnUserSave = new System.Windows.Forms.Button();
+            this.btnUserUpload = new System.Windows.Forms.Button();
             this.btnUserPassword = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtUserPhone = new System.Windows.Forms.TextBox();
@@ -42,12 +43,11 @@ namespace SVSU_Capstone_Project.Views
             this.label7 = new System.Windows.Forms.Label();
             this.txtUserLName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnClearUser = new System.Windows.Forms.Button();
             this.chkUserAdmin = new System.Windows.Forms.CheckBox();
-            this.btnModifyUser = new System.Windows.Forms.Button();
+            this.btnUserModify = new System.Windows.Forms.Button();
             this.txtUserFName = new System.Windows.Forms.TextBox();
-            this.btnDeleteUser = new System.Windows.Forms.Button();
-            this.btnAddUser = new System.Windows.Forms.Button();
+            this.btnUserDelete = new System.Windows.Forms.Button();
+            this.btnUserAdd = new System.Windows.Forms.Button();
             this.lstUser = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbpRooms = new System.Windows.Forms.TabPage();
@@ -109,6 +109,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnDeleteNLevel = new System.Windows.Forms.Button();
             this.lstNLevel = new System.Windows.Forms.ListBox();
             this.label28 = new System.Windows.Forms.Label();
+            this.btnUserCancel = new System.Windows.Forms.Button();
             this.tbcSettings.SuspendLayout();
             this.tbpUsers.SuspendLayout();
             this.tbpRooms.SuspendLayout();
@@ -136,7 +137,9 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpUsers
             // 
-            this.tbpUsers.Controls.Add(this.btnUpload);
+            this.tbpUsers.Controls.Add(this.btnUserCancel);
+            this.tbpUsers.Controls.Add(this.btnUserSave);
+            this.tbpUsers.Controls.Add(this.btnUserUpload);
             this.tbpUsers.Controls.Add(this.btnUserPassword);
             this.tbpUsers.Controls.Add(this.label9);
             this.tbpUsers.Controls.Add(this.txtUserPhone);
@@ -147,12 +150,11 @@ namespace SVSU_Capstone_Project.Views
             this.tbpUsers.Controls.Add(this.label7);
             this.tbpUsers.Controls.Add(this.txtUserLName);
             this.tbpUsers.Controls.Add(this.label6);
-            this.tbpUsers.Controls.Add(this.btnClearUser);
             this.tbpUsers.Controls.Add(this.chkUserAdmin);
-            this.tbpUsers.Controls.Add(this.btnModifyUser);
+            this.tbpUsers.Controls.Add(this.btnUserModify);
             this.tbpUsers.Controls.Add(this.txtUserFName);
-            this.tbpUsers.Controls.Add(this.btnDeleteUser);
-            this.tbpUsers.Controls.Add(this.btnAddUser);
+            this.tbpUsers.Controls.Add(this.btnUserDelete);
+            this.tbpUsers.Controls.Add(this.btnUserAdd);
             this.tbpUsers.Controls.Add(this.lstUser);
             this.tbpUsers.Controls.Add(this.label3);
             this.tbpUsers.Location = new System.Drawing.Point(4, 25);
@@ -163,27 +165,40 @@ namespace SVSU_Capstone_Project.Views
             this.tbpUsers.Text = "Users";
             this.tbpUsers.UseVisualStyleBackColor = true;
             // 
-            // btnUpload
+            // btnUserSave
             // 
-            this.btnUpload.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnUpload.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpload.Location = new System.Drawing.Point(432, 311);
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(188, 40);
-            this.btnUpload.TabIndex = 126;
-            this.btnUpload.Text = "Student Upload";
-            this.btnUpload.UseVisualStyleBackColor = true;
-            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            this.btnUserSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUserSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserSave.Location = new System.Drawing.Point(679, 29);
+            this.btnUserSave.Name = "btnUserSave";
+            this.btnUserSave.Size = new System.Drawing.Size(210, 40);
+            this.btnUserSave.TabIndex = 127;
+            this.btnUserSave.Text = "Save User";
+            this.btnUserSave.UseVisualStyleBackColor = true;
+            this.btnUserSave.Visible = false;
+            this.btnUserSave.Click += new System.EventHandler(this.btnUserSave_Click);
+            // 
+            // btnUserUpload
+            // 
+            this.btnUserUpload.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUserUpload.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserUpload.Location = new System.Drawing.Point(463, 29);
+            this.btnUserUpload.Name = "btnUserUpload";
+            this.btnUserUpload.Size = new System.Drawing.Size(210, 40);
+            this.btnUserUpload.TabIndex = 126;
+            this.btnUserUpload.Text = "Mass Upload Students";
+            this.btnUserUpload.UseVisualStyleBackColor = true;
+            this.btnUserUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // btnUserPassword
             // 
             this.btnUserPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserPassword.Location = new System.Drawing.Point(626, 311);
+            this.btnUserPassword.Location = new System.Drawing.Point(463, 167);
             this.btnUserPassword.Name = "btnUserPassword";
-            this.btnUserPassword.Size = new System.Drawing.Size(188, 40);
+            this.btnUserPassword.Size = new System.Drawing.Size(210, 40);
             this.btnUserPassword.TabIndex = 125;
-            this.btnUserPassword.Text = "Change Password";
+            this.btnUserPassword.Text = "Reset Password";
             this.btnUserPassword.UseVisualStyleBackColor = true;
             this.btnUserPassword.Click += new System.EventHandler(this.btnUserPassword_Click);
             // 
@@ -191,160 +206,154 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(463, 199);
+            this.label9.Location = new System.Drawing.Point(225, 211);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 16);
+            this.label9.Size = new System.Drawing.Size(52, 16);
             this.label9.TabIndex = 122;
             this.label9.Text = "Phone:";
             // 
             // txtUserPhone
             // 
+            this.txtUserPhone.Enabled = false;
             this.txtUserPhone.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserPhone.Location = new System.Drawing.Point(554, 196);
+            this.txtUserPhone.Location = new System.Drawing.Point(225, 230);
             this.txtUserPhone.Name = "txtUserPhone";
-            this.txtUserPhone.Size = new System.Drawing.Size(100, 22);
+            this.txtUserPhone.Size = new System.Drawing.Size(183, 22);
             this.txtUserPhone.TabIndex = 5;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(463, 170);
+            this.label10.Location = new System.Drawing.Point(225, 167);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 16);
+            this.label10.Size = new System.Drawing.Size(47, 16);
             this.label10.TabIndex = 120;
             this.label10.Text = "Email:";
             // 
             // txtUserEmail
             // 
+            this.txtUserEmail.Enabled = false;
             this.txtUserEmail.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserEmail.Location = new System.Drawing.Point(554, 167);
+            this.txtUserEmail.Location = new System.Drawing.Point(228, 186);
             this.txtUserEmail.Name = "txtUserEmail";
-            this.txtUserEmail.Size = new System.Drawing.Size(100, 22);
+            this.txtUserEmail.Size = new System.Drawing.Size(183, 22);
             this.txtUserEmail.TabIndex = 4;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(463, 83);
+            this.label8.Location = new System.Drawing.Point(225, 32);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 16);
+            this.label8.Size = new System.Drawing.Size(64, 16);
             this.label8.TabIndex = 118;
             this.label8.Text = "SVSU ID:";
             // 
             // txtUserSVSUID
             // 
+            this.txtUserSVSUID.Enabled = false;
             this.txtUserSVSUID.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserSVSUID.Location = new System.Drawing.Point(554, 80);
+            this.txtUserSVSUID.Location = new System.Drawing.Point(228, 51);
             this.txtUserSVSUID.Name = "txtUserSVSUID";
-            this.txtUserSVSUID.Size = new System.Drawing.Size(100, 22);
+            this.txtUserSVSUID.Size = new System.Drawing.Size(183, 22);
             this.txtUserSVSUID.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(463, 141);
+            this.label7.Location = new System.Drawing.Point(225, 121);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 16);
+            this.label7.Size = new System.Drawing.Size(78, 16);
             this.label7.TabIndex = 116;
             this.label7.Text = "Last Name:";
             // 
             // txtUserLName
             // 
+            this.txtUserLName.Enabled = false;
             this.txtUserLName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserLName.Location = new System.Drawing.Point(554, 138);
+            this.txtUserLName.Location = new System.Drawing.Point(225, 140);
             this.txtUserLName.Name = "txtUserLName";
-            this.txtUserLName.Size = new System.Drawing.Size(100, 22);
+            this.txtUserLName.Size = new System.Drawing.Size(183, 22);
             this.txtUserLName.TabIndex = 3;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(463, 112);
+            this.label6.Location = new System.Drawing.Point(225, 76);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 16);
+            this.label6.Size = new System.Drawing.Size(79, 16);
             this.label6.TabIndex = 114;
             this.label6.Text = "First Name:";
-            // 
-            // btnClearUser
-            // 
-            this.btnClearUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClearUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearUser.Location = new System.Drawing.Point(432, 357);
-            this.btnClearUser.Name = "btnClearUser";
-            this.btnClearUser.Size = new System.Drawing.Size(188, 40);
-            this.btnClearUser.TabIndex = 10;
-            this.btnClearUser.Text = "Clear";
-            this.btnClearUser.UseVisualStyleBackColor = true;
-            this.btnClearUser.Click += new System.EventHandler(this.btnClearUser_Click);
             // 
             // chkUserAdmin
             // 
             this.chkUserAdmin.AutoSize = true;
+            this.chkUserAdmin.Enabled = false;
             this.chkUserAdmin.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkUserAdmin.Location = new System.Drawing.Point(554, 224);
+            this.chkUserAdmin.Location = new System.Drawing.Point(225, 258);
             this.chkUserAdmin.Name = "chkUserAdmin";
-            this.chkUserAdmin.Size = new System.Drawing.Size(76, 20);
+            this.chkUserAdmin.Size = new System.Drawing.Size(75, 20);
             this.chkUserAdmin.TabIndex = 7;
             this.chkUserAdmin.Text = "Admin?";
             this.chkUserAdmin.UseVisualStyleBackColor = true;
             // 
-            // btnModifyUser
+            // btnUserModify
             // 
-            this.btnModifyUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnModifyUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifyUser.Location = new System.Drawing.Point(626, 265);
-            this.btnModifyUser.Name = "btnModifyUser";
-            this.btnModifyUser.Size = new System.Drawing.Size(188, 40);
-            this.btnModifyUser.TabIndex = 9;
-            this.btnModifyUser.Text = "Modify";
-            this.btnModifyUser.UseVisualStyleBackColor = true;
-            this.btnModifyUser.Click += new System.EventHandler(this.btnModifyUser_Click);
+            this.btnUserModify.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUserModify.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserModify.Location = new System.Drawing.Point(463, 121);
+            this.btnUserModify.Name = "btnUserModify";
+            this.btnUserModify.Size = new System.Drawing.Size(210, 40);
+            this.btnUserModify.TabIndex = 9;
+            this.btnUserModify.Text = "Modify User";
+            this.btnUserModify.UseVisualStyleBackColor = true;
+            this.btnUserModify.Click += new System.EventHandler(this.btnModifyUser_Click);
             // 
             // txtUserFName
             // 
+            this.txtUserFName.Enabled = false;
             this.txtUserFName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserFName.Location = new System.Drawing.Point(554, 109);
+            this.txtUserFName.Location = new System.Drawing.Point(228, 95);
             this.txtUserFName.Name = "txtUserFName";
-            this.txtUserFName.Size = new System.Drawing.Size(100, 22);
+            this.txtUserFName.Size = new System.Drawing.Size(183, 22);
             this.txtUserFName.TabIndex = 2;
             // 
-            // btnDeleteUser
+            // btnUserDelete
             // 
-            this.btnDeleteUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDeleteUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteUser.Location = new System.Drawing.Point(186, 324);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(210, 40);
-            this.btnDeleteUser.TabIndex = 12;
-            this.btnDeleteUser.Text = "Delete Selected User";
-            this.btnDeleteUser.UseVisualStyleBackColor = true;
-            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            this.btnUserDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUserDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserDelete.Location = new System.Drawing.Point(463, 213);
+            this.btnUserDelete.Name = "btnUserDelete";
+            this.btnUserDelete.Size = new System.Drawing.Size(210, 40);
+            this.btnUserDelete.TabIndex = 12;
+            this.btnUserDelete.Text = "Delete User";
+            this.btnUserDelete.UseVisualStyleBackColor = true;
+            this.btnUserDelete.Click += new System.EventHandler(this.btnDeleteUser_Click);
             // 
-            // btnAddUser
+            // btnUserAdd
             // 
-            this.btnAddUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUser.Location = new System.Drawing.Point(432, 265);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(188, 40);
-            this.btnAddUser.TabIndex = 8;
-            this.btnAddUser.Text = "Add";
-            this.btnAddUser.UseVisualStyleBackColor = true;
-            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            this.btnUserAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUserAdd.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserAdd.Location = new System.Drawing.Point(463, 75);
+            this.btnUserAdd.Name = "btnUserAdd";
+            this.btnUserAdd.Size = new System.Drawing.Size(210, 40);
+            this.btnUserAdd.TabIndex = 8;
+            this.btnUserAdd.Text = "Add a User";
+            this.btnUserAdd.UseVisualStyleBackColor = true;
+            this.btnUserAdd.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // lstUser
             // 
             this.lstUser.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstUser.FormattingEnabled = true;
             this.lstUser.ItemHeight = 16;
-            this.lstUser.Location = new System.Drawing.Point(186, 61);
+            this.lstUser.Location = new System.Drawing.Point(10, 29);
             this.lstUser.Margin = new System.Windows.Forms.Padding(2);
             this.lstUser.Name = "lstUser";
-            this.lstUser.Size = new System.Drawing.Size(210, 244);
+            this.lstUser.Size = new System.Drawing.Size(210, 372);
             this.lstUser.TabIndex = 11;
             this.lstUser.SelectedIndexChanged += new System.EventHandler(this.lstUser_SelectedIndexChanged);
             // 
@@ -353,7 +362,7 @@ namespace SVSU_Capstone_Project.Views
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(182, 35);
+            this.label3.Location = new System.Drawing.Point(6, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 22);
             this.label3.TabIndex = 102;
@@ -422,7 +431,7 @@ namespace SVSU_Capstone_Project.Views
             this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(462, 127);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(124, 16);
+            this.label12.Size = new System.Drawing.Size(123, 16);
             this.label12.TabIndex = 104;
             this.label12.Text = "Room Description:";
             // 
@@ -441,7 +450,7 @@ namespace SVSU_Capstone_Project.Views
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(462, 77);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 16);
+            this.label4.Size = new System.Drawing.Size(89, 16);
             this.label4.TabIndex = 102;
             this.label4.Text = "Room Name:";
             // 
@@ -552,7 +561,7 @@ namespace SVSU_Capstone_Project.Views
             this.label15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(462, 127);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(136, 16);
+            this.label15.Size = new System.Drawing.Size(135, 16);
             this.label15.TabIndex = 123;
             this.label15.Text = "Cabinet Description:";
             // 
@@ -571,7 +580,7 @@ namespace SVSU_Capstone_Project.Views
             this.label16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(462, 77);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(102, 16);
+            this.label16.Size = new System.Drawing.Size(101, 16);
             this.label16.TabIndex = 121;
             this.label16.Text = "Cabinet Name:";
             // 
@@ -699,7 +708,7 @@ namespace SVSU_Capstone_Project.Views
             this.label19.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(463, 127);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(144, 16);
+            this.label19.Size = new System.Drawing.Size(143, 16);
             this.label19.TabIndex = 123;
             this.label19.Text = "Category Description:";
             // 
@@ -718,7 +727,7 @@ namespace SVSU_Capstone_Project.Views
             this.label20.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(462, 77);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(110, 16);
+            this.label20.Size = new System.Drawing.Size(109, 16);
             this.label20.TabIndex = 121;
             this.label20.Text = "Category Name:";
             // 
@@ -793,7 +802,7 @@ namespace SVSU_Capstone_Project.Views
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(625, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 16);
+            this.label2.Size = new System.Drawing.Size(80, 16);
             this.label2.TabIndex = 136;
             this.label2.Text = "Homepage:";
             // 
@@ -847,7 +856,7 @@ namespace SVSU_Capstone_Project.Views
             this.label22.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(463, 127);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(132, 16);
+            this.label22.Size = new System.Drawing.Size(131, 16);
             this.label22.TabIndex = 134;
             this.label22.Text = "Vendor Description:";
             // 
@@ -866,7 +875,7 @@ namespace SVSU_Capstone_Project.Views
             this.label23.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(462, 77);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(98, 16);
+            this.label23.Size = new System.Drawing.Size(97, 16);
             this.label23.TabIndex = 132;
             this.label23.Text = "Vendor Name:";
             // 
@@ -975,7 +984,7 @@ namespace SVSU_Capstone_Project.Views
             this.label26.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(463, 127);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(135, 16);
+            this.label26.Size = new System.Drawing.Size(134, 16);
             this.label26.TabIndex = 145;
             this.label26.Text = "N-Level Description:";
             // 
@@ -994,7 +1003,7 @@ namespace SVSU_Capstone_Project.Views
             this.label27.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(463, 77);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(101, 16);
+            this.label27.Size = new System.Drawing.Size(100, 16);
             this.label27.TabIndex = 143;
             this.label27.Text = "N-Level Name:";
             // 
@@ -1041,6 +1050,19 @@ namespace SVSU_Capstone_Project.Views
             this.label28.TabIndex = 139;
             this.label28.Text = "N-Level";
             // 
+            // btnUserCancel
+            // 
+            this.btnUserCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUserCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserCancel.Location = new System.Drawing.Point(679, 75);
+            this.btnUserCancel.Name = "btnUserCancel";
+            this.btnUserCancel.Size = new System.Drawing.Size(210, 40);
+            this.btnUserCancel.TabIndex = 128;
+            this.btnUserCancel.Text = "Cancel";
+            this.btnUserCancel.UseVisualStyleBackColor = true;
+            this.btnUserCancel.Visible = false;
+            this.btnUserCancel.Click += new System.EventHandler(this.btnUserCancel_Click);
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1082,13 +1104,12 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.ComboBox cmbRoom;
         private System.Windows.Forms.TextBox txtRoomName;
         private System.Windows.Forms.TextBox txtUserFName;
-        private System.Windows.Forms.Button btnDeleteUser;
-        private System.Windows.Forms.Button btnAddUser;
+        private System.Windows.Forms.Button btnUserDelete;
+        private System.Windows.Forms.Button btnUserAdd;
         private System.Windows.Forms.ListBox lstUser;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnModifyUser;
+        private System.Windows.Forms.Button btnUserModify;
         private System.Windows.Forms.CheckBox chkUserAdmin;
-        private System.Windows.Forms.Button btnClearUser;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtUserLName;
@@ -1147,6 +1168,8 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Button btnUserPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtVendorHomepage;
-        private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.Button btnUserUpload;
+        private System.Windows.Forms.Button btnUserSave;
+        private System.Windows.Forms.Button btnUserCancel;
     }
 }
