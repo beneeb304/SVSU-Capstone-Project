@@ -50,10 +50,19 @@ namespace SVSU_Capstone_Project
             //Make sure passwords match
             if (txtPassword.Text.Equals(txtRetypePassword.Text))
             {
-                //Get hash
-                strHash = Authentication.GenerateHash(txtPassword.Text);
-                DialogResult = DialogResult.OK;
-                Close();
+                if(txtPassword.Text.Length >= 8)
+                {
+                    //Get hash
+                    strHash = Authentication.GenerateHash(txtPassword.Text);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    txtPassword.Text = "";
+                    txtRetypePassword.Text = "";
+                    MessageBox.Show("Password must be at least 8 characters in length!", "Alert");
+                }
             }
             else
             {
