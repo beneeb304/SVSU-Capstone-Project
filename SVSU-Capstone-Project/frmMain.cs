@@ -178,8 +178,10 @@ namespace SVSU_Capstone_Project
          */
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            //Restart the program
-            Application.Restart();
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to log out?", "Alert", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+                //Restart the program
+                Application.Restart();
         }
     }
 }
