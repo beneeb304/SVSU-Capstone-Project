@@ -54,14 +54,14 @@
 
             //Create mock Vendor data in the dsVendors table
             context.dsVendors.AddOrUpdate(
-                new Vendor() { uidTuid = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Amazon", strDescription = "www.amazon.com" },
-                new Vendor() { uidTuid = new Guid("baaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Binsons", strDescription = "www.binsons.com" },
-                new Vendor() { uidTuid = new Guid("caaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "McKesson", strDescription = "www.mckesson.com" },
-                new Vendor() { uidTuid = new Guid("daaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "SafeChain", strDescription = "www.safechain.com" },
-                new Vendor() { uidTuid = new Guid("bbaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Walgreens", strDescription = "www.walgreens.com" },
-                new Vendor() { uidTuid = new Guid("faaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Walmart", strDescription = "www.walmart.com" },
-                new Vendor() { uidTuid = new Guid("aababaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "GTSimulators", strDescription = "gtsimulators.com" },
-                new Vendor() { uidTuid = new Guid("accaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Medline", strDescription = "medline.com" }
+                new Vendor() { uidTuid = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Amazon", strHomepage = "www.amazon.com" },
+                new Vendor() { uidTuid = new Guid("baaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Binsons", strHomepage = "www.binsons.com" },
+                new Vendor() { uidTuid = new Guid("caaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "McKesson", strHomepage = "www.mckesson.com" },
+                new Vendor() { uidTuid = new Guid("daaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "SafeChain", strHomepage = "www.safechain.com" },
+                new Vendor() { uidTuid = new Guid("bbaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Walgreens", strHomepage = "www.walgreens.com" },
+                new Vendor() { uidTuid = new Guid("faaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Walmart", strHomepage = "www.walmart.com" },
+                new Vendor() { uidTuid = new Guid("aababaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "GTSimulators", strHomepage = "gtsimulators.com" },
+                new Vendor() { uidTuid = new Guid("accaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), strName = "Medline", strHomepage = "medline.com" }
             );
 
             //Create mock NLevel data in the dsNLevels table

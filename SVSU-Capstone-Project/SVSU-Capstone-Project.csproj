@@ -97,6 +97,10 @@
     <Compile Include="Migrations\202203022316526_uniqueIndexed.designer.cs">
       <DependentUpon>202203022316526_uniqueIndexed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203031348379_foreignKeyFix.cs" />
+    <Compile Include="Migrations\202203031348379_foreignKeyFix.designer.cs">
+      <DependentUpon>202203031348379_foreignKeyFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Views\frmSetPassword.cs">
       <SubType>Form</SubType>
@@ -203,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203022316526_uniqueIndexed.resx">
       <DependentUpon>202203022316526_uniqueIndexed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203031348379_foreignKeyFix.resx">
+      <DependentUpon>202203031348379_foreignKeyFix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ActivityLog.rdlc" />
     <EmbeddedResource Include="Reports\DynamicItems.rdlc" />
