@@ -38,15 +38,9 @@ namespace SVSU_Capstone_Project.Views
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvCommodity = new System.Windows.Forms.DataGridView();
             this.dgvDetails = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbNLevel = new System.Windows.Forms.ComboBox();
-            this.lblNLevel = new System.Windows.Forms.Label();
-            this.cmbRoom = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.grbFilterFields.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCommodity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetails)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblViewInventory
@@ -179,71 +173,9 @@ namespace SVSU_Capstone_Project.Views
             this.dgvDetails.TabIndex = 44;
             this.dgvDetails.TabStop = false;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cmbNLevel);
-            this.groupBox1.Controls.Add(this.lblNLevel);
-            this.groupBox1.Controls.Add(this.cmbRoom);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(462, 62);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(375, 83);
-            this.groupBox1.TabIndex = 47;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // cmbNLevel
-            // 
-            this.cmbNLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.cmbNLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbNLevel.FormattingEnabled = true;
-            this.cmbNLevel.Location = new System.Drawing.Point(145, 48);
-            this.cmbNLevel.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbNLevel.Name = "cmbNLevel";
-            this.cmbNLevel.Size = new System.Drawing.Size(84, 26);
-            this.cmbNLevel.TabIndex = 49;
-            // 
-            // lblNLevel
-            // 
-            this.lblNLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lblNLevel.AutoSize = true;
-            this.lblNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNLevel.Location = new System.Drawing.Point(141, 25);
-            this.lblNLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNLevel.Name = "lblNLevel";
-            this.lblNLevel.Size = new System.Drawing.Size(73, 19);
-            this.lblNLevel.TabIndex = 50;
-            this.lblNLevel.Text = "N-Level:";
-            // 
-            // cmbRoom
-            // 
-            this.cmbRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.cmbRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbRoom.FormattingEnabled = true;
-            this.cmbRoom.Location = new System.Drawing.Point(17, 50);
-            this.cmbRoom.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbRoom.Name = "cmbRoom";
-            this.cmbRoom.Size = new System.Drawing.Size(106, 26);
-            this.cmbRoom.TabIndex = 47;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 27);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 19);
-            this.label2.TabIndex = 51;
-            this.label2.Text = "Room:";
-            // 
             // frmViewInventory
             // 
             this.ClientSize = new System.Drawing.Size(955, 453);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvDetails);
             this.Controls.Add(this.lblViewInventory);
             this.Controls.Add(this.btnPrintBarcode);
@@ -259,8 +191,6 @@ namespace SVSU_Capstone_Project.Views
             this.grbFilterFields.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCommodity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetails)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,10 +213,5 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvDetails;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cmbNLevel;
-        private System.Windows.Forms.Label lblNLevel;
-        private System.Windows.Forms.ComboBox cmbRoom;
-        private System.Windows.Forms.Label label2;
     }
 }
