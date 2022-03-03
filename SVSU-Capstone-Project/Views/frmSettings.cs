@@ -35,7 +35,7 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearRoom_Click(object sender, EventArgs e)
+        private void btnClearRoom_Click( object sender, EventArgs e )
         {
             //Clear fields
             txtRoomDescription.Text = "";
@@ -50,7 +50,7 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearCabinet_Click(object sender, EventArgs e)
+        private void btnClearCabinet_Click( object sender, EventArgs e )
         {
             //Clear fields
             txtCabinetDescription.Text = "";
@@ -66,7 +66,7 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearCategory_Click(object sender, EventArgs e)
+        private void btnClearCategory_Click( object sender, EventArgs e )
         {
             //Clear fields
             txtCategoryDescription.Text = "";
@@ -81,7 +81,7 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearVendor_Click(object sender, EventArgs e)
+        private void btnClearVendor_Click( object sender, EventArgs e )
         {
             //Clear fields
             txtVendorDescription.Text = "";
@@ -97,7 +97,7 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearNLevel_Click(object sender, EventArgs e)
+        private void btnClearNLevel_Click( object sender, EventArgs e )
         {
             //Clear fields
             txtNLevelDescription.Text = "";
@@ -112,7 +112,7 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void tbcSettings_SelectedIndexChanged(object sender, EventArgs e)
+        private void tbcSettings_SelectedIndexChanged( object sender, EventArgs e )
         {
             switch (tbcSettings.SelectedTab.Name)
             {
@@ -152,10 +152,10 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox to confirm the deletion of a user.
          * User user; Represents the user being deleted from the database.
          */
-        private void btnDeleteUser_Click(object sender, EventArgs e)
+        private void btnDeleteUser_Click( object sender, EventArgs e )
         {
             //If a user is selected
-            if(lstUser.SelectedIndex >= 0)
+            if (lstUser.SelectedIndex >= 0)
             {
                 try
                 {
@@ -177,7 +177,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch(Exception ex)
+                catch
                 {
                     MessageBox.Show("Delete failed!", "Alert");
                 }
@@ -198,9 +198,9 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox to confirm the new user addition.
          * User user; Represents the new user being added to the database.
          */
-        private void btnAddUser_Click(object sender, EventArgs e)
+        private void btnAddUser_Click( object sender, EventArgs e )
         {
-            if(txtUserEmail.Text.Length > 0)
+            if (txtUserEmail.Text.Length > 0)
             {
                 try
                 {
@@ -231,16 +231,16 @@ namespace SVSU_Capstone_Project.Views
                         MessageBox.Show("Successful Add\r\n\r\n"
                             + txtUserEmail.Text + " will be prompted to set their password on their fist login\r\n" +
                             "Their temporary password is 'Capstone2022'", "Alert");
-                        
+
                         //Refresh list
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid user information!", "Alert");
                 }
-                
+
                 //Clear fields
                 btnClearUser_Click(sender, e);
             }
@@ -256,7 +256,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox to confirm the user modification.
          * User user; Represents the user being modified in the database.
          */
-        private void btnModifyUser_Click(object sender, EventArgs e)
+        private void btnModifyUser_Click( object sender, EventArgs e )
         {
             //If a user is selected
             if (lstUser.SelectedIndex >= 0)
@@ -289,7 +289,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch(Exception ex)
+                catch
                 {
                     MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
                 }
@@ -306,7 +306,7 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearUser_Click(object sender, EventArgs e)
+        private void btnClearUser_Click( object sender, EventArgs e )
         {
             //Clear fields
             txtUserSVSUID.Text = "";
@@ -328,7 +328,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox to confirm the password change.
          * User user; Represents the user being modified in the database.
          */
-        private void btnUserPassword_Click(object sender, EventArgs e)
+        private void btnUserPassword_Click( object sender, EventArgs e )
         {
             //If a user is selected
             if (lstUser.SelectedIndex >= 0)
@@ -365,7 +365,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch(Exception ex)
+                catch
                 {
                     MessageBox.Show("Password reset failed!", "Alert");
                 }
@@ -464,7 +464,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch(Exception ex)
+                catch
                 {
                     MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid room information!", "Alert");
                 }
@@ -486,7 +486,7 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnAddRoom_Click( object sender, EventArgs e )
         {
-            if(txtRoomName.Text.Length > 0)
+            if (txtRoomName.Text.Length > 0)
             {
                 try
                 {
@@ -501,7 +501,7 @@ namespace SVSU_Capstone_Project.Views
                             strDescription = txtRoomDescription.Text,
                             strName = txtRoomName.Text
                         };
-                        
+
                         //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
 
                         //Add room
@@ -514,7 +514,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid room information!", "Alert");
                 }
@@ -573,7 +573,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch(Exception ex)
+                catch
                 {
                     MessageBox.Show("Delete failed!", "Alert");
                 }
@@ -595,7 +595,7 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnAddCategory_Click( object sender, EventArgs e )
         {
-            if(txtCategoryName.Text.Length > 0)
+            if (txtCategoryName.Text.Length > 0)
             {
                 try
                 {
@@ -623,7 +623,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid category information!", "Alert");
                 }
@@ -674,7 +674,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid category information!", "Alert");
                 }
@@ -733,7 +733,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Delete failed!", "Alert");
                 }
@@ -837,7 +837,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Delete failed!", "Alert");
                 }
@@ -888,7 +888,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid vendor information!", "Alert");
                 }
@@ -938,9 +938,9 @@ namespace SVSU_Capstone_Project.Views
 
                         //Refresh list
                         tbcSettings_SelectedIndexChanged(sender, e);
-                    }       
+                    }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid vendor information!", "Alert");
                 }
@@ -1012,7 +1012,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid N-Level information!", "Alert");
                 }
@@ -1063,7 +1063,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid N-Level information!", "Alert");
                 }
@@ -1122,7 +1122,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Delete failed!", "Alert");
                 }
@@ -1211,7 +1211,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
                 }
@@ -1263,7 +1263,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
                 }
@@ -1298,11 +1298,11 @@ namespace SVSU_Capstone_Project.Views
                     if (result == DialogResult.Yes)
                     {
                         //Get cabinet
-                        Cabinet cabinet = ItemModel.Get<Cabinet>(x => x.strName == lstCabinet.SelectedItem.ToString() && 
+                        Cabinet cabinet = ItemModel.Get<Cabinet>(x => x.strName == lstCabinet.SelectedItem.ToString() &&
                             x.objRoom.strName == cmbRoom.SelectedItem.ToString());
 
                         //Check if cabinet has any commodities
-                        Storage storage = ItemModel.Get<Storage>(x => x.objCabinet.strName.ToString() == lstCabinet.SelectedItem.ToString() 
+                        Storage storage = ItemModel.Get<Storage>(x => x.objCabinet.strName.ToString() == lstCabinet.SelectedItem.ToString()
                             && x.objCabinet.objRoom.strName == cmbRoom.Text);
 
                         //If cabinet items exist, alert user and cancel. Otherwise, delete n-level
@@ -1324,7 +1324,7 @@ namespace SVSU_Capstone_Project.Views
                         tbcSettings_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Delete failed!", "Alert");
                 }
@@ -1356,7 +1356,7 @@ namespace SVSU_Capstone_Project.Views
             };
 
             //Show dialog
-            if(fd.ShowDialog() == DialogResult.OK)
+            if (fd.ShowDialog() == DialogResult.OK)
             {
                 //Read file
                 UploadStudents(ReadCSVFile(fd.FileName));
@@ -1377,7 +1377,7 @@ namespace SVSU_Capstone_Project.Views
          * List<string[]> lstRows; Holds the list read from the file to be uploaded.
          * TextFieldParser parser; Reads the information from the uploaded file to the List.
          */
-        private List<string[]> ReadCSVFile(string strPath)
+        private List<string[]> ReadCSVFile( string strPath )
         {
             //List to hold row data
             List<string[]> lstRows = new List<string[]>();
@@ -1388,7 +1388,7 @@ namespace SVSU_Capstone_Project.Views
                 TextFieldParser parser = new TextFieldParser(strPath);
                 parser.TextFieldType = FieldType.Delimited;
                 parser.SetDelimiters(",");
-                
+
                 while (!parser.EndOfData)
                 {
                     //Add to list
@@ -1403,12 +1403,12 @@ namespace SVSU_Capstone_Project.Views
 
                 DialogResult result = MessageBox.Show("Attempting to add " + lstRows.Count + " students from CSV file\r\n\r\nContinue?",
                     "Alert", MessageBoxButtons.OKCancel);
-                if(result == DialogResult.Cancel)
+                if (result == DialogResult.Cancel)
                 {
                     lstRows.Clear();
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Error reading CSV file", "Error");
             }
@@ -1424,7 +1424,7 @@ namespace SVSU_Capstone_Project.Views
          * int intBadCtr, intGoodctr; Counts the amount of invalid and valid uploaded users respectively.
          * User user; Passes the uploaded information as an object to the database.
          */
-        private void UploadStudents(List<string[]> lstRows)
+        private void UploadStudents( List<string[]> lstRows )
         {
             int intBadCtr = 0, intGoodCtr = 0;
 

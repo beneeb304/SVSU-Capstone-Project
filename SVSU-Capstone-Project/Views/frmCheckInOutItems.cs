@@ -233,7 +233,7 @@ namespace SVSU_Capstone_Project.Views
                         cmbCommodity_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Please ensure that all fields are filled in!", "Alert");
                 }
