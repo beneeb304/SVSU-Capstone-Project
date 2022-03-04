@@ -28,14 +28,10 @@ namespace SVSU_Capstone_Project.Views
             tbcSettings_SelectedIndexChanged(null, null);
         }
 
-        /* Function: btnClearRoom_Click
+        /* Function: ClearRoomFields
          * Description: Clears all fields on the room settings page.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearRoom_Click( object sender, EventArgs e )
+        private void ClearRoomFields()
         {
             //Clear fields
             txtRoomDescription.Text = "";
@@ -43,14 +39,10 @@ namespace SVSU_Capstone_Project.Views
             lstRoom.SelectedIndex = -1;
         }
 
-        /* Function: btnClearCabinet_Click
+        /* Function: ClearCabinetFields
          * Description: Clears all fields on the cabinet settings page.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearCabinet_Click( object sender, EventArgs e )
+        private void ClearCabinetFields()
         {
             //Clear fields
             txtCabinetDescription.Text = "";
@@ -378,43 +370,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyRoom_Click( object sender, EventArgs e )
         {
-            //If a room is selected
-            if (lstRoom.SelectedIndex >= 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                        lstRoom.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Get room
-                        Room room = ItemModel.Get<Room>(x => x.strName == lstRoom.SelectedItem.ToString());
+            //Disable buttons
+            btnRoomAdd.Enabled = false;
+            btnRoomDelete.Enabled = false;
 
-                        //Modify room
-                        room.strName = txtRoomName.Text;
-                        room.strDescription = txtRoomDescription.Text;
+            //Show buttons
+            btnRoomCancel.Visible = true;
+            btnRoomSave.Visible = true;
 
-                        //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+            //Enable fields
+            EnableDisableRoomFields(true);
 
-                        //Save room
-                        ItemModel.Update<Room>(room);
-
-                        //Alert user
-                        MessageBox.Show("Successful Modification", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid room information!", "Alert");
-                }
-
-                //Clear fields
-                btnClearRoom_Click(sender, e);
-            }
+            //Clear fields
+            ClearRoomFields();
         }
 
         /* Function: btnAddRoom_Click
@@ -429,42 +397,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnAddRoom_Click( object sender, EventArgs e )
         {
-            if (txtRoomName.Text.Length > 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                        txtRoomName.Text + " as a new room?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Set room properties                        
-                        Room room = new Room
-                        {
-                            strDescription = txtRoomDescription.Text,
-                            strName = txtRoomName.Text
-                        };
+            //Disable buttons
+            btnRoomDelete.Enabled = false;
+            btnRoomModify.Enabled = false;
 
-                        //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+            //Show buttons
+            btnRoomCancel.Visible = true;
+            btnRoomSave.Visible = true;
 
-                        //Add room
-                        ItemModel.Add<Room>(room);
+            //Enable fields
+            EnableDisableRoomFields(true);
 
-                        //Alert user
-                        MessageBox.Show("Successful Add", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid room information!", "Alert");
-                }
-
-                //Clear fields
-                btnClearRoom_Click(sender, e);
-            }
+            //Clear fields
+            ClearRoomFields();
         }
 
         /* Function: btnDeleteRoom_Click
@@ -522,7 +467,7 @@ namespace SVSU_Capstone_Project.Views
                 }
 
                 //Clear fields
-                btnClearRoom_Click(sender, e);
+                ClearRoomFields();
             }
         }
 
@@ -1125,43 +1070,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnAddCabinet_Click( object sender, EventArgs e )
         {
-            if (txtCabinetName.Text.Length > 0 && cmbRoom.SelectedItem.ToString().Length > 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                        txtCabinetName.Text + " as a new cabinet for " + cmbRoom.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Set cabinet properties                        
-                        Cabinet cabinet = new Cabinet()
-                        {
-                            strDescription = txtCabinetDescription.Text,
-                            strName = txtCabinetName.Text,
-                            objRoom = ItemModel.Get<Room>(x => x.strName == cmbRoom.SelectedItem.ToString())
-                        };
+            //Disable buttons
+            btnCabinetDelete.Enabled = false;
+            btnCabinetModify.Enabled = false;
 
-                        //NEED TO CHECK FOR DUPLICATE CABINETS IN THIS ROOM BEFORE ADDING
+            //Show buttons
+            btnCabinetCancel.Visible = true;
+            btnCabinetSave.Visible = true;
 
-                        //Add cabinet
-                        ItemModel.Add<Cabinet>(cabinet);
+            //Enable fields
+            EnableDisableCabinetFields(true);
 
-                        //Alert user
-                        MessageBox.Show("Successful Add", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
-                }
-
-                //Clear controls
-                btnClearCabinet_Click(sender, e);
-            }
+            //Clear fields
+            ClearCabinetFields();
         }
 
         /* Function: btnModifyCabinet_Click
@@ -1176,44 +1097,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyCabinet_Click( object sender, EventArgs e )
         {
-            //If a cabinet is selected
-            if (lstCabinet.SelectedIndex >= 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                        lstCabinet.SelectedItem.ToString() + " in " + cmbRoom.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Get cabinet
-                        Cabinet cabinet = ItemModel.Get<Cabinet>(x => x.strName == lstCabinet.SelectedItem.ToString() &&
-                            x.objRoom.strName == cmbRoom.SelectedItem.ToString());
+            //Disable buttons
+            btnCabinetAdd.Enabled = false;
+            btnCabinetDelete.Enabled = false;
 
-                        //Modify cabinet
-                        cabinet.strName = txtCabinetName.Text;
-                        cabinet.strDescription = txtCabinetDescription.Text;
+            //Show buttons
+            btnCabinetCancel.Visible = true;
+            btnCabinetSave.Visible = true;
 
-                        //NEED TO CHECK FOR DUPLICATE CABINETS IN THIS ROOM BEFORE MODIFYING
+            //Enable fields
+            EnableDisableCabinetFields(true);
 
-                        //Save cabinet
-                        ItemModel.Update<Cabinet>(cabinet);
-
-                        //Alert user
-                        MessageBox.Show("Successful Modification", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
-                }
-
-                //Clear fields
-                btnClearCabinet_Click(sender, e);
-            }
+            //Clear fields
+            ClearCabinetFields();
         }
 
         /* Function: btnDeleteCabinet_Click
@@ -1273,7 +1169,7 @@ namespace SVSU_Capstone_Project.Views
                 }
 
                 //Clear fields
-                btnClearCabinet_Click(sender, e);
+                ClearCabinetFields();
             }
         }
 
@@ -1434,6 +1330,34 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        private void EnableDisableRoomFields(bool blnEnable )
+        {
+            if (blnEnable)
+            {
+                txtRoomDescription.Enabled = true;
+                txtRoomName.Enabled = true;
+            }
+            else
+            {
+                txtRoomDescription.Enabled = false;
+                txtRoomName.Enabled = false;
+            }
+        }
+
+        private void EnableDisableCabinetFields( bool blnEnable )
+        {
+            if (blnEnable)
+            {
+                txtCabinetDescription.Enabled = true;
+                txtCabinetName.Enabled = true;
+            }
+            else
+            {
+                txtCabinetDescription.Enabled = false;
+                txtCabinetName.Enabled = false;
+            }
+        }
+
         private void btnUserSave_Click( object sender, EventArgs e )
         {
             if (btnUserAdd.Enabled)
@@ -1571,6 +1495,258 @@ namespace SVSU_Capstone_Project.Views
 
             //Disable fields
             EnableDisableUserFields(false);
+        }
+
+        private void btnRoomSave_Click( object sender, EventArgs e )
+        {
+            if (btnRoomAdd.Enabled)
+            {
+                if (txtRoomName.Text.Length > 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                            txtRoomName.Text + " as a new room?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Set room properties                        
+                            Room room = new Room
+                            {
+                                strDescription = txtRoomDescription.Text,
+                                strName = txtRoomName.Text
+                            };
+
+                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+
+                            //Add room
+                            ItemModel.Add<Room>(room);
+
+                            //Alert user
+                            MessageBox.Show("Successful Add", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnRoomSave.Visible = false;
+                            btnRoomCancel.Visible = false;
+
+                            //Enable buttons
+                            btnRoomAdd.Enabled = true;
+                            btnRoomDelete.Enabled = true;
+                            btnRoomModify.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid room information!", "Alert");
+                    }
+
+                    //Clear fields
+                    ClearRoomFields();
+
+                    //Disable fields
+                    EnableDisableRoomFields(false);
+                }
+            }
+            else if (btnRoomModify.Enabled)
+            {
+                //If a room is selected
+                if (lstRoom.SelectedIndex >= 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Get room
+                            Room room = ItemModel.Get<Room>(x => x.strName == lstRoom.SelectedItem.ToString());
+
+                            //Modify room
+                            room.strName = txtRoomName.Text;
+                            room.strDescription = txtRoomDescription.Text;
+
+                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+
+                            //Save room
+                            ItemModel.Update<Room>(room);
+
+                            //Alert user
+                            MessageBox.Show("Successful Modification", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnRoomSave.Visible = false;
+                            btnRoomCancel.Visible = false;
+
+                            //Enable buttons
+                            btnRoomAdd.Enabled = true;
+                            btnRoomDelete.Enabled = true;
+                            btnRoomModify.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid room information!", "Alert");
+                    }
+
+                    //Clear fields
+                    ClearRoomFields();
+
+                    //Disable fields
+                    EnableDisableRoomFields(false);
+                }
+            }
+        }
+
+        private void btnRoomCancel_Click( object sender, EventArgs e )
+        {
+            //Hide buttons
+            btnRoomSave.Visible = false;
+            btnRoomCancel.Visible = false;
+
+            //Enable buttons
+            btnRoomAdd.Enabled = true;
+            btnRoomDelete.Enabled = true;
+            btnRoomModify.Enabled = true;
+
+            //Clear fields
+            ClearRoomFields();
+
+            //Disable fields
+            EnableDisableRoomFields(false);
+        }
+
+        private void btnCabinetSave_Click( object sender, EventArgs e )
+        {
+            if (btnCabinetAdd.Enabled)
+            {
+                if (txtCabinetName.Text.Length > 0 && cmbRoom.Text.Length > 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                            txtCabinetName.Text + " as a new cabinet for " + cmbRoom.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Set cabinet properties                        
+                            Cabinet cabinet = new Cabinet()
+                            {
+                                strDescription = txtCabinetDescription.Text,
+                                strName = txtCabinetName.Text,
+                                objRoom = ItemModel.Get<Room>(x => x.strName == cmbRoom.SelectedItem.ToString())
+                            };
+
+                            //NEED TO CHECK FOR DUPLICATE CABINETS IN THIS ROOM BEFORE ADDING
+
+                            //Add cabinet
+                            ItemModel.Add<Cabinet>(cabinet);
+
+                            //Alert user
+                            MessageBox.Show("Successful Add", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnCabinetSave.Visible = false;
+                            btnCabinetCancel.Visible = false;
+
+                            //Enable buttons
+                            btnCabinetAdd.Enabled = true;
+                            btnCabinetDelete.Enabled = true;
+                            btnCabinetModify.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
+                    }
+
+                    //Clear controls
+                    ClearCabinetFields();
+
+                    //Disable fields
+                    EnableDisableCabinetFields(false);
+                }
+            }
+            else if (btnCabinetModify.Enabled)
+            {
+                //If a cabinet is selected
+                if (lstCabinet.SelectedIndex >= 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstCabinet.SelectedItem.ToString() + " in " + cmbRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Get cabinet
+                            Cabinet cabinet = ItemModel.Get<Cabinet>(x => x.strName == lstCabinet.SelectedItem.ToString() &&
+                                x.objRoom.strName == cmbRoom.SelectedItem.ToString());
+
+                            //Modify cabinet
+                            cabinet.strName = txtCabinetName.Text;
+                            cabinet.strDescription = txtCabinetDescription.Text;
+
+                            //NEED TO CHECK FOR DUPLICATE CABINETS IN THIS ROOM BEFORE MODIFYING
+
+                            //Save cabinet
+                            ItemModel.Update<Cabinet>(cabinet);
+
+                            //Alert user
+                            MessageBox.Show("Successful Modification", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnCabinetSave.Visible = false;
+                            btnCabinetCancel.Visible = false;
+
+                            //Enable buttons
+                            btnCabinetAdd.Enabled = true;
+                            btnCabinetDelete.Enabled = true;
+                            btnCabinetModify.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
+                    }
+
+                    //Clear fields
+                    ClearCabinetFields();
+
+                    //Disable fields
+                    EnableDisableCabinetFields(false);
+                }
+            }
+        }
+
+        private void btnCabinetCancel_Click( object sender, EventArgs e )
+        {
+            //Hide buttons
+            btnCabinetCancel.Visible = false;
+            btnCabinetSave.Visible = false;
+
+            //Enable buttons
+            btnCabinetAdd.Enabled = true;
+            btnCabinetDelete.Enabled = true;
+            btnCabinetModify.Enabled = true;
+
+            //Clear fields
+            ClearCabinetFields();
+
+            //Disable fields
+            EnableDisableCabinetFields(false);
         }
     }
 }
