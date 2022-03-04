@@ -51,14 +51,10 @@ namespace SVSU_Capstone_Project.Views
             lstCabinet.DataSource = null;
         }
 
-        /* Function: btnClearCategory_Click
+        /* Function: ClearCategoryFields
          * Description: Clears all fields on the category settings page.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearCategory_Click( object sender, EventArgs e )
+        private void ClearCategoryFields()
         {
             //Clear fields
             txtCategoryDescription.Text = "";
@@ -66,14 +62,10 @@ namespace SVSU_Capstone_Project.Views
             lstCategory.SelectedIndex = -1;
         }
 
-        /* Function: btnClearVendor_Click
+        /* Function: ClearVendorFields
          * Description: Clears all fields on the vendor settings page.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearVendor_Click( object sender, EventArgs e )
+        private void ClearVendorFields()
         {
             //Clear fields
             txtVendorDescription.Text = "";
@@ -84,12 +76,8 @@ namespace SVSU_Capstone_Project.Views
 
         /* Function: btnClearNLevel_Click
          * Description: Clears all fields on the NLevel settings page.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void btnClearNLevel_Click( object sender, EventArgs e )
+        private void ClearNLevelFields()
         {
             //Clear fields
             txtNLevelDescription.Text = "";
@@ -483,42 +471,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnAddCategory_Click( object sender, EventArgs e )
         {
-            if (txtCategoryName.Text.Length > 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                        txtCategoryName.Text + " as a new category?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Set room properties                        
-                        Category category = new Category()
-                        {
-                            strDescription = txtCategoryDescription.Text,
-                            strName = txtCategoryName.Text
-                        };
+            //Disable buttons
+            btnCategoryDelete.Enabled = false;
+            btnCategoryModify.Enabled = false;
 
-                        //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+            //Show buttons
+            btnCategoryCancel.Visible = true;
+            btnCategorySave.Visible = true;
 
-                        //Add cabinet
-                        ItemModel.Add<Category>(category);
+            //Enable fields
+            EnableDisableCategoryFields(true);
 
-                        //Alert user
-                        MessageBox.Show("Successful Add", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid category information!", "Alert");
-                }
-
-                //Clear fields
-                btnClearCategory_Click(sender, e);
-            }
+            //Clear fields
+            ClearCategoryFields();
         }
 
         /* Function: btnModifyCategory_Click
@@ -533,43 +498,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyCategory_Click( object sender, EventArgs e )
         {
-            //If a category is selected
-            if (lstCategory.SelectedIndex >= 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                        lstCategory.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Get category
-                        Category category = ItemModel.Get<Category>(x => x.strName == lstCategory.SelectedItem.ToString());
+            //Disable buttons
+            btnCategoryAdd.Enabled = false;
+            btnCategoryDelete.Enabled = false;
 
-                        //Modify category
-                        category.strName = txtCategoryName.Text;
-                        category.strDescription = txtCategoryDescription.Text;
+            //Show buttons
+            btnCategoryCancel.Visible = true;
+            btnCategorySave.Visible = true;
 
-                        //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+            //Enable fields
+            EnableDisableCategoryFields(true);
 
-                        //Save category
-                        ItemModel.Update<Category>(category);
-
-                        //Alert user
-                        MessageBox.Show("Successful Modification", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid category information!", "Alert");
-                }
-
-                //Clear fields
-                btnClearCategory_Click(sender, e);
-            }
+            //Clear fields
+            ClearCategoryFields();
         }
 
         /* Function: btnDeleteCategory_Click
@@ -627,7 +568,7 @@ namespace SVSU_Capstone_Project.Views
                 }
 
                 //Clear fields
-                btnClearCategory_Click(sender, e);
+                ClearCategoryFields();
             }
         }
 
@@ -703,23 +644,11 @@ namespace SVSU_Capstone_Project.Views
                         //Get vendor
                         Vendor vendor = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
 
-                        //Check if vendor has any vendor items
-                        VendorItem vItem = ItemModel.Get<VendorItem>(x => x.objVendor.strName.ToString() == lstVendor.SelectedItem.ToString());
+                        //Remove vendor
+                        ItemModel.Delete<Vendor>(vendor);
 
-                        //If vendor items exist, alert user and cancel. Otherwise, delete vendor
-                        if (vItem == null)
-                        {
-                            //Remove vendor
-                            ItemModel.Delete<Vendor>(vendor);
-
-                            //Alert user
-                            MessageBox.Show("Successful Deletion", "Alert");
-                        }
-                        else
-                        {
-                            //Alert user
-                            MessageBox.Show("Vendor contains commodities. Remove them before attempting deletion", "Alert");
-                        }
+                        //Alert user
+                        MessageBox.Show("Successful Deletion", "Alert");
 
                         //Refresh list
                         tbcSettings_SelectedIndexChanged(sender, e);
@@ -731,7 +660,7 @@ namespace SVSU_Capstone_Project.Views
                 }
 
                 //Clear fields
-                btnClearCategory_Click(sender, e);
+                ClearVendorFields();
             }
         }
 
@@ -747,43 +676,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnAddVendor_Click( object sender, EventArgs e )
         {
-            if (txtVendorName.Text.Length > 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                        txtVendorName.Text + " as a new vendor?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Set room properties                        
-                        Vendor vendor = new Vendor()
-                        {
-                            strDescription = txtVendorDescription.Text,
-                            strName = txtVendorName.Text,
-                            strHomepage = txtVendorHomepage.Text
-                        };
+            //Disable buttons
+            btnVendorDelete.Enabled = false;
+            btnVendorModify.Enabled = false;
 
-                        //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+            //Show buttons
+            btnVendorCancel.Visible = true;
+            btnVendorSave.Visible = true;
 
-                        //Add vendor
-                        ItemModel.Add<Vendor>(vendor);
+            //Enable fields
+            EnableDisableVendorFields(true);
 
-                        //Alert user
-                        MessageBox.Show("Successful Add", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid vendor information!", "Alert");
-                }
-
-                //Clear controls
-                btnClearVendor_Click(sender, e);
-            }
+            //Clear fields
+            ClearVendorFields();
         }
 
         /* Function: btnModifyVendor_Click
@@ -798,44 +703,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyVendor_Click( object sender, EventArgs e )
         {
-            //If a vendor is selected
-            if (lstVendor.SelectedIndex >= 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                        lstVendor.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Get vendor
-                        Vendor vendor = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
+            //Disable buttons
+            btnVendorAdd.Enabled = false;
+            btnVendorDelete.Enabled = false;
 
-                        //Modify category
-                        vendor.strName = txtVendorName.Text;
-                        vendor.strDescription = txtVendorDescription.Text;
-                        vendor.strHomepage = txtVendorHomepage.Text;
+            //Show buttons
+            btnVendorCancel.Visible = true;
+            btnVendorSave.Visible = true;
 
-                        //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+            //Enable fields
+            EnableDisableVendorFields(true);
 
-                        //Save vendor
-                        ItemModel.Update<Vendor>(vendor);
-
-                        //Alert user
-                        MessageBox.Show("Successful Modification", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid vendor information!", "Alert");
-                }
-
-                //Clear fields
-                btnClearVendor_Click(sender, e);
-            }
+            //Clear fields
+            ClearVendorFields();
         }
 
         /* Function: lstNLevel_SelectedIndexChanged
@@ -872,42 +752,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnAddNLevel_Click( object sender, EventArgs e )
         {
-            if (txtNLevelName.Text.Length > 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                        txtNLevelName.Text + " as a new N-Level?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Set n-level properties                        
-                        NLevel nLevel = new NLevel()
-                        {
-                            strDescription = txtNLevelDescription.Text,
-                            strName = txtNLevelName.Text
-                        };
+            //Disable buttons
+            btnNLevelDelete.Enabled = false;
+            btnNLevelModify.Enabled = false;
 
-                        //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+            //Show buttons
+            btnNLevelCancel.Visible = true;
+            btnNLevelSave.Visible = true;
 
-                        //Add n-level
-                        ItemModel.Add<NLevel>(nLevel);
+            //Enable fields
+            EnableDisableNLevelFields(true);
 
-                        //Alert user
-                        MessageBox.Show("Successful Add", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid N-Level information!", "Alert");
-                }
-
-                //Clear controls
-                btnClearNLevel_Click(sender, e);
-            }
+            //Clear fields
+            ClearNLevelFields();
         }
 
         /* Function: btnModifyNLevel_Click
@@ -922,43 +779,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyNLevel_Click( object sender, EventArgs e )
         {
-            //If a n-level is selected
-            if (lstNLevel.SelectedIndex >= 0)
-            {
-                try
-                {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                        lstNLevel.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Get n-level
-                        NLevel nLevel = ItemModel.Get<NLevel>(x => x.strName == lstNLevel.SelectedItem.ToString());
+            //Disable buttons
+            btnNLevelAdd.Enabled = false;
+            btnNLevelDelete.Enabled = false;
 
-                        //Modify n-level
-                        nLevel.strName = txtNLevelName.Text;
-                        nLevel.strDescription = txtNLevelDescription.Text;
+            //Show buttons
+            btnNLevelCancel.Visible = true;
+            btnNLevelSave.Visible = true;
 
-                        //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+            //Enable fields
+            EnableDisableNLevelFields(true);
 
-                        //Save n-level
-                        ItemModel.Update<NLevel>(nLevel);
-
-                        //Alert user
-                        MessageBox.Show("Successful Modification", "Alert");
-
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid N-Level information!", "Alert");
-                }
-
-                //Clear fields
-                btnClearNLevel_Click(sender, e);
-            }
+            //Clear fields
+            ClearNLevelFields();
         }
 
         /* Function: btnDeleteNLevel_Click
@@ -1016,7 +849,7 @@ namespace SVSU_Capstone_Project.Views
                 }
 
                 //Clear fields
-                btnClearNLevel_Click(sender, e);
+                ClearNLevelFields();
             }
         }
 
@@ -1355,6 +1188,50 @@ namespace SVSU_Capstone_Project.Views
             {
                 txtCabinetDescription.Enabled = false;
                 txtCabinetName.Enabled = false;
+            }
+        }
+
+        private void EnableDisableCategoryFields( bool blnEnable )
+        {
+            if (blnEnable)
+            {
+                txtCategoryDescription.Enabled = true;
+                txtCategoryName.Enabled = true;
+            }
+            else
+            {
+                txtCategoryDescription.Enabled = false;
+                txtCategoryName.Enabled = false;
+            }
+        }
+
+        private void EnableDisableVendorFields( bool blnEnable )
+        {
+            if (blnEnable)
+            {
+                txtVendorDescription.Enabled = true;
+                txtVendorName.Enabled = true;
+                txtVendorHomepage.Enabled = true;
+            }
+            else
+            {
+                txtVendorDescription.Enabled = false;
+                txtVendorName.Enabled = false;
+                txtVendorHomepage.Enabled = false;
+            }
+        }
+
+        private void EnableDisableNLevelFields( bool blnEnable )
+        {
+            if (blnEnable)
+            {
+                txtNLevelDescription.Enabled = true;
+                txtNLevelName.Enabled = true;
+            }
+            else
+            {
+                txtNLevelDescription.Enabled = false;
+                txtNLevelName.Enabled = false;
             }
         }
 
@@ -1747,6 +1624,383 @@ namespace SVSU_Capstone_Project.Views
 
             //Disable fields
             EnableDisableCabinetFields(false);
+        }
+
+        private void btnCategorySave_Click( object sender, EventArgs e )
+        {
+            if (btnCategoryAdd.Enabled)
+            {
+                if (txtCategoryName.Text.Length > 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                            txtCategoryName.Text + " as a new category?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Set room properties                        
+                            Category category = new Category()
+                            {
+                                strDescription = txtCategoryDescription.Text,
+                                strName = txtCategoryName.Text
+                            };
+
+                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+
+                            //Add cabinet
+                            ItemModel.Add<Category>(category);
+
+                            //Alert user
+                            MessageBox.Show("Successful Add", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnCategorySave.Visible = false;
+                            btnCategoryCancel.Visible = false;
+
+                            //Enable buttons
+                            btnCategoryAdd.Enabled = true;
+                            btnCategoryDelete.Enabled = true;
+                            btnCategoryModify.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid category information!", "Alert");
+                    }
+
+                    //Clear fields
+                    ClearCategoryFields();
+
+                    //Disable fields
+                    EnableDisableCategoryFields(false);
+                }
+            }
+            else if (btnCategoryModify.Enabled)
+            {
+                //If a category is selected
+                if (lstCategory.SelectedIndex >= 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstCategory.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Get category
+                            Category category = ItemModel.Get<Category>(x => x.strName == lstCategory.SelectedItem.ToString());
+
+                            //Modify category
+                            category.strName = txtCategoryName.Text;
+                            category.strDescription = txtCategoryDescription.Text;
+
+                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+
+                            //Save category
+                            ItemModel.Update<Category>(category);
+
+                            //Alert user
+                            MessageBox.Show("Successful Modification", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnCategorySave.Visible = false;
+                            btnCategoryCancel.Visible = false;
+
+                            //Enable buttons
+                            btnCategoryAdd.Enabled = true;
+                            btnCategoryDelete.Enabled = true;
+                            btnCategoryModify.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid category information!", "Alert");
+                    }
+
+                    //Clear fields
+                    ClearCategoryFields();
+
+                    //Disable fields
+                    EnableDisableCategoryFields(false);
+                }
+            }
+        }
+
+        private void btnCategoryCancel_Click( object sender, EventArgs e )
+        {
+            //Hide buttons
+            btnCategorySave.Visible = false;
+            btnCategoryCancel.Visible = false;
+
+            //Enable buttons
+            btnCategoryAdd.Enabled = true;
+            btnCategoryDelete.Enabled = true;
+            btnCategoryModify.Enabled = true;
+
+            //Clear fields
+            ClearCategoryFields();
+
+            //Disable fields
+            EnableDisableCategoryFields(false);
+        }
+
+        private void btnVendorSave_Click( object sender, EventArgs e )
+        {
+            if (btnVendorAdd.Enabled)
+            {
+                if (txtVendorName.Text.Length > 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                            txtVendorName.Text + " as a new vendor?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Set room properties
+                            Vendor vendor = new Vendor()
+                            {
+                                strDescription = txtVendorDescription.Text,
+                                strName = txtVendorName.Text,
+                                strHomepage = txtVendorHomepage.Text
+                            };
+
+                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+
+                            //Add vendor
+                            ItemModel.Add<Vendor>(vendor);
+
+                            //Alert user
+                            MessageBox.Show("Successful Add", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnVendorSave.Visible = false;
+                            btnVendorCancel.Visible = false;
+
+                            //Enable buttons
+                            btnVendorAdd.Enabled = true;
+                            btnVendorDelete.Enabled = true;
+                            btnVendorModify.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid vendor information!", "Alert");
+                    }
+
+                    //Clear controls
+                    ClearVendorFields();
+
+                    //Disable fields
+                    EnableDisableVendorFields(false);
+                }
+            }
+            else if (btnVendorModify.Enabled)
+            {
+                //If a vendor is selected
+                if (lstVendor.SelectedIndex >= 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstVendor.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Get vendor
+                            Vendor vendor = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
+
+                            //Modify category
+                            vendor.strName = txtVendorName.Text;
+                            vendor.strDescription = txtVendorDescription.Text;
+                            vendor.strHomepage = txtVendorHomepage.Text;
+
+                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+
+                            //Save vendor
+                            ItemModel.Update<Vendor>(vendor);
+
+                            //Alert user
+                            MessageBox.Show("Successful Modification", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnVendorSave.Visible = false;
+                            btnVendorCancel.Visible = false;
+
+                            //Enable buttons
+                            btnVendorAdd.Enabled = true;
+                            btnVendorDelete.Enabled = true;
+                            btnVendorModify.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid vendor information!", "Alert");
+                    }
+
+                    //Clear fields
+                    ClearVendorFields();
+
+                    //Disable fields
+                    EnableDisableVendorFields(false);
+                }
+            }
+        }
+
+        private void btnVendorCancel_Click( object sender, EventArgs e )
+        {
+            //Hide buttons
+            btnVendorSave.Visible = false;
+            btnVendorCancel.Visible = false;
+
+            //Enable buttons
+            btnVendorAdd.Enabled = true;
+            btnVendorDelete.Enabled = true;
+            btnVendorModify.Enabled = true;
+
+            //Clear fields
+            ClearVendorFields();
+
+            //Disable fields
+            EnableDisableVendorFields(false);
+        }
+
+        private void btnNLevelSave_Click( object sender, EventArgs e )
+        {
+            if (btnNLevelAdd.Enabled)
+            {
+                if (txtNLevelName.Text.Length > 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                            txtNLevelName.Text + " as a new N-Level?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Set n-level properties                        
+                            NLevel nLevel = new NLevel()
+                            {
+                                strDescription = txtNLevelDescription.Text,
+                                strName = txtNLevelName.Text
+                            };
+
+                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+
+                            //Add n-level
+                            ItemModel.Add<NLevel>(nLevel);
+
+                            //Alert user
+                            MessageBox.Show("Successful Add", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnNLevelSave.Visible = false;
+                            btnNLevelCancel.Visible = false;
+
+                            //Enable buttons
+                            btnNLevelAdd.Enabled = true;
+                            btnNLevelDelete.Enabled = true;
+                            btnNLevelModify.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid N-Level information!", "Alert");
+                    }
+
+                    //Clear controls
+                    ClearNLevelFields();
+
+                    //Disable fields
+                    EnableDisableNLevelFields(false);
+                }
+            }
+            else if (btnNLevelModify.Enabled)
+            {
+                //If a n-level is selected
+                if (lstNLevel.SelectedIndex >= 0)
+                {
+                    try
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstNLevel.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Get n-level
+                            NLevel nLevel = ItemModel.Get<NLevel>(x => x.strName == lstNLevel.SelectedItem.ToString());
+
+                            //Modify n-level
+                            nLevel.strName = txtNLevelName.Text;
+                            nLevel.strDescription = txtNLevelDescription.Text;
+
+                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+
+                            //Save n-level
+                            ItemModel.Update<NLevel>(nLevel);
+
+                            //Alert user
+                            MessageBox.Show("Successful Modification", "Alert");
+
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+
+                            //Hide buttons
+                            btnNLevelSave.Visible = false;
+                            btnNLevelCancel.Visible = false;
+
+                            //Enable buttons
+                            btnNLevelAdd.Enabled = true;
+                            btnNLevelDelete.Enabled = true;
+                            btnNLevelModify.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid N-Level information!", "Alert");
+                    }
+
+                    //Clear fields
+                    ClearNLevelFields();
+
+                    //Disable fields
+                    EnableDisableNLevelFields(false);
+                }
+            }
+        }
+
+        private void btnNLevelCancel_Click( object sender, EventArgs e )
+        {
+            //Hide buttons
+            btnNLevelSave.Visible = false;
+            btnNLevelCancel.Visible = false;
+
+            //Enable buttons
+            btnNLevelAdd.Enabled = true;
+            btnNLevelDelete.Enabled = true;
+            btnNLevelModify.Enabled = true;
+
+            //Clear fields
+            ClearNLevelFields();
+
+            //Disable fields
+            EnableDisableNLevelFields(false);
         }
     }
 }
