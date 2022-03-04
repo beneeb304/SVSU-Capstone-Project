@@ -288,5 +288,10 @@ namespace SVSU_Capstone_Project.Views
         {
             cmbAssetsStudents.Enabled = true;
         }
+
+        public void scannedBarcode(CheckedItem checkedItem)
+        {
+
+        }
     }
 }

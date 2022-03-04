@@ -15,6 +15,7 @@ namespace SVSU_Capstone_Project
 {
     public partial class frmMain : Form
     {
+
         public frmMain()
         {
           /* Function: frmMain
@@ -45,6 +46,9 @@ namespace SVSU_Capstone_Project
 
             //Set this form as an MDI parent
             IsMdiContainer = true;
+
+            // Initiate Barcode Scanner object once logged in so barcodes can be used
+            barcodeScanner = new BarcodeScanner();
         }
 
         /* Function: InitiateLogin
@@ -182,6 +186,67 @@ namespace SVSU_Capstone_Project
             if(dialogResult == DialogResult.Yes)
                 //Restart the program
                 Application.Restart();
+        }
+
+        /* Function: frmMain_KeyDown
+         * Description: When specific values, @ followed by a string finishing with Enter, are entered anywhere in the form,
+         * within a short amount of time, it is considered a barcode scan. A barcode scan looks for the specific item then
+         * brings up that item in the CheckIn/Out form. 
+         * 
+         * Local Variables
+         * BarcodeScanner barcodeScanner; Made global instead so it can be used anytime the program is open.
+         * object sender; The object calling the method.
+         * KeyEventArgs e; Message sent by the key object pressed.
+         * CheckedItem checkedItem; Represents the item located by scanning a barcode.
+         */
+        BarcodeScanner barcodeScanner;
+        private void frmMain_KeyDown( object sender, KeyEventArgs e )
+        {
+            // When @ is entered by the keyboard (occurs at start of a scan), prepare for the scan.
+            if (barcodeScanner.isSeqStart(e.KeyValue))
+            {
+                barcodeScanner.beginScan(); 
+            }
+
+            // Check if the barcodeScanner object reflects that a scan is happening.
+            else if (barcodeScanner.isStartRead())
+            {
+                // Any key entered by the keyboard that is not Enter
+                // (barcode scanner sends Enter after scanning a barcode)
+                // is added to a string.
+                if (e.KeyCode != Keys.Enter)
+                {
+                    barcodeScanner.addToCode(e.KeyCode.ToString());
+                }
+                
+                // If Enter is entered within 100 milliseconds of the scan beginning, locate the CheckedItem based on barcode ID.
+                // The barcode scanner enters the entire string read in very quickly, taking longer indicates it was likely not a scan.
+                else if (e.KeyCode == Keys.Enter && (DateTime.Now.Millisecond - barcodeScanner.getBeginTime()) < 100)
+                {
+                    CheckedItem checkedItem = barcodeScanner.getCommodity();
+                    PageController(msiCheckInOutItems, e);
+                }
+
+                // If the potential scan took too long for the entry to be by barcode scanner, reset the read information.
+                else if ((DateTime.Now.Millisecond - barcodeScanner.getBeginTime()) > 100)
+                {
+                    barcodeScanner.resetValues();
+                }
+            }
+
+        /*
+         * When KEYDOWN = @
+         *   Take START_TIME
+         *   Start Scanning
+         * While Scanning
+         *    Add Key.Code to STRING VARIABLE
+         * If KEYDOWN = ENTER && If CURRENT_TIME - START_TIME is under 50ms
+         *    Locate CHECKEDITEM by strBarCode
+         *    Open CheckInOut Form
+         *    Select CHECKEDITEM in CheckIn or CheckOut
+         * Else If CURRENT_TIME - START_TIME is over 50ms
+         *    Scan not initiated, cancel Scanning
+         */
         }
     }
 }
