@@ -24,12 +24,13 @@ namespace SVSU_Capstone_Project
      * string strReadCode; Holds the string read in by the scan.
      * int intBeginTime; Marks the start time of a scan in milliseconds.
      */
-    class BarcodeScanner
+    public partial class BarcodeScanner
     {
-        public const int intCHECK = 50;
+        public const int intCHECK = 50; // 50 is what C# uses to indicate @
         private bool blnStartRead;
         private string strReadCode;
         private int intBeginTime;
+        public CheckedItem checkedItem;
 
         // Constructor to create the barcode scanner object. Only called once per program session.
         public BarcodeScanner()
@@ -37,6 +38,7 @@ namespace SVSU_Capstone_Project
             this.blnStartRead = false;
             this.strReadCode = "";
             this.intBeginTime = 0;
+            this.checkedItem = null;
         }
 
         /* Function: isSeqStart
@@ -88,8 +90,7 @@ namespace SVSU_Capstone_Project
          */
         public CheckedItem getCommodity()
         {
-            MessageBox.Show(strReadCode);
-            CheckedItem checkedItem = null;
+            //CheckedItem checkedItem = null;
             try { checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.strBarCode == strReadCode); } 
             catch{ Console.WriteLine("Commodity not found from Barcode"); }
             resetValues();

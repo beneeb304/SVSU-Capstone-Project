@@ -124,7 +124,16 @@ namespace SVSU_Capstone_Project
                     this.Text = "Saginaw Valley Nursing Inventory System | Print Barcodes";
                     break;
                 case "msiCheckInOutItems":
-                    newF = new frmCheckInOutItems();
+                    // If this is called from a barcode scan,
+                    if (barcodeScanner.checkedItem != null)
+                    {
+                        newF = new frmCheckInOutItems(barcodeScanner.checkedItem);
+                        barcodeScanner.resetValues();
+                    }
+                    else
+                    {
+                        newF = new frmCheckInOutItems();                 
+                    }
                     this.Text = "Saginaw Valley Nursing Inventory System | Check In/Out Items";
                     break;
                 case "msiSettings":
@@ -144,7 +153,10 @@ namespace SVSU_Capstone_Project
                 //Don't do anything if the child is already open
                 if (newF.Name == oldF.Name)
                 {
-                    return;
+                    if (!(oldF is frmCheckInOutItems))
+                    {
+                        return;
+                    }
                 }
 
                 //Close the current form
@@ -199,7 +211,7 @@ namespace SVSU_Capstone_Project
          * KeyEventArgs e; Message sent by the key object pressed.
          * CheckedItem checkedItem; Represents the item located by scanning a barcode.
          */
-        BarcodeScanner barcodeScanner;
+        public BarcodeScanner barcodeScanner;
         private void frmMain_KeyDown( object sender, KeyEventArgs e )
         {
             // When @ is entered by the keyboard (occurs at start of a scan), prepare for the scan.
@@ -211,42 +223,31 @@ namespace SVSU_Capstone_Project
             // Check if the barcodeScanner object reflects that a scan is happening.
             else if (barcodeScanner.isStartRead())
             {
-                // Any key entered by the keyboard that is not Enter
-                // (barcode scanner sends Enter after scanning a barcode)
-                // is added to a string.
-                if (e.KeyCode != Keys.Enter)
+                // Any key entered by the keyboard between 0-9 or A-Z is added to the barcode string.
+                // Numbers need to be trimmed otherwise the letter D is put before them.
+                // 40-49 are standard number keys, 96-105 are number pad number keys.
+                if ((e.KeyValue >= 40 && e.KeyValue <= 49) || (e.KeyValue >= 96 && e.KeyValue <= 105))
+                {
+                    barcodeScanner.addToCode(e.KeyCode.ToString().Substring(1));
+                }  
+                else if (e.KeyValue >= 65 && e.KeyValue <= 90)
                 {
                     barcodeScanner.addToCode(e.KeyCode.ToString());
                 }
                 
-                // If Enter is entered within 100 milliseconds of the scan beginning, locate the CheckedItem based on barcode ID.
+                // If Enter is entered within 50 milliseconds of the scan beginning, locate the CheckedItem based on barcode ID.
                 // The barcode scanner enters the entire string read in very quickly, taking longer indicates it was likely not a scan.
-                else if (e.KeyCode == Keys.Enter && (DateTime.Now.Millisecond - barcodeScanner.getBeginTime()) < 100)
+                else if (e.KeyCode == Keys.Enter && (DateTime.Now.Millisecond - barcodeScanner.getBeginTime()) < 50)
                 {
-                    CheckedItem checkedItem = barcodeScanner.getCommodity();
-                    PageController(msiCheckInOutItems, e);
+                    PageController(msiCheckInOutItems as ToolStripMenuItem, e);
                 }
 
                 // If the potential scan took too long for the entry to be by barcode scanner, reset the read information.
-                else if ((DateTime.Now.Millisecond - barcodeScanner.getBeginTime()) > 100)
+                else if ((DateTime.Now.Millisecond - barcodeScanner.getBeginTime()) > 50)
                 {
                     barcodeScanner.resetValues();
                 }
             }
-
-        /*
-         * When KEYDOWN = @
-         *   Take START_TIME
-         *   Start Scanning
-         * While Scanning
-         *    Add Key.Code to STRING VARIABLE
-         * If KEYDOWN = ENTER && If CURRENT_TIME - START_TIME is under 50ms
-         *    Locate CHECKEDITEM by strBarCode
-         *    Open CheckInOut Form
-         *    Select CHECKEDITEM in CheckIn or CheckOut
-         * Else If CURRENT_TIME - START_TIME is over 50ms
-         *    Scan not initiated, cancel Scanning
-         */
         }
     }
 }

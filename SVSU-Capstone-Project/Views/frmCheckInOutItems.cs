@@ -27,6 +27,10 @@ namespace SVSU_Capstone_Project.Views
             tbcCheckInOut_SelectedIndexChanged(null, null);
         }
 
+        public frmCheckInOutItems(CheckedItem checkedItem) : this()
+        {
+            setScannedBarcode(checkedItem);
+        }
 
         private void ListBoxClicked( object sender, EventArgs e )
         {
@@ -289,9 +293,16 @@ namespace SVSU_Capstone_Project.Views
             cmbAssetsStudents.Enabled = true;
         }
 
-        public void scannedBarcode(CheckedItem checkedItem)
+        public void setScannedBarcode(CheckedItem checkedItem)
         {
-
+            if (lstCheckedIn.Items.Contains(checkedItem))
+            {
+                lstCheckedIn.SetSelected(lstCheckedIn.Items.IndexOf(checkedItem), true);
+            }
+            else
+            {
+                lstCheckedOut.SetSelected(lstCheckedOut.Items.IndexOf(checkedItem), true);
+            }
         }
     }
 }
