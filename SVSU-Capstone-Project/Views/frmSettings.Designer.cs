@@ -31,6 +31,7 @@ namespace SVSU_Capstone_Project.Views
         {
             this.tbcSettings = new System.Windows.Forms.TabControl();
             this.tbpUsers = new System.Windows.Forms.TabPage();
+            this.btnUserCancel = new System.Windows.Forms.Button();
             this.btnUserSave = new System.Windows.Forms.Button();
             this.btnUserUpload = new System.Windows.Forms.Button();
             this.btnUserPassword = new System.Windows.Forms.Button();
@@ -51,25 +52,23 @@ namespace SVSU_Capstone_Project.Views
             this.lstUser = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbpRooms = new System.Windows.Forms.TabPage();
-            this.btnModifyRoom = new System.Windows.Forms.Button();
-            this.btnAddRoom = new System.Windows.Forms.Button();
-            this.btnClearRoom = new System.Windows.Forms.Button();
+            this.btnRoomModify = new System.Windows.Forms.Button();
+            this.btnRoomAdd = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.txtRoomDescription = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtRoomName = new System.Windows.Forms.TextBox();
-            this.btnDeleteRoom = new System.Windows.Forms.Button();
+            this.btnRoomDelete = new System.Windows.Forms.Button();
             this.lstRoom = new System.Windows.Forms.ListBox();
             this.lblRoom = new System.Windows.Forms.Label();
             this.tbpCabinets = new System.Windows.Forms.TabPage();
-            this.btnModifyCabinet = new System.Windows.Forms.Button();
-            this.btnAddCabinet = new System.Windows.Forms.Button();
-            this.btnClearCabinet = new System.Windows.Forms.Button();
+            this.btnCabinetModify = new System.Windows.Forms.Button();
+            this.btnCabinetAdd = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.txtCabinetDescription = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtCabinetName = new System.Windows.Forms.TextBox();
-            this.btnDeleteCabinet = new System.Windows.Forms.Button();
+            this.btnCabinetDelete = new System.Windows.Forms.Button();
             this.lstCabinet = new System.Windows.Forms.ListBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -109,7 +108,10 @@ namespace SVSU_Capstone_Project.Views
             this.btnDeleteNLevel = new System.Windows.Forms.Button();
             this.lstNLevel = new System.Windows.Forms.ListBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.btnUserCancel = new System.Windows.Forms.Button();
+            this.btnRoomCancel = new System.Windows.Forms.Button();
+            this.btnRoomSave = new System.Windows.Forms.Button();
+            this.btnCabinetCancel = new System.Windows.Forms.Button();
+            this.btnCabinetSave = new System.Windows.Forms.Button();
             this.tbcSettings.SuspendLayout();
             this.tbpUsers.SuspendLayout();
             this.tbpRooms.SuspendLayout();
@@ -165,11 +167,24 @@ namespace SVSU_Capstone_Project.Views
             this.tbpUsers.Text = "Users";
             this.tbpUsers.UseVisualStyleBackColor = true;
             // 
+            // btnUserCancel
+            // 
+            this.btnUserCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUserCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserCancel.Location = new System.Drawing.Point(705, 75);
+            this.btnUserCancel.Name = "btnUserCancel";
+            this.btnUserCancel.Size = new System.Drawing.Size(210, 40);
+            this.btnUserCancel.TabIndex = 128;
+            this.btnUserCancel.Text = "Cancel";
+            this.btnUserCancel.UseVisualStyleBackColor = true;
+            this.btnUserCancel.Visible = false;
+            this.btnUserCancel.Click += new System.EventHandler(this.btnUserCancel_Click);
+            // 
             // btnUserSave
             // 
             this.btnUserSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserSave.Location = new System.Drawing.Point(679, 29);
+            this.btnUserSave.Location = new System.Drawing.Point(705, 29);
             this.btnUserSave.Name = "btnUserSave";
             this.btnUserSave.Size = new System.Drawing.Size(210, 40);
             this.btnUserSave.TabIndex = 127;
@@ -182,7 +197,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserUpload.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserUpload.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserUpload.Location = new System.Drawing.Point(463, 29);
+            this.btnUserUpload.Location = new System.Drawing.Point(489, 29);
             this.btnUserUpload.Name = "btnUserUpload";
             this.btnUserUpload.Size = new System.Drawing.Size(210, 40);
             this.btnUserUpload.TabIndex = 126;
@@ -194,7 +209,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserPassword.Location = new System.Drawing.Point(463, 167);
+            this.btnUserPassword.Location = new System.Drawing.Point(489, 167);
             this.btnUserPassword.Name = "btnUserPassword";
             this.btnUserPassword.Size = new System.Drawing.Size(210, 40);
             this.btnUserPassword.TabIndex = 125;
@@ -304,7 +319,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserModify.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserModify.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserModify.Location = new System.Drawing.Point(463, 121);
+            this.btnUserModify.Location = new System.Drawing.Point(489, 121);
             this.btnUserModify.Name = "btnUserModify";
             this.btnUserModify.Size = new System.Drawing.Size(210, 40);
             this.btnUserModify.TabIndex = 9;
@@ -325,7 +340,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserDelete.Location = new System.Drawing.Point(463, 213);
+            this.btnUserDelete.Location = new System.Drawing.Point(489, 213);
             this.btnUserDelete.Name = "btnUserDelete";
             this.btnUserDelete.Size = new System.Drawing.Size(210, 40);
             this.btnUserDelete.TabIndex = 12;
@@ -337,11 +352,11 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserAdd.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserAdd.Location = new System.Drawing.Point(463, 75);
+            this.btnUserAdd.Location = new System.Drawing.Point(489, 75);
             this.btnUserAdd.Name = "btnUserAdd";
             this.btnUserAdd.Size = new System.Drawing.Size(210, 40);
             this.btnUserAdd.TabIndex = 8;
-            this.btnUserAdd.Text = "Add a User";
+            this.btnUserAdd.Text = "Add User";
             this.btnUserAdd.UseVisualStyleBackColor = true;
             this.btnUserAdd.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
@@ -364,20 +379,21 @@ namespace SVSU_Capstone_Project.Views
             this.label3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(6, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 22);
+            this.label3.Size = new System.Drawing.Size(53, 22);
             this.label3.TabIndex = 102;
-            this.label3.Text = "Users";
+            this.label3.Text = "User";
             // 
             // tbpRooms
             // 
-            this.tbpRooms.Controls.Add(this.btnModifyRoom);
-            this.tbpRooms.Controls.Add(this.btnAddRoom);
-            this.tbpRooms.Controls.Add(this.btnClearRoom);
+            this.tbpRooms.Controls.Add(this.btnRoomCancel);
+            this.tbpRooms.Controls.Add(this.btnRoomSave);
+            this.tbpRooms.Controls.Add(this.btnRoomModify);
+            this.tbpRooms.Controls.Add(this.btnRoomAdd);
             this.tbpRooms.Controls.Add(this.label12);
             this.tbpRooms.Controls.Add(this.txtRoomDescription);
             this.tbpRooms.Controls.Add(this.label4);
             this.tbpRooms.Controls.Add(this.txtRoomName);
-            this.tbpRooms.Controls.Add(this.btnDeleteRoom);
+            this.tbpRooms.Controls.Add(this.btnRoomDelete);
             this.tbpRooms.Controls.Add(this.lstRoom);
             this.tbpRooms.Controls.Add(this.lblRoom);
             this.tbpRooms.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -389,47 +405,35 @@ namespace SVSU_Capstone_Project.Views
             this.tbpRooms.Text = "Rooms";
             this.tbpRooms.UseVisualStyleBackColor = true;
             // 
-            // btnModifyRoom
+            // btnRoomModify
             // 
-            this.btnModifyRoom.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnModifyRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifyRoom.Location = new System.Drawing.Point(563, 278);
-            this.btnModifyRoom.Name = "btnModifyRoom";
-            this.btnModifyRoom.Size = new System.Drawing.Size(91, 40);
-            this.btnModifyRoom.TabIndex = 4;
-            this.btnModifyRoom.Text = "Modify";
-            this.btnModifyRoom.UseVisualStyleBackColor = true;
-            this.btnModifyRoom.Click += new System.EventHandler(this.btnModifyRoom_Click);
+            this.btnRoomModify.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRoomModify.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoomModify.Location = new System.Drawing.Point(489, 75);
+            this.btnRoomModify.Name = "btnRoomModify";
+            this.btnRoomModify.Size = new System.Drawing.Size(210, 40);
+            this.btnRoomModify.TabIndex = 4;
+            this.btnRoomModify.Text = "Modify Room";
+            this.btnRoomModify.UseVisualStyleBackColor = true;
+            this.btnRoomModify.Click += new System.EventHandler(this.btnModifyRoom_Click);
             // 
-            // btnAddRoom
+            // btnRoomAdd
             // 
-            this.btnAddRoom.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddRoom.Location = new System.Drawing.Point(466, 278);
-            this.btnAddRoom.Name = "btnAddRoom";
-            this.btnAddRoom.Size = new System.Drawing.Size(91, 40);
-            this.btnAddRoom.TabIndex = 3;
-            this.btnAddRoom.Text = "Add";
-            this.btnAddRoom.UseVisualStyleBackColor = true;
-            this.btnAddRoom.Click += new System.EventHandler(this.btnAddRoom_Click);
-            // 
-            // btnClearRoom
-            // 
-            this.btnClearRoom.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClearRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearRoom.Location = new System.Drawing.Point(466, 324);
-            this.btnClearRoom.Name = "btnClearRoom";
-            this.btnClearRoom.Size = new System.Drawing.Size(188, 40);
-            this.btnClearRoom.TabIndex = 5;
-            this.btnClearRoom.Text = "Clear";
-            this.btnClearRoom.UseVisualStyleBackColor = true;
-            this.btnClearRoom.Click += new System.EventHandler(this.btnClearRoom_Click);
+            this.btnRoomAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRoomAdd.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoomAdd.Location = new System.Drawing.Point(489, 29);
+            this.btnRoomAdd.Name = "btnRoomAdd";
+            this.btnRoomAdd.Size = new System.Drawing.Size(210, 40);
+            this.btnRoomAdd.TabIndex = 3;
+            this.btnRoomAdd.Text = "Add Room";
+            this.btnRoomAdd.UseVisualStyleBackColor = true;
+            this.btnRoomAdd.Click += new System.EventHandler(this.btnAddRoom_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(462, 127);
+            this.label12.Location = new System.Drawing.Point(226, 77);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(123, 16);
             this.label12.TabIndex = 104;
@@ -437,18 +441,19 @@ namespace SVSU_Capstone_Project.Views
             // 
             // txtRoomDescription
             // 
+            this.txtRoomDescription.Enabled = false;
             this.txtRoomDescription.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoomDescription.Location = new System.Drawing.Point(466, 149);
+            this.txtRoomDescription.Location = new System.Drawing.Point(230, 99);
             this.txtRoomDescription.Multiline = true;
             this.txtRoomDescription.Name = "txtRoomDescription";
-            this.txtRoomDescription.Size = new System.Drawing.Size(257, 124);
+            this.txtRoomDescription.Size = new System.Drawing.Size(253, 124);
             this.txtRoomDescription.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(462, 77);
+            this.label4.Location = new System.Drawing.Point(225, 29);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 16);
             this.label4.TabIndex = 102;
@@ -456,33 +461,34 @@ namespace SVSU_Capstone_Project.Views
             // 
             // txtRoomName
             // 
+            this.txtRoomName.Enabled = false;
             this.txtRoomName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoomName.Location = new System.Drawing.Point(466, 99);
+            this.txtRoomName.Location = new System.Drawing.Point(229, 51);
             this.txtRoomName.Name = "txtRoomName";
-            this.txtRoomName.Size = new System.Drawing.Size(100, 22);
+            this.txtRoomName.Size = new System.Drawing.Size(128, 22);
             this.txtRoomName.TabIndex = 1;
             // 
-            // btnDeleteRoom
+            // btnRoomDelete
             // 
-            this.btnDeleteRoom.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDeleteRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteRoom.Location = new System.Drawing.Point(186, 324);
-            this.btnDeleteRoom.Name = "btnDeleteRoom";
-            this.btnDeleteRoom.Size = new System.Drawing.Size(210, 40);
-            this.btnDeleteRoom.TabIndex = 7;
-            this.btnDeleteRoom.Text = "Delete Selected Room";
-            this.btnDeleteRoom.UseVisualStyleBackColor = true;
-            this.btnDeleteRoom.Click += new System.EventHandler(this.btnDeleteRoom_Click);
+            this.btnRoomDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRoomDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoomDelete.Location = new System.Drawing.Point(489, 121);
+            this.btnRoomDelete.Name = "btnRoomDelete";
+            this.btnRoomDelete.Size = new System.Drawing.Size(210, 40);
+            this.btnRoomDelete.TabIndex = 7;
+            this.btnRoomDelete.Text = "Delete Room";
+            this.btnRoomDelete.UseVisualStyleBackColor = true;
+            this.btnRoomDelete.Click += new System.EventHandler(this.btnDeleteRoom_Click);
             // 
             // lstRoom
             // 
             this.lstRoom.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstRoom.FormattingEnabled = true;
             this.lstRoom.ItemHeight = 16;
-            this.lstRoom.Location = new System.Drawing.Point(186, 61);
+            this.lstRoom.Location = new System.Drawing.Point(10, 29);
             this.lstRoom.Margin = new System.Windows.Forms.Padding(2);
             this.lstRoom.Name = "lstRoom";
-            this.lstRoom.Size = new System.Drawing.Size(210, 244);
+            this.lstRoom.Size = new System.Drawing.Size(210, 372);
             this.lstRoom.TabIndex = 6;
             this.lstRoom.SelectedIndexChanged += new System.EventHandler(this.lstRoom_SelectedIndexChanged);
             // 
@@ -491,7 +497,7 @@ namespace SVSU_Capstone_Project.Views
             this.lblRoom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRoom.AutoSize = true;
             this.lblRoom.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoom.Location = new System.Drawing.Point(182, 35);
+            this.lblRoom.Location = new System.Drawing.Point(6, 3);
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(64, 22);
             this.lblRoom.TabIndex = 85;
@@ -499,14 +505,15 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpCabinets
             // 
-            this.tbpCabinets.Controls.Add(this.btnModifyCabinet);
-            this.tbpCabinets.Controls.Add(this.btnAddCabinet);
-            this.tbpCabinets.Controls.Add(this.btnClearCabinet);
+            this.tbpCabinets.Controls.Add(this.btnCabinetCancel);
+            this.tbpCabinets.Controls.Add(this.btnCabinetSave);
+            this.tbpCabinets.Controls.Add(this.btnCabinetModify);
+            this.tbpCabinets.Controls.Add(this.btnCabinetAdd);
             this.tbpCabinets.Controls.Add(this.label15);
             this.tbpCabinets.Controls.Add(this.txtCabinetDescription);
             this.tbpCabinets.Controls.Add(this.label16);
             this.tbpCabinets.Controls.Add(this.txtCabinetName);
-            this.tbpCabinets.Controls.Add(this.btnDeleteCabinet);
+            this.tbpCabinets.Controls.Add(this.btnCabinetDelete);
             this.tbpCabinets.Controls.Add(this.lstCabinet);
             this.tbpCabinets.Controls.Add(this.label17);
             this.tbpCabinets.Controls.Add(this.label1);
@@ -519,47 +526,35 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCabinets.Text = "Cabinets";
             this.tbpCabinets.UseVisualStyleBackColor = true;
             // 
-            // btnModifyCabinet
+            // btnCabinetModify
             // 
-            this.btnModifyCabinet.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnModifyCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifyCabinet.Location = new System.Drawing.Point(563, 278);
-            this.btnModifyCabinet.Name = "btnModifyCabinet";
-            this.btnModifyCabinet.Size = new System.Drawing.Size(91, 40);
-            this.btnModifyCabinet.TabIndex = 6;
-            this.btnModifyCabinet.Text = "Modify";
-            this.btnModifyCabinet.UseVisualStyleBackColor = true;
-            this.btnModifyCabinet.Click += new System.EventHandler(this.btnModifyCabinet_Click);
+            this.btnCabinetModify.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCabinetModify.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCabinetModify.Location = new System.Drawing.Point(489, 75);
+            this.btnCabinetModify.Name = "btnCabinetModify";
+            this.btnCabinetModify.Size = new System.Drawing.Size(210, 40);
+            this.btnCabinetModify.TabIndex = 6;
+            this.btnCabinetModify.Text = "Modify Cabinet";
+            this.btnCabinetModify.UseVisualStyleBackColor = true;
+            this.btnCabinetModify.Click += new System.EventHandler(this.btnModifyCabinet_Click);
             // 
-            // btnAddCabinet
+            // btnCabinetAdd
             // 
-            this.btnAddCabinet.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCabinet.Location = new System.Drawing.Point(466, 278);
-            this.btnAddCabinet.Name = "btnAddCabinet";
-            this.btnAddCabinet.Size = new System.Drawing.Size(91, 40);
-            this.btnAddCabinet.TabIndex = 5;
-            this.btnAddCabinet.Text = "Add";
-            this.btnAddCabinet.UseVisualStyleBackColor = true;
-            this.btnAddCabinet.Click += new System.EventHandler(this.btnAddCabinet_Click);
-            // 
-            // btnClearCabinet
-            // 
-            this.btnClearCabinet.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClearCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearCabinet.Location = new System.Drawing.Point(466, 324);
-            this.btnClearCabinet.Name = "btnClearCabinet";
-            this.btnClearCabinet.Size = new System.Drawing.Size(188, 40);
-            this.btnClearCabinet.TabIndex = 8;
-            this.btnClearCabinet.Text = "Clear";
-            this.btnClearCabinet.UseVisualStyleBackColor = true;
-            this.btnClearCabinet.Click += new System.EventHandler(this.btnClearCabinet_Click);
+            this.btnCabinetAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCabinetAdd.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCabinetAdd.Location = new System.Drawing.Point(489, 29);
+            this.btnCabinetAdd.Name = "btnCabinetAdd";
+            this.btnCabinetAdd.Size = new System.Drawing.Size(210, 40);
+            this.btnCabinetAdd.TabIndex = 5;
+            this.btnCabinetAdd.Text = "Add Cabinet";
+            this.btnCabinetAdd.UseVisualStyleBackColor = true;
+            this.btnCabinetAdd.Click += new System.EventHandler(this.btnAddCabinet_Click);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(462, 127);
+            this.label15.Location = new System.Drawing.Point(226, 101);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(135, 16);
             this.label15.TabIndex = 123;
@@ -567,18 +562,19 @@ namespace SVSU_Capstone_Project.Views
             // 
             // txtCabinetDescription
             // 
+            this.txtCabinetDescription.Enabled = false;
             this.txtCabinetDescription.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCabinetDescription.Location = new System.Drawing.Point(466, 149);
+            this.txtCabinetDescription.Location = new System.Drawing.Point(230, 123);
             this.txtCabinetDescription.Multiline = true;
             this.txtCabinetDescription.Name = "txtCabinetDescription";
-            this.txtCabinetDescription.Size = new System.Drawing.Size(257, 124);
+            this.txtCabinetDescription.Size = new System.Drawing.Size(253, 124);
             this.txtCabinetDescription.TabIndex = 4;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(462, 77);
+            this.label16.Location = new System.Drawing.Point(225, 54);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(101, 16);
             this.label16.TabIndex = 121;
@@ -586,33 +582,34 @@ namespace SVSU_Capstone_Project.Views
             // 
             // txtCabinetName
             // 
+            this.txtCabinetName.Enabled = false;
             this.txtCabinetName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCabinetName.Location = new System.Drawing.Point(466, 99);
+            this.txtCabinetName.Location = new System.Drawing.Point(229, 76);
             this.txtCabinetName.Name = "txtCabinetName";
             this.txtCabinetName.Size = new System.Drawing.Size(100, 22);
             this.txtCabinetName.TabIndex = 3;
             // 
-            // btnDeleteCabinet
+            // btnCabinetDelete
             // 
-            this.btnDeleteCabinet.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDeleteCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteCabinet.Location = new System.Drawing.Point(186, 324);
-            this.btnDeleteCabinet.Name = "btnDeleteCabinet";
-            this.btnDeleteCabinet.Size = new System.Drawing.Size(210, 40);
-            this.btnDeleteCabinet.TabIndex = 7;
-            this.btnDeleteCabinet.Text = "Delete Selected Cabinet";
-            this.btnDeleteCabinet.UseVisualStyleBackColor = true;
-            this.btnDeleteCabinet.Click += new System.EventHandler(this.btnDeleteCabinet_Click);
+            this.btnCabinetDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCabinetDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCabinetDelete.Location = new System.Drawing.Point(489, 121);
+            this.btnCabinetDelete.Name = "btnCabinetDelete";
+            this.btnCabinetDelete.Size = new System.Drawing.Size(210, 40);
+            this.btnCabinetDelete.TabIndex = 7;
+            this.btnCabinetDelete.Text = "Delete Cabinet";
+            this.btnCabinetDelete.UseVisualStyleBackColor = true;
+            this.btnCabinetDelete.Click += new System.EventHandler(this.btnDeleteCabinet_Click);
             // 
             // lstCabinet
             // 
             this.lstCabinet.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstCabinet.FormattingEnabled = true;
             this.lstCabinet.ItemHeight = 16;
-            this.lstCabinet.Location = new System.Drawing.Point(186, 61);
+            this.lstCabinet.Location = new System.Drawing.Point(10, 27);
             this.lstCabinet.Margin = new System.Windows.Forms.Padding(2);
             this.lstCabinet.Name = "lstCabinet";
-            this.lstCabinet.Size = new System.Drawing.Size(210, 244);
+            this.lstCabinet.Size = new System.Drawing.Size(210, 372);
             this.lstCabinet.TabIndex = 2;
             this.lstCabinet.SelectedIndexChanged += new System.EventHandler(this.lstCabinet_SelectedIndexChanged);
             // 
@@ -621,7 +618,7 @@ namespace SVSU_Capstone_Project.Views
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(182, 35);
+            this.label17.Location = new System.Drawing.Point(6, 3);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(81, 22);
             this.label17.TabIndex = 117;
@@ -631,7 +628,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 40);
+            this.label1.Location = new System.Drawing.Point(221, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 19);
             this.label1.TabIndex = 102;
@@ -639,9 +636,10 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbRoom
             // 
+            this.cmbRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoom.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRoom.FormattingEnabled = true;
-            this.cmbRoom.Location = new System.Drawing.Point(14, 61);
+            this.cmbRoom.Location = new System.Drawing.Point(225, 27);
             this.cmbRoom.Name = "cmbRoom";
             this.cmbRoom.Size = new System.Drawing.Size(121, 24);
             this.cmbRoom.TabIndex = 1;
@@ -1050,18 +1048,57 @@ namespace SVSU_Capstone_Project.Views
             this.label28.TabIndex = 139;
             this.label28.Text = "N-Level";
             // 
-            // btnUserCancel
+            // btnRoomCancel
             // 
-            this.btnUserCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnUserCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserCancel.Location = new System.Drawing.Point(679, 75);
-            this.btnUserCancel.Name = "btnUserCancel";
-            this.btnUserCancel.Size = new System.Drawing.Size(210, 40);
-            this.btnUserCancel.TabIndex = 128;
-            this.btnUserCancel.Text = "Cancel";
-            this.btnUserCancel.UseVisualStyleBackColor = true;
-            this.btnUserCancel.Visible = false;
-            this.btnUserCancel.Click += new System.EventHandler(this.btnUserCancel_Click);
+            this.btnRoomCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRoomCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoomCancel.Location = new System.Drawing.Point(705, 75);
+            this.btnRoomCancel.Name = "btnRoomCancel";
+            this.btnRoomCancel.Size = new System.Drawing.Size(210, 40);
+            this.btnRoomCancel.TabIndex = 130;
+            this.btnRoomCancel.Text = "Cancel";
+            this.btnRoomCancel.UseVisualStyleBackColor = true;
+            this.btnRoomCancel.Visible = false;
+            this.btnRoomCancel.Click += new System.EventHandler(this.btnRoomCancel_Click);
+            // 
+            // btnRoomSave
+            // 
+            this.btnRoomSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRoomSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoomSave.Location = new System.Drawing.Point(705, 29);
+            this.btnRoomSave.Name = "btnRoomSave";
+            this.btnRoomSave.Size = new System.Drawing.Size(210, 40);
+            this.btnRoomSave.TabIndex = 129;
+            this.btnRoomSave.Text = "Save Room";
+            this.btnRoomSave.UseVisualStyleBackColor = true;
+            this.btnRoomSave.Visible = false;
+            this.btnRoomSave.Click += new System.EventHandler(this.btnRoomSave_Click);
+            // 
+            // btnCabinetCancel
+            // 
+            this.btnCabinetCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCabinetCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCabinetCancel.Location = new System.Drawing.Point(705, 75);
+            this.btnCabinetCancel.Name = "btnCabinetCancel";
+            this.btnCabinetCancel.Size = new System.Drawing.Size(210, 40);
+            this.btnCabinetCancel.TabIndex = 132;
+            this.btnCabinetCancel.Text = "Cancel";
+            this.btnCabinetCancel.UseVisualStyleBackColor = true;
+            this.btnCabinetCancel.Visible = false;
+            this.btnCabinetCancel.Click += new System.EventHandler(this.btnCabinetCancel_Click);
+            // 
+            // btnCabinetSave
+            // 
+            this.btnCabinetSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCabinetSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCabinetSave.Location = new System.Drawing.Point(705, 29);
+            this.btnCabinetSave.Name = "btnCabinetSave";
+            this.btnCabinetSave.Size = new System.Drawing.Size(210, 40);
+            this.btnCabinetSave.TabIndex = 131;
+            this.btnCabinetSave.Text = "Save Cabinet";
+            this.btnCabinetSave.UseVisualStyleBackColor = true;
+            this.btnCabinetSave.Visible = false;
+            this.btnCabinetSave.Click += new System.EventHandler(this.btnCabinetSave_Click);
             // 
             // frmSettings
             // 
@@ -1096,7 +1133,7 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.TabPage tbpCabinets;
         private System.Windows.Forms.TabPage tbpCategories;
         private System.Windows.Forms.TabPage tbpVendors;
-        private System.Windows.Forms.Button btnDeleteRoom;
+        private System.Windows.Forms.Button btnRoomDelete;
         private System.Windows.Forms.ListBox lstRoom;
         private System.Windows.Forms.Label lblRoom;
         private System.Windows.Forms.TabPage tbpNLevel;
@@ -1122,17 +1159,15 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtRoomDescription;
-        private System.Windows.Forms.Button btnClearRoom;
-        private System.Windows.Forms.Button btnModifyRoom;
-        private System.Windows.Forms.Button btnAddRoom;
-        private System.Windows.Forms.Button btnModifyCabinet;
-        private System.Windows.Forms.Button btnAddCabinet;
-        private System.Windows.Forms.Button btnClearCabinet;
+        private System.Windows.Forms.Button btnRoomModify;
+        private System.Windows.Forms.Button btnRoomAdd;
+        private System.Windows.Forms.Button btnCabinetModify;
+        private System.Windows.Forms.Button btnCabinetAdd;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCabinetDescription;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtCabinetName;
-        private System.Windows.Forms.Button btnDeleteCabinet;
+        private System.Windows.Forms.Button btnCabinetDelete;
         private System.Windows.Forms.ListBox lstCabinet;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnModifyCategory;
@@ -1171,5 +1206,9 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Button btnUserUpload;
         private System.Windows.Forms.Button btnUserSave;
         private System.Windows.Forms.Button btnUserCancel;
+        private System.Windows.Forms.Button btnRoomCancel;
+        private System.Windows.Forms.Button btnRoomSave;
+        private System.Windows.Forms.Button btnCabinetCancel;
+        private System.Windows.Forms.Button btnCabinetSave;
     }
 }
