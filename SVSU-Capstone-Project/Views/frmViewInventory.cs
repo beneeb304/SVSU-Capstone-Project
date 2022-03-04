@@ -43,7 +43,7 @@ namespace SVSU_Capstone_Project.Views
 
             //Set datasource for category each combobox
             cmbCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
-            dgvCommodity.ClearSelection();
+            cmbCategory.SelectedIndex = -1;
         }
 
         private void btnPrintBarcode_Click( object sender, EventArgs e )
@@ -133,7 +133,7 @@ namespace SVSU_Capstone_Project.Views
             string strCommodity = dgvCommodity.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
 
             Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
-            List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.uidTuid == commodity.uidTuid).ToList();
+            List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
 
             //Add to the dgv
             foreach (Storage storage in lstStorage)
