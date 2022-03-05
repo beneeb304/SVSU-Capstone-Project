@@ -1,6 +1,4 @@
-﻿using SVSU_Capstone_Project.Model;
-using SVSU_Capstone_Project.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SVSU_Capstone_Project.Model;
+using SVSU_Capstone_Project.ViewModel;
 
 namespace SVSU_Capstone_Project.Views
 {
