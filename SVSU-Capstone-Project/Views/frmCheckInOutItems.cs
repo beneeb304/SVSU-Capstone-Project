@@ -27,6 +27,10 @@ namespace SVSU_Capstone_Project.Views
             tbcCheckInOut_SelectedIndexChanged(null, null);
         }
 
+        public frmCheckInOutItems(CheckedItem checkedItem) : this()
+        {
+            setScannedBarcode(checkedItem);
+        }
 
         private void ListBoxClicked( object sender, EventArgs e )
         {
@@ -251,7 +255,7 @@ namespace SVSU_Capstone_Project.Views
                         cmbCommodity_SelectedIndexChanged(sender, e);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Please ensure that all fields are filled in!", "Alert");
                 }
@@ -408,6 +412,18 @@ namespace SVSU_Capstone_Project.Views
             txtChkOutNotes.Text = "";
             numChkOutQuantity.Value = 1;
             txtAvailableChkOutQuantity.Text = "";
+        }
+
+        public void setScannedBarcode(CheckedItem checkedItem)
+        {
+            if (lstCheckedIn.Items.Contains(checkedItem))
+            {
+                lstCheckedIn.SetSelected(lstCheckedIn.Items.IndexOf(checkedItem), true);
+            }
+            else
+            {
+                lstCheckedOut.SetSelected(lstCheckedOut.Items.IndexOf(checkedItem), true);
+            }
         }
     }
 }

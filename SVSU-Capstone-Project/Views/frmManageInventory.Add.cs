@@ -103,12 +103,24 @@ namespace SVSU_Capstone_Project.Views
         {
             if (cmbAddCabinet.SelectedIndex != -1 && cmbAddNLevel.SelectedIndex != -1)
             {
-                // User info has to be passed, either globally or locally
-                ItemModel.RestockItem(
-                    ItemModel.Get<Storage>(
+                var storageItem = ItemModel.Get<Storage>(
                         x => x.objNLevel == this.cmbAddNLevel.SelectedValue as NLevel
                         && x.objCabinet == this.cmbAddCabinet.SelectedValue as Cabinet
-                        && x.objCommodity == this.cmbAddCommodity.SelectedValue as Commodity),
+                        && x.objCommodity == this.cmbAddCommodity.SelectedValue as Commodity);
+                if (storageItem == null)
+                {
+                    ItemModel.Add(new Storage()
+                    {
+                        objCabinet = cmbAddCabinet.SelectedItem as Cabinet,
+                        objCommodity = cmbAddCommodity.SelectedItem as Commodity,
+                        objNLevel = cmbAddNLevel.SelectedItem as NLevel
+                    },
+                    out storageItem
+                    );
+                }
+                // User info has to be passed, either globally or locally
+                ItemModel.RestockItem(
+                    storageItem,
                     Authentication.ActiveUser,
                     (uint)this.nudAddQty.Value,
                     "Stock Added"

@@ -43,6 +43,7 @@ namespace SVSU_Capstone_Project.Views
 
             //Set datasource for category each combobox
             cmbCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
+            cmbCategory.SelectedIndex = -1;
         }
 
         private void btnPrintBarcode_Click( object sender, EventArgs e )
@@ -65,9 +66,12 @@ namespace SVSU_Capstone_Project.Views
 
         private void cmbCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
+            //Clear detail dgv rows
+            dgvDetails.Rows.Clear();
+
             //Get list
             lstCommodities = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == cmbCategory.Text).OrderBy(x => x.strName).ToList();
-            
+
             //Set dgv
             dgvCommodity.DataSource = lstCommodities;
 
@@ -75,18 +79,27 @@ namespace SVSU_Capstone_Project.Views
             dgvCommodity.Columns[0].HeaderText = "Name";
             dgvCommodity.Columns[1].HeaderText = "Description";
             dgvCommodity.Columns[2].HeaderText = "Features";
-            dgvCommodity.Columns[3].HeaderText = "Low Alert";
-            dgvCommodity.Columns[5].HeaderText = "Barcode";
+            dgvCommodity.Columns[6].HeaderText = "Cost in Cents";
+            dgvCommodity.Columns[7].HeaderText = "URL";
 
-            //Hide useless columns
+            ////Hide useless columns
+            dgvCommodity.Columns[3].Visible = false;
             dgvCommodity.Columns[4].Visible = false;
-            dgvCommodity.Columns[6].Visible = false;
-            dgvCommodity.Columns[7].Visible = false;
+            dgvCommodity.Columns[5].Visible = false;
+            dgvCommodity.Columns[8].Visible = false;
+            dgvCommodity.Columns[9].Visible = false;
+            dgvCommodity.Columns[10].Visible = false;
+
+            //Unselect cells
+            dgvCommodity.ClearSelection();
         }
 
         private void txtSearch_TextChanged( object sender, EventArgs e )
-        {            
-            if(txtSearch.Text.Length > 0)
+        {
+            //Get rid of current rows
+            dgvDetails.Rows.Clear();
+
+            if (txtSearch.Text.Length > 0)
             {
                 //Make temp list that is filtered
                 List<Commodity> lstTemp = lstCommodities.Where(x => x.strName.IndexOf(txtSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
@@ -103,20 +116,33 @@ namespace SVSU_Capstone_Project.Views
 
         private void dgvCommodity_CellContentClick( object sender, DataGridViewCellEventArgs e )
         {
+            //Get rid of current rows
+            dgvDetails.Rows.Clear();
+
+            //If columsn exist, don't re-add them
+            if (dgvDetails.Columns.Count != 4)
+            {
+                dgvDetails.Columns.Add("Quantity", "Quantity");
+                dgvDetails.Columns.Add("N-Level", "N-Level");
+                dgvDetails.Columns.Add("Room", "Room");
+                dgvDetails.Columns.Add("Cabinet", "Cabinet");
+            }
+
             //Get the selected category and commodity
             string strCategory = cmbCategory.Text;
             string strCommodity = dgvCommodity.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
-            
-            VendorItem vendorItem = ItemModel.Get<VendorItem>(x => x.objCommodity.strName == strCommodity && 
-            x.objCommodity.objCategory.strName == strCategory);
 
+            Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
+            List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
 
+            //Add to the dgv
+            foreach (Storage storage in lstStorage)
+            {
+                dgvDetails.Rows.Add(storage.intQuantity, storage.objNLevel.strName, storage.objCabinet.objRoom.strName, storage.objCabinet.strName);
+            }
 
-
-
-
-            //cmbNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
-            //cmbRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
+            //Unselect cells
+            dgvDetails.ClearSelection();
         }
     }
 }

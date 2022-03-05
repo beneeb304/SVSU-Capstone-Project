@@ -178,7 +178,7 @@ namespace SVSU_Capstone_Project
             this.panel1.Location = new System.Drawing.Point(0, 187);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(181, 494);
-            this.panel1.TabIndex = 10;
+            this.panel1.TabIndex = 1;
             // 
             // btnLogout
             // 
@@ -204,6 +204,7 @@ namespace SVSU_Capstone_Project
             this.Controls.Add(this.pcbMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.mstMain;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -212,6 +213,7 @@ namespace SVSU_Capstone_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Saginaw Valley Nursing Inventory System";
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyDown);
             this.mstMain.ResumeLayout(false);
             this.mstMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbMain)).EndInit();
