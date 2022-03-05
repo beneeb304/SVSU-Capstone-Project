@@ -136,6 +136,10 @@ namespace SVSU_Capstone_Project
                     }
                     this.Text = "Saginaw Valley Nursing Inventory System | Check In/Out Items";
                     break;
+                case "msiSimulatorUse":
+                    newF = new frmSimulatorUse();
+                    this.Text = "Saginaw Valley Nursing Inventory System | Simulator Use";
+                    break;
                 case "msiSettings":
                     if (!Authentication.ActiveUser.blnIsAdmin)
                     {
