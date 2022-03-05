@@ -65,22 +65,53 @@ namespace SVSU_Capstone_Project.Views
             this.label8 = new System.Windows.Forms.Label();
             this.cmbRoom = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.tbpCheckOut = new System.Windows.Forms.TabPage();
+            this.cmbChkOutStudent = new System.Windows.Forms.ComboBox();
+            this.txtChkOutNotes = new System.Windows.Forms.RichTextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cmbChkOutCategory = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.btnChkOutCancel = new System.Windows.Forms.Button();
+            this.btnChkOut = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.numChkOutQuantity = new System.Windows.Forms.NumericUpDown();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtAvailableChkOutQuantity = new System.Windows.Forms.TextBox();
+            this.cmbChkOutCommodity = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.tbpCheckIn = new System.Windows.Forms.TabPage();
+            this.cmbChkInStudent = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cmbChkInCategory = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.cmbChkInCommodity = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.tbcCheckInOut.SuspendLayout();
             this.tbpAssets.SuspendLayout();
             this.tbpConsumables.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).BeginInit();
+            this.tbpCheckOut.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numChkOutQuantity)).BeginInit();
+            this.tbpCheckIn.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcCheckInOut
             // 
             this.tbcCheckInOut.Controls.Add(this.tbpAssets);
             this.tbcCheckInOut.Controls.Add(this.tbpConsumables);
+            this.tbcCheckInOut.Controls.Add(this.tbpCheckOut);
+            this.tbcCheckInOut.Controls.Add(this.tbpCheckIn);
             this.tbcCheckInOut.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbcCheckInOut.Location = new System.Drawing.Point(16, 15);
+            this.tbcCheckInOut.Location = new System.Drawing.Point(16, 13);
             this.tbcCheckInOut.Margin = new System.Windows.Forms.Padding(4);
             this.tbcCheckInOut.Name = "tbcCheckInOut";
             this.tbcCheckInOut.SelectedIndex = 0;
-            this.tbcCheckInOut.Size = new System.Drawing.Size(1241, 528);
+            this.tbcCheckInOut.Size = new System.Drawing.Size(1241, 530);
             this.tbcCheckInOut.TabIndex = 43;
             this.tbcCheckInOut.SelectedIndexChanged += new System.EventHandler(this.tbcCheckInOut_SelectedIndexChanged);
             // 
@@ -101,7 +132,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpAssets.Margin = new System.Windows.Forms.Padding(4);
             this.tbpAssets.Name = "tbpAssets";
             this.tbpAssets.Padding = new System.Windows.Forms.Padding(4);
-            this.tbpAssets.Size = new System.Drawing.Size(1233, 497);
+            this.tbpAssets.Size = new System.Drawing.Size(1233, 499);
             this.tbpAssets.TabIndex = 0;
             this.tbpAssets.Text = "Assets";
             this.tbpAssets.UseVisualStyleBackColor = true;
@@ -129,7 +160,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnCheckIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCheckIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckIn.Location = new System.Drawing.Point(932, 428);
+            this.btnCheckIn.Location = new System.Drawing.Point(932, 429);
             this.btnCheckIn.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(132, 57);
@@ -142,7 +173,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnCheckOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCheckOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.Location = new System.Drawing.Point(1091, 428);
+            this.btnCheckOut.Location = new System.Drawing.Point(1091, 429);
             this.btnCheckOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(132, 57);
@@ -224,7 +255,7 @@ namespace SVSU_Capstone_Project.Views
             this.lblSvsuIdCI.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSvsuIdCI.AutoSize = true;
             this.lblSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSvsuIdCI.Location = new System.Drawing.Point(632, 101);
+            this.lblSvsuIdCI.Location = new System.Drawing.Point(632, 102);
             this.lblSvsuIdCI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSvsuIdCI.Name = "lblSvsuIdCI";
             this.lblSvsuIdCI.Size = new System.Drawing.Size(91, 24);
@@ -259,7 +290,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpConsumables.Margin = new System.Windows.Forms.Padding(4);
             this.tbpConsumables.Name = "tbpConsumables";
             this.tbpConsumables.Padding = new System.Windows.Forms.Padding(4);
-            this.tbpConsumables.Size = new System.Drawing.Size(1233, 497);
+            this.tbpConsumables.Size = new System.Drawing.Size(1233, 499);
             this.tbpConsumables.TabIndex = 1;
             this.tbpConsumables.Text = "Consumables";
             this.tbpConsumables.UseVisualStyleBackColor = true;
@@ -299,7 +330,7 @@ namespace SVSU_Capstone_Project.Views
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(720, 32);
+            this.label13.Location = new System.Drawing.Point(720, 33);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(91, 24);
@@ -319,6 +350,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbCategory
             // 
+            this.cmbCategory.Enabled = false;
             this.cmbCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(200, 74);
@@ -340,7 +372,7 @@ namespace SVSU_Capstone_Project.Views
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(911, 432);
+            this.btnCancel.Location = new System.Drawing.Point(1069, 406);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(152, 53);
@@ -352,7 +384,7 @@ namespace SVSU_Capstone_Project.Views
             // btnHandOut
             // 
             this.btnHandOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHandOut.Location = new System.Drawing.Point(1071, 432);
+            this.btnHandOut.Location = new System.Drawing.Point(909, 406);
             this.btnHandOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnHandOut.Name = "btnHandOut";
             this.btnHandOut.Size = new System.Drawing.Size(152, 53);
@@ -511,11 +543,326 @@ namespace SVSU_Capstone_Project.Views
             this.label11.TabIndex = 165;
             this.label11.Text = "Room:";
             // 
+            // tbpCheckOut
+            // 
+            this.tbpCheckOut.Controls.Add(this.cmbChkOutStudent);
+            this.tbpCheckOut.Controls.Add(this.txtChkOutNotes);
+            this.tbpCheckOut.Controls.Add(this.label14);
+            this.tbpCheckOut.Controls.Add(this.label15);
+            this.tbpCheckOut.Controls.Add(this.label16);
+            this.tbpCheckOut.Controls.Add(this.cmbChkOutCategory);
+            this.tbpCheckOut.Controls.Add(this.label17);
+            this.tbpCheckOut.Controls.Add(this.btnChkOutCancel);
+            this.tbpCheckOut.Controls.Add(this.btnChkOut);
+            this.tbpCheckOut.Controls.Add(this.label19);
+            this.tbpCheckOut.Controls.Add(this.numChkOutQuantity);
+            this.tbpCheckOut.Controls.Add(this.label20);
+            this.tbpCheckOut.Controls.Add(this.txtAvailableChkOutQuantity);
+            this.tbpCheckOut.Controls.Add(this.cmbChkOutCommodity);
+            this.tbpCheckOut.Controls.Add(this.label21);
+            this.tbpCheckOut.Location = new System.Drawing.Point(4, 27);
+            this.tbpCheckOut.Name = "tbpCheckOut";
+            this.tbpCheckOut.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpCheckOut.Size = new System.Drawing.Size(1233, 499);
+            this.tbpCheckOut.TabIndex = 2;
+            this.tbpCheckOut.Text = "Check Out";
+            this.tbpCheckOut.UseVisualStyleBackColor = true;
+            // 
+            // cmbChkOutStudent
+            // 
+            this.cmbChkOutStudent.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbChkOutStudent.FormattingEnabled = true;
+            this.cmbChkOutStudent.Location = new System.Drawing.Point(806, 81);
+            this.cmbChkOutStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbChkOutStudent.Name = "cmbChkOutStudent";
+            this.cmbChkOutStudent.Size = new System.Drawing.Size(337, 31);
+            this.cmbChkOutStudent.TabIndex = 199;
+            // 
+            // txtChkOutNotes
+            // 
+            this.txtChkOutNotes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChkOutNotes.Location = new System.Drawing.Point(806, 154);
+            this.txtChkOutNotes.Margin = new System.Windows.Forms.Padding(4);
+            this.txtChkOutNotes.Name = "txtChkOutNotes";
+            this.txtChkOutNotes.Size = new System.Drawing.Size(337, 227);
+            this.txtChkOutNotes.TabIndex = 197;
+            this.txtChkOutNotes.Text = "";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(691, 154);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 24);
+            this.label14.TabIndex = 198;
+            this.label14.Text = "Notes:";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(691, 85);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(91, 24);
+            this.label15.TabIndex = 196;
+            this.label15.Text = "Student:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(18, 17);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(258, 29);
+            this.label16.TabIndex = 195;
+            this.label16.Text = "Check Out Asset Item";
+            // 
+            // cmbChkOutCategory
+            // 
+            this.cmbChkOutCategory.Enabled = false;
+            this.cmbChkOutCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbChkOutCategory.FormattingEnabled = true;
+            this.cmbChkOutCategory.Location = new System.Drawing.Point(220, 74);
+            this.cmbChkOutCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbChkOutCategory.Name = "cmbChkOutCategory";
+            this.cmbChkOutCategory.Size = new System.Drawing.Size(298, 31);
+            this.cmbChkOutCategory.TabIndex = 178;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(77, 81);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(103, 24);
+            this.label17.TabIndex = 194;
+            this.label17.Text = "Category:";
+            // 
+            // btnChkOutCancel
+            // 
+            this.btnChkOutCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChkOutCancel.Location = new System.Drawing.Point(991, 410);
+            this.btnChkOutCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnChkOutCancel.Name = "btnChkOutCancel";
+            this.btnChkOutCancel.Size = new System.Drawing.Size(152, 53);
+            this.btnChkOutCancel.TabIndex = 186;
+            this.btnChkOutCancel.Text = "Cancel";
+            this.btnChkOutCancel.UseVisualStyleBackColor = true;
+            this.btnChkOutCancel.Click += new System.EventHandler(this.btnChkOutCancel_Click);
+            // 
+            // btnChkOut
+            // 
+            this.btnChkOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChkOut.Location = new System.Drawing.Point(806, 410);
+            this.btnChkOut.Margin = new System.Windows.Forms.Padding(4);
+            this.btnChkOut.Name = "btnChkOut";
+            this.btnChkOut.Size = new System.Drawing.Size(152, 53);
+            this.btnChkOut.TabIndex = 187;
+            this.btnChkOut.Text = "Check Out";
+            this.btnChkOut.UseVisualStyleBackColor = true;
+            this.btnChkOut.Click += new System.EventHandler(this.btnChkOut_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(77, 261);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(204, 24);
+            this.label19.TabIndex = 193;
+            this.label19.Text = "Check Out Quantity:";
+            // 
+            // numChkOutQuantity
+            // 
+            this.numChkOutQuantity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numChkOutQuantity.Location = new System.Drawing.Point(295, 255);
+            this.numChkOutQuantity.Margin = new System.Windows.Forms.Padding(4);
+            this.numChkOutQuantity.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numChkOutQuantity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numChkOutQuantity.Name = "numChkOutQuantity";
+            this.numChkOutQuantity.Size = new System.Drawing.Size(160, 30);
+            this.numChkOutQuantity.TabIndex = 185;
+            this.numChkOutQuantity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(77, 214);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(187, 24);
+            this.label20.TabIndex = 192;
+            this.label20.Text = "Available Quantity:";
+            // 
+            // txtAvailableChkOutQuantity
+            // 
+            this.txtAvailableChkOutQuantity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAvailableChkOutQuantity.Location = new System.Drawing.Point(295, 211);
+            this.txtAvailableChkOutQuantity.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAvailableChkOutQuantity.Name = "txtAvailableChkOutQuantity";
+            this.txtAvailableChkOutQuantity.ReadOnly = true;
+            this.txtAvailableChkOutQuantity.Size = new System.Drawing.Size(159, 30);
+            this.txtAvailableChkOutQuantity.TabIndex = 184;
+            // 
+            // cmbChkOutCommodity
+            // 
+            this.cmbChkOutCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbChkOutCommodity.FormattingEnabled = true;
+            this.cmbChkOutCommodity.Location = new System.Drawing.Point(220, 126);
+            this.cmbChkOutCommodity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbChkOutCommodity.Name = "cmbChkOutCommodity";
+            this.cmbChkOutCommodity.Size = new System.Drawing.Size(298, 31);
+            this.cmbChkOutCommodity.TabIndex = 180;
+            this.cmbChkOutCommodity.SelectedIndexChanged += new System.EventHandler(this.cmbChkOutCommodity_SelectedIndexChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(77, 129);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(124, 24);
+            this.label21.TabIndex = 191;
+            this.label21.Text = "Commodity:";
+            // 
+            // tbpCheckIn
+            // 
+            this.tbpCheckIn.Controls.Add(this.cmbChkInStudent);
+            this.tbpCheckIn.Controls.Add(this.label22);
+            this.tbpCheckIn.Controls.Add(this.label23);
+            this.tbpCheckIn.Controls.Add(this.cmbChkInCategory);
+            this.tbpCheckIn.Controls.Add(this.label24);
+            this.tbpCheckIn.Controls.Add(this.button1);
+            this.tbpCheckIn.Controls.Add(this.button2);
+            this.tbpCheckIn.Controls.Add(this.cmbChkInCommodity);
+            this.tbpCheckIn.Controls.Add(this.label27);
+            this.tbpCheckIn.Location = new System.Drawing.Point(4, 27);
+            this.tbpCheckIn.Name = "tbpCheckIn";
+            this.tbpCheckIn.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpCheckIn.Size = new System.Drawing.Size(1233, 499);
+            this.tbpCheckIn.TabIndex = 3;
+            this.tbpCheckIn.Text = "Check In";
+            this.tbpCheckIn.UseVisualStyleBackColor = true;
+            // 
+            // cmbChkInStudent
+            // 
+            this.cmbChkInStudent.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbChkInStudent.FormattingEnabled = true;
+            this.cmbChkInStudent.Location = new System.Drawing.Point(177, 135);
+            this.cmbChkInStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbChkInStudent.Name = "cmbChkInStudent";
+            this.cmbChkInStudent.Size = new System.Drawing.Size(298, 31);
+            this.cmbChkInStudent.TabIndex = 214;
+            // 
+            // label22
+            // 
+            this.label22.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(34, 142);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(91, 24);
+            this.label22.TabIndex = 211;
+            this.label22.Text = "Student:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(16, 17);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(239, 29);
+            this.label23.TabIndex = 210;
+            this.label23.Text = "Check In Asset Item";
+            // 
+            // cmbChkInCategory
+            // 
+            this.cmbChkInCategory.Enabled = false;
+            this.cmbChkInCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbChkInCategory.FormattingEnabled = true;
+            this.cmbChkInCategory.Location = new System.Drawing.Point(177, 64);
+            this.cmbChkInCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbChkInCategory.Name = "cmbChkInCategory";
+            this.cmbChkInCategory.Size = new System.Drawing.Size(298, 31);
+            this.cmbChkInCategory.TabIndex = 200;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(34, 71);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(103, 24);
+            this.label24.TabIndex = 209;
+            this.label24.Text = "Category:";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(242, 321);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(152, 53);
+            this.button1.TabIndex = 204;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(38, 321);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(152, 53);
+            this.button2.TabIndex = 205;
+            this.button2.Text = "Check Out";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // cmbChkInCommodity
+            // 
+            this.cmbChkInCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbChkInCommodity.FormattingEnabled = true;
+            this.cmbChkInCommodity.Location = new System.Drawing.Point(177, 211);
+            this.cmbChkInCommodity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbChkInCommodity.Name = "cmbChkInCommodity";
+            this.cmbChkInCommodity.Size = new System.Drawing.Size(298, 31);
+            this.cmbChkInCommodity.TabIndex = 201;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(34, 218);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(124, 24);
+            this.label27.TabIndex = 206;
+            this.label27.Text = "Commodity:";
+            // 
             // frmCheckInOutItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1273, 558);
+            this.ClientSize = new System.Drawing.Size(1274, 558);
             this.Controls.Add(this.tbcCheckInOut);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCheckInOutItems";
@@ -527,6 +874,11 @@ namespace SVSU_Capstone_Project.Views
             this.tbpConsumables.ResumeLayout(false);
             this.tbpConsumables.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).EndInit();
+            this.tbpCheckOut.ResumeLayout(false);
+            this.tbpCheckOut.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numChkOutQuantity)).EndInit();
+            this.tbpCheckIn.ResumeLayout(false);
+            this.tbpCheckIn.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -569,5 +921,31 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.ComboBox cmbStudents;
         private System.Windows.Forms.ComboBox cmbAssetsStudents;
         private System.Windows.Forms.ComboBox cmbAssetCategory;
+        private System.Windows.Forms.TabPage tbpCheckOut;
+        internal System.Windows.Forms.ComboBox cmbChkOutStudent;
+        internal System.Windows.Forms.RichTextBox txtChkOutNotes;
+        internal System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        internal System.Windows.Forms.ComboBox cmbChkOutCategory;
+        internal System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnChkOutCancel;
+        private System.Windows.Forms.Button btnChkOut;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown numChkOutQuantity;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtAvailableChkOutQuantity;
+        internal System.Windows.Forms.ComboBox cmbChkOutCommodity;
+        internal System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TabPage tbpCheckIn;
+        internal System.Windows.Forms.ComboBox cmbChkInStudent;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        internal System.Windows.Forms.ComboBox cmbChkInCategory;
+        internal System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        internal System.Windows.Forms.ComboBox cmbChkInCommodity;
+        internal System.Windows.Forms.Label label27;
     }
 }
