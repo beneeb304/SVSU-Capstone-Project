@@ -145,6 +145,7 @@ namespace SVSU_Capstone_Project
                     newF = new frmSettings();
                     this.Text = "Saginaw Valley Nursing Inventory System | Settings";
                     break;
+
             }
 
             //If a child (old) form already exists
@@ -249,5 +250,6 @@ namespace SVSU_Capstone_Project
                 }
             }
         }
+
     }
 }
