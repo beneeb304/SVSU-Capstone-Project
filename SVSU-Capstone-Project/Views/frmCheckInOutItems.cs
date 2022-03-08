@@ -91,7 +91,7 @@ namespace SVSU_Capstone_Project.Views
                     cmbCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Consumable").OrderBy(x => x.strName).ToList();
                     cmbCommodity.DataSource = (cmbCategory.SelectedValue as Category).lstCommodities;
                     cmbStudents.DataSource = ItemModel.GetMany<User>().OrderBy(x => x.strLast_name).ToList();
-                    cmbCommodity.SelectedIndex = -1;
+                    cmbCommodity.SelectedIndex = 0;
                     cmbStudents.SelectedIndex = -1;
                     break;
 
@@ -104,8 +104,12 @@ namespace SVSU_Capstone_Project.Views
                     cmbChkOutStudent.SelectedIndex = -1;
                     break;
 
-                case "tpbCheckIn":
-                    cmbAssetCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Asset").OrderBy(x => x.strName).ToList();
+                case "tbpCheckIn":
+                    
+                    cmbChkInCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Asset").OrderBy(x => x.strName).ToList();
+                    cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).Select(x => x.objUser.strFirst_name + " " + x.objUser.strLast_name).Distinct().ToList();
+                    cmbChkInStudent.SelectedIndex = -1;
+                    cmbChkInCommodity.SelectedIndex = -1;
                     break;
             }
         }
@@ -354,7 +358,11 @@ namespace SVSU_Capstone_Project.Views
             var quantity = ItemModel.Get<Storage>(
                 x => x.objCommodity.uidTuid == objSelectedCommodity.uidTuid
                 );
-            if (numChkOutQuantity.Value > quantity.intQuantity || cmbChkOutStudent.SelectedIndex == -1 | cmbChkOutCommodity.SelectedIndex == -1)
+            if (numChkOutQuantity.Value > quantity.intQuantity)
+            {
+                MessageBox.Show("Please select a quantity that is below or equal to the number of available quantity!", "Alert");
+            }
+            else if(cmbChkOutStudent.SelectedIndex == -1 | cmbChkOutCommodity.SelectedIndex == -1)
             {
                 MessageBox.Show("Please make sure all fields are properly filled in!", "Alert");
             }
@@ -423,6 +431,30 @@ namespace SVSU_Capstone_Project.Views
             else
             {
                 lstCheckedOut.SetSelected(lstCheckedOut.Items.IndexOf(checkedItem), true);
+            }
+        }
+
+        private void btnChkIn_Click( object sender, EventArgs e )
+        {
+
+        }
+
+        private void cmbChkInStudent_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            cmbChkInCommodity.Enabled = false;
+            if(cmbChkInStudent.SelectedIndex >= 0)
+            {
+                var objSelectedUser = cmbChkInStudent.SelectedValue;
+                cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => x.objUser.strFirst_name + " " + x.objUser.strLast_name == objSelectedUser.ToString() && ((int)x.objLog.enuAction == 4)).Distinct().Select(x => x.objCommodities.strName).ToList();
+                cmbChkInCommodity.Enabled = true;
+            }
+        }
+
+        private void cmbChkInCommodity_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            if(cmbChkInCommodity.SelectedIndex >= 0)
+            {
+                var commodity = cmbChkInCommodity.SelectedValue;
             }
         }
     }

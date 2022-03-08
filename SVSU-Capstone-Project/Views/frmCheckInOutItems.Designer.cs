@@ -88,7 +88,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkInCategory = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnChkIn = new System.Windows.Forms.Button();
             this.cmbChkInCommodity = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.tbcCheckInOut.SuspendLayout();
@@ -751,7 +751,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCheckIn.Controls.Add(this.cmbChkInCategory);
             this.tbpCheckIn.Controls.Add(this.label24);
             this.tbpCheckIn.Controls.Add(this.button1);
-            this.tbpCheckIn.Controls.Add(this.button2);
+            this.tbpCheckIn.Controls.Add(this.btnChkIn);
             this.tbpCheckIn.Controls.Add(this.cmbChkInCommodity);
             this.tbpCheckIn.Controls.Add(this.label27);
             this.tbpCheckIn.Location = new System.Drawing.Point(4, 27);
@@ -771,6 +771,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkInStudent.Name = "cmbChkInStudent";
             this.cmbChkInStudent.Size = new System.Drawing.Size(298, 31);
             this.cmbChkInStudent.TabIndex = 214;
+            this.cmbChkInStudent.SelectedIndexChanged += new System.EventHandler(this.cmbChkInStudent_SelectedIndexChanged);
             // 
             // label22
             // 
@@ -827,16 +828,17 @@ namespace SVSU_Capstone_Project.Views
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnChkIn
             // 
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(38, 321);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(152, 53);
-            this.button2.TabIndex = 205;
-            this.button2.Text = "Check Out";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnChkIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChkIn.Location = new System.Drawing.Point(38, 321);
+            this.btnChkIn.Margin = new System.Windows.Forms.Padding(4);
+            this.btnChkIn.Name = "btnChkIn";
+            this.btnChkIn.Size = new System.Drawing.Size(152, 53);
+            this.btnChkIn.TabIndex = 205;
+            this.btnChkIn.Text = "Check In";
+            this.btnChkIn.UseVisualStyleBackColor = true;
+            this.btnChkIn.Click += new System.EventHandler(this.btnChkIn_Click);
             // 
             // cmbChkInCommodity
             // 
@@ -847,6 +849,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkInCommodity.Name = "cmbChkInCommodity";
             this.cmbChkInCommodity.Size = new System.Drawing.Size(298, 31);
             this.cmbChkInCommodity.TabIndex = 201;
+            this.cmbChkInCommodity.SelectedIndexChanged += new System.EventHandler(this.cmbChkInCommodity_SelectedIndexChanged);
             // 
             // label27
             // 
@@ -944,7 +947,7 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.ComboBox cmbChkInCategory;
         internal System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnChkIn;
         internal System.Windows.Forms.ComboBox cmbChkInCommodity;
         internal System.Windows.Forms.Label label27;
     }

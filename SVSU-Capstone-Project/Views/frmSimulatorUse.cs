@@ -17,6 +17,7 @@ namespace SVSU_Capstone_Project.Views
         public frmSimulatorUse()
         {
             InitializeComponent();
+            //tbcSimulatorUse_SelectedIndexChanged(null, null);
         }
 
         private void frmSimulatorUse_Load( object sender, EventArgs e )
