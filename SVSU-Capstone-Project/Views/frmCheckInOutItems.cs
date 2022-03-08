@@ -105,9 +105,10 @@ namespace SVSU_Capstone_Project.Views
                     break;
 
                 case "tbpCheckIn":
-                    
+                    var checkedItems = ItemModel.GetMany<CheckedItem>().Where(x => (int)x.objLog.enuAction == 4).ToList();
                     cmbChkInCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Asset").OrderBy(x => x.strName).ToList();
-                    cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).Select(x => x.objUser.strFirst_name + " " + x.objUser.strLast_name).Distinct().ToList();
+                    //cmbChkInStudent.DataSource = ItemModel.GetMany<User>().Where(x => x.uidTuid == checkedItems)
+                   cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).Select(x => x.objUser.strFirst_name + " " + x.objUser.strLast_name).Distinct().ToList();
                     cmbChkInStudent.SelectedIndex = -1;
                     cmbChkInCommodity.SelectedIndex = -1;
                     break;
@@ -134,16 +135,6 @@ namespace SVSU_Capstone_Project.Views
             // set the data fields in order by name
             cmbRoom.DataSource = objSelectedCommodity.lstStorage.Select(x => x.objCabinet.objRoom).Distinct().OrderBy(x => x.strName).ToList();
 
-            //TESTING FOR LAMAR
-            try
-            {
-                CheckedItem checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.uidTuid == objSelectedCommodity.uidTuid);
-                lblTesting.Text = checkedItem.uidTuid.ToString();
-            }
-            catch
-            {
-                lblTesting.Text = "Null";
-            }
         }
 
         private void cmbRoom_SelectedIndexChanged( object sender, EventArgs e )
@@ -463,10 +454,18 @@ namespace SVSU_Capstone_Project.Views
 
         private void cmbChkInCommodity_SelectedIndexChanged( object sender, EventArgs e )
         {
-            if(cmbChkInCommodity.SelectedIndex >= 0)
-            {
-                var commodity = cmbChkInCommodity.SelectedValue;
-            }
+            
+                //var commodity = cmbChkInCommodity.SelectedValue as CheckedItem;
+                //try
+                //{
+                //    CheckedItem checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.uidTuid == commodity.uidTuid);
+                //    lblTesting.Text = checkedItem.uidTuid.ToString();
+                //}
+                //catch
+                //{
+                //    lblTesting.Text = "Null";
+                }
+            
         }
     }
 }
