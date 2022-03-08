@@ -108,7 +108,7 @@ namespace SVSU_Capstone_Project.Views
                     var checkedItems = ItemModel.GetMany<CheckedItem>().Where(x => (int)x.objLog.enuAction == 4).ToList();
                     cmbChkInCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Asset").OrderBy(x => x.strName).ToList();
                     //cmbChkInStudent.DataSource = ItemModel.GetMany<User>().Where(x => x.uidTuid == checkedItems)
-                   cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).Select(x => x.objUser.strFirst_name + " " + x.objUser.strLast_name).Distinct().ToList();
+                   cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).Select(x => x.objUser.strEmail).Distinct().ToList();
                     cmbChkInStudent.SelectedIndex = -1;
                     cmbChkInCommodity.SelectedIndex = -1;
                     break;
@@ -446,26 +446,35 @@ namespace SVSU_Capstone_Project.Views
             cmbChkInCommodity.Enabled = false;
             if(cmbChkInStudent.SelectedIndex >= 0)
             {
-                var objSelectedUser = cmbChkInStudent.SelectedValue;
-                cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => x.objUser.strFirst_name + " " + x.objUser.strLast_name == objSelectedUser.ToString() && ((int)x.objLog.enuAction == 4)).Distinct().Select(x => x.objCommodities.strName).ToList();
+                string objSelectedUser = cmbChkInStudent.Text;
+                //cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => x.objUser.strFirst_name + " " + x.objUser.strLast_name == objSelectedUser.ToString() && ((int)x.objLog.enuAction == 4)).Distinct().Select(x => x.objCommodities.strName).ToList();
+                cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>(x => x.objUser.strEmail == objSelectedUser);
                 cmbChkInCommodity.Enabled = true;
             }
         }
 
         private void cmbChkInCommodity_SelectedIndexChanged( object sender, EventArgs e )
         {
-            
-                //var commodity = cmbChkInCommodity.SelectedValue as CheckedItem;
-                //try
-                //{
-                //    CheckedItem checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.uidTuid == commodity.uidTuid);
-                //    lblTesting.Text = checkedItem.uidTuid.ToString();
-                //}
-                //catch
-                //{
-                //    lblTesting.Text = "Null";
-                }
-            
+            cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>(x => x.objUser.strEmail == cmbChkInStudent.Text).SelectMany(x => x.objCommodities.strName).ToList();
+            //cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>(x => x.objUser.strEmail == cmbChkInStudent.Text).ToList();
+
+
+            //var commodity = cmbChkInCommodity.SelectedValue as CheckedItem;
+            //try
+            //{
+            //    CheckedItem checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.uidTuid == commodity.uidTuid);
+            //    lblTesting.Text = checkedItem.uidTuid.ToString();
+            //}
+            //catch
+            //{
+            //    lblTesting.Text = "Null";
+            //}
+
+        }
+
+        private void cmbChkInCategory_SelectedIndexChanged( object sender, EventArgs e )
+        {
+
         }
     }
 }
