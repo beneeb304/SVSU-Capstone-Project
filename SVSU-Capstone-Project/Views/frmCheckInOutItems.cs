@@ -133,6 +133,17 @@ namespace SVSU_Capstone_Project.Views
             var objSelectedCommodity = cmbCommodity.SelectedValue as Commodity;
             // set the data fields in order by name
             cmbRoom.DataSource = objSelectedCommodity.lstStorage.Select(x => x.objCabinet.objRoom).Distinct().OrderBy(x => x.strName).ToList();
+
+            //TESTING FOR LAMAR
+            try
+            {
+                CheckedItem checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.uidTuid == objSelectedCommodity.uidTuid);
+                lblTesting.Text = checkedItem.uidTuid.ToString();
+            }
+            catch
+            {
+                lblTesting.Text = "Null";
+            }
         }
 
         private void cmbRoom_SelectedIndexChanged( object sender, EventArgs e )
