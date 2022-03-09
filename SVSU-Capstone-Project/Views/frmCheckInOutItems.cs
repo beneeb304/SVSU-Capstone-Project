@@ -244,7 +244,7 @@ namespace SVSU_Capstone_Project.Views
                         {
                             enuAction = ItemAction.CheckedOut,
                             dtTimestamp = timestamp,
-                            strNotes = txtAssetNotes.Text,
+                            strNotes = txtChkOutNotes.Text,
                             intQuantityChange = -1,
                             objStorage = objStorage_tuid,
                             objUser = objUser_tuid
