@@ -193,12 +193,6 @@
     <Compile Include="Views\frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSimulatorUse.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\frmSimulatorUse.Designer.cs">
-      <DependentUpon>frmSimulatorUse.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\frmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,9 +251,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmSimulatorUse.resx">
-      <DependentUpon>frmSimulatorUse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
