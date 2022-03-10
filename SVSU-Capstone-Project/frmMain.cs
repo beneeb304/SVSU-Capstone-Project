@@ -127,7 +127,7 @@ namespace SVSU_Capstone_Project
                     // If this is called from a barcode scan,
                     if (barcodeScanner.checkedItem != null)
                     {
-                        newF = new frmCheckInOutItems(barcodeScanner.checkedItem);
+                        //newF = new frmCheckInOutItems(barcodeScanner.checkedItem);
                         barcodeScanner.resetValues();
                     }
                     else

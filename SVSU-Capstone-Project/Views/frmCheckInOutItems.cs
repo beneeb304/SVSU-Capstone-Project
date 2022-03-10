@@ -27,40 +27,11 @@ namespace SVSU_Capstone_Project.Views
             tbcCheckInOut_SelectedIndexChanged(null, null);
         }
 
-        public frmCheckInOutItems(CheckedItem checkedItem) : this()
-        {
-            setScannedBarcode(checkedItem);
-        }
+        //public frmCheckInOutItems(CheckedItem checkedItem) : this()
+        //{
+        //    setScannedBarcode(checkedItem);
+        //}
 
-        private void ListBoxClicked( object sender, EventArgs e )
-        {
-            /* Function: ListBoxClicked
-              * -----------------------------------------------------------------------------
-              * Description: This function is used to set wehter an object is checked in or out
-              * and will set the statue accordingly. If it is checked in, the checked out button 
-              * will appear to allow user to check it out. If the item is checked out, the 
-              * checked in button will appear to allow user to check it in.
-              * -----------------------------------------------------------------------------
-              *  Parameter Dictionary (in parameter order):  
-              *  EventArgs e; Information passed by the sender object about the method call.
-              *  object sender; The object calling the method.
-              * -----------------------------------------------------------------------------
-              * Local Variables
-              */
-
-            // if the item is checked in allow user to check out the item by check out btn
-            if ((sender as ListBox).Name.ToString() == "lstIn")
-            {
-                btnCheckIn.Enabled = false;
-                btnCheckOut.Enabled = true;
-            }
-            // if the item is checked out allow user to check in the item by check in btn
-            else if ((sender as ListBox).Name.ToString() == "lstOut")
-            {
-                btnCheckIn.Enabled = true;
-                btnCheckOut.Enabled = false;
-            }
-        }
 
         private void tbcCheckInOut_SelectedIndexChanged( object sender, EventArgs e )
         {
@@ -78,15 +49,6 @@ namespace SVSU_Capstone_Project.Views
 
             switch (tbcCheckInOut.SelectedTab.Name)
             {
-                case "tbpAssets":
-                    //populate checked in assets listbox
-                    lstCheckedOut.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).Select(x => x.objLog.objStorage.objCommodity.strName).ToList();
-
-                    lstCheckedIn.DataSource = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset").OrderBy(x => x.strName).ToList();
-                    cmbAssetsStudents.DataSource = ItemModel.GetMany<User>().OrderBy(x => x.strLast_name).ToList();
-                    //lstCheckedOut.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).OrderBy(x => x.objCommodities.strName).ToList();
-                    break;
-
                 case "tbpCheckOut":
                     cmbChkOutCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Asset").OrderBy(x => x.strName).ToList();
                     cmbChkOutCommodity.DataSource = (cmbChkOutCategory.SelectedValue as Category).lstCommodities;
@@ -99,8 +61,7 @@ namespace SVSU_Capstone_Project.Views
                 case "tbpCheckIn":
                     var checkedItems = ItemModel.GetMany<CheckedItem>().Where(x => (int)x.objLog.enuAction == 4).ToList();
                     cmbChkInCategory.DataSource = ItemModel.GetMany<Category>(x => x.strName == "Asset").OrderBy(x => x.strName).ToList();
-                    //cmbChkInStudent.DataSource = ItemModel.GetMany<User>().Where(x => x.uidTuid == checkedItems)
-                   cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).Select(x => x.objUser.strEmail).Distinct().ToList();
+                    cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).Select(x => x.objUser.strEmail).Distinct().ToList();
                     cmbChkInStudent.SelectedIndex = -1;
                     cmbChkInCommodity.SelectedIndex = -1;
                     break;
@@ -111,87 +72,7 @@ namespace SVSU_Capstone_Project.Views
         {
 
         }
- /*         ********DELETE THIS GROUP OF COMMENTED CODE*********
-  *         ********NO LONGER USING ASSETS TAB, SPLIT INTO CHECK IN AND CHECK OUT TABS*********
-  
-
-
-        //Can delete after checkout tab functions properly
-        private void btnCheckOut_Click( object sender, EventArgs e )
-        {
-            var objCommodity_tuid = lstCheckedIn.SelectedValue as Commodity;
-            var objStorage_tuid = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == objCommodity_tuid.uidTuid);
-            var objUser_tuid = cmbAssetsStudents.SelectedValue as User;
-            var timestamp = DateTime.Now;
-            if (objStorage_tuid.intQuantity > 0)
-            {
-                Log log = new Log()
-                {
-                    enuAction = ItemAction.CheckedOut,
-                    dtTimestamp = timestamp,
-                    strNotes = txtAssetNotes.Text,
-                    intQuantityChange = -1,
-                    objStorage = objStorage_tuid,
-                    objUser = objUser_tuid
-                };
-
-                ItemModel.Add<Log>(log);
-
-                var objLog_Tuid = ItemModel.Get<Log>(
-                    x => x.objStorage.uidTuid == objStorage_tuid.uidTuid && x.dtTimestamp == timestamp && x.objUser.uidTuid == objUser_tuid.uidTuid);
-
-                CheckedItem checkedItem = new CheckedItem()
-                {
-                    objCommodities = objCommodity_tuid,
-                    objLog = objLog_Tuid,
-                    objUser = objUser_tuid
-                };
-
-                ItemModel.Add<CheckedItem>(checkedItem);
-
-                Storage storage = ItemModel.Get<Storage>(x => x.uidTuid == objStorage_tuid.uidTuid);
-                storage.intQuantity = storage.intQuantity - 1;
-                ItemModel.Update<Storage>(storage);
-
-                var checkedOut = ItemModel.Get<Log>(x => x.objStorage.uidTuid == objStorage_tuid.uidTuid);
-                var item = ItemModel.Get<Storage>(x => x.uidTuid == checkedOut.objStorage.uidTuid);
-
-                //lstCheckedOut.Items.Add(item.objCommodity.strName);
-                
-            }
-        }
-        //Can delete after checkout tab functions properly
-        private void lstCheckedIn_SelectedIndexChanged( object sender, EventArgs e )
-        {
-            cmbAssetsStudents.Enabled = true;
-            txtAssetNotes.Enabled = true;
-            lstCheckedOut.SelectedIndex = -1;
-        }
-        //Can delete after checkout tab functions properly
-        private void lstCheckedOut_SelectedIndexChanged( object sender, EventArgs e )
-        {
-
-            txtAssetNotes.Enabled = false;
-            cmbAssetsStudents.Enabled = false;
-            txtAssetNotes.Text = "";
-            cmbAssetsStudents.SelectedIndex = -1;
-            lstCheckedIn.SelectedIndex = -1;
-        }
-        //Can delete after checkout tab functions properly
-        private void btnCheckIn_Click( object sender, EventArgs e )
-        {
-            //lstCheckedIn.SelectedIndex = -1;
-            //lstCheckedOut.SelectedIndex = -1;
-
-            var objselectedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.strName == lstCheckedOut.SelectedValue.ToString());
-            var objLog = ItemModel.GetMany<Log>();
-
-
-            //var checkedItem = ItemModel.GetMany<CheckedItem>().Where(x => x.objCommodities.strName == objselectedItem).ToList();
-        }
-*/
-
-
+ 
         private void cmbChkOutCommodity_SelectedIndexChanged( object sender, EventArgs e )
         {
             if (cmbChkOutCommodity.SelectedIndex >= 0)
@@ -288,21 +169,62 @@ namespace SVSU_Capstone_Project.Views
             txtAvailableChkOutQuantity.Text = "";
         }
 
-        public void setScannedBarcode(CheckedItem checkedItem)
-        {
-            if (lstCheckedIn.Items.Contains(checkedItem))
-            {
-                lstCheckedIn.SetSelected(lstCheckedIn.Items.IndexOf(checkedItem), true);
-            }
-            else
-            {
-                lstCheckedOut.SetSelected(lstCheckedOut.Items.IndexOf(checkedItem), true);
-            }
-        }
+        //public void setScannedBarcode(CheckedItem checkedItem)
+        //{
+        //    if (lstCheckedIn.Items.Contains(checkedItem))
+        //    {
+        //        lstCheckedIn.SetSelected(lstCheckedIn.Items.IndexOf(checkedItem), true);
+        //    }
+        //    else
+        //    {
+        //        lstCheckedOut.SetSelected(lstCheckedOut.Items.IndexOf(checkedItem), true);
+        //    }
+        //}
 
         private void btnChkIn_Click( object sender, EventArgs e )
         {
+            if(cmbChkInStudent.SelectedIndex == -1 || cmbChkInCommodity.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select make sure a student and commodity is selected to check back in!", "Alert");
+            }
+            else
+            {
+                var objSelectedStudent = cmbChkInStudent.Text;
+                var objSelectedItem = cmbChkInCommodity.SelectedItem;
+                var objCommodity_tuid = ItemModel.Get<Commodity>(x => x.strName == objSelectedItem);
+                var doesExist = ItemModel.Get<CheckedItem>(x => x.objUser.strEmail == objSelectedStudent && x.objCommodities.strName == objSelectedItem.ToString());
+                var timestamp = DateTime.Now;
+                var objUser = ItemModel.Get<User>(x => x.strEmail == objSelectedStudent);
+                var objStorage_tuid = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == objCommodity_tuid.uidTuid);
+                if (doesExist != null)
+                {
+                    Storage storage = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == doesExist.objCommodities.uidTuid);
+                    storage.intQuantity = storage.intQuantity + 1;
+                    ItemModel.Update<Storage>(storage);
+                    cmbChkInStudent.SelectedIndex = -1;
+                    cmbChkInCommodity.SelectedIndex = -1;
 
+                    Log log = new Log()
+                    {
+                        enuAction = ItemAction.CheckedIn,
+                        dtTimestamp = timestamp,
+                        strNotes = objUser.strFirst_name + " " + objUser.strLast_name + " has returned " + objSelectedItem,
+                        intQuantityChange = +1,
+                        objStorage = objStorage_tuid,
+                        objUser = objUser
+                    };
+
+                    ItemModel.Add<Log>(log);
+                    MessageBox.Show(doesExist.objCommodities.strName + " has been successfully checked back in!", "Alert");
+                    ItemModel.Delete<CheckedItem>(doesExist);
+                    tbcCheckInOut_SelectedIndexChanged(null, null);
+                    cmbChkInStudent_SelectedIndexChanged(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Item does not appear to be checked out by this user", "Alert");
+                }
+            }
         }
 
         private void cmbChkInStudent_SelectedIndexChanged( object sender, EventArgs e )
@@ -311,34 +233,9 @@ namespace SVSU_Capstone_Project.Views
             if(cmbChkInStudent.SelectedIndex >= 0)
             {
                 string objSelectedUser = cmbChkInStudent.Text;
-                //cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => x.objUser.strFirst_name + " " + x.objUser.strLast_name == objSelectedUser.ToString() && ((int)x.objLog.enuAction == 4)).Distinct().Select(x => x.objCommodities.strName).ToList();
                 cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>(x => x.objUser.strEmail == objSelectedUser).Select(x => x.objCommodities.strName).ToList();
                 cmbChkInCommodity.Enabled = true;
             }
-        }
-
-        private void cmbChkInCommodity_SelectedIndexChanged( object sender, EventArgs e )
-        {
-            //cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>(x => x.objUser.strEmail == cmbChkInStudent.Text).SelectMany(x => x.objCommodities.strName).ToList();
-            //cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>(x => x.objUser.strEmail == cmbChkInStudent.Text).ToList();
-
-
-            //var commodity = cmbChkInCommodity.SelectedValue as CheckedItem;
-            //try
-            //{
-            //    CheckedItem checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.uidTuid == commodity.uidTuid);
-            //    lblTesting.Text = checkedItem.uidTuid.ToString();
-            //}
-            //catch
-            //{
-            //    lblTesting.Text = "Null";
-            //}
-
-        }
-
-        private void cmbChkInCategory_SelectedIndexChanged( object sender, EventArgs e )
-        {
-
         }
 
     }

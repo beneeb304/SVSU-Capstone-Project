@@ -30,7 +30,6 @@ namespace SVSU_Capstone_Project.Views
         private void InitializeComponent()
         {
             this.tbpCheckIn = new System.Windows.Forms.TabPage();
-            this.lblTesting = new System.Windows.Forms.Label();
             this.cmbChkInStudent = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -54,28 +53,14 @@ namespace SVSU_Capstone_Project.Views
             this.label20 = new System.Windows.Forms.Label();
             this.cmbChkOutCommodity = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.tbpAssets = new System.Windows.Forms.TabPage();
-            this.cmbAssetCategory = new System.Windows.Forms.ComboBox();
-            this.cmbAssetsStudents = new System.Windows.Forms.ComboBox();
-            this.btnCheckIn = new System.Windows.Forms.Button();
-            this.btnCheckOut = new System.Windows.Forms.Button();
-            this.txtAssetNotes = new System.Windows.Forms.RichTextBox();
-            this.lblNotes = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lstCheckedOut = new System.Windows.Forms.ListBox();
-            this.lstCheckedIn = new System.Windows.Forms.ListBox();
-            this.lblSvsuIdCI = new System.Windows.Forms.Label();
             this.tbcCheckInOut = new System.Windows.Forms.TabControl();
             this.tbpCheckIn.SuspendLayout();
             this.tbpCheckOut.SuspendLayout();
-            this.tbpAssets.SuspendLayout();
             this.tbcCheckInOut.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbpCheckIn
             // 
-            this.tbpCheckIn.Controls.Add(this.lblTesting);
             this.tbpCheckIn.Controls.Add(this.cmbChkInStudent);
             this.tbpCheckIn.Controls.Add(this.label22);
             this.tbpCheckIn.Controls.Add(this.label23);
@@ -94,17 +79,9 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCheckIn.Text = "Check In";
             this.tbpCheckIn.UseVisualStyleBackColor = true;
             // 
-            // lblTesting
-            // 
-            this.lblTesting.AutoSize = true;
-            this.lblTesting.Location = new System.Drawing.Point(843, 91);
-            this.lblTesting.Name = "lblTesting";
-            this.lblTesting.Size = new System.Drawing.Size(60, 19);
-            this.lblTesting.TabIndex = 215;
-            this.lblTesting.Text = "label18";
-            // 
             // cmbChkInStudent
             // 
+            this.cmbChkInStudent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChkInStudent.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbChkInStudent.FormattingEnabled = true;
             this.cmbChkInStudent.Location = new System.Drawing.Point(177, 135);
@@ -147,7 +124,6 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkInCategory.Name = "cmbChkInCategory";
             this.cmbChkInCategory.Size = new System.Drawing.Size(297, 31);
             this.cmbChkInCategory.TabIndex = 200;
-            this.cmbChkInCategory.SelectedIndexChanged += new System.EventHandler(this.cmbChkInCategory_SelectedIndexChanged);
             // 
             // label24
             // 
@@ -184,6 +160,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbChkInCommodity
             // 
+            this.cmbChkInCommodity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChkInCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbChkInCommodity.FormattingEnabled = true;
             this.cmbChkInCommodity.Location = new System.Drawing.Point(177, 210);
@@ -191,7 +168,6 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkInCommodity.Name = "cmbChkInCommodity";
             this.cmbChkInCommodity.Size = new System.Drawing.Size(297, 31);
             this.cmbChkInCommodity.TabIndex = 201;
-            this.cmbChkInCommodity.SelectedIndexChanged += new System.EventHandler(this.cmbChkInCommodity_SelectedIndexChanged);
             // 
             // label27
             // 
@@ -369,154 +345,8 @@ namespace SVSU_Capstone_Project.Views
             this.label21.TabIndex = 191;
             this.label21.Text = "Commodity:";
             // 
-            // tbpAssets
-            // 
-            this.tbpAssets.Controls.Add(this.cmbAssetCategory);
-            this.tbpAssets.Controls.Add(this.cmbAssetsStudents);
-            this.tbpAssets.Controls.Add(this.btnCheckIn);
-            this.tbpAssets.Controls.Add(this.btnCheckOut);
-            this.tbpAssets.Controls.Add(this.txtAssetNotes);
-            this.tbpAssets.Controls.Add(this.lblNotes);
-            this.tbpAssets.Controls.Add(this.label2);
-            this.tbpAssets.Controls.Add(this.label1);
-            this.tbpAssets.Controls.Add(this.lstCheckedOut);
-            this.tbpAssets.Controls.Add(this.lstCheckedIn);
-            this.tbpAssets.Controls.Add(this.lblSvsuIdCI);
-            this.tbpAssets.Location = new System.Drawing.Point(4, 27);
-            this.tbpAssets.Margin = new System.Windows.Forms.Padding(4);
-            this.tbpAssets.Name = "tbpAssets";
-            this.tbpAssets.Padding = new System.Windows.Forms.Padding(4);
-            this.tbpAssets.Size = new System.Drawing.Size(1233, 499);
-            this.tbpAssets.TabIndex = 0;
-            this.tbpAssets.Text = "Assets";
-            this.tbpAssets.UseVisualStyleBackColor = true;
-            // 
-            // cmbAssetCategory
-            // 
-            this.cmbAssetCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAssetCategory.FormattingEnabled = true;
-            this.cmbAssetCategory.Location = new System.Drawing.Point(796, 46);
-            this.cmbAssetCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbAssetCategory.Name = "cmbAssetCategory";
-            this.cmbAssetCategory.Size = new System.Drawing.Size(337, 26);
-            this.cmbAssetCategory.TabIndex = 137;
-            this.cmbAssetCategory.Visible = false;
-            // 
-            // cmbAssetsStudents
-            // 
-            this.cmbAssetsStudents.Enabled = false;
-            this.cmbAssetsStudents.FormattingEnabled = true;
-            this.cmbAssetsStudents.Location = new System.Drawing.Point(796, 101);
-            this.cmbAssetsStudents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbAssetsStudents.Name = "cmbAssetsStudents";
-            this.cmbAssetsStudents.Size = new System.Drawing.Size(337, 26);
-            this.cmbAssetsStudents.TabIndex = 136;
-            // 
-            // btnCheckIn
-            // 
-            this.btnCheckIn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCheckIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckIn.Location = new System.Drawing.Point(932, 430);
-            this.btnCheckIn.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCheckIn.Name = "btnCheckIn";
-            this.btnCheckIn.Size = new System.Drawing.Size(132, 57);
-            this.btnCheckIn.TabIndex = 134;
-            this.btnCheckIn.Text = "Check In";
-            this.btnCheckIn.UseVisualStyleBackColor = true;
-            // 
-            // btnCheckOut
-            // 
-            this.btnCheckOut.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCheckOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.Location = new System.Drawing.Point(1091, 430);
-            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(132, 57);
-            this.btnCheckOut.TabIndex = 135;
-            this.btnCheckOut.Text = "Check Out";
-            this.btnCheckOut.UseVisualStyleBackColor = true;
-            // 
-            // txtAssetNotes
-            // 
-            this.txtAssetNotes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAssetNotes.Location = new System.Drawing.Point(796, 169);
-            this.txtAssetNotes.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAssetNotes.Name = "txtAssetNotes";
-            this.txtAssetNotes.Size = new System.Drawing.Size(337, 227);
-            this.txtAssetNotes.TabIndex = 132;
-            this.txtAssetNotes.Text = "";
-            // 
-            // lblNotes
-            // 
-            this.lblNotes.AutoSize = true;
-            this.lblNotes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotes.Location = new System.Drawing.Point(632, 172);
-            this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(72, 24);
-            this.lblNotes.TabIndex = 133;
-            this.lblNotes.Text = "Notes:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(340, 30);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(202, 24);
-            this.label2.TabIndex = 74;
-            this.label2.Text = "Checked Out Assets";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 24);
-            this.label1.TabIndex = 73;
-            this.label1.Text = "Checked In Assets";
-            // 
-            // lstCheckedOut
-            // 
-            this.lstCheckedOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstCheckedOut.FormattingEnabled = true;
-            this.lstCheckedOut.ItemHeight = 23;
-            this.lstCheckedOut.Location = new System.Drawing.Point(344, 69);
-            this.lstCheckedOut.Margin = new System.Windows.Forms.Padding(4);
-            this.lstCheckedOut.Name = "lstCheckedOut";
-            this.lstCheckedOut.Size = new System.Drawing.Size(256, 326);
-            this.lstCheckedOut.TabIndex = 70;
-            this.lstCheckedOut.Click += new System.EventHandler(this.ListBoxClicked);
-            // 
-            // lstCheckedIn
-            // 
-            this.lstCheckedIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstCheckedIn.FormattingEnabled = true;
-            this.lstCheckedIn.ItemHeight = 23;
-            this.lstCheckedIn.Location = new System.Drawing.Point(48, 69);
-            this.lstCheckedIn.Margin = new System.Windows.Forms.Padding(4);
-            this.lstCheckedIn.Name = "lstCheckedIn";
-            this.lstCheckedIn.Size = new System.Drawing.Size(256, 326);
-            this.lstCheckedIn.TabIndex = 69;
-            this.lstCheckedIn.Click += new System.EventHandler(this.ListBoxClicked);
-            // 
-            // lblSvsuIdCI
-            // 
-            this.lblSvsuIdCI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblSvsuIdCI.AutoSize = true;
-            this.lblSvsuIdCI.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSvsuIdCI.Location = new System.Drawing.Point(632, 102);
-            this.lblSvsuIdCI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSvsuIdCI.Name = "lblSvsuIdCI";
-            this.lblSvsuIdCI.Size = new System.Drawing.Size(91, 24);
-            this.lblSvsuIdCI.TabIndex = 62;
-            this.lblSvsuIdCI.Text = "Student:";
-            // 
             // tbcCheckInOut
             // 
-            this.tbcCheckInOut.Controls.Add(this.tbpAssets);
             this.tbcCheckInOut.Controls.Add(this.tbpCheckOut);
             this.tbcCheckInOut.Controls.Add(this.tbpCheckIn);
             this.tbcCheckInOut.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -542,8 +372,6 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCheckIn.PerformLayout();
             this.tbpCheckOut.ResumeLayout(false);
             this.tbpCheckOut.PerformLayout();
-            this.tbpAssets.ResumeLayout(false);
-            this.tbpAssets.PerformLayout();
             this.tbcCheckInOut.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -552,7 +380,6 @@ namespace SVSU_Capstone_Project.Views
         #endregion
 
         private System.Windows.Forms.TabPage tbpCheckIn;
-        private System.Windows.Forms.Label lblTesting;
         internal System.Windows.Forms.ComboBox cmbChkInStudent;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
@@ -576,18 +403,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Label label20;
         internal System.Windows.Forms.ComboBox cmbChkOutCommodity;
         internal System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TabPage tbpAssets;
-        private System.Windows.Forms.ComboBox cmbAssetCategory;
-        private System.Windows.Forms.ComboBox cmbAssetsStudents;
-        private System.Windows.Forms.Button btnCheckIn;
-        private System.Windows.Forms.Button btnCheckOut;
-        internal System.Windows.Forms.RichTextBox txtAssetNotes;
-        internal System.Windows.Forms.Label lblNotes;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox lstCheckedOut;
-        private System.Windows.Forms.ListBox lstCheckedIn;
-        private System.Windows.Forms.Label lblSvsuIdCI;
         private System.Windows.Forms.TabControl tbcCheckInOut;
     }
 }
