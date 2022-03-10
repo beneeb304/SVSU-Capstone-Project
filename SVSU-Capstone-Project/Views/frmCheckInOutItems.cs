@@ -238,5 +238,10 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        private void btnChkInCancel_Click( object sender, EventArgs e )
+        {
+            cmbChkInStudent.SelectedIndex = -1;
+            cmbChkInCommodity.SelectedIndex = -1;
+        }
     }
 }

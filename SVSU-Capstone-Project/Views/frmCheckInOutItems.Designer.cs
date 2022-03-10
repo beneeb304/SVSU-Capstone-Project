@@ -35,7 +35,7 @@ namespace SVSU_Capstone_Project.Views
             this.label23 = new System.Windows.Forms.Label();
             this.cmbChkInCategory = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnChkInCancel = new System.Windows.Forms.Button();
             this.btnChkIn = new System.Windows.Forms.Button();
             this.cmbChkInCommodity = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -66,7 +66,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCheckIn.Controls.Add(this.label23);
             this.tbpCheckIn.Controls.Add(this.cmbChkInCategory);
             this.tbpCheckIn.Controls.Add(this.label24);
-            this.tbpCheckIn.Controls.Add(this.button1);
+            this.tbpCheckIn.Controls.Add(this.btnChkInCancel);
             this.tbpCheckIn.Controls.Add(this.btnChkIn);
             this.tbpCheckIn.Controls.Add(this.cmbChkInCommodity);
             this.tbpCheckIn.Controls.Add(this.label27);
@@ -135,16 +135,17 @@ namespace SVSU_Capstone_Project.Views
             this.label24.TabIndex = 209;
             this.label24.Text = "Category:";
             // 
-            // button1
+            // btnChkInCancel
             // 
-            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(243, 321);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 53);
-            this.button1.TabIndex = 204;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnChkInCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChkInCancel.Location = new System.Drawing.Point(243, 321);
+            this.btnChkInCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnChkInCancel.Name = "btnChkInCancel";
+            this.btnChkInCancel.Size = new System.Drawing.Size(152, 53);
+            this.btnChkInCancel.TabIndex = 204;
+            this.btnChkInCancel.Text = "Cancel";
+            this.btnChkInCancel.UseVisualStyleBackColor = true;
+            this.btnChkInCancel.Click += new System.EventHandler(this.btnChkInCancel_Click);
             // 
             // btnChkIn
             // 
@@ -385,7 +386,7 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Label label23;
         internal System.Windows.Forms.ComboBox cmbChkInCategory;
         internal System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnChkInCancel;
         private System.Windows.Forms.Button btnChkIn;
         internal System.Windows.Forms.ComboBox cmbChkInCommodity;
         internal System.Windows.Forms.Label label27;
