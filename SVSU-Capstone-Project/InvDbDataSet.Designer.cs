@@ -11804,7 +11804,7 @@ SELECT
 FROM Commodities c
 LEFT JOIN Storage s on s.objCommodity_uidTuid = c.tuid
 LEFT JOIN Logs l on l.objStorage_uidTuid = s.tuid
-WHERE l.action = 1
+WHERE l.action = 2
 )A
 GROUP BY A.name";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
