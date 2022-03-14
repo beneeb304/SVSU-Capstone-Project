@@ -16,14 +16,27 @@
                     <CommandText>SELECT Logs.timestamp, Users.svsu_id, CONCAT(Users.first_name,' ', Users.last_name) AS [UserName], 
 CASE
 WHEN Logs.action = 0 THEN 'Added Item'
-WHEN Logs.action = 1 THEN 'Consumed Item'
+WHEN Logs.action = 1 THEN 'Moved Item'
+WHEN Logs.action = 2 THEN 'Consume Item'
+WHEN Logs.action = 3 THEN 'Checked In Item'
 WHEN Logs.action = 4 THEN 'Checked Out Item'
 ELSE ''
-END AS 'action', Commodities.name, Logs.notes
+END AS 'action', 
+Commodities.name,
+CASE
+WHEN Logs.action = 0 THEN '+' + LTRIM(str(Logs.quantityChange))
+WHEN Logs.action = 1 THEN 'Moved ' + LTRIM(STR(Logs.quantityChange)) + ' items'
+WHEN Logs.action = 2 THEN LTRIM(STR(Logs.quantityChange))
+WHEN Logs.action = 3 THEN CONCAT(users.first_name, ' ', Users.last_name) + ' checked in ' + commodities.[name]
+WHEN Logs.action = 4 THEN CONCAT(Users.first_name, ' ', Users.last_name) + ' checked out ' + commodities.[name]
+ELSE ''
+END AS 'details' 
 FROM     Logs INNER JOIN
                   Users ON Logs.objUser_uidTuid = Users.tuid INNER JOIN
                   Storage ON Logs.objStorage_uidTuid = Storage.tuid INNER JOIN
-                  Commodities ON Commodities.tuid = Storage.objCommodity_uidTuid</CommandText>
+                  Commodities ON Commodities.tuid = Storage.objCommodity_uidTuid
+
+</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -31,11 +44,11 @@ FROM     Logs INNER JOIN
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="timestamp" DataSetColumn="timestamp" />
-              <Mapping SourceColumn="notes" DataSetColumn="notes" />
               <Mapping SourceColumn="svsu_id" DataSetColumn="svsu_id" />
               <Mapping SourceColumn="name" DataSetColumn="name" />
               <Mapping SourceColumn="UserName" DataSetColumn="UserName" />
               <Mapping SourceColumn="action" DataSetColumn="action" />
+              <Mapping SourceColumn="details" DataSetColumn="details" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
@@ -727,13 +740,14 @@ WHERE Storage.quantity &lt;= Commodities.alert_quantity</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DynamicItemsTableAdapter" GeneratorDataComponentClassName="DynamicItemsTableAdapter" Name="DynamicItemsTable" UserDataComponentName="DynamicItemsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="SELECT c.[name], s.[quantity], l.quantityChange AS 'numberAdded', 0 AS 'numberConsumed', l.[action] FROM Commodities c LEFT JOIN Storage s ON s.objCommodity_uidTuid = c.tuid LEFT JOIN Logs l ON l.objStorage_uidTuid = s.tuid WHERE l.action = 0 UNION SELECT c.[name], s.[quantity], 0 AS 'numberAdded', l.quantityChange AS 'numberConsumed', l.[action] FROM Commodities c LEFT JOIN Storage s ON s.objCommodity_uidTuid = c.tuid LEFT JOIN Logs l ON l.objStorage_uidTuid = s.tuid WHERE l.action = 1" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="InvDbConnectionString1 (Settings)" DbObjectName="SELECT l.tuid, c.[name], s.[quantity], l.quantityChange AS 'numberAdded', 0 AS 'numberConsumed', l.[action] FROM Commodities c LEFT JOIN Storage s ON s.objCommodity_uidTuid = c.tuid LEFT JOIN Logs l ON l.objStorage_uidTuid = s.tuid WHERE l.action = 0 UNION SELECT l.tuid, c.[name], s.[quantity], 0 AS 'numberAdded', l.quantityChange AS 'numberConsumed', l.[action] FROM Commodities c LEFT JOIN Storage s ON s.objCommodity_uidTuid = c.tuid LEFT JOIN Logs l ON l.objStorage_uidTuid = s.tuid WHERE l.action = 2" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT
 	A.name, SUM(A.[numberAdded]) AS 'numberAdded', SUM(A.numberConsumed) AS 'numberConsumed',COUNT(*) AS 'timesUpdated'
 FROM(
 SELECT
+	l.tuid,
 	c.[name],
 	s.[quantity],
 	l.quantityChange AS 'numberAdded',
@@ -745,6 +759,7 @@ LEFT JOIN Logs l on l.objStorage_uidTuid = s.tuid
 WHERE l.action = 0
 UNION
 SELECT
+	l.tuid,
 	c.[name],
 	s.[quantity],
 	0 As 'numberAdded',
@@ -753,12 +768,9 @@ SELECT
 FROM Commodities c
 LEFT JOIN Storage s on s.objCommodity_uidTuid = c.tuid
 LEFT JOIN Logs l on l.objStorage_uidTuid = s.tuid
-WHERE l.action = 1
+WHERE l.action = 2
 )A
-GROUP BY A.name
-
-
-</CommandText>
+GROUP BY A.name</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -784,13 +796,6 @@ GROUP BY A.name
           <xs:complexType>
             <xs:sequence>
               <xs:element name="timestamp" msprop:Generator_ColumnVarNameInTable="columntimestamp" msprop:Generator_ColumnPropNameInRow="timestamp" msprop:Generator_ColumnPropNameInTable="timestampColumn" msprop:Generator_UserColumnName="timestamp" type="xs:dateTime" />
-              <xs:element name="notes" msprop:Generator_ColumnVarNameInTable="columnnotes" msprop:Generator_ColumnPropNameInRow="notes" msprop:Generator_ColumnPropNameInTable="notesColumn" msprop:Generator_UserColumnName="notes" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="svsu_id" msprop:Generator_ColumnVarNameInTable="columnsvsu_id" msprop:Generator_ColumnPropNameInRow="svsu_id" msprop:Generator_ColumnPropNameInTable="svsu_idColumn" msprop:Generator_UserColumnName="svsu_id">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -816,6 +821,13 @@ GROUP BY A.name
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="details" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndetails" msprop:Generator_ColumnPropNameInRow="details" msprop:Generator_ColumnPropNameInTable="detailsColumn" msprop:Generator_UserColumnName="details" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

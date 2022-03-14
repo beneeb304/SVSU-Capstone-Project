@@ -49,6 +49,9 @@ namespace SVSU_Capstone_Project
 
             // Initiate Barcode Scanner object once logged in so barcodes can be used
             barcodeScanner = new BarcodeScanner();
+
+
+            PageController(msiHome as ToolStripMenuItem, null);
         }
 
         /* Function: InitiateLogin
@@ -86,6 +89,7 @@ namespace SVSU_Capstone_Project
 
             //Start time timer
             tmrTime.Start();
+
         }
 
         /* Function: PageController
@@ -107,6 +111,10 @@ namespace SVSU_Capstone_Project
             //Assign correct child form (to the new form) based on clicked menu item
             switch ((sender as ToolStripMenuItem).Name.ToString())
             {
+                case "msiHome":
+                    newF = new frmHome();
+                    this.Text = "Saginaw Valley Nursing Inventory System | Home";
+                    break;
                 case "msiViewInventory":
                     newF = new frmViewInventory();
                     this.Text = "Saginaw Valley Nursing Inventory System | View Inventory";
@@ -124,10 +132,11 @@ namespace SVSU_Capstone_Project
                     this.Text = "Saginaw Valley Nursing Inventory System | Print Barcodes";
                     break;
                 case "msiCheckInOutItems":
-                    // If this is called from a barcode scan,
+                    // If this is called from a barcode scan, pass the CheckedItem
+                    // then clear the barcode's variables.
                     if (barcodeScanner.checkedItem != null)
                     {
-                        newF = new frmCheckInOutItems(barcodeScanner.checkedItem);
+                        //newF = new frmCheckInOutItems(barcodeScanner.checkedItem);
                         barcodeScanner.resetValues();
                     }
                     else
@@ -145,6 +154,7 @@ namespace SVSU_Capstone_Project
                     newF = new frmSettings();
                     this.Text = "Saginaw Valley Nursing Inventory System | Settings";
                     break;
+
             }
 
             //If a child (old) form already exists
@@ -153,6 +163,8 @@ namespace SVSU_Capstone_Project
                 //Don't do anything if the child is already open
                 if (newF.Name == oldF.Name)
                 {
+                    // If frmCheckInOutItems already exists but is called again
+                    // due to barcode scan, reopen it so it can accept the scan.
                     if (!(oldF is frmCheckInOutItems))
                     {
                         return;

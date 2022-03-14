@@ -799,8 +799,6 @@ namespace SVSU_Capstone_Project {
             
             private global::System.Data.DataColumn columntimestamp;
             
-            private global::System.Data.DataColumn columnnotes;
-            
             private global::System.Data.DataColumn columnsvsu_id;
             
             private global::System.Data.DataColumn columnname;
@@ -808,6 +806,8 @@ namespace SVSU_Capstone_Project {
             private global::System.Data.DataColumn columnUserName;
             
             private global::System.Data.DataColumn columnaction;
+            
+            private global::System.Data.DataColumn columndetails;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -852,14 +852,6 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn notesColumn {
-                get {
-                    return this.columnnotes;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn svsu_idColumn {
                 get {
                     return this.columnsvsu_id;
@@ -887,6 +879,14 @@ namespace SVSU_Capstone_Project {
             public global::System.Data.DataColumn actionColumn {
                 get {
                     return this.columnaction;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn detailsColumn {
+                get {
+                    return this.columndetails;
                 }
             }
             
@@ -927,15 +927,15 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public LogsRow AddLogsRow(System.DateTime timestamp, string notes, string svsu_id, string name, string UserName, string action) {
+            public LogsRow AddLogsRow(System.DateTime timestamp, string svsu_id, string name, string UserName, string action, string details) {
                 LogsRow rowLogsRow = ((LogsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         timestamp,
-                        notes,
                         svsu_id,
                         name,
                         UserName,
-                        action};
+                        action,
+                        details};
                 rowLogsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLogsRow);
                 return rowLogsRow;
@@ -959,11 +959,11 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columntimestamp = base.Columns["timestamp"];
-                this.columnnotes = base.Columns["notes"];
                 this.columnsvsu_id = base.Columns["svsu_id"];
                 this.columnname = base.Columns["name"];
                 this.columnUserName = base.Columns["UserName"];
                 this.columnaction = base.Columns["action"];
+                this.columndetails = base.Columns["details"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -971,8 +971,6 @@ namespace SVSU_Capstone_Project {
             private void InitClass() {
                 this.columntimestamp = new global::System.Data.DataColumn("timestamp", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntimestamp);
-                this.columnnotes = new global::System.Data.DataColumn("notes", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnotes);
                 this.columnsvsu_id = new global::System.Data.DataColumn("svsu_id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsvsu_id);
                 this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
@@ -981,8 +979,9 @@ namespace SVSU_Capstone_Project {
                 base.Columns.Add(this.columnUserName);
                 this.columnaction = new global::System.Data.DataColumn("action", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnaction);
+                this.columndetails = new global::System.Data.DataColumn("details", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndetails);
                 this.columntimestamp.AllowDBNull = false;
-                this.columnnotes.MaxLength = 2147483647;
                 this.columnsvsu_id.AllowDBNull = false;
                 this.columnsvsu_id.MaxLength = 8;
                 this.columnname.MaxLength = 2147483647;
@@ -990,6 +989,8 @@ namespace SVSU_Capstone_Project {
                 this.columnUserName.MaxLength = 2147483647;
                 this.columnaction.ReadOnly = true;
                 this.columnaction.MaxLength = 16;
+                this.columndetails.ReadOnly = true;
+                this.columndetails.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5150,22 +5151,6 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string notes {
-                get {
-                    try {
-                        return ((string)(this[this.tableLogs.notesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'notes\' in table \'Logs\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableLogs.notesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string svsu_id {
                 get {
                     return ((string)(this[this.tableLogs.svsu_idColumn]));
@@ -5225,14 +5210,18 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsnotesNull() {
-                return this.IsNull(this.tableLogs.notesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetnotesNull() {
-                this[this.tableLogs.notesColumn] = global::System.Convert.DBNull;
+            public string details {
+                get {
+                    try {
+                        return ((string)(this[this.tableLogs.detailsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'details\' in table \'Logs\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLogs.detailsColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5269,6 +5258,18 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetactionNull() {
                 this[this.tableLogs.actionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsdetailsNull() {
+                return this.IsNull(this.tableLogs.detailsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetdetailsNull() {
+                this[this.tableLogs.detailsColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7455,11 +7456,11 @@ namespace SVSU_Capstone_Project.InvDbDataSetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Logs";
             tableMapping.ColumnMappings.Add("timestamp", "timestamp");
-            tableMapping.ColumnMappings.Add("notes", "notes");
             tableMapping.ColumnMappings.Add("svsu_id", "svsu_id");
             tableMapping.ColumnMappings.Add("name", "name");
             tableMapping.ColumnMappings.Add("UserName", "UserName");
             tableMapping.ColumnMappings.Add("action", "action");
+            tableMapping.ColumnMappings.Add("details", "details");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -7479,14 +7480,27 @@ namespace SVSU_Capstone_Project.InvDbDataSetTableAdapters {
             this._commandCollection[0].CommandText = @"SELECT Logs.timestamp, Users.svsu_id, CONCAT(Users.first_name,' ', Users.last_name) AS [UserName], 
 CASE
 WHEN Logs.action = 0 THEN 'Added Item'
-WHEN Logs.action = 1 THEN 'Consumed Item'
+WHEN Logs.action = 1 THEN 'Moved Item'
+WHEN Logs.action = 2 THEN 'Consume Item'
+WHEN Logs.action = 3 THEN 'Checked In Item'
 WHEN Logs.action = 4 THEN 'Checked Out Item'
 ELSE ''
-END AS 'action', Commodities.name, Logs.notes
+END AS 'action', 
+Commodities.name,
+CASE
+WHEN Logs.action = 0 THEN '+' + LTRIM(str(Logs.quantityChange))
+WHEN Logs.action = 1 THEN 'Moved ' + LTRIM(STR(Logs.quantityChange)) + ' items'
+WHEN Logs.action = 2 THEN LTRIM(STR(Logs.quantityChange))
+WHEN Logs.action = 3 THEN CONCAT(users.first_name, ' ', Users.last_name) + ' checked in ' + commodities.[name]
+WHEN Logs.action = 4 THEN CONCAT(Users.first_name, ' ', Users.last_name) + ' checked out ' + commodities.[name]
+ELSE ''
+END AS 'details' 
 FROM     Logs INNER JOIN
                   Users ON Logs.objUser_uidTuid = Users.tuid INNER JOIN
                   Storage ON Logs.objStorage_uidTuid = Storage.tuid INNER JOIN
-                  Commodities ON Commodities.tuid = Storage.objCommodity_uidTuid";
+                  Commodities ON Commodities.tuid = Storage.objCommodity_uidTuid
+
+";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -11769,6 +11783,7 @@ SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM 
 	A.name, SUM(A.[numberAdded]) AS 'numberAdded', SUM(A.numberConsumed) AS 'numberConsumed',COUNT(*) AS 'timesUpdated'
 FROM(
 SELECT
+	l.tuid,
 	c.[name],
 	s.[quantity],
 	l.quantityChange AS 'numberAdded',
@@ -11780,6 +11795,7 @@ LEFT JOIN Logs l on l.objStorage_uidTuid = s.tuid
 WHERE l.action = 0
 UNION
 SELECT
+	l.tuid,
 	c.[name],
 	s.[quantity],
 	0 As 'numberAdded',
@@ -11788,12 +11804,9 @@ SELECT
 FROM Commodities c
 LEFT JOIN Storage s on s.objCommodity_uidTuid = c.tuid
 LEFT JOIN Logs l on l.objStorage_uidTuid = s.tuid
-WHERE l.action = 1
+WHERE l.action = 2
 )A
-GROUP BY A.name
-
-
-";
+GROUP BY A.name";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
