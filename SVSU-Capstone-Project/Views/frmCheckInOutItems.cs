@@ -141,6 +141,18 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        public void setScannedBarcode(CheckedItem checkedItem)
+        {
+            if (cmbChkOutCommodity.Items.Contains(checkedItem.objCommodities))
+            {
+                cmbChkOutCommodity.SelectedItem = checkedItem.objCommodities;
+            }
+            else if (cmbChkInCommodity.Items.Contains(checkedItem.objCommodities))
+            {
+                cmbChkInCommodity.SelectedItem = checkedItem.objCommodities;
+            }
+        }
+
         private void btnChkOutCancel_Click( object sender, EventArgs e )
         {
             cmbChkOutCommodity.SelectedIndex = -1;
@@ -148,18 +160,6 @@ namespace SVSU_Capstone_Project.Views
             txtChkOutNotes.Text = "";
             txtAvailableChkOutQuantity.Text = "";
         }
-
-        //public void setScannedBarcode(CheckedItem checkedItem)
-        //{
-        //    if (lstCheckedIn.Items.Contains(checkedItem))
-        //    {
-        //        lstCheckedIn.SetSelected(lstCheckedIn.Items.IndexOf(checkedItem), true);
-        //    }
-        //    else
-        //    {
-        //        lstCheckedOut.SetSelected(lstCheckedOut.Items.IndexOf(checkedItem), true);
-        //    }
-        //}
 
         private void btnChkIn_Click( object sender, EventArgs e )
         {

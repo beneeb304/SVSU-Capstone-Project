@@ -124,7 +124,8 @@ namespace SVSU_Capstone_Project
                     this.Text = "Saginaw Valley Nursing Inventory System | Print Barcodes";
                     break;
                 case "msiCheckInOutItems":
-                    // If this is called from a barcode scan,
+                    // If this is called from a barcode scan, pass the CheckedItem
+                    // then clear the barcode's variables.
                     if (barcodeScanner.checkedItem != null)
                     {
                         //newF = new frmCheckInOutItems(barcodeScanner.checkedItem);
@@ -154,6 +155,8 @@ namespace SVSU_Capstone_Project
                 //Don't do anything if the child is already open
                 if (newF.Name == oldF.Name)
                 {
+                    // If frmCheckInOutItems already exists but is called again
+                    // due to barcode scan, reopen it so it can accept the scan.
                     if (!(oldF is frmCheckInOutItems))
                     {
                         return;
