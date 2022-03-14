@@ -162,7 +162,7 @@ namespace SVSU_Capstone_Project.Views
                         else
                         {
                             //Alert user
-                            MessageBox.Show("Cabinet contains commodities. Remove them before attempting deletion", "Alert");
+                            MessageBox.Show("User has items checked-out. Check them back in before attempting deletion", "Alert");
                         }
                     }
                 }
