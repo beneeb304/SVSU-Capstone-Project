@@ -16,5 +16,10 @@ namespace SVSU_Capstone_Project.Views
         {
             InitializeComponent();
         }
+
+        private void frmHome_Load( object sender, EventArgs e )
+        {
+
+        }
     }
 }
