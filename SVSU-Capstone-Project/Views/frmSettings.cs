@@ -147,14 +147,23 @@ namespace SVSU_Capstone_Project.Views
                         //Get user
                         User user = ItemModel.Get<User>(x => x.strEmail == lstUser.SelectedItem.ToString());
 
-                        //Remove user
-                        ItemModel.Delete<User>(user);
+                        //Check if user has any commodities checked out to them
+                        if (user.lstCheckedItems.Count == 0)
+                        {
+                            //Remove user
+                            ItemModel.Delete<User>(user);
 
-                        //Alert user
-                        MessageBox.Show("Successful Deletion", "Alert");
+                            //Alert user
+                            MessageBox.Show("Successful Deletion", "Alert");
 
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+                        }
+                        else
+                        {
+                            //Alert user
+                            MessageBox.Show("Cabinet contains commodities. Remove them before attempting deletion", "Alert");
+                        }
                     }
                 }
                 catch

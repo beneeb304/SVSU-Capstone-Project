@@ -30,7 +30,6 @@ namespace SVSU_Capstone_Project.Views
         private void InitializeComponent()
         {
             this.lblViewInventory = new System.Windows.Forms.Label();
-            this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.grbFilterFields = new System.Windows.Forms.GroupBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,6 +37,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvCommodity = new System.Windows.Forms.DataGridView();
             this.dgvDetails = new System.Windows.Forms.DataGridView();
+            this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.grbFilterFields.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCommodity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetails)).BeginInit();
@@ -52,19 +52,6 @@ namespace SVSU_Capstone_Project.Views
             this.lblViewInventory.Size = new System.Drawing.Size(147, 22);
             this.lblViewInventory.TabIndex = 43;
             this.lblViewInventory.Text = "View Inventory";
-            // 
-            // btnPrintBarcode
-            // 
-            this.btnPrintBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.btnPrintBarcode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintBarcode.Location = new System.Drawing.Point(844, 69);
-            this.btnPrintBarcode.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPrintBarcode.Name = "btnPrintBarcode";
-            this.btnPrintBarcode.Size = new System.Drawing.Size(98, 55);
-            this.btnPrintBarcode.TabIndex = 6;
-            this.btnPrintBarcode.Text = "Print Barcode";
-            this.btnPrintBarcode.UseVisualStyleBackColor = true;
-            this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
             // 
             // grbFilterFields
             // 
@@ -173,12 +160,23 @@ namespace SVSU_Capstone_Project.Views
             this.dgvDetails.TabIndex = 44;
             this.dgvDetails.TabStop = false;
             // 
+            // btnPrintBarcode
+            // 
+            this.btnPrintBarcode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintBarcode.Location = new System.Drawing.Point(844, 90);
+            this.btnPrintBarcode.Name = "btnPrintBarcode";
+            this.btnPrintBarcode.Size = new System.Drawing.Size(98, 55);
+            this.btnPrintBarcode.TabIndex = 45;
+            this.btnPrintBarcode.Text = "Print Barcode";
+            this.btnPrintBarcode.UseVisualStyleBackColor = true;
+            this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
+            // 
             // frmViewInventory
             // 
             this.ClientSize = new System.Drawing.Size(955, 453);
+            this.Controls.Add(this.btnPrintBarcode);
             this.Controls.Add(this.dgvDetails);
             this.Controls.Add(this.lblViewInventory);
-            this.Controls.Add(this.btnPrintBarcode);
             this.Controls.Add(this.grbFilterFields);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.txtSearch);
@@ -199,7 +197,6 @@ namespace SVSU_Capstone_Project.Views
         #endregion
 
         private System.Windows.Forms.Label lblViewInventory;
-        private System.Windows.Forms.Button btnPrintBarcode;
         private System.Windows.Forms.GroupBox grbFilterFields;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
@@ -213,5 +210,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvDetails;
+        private System.Windows.Forms.Button btnPrintBarcode;
     }
 }
