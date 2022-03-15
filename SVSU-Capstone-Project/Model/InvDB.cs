@@ -32,6 +32,7 @@ namespace SVSU_Capstone_Project.Model
         public DbSet<User> dsUsers { get; set; }
         public DbSet<Storage> dsStorage { get; set; }
         public DbSet<CheckedItem> dsCheckedItems { get; set; }
+        public DbSet<SimulatorUse> dsSimulatorUse { get; set; }
     }
     public class ContextEntity
     {

@@ -27,13 +27,13 @@ namespace SVSU_Capstone_Project.Views
             this.cmbCreateCategory.DataSource = lstCategories;
             this.cmbCreateVendor.DataSource = lstCategories;
             // Use Tab
-            this.cmbUseCategory.DataSource = lstCategories;
+            trvUseSelectByRoom.PopulateCommodityTreeByRoom();
             // Move Tab
             this.cmbMoveCategory.DataSource = lstCategories;
             // Delete Tab
             this.cmbDeleteCategory.DataSource = lstCategories;
-            trvCreateSelectByCategory_Populate();
-            trvCreateSelectByRoom_Populate();
+            trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
+            trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
         }
 
         private void nonTriggeringCall( Action predicate )
@@ -121,7 +121,51 @@ namespace SVSU_Capstone_Project.Views
                 if (txtRemainder != null)
                     txtRemainder.Text = "";
             }
+        }        
+    }
 
+    public static class TreeViewExtensions
+    {
+        public struct TreeNodeTag
+        {
+            public bool selectable;
+            public ContextEntity val;
+        }
+        public static void PopulateCommodityTreeByCategory( this TreeView treeView )
+        {
+            treeView.Nodes.Clear();
+            var lstCategories = ItemModel.GetMany<Category>();
+            lstCategories.ForEach(cat =>
+            {
+                var node = new TreeNode(cat.strName) { Tag = new TreeNodeTag { val = cat, selectable = false } };
+                cat.lstCommodities.ForEach(comm => { node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = new TreeNodeTag { val = comm, selectable = true } }); });
+                treeView.Nodes.Add(node);
+            });
+        }
+
+        public static void PopulateCommodityTreeByRoom( this TreeView treeView )
+        {
+            treeView.Nodes.Clear();
+            var lstRooms = ItemModel.GetMany<Room>();
+            lstRooms.OrderBy(x => x.strName).ToList().ForEach(room =>
+            {
+                var roomNode = new TreeNode(room.strName) { Tag = new TreeNodeTag { val = room, selectable = false } };
+                room.lstCabinets.OrderBy(x => x.strName).ToList().ForEach(cab =>
+                {
+                    var cabinetNode = new TreeNode(cab.strName) { Tag = new TreeNodeTag { val = cab, selectable = false } };
+                    cab.lstStorage.GroupBy(x => x.objNLevel).ToList().ForEach(grp =>
+                    {
+                        var nlevelNode = new TreeNode(grp.Key.strName) { Tag = new TreeNodeTag { val = grp.Key, selectable = false } };
+                        grp.ToList().ForEach(stor =>
+                        {
+                            nlevelNode.Nodes.Add(new TreeNode($"{stor.objCommodity.strName} ({stor.intQuantity})") { Tag = new TreeNodeTag { val = stor.objCommodity, selectable = true } });
+                        });
+                        cabinetNode.Nodes.Add(nlevelNode);
+                    });
+                    roomNode.Nodes.Add(cabinetNode);
+                });
+                treeView.Nodes.Add(roomNode);
+            });
         }
     }
 }

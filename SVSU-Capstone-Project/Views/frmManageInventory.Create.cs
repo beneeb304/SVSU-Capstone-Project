@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SVSU_Capstone_Project.Model;
 using SVSU_Capstone_Project.ViewModel;
+using static SVSU_Capstone_Project.Views.TreeViewExtensions;
 
 namespace SVSU_Capstone_Project.Views
 {
@@ -34,62 +35,63 @@ namespace SVSU_Capstone_Project.Views
             txtCreateUrl.Text = "";
             txtCurrentQty.Text = "";
             nudCreateAlertQty.Value = 0;
-            mtxCreateCost.Text = "";
-        }
+            nudCreateCost.Value = 0;
+            btnCreate.Text = "Create";
+            cmbCreateType.SelectedIndex = -1;
+        }        
 
-        /* Function: txtCreateItemName_TextChanged
-        * Description:
-        * 
-        * Local Variables
-        * object sender; The object calling the method.
-        * EventArgs e; Information passed by the sender object about the method call.
-        */
-        private void txtCreateItemName_Leave( object sender, EventArgs e )
+        private void trvCreateSelect_BeforeSelect( object sender, TreeViewCancelEventArgs e )
         {
-            // Check if the item name is already in use if also not blank
-            var filteredItem = txtCreateItemName.Text != "" ? ItemModel.Get<Commodity>(x => x.strName == txtCreateItemName.Text) : null;
-            if (filteredItem != null)
+            // cast Tag to TreeNodeTag
+            TreeNodeTag tag = (TreeNodeTag)e.Node.Tag;
+
+            if (!tag.selectable)
             {
-                MessageBox.Show("Item name already in use. Please choose a different name or modify item.");
-                btnCreate.Text = "Modify";
-                cmbCreateCategory.SelectedItem = filteredItem.objCategory;
+                e.Cancel = true;
             }
         }
-        private void trvCreateSelectByCategory_Populate()
-        {
-            trvCreateSelectByCategory.Nodes.Clear();
-            var lstCategories = ItemModel.GetMany<Category>();
-            lstCategories.ForEach(cat =>
-            {
-                var node = new TreeNode(cat.strName) { Tag = cat };
-                cat.lstCommodities.ForEach(comm => { node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = comm }); });
-                trvCreateSelectByCategory.Nodes.Add(node);
-            });
-        }
 
-        private void trvCreateSelectByRoom_Populate()
+        private void trvCreateSelect_AfterSelect( object sender, TreeViewEventArgs e )
         {
-            trvCreateSelectByRoom.Nodes.Clear();
-            var lstRooms = ItemModel.GetMany<Room>();
-            lstRooms.OrderBy(x => x.strName).ToList().ForEach(room =>
+            Commodity selected = ((TreeNodeTag)e.Node.Tag).val as Commodity;
+            txtCreateItemName.Text = selected.strName;
+            txtCreateDescription.Text = selected.strDescription;
+            txtCreateFeatures.Text = selected.strFeatures;
+            txtCreateUrl.Text = selected.strItemUrl;
+            cmbCreateCategory.DataSource = ItemModel.GetMany<Category>();
+            cmbCreateCategory.SelectedItem = selected.objCategory;
+            cmbCreateVendor.DataSource = ItemModel.GetMany<Vendor>();
+            cmbCreateVendor.SelectedItem = selected.objVendor;
+            cmbCreateType.DataSource = Enum.GetValues(typeof(ItemType));
+            cmbCreateType.SelectedItem = selected.enuCommodityType;
+            nudCreateAlertQty.Value = selected.intAlert_quantity;
+            nudCreateCost.Text = (selected.intCostInCents / 100.00).ToString();
+            btnCreate.Text = "Modify";
+        }
+        private void btnCreate_Click( object sender, EventArgs e )
+        {
+            Commodity selected = null;
+            Action<Commodity> submit = ( x ) => ItemModel.Update(x);
+            if (trvCreateSelectByCategory.SelectedNode != null) selected = ((TreeNodeTag)trvCreateSelectByCategory.SelectedNode.Tag).val as Commodity;
+            if (trvCreateSelectByRoom.SelectedNode != null) selected = ((TreeNodeTag)trvCreateSelectByRoom.SelectedNode.Tag).val as Commodity;
+            // If the selected node is null, then we are creating a new item
+            if (selected == null)
             {
-                var roomNode = new TreeNode(room.strName) { Tag = room };
-                room.lstCabinets.OrderBy(x => x.strName).ToList().ForEach(cab =>
-                {
-                    var cabinetNode = new TreeNode(cab.strName) { Tag = cab };
-                    cab.lstStorage.GroupBy(x => x.objNLevel).ToList().ForEach(grp =>
-                    {
-                        var nlevelNode = new TreeNode(grp.Key.strName) { Tag = grp.Key };
-                        grp.ToList().ForEach(stor =>
-                        {
-                            nlevelNode.Nodes.Add(new TreeNode($"{stor.objCommodity.strName} ({stor.intQuantity})") { Tag = stor.objCommodity });
-                        });
-                        cabinetNode.Nodes.Add(nlevelNode);
-                    });
-                    roomNode.Nodes.Add(cabinetNode);
-                });
-                trvCreateSelectByRoom.Nodes.Add(roomNode);
-            });
+                // Create a new item
+                selected = new Commodity();
+                submit = ( x ) => ItemModel.Update(x);
+            }
+            selected.strName = txtCreateItemName.Text;
+            selected.objCategory = cmbCreateCategory.SelectedItem as Category;
+            selected.enuCommodityType = (ItemType)cmbCreateType.SelectedItem;
+            selected.strDescription = txtCreateDescription.Text;
+            selected.objVendor = cmbCreateVendor.SelectedItem as Vendor;
+            selected.intAlert_quantity = (int)nudCreateAlertQty.Value;
+            selected.strItemUrl = txtCreateUrl.Text;
+            selected.intCostInCents = (int)(nudCreateCost.Value) * 100;
+            selected.strFeatures = txtCreateFeatures.Text;
+            submit(selected);
+            btnCreateCancel_Click(null,null);
         }
     }
 }

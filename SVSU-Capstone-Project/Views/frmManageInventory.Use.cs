@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SVSU_Capstone_Project.Model;
 using SVSU_Capstone_Project.ViewModel;
+using static SVSU_Capstone_Project.Views.TreeViewExtensions;
 
 namespace SVSU_Capstone_Project.Views
 {
@@ -26,86 +27,91 @@ namespace SVSU_Capstone_Project.Views
         private void btnUseCancel_Click( object sender = null, EventArgs e = null )
         {
             //Clear all fields on Use tab
-            cmbUseCategory.SelectedIndex = -1;
+            trvUseSelectByRoom.SelectedNode = null;
             nudUseDeduct.Value = 1;
         }
 
         private void btnUse_Click( object sender = null, EventArgs e = null )
         {
             //Check if all fields are filled out
-            if (cmbUseCategory.SelectedIndex == -1)
+            if (trvUseSelectByRoom.SelectedNode.Tag != null && nudUseDeduct.Value != 0)
             {
-                MessageBox.Show("Please fill out all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select an item and used quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            ItemModel.UseItem(ItemModel.Get<Storage>(x =>
-               x.objCabinet == (cmbUseCabinet.SelectedItem as Cabinet) &&
-               x.objCommodity == (cmbUseCommodity.SelectedItem as Commodity) &&
-               x.objNLevel == (cmbUseNLevel.SelectedItem as NLevel)),
+            ItemModel.UseItem(
+                (trvUseSelectByRoom.SelectedNode.Tag as Commodity)
+                .lstStorage
+                .Where(x =>
+                    x.objNLevel == (trvUseSelectByRoom.SelectedNode.Parent.Tag as NLevel)
+                    && x.objCabinet == (trvUseSelectByRoom.SelectedNode.Parent.Parent.Tag as Cabinet)
+                ).First(),
                 Authentication.ActiveUser,
                 Convert.ToUInt32(nudUseDeduct.Value),
                 "Item Used via Manage Inventory Tab"
             );
             btnUseCancel_Click();
-
         }
 
-        /* Function: cmbUseCategory_SelectedValueChanged
-         * Description: Reflects the datasource of the fields on the use page when a category is selected.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
-         */
-        private void cmbUseCategory_SelectedValueChanged( object sender = null, EventArgs e = null )
+        private void trvUseSelectByRoom_BeforeSelect( object sender, TreeViewCancelEventArgs e )
         {
-            Category_SelectedValueChanged(cmbUseCategory, cmbUseCommodity);
+            // cast Tag to TreeNodeTag
+            TreeNodeTag tag = (TreeNodeTag)e.Node.Tag;
+
+            if (!tag.selectable)
+            {
+                e.Cancel = true;
+            }
         }
 
-        /* Function: cmbUseCommodity_SelectedValueChanged
-         * Description:
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
-         */
-        private void cmbUseCommodity_SelectedValueChanged( object sender = null, EventArgs e = null )
+        private void trvUseSelectByRoom_AfterSelect( object sender, TreeViewEventArgs e )
         {
-            Commodity_SelectedValueChanged(cmbUseCommodity, cmbUseRoom);
-        }
+            Commodity selected = (Commodity)((TreeNodeTag)((TreeView)sender).SelectedNode.Tag).val;
+            lblUseItemNameVal.Text = selected.ToString();
+            lblUseItemCategoryVal.Text = selected.objCategory.ToString();
+            lblUseItemTypeVal.Text = selected.enuCommodityType.ToString();
 
-        private void cmbUseRoom_SelectedValueChanged( object sender = null, EventArgs e = null )
-        {
-            Room_SelectedValueChanged(cmbUseRoom, cmbUseCabinet, cmbUseCommodity);
-        }
-
-        /* Function: cmbUseCabinet_SelectedValueChanged
-         * Description:
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
-         */
-        private void cmbUseCabinet_SelectedValueChanged( object sender = null, EventArgs e = null )
-        {
-            Cabinet_SelectedValueChanged(cmbUseCabinet, cmbUseCommodity, cmbUseNLevel);
-        }
-
-        private void cmbUseNLevel_SelectedValueChanged( object sender = null, EventArgs e = null )
-        {
-            NLevel_SelectedValueChanged(cmbUseCommodity, cmbUseCabinet, cmbUseNLevel, txtUseAvailable, nudUseDeduct, txtUseRemaining);
+            if (selected.enuCommodityType == ItemType.Consumable)
+            {
+                var itemStorage = selected.lstStorage.Where(x => x.objNLevel == ((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Tag).val as NLevel && x.objCabinet == ((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Parent.Tag).val as Cabinet).First();
+                lblUseAvailable.Text = "Available";
+                lblUseOperatorSymb.Text = "-";
+                nudUseDeduct.Value = nudUseDeduct.Minimum;
+                nudUseDeduct.Maximum = itemStorage.intQuantity;
+                lblUseAvailable.Text = "Remainder";
+                txtUseAvailable.Text = itemStorage.intQuantity.ToString();
+            }
+            else
+            {
+                var itemUsage = ItemModel.Get<SimulatorUse>(x => x.objCommodity == selected);
+                if (itemUsage == null) ItemModel.Add(new SimulatorUse() { objCommodity = selected }, out itemUsage);
+                lblUseAvailable.Text = "Hours Used";
+                lblUseOperatorSymb.Text = "+";
+                nudUseDeduct.Value = nudUseDeduct.Minimum;
+                lblUseAvailable.Text = "New Total";
+                nudUseDeduct.Maximum = 1000;
+                txtUseAvailable.Text = itemUsage.intHoursUsed.ToString();
+            }
+            nudUseDeduct_ValueChanged();
         }
 
         private void nudUseDeduct_ValueChanged( object sender = null, EventArgs e = null )
         {
-            if(int.TryParse(txtUseAvailable.Text, out int available))
+            if (int.TryParse(txtUseAvailable.Text, out int available))
             {
-                txtUseRemaining.Text = (available - nudUseDeduct.Value).ToString();
+                if (lblUseOperatorSymb.Text == "-")
+                {
+                    txtUseRemaining.Text = (available - nudUseDeduct.Value).ToString();
+                }
+                else
+                {
+                    txtUseRemaining.Text = (available + nudUseDeduct.Value).ToString();
+                }
             }
-            else{
+            else
+            {
                 txtUseRemaining.Text = "";
             }
-            
         }
     }
 }
