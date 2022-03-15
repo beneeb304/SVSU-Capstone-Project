@@ -32,6 +32,7 @@ namespace SVSU_Capstone_Project
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.mstMain = new System.Windows.Forms.MenuStrip();
+            this.msiHome = new System.Windows.Forms.ToolStripMenuItem();
             this.msiViewInventory = new System.Windows.Forms.ToolStripMenuItem();
             this.msiManageInventory = new System.Windows.Forms.ToolStripMenuItem();
             this.msiGenerateReports = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,9 +44,8 @@ namespace SVSU_Capstone_Project
             this.tmrTime = new System.Windows.Forms.Timer(this.components);
             this.lblLoggedInTime = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.pcbMain = new System.Windows.Forms.PictureBox();
-            this.msiHome = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.mstMain.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbMain)).BeginInit();
@@ -70,6 +70,14 @@ namespace SVSU_Capstone_Project
             this.mstMain.Size = new System.Drawing.Size(179, 223);
             this.mstMain.TabIndex = 0;
             this.mstMain.Text = "menuStrip1";
+            // 
+            // msiHome
+            // 
+            this.msiHome.Name = "msiHome";
+            this.msiHome.Padding = new System.Windows.Forms.Padding(4);
+            this.msiHome.Size = new System.Drawing.Size(174, 31);
+            this.msiHome.Text = "Home";
+            this.msiHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // msiViewInventory
             // 
@@ -141,7 +149,7 @@ namespace SVSU_Capstone_Project
             this.lblDateTime.AutoSize = true;
             this.lblDateTime.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.lblDateTime.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.Location = new System.Drawing.Point(862, 107);
+            this.lblDateTime.Location = new System.Drawing.Point(862, 115);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(73, 24);
             this.lblDateTime.TabIndex = 3;
@@ -173,17 +181,6 @@ namespace SVSU_Capstone_Project
             this.panel1.Size = new System.Drawing.Size(181, 494);
             this.panel1.TabIndex = 1;
             // 
-            // btnLogout
-            // 
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(1068, 145);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(76, 32);
-            this.btnLogout.TabIndex = 11;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
             // pcbMain
             // 
             this.pcbMain.Dock = System.Windows.Forms.DockStyle.Top;
@@ -195,23 +192,27 @@ namespace SVSU_Capstone_Project
             this.pcbMain.TabIndex = 1;
             this.pcbMain.TabStop = false;
             // 
-            // msiHome
+            // btnLogOut
             // 
-            this.msiHome.Name = "msiHome";
-            this.msiHome.Padding = new System.Windows.Forms.Padding(4);
-            this.msiHome.Size = new System.Drawing.Size(174, 31);
-            this.msiHome.Text = "Home";
-            this.msiHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Location = new System.Drawing.Point(1046, 115);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(98, 55);
+            this.btnLogOut.TabIndex = 7;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1156, 681);
+            this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblLoggedInTime);
-            this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.lblUser);
+            this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.pcbMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -250,9 +251,9 @@ namespace SVSU_Capstone_Project
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem msiPrintBarcodes;
         private System.Windows.Forms.ToolStripMenuItem msiCheckInOutItems;
-        private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.ToolStripMenuItem msiHome;
         private System.Windows.Forms.PictureBox pcbMain;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }
 

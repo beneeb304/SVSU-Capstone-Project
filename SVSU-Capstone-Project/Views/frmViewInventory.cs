@@ -43,7 +43,6 @@ namespace SVSU_Capstone_Project.Views
 
             //Set datasource for category each combobox
             cmbCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
-            cmbCategory.SelectedIndex = -1;
         }
 
         private void btnPrintBarcode_Click( object sender, EventArgs e )
