@@ -65,7 +65,7 @@ namespace SVSU_Capstone_Project.Views
             cmbMoveNLevelTo.SelectedIndex = -1;
         }
 
-        private void cmbMoveReset_Click( object sender, EventArgs e )
+        private void btnMoveReset_Click( object sender, EventArgs e )
         {
             cmbMoveCategory.SelectedIndex = -1;
             cmbMoveRoomTo.SelectedIndex = -1;
@@ -107,6 +107,8 @@ namespace SVSU_Capstone_Project.Views
                 (uint)nudMoveQuantity.Value,
                 ""
             );
+            MessageBox.Show("Item(s) moved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnMoveReset_Click(null, null);
         }
     }
 }

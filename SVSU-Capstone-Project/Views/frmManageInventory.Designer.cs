@@ -1031,7 +1031,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnMoveReset.TabIndex = 217;
             this.btnMoveReset.Text = "Reset";
             this.btnMoveReset.UseVisualStyleBackColor = true;
-            this.btnMoveReset.Click += new System.EventHandler(this.cmbMoveReset_Click);
+            this.btnMoveReset.Click += new System.EventHandler(this.btnMoveReset_Click);
             // 
             // btnMoveAccept
             // 
@@ -1042,6 +1042,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnMoveAccept.TabIndex = 218;
             this.btnMoveAccept.Text = "Move";
             this.btnMoveAccept.UseVisualStyleBackColor = true;
+            this.btnMoveAccept.Click += new System.EventHandler(this.btnMove_Click);
             // 
             // lblMoveCommodity
             // 

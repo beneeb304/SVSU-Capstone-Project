@@ -126,6 +126,10 @@ namespace SVSU_Capstone_Project.Views
                     "Stock Added"
                 );
             }
+            // notify User of success
+            MessageBox.Show("Item added successfully.");
+            // clear fields
+            btnAddCancel_Click(sender, e);
         }
     }
 }
