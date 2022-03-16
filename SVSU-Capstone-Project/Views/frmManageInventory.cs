@@ -21,11 +21,12 @@ namespace SVSU_Capstone_Project.Views
             InitializeComponent();
             // Bind Comboboxes to the database so the user has options to select on load
             List<Category> lstCategories = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
+            List<Vendor> lstVendors = ItemModel.GetMany<Vendor>().OrderBy(x => x.strName).ToList();
             // Add Tab
             this.cmbAddCategory.DataSource = lstCategories;
             // Create Tab
             this.cmbCreateCategory.DataSource = lstCategories;
-            this.cmbCreateVendor.DataSource = lstCategories;
+            this.cmbCreateVendor.DataSource = lstVendors;
             // Use Tab
             trvUseSelectByRoom.PopulateCommodityTreeByRoom();
             // Move Tab
