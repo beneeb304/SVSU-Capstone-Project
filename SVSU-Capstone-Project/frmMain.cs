@@ -127,10 +127,6 @@ namespace SVSU_Capstone_Project
                     newF = new frmGenerateReports();
                     this.Text = "Saginaw Valley Nursing Inventory System | Generate Reports";
                     break;
-                case "msiPrintBarcodes":
-                    newF = new frmPrintBarcodes();
-                    this.Text = "Saginaw Valley Nursing Inventory System | Print Barcodes";
-                    break;
                 case "msiCheckInOutItems":
                     // If this is called from a barcode scan, pass the CheckedItem
                     // then clear the barcode's variables.
@@ -146,11 +142,6 @@ namespace SVSU_Capstone_Project
                     this.Text = "Saginaw Valley Nursing Inventory System | Check In/Out Items";
                     break;
                 case "msiSettings":
-                    if (!Authentication.ActiveUser.blnIsAdmin)
-                    {
-                        MessageBox.Show("Must be an admin to access settings!", "Alert");
-                        return;
-                    }
                     newF = new frmSettings();
                     this.Text = "Saginaw Valley Nursing Inventory System | Settings";
                     break;

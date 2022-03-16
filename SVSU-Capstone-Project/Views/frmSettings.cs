@@ -876,6 +876,15 @@ namespace SVSU_Capstone_Project.Views
                 lstCabinet.DataSource = ItemModel.GetMany<Cabinet>(x => x.objRoom.strName == cmbRoom.SelectedItem.ToString())
                 .OrderBy(x => x.strName).Select(x => x.strName).ToList();
             }
+
+            //If we're adding a cabinet
+            if (btnCabinetAdd.Enabled)
+            {
+                //Clear fields
+                txtCabinetDescription.Text = "";
+                txtCabinetName.Text = "";
+            }
+
         }
 
         /* Function: lstCabinet_SelectedIndexChanged

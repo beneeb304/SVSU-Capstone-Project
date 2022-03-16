@@ -45,7 +45,9 @@ namespace SVSU_Capstone_Project.Views
             }
             else
             {
-                ItemModel.Delete<Commodity>(cmbDeleteCommodity.SelectedItem as Commodity);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this commodity?", "Confirm", MessageBoxButtons.YesNo);
+                if(result == DialogResult.Yes)
+                    ItemModel.Delete<Commodity>(cmbDeleteCommodity.SelectedItem as Commodity);
             }
         }
 

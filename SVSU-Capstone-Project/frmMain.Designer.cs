@@ -36,7 +36,6 @@ namespace SVSU_Capstone_Project
             this.msiViewInventory = new System.Windows.Forms.ToolStripMenuItem();
             this.msiManageInventory = new System.Windows.Forms.ToolStripMenuItem();
             this.msiGenerateReports = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiPrintBarcodes = new System.Windows.Forms.ToolStripMenuItem();
             this.msiCheckInOutItems = new System.Windows.Forms.ToolStripMenuItem();
             this.msiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUser = new System.Windows.Forms.Label();
@@ -60,14 +59,13 @@ namespace SVSU_Capstone_Project
             this.msiViewInventory,
             this.msiManageInventory,
             this.msiGenerateReports,
-            this.msiPrintBarcodes,
             this.msiCheckInOutItems,
             this.msiSettings});
             this.mstMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.mstMain.Location = new System.Drawing.Point(0, 0);
             this.mstMain.Name = "mstMain";
             this.mstMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.mstMain.Size = new System.Drawing.Size(179, 223);
+            this.mstMain.Size = new System.Drawing.Size(179, 192);
             this.mstMain.TabIndex = 0;
             this.mstMain.Text = "menuStrip1";
             // 
@@ -78,6 +76,7 @@ namespace SVSU_Capstone_Project
             this.msiHome.Size = new System.Drawing.Size(174, 31);
             this.msiHome.Text = "Home";
             this.msiHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msiHome.Click += new System.EventHandler(this.PageController);
             // 
             // msiViewInventory
             // 
@@ -105,15 +104,6 @@ namespace SVSU_Capstone_Project
             this.msiGenerateReports.Text = "Generate Reports";
             this.msiGenerateReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiGenerateReports.Click += new System.EventHandler(this.PageController);
-            // 
-            // msiPrintBarcodes
-            // 
-            this.msiPrintBarcodes.Name = "msiPrintBarcodes";
-            this.msiPrintBarcodes.Padding = new System.Windows.Forms.Padding(4);
-            this.msiPrintBarcodes.Size = new System.Drawing.Size(174, 31);
-            this.msiPrintBarcodes.Text = "Print Barcodes";
-            this.msiPrintBarcodes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msiPrintBarcodes.Click += new System.EventHandler(this.PageController);
             // 
             // msiCheckInOutItems
             // 
@@ -149,7 +139,7 @@ namespace SVSU_Capstone_Project
             this.lblDateTime.AutoSize = true;
             this.lblDateTime.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.lblDateTime.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.Location = new System.Drawing.Point(862, 115);
+            this.lblDateTime.Location = new System.Drawing.Point(862, 85);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(73, 24);
             this.lblDateTime.TabIndex = 3;
@@ -195,9 +185,9 @@ namespace SVSU_Capstone_Project
             // btnLogOut
             // 
             this.btnLogOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Location = new System.Drawing.Point(1046, 115);
+            this.btnLogOut.Location = new System.Drawing.Point(1046, 130);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(98, 55);
+            this.btnLogOut.Size = new System.Drawing.Size(98, 48);
             this.btnLogOut.TabIndex = 7;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
@@ -249,7 +239,6 @@ namespace SVSU_Capstone_Project
         private System.Windows.Forms.Timer tmrTime;
         private System.Windows.Forms.Label lblLoggedInTime;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolStripMenuItem msiPrintBarcodes;
         private System.Windows.Forms.ToolStripMenuItem msiCheckInOutItems;
         private System.Windows.Forms.ToolStripMenuItem msiHome;
         private System.Windows.Forms.PictureBox pcbMain;
