@@ -456,6 +456,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbCreateType
             // 
+            this.cmbCreateType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCreateType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreateType.FormattingEnabled = true;
             this.cmbCreateType.Location = new System.Drawing.Point(422, 111);
@@ -644,6 +645,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbCreateCategory
             // 
+            this.cmbCreateCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCreateCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreateCategory.FormattingEnabled = true;
             this.cmbCreateCategory.Location = new System.Drawing.Point(422, 81);
@@ -665,6 +667,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbCreateVendor
             // 
+            this.cmbCreateVendor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCreateVendor.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreateVendor.FormattingEnabled = true;
             this.cmbCreateVendor.Location = new System.Drawing.Point(422, 212);
@@ -744,6 +747,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbAddCategory
             // 
+            this.cmbAddCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAddCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAddCategory.FormattingEnabled = true;
             this.cmbAddCategory.Location = new System.Drawing.Point(147, 59);
@@ -851,6 +855,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbAddCommodity
             // 
+            this.cmbAddCommodity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAddCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAddCommodity.FormattingEnabled = true;
             this.cmbAddCommodity.Location = new System.Drawing.Point(147, 101);
@@ -873,6 +878,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbAddCabinet
             // 
+            this.cmbAddCabinet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAddCabinet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAddCabinet.FormattingEnabled = true;
             this.cmbAddCabinet.Location = new System.Drawing.Point(147, 239);
@@ -895,6 +901,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbAddNLevel
             // 
+            this.cmbAddNLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAddNLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAddNLevel.FormattingEnabled = true;
             this.cmbAddNLevel.Location = new System.Drawing.Point(147, 287);
@@ -917,6 +924,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbAddRoom
             // 
+            this.cmbAddRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAddRoom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAddRoom.FormattingEnabled = true;
             this.cmbAddRoom.Location = new System.Drawing.Point(147, 191);
@@ -1057,6 +1065,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbMoveCommodity
             // 
+            this.cmbMoveCommodity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMoveCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMoveCommodity.FormattingEnabled = true;
             this.cmbMoveCommodity.Location = new System.Drawing.Point(124, 79);
@@ -1079,6 +1088,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbMoveCategory
             // 
+            this.cmbMoveCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMoveCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMoveCategory.FormattingEnabled = true;
             this.cmbMoveCategory.Location = new System.Drawing.Point(124, 45);
@@ -1129,6 +1139,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbMoveRoomTo
             // 
+            this.cmbMoveRoomTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMoveRoomTo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMoveRoomTo.FormattingEnabled = true;
             this.cmbMoveRoomTo.Location = new System.Drawing.Point(135, 76);
@@ -1151,6 +1162,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbMoveNLevelTo
             // 
+            this.cmbMoveNLevelTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMoveNLevelTo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMoveNLevelTo.FormattingEnabled = true;
             this.cmbMoveNLevelTo.Location = new System.Drawing.Point(135, 172);
@@ -1172,6 +1184,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbMoveCabinetTo
             // 
+            this.cmbMoveCabinetTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMoveCabinetTo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMoveCabinetTo.FormattingEnabled = true;
             this.cmbMoveCabinetTo.Location = new System.Drawing.Point(135, 124);
@@ -1221,6 +1234,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbMoveRoomFrom
             // 
+            this.cmbMoveRoomFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMoveRoomFrom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMoveRoomFrom.FormattingEnabled = true;
             this.cmbMoveRoomFrom.Location = new System.Drawing.Point(135, 76);
@@ -1243,6 +1257,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbMoveNLevelFrom
             // 
+            this.cmbMoveNLevelFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMoveNLevelFrom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMoveNLevelFrom.FormattingEnabled = true;
             this.cmbMoveNLevelFrom.Location = new System.Drawing.Point(135, 172);
@@ -1265,6 +1280,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbMoveCabinetFrom
             // 
+            this.cmbMoveCabinetFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMoveCabinetFrom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMoveCabinetFrom.FormattingEnabled = true;
             this.cmbMoveCabinetFrom.Location = new System.Drawing.Point(135, 124);
@@ -1369,6 +1385,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbDeleteCommodity
             // 
+            this.cmbDeleteCommodity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDeleteCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeleteCommodity.FormattingEnabled = true;
             this.cmbDeleteCommodity.Location = new System.Drawing.Point(122, 82);
@@ -1391,6 +1408,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbDeleteCategory
             // 
+            this.cmbDeleteCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDeleteCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeleteCategory.FormattingEnabled = true;
             this.cmbDeleteCategory.Location = new System.Drawing.Point(122, 48);

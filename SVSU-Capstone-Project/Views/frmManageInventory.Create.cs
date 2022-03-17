@@ -38,6 +38,8 @@ namespace SVSU_Capstone_Project.Views
             nudCreateCost.Value = 0;
             btnCreate.Text = "Create";
             cmbCreateType.SelectedIndex = -1;
+            trvCreateSelectByCategory.SelectedNode = null;
+            trvCreateSelectByRoom.SelectedNode = null;
         }        
 
         private void trvCreateSelect_BeforeSelect( object sender, TreeViewCancelEventArgs e )
@@ -79,7 +81,7 @@ namespace SVSU_Capstone_Project.Views
             {
                 // Create a new item
                 selected = new Commodity();
-                submit = ( x ) => ItemModel.Update(x);
+                submit = ( x ) => ItemModel.Update(x);  //Should this be add?
             }
             selected.strName = txtCreateItemName.Text;
             selected.objCategory = cmbCreateCategory.SelectedItem as Category;
