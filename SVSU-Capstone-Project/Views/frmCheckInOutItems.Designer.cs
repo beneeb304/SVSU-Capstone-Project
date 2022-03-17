@@ -81,7 +81,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkInStudent.Location = new System.Drawing.Point(177, 107);
             this.cmbChkInStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbChkInStudent.Name = "cmbChkInStudent";
-            this.cmbChkInStudent.Size = new System.Drawing.Size(297, 31);
+            this.cmbChkInStudent.Size = new System.Drawing.Size(447, 31);
             this.cmbChkInStudent.TabIndex = 214;
             this.cmbChkInStudent.SelectedIndexChanged += new System.EventHandler(this.cmbChkInStudent_SelectedIndexChanged);
             // 
@@ -111,8 +111,8 @@ namespace SVSU_Capstone_Project.Views
             // btnChkInCancel
             // 
             this.btnChkInCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChkInCancel.Location = new System.Drawing.Point(287, 292);
-            this.btnChkInCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChkInCancel.Location = new System.Drawing.Point(431, 292);
+            this.btnChkInCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnChkInCancel.Name = "btnChkInCancel";
             this.btnChkInCancel.Size = new System.Drawing.Size(152, 53);
             this.btnChkInCancel.TabIndex = 204;
@@ -123,8 +123,8 @@ namespace SVSU_Capstone_Project.Views
             // btnChkIn
             // 
             this.btnChkIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChkIn.Location = new System.Drawing.Point(83, 292);
-            this.btnChkIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChkIn.Location = new System.Drawing.Point(196, 292);
+            this.btnChkIn.Margin = new System.Windows.Forms.Padding(4);
             this.btnChkIn.Name = "btnChkIn";
             this.btnChkIn.Size = new System.Drawing.Size(152, 53);
             this.btnChkIn.TabIndex = 205;
@@ -140,7 +140,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkInCommodity.Location = new System.Drawing.Point(177, 171);
             this.cmbChkInCommodity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbChkInCommodity.Name = "cmbChkInCommodity";
-            this.cmbChkInCommodity.Size = new System.Drawing.Size(297, 31);
+            this.cmbChkInCommodity.Size = new System.Drawing.Size(447, 31);
             this.cmbChkInCommodity.TabIndex = 201;
             // 
             // label27
@@ -183,14 +183,14 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkOutStudent.Location = new System.Drawing.Point(191, 80);
             this.cmbChkOutStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbChkOutStudent.Name = "cmbChkOutStudent";
-            this.cmbChkOutStudent.Size = new System.Drawing.Size(337, 31);
+            this.cmbChkOutStudent.Size = new System.Drawing.Size(428, 31);
             this.cmbChkOutStudent.TabIndex = 199;
             // 
             // txtChkOutNotes
             // 
             this.txtChkOutNotes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtChkOutNotes.Location = new System.Drawing.Point(751, 154);
-            this.txtChkOutNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtChkOutNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtChkOutNotes.Name = "txtChkOutNotes";
             this.txtChkOutNotes.Size = new System.Drawing.Size(337, 227);
             this.txtChkOutNotes.TabIndex = 197;
@@ -200,7 +200,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtAvailableChkOutQuantity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAvailableChkOutQuantity.Location = new System.Drawing.Point(295, 210);
-            this.txtAvailableChkOutQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAvailableChkOutQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.txtAvailableChkOutQuantity.Name = "txtAvailableChkOutQuantity";
             this.txtAvailableChkOutQuantity.ReadOnly = true;
             this.txtAvailableChkOutQuantity.Size = new System.Drawing.Size(159, 30);
@@ -243,7 +243,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnChkOutCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChkOutCancel.Location = new System.Drawing.Point(936, 410);
-            this.btnChkOutCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChkOutCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnChkOutCancel.Name = "btnChkOutCancel";
             this.btnChkOutCancel.Size = new System.Drawing.Size(152, 53);
             this.btnChkOutCancel.TabIndex = 186;
@@ -255,7 +255,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnChkOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChkOut.Location = new System.Drawing.Point(751, 410);
-            this.btnChkOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChkOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnChkOut.Name = "btnChkOut";
             this.btnChkOut.Size = new System.Drawing.Size(152, 53);
             this.btnChkOut.TabIndex = 187;
@@ -282,7 +282,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkOutCommodity.Location = new System.Drawing.Point(191, 126);
             this.cmbChkOutCommodity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbChkOutCommodity.Name = "cmbChkOutCommodity";
-            this.cmbChkOutCommodity.Size = new System.Drawing.Size(337, 31);
+            this.cmbChkOutCommodity.Size = new System.Drawing.Size(428, 31);
             this.cmbChkOutCommodity.TabIndex = 180;
             this.cmbChkOutCommodity.SelectedIndexChanged += new System.EventHandler(this.cmbChkOutCommodity_SelectedIndexChanged);
             // 
@@ -302,7 +302,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbcCheckInOut.Controls.Add(this.tbpCheckIn);
             this.tbcCheckInOut.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcCheckInOut.Location = new System.Drawing.Point(13, 15);
-            this.tbcCheckInOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbcCheckInOut.Margin = new System.Windows.Forms.Padding(4);
             this.tbcCheckInOut.Name = "tbcCheckInOut";
             this.tbcCheckInOut.SelectedIndex = 0;
             this.tbcCheckInOut.Size = new System.Drawing.Size(1241, 530);
@@ -315,7 +315,7 @@ namespace SVSU_Capstone_Project.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1275, 558);
             this.Controls.Add(this.tbcCheckInOut);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCheckInOutItems";
             this.Text = "Check-In/Out Items";
             this.tbpCheckIn.ResumeLayout(false);

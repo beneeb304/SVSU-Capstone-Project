@@ -45,7 +45,7 @@ namespace SVSU_Capstone_Project.Views
             {
                 case "tbpCheckOut":
                     cmbChkOutCommodity.DataSource = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset").OrderBy(x => x.strName).ToList(); //(cmbChkOutCategory.SelectedValue as Category).lstCommodities;
-                    cmbChkOutStudent.DataSource = ItemModel.GetMany<User>().Where(x => x.blnIsAdmin == false).OrderBy(x => x.strLast_name).ToList();
+                    cmbChkOutStudent.DataSource = ItemModel.GetMany<User>().Where(x => x.blnIsAdmin == false).OrderBy(x => x.strLast_name).Select(x => x.strLast_name + ", " + x.strFirst_name + " - " + x.strEmail).ToList();
                     txtAvailableChkOutQuantity.Text = "";
                     cmbChkOutCommodity.SelectedIndex = -1;
                     cmbChkOutStudent.SelectedIndex = -1;
@@ -53,7 +53,7 @@ namespace SVSU_Capstone_Project.Views
 
                 case "tbpCheckIn":
                     var checkedItems = ItemModel.GetMany<CheckedItem>().Where(x => (int)x.objLog.enuAction == 4).ToList();
-                    cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).Select(x => x.objUser.strEmail).Distinct().ToList();
+                    cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).OrderBy(x => x.objUser.strLast_name).Select(x => x.objUser.strLast_name + ", " + x.objUser.strFirst_name + " - " + x.objUser.strEmail).Distinct().ToList();
                     cmbChkInStudent.SelectedIndex = -1;
                     cmbChkInCommodity.SelectedIndex = -1;
                     break;
@@ -90,8 +90,8 @@ namespace SVSU_Capstone_Project.Views
                 else
                 {
                     var objStorage_tuid = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == objSelectedCommodity.uidTuid);
-                    var objUser_tuid = cmbChkOutStudent.SelectedValue as User;
-                    var timestamp = DateTime.Now;
+                    var email = cmbChkOutStudent.Text.Split(' ').Last();
+                    var objUser_tuid = ItemModel.Get<User>(x => x.strEmail == email);
                     var doesExist = ItemModel.GetMany<CheckedItem>().Where(x => x.objUser.uidTuid == objUser_tuid.uidTuid && x.objCommodities.strName == objSelectedCommodity.strName).ToList();
                     if (doesExist.Count != 0)
                     {
@@ -104,6 +104,7 @@ namespace SVSU_Capstone_Project.Views
                             " " + objUser_tuid.strLast_name + "?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
+                            var timestamp = DateTime.Now;
                             Log log = new Log()
                             {
                                 enuAction = ItemAction.CheckedOut,
@@ -117,7 +118,7 @@ namespace SVSU_Capstone_Project.Views
                             ItemModel.Add<Log>(log);
 
                             var objLog_Tuid = ItemModel.Get<Log>(
-                                x => x.objStorage.uidTuid == objStorage_tuid.uidTuid && x.dtTimestamp == timestamp && x.objUser.uidTuid == objUser_tuid.uidTuid);
+                                x => x.objUser.uidTuid == objUser_tuid.uidTuid && x.dtTimestamp == timestamp && x.objStorage.uidTuid == objStorage_tuid.uidTuid);
 
                             CheckedItem checkedItem = new CheckedItem()
                             {
@@ -131,7 +132,7 @@ namespace SVSU_Capstone_Project.Views
                             Storage storage = ItemModel.Get<Storage>(x => x.uidTuid == objStorage_tuid.uidTuid);
                             storage.intQuantity = storage.intQuantity - 1;
                             ItemModel.Update<Storage>(storage);
-
+                            MessageBox.Show(objUser_tuid.strFirst_name + " " + objUser_tuid.strLast_name + " has successfully checked out " + objSelectedCommodity.strName);
                             tbcCheckInOut_SelectedIndexChanged(null, null);
                             cmbChkOutCommodity_SelectedIndexChanged(sender, e);
                             btnChkOutCancel_Click(sender, e);
@@ -169,12 +170,12 @@ namespace SVSU_Capstone_Project.Views
             }
             else
             {
-                var objSelectedStudent = cmbChkInStudent.Text;
+                var email = cmbChkInStudent.Text.Split(' ').Last();
                 var objSelectedItem = cmbChkInCommodity.SelectedItem;
-                var objCommodity_tuid = ItemModel.Get<Commodity>(x => x.uidTuid == ((Commodity)objSelectedItem).uidTuid);
-                var doesExist = ItemModel.Get<CheckedItem>(x => x.objUser.strEmail == objSelectedStudent && x.objCommodities.strName == objSelectedItem.ToString());
+                var objCommodity_tuid = ItemModel.Get<Commodity>(x => x.strName == objSelectedItem);
+                var doesExist = ItemModel.Get<CheckedItem>(x => x.objUser.strEmail == email && x.objCommodities.strName == objSelectedItem.ToString());
                 var timestamp = DateTime.Now;
-                var objUser = ItemModel.Get<User>(x => x.strEmail == objSelectedStudent);
+                var objUser = ItemModel.Get<User>(x => x.strEmail == email);
                 var objStorage_tuid = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == objCommodity_tuid.uidTuid);
                 if (doesExist != null)
                 {
@@ -212,8 +213,8 @@ namespace SVSU_Capstone_Project.Views
             cmbChkInCommodity.Enabled = false;
             if (cmbChkInStudent.SelectedIndex >= 0)
             {
-                string objSelectedUser = cmbChkInStudent.Text;
-                cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>(x => x.objUser.strEmail == objSelectedUser).Select(x => x.objCommodities.strName).ToList();
+                var email = cmbChkInStudent.Text.Split(' ').Last();
+                cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>(x => x.objUser.strEmail == email).Select(x => x.objCommodities.strName).ToList();
                 cmbChkInCommodity.Enabled = true;
             }
         }
