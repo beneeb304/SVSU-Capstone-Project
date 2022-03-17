@@ -69,6 +69,8 @@ namespace SVSU_Capstone_Project.Views
         {
             cmbMoveCategory.SelectedIndex = -1;
             cmbMoveRoomTo.SelectedIndex = -1;
+            txtMoveAvailable.Text = "";
+            nudMoveQuantity.Value = 1;
         }
 
         private void btnMove_Click( object sender, EventArgs e )

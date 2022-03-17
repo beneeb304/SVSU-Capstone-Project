@@ -74,7 +74,8 @@ namespace SVSU_Capstone_Project.Views
         private void cmbAddCategory_SelectedValueChanged( object sender, EventArgs e )
         {
             this.cmbAddCommodity.SelectedIndex = -1;
-            this.cmbAddCommodity.DataSource = (this.cmbAddCategory.SelectedValue as Category).lstCommodities;
+            if(cmbAddCategory.SelectedIndex > -1)
+                this.cmbAddCommodity.DataSource = (this.cmbAddCategory.SelectedValue as Category).lstCommodities;
         }
 
         /* Function: btnAddCancel_Click
@@ -87,7 +88,7 @@ namespace SVSU_Capstone_Project.Views
         private void btnAddCancel_Click( object sender, EventArgs e )
         {
             //Clear all fields on Add tab
-            cmbAddCategory.SelectedIndex = 0;
+            cmbAddCategory.SelectedIndex = -1;
             txtCurrentQty.Text = "";
             nudAddQty.Value = 1;
         }
