@@ -96,7 +96,7 @@ namespace SVSU_Capstone_Project.Views
             this.label2 = new System.Windows.Forms.Label();
             this.cmbAddRoom = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbcMoveItem = new System.Windows.Forms.TabPage();
+            this.tbpMoveItem = new System.Windows.Forms.TabPage();
             this.label27 = new System.Windows.Forms.Label();
             this.nudMoveQuantity = new System.Windows.Forms.NumericUpDown();
             this.label28 = new System.Windows.Forms.Label();
@@ -146,7 +146,7 @@ namespace SVSU_Capstone_Project.Views
             ((System.ComponentModel.ISupportInitialize)(this.nudCreateAlertQty)).BeginInit();
             this.tbpAddItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).BeginInit();
-            this.tbcMoveItem.SuspendLayout();
+            this.tbpMoveItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMoveQuantity)).BeginInit();
             this.gbMoveDestination.SuspendLayout();
             this.gbMoveSource.SuspendLayout();
@@ -159,7 +159,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbcInventory.Controls.Add(this.tbpUseItem);
             this.tbcInventory.Controls.Add(this.tbpCreateItem);
             this.tbcInventory.Controls.Add(this.tbpAddItems);
-            this.tbcInventory.Controls.Add(this.tbcMoveItem);
+            this.tbcInventory.Controls.Add(this.tbpMoveItem);
             this.tbcInventory.Controls.Add(this.tbpDeleteItem);
             this.tbcInventory.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcInventory.Location = new System.Drawing.Point(12, 12);
@@ -167,6 +167,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbcInventory.SelectedIndex = 0;
             this.tbcInventory.Size = new System.Drawing.Size(931, 429);
             this.tbcInventory.TabIndex = 0;
+            this.tbcInventory.Selected += new System.Windows.Forms.TabControlEventHandler(this.tbcInventory_Selected);
             // 
             // tbpUseItem
             // 
@@ -945,28 +946,28 @@ namespace SVSU_Capstone_Project.Views
             this.label3.TabIndex = 138;
             this.label3.Text = "Room:";
             // 
-            // tbcMoveItem
+            // tbpMoveItem
             // 
-            this.tbcMoveItem.Controls.Add(this.label27);
-            this.tbcMoveItem.Controls.Add(this.nudMoveQuantity);
-            this.tbcMoveItem.Controls.Add(this.label28);
-            this.tbcMoveItem.Controls.Add(this.txtMoveAvailable);
-            this.tbcMoveItem.Controls.Add(this.lblMoveTitle);
-            this.tbcMoveItem.Controls.Add(this.btnMoveReset);
-            this.tbcMoveItem.Controls.Add(this.btnMoveAccept);
-            this.tbcMoveItem.Controls.Add(this.lblMoveCommodity);
-            this.tbcMoveItem.Controls.Add(this.cmbMoveCommodity);
-            this.tbcMoveItem.Controls.Add(this.lblMoveCategory);
-            this.tbcMoveItem.Controls.Add(this.cmbMoveCategory);
-            this.tbcMoveItem.Controls.Add(this.gbMoveDestination);
-            this.tbcMoveItem.Controls.Add(this.gbMoveSource);
-            this.tbcMoveItem.Location = new System.Drawing.Point(4, 25);
-            this.tbcMoveItem.Name = "tbcMoveItem";
-            this.tbcMoveItem.Padding = new System.Windows.Forms.Padding(3);
-            this.tbcMoveItem.Size = new System.Drawing.Size(923, 400);
-            this.tbcMoveItem.TabIndex = 3;
-            this.tbcMoveItem.Text = "Move Stock";
-            this.tbcMoveItem.UseVisualStyleBackColor = true;
+            this.tbpMoveItem.Controls.Add(this.label27);
+            this.tbpMoveItem.Controls.Add(this.nudMoveQuantity);
+            this.tbpMoveItem.Controls.Add(this.label28);
+            this.tbpMoveItem.Controls.Add(this.txtMoveAvailable);
+            this.tbpMoveItem.Controls.Add(this.lblMoveTitle);
+            this.tbpMoveItem.Controls.Add(this.btnMoveReset);
+            this.tbpMoveItem.Controls.Add(this.btnMoveAccept);
+            this.tbpMoveItem.Controls.Add(this.lblMoveCommodity);
+            this.tbpMoveItem.Controls.Add(this.cmbMoveCommodity);
+            this.tbpMoveItem.Controls.Add(this.lblMoveCategory);
+            this.tbpMoveItem.Controls.Add(this.cmbMoveCategory);
+            this.tbpMoveItem.Controls.Add(this.gbMoveDestination);
+            this.tbpMoveItem.Controls.Add(this.gbMoveSource);
+            this.tbpMoveItem.Location = new System.Drawing.Point(4, 25);
+            this.tbpMoveItem.Name = "tbpMoveItem";
+            this.tbpMoveItem.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpMoveItem.Size = new System.Drawing.Size(923, 400);
+            this.tbpMoveItem.TabIndex = 3;
+            this.tbpMoveItem.Text = "Move Stock";
+            this.tbpMoveItem.UseVisualStyleBackColor = true;
             // 
             // label27
             // 
@@ -1440,8 +1441,8 @@ namespace SVSU_Capstone_Project.Views
             this.tbpAddItems.ResumeLayout(false);
             this.tbpAddItems.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAddQty)).EndInit();
-            this.tbcMoveItem.ResumeLayout(false);
-            this.tbcMoveItem.PerformLayout();
+            this.tbpMoveItem.ResumeLayout(false);
+            this.tbpMoveItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMoveQuantity)).EndInit();
             this.gbMoveDestination.ResumeLayout(false);
             this.gbMoveDestination.PerformLayout();
@@ -1498,7 +1499,7 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TabPage tbcMoveItem;
+        private System.Windows.Forms.TabPage tbpMoveItem;
         internal System.Windows.Forms.ComboBox cmbMoveCabinetFrom;
         internal System.Windows.Forms.Label lblMoveCabinetFrom;
         internal System.Windows.Forms.ComboBox cmbMoveNLevelFrom;

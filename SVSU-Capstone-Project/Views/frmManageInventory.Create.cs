@@ -40,7 +40,7 @@ namespace SVSU_Capstone_Project.Views
             cmbCreateType.SelectedIndex = -1;
             trvCreateSelectByCategory.SelectedNode = null;
             trvCreateSelectByRoom.SelectedNode = null;
-        }        
+        }
 
         private void trvCreateSelect_BeforeSelect( object sender, TreeViewCancelEventArgs e )
         {
@@ -81,7 +81,9 @@ namespace SVSU_Capstone_Project.Views
             {
                 // Create a new item
                 selected = new Commodity();
-                submit = ( x ) => ItemModel.Update(x);  //Should this be add?
+                submit = ( x ) => ItemModel.Add(x);
+                trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
+                trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
             }
             selected.strName = txtCreateItemName.Text;
             selected.objCategory = cmbCreateCategory.SelectedItem as Category;
@@ -93,7 +95,7 @@ namespace SVSU_Capstone_Project.Views
             selected.intCostInCents = (int)(nudCreateCost.Value) * 100;
             selected.strFeatures = txtCreateFeatures.Text;
             submit(selected);
-            btnCreateCancel_Click(null,null);
+            btnCreateCancel_Click(null, null);
         }
     }
 }

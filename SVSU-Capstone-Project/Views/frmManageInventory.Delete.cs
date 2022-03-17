@@ -39,16 +39,10 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnDeleteConfirm_Click( object sender, EventArgs e )
         {
-            if (dgvDeletionDelta.Rows.Count == 0)
-            {
-                MessageBox.Show("No items to purge");
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("Are you sure you want to delete this commodity?", "Confirm", MessageBoxButtons.YesNo);
-                if(result == DialogResult.Yes)
-                    ItemModel.Delete<Commodity>(cmbDeleteCommodity.SelectedItem as Commodity);
-            }
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this commodity?", "Confirm", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+                ItemModel.Delete<Commodity>(cmbDeleteCommodity.SelectedItem as Commodity);
+            cmbDeleteCategory.SelectedIndex = -1;
         }
 
         private void btnConfirmReset_Click( object sender, EventArgs e )

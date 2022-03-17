@@ -28,6 +28,11 @@ namespace SVSU_Capstone_Project.Views
         {
             //Clear all fields on Use tab
             trvUseSelectByRoom.SelectedNode = null;
+            lblUseItemNameVal.Text = "";
+            lblUseItemCategoryVal.Text = "";
+            lblUseItemTypeVal.Text = "";
+            txtUseAvailable.Text = "";
+            txtUseRemaining.Text = "";
             nudUseDeduct.Value = 1;
         }
 
@@ -40,11 +45,11 @@ namespace SVSU_Capstone_Project.Views
                 return;
             }
             ItemModel.UseItem(
-                (trvUseSelectByRoom.SelectedNode.Tag as Commodity)
+                (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Tag).val as Commodity)
                 .lstStorage
                 .Where(x =>
-                    x.objNLevel == (trvUseSelectByRoom.SelectedNode.Parent.Tag as NLevel)
-                    && x.objCabinet == (trvUseSelectByRoom.SelectedNode.Parent.Parent.Tag as Cabinet)
+                    x.objNLevel == (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Tag).val as NLevel)
+                    && x.objCabinet == (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Parent.Tag).val as Cabinet)
                 ).First(),
                 Authentication.ActiveUser,
                 Convert.ToUInt32(nudUseDeduct.Value),

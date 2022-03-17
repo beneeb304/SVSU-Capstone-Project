@@ -19,22 +19,35 @@ namespace SVSU_Capstone_Project.Views
         public frmManageInventory()
         {
             InitializeComponent();
-            // Bind Comboboxes to the database so the user has options to select on load
+            trvUseSelectByRoom.PopulateCommodityTreeByRoom(); 
+        }
+
+        private void tbcInventory_Selected( object sender, TabControlEventArgs e )
+        {
             List<Category> lstCategories = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
             List<Vendor> lstVendors = ItemModel.GetMany<Vendor>().OrderBy(x => x.strName).ToList();
-            // Add Tab
-            this.cmbAddCategory.DataSource = lstCategories;
-            // Create Tab
-            this.cmbCreateCategory.DataSource = lstCategories;
-            this.cmbCreateVendor.DataSource = lstVendors;
-            // Use Tab
-            trvUseSelectByRoom.PopulateCommodityTreeByRoom();
-            // Move Tab
-            this.cmbMoveCategory.DataSource = lstCategories;
-            // Delete Tab
-            this.cmbDeleteCategory.DataSource = lstCategories;
-            trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
-            trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
+            switch (e.TabPage.Name)
+            {
+                case ("tbpAddItems"):
+                    this.cmbAddCategory.DataSource = lstCategories;
+                    break;
+                case ("tbpCreateItem"):
+                    this.cmbCreateCategory.DataSource = lstCategories;
+                    this.cmbCreateType.DataSource = Enum.GetValues(typeof(ItemType));
+                    this.cmbCreateVendor.DataSource = lstVendors;
+                    trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
+                    trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
+                    break;
+                case ("tbpUseItem"):
+                    trvUseSelectByRoom.PopulateCommodityTreeByRoom(); 
+                    break;
+                case ("tbpMoveItem"):
+                    this.cmbMoveCategory.DataSource = lstCategories;
+                    break;
+                case ("tbpDeleteItem"):
+                    this.cmbDeleteCategory.DataSource = lstCategories;
+                    break;
+            }
         }
 
         private void nonTriggeringCall( Action predicate )
@@ -122,7 +135,7 @@ namespace SVSU_Capstone_Project.Views
                 if (txtRemainder != null)
                     txtRemainder.Text = "";
             }
-        }        
+        }
     }
 
     public static class TreeViewExtensions

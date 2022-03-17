@@ -59,7 +59,7 @@ namespace SVSU_Capstone_Project.Views
                     break;
             }
         }
- 
+
         private void cmbChkOutCommodity_SelectedIndexChanged( object sender, EventArgs e )
         {
             if (cmbChkOutCommodity.SelectedIndex >= 0)
@@ -99,8 +99,8 @@ namespace SVSU_Capstone_Project.Views
                     }
                     else if (objStorage_tuid.intQuantity > 0)
                     {
-                        DialogResult result = MessageBox.Show("Are you sure you want to check out " + 
-                            objSelectedCommodity.strName + " for " + objUser_tuid.strFirst_name + 
+                        DialogResult result = MessageBox.Show("Are you sure you want to check out " +
+                            objSelectedCommodity.strName + " for " + objUser_tuid.strFirst_name +
                             " " + objUser_tuid.strLast_name + "?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
@@ -141,7 +141,7 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        public void setScannedBarcode(CheckedItem checkedItem)
+        public void setScannedBarcode( CheckedItem checkedItem )
         {
             if (cmbChkOutCommodity.Items.Contains(checkedItem.objCommodities))
             {
@@ -163,7 +163,7 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnChkIn_Click( object sender, EventArgs e )
         {
-            if(cmbChkInStudent.SelectedIndex == -1 || cmbChkInCommodity.SelectedIndex == -1)
+            if (cmbChkInStudent.SelectedIndex == -1 || cmbChkInCommodity.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select make sure a student and commodity is selected to check back in!", "Alert");
             }
@@ -171,7 +171,7 @@ namespace SVSU_Capstone_Project.Views
             {
                 var objSelectedStudent = cmbChkInStudent.Text;
                 var objSelectedItem = cmbChkInCommodity.SelectedItem;
-                var objCommodity_tuid = ItemModel.Get<Commodity>(x => x.strName == objSelectedItem);
+                var objCommodity_tuid = ItemModel.Get<Commodity>(x => x.uidTuid == ((Commodity)objSelectedItem).uidTuid);
                 var doesExist = ItemModel.Get<CheckedItem>(x => x.objUser.strEmail == objSelectedStudent && x.objCommodities.strName == objSelectedItem.ToString());
                 var timestamp = DateTime.Now;
                 var objUser = ItemModel.Get<User>(x => x.strEmail == objSelectedStudent);
@@ -210,7 +210,7 @@ namespace SVSU_Capstone_Project.Views
         private void cmbChkInStudent_SelectedIndexChanged( object sender, EventArgs e )
         {
             cmbChkInCommodity.Enabled = false;
-            if(cmbChkInStudent.SelectedIndex >= 0)
+            if (cmbChkInStudent.SelectedIndex >= 0)
             {
                 string objSelectedUser = cmbChkInStudent.Text;
                 cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>(x => x.objUser.strEmail == objSelectedUser).Select(x => x.objCommodities.strName).ToList();
