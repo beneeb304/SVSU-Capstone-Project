@@ -10,9 +10,12 @@
     }
 }
 
-namespace SVSU_Capstone_Project.InvDbDataSetTableAdapters {
-    
-    
+namespace SVSU_Capstone_Project.InvDbDataSetTableAdapters
+{
+    partial class LowStockTableAdapter
+    {
+    }
+
     public partial class LogsTableAdapter {
     }
 }

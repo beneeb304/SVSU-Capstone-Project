@@ -22,54 +22,6 @@ namespace SVSU_Capstone_Project.Views
             InitializeComponent();
         }
 
-        /* Function: pcbCalBegin_Click
-         * Description: Sets calBegin to visible and calEnd to invisible.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
-         */
-        private void pcbCalBegin_Click( object sender, EventArgs e )
-        {
-          
-        }
-
-        /* Function: calBegin_DateChanged
-         * Description: Sets the selected beginning date to text to display to the user.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * DateRangeEventArgs e; Information passed by the sender object about the method call.
-         */
-        private void calBegin_DateChanged( object sender, DateRangeEventArgs e )
-        {
-           
-        }
-
-        /* Function: pcbCalEnd_Click
-         * Description: Sets calBegin to invisible and calEnd to visible.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
-         */
-        private void pcbCalEnd_Click( object sender, EventArgs e )
-        {
-           
-        }
-
-        /* Function: calEnd_DateChanged
-         * Description: Sets the selected end date to text to display to the user.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
-         */
-        private void calEnd_DateChanged( object sender, DateRangeEventArgs e )
-        {
-            
-        }
-
         /* Function: frmGenerateReports_Load
          * Description: Sets the selected beginning and end dates to text to display to the user.
          * 
@@ -87,44 +39,32 @@ namespace SVSU_Capstone_Project.Views
             this.simulatorUseTableAdapter1.Fill(this.invDbDataSet1.SimulatorUse);
             // TODO: This line of code loads data into the 'invDbDataset1.Logs' table. You can move, or remove it, as needed.
             this.logsTableAdapter.Fill(this.invDbDataSet1.Logs);
-            
-            this.reportViewer1.RefreshReport();
 
+            //Set Activity Log page margins and orientation to display all data when report is printed.
+            System.Drawing.Printing.PageSettings activityLog = new System.Drawing.Printing.PageSettings();
+            activityLog.Landscape = true;
+            activityLog.Margins = new System.Drawing.Printing.Margins(50,50,50,50);
+            reportViewer1.SetPageSettings(activityLog);
+
+            //Set Simulator uses page margins and orientation to display all data when report is printed.
+            System.Drawing.Printing.PageSettings simulatorUses = new System.Drawing.Printing.PageSettings();
+            simulatorUses.Landscape = true;
+            simulatorUses.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50);
+            reportViewer2.SetPageSettings(simulatorUses);
+
+
+            //Set Dynamic Items page margins and orientation to display all data when report it printed.
+            System.Drawing.Printing.PageSettings dynamicItems = new System.Drawing.Printing.PageSettings();
+            dynamicItems.Landscape = true;
+            dynamicItems.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50);
+            reportViewer4.SetPageSettings(dynamicItems);
+
+
+            this.reportViewer1.RefreshReport();
             this.reportViewer2.RefreshReport();
             this.reportViewer3.RefreshReport();
             this.reportViewer4.RefreshReport();
         }
 
-        /* Function: btnReportClear_Click
-         * Description: Sets the beginning and ending calendars to display today's date instead of previously selected.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
-         */
-        private void btnReportClear_Click( object sender, EventArgs e )
-        {
-            
-        }
-
-        private void reportViewer1_Load( object sender, EventArgs e )
-        {
-
-        }
-
-        private void logsBindingSource_CurrentChanged( object sender, EventArgs e )
-        {
-
-        }
-
-        private void simulatorUseBindingSource_CurrentChanged( object sender, EventArgs e )
-        {
-
-        }
-
-        private void bindingSource1_CurrentChanged( object sender, EventArgs e )
-        {
-
-        }
     }
 }

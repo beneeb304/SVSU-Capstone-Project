@@ -115,7 +115,7 @@
                                 <TextRun>
                                   <Value>Simulator</Value>
                                   <Style>
-                                    <FontSize>17pt</FontSize>
+                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -151,7 +151,7 @@
                                 <TextRun>
                                   <Value>Times Used</Value>
                                   <Style>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -210,6 +210,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -241,7 +242,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2,"White", "LightGrey")</BackgroundColor>
-                            <VerticalAlign>Bottom</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
