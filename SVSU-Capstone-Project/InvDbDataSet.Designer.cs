@@ -4563,8 +4563,6 @@ namespace SVSU_Capstone_Project {
             
             private global::System.Data.DataColumn columnquantity;
             
-            private global::System.Data.DataColumn columnalert_quantity;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public LowStockDataTable() {
@@ -4616,14 +4614,6 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn alert_quantityColumn {
-                get {
-                    return this.columnalert_quantity;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4659,12 +4649,11 @@ namespace SVSU_Capstone_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public LowStockRow AddLowStockRow(string name, int quantity, int alert_quantity) {
+            public LowStockRow AddLowStockRow(string name, int quantity) {
                 LowStockRow rowLowStockRow = ((LowStockRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         name,
-                        quantity,
-                        alert_quantity};
+                        quantity};
                 rowLowStockRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLowStockRow);
                 return rowLowStockRow;
@@ -4689,7 +4678,6 @@ namespace SVSU_Capstone_Project {
             internal void InitVars() {
                 this.columnname = base.Columns["name"];
                 this.columnquantity = base.Columns["quantity"];
-                this.columnalert_quantity = base.Columns["alert_quantity"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4699,11 +4687,7 @@ namespace SVSU_Capstone_Project {
                 base.Columns.Add(this.columnname);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
-                this.columnalert_quantity = new global::System.Data.DataColumn("alert_quantity", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnalert_quantity);
                 this.columnname.MaxLength = 2147483647;
-                this.columnquantity.AllowDBNull = false;
-                this.columnalert_quantity.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6696,21 +6680,15 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int quantity {
                 get {
-                    return ((int)(this[this.tableLowStock.quantityColumn]));
+                    try {
+                        return ((int)(this[this.tableLowStock.quantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'quantity\' in table \'LowStock\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableLowStock.quantityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int alert_quantity {
-                get {
-                    return ((int)(this[this.tableLowStock.alert_quantityColumn]));
-                }
-                set {
-                    this[this.tableLowStock.alert_quantityColumn] = value;
                 }
             }
             
@@ -6724,6 +6702,18 @@ namespace SVSU_Capstone_Project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetnameNull() {
                 this[this.tableLowStock.nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsquantityNull() {
+                return this.IsNull(this.tableLowStock.quantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetquantityNull() {
+                this[this.tableLowStock.quantityColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -11406,15 +11396,15 @@ SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Commodities.name, SimulatorUse.timesUsed, SimulatorUse.hoursUsed\r\nFROM    " +
-                " SimulatorUse INNER JOIN\r\n                  Commodities ON SimulatorUse.objCommo" +
-                "dity_uidTuid = Commodities.tuid";
+            this._commandCollection[0].CommandText = "SELECT Commodities.name, SimulatorUses.timesUsed, SimulatorUses.hoursUsed\r\nFROM  " +
+                "   SimulatorUses INNER JOIN\r\n                  Commodities ON SimulatorUses.objC" +
+                "ommodity_uidTuid = Commodities.tuid";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT Commodities.name, SimulatorUse.timesUsed, SimulatorUse.hoursUsed\r\nFROM    " +
-                " SimulatorUse INNER JOIN\r\n                  Commodities ON SimulatorUse.objCommo" +
-                "dity_uidTuid = Commodities.tuid";
+            this._commandCollection[1].CommandText = "SELECT Commodities.name, SimulatorUses.timesUsed, SimulatorUses.hoursUsed\r\nFROM  " +
+                "   SimulatorUses INNER JOIN\r\n                  Commodities ON SimulatorUses.objC" +
+                "ommodity_uidTuid = Commodities.tuid";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11590,7 +11580,6 @@ SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM 
             tableMapping.DataSetTable = "LowStock";
             tableMapping.ColumnMappings.Add("name", "name");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
-            tableMapping.ColumnMappings.Add("alert_quantity", "alert_quantity");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -11607,9 +11596,17 @@ SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Commodities.name, Storage.quantity, Commodities.alert_quantity\r\nFROM     C" +
-                "ommodities INNER JOIN\r\n                  Storage ON Commodities.tuid = Storage.o" +
-                "bjCommodity_uidTuid\r\nWHERE Storage.quantity <= Commodities.alert_quantity";
+            this._commandCollection[0].CommandText = @"SELECT A.[name], A.[quantity]
+FROM(
+SELECT A.[name], SUM(A.quantity) AS 'quantity', A.tuid
+FROM(
+SELECT s.quantity, c.tuid, s.objCabinet_uidTuid, c.[name], c.alert_quantity
+FROM Storage s
+LEFT JOIN Commodities c on s.objCommodity_uidTuid = c.tuid
+) A
+GROUP BY a.[name], A.tuid) A
+LEFT JOIN Commodities B on B.tuid = A.tuid
+WHERE A.quantity <= B.alert_quantity";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

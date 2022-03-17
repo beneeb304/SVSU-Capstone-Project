@@ -25,10 +25,6 @@
           <DataField>quantity</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="alert_quantity">
-          <DataField>alert_quantity</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>InvDbDataSet</rd:DataSetName>
@@ -67,7 +63,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Low Stock </Value>
+                                  <Value>Low Stock</Value>
                                   <Style>
                                     <FontSize>20pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -111,7 +107,7 @@
                                 <TextRun>
                                   <Value>Item</Value>
                                   <Style>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -134,7 +130,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -277,6 +272,7 @@
                 <Value>=Fields!name.Value</Value>
               </SortExpression>
             </SortExpressions>
+            <Left>0.19167in</Left>
             <Height>1.88611in</Height>
             <Width>6.04166in</Width>
             <Style>
@@ -289,7 +285,7 @@
         <Height>4.275in</Height>
         <Style />
       </Body>
-      <Width>6.04166in</Width>
+      <Width>6.41666in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

@@ -186,7 +186,6 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.logsBindingSource.DataMember = "Logs";
             this.logsBindingSource.DataSource = this.invDbDataSet1;
-            this.logsBindingSource.CurrentChanged += new System.EventHandler(this.logsBindingSource_CurrentChanged);
             // 
             // invDbDataSet1
             // 
@@ -207,7 +206,6 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.dynamicItemsBindingSource.DataMember = "DynamicItemsTable";
             this.dynamicItemsBindingSource.DataSource = this.invDbDataSet1;
-            this.dynamicItemsBindingSource.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
             // 
             // logsTableAdapter
             // 
