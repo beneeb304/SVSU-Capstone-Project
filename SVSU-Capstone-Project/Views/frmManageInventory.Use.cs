@@ -55,6 +55,9 @@ namespace SVSU_Capstone_Project.Views
                 Convert.ToUInt32(nudUseDeduct.Value),
                 "Item Used via Manage Inventory Tab"
             );
+            // notify User of success
+            MessageBox.Show("Item used successfully.");
+
             btnUseCancel_Click();
         }
 

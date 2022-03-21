@@ -126,9 +126,10 @@ namespace SVSU_Capstone_Project
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblUser.BackColor = System.Drawing.Color.Brown;
             this.lblUser.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(863, 9);
+            this.lblUser.ForeColor = System.Drawing.Color.White;
+            this.lblUser.Location = new System.Drawing.Point(862, 39);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(73, 24);
             this.lblUser.TabIndex = 2;
@@ -137,9 +138,10 @@ namespace SVSU_Capstone_Project
             // lblDateTime
             // 
             this.lblDateTime.AutoSize = true;
-            this.lblDateTime.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblDateTime.BackColor = System.Drawing.Color.Brown;
             this.lblDateTime.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.Location = new System.Drawing.Point(862, 85);
+            this.lblDateTime.ForeColor = System.Drawing.Color.White;
+            this.lblDateTime.Location = new System.Drawing.Point(861, 95);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(73, 24);
             this.lblDateTime.TabIndex = 3;
@@ -153,9 +155,10 @@ namespace SVSU_Capstone_Project
             // lblLoggedInTime
             // 
             this.lblLoggedInTime.AutoSize = true;
-            this.lblLoggedInTime.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblLoggedInTime.BackColor = System.Drawing.Color.Brown;
             this.lblLoggedInTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoggedInTime.Location = new System.Drawing.Point(863, 33);
+            this.lblLoggedInTime.ForeColor = System.Drawing.Color.White;
+            this.lblLoggedInTime.Location = new System.Drawing.Point(862, 63);
             this.lblLoggedInTime.Name = "lblLoggedInTime";
             this.lblLoggedInTime.Size = new System.Drawing.Size(50, 18);
             this.lblLoggedInTime.TabIndex = 5;
@@ -185,9 +188,9 @@ namespace SVSU_Capstone_Project
             // btnLogOut
             // 
             this.btnLogOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Location = new System.Drawing.Point(1046, 130);
+            this.btnLogOut.Location = new System.Drawing.Point(1046, 137);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(98, 48);
+            this.btnLogOut.Size = new System.Drawing.Size(98, 41);
             this.btnLogOut.TabIndex = 7;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;

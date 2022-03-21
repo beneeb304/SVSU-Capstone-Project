@@ -72,30 +72,34 @@ namespace SVSU_Capstone_Project.Views
         }
         private void btnCreate_Click( object sender, EventArgs e )
         {
-            Commodity selected = null;
-            Action<Commodity> submit = ( x ) => ItemModel.Update(x);
-            if (trvCreateSelectByCategory.SelectedNode != null) selected = ((TreeNodeTag)trvCreateSelectByCategory.SelectedNode.Tag).val as Commodity;
-            if (trvCreateSelectByRoom.SelectedNode != null) selected = ((TreeNodeTag)trvCreateSelectByRoom.SelectedNode.Tag).val as Commodity;
-            // If the selected node is null, then we are creating a new item
-            if (selected == null)
+            //Make sure fields are filled out
+            if (txtCreateDescription.Text != "" || txtCreateItemName.Text != "" || cmbCreateCategory.Text != "")
             {
-                // Create a new item
-                selected = new Commodity();
-                submit = ( x ) => ItemModel.Add(x);
-                trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
-                trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
+                Commodity selected = null;
+                Action<Commodity> submit = ( x ) => ItemModel.Update(x);
+                if (trvCreateSelectByCategory.SelectedNode != null) selected = ((TreeNodeTag)trvCreateSelectByCategory.SelectedNode.Tag).val as Commodity;
+                if (trvCreateSelectByRoom.SelectedNode != null) selected = ((TreeNodeTag)trvCreateSelectByRoom.SelectedNode.Tag).val as Commodity;
+                // If the selected node is null, then we are creating a new item
+                if (selected == null)
+                {
+                    // Create a new item
+                    selected = new Commodity();
+                    submit = ( x ) => ItemModel.Add(x);
+                    trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
+                    trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
+                }
+                selected.strName = txtCreateItemName.Text;
+                selected.objCategory = cmbCreateCategory.SelectedItem as Category;
+                selected.enuCommodityType = (ItemType)cmbCreateType.SelectedItem;
+                selected.strDescription = txtCreateDescription.Text;
+                selected.objVendor = cmbCreateVendor.SelectedItem as Vendor;
+                selected.intAlert_quantity = (int)nudCreateAlertQty.Value;
+                selected.strItemUrl = txtCreateUrl.Text;
+                selected.intCostInCents = (int)(nudCreateCost.Value) * 100;
+                selected.strFeatures = txtCreateFeatures.Text;
+                submit(selected);
+                btnCreateCancel_Click(null, null);
             }
-            selected.strName = txtCreateItemName.Text;
-            selected.objCategory = cmbCreateCategory.SelectedItem as Category;
-            selected.enuCommodityType = (ItemType)cmbCreateType.SelectedItem;
-            selected.strDescription = txtCreateDescription.Text;
-            selected.objVendor = cmbCreateVendor.SelectedItem as Vendor;
-            selected.intAlert_quantity = (int)nudCreateAlertQty.Value;
-            selected.strItemUrl = txtCreateUrl.Text;
-            selected.intCostInCents = (int)(nudCreateCost.Value) * 100;
-            selected.strFeatures = txtCreateFeatures.Text;
-            submit(selected);
-            btnCreateCancel_Click(null, null);
         }
     }
 }
