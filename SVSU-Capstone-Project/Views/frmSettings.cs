@@ -98,7 +98,7 @@ namespace SVSU_Capstone_Project.Views
             {
                 case "tbpUsers":
                     //Populate user listbox with emails
-                    lstUser.DataSource = ItemModel.GetMany<User>().OrderBy(x => x.strEmail).Select(x => x.strEmail).ToList();
+                    lstUser.DataSource = ItemModel.GetMany<User>().OrderBy(x => x.strLast_name).Select(x => x.strLast_name + ", " + x.strFirst_name + " - " + x.strEmail).ToList();
                     break;
                 case "tbpRooms":
                     //Populate room listbox with room names
@@ -139,16 +139,22 @@ namespace SVSU_Capstone_Project.Views
             {
                 try
                 {
+                    //Get the user email
+                    MailAddress mailAddress = new MailAddress(lstUser.SelectedItem.ToString());
+
                     //Ask user to confirm action
                     DialogResult result = MessageBox.Show("Are you sure you want to delete " +
-                        lstUser.SelectedItem.ToString() + " from users?", "Confirm", MessageBoxButtons.YesNo);
+                        mailAddress.Address + " from users?", "Confirm", MessageBoxButtons.YesNo);
+
                     if (result == DialogResult.Yes)
                     {
                         //Get user
-                        User user = ItemModel.Get<User>(x => x.strEmail == lstUser.SelectedItem.ToString());
+                        User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
 
                         //Check if user has any commodities checked out to them
-                        if (user.lstCheckedItems.Count == 0)
+                        List<CheckedItem> lstCheckedItems = ItemModel.GetMany<CheckedItem>(x => x.objUser.uidTuid == user.uidTuid).ToList();
+                        
+                        if (lstCheckedItems.Count == 0)
                         {
                             //Remove user
                             ItemModel.Delete<User>(user);
@@ -267,13 +273,17 @@ namespace SVSU_Capstone_Project.Views
             {
                 try
                 {
+                    //Get the user email
+                    MailAddress mailAddress = new MailAddress(lstUser.SelectedItem.ToString());
+
                     //Ask user to confirm action
                     DialogResult result = MessageBox.Show("Are you sure you want to reset " +
-                        lstUser.SelectedItem.ToString() + "'s password?", "Confirm", MessageBoxButtons.YesNo);
+                        mailAddress.Address + "'s password?", "Confirm", MessageBoxButtons.YesNo);
+
                     if (result == DialogResult.Yes)
                     {
                         //Get user
-                        User user = ItemModel.Get<User>(x => x.strEmail == lstUser.SelectedItem.ToString());
+                        User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
 
                         if (user.blnIsAdmin)
                         {
@@ -320,8 +330,11 @@ namespace SVSU_Capstone_Project.Views
             //If a user is selected
             if (lstUser.SelectedIndex >= 0)
             {
+                //Get the user email
+                MailAddress mailAddress = new MailAddress(lstUser.SelectedItem.ToString());
+                
                 //Get user
-                User user = ItemModel.Get<User>(x => x.strEmail == lstUser.SelectedItem.ToString());
+                User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
 
                 //Populate other controls
                 txtUserSVSUID.Text = user.strSvsu_id;
@@ -1322,13 +1335,17 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Get the user email
+                        MailAddress mailAddress = new MailAddress(lstUser.SelectedItem.ToString());
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                            lstUser.SelectedItem.ToString() + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                            mailAddress.Address + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                                                
                         if (result == DialogResult.Yes)
                         {
                             //Get user
-                            User user = ItemModel.Get<User>(x => x.strEmail == lstUser.SelectedItem.ToString());
+                            User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
 
                             //Modify user
                             user.strSvsu_id = txtUserSVSUID.Text;

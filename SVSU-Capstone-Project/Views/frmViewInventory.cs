@@ -47,10 +47,11 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnPrintBarcode_Click( object sender, EventArgs e )
         {
-            if (dgvCommodity.SelectedRows.Count > 0)
+            if(lstCommodity.SelectedIndex > -1)
             {
-                Commodity commodity = ItemModel.Get<Commodity>(x => x.uidTuid.ToString() == dgvCommodity.Columns[7].HeaderCell.ToString());
+                Commodity commodity = ItemModel.Get<Commodity>(x => x.uidTuid.ToString() == lstCommodity.SelectedItem.ToString());
 
+                //Print barcode here
                 try
                 {
                     //Print barcode here
@@ -67,53 +68,37 @@ namespace SVSU_Capstone_Project.Views
         {
             //Clear detail dgv rows
             dgvDetails.Rows.Clear();
+            lstCommodity.DataSource = null;
 
             //Get list
             lstCommodities = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == cmbCategory.Text).OrderBy(x => x.strName).ToList();
 
             //Set dgv
-            dgvCommodity.DataSource = lstCommodities;
-
-            //Rename useful columns
-            dgvCommodity.Columns[0].HeaderText = "Name";
-            dgvCommodity.Columns[1].HeaderText = "Description";
-            dgvCommodity.Columns[2].HeaderText = "Features";
-            dgvCommodity.Columns[6].HeaderText = "Cost in Cents";
-            dgvCommodity.Columns[7].HeaderText = "URL";
-
-            ////Hide useless columns
-            dgvCommodity.Columns[3].Visible = false;
-            dgvCommodity.Columns[4].Visible = false;
-            dgvCommodity.Columns[5].Visible = false;
-            dgvCommodity.Columns[8].Visible = false;
-            dgvCommodity.Columns[9].Visible = false;
-            dgvCommodity.Columns[10].Visible = false;
-
-            //Unselect cells
-            dgvCommodity.ClearSelection();
+            lstCommodity.DataSource = lstCommodities;
         }
 
         private void txtSearch_TextChanged( object sender, EventArgs e )
         {
             //Get rid of current rows
             dgvDetails.Rows.Clear();
+            lstCommodity.ClearSelected();
 
             if (txtSearch.Text.Length > 0)
             {
                 //Make temp list that is filtered
                 List<Commodity> lstTemp = lstCommodities.Where(x => x.strName.IndexOf(txtSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
 
-                //Set dgv with filtered datasource
-                dgvCommodity.DataSource = lstTemp;
+                //Set listbox with filtered datasource
+                lstCommodity.DataSource = lstTemp;
             }
             else
             {
-                //Set dgv back to normal
-                dgvCommodity.DataSource = lstCommodities;
+                //Set listbox back to normal
+                lstCommodity.DataSource = lstCommodities;
             }
         }
 
-        private void dgvCommodity_CellContentClick( object sender, DataGridViewCellEventArgs e )
+        private void lstCommodity_Click( object sender, EventArgs e )
         {
             //Get rid of current rows
             dgvDetails.Rows.Clear();
@@ -129,7 +114,7 @@ namespace SVSU_Capstone_Project.Views
 
             //Get the selected category and commodity
             string strCategory = cmbCategory.Text;
-            string strCommodity = dgvCommodity.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
+            string strCommodity = lstCommodity.SelectedItem.ToString();
 
             Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
             List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
@@ -142,6 +127,22 @@ namespace SVSU_Capstone_Project.Views
 
             //Unselect cells
             dgvDetails.ClearSelection();
+        }
+
+        private void lstCommodity_DoubleClick( object sender, EventArgs e )
+        {
+            string strCategory = cmbCategory.Text;
+            string strCommodity = lstCommodity.SelectedItem.ToString();
+            Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
+            string strMessage = "Name: " + commodity.strName + "\r" +
+                "Desciption: " + commodity.strDescription + "\r" +
+                "Features: " + commodity.strFeatures + "\r" +
+                "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
+                "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                "Cost in Cents: " + commodity.intCostInCents + "\r" +
+                "URL: " + commodity.strItemUrl + "\r" +
+                "Barcode: " + commodity.strBarCode;
+            MessageBox.Show(strMessage);
         }
     }
 }

@@ -35,11 +35,10 @@ namespace SVSU_Capstone_Project.Views
             this.label1 = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dgvCommodity = new System.Windows.Forms.DataGridView();
             this.dgvDetails = new System.Windows.Forms.DataGridView();
             this.btnPrintBarcode = new System.Windows.Forms.Button();
+            this.lstCommodity = new System.Windows.Forms.ListBox();
             this.grbFilterFields.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCommodity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetails)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,28 +116,6 @@ namespace SVSU_Capstone_Project.Views
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // dgvCommodity
-            // 
-            this.dgvCommodity.AllowUserToAddRows = false;
-            this.dgvCommodity.AllowUserToDeleteRows = false;
-            this.dgvCommodity.AllowUserToOrderColumns = true;
-            this.dgvCommodity.AllowUserToResizeColumns = false;
-            this.dgvCommodity.AllowUserToResizeRows = false;
-            this.dgvCommodity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCommodity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCommodity.Location = new System.Drawing.Point(13, 152);
-            this.dgvCommodity.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvCommodity.MultiSelect = false;
-            this.dgvCommodity.Name = "dgvCommodity";
-            this.dgvCommodity.ReadOnly = true;
-            this.dgvCommodity.RowHeadersVisible = false;
-            this.dgvCommodity.RowHeadersWidth = 51;
-            this.dgvCommodity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCommodity.Size = new System.Drawing.Size(441, 288);
-            this.dgvCommodity.TabIndex = 7;
-            this.dgvCommodity.TabStop = false;
-            this.dgvCommodity.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCommodity_CellContentClick);
-            // 
             // dgvDetails
             // 
             this.dgvDetails.AllowUserToAddRows = false;
@@ -148,7 +125,7 @@ namespace SVSU_Capstone_Project.Views
             this.dgvDetails.AllowUserToResizeRows = false;
             this.dgvDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetails.Location = new System.Drawing.Point(462, 152);
+            this.dgvDetails.Location = new System.Drawing.Point(425, 152);
             this.dgvDetails.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDetails.MultiSelect = false;
             this.dgvDetails.Name = "dgvDetails";
@@ -156,7 +133,7 @@ namespace SVSU_Capstone_Project.Views
             this.dgvDetails.RowHeadersVisible = false;
             this.dgvDetails.RowHeadersWidth = 51;
             this.dgvDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetails.Size = new System.Drawing.Size(480, 288);
+            this.dgvDetails.Size = new System.Drawing.Size(517, 288);
             this.dgvDetails.TabIndex = 44;
             this.dgvDetails.TabStop = false;
             // 
@@ -171,23 +148,34 @@ namespace SVSU_Capstone_Project.Views
             this.btnPrintBarcode.UseVisualStyleBackColor = true;
             this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
             // 
+            // lstCommodity
+            // 
+            this.lstCommodity.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstCommodity.FormattingEnabled = true;
+            this.lstCommodity.ItemHeight = 19;
+            this.lstCommodity.Location = new System.Drawing.Point(12, 152);
+            this.lstCommodity.Name = "lstCommodity";
+            this.lstCommodity.Size = new System.Drawing.Size(254, 289);
+            this.lstCommodity.TabIndex = 46;
+            this.lstCommodity.Click += new System.EventHandler(this.lstCommodity_Click);
+            this.lstCommodity.DoubleClick += new System.EventHandler(this.lstCommodity_DoubleClick);
+            // 
             // frmViewInventory
             // 
             this.ClientSize = new System.Drawing.Size(955, 453);
+            this.Controls.Add(this.lstCommodity);
             this.Controls.Add(this.btnPrintBarcode);
             this.Controls.Add(this.dgvDetails);
             this.Controls.Add(this.lblViewInventory);
             this.Controls.Add(this.grbFilterFields);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.dgvCommodity);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmViewInventory";
             this.Text = "View Inventory";
             this.Load += new System.EventHandler(this.frmViewInventory_Load);
             this.grbFilterFields.ResumeLayout(false);
             this.grbFilterFields.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCommodity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -200,7 +188,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.GroupBox grbFilterFields;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView dgvCommodity;
         //private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         //private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         //private System.Windows.Forms.DataGridViewTextBoxColumn Location;
@@ -211,5 +198,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvDetails;
         private System.Windows.Forms.Button btnPrintBarcode;
+        private System.Windows.Forms.ListBox lstCommodity;
     }
 }

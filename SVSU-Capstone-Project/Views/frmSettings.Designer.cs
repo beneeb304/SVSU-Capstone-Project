@@ -78,6 +78,8 @@ namespace SVSU_Capstone_Project.Views
             this.label1 = new System.Windows.Forms.Label();
             this.cmbRoom = new System.Windows.Forms.ComboBox();
             this.tbpCategories = new System.Windows.Forms.TabPage();
+            this.btnCategoryCancel = new System.Windows.Forms.Button();
+            this.btnCategorySave = new System.Windows.Forms.Button();
             this.btnCategoryModify = new System.Windows.Forms.Button();
             this.btnCategoryAdd = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
@@ -88,6 +90,8 @@ namespace SVSU_Capstone_Project.Views
             this.lstCategory = new System.Windows.Forms.ListBox();
             this.label21 = new System.Windows.Forms.Label();
             this.tbpVendors = new System.Windows.Forms.TabPage();
+            this.btnVendorCancel = new System.Windows.Forms.Button();
+            this.btnVendorSave = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtVendorHomepage = new System.Windows.Forms.TextBox();
             this.btnVendorModify = new System.Windows.Forms.Button();
@@ -100,6 +104,8 @@ namespace SVSU_Capstone_Project.Views
             this.lstVendor = new System.Windows.Forms.ListBox();
             this.label24 = new System.Windows.Forms.Label();
             this.tbpNLevel = new System.Windows.Forms.TabPage();
+            this.btnNLevelCancel = new System.Windows.Forms.Button();
+            this.btnNLevelSave = new System.Windows.Forms.Button();
             this.btnNLevelModify = new System.Windows.Forms.Button();
             this.btnNLevelAdd = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
@@ -109,12 +115,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnNLevelDelete = new System.Windows.Forms.Button();
             this.lstNLevel = new System.Windows.Forms.ListBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.btnCategoryCancel = new System.Windows.Forms.Button();
-            this.btnCategorySave = new System.Windows.Forms.Button();
-            this.btnVendorCancel = new System.Windows.Forms.Button();
-            this.btnVendorSave = new System.Windows.Forms.Button();
-            this.btnNLevelCancel = new System.Windows.Forms.Button();
-            this.btnNLevelSave = new System.Windows.Forms.Button();
             this.tbcSettings.SuspendLayout();
             this.tbpUsers.SuspendLayout();
             this.tbpRooms.SuspendLayout();
@@ -720,6 +720,32 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCategories.Text = "Categories";
             this.tbpCategories.UseVisualStyleBackColor = true;
             // 
+            // btnCategoryCancel
+            // 
+            this.btnCategoryCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCategoryCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategoryCancel.Location = new System.Drawing.Point(705, 75);
+            this.btnCategoryCancel.Name = "btnCategoryCancel";
+            this.btnCategoryCancel.Size = new System.Drawing.Size(210, 40);
+            this.btnCategoryCancel.TabIndex = 134;
+            this.btnCategoryCancel.Text = "Cancel";
+            this.btnCategoryCancel.UseVisualStyleBackColor = true;
+            this.btnCategoryCancel.Visible = false;
+            this.btnCategoryCancel.Click += new System.EventHandler(this.btnCategoryCancel_Click);
+            // 
+            // btnCategorySave
+            // 
+            this.btnCategorySave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCategorySave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategorySave.Location = new System.Drawing.Point(705, 29);
+            this.btnCategorySave.Name = "btnCategorySave";
+            this.btnCategorySave.Size = new System.Drawing.Size(210, 40);
+            this.btnCategorySave.TabIndex = 133;
+            this.btnCategorySave.Text = "Save Category";
+            this.btnCategorySave.UseVisualStyleBackColor = true;
+            this.btnCategorySave.Visible = false;
+            this.btnCategorySave.Click += new System.EventHandler(this.btnCategorySave_Click);
+            // 
             // btnCategoryModify
             // 
             this.btnCategoryModify.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -840,6 +866,32 @@ namespace SVSU_Capstone_Project.Views
             this.tbpVendors.TabIndex = 4;
             this.tbpVendors.Text = "Vendors";
             this.tbpVendors.UseVisualStyleBackColor = true;
+            // 
+            // btnVendorCancel
+            // 
+            this.btnVendorCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVendorCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVendorCancel.Location = new System.Drawing.Point(705, 75);
+            this.btnVendorCancel.Name = "btnVendorCancel";
+            this.btnVendorCancel.Size = new System.Drawing.Size(210, 40);
+            this.btnVendorCancel.TabIndex = 138;
+            this.btnVendorCancel.Text = "Cancel";
+            this.btnVendorCancel.UseVisualStyleBackColor = true;
+            this.btnVendorCancel.Visible = false;
+            this.btnVendorCancel.Click += new System.EventHandler(this.btnVendorCancel_Click);
+            // 
+            // btnVendorSave
+            // 
+            this.btnVendorSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVendorSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVendorSave.Location = new System.Drawing.Point(705, 29);
+            this.btnVendorSave.Name = "btnVendorSave";
+            this.btnVendorSave.Size = new System.Drawing.Size(210, 40);
+            this.btnVendorSave.TabIndex = 137;
+            this.btnVendorSave.Text = "Save Vendor";
+            this.btnVendorSave.UseVisualStyleBackColor = true;
+            this.btnVendorSave.Visible = false;
+            this.btnVendorSave.Click += new System.EventHandler(this.btnVendorSave_Click);
             // 
             // label2
             // 
@@ -979,6 +1031,32 @@ namespace SVSU_Capstone_Project.Views
             this.tbpNLevel.Text = "N-Level";
             this.tbpNLevel.UseVisualStyleBackColor = true;
             // 
+            // btnNLevelCancel
+            // 
+            this.btnNLevelCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNLevelCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNLevelCancel.Location = new System.Drawing.Point(705, 75);
+            this.btnNLevelCancel.Name = "btnNLevelCancel";
+            this.btnNLevelCancel.Size = new System.Drawing.Size(210, 40);
+            this.btnNLevelCancel.TabIndex = 147;
+            this.btnNLevelCancel.Text = "Cancel";
+            this.btnNLevelCancel.UseVisualStyleBackColor = true;
+            this.btnNLevelCancel.Visible = false;
+            this.btnNLevelCancel.Click += new System.EventHandler(this.btnNLevelCancel_Click);
+            // 
+            // btnNLevelSave
+            // 
+            this.btnNLevelSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNLevelSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNLevelSave.Location = new System.Drawing.Point(705, 29);
+            this.btnNLevelSave.Name = "btnNLevelSave";
+            this.btnNLevelSave.Size = new System.Drawing.Size(210, 40);
+            this.btnNLevelSave.TabIndex = 146;
+            this.btnNLevelSave.Text = "Save N-Level";
+            this.btnNLevelSave.UseVisualStyleBackColor = true;
+            this.btnNLevelSave.Visible = false;
+            this.btnNLevelSave.Click += new System.EventHandler(this.btnNLevelSave_Click);
+            // 
             // btnNLevelModify
             // 
             this.btnNLevelModify.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1076,84 +1154,6 @@ namespace SVSU_Capstone_Project.Views
             this.label28.Size = new System.Drawing.Size(79, 22);
             this.label28.TabIndex = 139;
             this.label28.Text = "N-Level";
-            // 
-            // btnCategoryCancel
-            // 
-            this.btnCategoryCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCategoryCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategoryCancel.Location = new System.Drawing.Point(705, 75);
-            this.btnCategoryCancel.Name = "btnCategoryCancel";
-            this.btnCategoryCancel.Size = new System.Drawing.Size(210, 40);
-            this.btnCategoryCancel.TabIndex = 134;
-            this.btnCategoryCancel.Text = "Cancel";
-            this.btnCategoryCancel.UseVisualStyleBackColor = true;
-            this.btnCategoryCancel.Visible = false;
-            this.btnCategoryCancel.Click += new System.EventHandler(this.btnCategoryCancel_Click);
-            // 
-            // btnCategorySave
-            // 
-            this.btnCategorySave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCategorySave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategorySave.Location = new System.Drawing.Point(705, 29);
-            this.btnCategorySave.Name = "btnCategorySave";
-            this.btnCategorySave.Size = new System.Drawing.Size(210, 40);
-            this.btnCategorySave.TabIndex = 133;
-            this.btnCategorySave.Text = "Save Category";
-            this.btnCategorySave.UseVisualStyleBackColor = true;
-            this.btnCategorySave.Visible = false;
-            this.btnCategorySave.Click += new System.EventHandler(this.btnCategorySave_Click);
-            // 
-            // btnVendorCancel
-            // 
-            this.btnVendorCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVendorCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVendorCancel.Location = new System.Drawing.Point(705, 75);
-            this.btnVendorCancel.Name = "btnVendorCancel";
-            this.btnVendorCancel.Size = new System.Drawing.Size(210, 40);
-            this.btnVendorCancel.TabIndex = 138;
-            this.btnVendorCancel.Text = "Cancel";
-            this.btnVendorCancel.UseVisualStyleBackColor = true;
-            this.btnVendorCancel.Visible = false;
-            this.btnVendorCancel.Click += new System.EventHandler(this.btnVendorCancel_Click);
-            // 
-            // btnVendorSave
-            // 
-            this.btnVendorSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVendorSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVendorSave.Location = new System.Drawing.Point(705, 29);
-            this.btnVendorSave.Name = "btnVendorSave";
-            this.btnVendorSave.Size = new System.Drawing.Size(210, 40);
-            this.btnVendorSave.TabIndex = 137;
-            this.btnVendorSave.Text = "Save Vendor";
-            this.btnVendorSave.UseVisualStyleBackColor = true;
-            this.btnVendorSave.Visible = false;
-            this.btnVendorSave.Click += new System.EventHandler(this.btnVendorSave_Click);
-            // 
-            // btnNLevelCancel
-            // 
-            this.btnNLevelCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNLevelCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNLevelCancel.Location = new System.Drawing.Point(705, 75);
-            this.btnNLevelCancel.Name = "btnNLevelCancel";
-            this.btnNLevelCancel.Size = new System.Drawing.Size(210, 40);
-            this.btnNLevelCancel.TabIndex = 147;
-            this.btnNLevelCancel.Text = "Cancel";
-            this.btnNLevelCancel.UseVisualStyleBackColor = true;
-            this.btnNLevelCancel.Visible = false;
-            this.btnNLevelCancel.Click += new System.EventHandler(this.btnNLevelCancel_Click);
-            // 
-            // btnNLevelSave
-            // 
-            this.btnNLevelSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNLevelSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNLevelSave.Location = new System.Drawing.Point(705, 29);
-            this.btnNLevelSave.Name = "btnNLevelSave";
-            this.btnNLevelSave.Size = new System.Drawing.Size(210, 40);
-            this.btnNLevelSave.TabIndex = 146;
-            this.btnNLevelSave.Text = "Save N-Level";
-            this.btnNLevelSave.UseVisualStyleBackColor = true;
-            this.btnNLevelSave.Visible = false;
-            this.btnNLevelSave.Click += new System.EventHandler(this.btnNLevelSave_Click);
             // 
             // frmSettings
             // 
