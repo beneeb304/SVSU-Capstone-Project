@@ -44,7 +44,7 @@ namespace SVSU_Capstone_Project.Views
             switch (tbcCheckInOut.SelectedTab.Name)
             {
                 case "tbpCheckOut":
-                    cmbChkOutCommodity.DataSource = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == "Asset" && x.lstStorage.Count != 0).OrderBy(x => x.strName).ToList(); //(cmbChkOutCategory.SelectedValue as Category).lstCommodities;
+                    cmbChkOutCommodity.DataSource = ItemModel.GetMany<Commodity>(x => x.enuCommodityType == ItemType.Equipment && x.lstStorage.Count != 0).OrderBy(x => x.strName).ToList();
                     cmbChkOutStudent.DataSource = ItemModel.GetMany<User>().Where(x => x.blnIsAdmin == false).OrderBy(x => x.strLast_name).Select(x => x.strLast_name + ", " + x.strFirst_name + " - " + x.strEmail).ToList();
                     txtAvailableChkOutQuantity.Text = "";
                     cmbChkOutCommodity.SelectedIndex = -1;
@@ -52,8 +52,8 @@ namespace SVSU_Capstone_Project.Views
                     break;
 
                 case "tbpCheckIn":
-                    var checkedItems = ItemModel.GetMany<CheckedItem>().Where(x => (int)x.objLog.enuAction == 4).ToList();
-                    cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => ((int)x.objLog.enuAction) == 4).OrderBy(x => x.objUser.strLast_name).Select(x => x.objUser.strLast_name + ", " + x.objUser.strFirst_name + " - " + x.objUser.strEmail).Distinct().ToList();
+                    var checkedItems = ItemModel.GetMany<CheckedItem>().Where(x => x.objLog.enuAction == ItemAction.CheckedOut).ToList();
+                    cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => (x.objLog.enuAction) == ItemAction.CheckedOut).OrderBy(x => x.objUser.strLast_name).Select(x => x.objUser.strLast_name + ", " + x.objUser.strFirst_name + " - " + x.objUser.strEmail).Distinct().ToList();
                     cmbChkInStudent.SelectedIndex = -1;
                     cmbChkInCommodity.SelectedIndex = -1;
                     break;
