@@ -276,16 +276,16 @@ namespace SVSU_Capstone_Project.Views
                     //Get the user email
                     MailAddress mailAddress = new MailAddress(lstUser.SelectedItem.ToString());
 
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to reset " +
-                        mailAddress.Address + "'s password?", "Confirm", MessageBoxButtons.YesNo);
+                    //Get user
+                    User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
 
-                    if (result == DialogResult.Yes)
+                    if (user.blnIsAdmin)
                     {
-                        //Get user
-                        User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to reset " +
+                            mailAddress.Address + "'s password?", "Confirm", MessageBoxButtons.YesNo);
 
-                        if (user.blnIsAdmin)
+                        if (result == DialogResult.Yes)
                         {
                             //Modify user password
                             user.strHash = "Capstone2022";
@@ -297,14 +297,14 @@ namespace SVSU_Capstone_Project.Views
                             MessageBox.Show("Successful Reset\r\n\r\n"
                                 + txtUserEmail.Text + " will be prompted to reset their password on their next login\r\n" +
                                 "Their temporary password is 'Capstone2022'", "Alert");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Cannot change non-admin password", "Alert");
-                        }
 
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot change non-admin password", "Alert");
                     }
                 }
                 catch
