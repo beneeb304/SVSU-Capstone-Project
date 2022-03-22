@@ -136,6 +136,7 @@ namespace SVSU_Capstone_Project.Views
             Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
             string strMessage = "Name: " + commodity.strName + "\r" +
                 "Desciption: " + commodity.strDescription + "\r" +
+                "Type: " + commodity.enuCommodityType.ToString() + "\r" +
                 "Features: " + commodity.strFeatures + "\r" +
                 "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
                 "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
