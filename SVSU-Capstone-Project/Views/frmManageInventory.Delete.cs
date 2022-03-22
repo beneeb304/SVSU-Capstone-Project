@@ -38,35 +38,38 @@ namespace SVSU_Capstone_Project.Views
         }
 
         private void btnDeleteConfirm_Click( object sender, EventArgs e )
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this commodity?", 
-                "Confirm", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+        {            
+            if(cmbDeleteCommodity.Text.Length > 0 && cmbDeleteCategory.Text.Length > 0)
             {
-                //Get commodity
-                Commodity commodity = ItemModel.Get<Commodity>(x => x.objCategory.strName == cmbDeleteCategory.Text &&
-                    x.strName == cmbDeleteCommodity.Text);
-
-                //Make sure commodity isn't checked out
-                CheckedItem checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.uidTuid == commodity.uidTuid);
-                if(checkedItem != null)
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this commodity?",
+                "Confirm", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Check commodity back in before deleting", "Alert");
-                }
-                else
-                {
-                    List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
+                    //Get commodity
+                    Commodity commodity = ItemModel.Get<Commodity>(x => x.objCategory.strName == cmbDeleteCategory.Text &&
+                        x.strName == cmbDeleteCommodity.Text);
 
-                    foreach (Storage storage in lstStorage)
+                    //Make sure commodity isn't checked out
+                    CheckedItem checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.uidTuid == commodity.uidTuid);
+                    if (checkedItem != null)
                     {
-                        ItemModel.Delete(storage);
+                        MessageBox.Show("Check commodity back in before deleting", "Alert");
                     }
+                    else
+                    {
+                        List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
 
-                    ItemModel.Delete<Commodity>(commodity);
+                        foreach (Storage storage in lstStorage)
+                        {
+                            ItemModel.Delete(storage);
+                        }
+
+                        ItemModel.Delete<Commodity>(commodity);
+                    }
                 }
+
+                cmbDeleteCategory.SelectedIndex = -1;
             }
-                
-            cmbDeleteCategory.SelectedIndex = -1;
         }
 
         private void btnConfirmReset_Click( object sender, EventArgs e )
