@@ -117,8 +117,7 @@ namespace SVSU_Capstone_Project.Views
 
                             ItemModel.Add<Log>(log);
 
-                            var objLog_Tuid = ItemModel.Get<Log>(
-                                x => x.objUser.uidTuid == objUser_tuid.uidTuid && x.dtTimestamp == timestamp && x.objStorage.uidTuid == objStorage_tuid.uidTuid);
+                            var objLog_Tuid = ItemModel.Get<Log>(x=> x.uidTuid == log.uidTuid);
 
                             CheckedItem checkedItem = new CheckedItem()
                             {
