@@ -56,7 +56,7 @@ namespace SVSU_Capstone_Project.ViewModel
         }
         public static bool SecurityBypass()
         {
-            ActiveUser = ItemModel.Get<User>(x => true);
+            ActiveUser = ItemModel.Get<User>(x => x.blnIsAdmin == true);
             if (ActiveUser == null) return false;
             else return true;
         }

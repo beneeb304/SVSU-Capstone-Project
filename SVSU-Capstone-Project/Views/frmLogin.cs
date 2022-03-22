@@ -105,8 +105,8 @@ namespace SVSU_Capstone_Project.Views
            * object sender; The object calling the method. btnCancel in this case.
            */
 
-            //Close application
-            Application.Exit();
+            //Close form
+            Close();
         }
 
 
