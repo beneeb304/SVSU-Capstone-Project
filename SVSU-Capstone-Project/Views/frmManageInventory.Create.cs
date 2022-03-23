@@ -100,6 +100,10 @@ namespace SVSU_Capstone_Project.Views
                 submit(selected);
                 btnCreateCancel_Click(null, null);
             }
+            else
+            {
+                MessageBox.Show("Please fill out all of the commodity fields before creating!", "Alert");
+            }
         }
     }
 }
