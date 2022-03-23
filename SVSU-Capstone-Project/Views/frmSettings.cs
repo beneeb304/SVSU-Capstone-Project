@@ -1327,6 +1327,10 @@ namespace SVSU_Capstone_Project.Views
                     //Disable fields
                     EnableDisableUserFields(false);
                 }
+                else
+                {
+                    MessageBox.Show("Please fill out all of the user fields before saving!", "Alert");
+                }
             }
             else if (btnUserModify.Enabled)
             {
@@ -1385,6 +1389,10 @@ namespace SVSU_Capstone_Project.Views
 
                     //Disable fields
                     EnableDisableUserFields(false);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a user to modify before saving!", "Alert");
                 }
             }
         }
@@ -1461,6 +1469,10 @@ namespace SVSU_Capstone_Project.Views
                     //Disable fields
                     EnableDisableRoomFields(false);
                 }
+                else
+                {
+                    MessageBox.Show("Please fill out all of the room fields before saving!", "Alert");
+                }
             }
             else if (btnRoomModify.Enabled)
             {
@@ -1512,6 +1524,10 @@ namespace SVSU_Capstone_Project.Views
 
                     //Disable fields
                     EnableDisableRoomFields(false);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a room to modify before saving!", "Alert");
                 }
             }
         }
@@ -1587,6 +1603,10 @@ namespace SVSU_Capstone_Project.Views
                     //Disable fields
                     EnableDisableCabinetFields(false);
                 }
+                else
+                {
+                    MessageBox.Show("Please fill out all of the cabinet fields before saving!", "Alert");
+                }
             }
             else if (btnCabinetModify.Enabled)
             {
@@ -1639,6 +1659,10 @@ namespace SVSU_Capstone_Project.Views
 
                     //Disable fields
                     EnableDisableCabinetFields(false);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a cabinet to modify before saving!", "Alert");
                 }
             }
         }
@@ -1713,6 +1737,10 @@ namespace SVSU_Capstone_Project.Views
                     //Disable fields
                     EnableDisableCategoryFields(false);
                 }
+                else
+                {
+                    MessageBox.Show("Please fill out all of the category fields before saving!", "Alert");
+                }
             }
             else if (btnCategoryModify.Enabled)
             {
@@ -1764,6 +1792,10 @@ namespace SVSU_Capstone_Project.Views
 
                     //Disable fields
                     EnableDisableCategoryFields(false);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a cabinet to modify before saving!", "Alert");
                 }
             }
         }
@@ -1839,6 +1871,10 @@ namespace SVSU_Capstone_Project.Views
                     //Disable fields
                     EnableDisableVendorFields(false);
                 }
+                else
+                {
+                    MessageBox.Show("Please fill out all of the vendor fields before saving!", "Alert");
+                }
             }
             else if (btnVendorModify.Enabled)
             {
@@ -1891,6 +1927,10 @@ namespace SVSU_Capstone_Project.Views
 
                     //Disable fields
                     EnableDisableVendorFields(false);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a vendor to modify before saving!", "Alert");
                 }
             }
         }
@@ -1965,6 +2005,10 @@ namespace SVSU_Capstone_Project.Views
                     //Disable fields
                     EnableDisableNLevelFields(false);
                 }
+                else
+                {
+                    MessageBox.Show("Please fill out all of the N-Level fields before saving!", "Alert");
+                }
             }
             else if (btnNLevelModify.Enabled)
             {
@@ -2016,6 +2060,10 @@ namespace SVSU_Capstone_Project.Views
 
                     //Disable fields
                     EnableDisableNLevelFields(false);
+                }
+                else
+                {
+                    MessageBox.Show("Please select an N-Level to modify before saving!", "Alert");
                 }
             }
         }
