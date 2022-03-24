@@ -32,6 +32,7 @@ namespace SVSU_Capstone_Project.Views
             txtCreateDescription.Text = "";
             txtCreateFeatures.Text = "";
             txtCreateItemName.Text = "";
+            txtCreateBarcode.Text = "";
             txtCreateUrl.Text = "";
             txtCurrentQty.Text = "";
             nudCreateAlertQty.Value = 0;
