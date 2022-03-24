@@ -75,7 +75,7 @@ namespace SVSU_Capstone_Project.Views
         private void btnCreate_Click( object sender, EventArgs e )
         {
             //Make sure fields are filled out
-            if (txtCreateDescription.Text != "" || txtCreateItemName.Text != "" || cmbCreateCategory.Text != "")
+            if (txtCreateDescription.Text != "" && txtCreateItemName.Text != "" && cmbCreateCategory.Text != "")
             {
                 Commodity selected = null;
                 Action<Commodity> submit = ( x ) => ItemModel.Update(x);
