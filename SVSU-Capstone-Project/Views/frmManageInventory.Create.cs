@@ -91,22 +91,47 @@ namespace SVSU_Capstone_Project.Views
                     trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
                 }
 
+                selected.strName = txtCreateItemName.Text;
+                selected.objCategory = cmbCreateCategory.SelectedItem as Category;
+                selected.enuCommodityType = (ItemType)cmbCreateType.SelectedItem;
+                selected.strDescription = txtCreateDescription.Text;
+                selected.objVendor = cmbCreateVendor.SelectedItem as Vendor;
+                selected.intAlert_quantity = (int)nudCreateAlertQty.Value;
+                selected.strItemUrl = txtCreateUrl.Text;
+                selected.intCostInCents = (int)(nudCreateCost.Value * 100);
+                selected.strFeatures = txtCreateFeatures.Text;
+
                 //Generate new barcode if textbox is empty
                 string strBarcode = txtCreateBarcode.Text;
                 bool blnExists = true;
-                
+                Commodity barcodeCommodity;
+
                 while (blnExists)
                 {
-                    if(strBarcode == "")
+                    if (strBarcode == "")
                     {
                         Random random = new Random();
 
                         //String that contain both alphabets and numbers
                         string strAlphaNumeric = "abcdefghijklmnopqrstuvwxyz0123456789";
-                        
+
                         //Set to 20 characters long (plus 1 for tilde)
                         int size = 20;
-                        strBarcode = "~";
+
+                        switch (selected.enuCommodityType.ToString())
+                        {
+                            case "Consumable":
+                                strBarcode = "C";
+                                break;
+                            case "Equipment":
+                                strBarcode = "E";
+                                break;
+                            case "Simulator":
+                                strBarcode = "S";
+                                break;
+                        }
+
+                        strBarcode += "~";
 
                         for (int i = 0; i < size; i++)
                         {
@@ -117,21 +142,16 @@ namespace SVSU_Capstone_Project.Views
                             strBarcode += strAlphaNumeric[x];
                         }
                     }
-                    
-                    if(ItemModel.Get<Commodity>(x => x.strBarCode == strBarcode) == null)
+
+                    barcodeCommodity = ItemModel.Get<Commodity>(x => x.strBarCode == strBarcode);
+
+                    if(barcodeCommodity == null || barcodeCommodity.uidTuid == selected.uidTuid)
                         blnExists = false;
+                    else
+                        strBarcode = "";    
                 }
 
-                selected.strName = txtCreateItemName.Text;
-                selected.objCategory = cmbCreateCategory.SelectedItem as Category;
-                selected.enuCommodityType = (ItemType)cmbCreateType.SelectedItem;
-                selected.strDescription = txtCreateDescription.Text;
                 selected.strBarCode = strBarcode;
-                selected.objVendor = cmbCreateVendor.SelectedItem as Vendor;
-                selected.intAlert_quantity = (int)nudCreateAlertQty.Value;
-                selected.strItemUrl = txtCreateUrl.Text;
-                selected.intCostInCents = (int)(nudCreateCost.Value * 100);
-                selected.strFeatures = txtCreateFeatures.Text;
                 submit(selected);
                 MessageBox.Show("Successful " + btnCreate.Text, "Alert");
                 btnCreateCancel_Click(null, null);
