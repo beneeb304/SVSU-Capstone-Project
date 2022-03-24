@@ -444,6 +444,11 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.nudCreateCost.DecimalPlaces = 2;
             this.nudCreateCost.Font = new System.Drawing.Font("Arial", 12F);
+            this.nudCreateCost.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.nudCreateCost.Location = new System.Drawing.Point(422, 243);
             this.nudCreateCost.Maximum = new decimal(new int[] {
             1000000,

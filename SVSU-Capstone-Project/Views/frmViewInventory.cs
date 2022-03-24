@@ -140,7 +140,7 @@ namespace SVSU_Capstone_Project.Views
                 "Features: " + commodity.strFeatures + "\r" +
                 "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
                 "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
-                "Cost in Cents: " + commodity.intCostInCents + "\r" +
+                "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
                 "URL: " + commodity.strItemUrl + "\r" +
                 "Barcode: " + commodity.strBarCode;
             MessageBox.Show(strMessage);

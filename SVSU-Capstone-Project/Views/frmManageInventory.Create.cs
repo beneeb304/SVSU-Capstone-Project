@@ -95,9 +95,10 @@ namespace SVSU_Capstone_Project.Views
                 selected.objVendor = cmbCreateVendor.SelectedItem as Vendor;
                 selected.intAlert_quantity = (int)nudCreateAlertQty.Value;
                 selected.strItemUrl = txtCreateUrl.Text;
-                selected.intCostInCents = (int)(nudCreateCost.Value) * 100;
+                selected.intCostInCents = (int)(nudCreateCost.Value * 100);
                 selected.strFeatures = txtCreateFeatures.Text;
                 submit(selected);
+                MessageBox.Show("Successful " + btnCreate.Text, "Alert");
                 btnCreateCancel_Click(null, null);
             }
             else
