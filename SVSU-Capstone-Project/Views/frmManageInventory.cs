@@ -136,6 +136,12 @@ namespace SVSU_Capstone_Project.Views
                     txtRemainder.Text = "";
             }
         }
+
+        private void button1_Click( object sender, EventArgs e )
+        {
+            txtCreateBarcode.Text = "";
+            txtCreateBarcode.Focus();
+        }
     }
 
     public static class TreeViewExtensions

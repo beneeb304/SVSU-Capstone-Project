@@ -52,6 +52,9 @@ namespace SVSU_Capstone_Project.Views
             this.btnUseReset = new System.Windows.Forms.Button();
             this.btnUseAccept = new System.Windows.Forms.Button();
             this.tbpCreateItem = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtCreateBarcode = new System.Windows.Forms.TextBox();
             this.nudCreateCost = new System.Windows.Forms.NumericUpDown();
             this.cmbCreateType = new System.Windows.Forms.ComboBox();
             this.lblCreateType = new System.Windows.Forms.Label();
@@ -411,6 +414,9 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpCreateItem
             // 
+            this.tbpCreateItem.Controls.Add(this.button1);
+            this.tbpCreateItem.Controls.Add(this.label11);
+            this.tbpCreateItem.Controls.Add(this.txtCreateBarcode);
             this.tbpCreateItem.Controls.Add(this.nudCreateCost);
             this.tbpCreateItem.Controls.Add(this.cmbCreateType);
             this.tbpCreateItem.Controls.Add(this.lblCreateType);
@@ -440,6 +446,38 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCreateItem.Text = "Create / Modify";
             this.tbpCreateItem.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(422, 211);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(250, 26);
+            this.button1.TabIndex = 138;
+            this.button1.Text = "Scan/Generate New Barcode";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(281, 183);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(80, 19);
+            this.label11.TabIndex = 137;
+            this.label11.Text = "Barcode:";
+            // 
+            // txtCreateBarcode
+            // 
+            this.txtCreateBarcode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCreateBarcode.Location = new System.Drawing.Point(422, 180);
+            this.txtCreateBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCreateBarcode.Name = "txtCreateBarcode";
+            this.txtCreateBarcode.ReadOnly = true;
+            this.txtCreateBarcode.Size = new System.Drawing.Size(250, 26);
+            this.txtCreateBarcode.TabIndex = 136;
+            // 
             // nudCreateCost
             // 
             this.nudCreateCost.DecimalPlaces = 2;
@@ -449,7 +487,7 @@ namespace SVSU_Capstone_Project.Views
             0,
             0,
             131072});
-            this.nudCreateCost.Location = new System.Drawing.Point(422, 243);
+            this.nudCreateCost.Location = new System.Drawing.Point(422, 273);
             this.nudCreateCost.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -465,7 +503,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbCreateType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCreateType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreateType.FormattingEnabled = true;
-            this.cmbCreateType.Location = new System.Drawing.Point(422, 111);
+            this.cmbCreateType.Location = new System.Drawing.Point(422, 79);
             this.cmbCreateType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCreateType.Name = "cmbCreateType";
             this.cmbCreateType.Size = new System.Drawing.Size(250, 26);
@@ -475,7 +513,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblCreateType.AutoSize = true;
             this.lblCreateType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreateType.Location = new System.Drawing.Point(281, 114);
+            this.lblCreateType.Location = new System.Drawing.Point(281, 82);
             this.lblCreateType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreateType.Name = "lblCreateType";
             this.lblCreateType.Size = new System.Drawing.Size(88, 19);
@@ -535,7 +573,7 @@ namespace SVSU_Capstone_Project.Views
             // nudCreateAlertQty
             // 
             this.nudCreateAlertQty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudCreateAlertQty.Location = new System.Drawing.Point(422, 305);
+            this.nudCreateAlertQty.Location = new System.Drawing.Point(422, 335);
             this.nudCreateAlertQty.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -548,7 +586,7 @@ namespace SVSU_Capstone_Project.Views
             // txtCreateFeatures
             // 
             this.txtCreateFeatures.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreateFeatures.Location = new System.Drawing.Point(422, 336);
+            this.txtCreateFeatures.Location = new System.Drawing.Point(422, 366);
             this.txtCreateFeatures.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateFeatures.Name = "txtCreateFeatures";
             this.txtCreateFeatures.Size = new System.Drawing.Size(159, 26);
@@ -579,7 +617,7 @@ namespace SVSU_Capstone_Project.Views
             // txtCreateDescription
             // 
             this.txtCreateDescription.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreateDescription.Location = new System.Drawing.Point(422, 142);
+            this.txtCreateDescription.Location = new System.Drawing.Point(422, 110);
             this.txtCreateDescription.Name = "txtCreateDescription";
             this.txtCreateDescription.Size = new System.Drawing.Size(254, 65);
             this.txtCreateDescription.TabIndex = 3;
@@ -589,7 +627,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(281, 145);
+            this.lblDescription.Location = new System.Drawing.Point(281, 113);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(103, 19);
@@ -600,7 +638,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblFeatures.AutoSize = true;
             this.lblFeatures.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFeatures.Location = new System.Drawing.Point(281, 339);
+            this.lblFeatures.Location = new System.Drawing.Point(281, 369);
             this.lblFeatures.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFeatures.Name = "lblFeatures";
             this.lblFeatures.Size = new System.Drawing.Size(82, 19);
@@ -611,7 +649,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblLowStock.AutoSize = true;
             this.lblLowStock.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLowStock.Location = new System.Drawing.Point(281, 307);
+            this.lblLowStock.Location = new System.Drawing.Point(281, 337);
             this.lblLowStock.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLowStock.Name = "lblLowStock";
             this.lblLowStock.Size = new System.Drawing.Size(118, 19);
@@ -621,7 +659,7 @@ namespace SVSU_Capstone_Project.Views
             // txtCreateUrl
             // 
             this.txtCreateUrl.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreateUrl.Location = new System.Drawing.Point(422, 274);
+            this.txtCreateUrl.Location = new System.Drawing.Point(422, 304);
             this.txtCreateUrl.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateUrl.Name = "txtCreateUrl";
             this.txtCreateUrl.Size = new System.Drawing.Size(159, 26);
@@ -631,7 +669,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblLink.AutoSize = true;
             this.lblLink.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLink.Location = new System.Drawing.Point(281, 277);
+            this.lblLink.Location = new System.Drawing.Point(281, 307);
             this.lblLink.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLink.Name = "lblLink";
             this.lblLink.Size = new System.Drawing.Size(85, 19);
@@ -642,7 +680,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblCost.AutoSize = true;
             this.lblCost.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCost.Location = new System.Drawing.Point(281, 245);
+            this.lblCost.Location = new System.Drawing.Point(281, 275);
             this.lblCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(86, 19);
@@ -654,7 +692,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbCreateCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCreateCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreateCategory.FormattingEnabled = true;
-            this.cmbCreateCategory.Location = new System.Drawing.Point(422, 81);
+            this.cmbCreateCategory.Location = new System.Drawing.Point(422, 49);
             this.cmbCreateCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCreateCategory.Name = "cmbCreateCategory";
             this.cmbCreateCategory.Size = new System.Drawing.Size(250, 26);
@@ -664,7 +702,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblSupplier.AutoSize = true;
             this.lblSupplier.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplier.Location = new System.Drawing.Point(281, 215);
+            this.lblSupplier.Location = new System.Drawing.Point(281, 245);
             this.lblSupplier.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSupplier.Name = "lblSupplier";
             this.lblSupplier.Size = new System.Drawing.Size(70, 19);
@@ -676,7 +714,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbCreateVendor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCreateVendor.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreateVendor.FormattingEnabled = true;
-            this.cmbCreateVendor.Location = new System.Drawing.Point(422, 212);
+            this.cmbCreateVendor.Location = new System.Drawing.Point(422, 242);
             this.cmbCreateVendor.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCreateVendor.Name = "cmbCreateVendor";
             this.cmbCreateVendor.Size = new System.Drawing.Size(159, 26);
@@ -686,7 +724,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(281, 84);
+            this.lblCategory.Location = new System.Drawing.Point(281, 52);
             this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(85, 19);
@@ -696,7 +734,7 @@ namespace SVSU_Capstone_Project.Views
             // txtCreateItemName
             // 
             this.txtCreateItemName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreateItemName.Location = new System.Drawing.Point(422, 51);
+            this.txtCreateItemName.Location = new System.Drawing.Point(422, 19);
             this.txtCreateItemName.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateItemName.Name = "txtCreateItemName";
             this.txtCreateItemName.Size = new System.Drawing.Size(250, 26);
@@ -706,7 +744,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblItemName.AutoSize = true;
             this.lblItemName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemName.Location = new System.Drawing.Point(281, 54);
+            this.lblItemName.Location = new System.Drawing.Point(281, 22);
             this.lblItemName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblItemName.Name = "lblItemName";
             this.lblItemName.Size = new System.Drawing.Size(95, 19);
@@ -1567,5 +1605,8 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.ComboBox cmbCreateType;
         internal System.Windows.Forms.Label lblCreateType;
         private System.Windows.Forms.NumericUpDown nudCreateCost;
+        internal System.Windows.Forms.TextBox txtCreateBarcode;
+        internal System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button1;
     }
 }

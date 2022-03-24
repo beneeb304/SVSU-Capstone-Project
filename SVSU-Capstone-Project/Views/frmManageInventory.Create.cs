@@ -60,6 +60,7 @@ namespace SVSU_Capstone_Project.Views
             txtCreateDescription.Text = selected.strDescription;
             txtCreateFeatures.Text = selected.strFeatures;
             txtCreateUrl.Text = selected.strItemUrl;
+            txtCreateBarcode.Text = selected.strBarCode;
             cmbCreateCategory.DataSource = ItemModel.GetMany<Category>();
             cmbCreateCategory.SelectedItem = selected.objCategory;
             cmbCreateVendor.DataSource = ItemModel.GetMany<Vendor>();
@@ -88,10 +89,43 @@ namespace SVSU_Capstone_Project.Views
                     trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
                     trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
                 }
+
+                //Generate new barcode if textbox is empty
+                string strBarcode = txtCreateBarcode.Text;
+                bool blnExists = true;
+                
+                while (blnExists)
+                {
+                    if(strBarcode == "")
+                    {
+                        Random random = new Random();
+
+                        //String that contain both alphabets and numbers
+                        string strAlphaNumeric = "abcdefghijklmnopqrstuvwxyz0123456789";
+                        
+                        //Set to 20 characters long (plus 1 for tilde)
+                        int size = 20;
+                        strBarcode = "~";
+
+                        for (int i = 0; i < size; i++)
+                        {
+                            //Selecting a index randomly
+                            int x = random.Next(strAlphaNumeric.Length);
+
+                            //Appending the character at the index to the random alphanumeric string.
+                            strBarcode += strAlphaNumeric[x];
+                        }
+                    }
+                    
+                    if(ItemModel.Get<Commodity>(x => x.strBarCode == strBarcode) == null)
+                        blnExists = false;
+                }
+
                 selected.strName = txtCreateItemName.Text;
                 selected.objCategory = cmbCreateCategory.SelectedItem as Category;
                 selected.enuCommodityType = (ItemType)cmbCreateType.SelectedItem;
                 selected.strDescription = txtCreateDescription.Text;
+                selected.strBarCode = strBarcode;
                 selected.objVendor = cmbCreateVendor.SelectedItem as Vendor;
                 selected.intAlert_quantity = (int)nudCreateAlertQty.Value;
                 selected.strItemUrl = txtCreateUrl.Text;
