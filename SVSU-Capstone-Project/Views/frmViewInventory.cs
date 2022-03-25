@@ -42,7 +42,9 @@ namespace SVSU_Capstone_Project.Views
         */
 
             //Set datasource for category each combobox
-            cmbCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
+            cmbItemType.DataSource = Enum.GetValues(typeof(ItemType));
+            cmbItemType.SelectedIndex = -1;
+            lstCommodity.DataSource = null;
         }
 
         private void btnPrintBarcode_Click( object sender, EventArgs e )
@@ -64,6 +66,13 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        private void cmbItemType_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            var selectedType = cmbItemType.SelectedIndex;
+            var category = ItemModel.GetMany<Category>().ToList();
+           cmbCategory.DataSource = ItemModel.GetMany<Commodity>().Where(x => ((int)x.enuCommodityType) == selectedType).Select(x => x.objCategory.strName).Distinct().ToList();
+        }
+
         private void cmbCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
             //Clear detail dgv rows
@@ -71,10 +80,18 @@ namespace SVSU_Capstone_Project.Views
             lstCommodity.DataSource = null;
 
             //Get list
-            lstCommodities = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == cmbCategory.Text).OrderBy(x => x.strName).ToList();
+            if(cmbItemType.SelectedIndex == -1)
+            {
+                lstCommodity.DataSource = null;
+            }
+            else
+            {
+                lstCommodities = ItemModel.GetMany<Commodity>(x => x.objCategory.strName == cmbCategory.Text && ((int)x.enuCommodityType) == cmbItemType.SelectedIndex).OrderBy(x => x.strName).ToList();
 
-            //Set dgv
-            lstCommodity.DataSource = lstCommodities;
+                //Set dgv
+                lstCommodity.DataSource = lstCommodities;
+            }
+           
         }
 
         private void txtSearch_TextChanged( object sender, EventArgs e )

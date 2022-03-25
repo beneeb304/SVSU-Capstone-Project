@@ -31,6 +31,8 @@ namespace SVSU_Capstone_Project.Views
         {
             this.lblViewInventory = new System.Windows.Forms.Label();
             this.grbFilterFields = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbItemType = new System.Windows.Forms.ComboBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Label();
@@ -48,13 +50,15 @@ namespace SVSU_Capstone_Project.Views
             this.lblViewInventory.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblViewInventory.Location = new System.Drawing.Point(12, 13);
             this.lblViewInventory.Name = "lblViewInventory";
-            this.lblViewInventory.Size = new System.Drawing.Size(147, 22);
+            this.lblViewInventory.Size = new System.Drawing.Size(183, 29);
             this.lblViewInventory.TabIndex = 43;
             this.lblViewInventory.Text = "View Inventory";
             // 
             // grbFilterFields
             // 
             this.grbFilterFields.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.grbFilterFields.Controls.Add(this.label2);
+            this.grbFilterFields.Controls.Add(this.cmbItemType);
             this.grbFilterFields.Controls.Add(this.cmbCategory);
             this.grbFilterFields.Controls.Add(this.label1);
             this.grbFilterFields.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -62,10 +66,36 @@ namespace SVSU_Capstone_Project.Views
             this.grbFilterFields.Margin = new System.Windows.Forms.Padding(4);
             this.grbFilterFields.Name = "grbFilterFields";
             this.grbFilterFields.Padding = new System.Windows.Forms.Padding(4);
-            this.grbFilterFields.Size = new System.Drawing.Size(253, 82);
+            this.grbFilterFields.Size = new System.Drawing.Size(397, 103);
             this.grbFilterFields.TabIndex = 41;
             this.grbFilterFields.TabStop = false;
             this.grbFilterFields.Text = "Filter Fields";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(8, 30);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 24);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Item Type:";
+            // 
+            // cmbItemType
+            // 
+            this.cmbItemType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cmbItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbItemType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbItemType.FormattingEnabled = true;
+            this.cmbItemType.ItemHeight = 23;
+            this.cmbItemType.Location = new System.Drawing.Point(4, 64);
+            this.cmbItemType.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbItemType.Name = "cmbItemType";
+            this.cmbItemType.Size = new System.Drawing.Size(194, 31);
+            this.cmbItemType.TabIndex = 43;
+            this.cmbItemType.SelectedIndexChanged += new System.EventHandler(this.cmbItemType_SelectedIndexChanged);
             // 
             // cmbCategory
             // 
@@ -73,11 +103,11 @@ namespace SVSU_Capstone_Project.Views
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.ItemHeight = 18;
-            this.cmbCategory.Location = new System.Drawing.Point(8, 48);
+            this.cmbCategory.ItemHeight = 23;
+            this.cmbCategory.Location = new System.Drawing.Point(203, 64);
             this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(194, 26);
+            this.cmbCategory.Size = new System.Drawing.Size(194, 31);
             this.cmbCategory.TabIndex = 2;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
@@ -86,10 +116,10 @@ namespace SVSU_Capstone_Project.Views
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 25);
+            this.label1.Location = new System.Drawing.Point(208, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 19);
+            this.label1.Size = new System.Drawing.Size(103, 24);
             this.label1.TabIndex = 42;
             this.label1.Text = "Category:";
             // 
@@ -98,10 +128,10 @@ namespace SVSU_Capstone_Project.Views
             this.lblSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(186, 31);
+            this.lblSearch.Location = new System.Drawing.Point(202, 31);
             this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(63, 19);
+            this.lblSearch.Size = new System.Drawing.Size(76, 24);
             this.lblSearch.TabIndex = 38;
             this.lblSearch.Text = "Search";
             // 
@@ -109,10 +139,10 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(275, 28);
+            this.txtSearch.Location = new System.Drawing.Point(308, 25);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(325, 26);
+            this.txtSearch.Size = new System.Drawing.Size(325, 30);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -152,10 +182,10 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lstCommodity.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstCommodity.FormattingEnabled = true;
-            this.lstCommodity.ItemHeight = 19;
-            this.lstCommodity.Location = new System.Drawing.Point(12, 152);
+            this.lstCommodity.ItemHeight = 24;
+            this.lstCommodity.Location = new System.Drawing.Point(8, 172);
             this.lstCommodity.Name = "lstCommodity";
-            this.lstCommodity.Size = new System.Drawing.Size(254, 289);
+            this.lstCommodity.Size = new System.Drawing.Size(402, 268);
             this.lstCommodity.TabIndex = 46;
             this.lstCommodity.Click += new System.EventHandler(this.lstCommodity_Click);
             this.lstCommodity.DoubleClick += new System.EventHandler(this.lstCommodity_DoubleClick);
@@ -199,5 +229,7 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.DataGridView dgvDetails;
         private System.Windows.Forms.Button btnPrintBarcode;
         private System.Windows.Forms.ListBox lstCommodity;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbItemType;
     }
 }
