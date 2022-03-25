@@ -84,7 +84,7 @@ namespace SVSU_Capstone_Project
             lblUser.Text = "User: " + Authentication.ActiveUser.strFirst_name;
 
             //Set user login time and current time
-            lblLoggedInTime.Text = "Logged in since " + DateTime.Now.ToString("hh:mm:ss tt MM/dd/yyyy");
+            lblLoggedInTime.Text = "Login time: " + DateTime.Now.ToString("hh:mm:ss tt MM/dd/yyyy");
             lblDateTime.Text = DateTime.Now.ToString("hh:mm:ss tt MM/dd/yyyy");
 
             //Start time timer

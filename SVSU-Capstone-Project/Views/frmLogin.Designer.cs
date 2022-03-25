@@ -48,7 +48,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(8, 222);
+            this.lblPassword.Location = new System.Drawing.Point(8, 216);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(116, 24);
             this.lblPassword.TabIndex = 8;
@@ -58,7 +58,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Location = new System.Drawing.Point(8, 132);
+            this.lblUserName.Location = new System.Drawing.Point(8, 126);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(133, 24);
             this.lblUserName.TabIndex = 7;
@@ -67,7 +67,7 @@ namespace SVSU_Capstone_Project.Views
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(12, 249);
+            this.txtPassword.Location = new System.Drawing.Point(12, 243);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(326, 31);
@@ -101,16 +101,17 @@ namespace SVSU_Capstone_Project.Views
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(-2, -2);
+            this.pictureBox1.Image = global::SVSU_Capstone_Project.Properties.Resources.svsu_top_bar_login;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(352, 107);
+            this.pictureBox1.Size = new System.Drawing.Size(350, 98);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
             // btnBypass
             // 
-            this.btnBypass.Location = new System.Drawing.Point(263, 196);
+            this.btnBypass.Location = new System.Drawing.Point(263, 190);
             this.btnBypass.Name = "btnBypass";
             this.btnBypass.Size = new System.Drawing.Size(75, 44);
             this.btnBypass.TabIndex = 14;
@@ -121,7 +122,7 @@ namespace SVSU_Capstone_Project.Views
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(12, 159);
+            this.txtEmail.Location = new System.Drawing.Point(12, 153);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(326, 31);
             this.txtEmail.TabIndex = 1;

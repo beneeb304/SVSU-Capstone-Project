@@ -129,7 +129,7 @@ namespace SVSU_Capstone_Project
             this.lblUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(13)))), ((int)(((byte)(32)))));
             this.lblUser.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(862, 39);
+            this.lblUser.Location = new System.Drawing.Point(873, 39);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(73, 24);
             this.lblUser.TabIndex = 2;
@@ -141,7 +141,7 @@ namespace SVSU_Capstone_Project
             this.lblDateTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(13)))), ((int)(((byte)(32)))));
             this.lblDateTime.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
-            this.lblDateTime.Location = new System.Drawing.Point(861, 95);
+            this.lblDateTime.Location = new System.Drawing.Point(873, 95);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(73, 24);
             this.lblDateTime.TabIndex = 3;
@@ -158,7 +158,7 @@ namespace SVSU_Capstone_Project
             this.lblLoggedInTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(13)))), ((int)(((byte)(32)))));
             this.lblLoggedInTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoggedInTime.ForeColor = System.Drawing.Color.White;
-            this.lblLoggedInTime.Location = new System.Drawing.Point(862, 63);
+            this.lblLoggedInTime.Location = new System.Drawing.Point(874, 63);
             this.lblLoggedInTime.Name = "lblLoggedInTime";
             this.lblLoggedInTime.Size = new System.Drawing.Size(50, 18);
             this.lblLoggedInTime.TabIndex = 5;
