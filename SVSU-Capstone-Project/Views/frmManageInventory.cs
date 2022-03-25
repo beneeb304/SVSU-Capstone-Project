@@ -19,13 +19,21 @@ namespace SVSU_Capstone_Project.Views
         public frmManageInventory()
         {
             InitializeComponent();
-            trvUseSelectByRoom.PopulateCommodityTreeByRoom(); 
+            trvUseSelectByRoom.PopulateCommodityTreeByRoom();
         }
 
         private void tbcInventory_Selected( object sender, TabControlEventArgs e )
         {
             List<Category> lstCategories = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
             List<Vendor> lstVendors = ItemModel.GetMany<Vendor>().OrderBy(x => x.strName).ToList();
+            if (!lstVendors.Any(x => x.uidTuid == Guid.Empty)) lstVendors.Insert(0, new Vendor() { uidTuid = Guid.Empty, strName = "No Vendor" });
+            // move No Vendor to the top of the list
+            else
+            {
+                var noVendor = lstVendors.First(x => x.uidTuid == Guid.Empty);
+                lstVendors.Remove(noVendor);
+                lstVendors.Insert(0, noVendor);
+            }
             switch (e.TabPage.Name)
             {
                 case ("tbpAddItems"):
@@ -39,7 +47,7 @@ namespace SVSU_Capstone_Project.Views
                     trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
                     break;
                 case ("tbpUseItem"):
-                    trvUseSelectByRoom.PopulateCommodityTreeByRoom(); 
+                    trvUseSelectByRoom.PopulateCommodityTreeByRoom();
                     break;
                 case ("tbpMoveItem"):
                     this.cmbMoveCategory.DataSource = lstCategories;
@@ -158,7 +166,7 @@ namespace SVSU_Capstone_Project.Views
             lstCategories.ForEach(cat =>
             {
                 var node = new TreeNode(cat.strName) { Tag = new TreeNodeTag { val = cat, selectable = false } };
-                cat.lstCommodities.ForEach(comm => { node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = new TreeNodeTag { val = comm, selectable = true } }); });
+                cat.lstCommodities.ForEach(comm => { node.Nodes.Add(new TreeNode($"{comm.strName} ({(comm.lstStorage != null ? comm.lstStorage.Sum(x => x.intQuantity) : 0)})") { Tag = new TreeNodeTag { val = comm, selectable = true } }); });
                 treeView.Nodes.Add(node);
             });
         }

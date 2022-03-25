@@ -28,7 +28,7 @@ namespace SVSU_Capstone_Project.Views
         {
             //Clear all fields on Create tab
             cmbCreateCategory.SelectedIndex = -1;
-            cmbCreateVendor.SelectedIndex = -1;
+            cmbCreateVendor.SelectedIndex = 0;
             txtCreateDescription.Text = "";
             txtCreateFeatures.Text = "";
             txtCreateItemName.Text = "";
@@ -41,6 +41,8 @@ namespace SVSU_Capstone_Project.Views
             cmbCreateType.SelectedIndex = -1;
             trvCreateSelectByCategory.SelectedNode = null;
             trvCreateSelectByRoom.SelectedNode = null;
+            trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
+            trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
         }
 
         private void trvCreateSelect_BeforeSelect( object sender, TreeViewCancelEventArgs e )
@@ -75,7 +77,7 @@ namespace SVSU_Capstone_Project.Views
         private void btnCreate_Click( object sender, EventArgs e )
         {
             //Make sure fields are filled out
-            if (txtCreateDescription.Text != "" && txtCreateItemName.Text != "" && cmbCreateCategory.Text != "")
+            if (txtCreateItemName.Text != "" && cmbCreateCategory.Text != "")
             {
                 Commodity selected = null;
                 Action<Commodity> submit = ( x ) => ItemModel.Update(x);
