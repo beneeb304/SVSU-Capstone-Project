@@ -48,7 +48,6 @@ namespace SVSU_Capstone_Project.Views
             txtCabinetDescription.Text = "";
             txtCabinetName.Text = "";
             cmbRoom.SelectedIndex = -1;
-            lstCabinet.DataSource = null;
         }
 
         /* Function: ClearCategoryFields
@@ -1315,6 +1314,10 @@ namespace SVSU_Capstone_Project.Views
                             btnUserPassword.Enabled = true;
                             btnUserDelete.Enabled = true;
                         }
+                        else
+                        {
+                            btnUserCancel_Click(sender, e);
+                        }
                     }
                     catch
                     {
@@ -1457,6 +1460,10 @@ namespace SVSU_Capstone_Project.Views
                             btnRoomDelete.Enabled = true;
                             btnRoomModify.Enabled = true;
                         }
+                        else
+                        {
+                            btnRoomCancel_Click(sender, e);
+                        }
                     }
                     catch
                     {
@@ -1590,6 +1597,10 @@ namespace SVSU_Capstone_Project.Views
                             btnCabinetAdd.Enabled = true;
                             btnCabinetDelete.Enabled = true;
                             btnCabinetModify.Enabled = true;
+                        }
+                        else
+                        {
+                            btnCabinetCancel_Click(sender, e);
                         }
                     }
                     catch
@@ -1725,6 +1736,10 @@ namespace SVSU_Capstone_Project.Views
                             btnCategoryDelete.Enabled = true;
                             btnCategoryModify.Enabled = true;
                         }
+                        else
+                        {
+                            btnCategoryCancel_Click(sender, e);
+                        }
                     }
                     catch
                     {
@@ -1859,6 +1874,10 @@ namespace SVSU_Capstone_Project.Views
                             btnVendorDelete.Enabled = true;
                             btnVendorModify.Enabled = true;
                         }
+                        else
+                        {
+                            btnVendorCancel_Click(sender, e);
+                        }
                     }
                     catch
                     {
@@ -1992,6 +2011,10 @@ namespace SVSU_Capstone_Project.Views
                             btnNLevelAdd.Enabled = true;
                             btnNLevelDelete.Enabled = true;
                             btnNLevelModify.Enabled = true;
+                        }
+                        else
+                        {
+                            btnNLevelCancel_Click(sender, e);
                         }
                     }
                     catch
