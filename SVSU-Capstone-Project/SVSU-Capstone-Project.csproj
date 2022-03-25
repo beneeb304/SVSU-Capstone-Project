@@ -292,6 +292,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\OPTIMA_B.TTF" />
+    <None Include="Views\OPTIMA_B.TTF" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
