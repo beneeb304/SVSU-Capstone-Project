@@ -36,7 +36,7 @@ namespace SVSU_Capstone_Project.Views
             //Clear fields
             txtRoomDescription.Text = "";
             txtRoomName.Text = "";
-            lstRoom.SelectedIndex = -1;
+            //lstRoom.SelectedIndex = -1;
         }
 
         /* Function: ClearCabinetFields
@@ -235,9 +235,6 @@ namespace SVSU_Capstone_Project.Views
 
             //Enable fields
             EnableDisableUserFields(true);
-
-            //Clear fields
-            ClearUserFields();
         }
 
         /* Function: ClearUserFields
@@ -389,9 +386,6 @@ namespace SVSU_Capstone_Project.Views
 
             //Enable fields
             EnableDisableRoomFields(true);
-
-            //Clear fields
-            ClearRoomFields();
         }
 
         /* Function: btnAddRoom_Click
@@ -529,9 +523,6 @@ namespace SVSU_Capstone_Project.Views
 
             //Enable fields
             EnableDisableCategoryFields(true);
-
-            //Clear fields
-            ClearCategoryFields();
         }
 
         /* Function: btnDeleteCategory_Click
@@ -734,9 +725,6 @@ namespace SVSU_Capstone_Project.Views
 
             //Enable fields
             EnableDisableVendorFields(true);
-
-            //Clear fields
-            ClearVendorFields();
         }
 
         /* Function: lstNLevel_SelectedIndexChanged
@@ -810,9 +798,6 @@ namespace SVSU_Capstone_Project.Views
 
             //Enable fields
             EnableDisableNLevelFields(true);
-
-            //Clear fields
-            ClearNLevelFields();
         }
 
         /* Function: btnDeleteNLevel_Click
@@ -970,9 +955,6 @@ namespace SVSU_Capstone_Project.Views
 
             //Enable fields
             EnableDisableCabinetFields(true);
-
-            //Clear fields
-            ClearCabinetFields();
         }
 
         /* Function: btnDeleteCabinet_Click
