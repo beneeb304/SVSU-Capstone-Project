@@ -152,10 +152,14 @@ namespace SVSU_Capstone_Project.Views
                     "Stock Added"
                 );
                 // notify User of success
-                MessageBox.Show("Item added successfully.");
+                MessageBox.Show("Successfully added a quantity of " + nudAddQty.Value + " "+ cmbAddCommodity.Text + " in room " + cmbAddRoom.Text + ", " + cmbAddCabinet.Text + ".");
             }
-            // notify User of failure
-            MessageBox.Show("Please make sure all fields are properly filled in.");
+            else
+            {
+                 // notify User of failure
+                MessageBox.Show("Please make sure all fields are properly filled in.");
+            }
+           
             // clear fields
             btnAddCancel_Click(sender, e);
         }
