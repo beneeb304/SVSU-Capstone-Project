@@ -214,7 +214,7 @@ namespace SVSU_Capstone_Project
          * KeyEventArgs e; Message sent by the key object pressed.
          * CheckedItem checkedItem; Represents the item located by scanning a barcode.
          */
-        public BarcodeScanner barcodeScanner;
+        public static BarcodeScanner barcodeScanner;
         private void frmMain_KeyDown( object sender, KeyEventArgs e )
         {
             // When @ is entered by the keyboard (occurs at start of a scan), prepare for the scan.

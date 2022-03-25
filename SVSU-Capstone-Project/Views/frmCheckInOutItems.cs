@@ -25,13 +25,18 @@ namespace SVSU_Capstone_Project.Views
             InitializeComponent();
             // checked in/out status set to null
             tbcCheckInOut_SelectedIndexChanged(null, null);
+            // Checks if the form was called after a barcode scan to transfer the data.
+            if (frmMain.barcodeScanner.isStartRead())
+            {
+                setScannedBarcode(frmMain.barcodeScanner.checkedItem);
+            }
         }
 
         private void tbcCheckInOut_SelectedIndexChanged( object sender, EventArgs e )
         {
             /* Function: tbcCheckInOut_SelectedIndexChanged
             * -----------------------------------------------------------------------------
-            * Description: This ucntion will populate either the assets tab with data or the 
+            * Description: This function will populate either the assets tab with data or the 
             * Consumable tab with data depending on which tab is clicked. 
             * -----------------------------------------------------------------------------
             *  Parameter Dictionary (in parameter order):  
@@ -39,6 +44,9 @@ namespace SVSU_Capstone_Project.Views
             *  object sender; The object calling the method. 
             * -----------------------------------------------------------------------------
             * Local Variables
+            * object sender; Object calling the method, in this case the form's tabs.
+            * EventArgs e; Arguments passed by the calling object.
+            * CheckedItem checkedItems; Temporary CheckedItem to fill the controls of the form.
             */
 
             switch (tbcCheckInOut.SelectedTab.Name)
@@ -141,6 +149,13 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: setScannedBarcode
+         * Description: When this form is called as the result of a barcode scan, take in the CheckedItem, check if it is in the checked in or 
+         * checked out items, then select it in the corresponding list. Reset the values of the barcode scanner in frmMain to complete the scan.
+         * 
+         * Local Variables
+         * CheckedItem checkedItem; The object found as a result of the barcode scan.
+         */
         public void setScannedBarcode( CheckedItem checkedItem )
         {
             if (cmbChkOutCommodity.Items.Contains(checkedItem.objCommodities))
@@ -151,6 +166,7 @@ namespace SVSU_Capstone_Project.Views
             {
                 cmbChkInCommodity.SelectedItem = checkedItem.objCommodities;
             }
+            frmMain.barcodeScanner.resetValues();
         }
 
         private void btnChkOutCancel_Click( object sender, EventArgs e )

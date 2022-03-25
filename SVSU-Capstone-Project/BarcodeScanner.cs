@@ -23,10 +23,11 @@ namespace SVSU_Capstone_Project
      * bool blnStartRead; Used to indicate a potential scan has been initiated.
      * string strReadCode; Holds the string read in by the scan.
      * int intBeginTime; Marks the start time of a scan in milliseconds.
+     * CheckedItem checkedItem; Item found as a result of a barcode scan.
      */
     public partial class BarcodeScanner
     {
-        public const int intCHECK = 50; // 50 is what C# uses to indicate @
+        private const int intCHECK = 50; // 50 is what C# uses to indicate @
         private bool blnStartRead;
         private string strReadCode;
         private int intBeginTime;
@@ -93,7 +94,7 @@ namespace SVSU_Capstone_Project
             //CheckedItem checkedItem = null;
             try { checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.strBarCode == strReadCode); } 
             catch{ Console.WriteLine("Commodity not found from Barcode"); }
-            resetValues();
+            //resetValues(); // Values are now reset by the receiving function.
             return checkedItem;
         }
     }
