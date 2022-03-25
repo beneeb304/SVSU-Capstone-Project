@@ -59,13 +59,23 @@ namespace SVSU_Capstone_Project.Views
          */
         private void cmbAddCommodity_SelectedValueChanged( object sender, EventArgs e )
         {
-            // set room, cabinet, and nlevel to ref of selected commodity
-            this.cmbAddRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
-            this.cmbAddCabinet.DataSource = (this.cmbAddRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
-            this.cmbAddNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
-            // set quantity to quantity of selected commodity 
-            this.nudAddQty.Value = 1;
-            txtCurrentQty_DependancyUpdated();
+            if (cmbAddCommodity.SelectedIndex > -1)
+            {
+                // set room, cabinet, and nlevel to ref of selected commodity
+                this.cmbAddRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList();
+                this.cmbAddCabinet.DataSource = (this.cmbAddRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
+                this.cmbAddNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).ToList();
+                // set quantity to quantity of selected commodity 
+                this.nudAddQty.Value = 1;
+                txtCurrentQty_DependancyUpdated();
+            }
+            else
+            {
+                this.cmbAddRoom.DataSource = null;
+                this.cmbAddCabinet.DataSource = null;
+                this.cmbAddNLevel.DataSource = null;
+
+            }
         }
 
         /* Function: cmbAddCategory_SelectedValueChanged
@@ -77,9 +87,12 @@ namespace SVSU_Capstone_Project.Views
          */
         private void cmbAddCategory_SelectedValueChanged( object sender, EventArgs e )
         {
-            this.cmbAddCommodity.SelectedIndex = -1;
+           
             if(cmbAddCategory.SelectedIndex > -1)
+            {
                 this.cmbAddCommodity.DataSource = (this.cmbAddCategory.SelectedValue as Category).lstCommodities;
+            }
+            this.cmbAddCommodity.SelectedIndex = -1;
         }
 
         /* Function: btnAddCancel_Click
