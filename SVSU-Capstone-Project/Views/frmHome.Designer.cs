@@ -39,36 +39,35 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnDocumentation = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lowStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invDbDataSet = new SVSU_Capstone_Project.InvDbDataSet();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.checkedItemsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lowStockTableAdapter = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.LowStockTableAdapter();
+            this.checkedItemsTableAdapter1 = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.CheckedItemsTableAdapter1();
             this.commodityNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkedItemsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invDbDataSet = new SVSU_Capstone_Project.InvDbDataSet();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lowStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lowStockTableAdapter = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.LowStockTableAdapter();
-            this.checkedItemsTableAdapter1 = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.CheckedItemsTableAdapter1();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lowStockBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkedItemsTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invDbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lowStockBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 29);
+            this.label1.Size = new System.Drawing.Size(99, 22);
             this.label1.TabIndex = 4;
             this.label1.Text = "Welcome!";
             // 
@@ -76,20 +75,18 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 519);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(12, 422);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(210, 24);
+            this.label2.Size = new System.Drawing.Size(173, 19);
             this.label2.TabIndex = 5;
             this.label2.Text = "View Documentation:";
             // 
             // btnDocumentation
             // 
             this.btnDocumentation.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDocumentation.Location = new System.Drawing.Point(255, 518);
-            this.btnDocumentation.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDocumentation.Location = new System.Drawing.Point(191, 415);
             this.btnDocumentation.Name = "btnDocumentation";
-            this.btnDocumentation.Size = new System.Drawing.Size(149, 28);
+            this.btnDocumentation.Size = new System.Drawing.Size(112, 35);
             this.btnDocumentation.TabIndex = 6;
             this.btnDocumentation.Text = "Documentation";
             this.btnDocumentation.UseVisualStyleBackColor = true;
@@ -98,6 +95,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -120,7 +118,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 139);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 113);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -133,13 +132,24 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(452, 302);
+            this.dataGridView1.Size = new System.Drawing.Size(307, 245);
             this.dataGridView1.TabIndex = 7;
+            // 
+            // lowStockBindingSource
+            // 
+            this.lowStockBindingSource.DataMember = "LowStock";
+            this.lowStockBindingSource.DataSource = this.invDbDataSet;
+            // 
+            // invDbDataSet
+            // 
+            this.invDbDataSet.DataSetName = "InvDbDataSet";
+            this.invDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.AutoGenerateColumns = false;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -165,7 +175,8 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView2.Location = new System.Drawing.Point(470, 139);
+            this.dataGridView2.Location = new System.Drawing.Point(320, 113);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -178,16 +189,22 @@
             this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(821, 302);
+            this.dataGridView2.Size = new System.Drawing.Size(646, 245);
             this.dataGridView2.TabIndex = 8;
+            // 
+            // checkedItemsTableBindingSource
+            // 
+            this.checkedItemsTableBindingSource.DataMember = "CheckedItemsTable";
+            this.checkedItemsTableBindingSource.DataSource = this.invDbDataSet;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 104);
+            this.label3.Location = new System.Drawing.Point(11, 84);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(338, 32);
+            this.label3.Size = new System.Drawing.Size(269, 26);
             this.label3.TabIndex = 9;
             this.label3.Text = "Low Stock Commodities";
             // 
@@ -195,11 +212,20 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(473, 104);
+            this.label4.Location = new System.Drawing.Point(315, 85);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(428, 32);
+            this.label4.Size = new System.Drawing.Size(338, 26);
             this.label4.TabIndex = 10;
             this.label4.Text = "Checked Out Asset Equipment";
+            // 
+            // lowStockTableAdapter
+            // 
+            this.lowStockTableAdapter.ClearBeforeFill = true;
+            // 
+            // checkedItemsTableAdapter1
+            // 
+            this.checkedItemsTableAdapter1.ClearBeforeFill = true;
             // 
             // commodityNameDataGridViewTextBoxColumn
             // 
@@ -217,7 +243,6 @@
             this.usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
             this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.usernameDataGridViewTextBoxColumn.Width = 125;
             // 
             // emailDataGridViewTextBoxColumn
             // 
@@ -235,7 +260,6 @@
             this.dateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
             this.dateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateDataGridViewTextBoxColumn.Width = 125;
             // 
             // detailsDataGridViewTextBoxColumn
             // 
@@ -245,16 +269,6 @@
             this.detailsDataGridViewTextBoxColumn.Name = "detailsDataGridViewTextBoxColumn";
             this.detailsDataGridViewTextBoxColumn.ReadOnly = true;
             this.detailsDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // checkedItemsTableBindingSource
-            // 
-            this.checkedItemsTableBindingSource.DataMember = "CheckedItemsTable";
-            this.checkedItemsTableBindingSource.DataSource = this.invDbDataSet;
-            // 
-            // invDbDataSet
-            // 
-            this.invDbDataSet.DataSetName = "InvDbDataSet";
-            this.invDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -274,24 +288,11 @@
             this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             this.quantityDataGridViewTextBoxColumn.Width = 125;
             // 
-            // lowStockBindingSource
-            // 
-            this.lowStockBindingSource.DataMember = "LowStock";
-            this.lowStockBindingSource.DataSource = this.invDbDataSet;
-            // 
-            // lowStockTableAdapter
-            // 
-            this.lowStockTableAdapter.ClearBeforeFill = true;
-            // 
-            // checkedItemsTableAdapter1
-            // 
-            this.checkedItemsTableAdapter1.ClearBeforeFill = true;
-            // 
             // frmHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1303, 558);
+            this.ClientSize = new System.Drawing.Size(977, 453);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView2);
@@ -299,15 +300,14 @@
             this.Controls.Add(this.btnDocumentation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmHome";
             this.Text = "frmHome";
             this.Load += new System.EventHandler(this.frmHome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lowStockBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invDbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkedItemsTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invDbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lowStockBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,17 +322,17 @@
         private InvDbDataSet invDbDataSet;
         private System.Windows.Forms.BindingSource lowStockBindingSource;
         private InvDbDataSetTableAdapters.LowStockTableAdapter lowStockTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.BindingSource checkedItemsTableBindingSource;
         private InvDbDataSetTableAdapters.CheckedItemsTableAdapter1 checkedItemsTableAdapter1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn commodityNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
     }
 }

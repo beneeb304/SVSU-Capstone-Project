@@ -52,18 +52,13 @@ namespace SVSU_Capstone_Project.Views
         {
             if(lstCommodity.SelectedIndex > -1)
             {
-                Commodity commodity = ItemModel.Get<Commodity>(x => x.uidTuid.ToString() == lstCommodity.SelectedItem.ToString());
-
-                //Print barcode here
-                try
+                
+                pdgBarcode.Document = pdtBarcode;
+                if (pdgBarcode.ShowDialog() == DialogResult.OK)
                 {
-                    //Print barcode here
-                    MessageBox.Show("For testing purposes, the barcode is " + commodity.strBarCode);
+                    pdtBarcode.Print();
                 }
-                catch
-                {
-                    MessageBox.Show("Barcode is null");
-                }
+                
             }
         }
 
@@ -120,10 +115,11 @@ namespace SVSU_Capstone_Project.Views
         private void lstCommodity_Click( object sender, EventArgs e )
         {
             if (lstCommodity.DataSource != null)
-            {//Get rid of current rows
+            {
+                //Get rid of current rows
                 dgvDetails.Rows.Clear();
 
-            //If columsn exist, don't re-add them
+                //If columsn exist, don't re-add them
                 if (dgvDetails.Columns.Count != 4)
                 {
                     dgvDetails.Columns.Add("Quantity", "Quantity");
@@ -132,7 +128,7 @@ namespace SVSU_Capstone_Project.Views
                     dgvDetails.Columns.Add("Cabinet", "Cabinet");
                 }
 
-            //Get the selected category and commodity
+                //Get the selected category and commodity
 
                 string strCategory = cmbCategory.Text;
                 string strCommodity = lstCommodity.SelectedItem.ToString();
@@ -140,16 +136,38 @@ namespace SVSU_Capstone_Project.Views
                 Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
                 List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
 
-            //Add to the dgv
-            foreach (Storage storage in lstStorage)
-            {
-                dgvDetails.Rows.Add(storage.intQuantity, storage.objNLevel.strName, storage.objCabinet.objRoom.strName, storage.objCabinet.strName);
-            }
+                //Genorate and populate the barcode for the selected item
+                Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+                if (commodity.strBarCode == null)
+                {
+                    //Disable print barcode button
+                    btnPrintBarcode.Enabled = false;
+                    //Clear picturebox image
+                    pcbBarcode.Image = null;
+                    //Show message box that barcode is null
+                    MessageBox.Show("Barcode for " + commodity.strName + " is Null.");
+                }
+                else
+                {
+                    //Cast barcode to picture box
+                    pcbBarcode.Image = barcode.Draw(commodity.strBarCode, 115, 1);
+
+                    //Enable print barcode button
+                    btnPrintBarcode.Enabled = true;
+                }
+
+                //Add to the dgv
+                foreach (Storage storage in lstStorage)
+                {
+                    dgvDetails.Rows.Add(storage.intQuantity, storage.objNLevel.strName, storage.objCabinet.objRoom.strName, storage.objCabinet.strName);
+                }
 
             //Unselect cells
             dgvDetails.ClearSelection();
             }
+
             
+
         }
 
         private void lstCommodity_DoubleClick( object sender, EventArgs e )
@@ -170,6 +188,13 @@ namespace SVSU_Capstone_Project.Views
                     "Barcode: " + commodity.strBarCode;
                 MessageBox.Show(strMessage);
             }
+        }
+
+        private void pdtBarcode_PrintPage( object sender, System.Drawing.Printing.PrintPageEventArgs e )
+        {
+            Bitmap bmpBarcode = new Bitmap(pcbBarcode.Width, pcbBarcode.Height);
+            pcbBarcode.DrawToBitmap(bmpBarcode, new Rectangle(0, 0, pcbBarcode.Width, pcbBarcode.Height));
+            e.Graphics.DrawImage(bmpBarcode, 0, 0);
         }
     }
 }

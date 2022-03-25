@@ -70,7 +70,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtPassword.Location = new System.Drawing.Point(12, 249);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(311, 31);
+            this.txtPassword.Size = new System.Drawing.Size(326, 31);
             this.txtPassword.TabIndex = 2;
             // 
             // btnLogin
@@ -111,7 +111,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             // btnBypass
             // 
-            this.btnBypass.Location = new System.Drawing.Point(248, 196);
+            this.btnBypass.Location = new System.Drawing.Point(263, 196);
             this.btnBypass.Name = "btnBypass";
             this.btnBypass.Size = new System.Drawing.Size(75, 44);
             this.btnBypass.TabIndex = 14;
@@ -124,7 +124,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(12, 159);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(311, 31);
+            this.txtEmail.Size = new System.Drawing.Size(326, 31);
             this.txtEmail.TabIndex = 1;
             // 
             // frmLogin
