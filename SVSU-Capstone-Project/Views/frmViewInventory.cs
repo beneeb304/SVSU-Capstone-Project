@@ -45,6 +45,7 @@ namespace SVSU_Capstone_Project.Views
             cmbItemType.DataSource = Enum.GetValues(typeof(ItemType));
             cmbItemType.SelectedIndex = -1;
             lstCommodity.DataSource = null;
+            cmbCategory.Enabled = false;
         }
 
         private void btnPrintBarcode_Click( object sender, EventArgs e )
@@ -69,6 +70,7 @@ namespace SVSU_Capstone_Project.Views
         private void cmbItemType_SelectedIndexChanged( object sender, EventArgs e )
         {
             var selectedType = cmbItemType.SelectedIndex;
+            cmbCategory.Enabled = true;
             var category = ItemModel.GetMany<Category>().ToList();
            cmbCategory.DataSource = ItemModel.GetMany<Commodity>().Where(x => ((int)x.enuCommodityType) == selectedType).Select(x => x.objCategory.strName).Distinct().ToList();
         }
@@ -117,24 +119,26 @@ namespace SVSU_Capstone_Project.Views
 
         private void lstCommodity_Click( object sender, EventArgs e )
         {
-            //Get rid of current rows
-            dgvDetails.Rows.Clear();
+            if (lstCommodity.DataSource != null)
+            {//Get rid of current rows
+                dgvDetails.Rows.Clear();
 
             //If columsn exist, don't re-add them
-            if (dgvDetails.Columns.Count != 4)
-            {
-                dgvDetails.Columns.Add("Quantity", "Quantity");
-                dgvDetails.Columns.Add("N-Level", "N-Level");
-                dgvDetails.Columns.Add("Room", "Room");
-                dgvDetails.Columns.Add("Cabinet", "Cabinet");
-            }
+                if (dgvDetails.Columns.Count != 4)
+                {
+                    dgvDetails.Columns.Add("Quantity", "Quantity");
+                    dgvDetails.Columns.Add("N-Level", "N-Level");
+                    dgvDetails.Columns.Add("Room", "Room");
+                    dgvDetails.Columns.Add("Cabinet", "Cabinet");
+                }
 
             //Get the selected category and commodity
-            string strCategory = cmbCategory.Text;
-            string strCommodity = lstCommodity.SelectedItem.ToString();
 
-            Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
-            List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
+                string strCategory = cmbCategory.Text;
+                string strCommodity = lstCommodity.SelectedItem.ToString();
+
+                Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
+                List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
 
             //Add to the dgv
             foreach (Storage storage in lstStorage)
@@ -144,23 +148,28 @@ namespace SVSU_Capstone_Project.Views
 
             //Unselect cells
             dgvDetails.ClearSelection();
+            }
+            
         }
 
         private void lstCommodity_DoubleClick( object sender, EventArgs e )
         {
-            string strCategory = cmbCategory.Text;
-            string strCommodity = lstCommodity.SelectedItem.ToString();
-            Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
-            string strMessage = "Name: " + commodity.strName + "\r" +
-                "Desciption: " + commodity.strDescription + "\r" +
-                "Type: " + commodity.enuCommodityType.ToString() + "\r" +
-                "Features: " + commodity.strFeatures + "\r" +
-                "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
-                "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
-                "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
-                "URL: " + commodity.strItemUrl + "\r" +
-                "Barcode: " + commodity.strBarCode;
-            MessageBox.Show(strMessage);
+            if (lstCommodity.DataSource != null)
+            {
+                string strCategory = cmbCategory.Text;
+                string strCommodity = lstCommodity.SelectedItem.ToString();
+                Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
+                string strMessage = "Name: " + commodity.strName + "\r" +
+                    "Desciption: " + commodity.strDescription + "\r" +
+                    "Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                    "Features: " + commodity.strFeatures + "\r" +
+                    "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
+                    "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                    "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
+                    "URL: " + commodity.strItemUrl + "\r" +
+                    "Barcode: " + commodity.strBarCode;
+                MessageBox.Show(strMessage);
+            }
         }
     }
 }
