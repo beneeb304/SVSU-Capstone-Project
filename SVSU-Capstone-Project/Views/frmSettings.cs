@@ -1314,7 +1314,8 @@ namespace SVSU_Capstone_Project.Views
                 }
                 else
                 {
-                    MessageBox.Show("Please fill out all of the user fields before saving!", "Alert");
+                    MessageBox.Show("Please fill out all of the user fields before saving! You need:\r" +
+                            "A valid email\rA first name\rA last name\rAn SVSU ID", "Alert");
                 }
             }
             else if (btnUserModify.Enabled)
