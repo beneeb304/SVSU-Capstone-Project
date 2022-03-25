@@ -1338,7 +1338,7 @@ namespace SVSU_Capstone_Project.Views
             else if (btnUserModify.Enabled)
             {
                 //If a user is selected
-                if (lstUser.SelectedIndex >= 0)
+                if (lstUser.SelectedIndex >= 0 && txtUserEmail.Text != "" && txtUserFName.Text != "" && txtUserLName.Text != "" && txtUserSVSUID.Text != "")
                 {
                     try
                     {
@@ -1484,7 +1484,7 @@ namespace SVSU_Capstone_Project.Views
             else if (btnRoomModify.Enabled)
             {
                 //If a room is selected
-                if (lstRoom.SelectedIndex >= 0)
+                if (lstRoom.SelectedIndex >= 0 && txtRoomName.Text != "")
                 {
                     try
                     {
@@ -1774,7 +1774,7 @@ namespace SVSU_Capstone_Project.Views
             else if (btnCategoryModify.Enabled)
             {
                 //If a category is selected
-                if (lstCategory.SelectedIndex >= 0)
+                if (lstCategory.SelectedIndex >= 0 && txtCategoryName.Text != "")
                 {
                     try
                     {
@@ -1912,7 +1912,7 @@ namespace SVSU_Capstone_Project.Views
             else if (btnVendorModify.Enabled)
             {
                 //If a vendor is selected
-                if (lstVendor.SelectedIndex >= 0)
+                if (lstVendor.SelectedIndex >= 0 && txtVendorName.Text != "")
                 {
                     try
                     {
@@ -1963,7 +1963,7 @@ namespace SVSU_Capstone_Project.Views
                 }
                 else
                 {
-                    MessageBox.Show("Please select a vendor to modify before saving!", "Alert");
+                    MessageBox.Show("Please select a vendor and ensure valid data to modify before saving!", "Alert");
                 }
             }
         }
@@ -2050,7 +2050,7 @@ namespace SVSU_Capstone_Project.Views
             else if (btnNLevelModify.Enabled)
             {
                 //If a n-level is selected
-                if (lstNLevel.SelectedIndex >= 0)
+                if (lstNLevel.SelectedIndex >= 0 && txtNLevelName.Text != "")
                 {
                     try
                     {
