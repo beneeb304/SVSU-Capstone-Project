@@ -42,8 +42,12 @@ namespace SVSU_Capstone_Project.Views
          */
         private void cmbAddRoom_SelectedValueChanged( object sender, EventArgs e )
         {
-            this.cmbAddCabinet.DataSource = (this.cmbAddRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
-            txtCurrentQty_DependancyUpdated();
+            if(cmbAddCommodity.SelectedIndex > -1)
+            {
+                this.cmbAddCabinet.DataSource = (this.cmbAddRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
+                txtCurrentQty_DependancyUpdated();
+            }
+            
         }
 
         /* Function: cmbAddCommodity_SelectedValueChanged
@@ -89,8 +93,16 @@ namespace SVSU_Capstone_Project.Views
         {
             //Clear all fields on Add tab
             cmbAddCategory.SelectedIndex = -1;
-            txtCurrentQty.Text = "";
+            cmbAddCommodity.SelectedIndex = -1;
+            txtCurrentQty.Text = "0";
             nudAddQty.Value = 1;
+            if (cmbAddCategory.SelectedIndex == -1)
+            {
+                cmbAddCommodity.DataSource = null;
+                cmbAddCabinet.DataSource = null;
+                cmbAddRoom.DataSource = null;
+                cmbAddNLevel.DataSource = null;
+            }
         }
 
         /* Function: btnAdd_Click
@@ -102,7 +114,7 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnAdd_Click( object sender, EventArgs e )
         {
-            if (cmbAddCabinet.SelectedIndex != -1 && cmbAddNLevel.SelectedIndex != -1)
+            if (cmbAddCabinet.SelectedIndex != -1 && cmbAddNLevel.SelectedIndex != -1 && cmbAddCommodity.SelectedIndex != -1)
             {
                 var storageItem = ItemModel.Get<Storage>(
                         x => x.objNLevel == this.cmbAddNLevel.SelectedValue as NLevel
@@ -126,9 +138,11 @@ namespace SVSU_Capstone_Project.Views
                     (uint)this.nudAddQty.Value,
                     "Stock Added"
                 );
+                // notify User of success
+                MessageBox.Show("Item added successfully.");
             }
-            // notify User of success
-            MessageBox.Show("Item added successfully.");
+            // notify User of failure
+            MessageBox.Show("Please make sure all fields are properly filled in.");
             // clear fields
             btnAddCancel_Click(sender, e);
         }
