@@ -113,7 +113,7 @@ namespace SVSU_Capstone_Project
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSetPassword";
-            this.Text = "frmSetPassword";
+            this.Text = "Set Password";
             this.ResumeLayout(false);
             this.PerformLayout();
 
