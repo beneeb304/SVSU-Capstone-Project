@@ -47,7 +47,6 @@ namespace SVSU_Capstone_Project.Views
             //Clear fields
             txtCabinetDescription.Text = "";
             txtCabinetName.Text = "";
-            cmbRoom.SelectedIndex = -1;
         }
 
         /* Function: ClearCategoryFields
@@ -1423,25 +1422,32 @@ namespace SVSU_Capstone_Project.Views
                                 strName = txtRoomName.Text
                             };
 
-                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+                            //Check for duplicates
+                            if (lstRoom.Items.Contains(room.strName))
+                            {
+                                MessageBox.Show("Cannot add duplicate room", "Alert");
+                                btnRoomCancel_Click(sender, e);
+                            }
+                            else
+                            {
+                                //Add room
+                                ItemModel.Add<Room>(room);
 
-                            //Add room
-                            ItemModel.Add<Room>(room);
+                                //Alert user
+                                MessageBox.Show("Successful Add", "Alert");
 
-                            //Alert user
-                            MessageBox.Show("Successful Add", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnRoomSave.Visible = false;
+                                btnRoomCancel.Visible = false;
 
-                            //Hide buttons
-                            btnRoomSave.Visible = false;
-                            btnRoomCancel.Visible = false;
-
-                            //Enable buttons
-                            btnRoomAdd.Enabled = true;
-                            btnRoomDelete.Enabled = true;
-                            btnRoomModify.Enabled = true;
+                                //Enable buttons
+                                btnRoomAdd.Enabled = true;
+                                btnRoomDelete.Enabled = true;
+                                btnRoomModify.Enabled = true;
+                            }
                         }
                         else
                         {
@@ -1483,25 +1489,32 @@ namespace SVSU_Capstone_Project.Views
                             room.strName = txtRoomName.Text;
                             room.strDescription = txtRoomDescription.Text;
 
-                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+                            //Check for duplicates
+                            if (lstRoom.Items.Contains(room.strName))
+                            {
+                                MessageBox.Show("Cannot add duplicate room", "Alert");
+                                btnRoomCancel_Click(sender, e);
+                            }
+                            else
+                            {
+                                //Save room
+                                ItemModel.Update<Room>(room);
 
-                            //Save room
-                            ItemModel.Update<Room>(room);
+                                //Alert user
+                                MessageBox.Show("Successful Modification", "Alert");
 
-                            //Alert user
-                            MessageBox.Show("Successful Modification", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnRoomSave.Visible = false;
+                                btnRoomCancel.Visible = false;
 
-                            //Hide buttons
-                            btnRoomSave.Visible = false;
-                            btnRoomCancel.Visible = false;
-
-                            //Enable buttons
-                            btnRoomAdd.Enabled = true;
-                            btnRoomDelete.Enabled = true;
-                            btnRoomModify.Enabled = true;
+                                //Enable buttons
+                                btnRoomAdd.Enabled = true;
+                                btnRoomDelete.Enabled = true;
+                                btnRoomModify.Enabled = true;
+                            }
                         }
                     }
                     catch
@@ -1713,25 +1726,32 @@ namespace SVSU_Capstone_Project.Views
                                 strName = txtCategoryName.Text
                             };
 
-                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+                            //Check for duplicates
+                            if (lstCategory.Items.Contains(category.strName))
+                            {
+                                MessageBox.Show("Cannot add duplicate category", "Alert");
+                                btnCategoryCancel_Click(sender, e);
+                            }
+                            else
+                            {
+                                //Add cabinet
+                                ItemModel.Add<Category>(category);
 
-                            //Add cabinet
-                            ItemModel.Add<Category>(category);
+                                //Alert user
+                                MessageBox.Show("Successful Add", "Alert");
 
-                            //Alert user
-                            MessageBox.Show("Successful Add", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnCategorySave.Visible = false;
+                                btnCategoryCancel.Visible = false;
 
-                            //Hide buttons
-                            btnCategorySave.Visible = false;
-                            btnCategoryCancel.Visible = false;
-
-                            //Enable buttons
-                            btnCategoryAdd.Enabled = true;
-                            btnCategoryDelete.Enabled = true;
-                            btnCategoryModify.Enabled = true;
+                                //Enable buttons
+                                btnCategoryAdd.Enabled = true;
+                                btnCategoryDelete.Enabled = true;
+                                btnCategoryModify.Enabled = true;
+                            }
                         }
                         else
                         {
@@ -1773,25 +1793,32 @@ namespace SVSU_Capstone_Project.Views
                             category.strName = txtCategoryName.Text;
                             category.strDescription = txtCategoryDescription.Text;
 
-                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+                            //Check for duplicates
+                            if (lstCategory.Items.Contains(category.strName))
+                            {
+                                MessageBox.Show("Cannot add duplicate category", "Alert");
+                                btnCategoryCancel_Click(sender, e);
+                            }
+                            else
+                            {
+                                //Save category
+                                ItemModel.Update<Category>(category);
 
-                            //Save category
-                            ItemModel.Update<Category>(category);
+                                //Alert user
+                                MessageBox.Show("Successful Modification", "Alert");
 
-                            //Alert user
-                            MessageBox.Show("Successful Modification", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnCategorySave.Visible = false;
+                                btnCategoryCancel.Visible = false;
 
-                            //Hide buttons
-                            btnCategorySave.Visible = false;
-                            btnCategoryCancel.Visible = false;
-
-                            //Enable buttons
-                            btnCategoryAdd.Enabled = true;
-                            btnCategoryDelete.Enabled = true;
-                            btnCategoryModify.Enabled = true;
+                                //Enable buttons
+                                btnCategoryAdd.Enabled = true;
+                                btnCategoryDelete.Enabled = true;
+                                btnCategoryModify.Enabled = true;
+                            }
                         }
                     }
                     catch
@@ -1851,25 +1878,32 @@ namespace SVSU_Capstone_Project.Views
                                 strHomepage = txtVendorHomepage.Text
                             };
 
-                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+                            //Cannot add duplicate vendor
+                            if (lstVendor.Items.Contains(vendor.strName))
+                            {
+                                MessageBox.Show("Cannot add duplicate vendor", "Alert");
+                                btnVendorCancel_Click(sender, e);
+                            }
+                            else
+                            {
+                                //Add vendor
+                                ItemModel.Add<Vendor>(vendor);
 
-                            //Add vendor
-                            ItemModel.Add<Vendor>(vendor);
+                                //Alert user
+                                MessageBox.Show("Successful Add", "Alert");
 
-                            //Alert user
-                            MessageBox.Show("Successful Add", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnVendorSave.Visible = false;
+                                btnVendorCancel.Visible = false;
 
-                            //Hide buttons
-                            btnVendorSave.Visible = false;
-                            btnVendorCancel.Visible = false;
-
-                            //Enable buttons
-                            btnVendorAdd.Enabled = true;
-                            btnVendorDelete.Enabled = true;
-                            btnVendorModify.Enabled = true;
+                                //Enable buttons
+                                btnVendorAdd.Enabled = true;
+                                btnVendorDelete.Enabled = true;
+                                btnVendorModify.Enabled = true;
+                            }
                         }
                         else
                         {
@@ -1912,25 +1946,32 @@ namespace SVSU_Capstone_Project.Views
                             vendor.strDescription = txtVendorDescription.Text;
                             vendor.strHomepage = txtVendorHomepage.Text;
 
-                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+                            //Cannot add duplicate vendor
+                            if (lstVendor.Items.Contains(vendor.strName))
+                            {
+                                MessageBox.Show("Cannot add duplicate vendor", "Alert");
+                                btnVendorCancel_Click(sender, e);
+                            }
+                            else
+                            {
+                                //Save vendor
+                                ItemModel.Update<Vendor>(vendor);
 
-                            //Save vendor
-                            ItemModel.Update<Vendor>(vendor);
+                                //Alert user
+                                MessageBox.Show("Successful Modification", "Alert");
 
-                            //Alert user
-                            MessageBox.Show("Successful Modification", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnVendorSave.Visible = false;
+                                btnVendorCancel.Visible = false;
 
-                            //Hide buttons
-                            btnVendorSave.Visible = false;
-                            btnVendorCancel.Visible = false;
-
-                            //Enable buttons
-                            btnVendorAdd.Enabled = true;
-                            btnVendorDelete.Enabled = true;
-                            btnVendorModify.Enabled = true;
+                                //Enable buttons
+                                btnVendorAdd.Enabled = true;
+                                btnVendorDelete.Enabled = true;
+                                btnVendorModify.Enabled = true;
+                            }
                         }
                     }
                     catch
@@ -1989,25 +2030,32 @@ namespace SVSU_Capstone_Project.Views
                                 strName = txtNLevelName.Text
                             };
 
-                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+                            //Cannot add duplicate n-level
+                            if (lstNLevel.Items.Contains(nLevel.strName))
+                            {
+                                MessageBox.Show("Cannot add duplicate N-Level", "Alert");
+                                btnNLevelCancel_Click(sender, e);
+                            }
+                            else
+                            {
+                                //Add n-level
+                                ItemModel.Add<NLevel>(nLevel);
 
-                            //Add n-level
-                            ItemModel.Add<NLevel>(nLevel);
+                                //Alert user
+                                MessageBox.Show("Successful Add", "Alert");
 
-                            //Alert user
-                            MessageBox.Show("Successful Add", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnNLevelSave.Visible = false;
+                                btnNLevelCancel.Visible = false;
 
-                            //Hide buttons
-                            btnNLevelSave.Visible = false;
-                            btnNLevelCancel.Visible = false;
-
-                            //Enable buttons
-                            btnNLevelAdd.Enabled = true;
-                            btnNLevelDelete.Enabled = true;
-                            btnNLevelModify.Enabled = true;
+                                //Enable buttons
+                                btnNLevelAdd.Enabled = true;
+                                btnNLevelDelete.Enabled = true;
+                                btnNLevelModify.Enabled = true;
+                            }
                         }
                         else
                         {
@@ -2049,25 +2097,32 @@ namespace SVSU_Capstone_Project.Views
                             nLevel.strName = txtNLevelName.Text;
                             nLevel.strDescription = txtNLevelDescription.Text;
 
-                            //NEED TO MAKE strName UNIQUE OR ADD DUPLICATE CHECK HERE
+                            //Cannot add duplicate n-level
+                            if (lstNLevel.Items.Contains(nLevel.strName))
+                            {
+                                MessageBox.Show("Cannot add duplicate N-Level", "Alert");
+                                btnNLevelCancel_Click(sender, e);
+                            }
+                            else
+                            {
+                                //Save n-level
+                                ItemModel.Update<NLevel>(nLevel);
 
-                            //Save n-level
-                            ItemModel.Update<NLevel>(nLevel);
+                                //Alert user
+                                MessageBox.Show("Successful Modification", "Alert");
 
-                            //Alert user
-                            MessageBox.Show("Successful Modification", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnNLevelSave.Visible = false;
+                                btnNLevelCancel.Visible = false;
 
-                            //Hide buttons
-                            btnNLevelSave.Visible = false;
-                            btnNLevelCancel.Visible = false;
-
-                            //Enable buttons
-                            btnNLevelAdd.Enabled = true;
-                            btnNLevelDelete.Enabled = true;
-                            btnNLevelModify.Enabled = true;
+                                //Enable buttons
+                                btnNLevelAdd.Enabled = true;
+                                btnNLevelDelete.Enabled = true;
+                                btnNLevelModify.Enabled = true;
+                            }
                         }
                     }
                     catch
