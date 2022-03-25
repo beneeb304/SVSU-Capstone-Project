@@ -1561,7 +1561,7 @@ namespace SVSU_Capstone_Project.Views
         {
             if (btnCabinetAdd.Enabled)
             {
-                if (txtCabinetName.Text.Length > 0 && cmbRoom.Text.Length > 0)
+                if (txtCabinetName.Text.Length > 0 && cmbRoom.SelectedIndex >= 0)
                 {
                     try
                     {
@@ -1578,25 +1578,32 @@ namespace SVSU_Capstone_Project.Views
                                 objRoom = ItemModel.Get<Room>(x => x.strName == cmbRoom.SelectedItem.ToString())
                             };
 
-                            //NEED TO CHECK FOR DUPLICATE CABINETS IN THIS ROOM BEFORE ADDING
+                            //Check for duplicate cabinets in the room
+                            if (lstCabinet.Items.Contains(cabinet.strName))
+                            {
+                                MessageBox.Show("Cannot add duplicate cabinet!", "Alert");
+                                btnCabinetCancel_Click(sender, e);
+                            }
+                            else
+                            {
+                                //Add cabinet
+                                ItemModel.Add<Cabinet>(cabinet);
 
-                            //Add cabinet
-                            ItemModel.Add<Cabinet>(cabinet);
+                                //Alert user
+                                MessageBox.Show("Successful Add", "Alert");
 
-                            //Alert user
-                            MessageBox.Show("Successful Add", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnCabinetSave.Visible = false;
+                                btnCabinetCancel.Visible = false;
 
-                            //Hide buttons
-                            btnCabinetSave.Visible = false;
-                            btnCabinetCancel.Visible = false;
-
-                            //Enable buttons
-                            btnCabinetAdd.Enabled = true;
-                            btnCabinetDelete.Enabled = true;
-                            btnCabinetModify.Enabled = true;
+                                //Enable buttons
+                                btnCabinetAdd.Enabled = true;
+                                btnCabinetDelete.Enabled = true;
+                                btnCabinetModify.Enabled = true;
+                            }
                         }
                         else
                         {
@@ -1622,7 +1629,7 @@ namespace SVSU_Capstone_Project.Views
             else if (btnCabinetModify.Enabled)
             {
                 //If a cabinet is selected
-                if (lstCabinet.SelectedIndex >= 0)
+                if (lstCabinet.SelectedIndex >= 0 && cmbRoom.SelectedIndex >= 0 && txtCabinetName.Text != "")
                 {
                     try
                     {
@@ -1639,25 +1646,32 @@ namespace SVSU_Capstone_Project.Views
                             cabinet.strName = txtCabinetName.Text;
                             cabinet.strDescription = txtCabinetDescription.Text;
 
-                            //NEED TO CHECK FOR DUPLICATE CABINETS IN THIS ROOM BEFORE MODIFYING
+                            //Check for duplicate cabinets in the room
+                            if (lstCabinet.Items.Contains(cabinet.strName))
+                            {
+                                MessageBox.Show("Cannot add duplicate cabinet!", "Alert");
+                                btnCabinetCancel_Click(sender, e);
+                            }
+                            else
+                            {
+                                //Save cabinet
+                                ItemModel.Update<Cabinet>(cabinet);
 
-                            //Save cabinet
-                            ItemModel.Update<Cabinet>(cabinet);
+                                //Alert user
+                                MessageBox.Show("Successful Modification", "Alert");
 
-                            //Alert user
-                            MessageBox.Show("Successful Modification", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnCabinetSave.Visible = false;
+                                btnCabinetCancel.Visible = false;
 
-                            //Hide buttons
-                            btnCabinetSave.Visible = false;
-                            btnCabinetCancel.Visible = false;
-
-                            //Enable buttons
-                            btnCabinetAdd.Enabled = true;
-                            btnCabinetDelete.Enabled = true;
-                            btnCabinetModify.Enabled = true;
+                                //Enable buttons
+                                btnCabinetAdd.Enabled = true;
+                                btnCabinetDelete.Enabled = true;
+                                btnCabinetModify.Enabled = true;
+                            }
                         }
                     }
                     catch
@@ -1673,7 +1687,7 @@ namespace SVSU_Capstone_Project.Views
                 }
                 else
                 {
-                    MessageBox.Show("Please select a cabinet to modify before saving!", "Alert");
+                    MessageBox.Show("Please select a cabinet in a room and fill out valid information to modify before saving!", "Alert");
                 }
             }
         }
