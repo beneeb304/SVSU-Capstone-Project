@@ -39,6 +39,8 @@ namespace SVSU_Capstone_Project.Views
             nudCreateCost.Value = 0;
             btnCreate.Text = "Create";
             cmbCreateType.SelectedIndex = -1;
+            trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
+            trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
             trvCreateSelectByCategory.SelectedNode = null;
             trvCreateSelectByRoom.SelectedNode = null;
         }
@@ -69,7 +71,7 @@ namespace SVSU_Capstone_Project.Views
             cmbCreateType.DataSource = Enum.GetValues(typeof(ItemType));
             cmbCreateType.SelectedItem = selected.enuCommodityType;
             nudCreateAlertQty.Value = selected.intAlert_quantity;
-            nudCreateCost.Text = (selected.intCostInCents / 100.00).ToString();
+            nudCreateCost.Value = (decimal)(selected.intCostInCents / 100.00);
             btnCreate.Text = "Modify";
         }
         private void btnCreate_Click( object sender, EventArgs e )
@@ -87,8 +89,6 @@ namespace SVSU_Capstone_Project.Views
                     // Create a new item
                     selected = new Commodity();
                     submit = ( x ) => ItemModel.Add(x);
-                    trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
-                    trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
                 }
 
                 selected.strName = txtCreateItemName.Text;
@@ -145,10 +145,10 @@ namespace SVSU_Capstone_Project.Views
 
                     barcodeCommodity = ItemModel.Get<Commodity>(x => x.strBarCode == strBarcode);
 
-                    if(barcodeCommodity == null || barcodeCommodity.uidTuid == selected.uidTuid)
+                    if (barcodeCommodity == null || barcodeCommodity.uidTuid == selected.uidTuid)
                         blnExists = false;
                     else
-                        strBarcode = "";    
+                        strBarcode = "";
                 }
 
                 selected.strBarCode = strBarcode;
