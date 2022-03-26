@@ -26,6 +26,14 @@ namespace SVSU_Capstone_Project.Views
         {
             List<Category> lstCategories = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
             List<Vendor> lstVendors = ItemModel.GetMany<Vendor>().OrderBy(x => x.strName).ToList();
+            if (lstVendors.Find(x => x.uidTuid == Guid.Empty) == null)
+            {
+                lstVendors.Insert(0, new Vendor() { uidTuid = Guid.Empty, strName = "None" });
+            }else{
+                var emptyVendor = lstVendors.Find(x => x.uidTuid == Guid.Empty);
+                lstVendors.Remove(emptyVendor);
+                lstVendors.Insert(0, emptyVendor);
+            }            
             switch (e.TabPage.Name)
             {
                 case ("tbpAddItems"):
