@@ -46,6 +46,8 @@ namespace SVSU_Capstone_Project.Views
                 //If user isn't admin and somehow got this far, don't let them login
                 if(user.blnIsAdmin == false)
                 {
+                    //Set user back to null
+                    Authentication.ActiveUser = null;
                     throw new UserNotFoundException("Must be admin to login");
                 }
                 //If user is flagged to change password

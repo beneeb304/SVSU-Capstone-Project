@@ -32,5 +32,10 @@ namespace SVSU_Capstone_Project.Views
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
         }
+
+        private void btnDocumentation_Click( object sender, EventArgs e )
+        {
+            MessageBox.Show("This will pop up a PDF of the instruction manual from Doc team");
+        }
     }
 }

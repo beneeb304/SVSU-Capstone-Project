@@ -39,21 +39,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnDocumentation = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lowStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invDbDataSet = new SVSU_Capstone_Project.InvDbDataSet();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.checkedItemsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lowStockTableAdapter = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.LowStockTableAdapter();
-            this.checkedItemsTableAdapter1 = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.CheckedItemsTableAdapter1();
             this.commodityNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkedItemsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lowStockTableAdapter = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.LowStockTableAdapter();
+            this.checkedItemsTableAdapter1 = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.CheckedItemsTableAdapter1();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lowStockBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invDbDataSet)).BeginInit();
@@ -90,6 +90,7 @@
             this.btnDocumentation.TabIndex = 6;
             this.btnDocumentation.Text = "Documentation";
             this.btnDocumentation.UseVisualStyleBackColor = true;
+            this.btnDocumentation.Click += new System.EventHandler(this.btnDocumentation_Click);
             // 
             // dataGridView1
             // 
@@ -119,7 +120,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(9, 113);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -134,6 +135,24 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(307, 245);
             this.dataGridView1.TabIndex = 7;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.quantityDataGridViewTextBoxColumn.Width = 125;
             // 
             // lowStockBindingSource
             // 
@@ -176,7 +195,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.Location = new System.Drawing.Point(320, 113);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -191,41 +210,6 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(646, 245);
             this.dataGridView2.TabIndex = 8;
-            // 
-            // checkedItemsTableBindingSource
-            // 
-            this.checkedItemsTableBindingSource.DataMember = "CheckedItemsTable";
-            this.checkedItemsTableBindingSource.DataSource = this.invDbDataSet;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 84);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(269, 26);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Low Stock Commodities";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(315, 85);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(338, 26);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Checked Out Asset Equipment";
-            // 
-            // lowStockTableAdapter
-            // 
-            this.lowStockTableAdapter.ClearBeforeFill = true;
-            // 
-            // checkedItemsTableAdapter1
-            // 
-            this.checkedItemsTableAdapter1.ClearBeforeFill = true;
             // 
             // commodityNameDataGridViewTextBoxColumn
             // 
@@ -270,23 +254,40 @@
             this.detailsDataGridViewTextBoxColumn.ReadOnly = true;
             this.detailsDataGridViewTextBoxColumn.Width = 125;
             // 
-            // nameDataGridViewTextBoxColumn
+            // checkedItemsTableBindingSource
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 125;
+            this.checkedItemsTableBindingSource.DataMember = "CheckedItemsTable";
+            this.checkedItemsTableBindingSource.DataSource = this.invDbDataSet;
             // 
-            // quantityDataGridViewTextBoxColumn
+            // label3
             // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.quantityDataGridViewTextBoxColumn.Width = 125;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(11, 84);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(269, 26);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Low Stock Commodities";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(315, 85);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(338, 26);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Checked Out Asset Equipment";
+            // 
+            // lowStockTableAdapter
+            // 
+            this.lowStockTableAdapter.ClearBeforeFill = true;
+            // 
+            // checkedItemsTableAdapter1
+            // 
+            this.checkedItemsTableAdapter1.ClearBeforeFill = true;
             // 
             // frmHome
             // 
