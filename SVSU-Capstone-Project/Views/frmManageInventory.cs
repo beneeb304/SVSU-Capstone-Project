@@ -19,13 +19,21 @@ namespace SVSU_Capstone_Project.Views
         public frmManageInventory()
         {
             InitializeComponent();
-            trvUseSelectByRoom.PopulateCommodityTreeByRoom(); 
+            trvUseSelectByRoom.PopulateCommodityTreeByRoom(x => x.enuCommodityType != ItemType.Equipment);
         }
 
         private void tbcInventory_Selected( object sender, TabControlEventArgs e )
         {
             List<Category> lstCategories = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
             List<Vendor> lstVendors = ItemModel.GetMany<Vendor>().OrderBy(x => x.strName).ToList();
+            if (lstVendors.Find(x => x.uidTuid == Guid.Empty) == null)
+            {
+                lstVendors.Insert(0, new Vendor() { uidTuid = Guid.Empty, strName = "None" });
+            }else{
+                var emptyVendor = lstVendors.Find(x => x.uidTuid == Guid.Empty);
+                lstVendors.Remove(emptyVendor);
+                lstVendors.Insert(0, emptyVendor);
+            }            
             switch (e.TabPage.Name)
             {
                 case ("tbpAddItems"):
@@ -39,7 +47,7 @@ namespace SVSU_Capstone_Project.Views
                     trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
                     break;
                 case ("tbpUseItem"):
-                    trvUseSelectByRoom.PopulateCommodityTreeByRoom(); 
+                    trvUseSelectByRoom.PopulateCommodityTreeByRoom(x => x.enuCommodityType != ItemType.Equipment);
                     break;
                 case ("tbpMoveItem"):
                     this.cmbMoveCategory.DataSource = lstCategories;
@@ -151,34 +159,50 @@ namespace SVSU_Capstone_Project.Views
             public bool selectable;
             public ContextEntity val;
         }
-        public static void PopulateCommodityTreeByCategory( this TreeView treeView )
+        public static void PopulateCommodityTreeByCategory( this TreeView treeView, Func<Commodity, bool> filterCommodity = null )
         {
             treeView.Nodes.Clear();
             var lstCategories = ItemModel.GetMany<Category>();
             lstCategories.ForEach(cat =>
             {
                 var node = new TreeNode(cat.strName) { Tag = new TreeNodeTag { val = cat, selectable = false } };
-                cat.lstCommodities.ForEach(comm => { node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = new TreeNodeTag { val = comm, selectable = true } }); });
+                cat.lstCommodities.ForEach(comm =>
+                {
+                    if (filterCommodity == null || filterCommodity(comm))
+                    {
+                        node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = new TreeNodeTag { val = comm, selectable = true } });
+                    }
+                });
                 treeView.Nodes.Add(node);
             });
         }
 
-        public static void PopulateCommodityTreeByRoom( this TreeView treeView )
+        public static void PopulateCommodityTreeByRoom( this TreeView treeView, Func<Commodity, bool> filterCommodity = null )
         {
             treeView.Nodes.Clear();
             var lstRooms = ItemModel.GetMany<Room>();
-            lstRooms.OrderBy(x => x.strName).ToList().ForEach(room =>
+            lstRooms
+            .OrderBy(x => x.strName)
+            .ToList()
+            .ForEach(room =>
             {
                 var roomNode = new TreeNode(room.strName) { Tag = new TreeNodeTag { val = room, selectable = false } };
-                room.lstCabinets.OrderBy(x => x.strName).ToList().ForEach(cab =>
+                room.lstCabinets
+                .OrderBy(x => x.strName)
+                .ToList()
+                .ForEach(cab =>
                 {
                     var cabinetNode = new TreeNode(cab.strName) { Tag = new TreeNodeTag { val = cab, selectable = false } };
-                    cab.lstStorage.GroupBy(x => x.objNLevel).ToList().ForEach(grp =>
+                    cab.lstStorage
+                    .GroupBy(x => x.objNLevel)
+                    .ToList()
+                    .ForEach(grp =>
                     {
                         var nlevelNode = new TreeNode(grp.Key.strName) { Tag = new TreeNodeTag { val = grp.Key, selectable = false } };
                         grp.ToList().ForEach(stor =>
                         {
-                            nlevelNode.Nodes.Add(new TreeNode($"{stor.objCommodity.strName} ({stor.intQuantity})") { Tag = new TreeNodeTag { val = stor.objCommodity, selectable = true } });
+                            if (filterCommodity == null || filterCommodity(stor.objCommodity))
+                                nlevelNode.Nodes.Add(new TreeNode($"{stor.objCommodity.strName} ({stor.intQuantity})") { Tag = new TreeNodeTag { val = stor.objCommodity, selectable = true } });
                         });
                         cabinetNode.Nodes.Add(nlevelNode);
                     });
