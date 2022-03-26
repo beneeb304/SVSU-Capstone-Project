@@ -153,12 +153,14 @@ namespace SVSU_Capstone_Project.Views
                         (uint)this.nudAddQty.Value,
                         "Stock Added"
                     );
-                }catch(Exception ex)
+
+                    // notify User of success
+                    MessageBox.Show("Successfully added a quantity of " + nudAddQty.Value + " " + cmbAddCommodity.Text + " in room " + cmbAddRoom.Text + ", " + cmbAddCabinet.Text + ".");
+                }
+                catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                // notify User of success
-                MessageBox.Show("Successfully added a quantity of " + nudAddQty.Value + " " + cmbAddCommodity.Text + " in room " + cmbAddRoom.Text + ", " + cmbAddCabinet.Text + ".");
             }
             else
             {
