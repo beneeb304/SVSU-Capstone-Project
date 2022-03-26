@@ -73,7 +73,7 @@ namespace SVSU_Capstone_Project.Views
         }
 
         private void btnConfirmReset_Click( object sender, EventArgs e )
-        {
+        {            
             cmbDeleteCategory.SelectedIndex = -1;
         }
     }

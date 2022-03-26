@@ -53,11 +53,11 @@ namespace SVSU_Capstone_Project.Views
                 ).First(),
                 Authentication.ActiveUser,
                 Convert.ToUInt32(nudUseDeduct.Value),
-                "Item Used via Manage Inventory Tab"
+                "Item Used via Manage Inventory Tab",
+                () => trvUseSelectByRoom.Nodes.Remove(trvUseSelectByRoom.SelectedNode)
             );
             // notify User of success
             MessageBox.Show("Item used successfully.");
-
             btnUseCancel_Click();
         }
 
