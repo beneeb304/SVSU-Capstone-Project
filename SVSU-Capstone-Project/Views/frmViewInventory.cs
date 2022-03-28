@@ -43,9 +43,8 @@ namespace SVSU_Capstone_Project.Views
 
             //Set datasource for category each combobox
             cmbItemType.DataSource = Enum.GetValues(typeof(ItemType));
-            cmbItemType.SelectedIndex = -1;
-            lstCommodity.DataSource = null;
             cmbCategory.Enabled = false;
+            cmbItemType_SelectedIndexChanged(sender, e);
         }
 
         private void btnPrintBarcode_Click( object sender, EventArgs e )
@@ -144,8 +143,6 @@ namespace SVSU_Capstone_Project.Views
                     btnPrintBarcode.Enabled = false;
                     //Clear picturebox image
                     pcbBarcode.Image = null;
-                    //Show message box that barcode is null
-                    MessageBox.Show("Barcode for " + commodity.strName + " is Null.");
                 }
                 else
                 {

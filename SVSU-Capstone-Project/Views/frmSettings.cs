@@ -1250,7 +1250,8 @@ namespace SVSU_Capstone_Project.Views
         {
             if (btnUserAdd.Enabled)
             {
-                if (txtUserEmail.Text.Length > 0 && txtUserFName.Text.Length > 0 && txtUserLName.Text.Length > 0 && txtUserSVSUID.Text.Length > 0)
+                if (txtUserEmail.Text.Trim().Length > 0 && txtUserFName.Text.Trim().Length > 0 && 
+                    txtUserLName.Text.Trim().Length > 0 && txtUserSVSUID.Text.Trim().Length > 0)
                 {
                     try
                     {
@@ -1320,7 +1321,8 @@ namespace SVSU_Capstone_Project.Views
             else if (btnUserModify.Enabled)
             {
                 //If a user is selected
-                if (lstUser.SelectedIndex >= 0 && txtUserEmail.Text != "" && txtUserFName.Text != "" && txtUserLName.Text != "" && txtUserSVSUID.Text != "")
+                if (lstUser.SelectedIndex >= 0 && txtUserEmail.Text.Trim() != "" && txtUserFName.Text.Trim() != "" && 
+                    txtUserLName.Text.Trim() != "" && txtUserSVSUID.Text.Trim() != "")
                 {
                     try
                     {
@@ -1406,7 +1408,7 @@ namespace SVSU_Capstone_Project.Views
         {
             if (btnRoomAdd.Enabled)
             {
-                if (txtRoomName.Text.Length > 0)
+                if (txtRoomName.Text.Trim().Length > 0)
                 {
                     try
                     {
@@ -1473,7 +1475,7 @@ namespace SVSU_Capstone_Project.Views
             else if (btnRoomModify.Enabled)
             {
                 //If a room is selected
-                if (lstRoom.SelectedIndex >= 0 && txtRoomName.Text != "")
+                if (lstRoom.SelectedIndex >= 0 && txtRoomName.Text.Trim() != "")
                 {
                     try
                     {
@@ -1557,7 +1559,7 @@ namespace SVSU_Capstone_Project.Views
         {
             if (btnCabinetAdd.Enabled)
             {
-                if (txtCabinetName.Text.Length > 0 && cmbRoom.SelectedIndex >= 0)
+                if (txtCabinetName.Text.Trim() != "" && cmbRoom.SelectedIndex >= 0)
                 {
                     try
                     {
@@ -1623,9 +1625,9 @@ namespace SVSU_Capstone_Project.Views
                 }
             }
             else if (btnCabinetModify.Enabled)
-            {
+            {                
                 //If a cabinet is selected
-                if (lstCabinet.SelectedIndex >= 0 && cmbRoom.SelectedIndex >= 0 && txtCabinetName.Text != "")
+                if (lstCabinet.SelectedIndex >= 0 && cmbRoom.SelectedIndex >= 0 && txtCabinetName.Text.Trim() != "")
                 {
                     try
                     {
@@ -1710,7 +1712,7 @@ namespace SVSU_Capstone_Project.Views
         {
             if (btnCategoryAdd.Enabled)
             {
-                if (txtCategoryName.Text.Length > 0)
+                if (txtCategoryName.Text.Trim().Length > 0)
                 {
                     try
                     {
@@ -1777,7 +1779,7 @@ namespace SVSU_Capstone_Project.Views
             else if (btnCategoryModify.Enabled)
             {
                 //If a category is selected
-                if (lstCategory.SelectedIndex >= 0 && txtCategoryName.Text != "")
+                if (lstCategory.SelectedIndex >= 0 && txtCategoryName.Text.Trim() != "")
                 {
                     try
                     {
@@ -1861,7 +1863,7 @@ namespace SVSU_Capstone_Project.Views
         {
             if (btnVendorAdd.Enabled)
             {
-                if (txtVendorName.Text.Length > 0)
+                if (txtVendorName.Text.Trim().Length > 0)
                 {
                     try
                     {
@@ -1929,7 +1931,7 @@ namespace SVSU_Capstone_Project.Views
             else if (btnVendorModify.Enabled)
             {
                 //If a vendor is selected
-                if (lstVendor.SelectedIndex >= 0 && txtVendorName.Text != "")
+                if (lstVendor.SelectedIndex >= 0 && txtVendorName.Text.Trim() != "")
                 {
                     try
                     {
@@ -2014,7 +2016,7 @@ namespace SVSU_Capstone_Project.Views
         {
             if (btnNLevelAdd.Enabled)
             {
-                if (txtNLevelName.Text.Length > 0)
+                if (txtNLevelName.Text.Trim().Length > 0)
                 {
                     try
                     {
@@ -2081,7 +2083,7 @@ namespace SVSU_Capstone_Project.Views
             else if (btnNLevelModify.Enabled)
             {
                 //If a n-level is selected
-                if (lstNLevel.SelectedIndex >= 0 && txtNLevelName.Text != "")
+                if (lstNLevel.SelectedIndex >= 0 && txtNLevelName.Text.Trim() != "")
                 {
                     try
                     {
