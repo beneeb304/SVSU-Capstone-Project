@@ -39,7 +39,7 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnDeleteConfirm_Click( object sender, EventArgs e )
         {            
-            if(cmbDeleteCommodity.Text.Length > 0 && cmbDeleteCategory.Text.Length > 0)
+            if(cmbDeleteCommodity.SelectedIndex != -1)
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this commodity?",
                 "Confirm", MessageBoxButtons.YesNo);
@@ -73,7 +73,7 @@ namespace SVSU_Capstone_Project.Views
         }
 
         private void btnConfirmReset_Click( object sender, EventArgs e )
-        {
+        {            
             cmbDeleteCategory.SelectedIndex = -1;
         }
     }

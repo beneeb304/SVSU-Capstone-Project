@@ -290,9 +290,9 @@ namespace SVSU_Capstone_Project.Views
             this.lblUseRemainder.Location = new System.Drawing.Point(698, 207);
             this.lblUseRemainder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUseRemainder.Name = "lblUseRemainder";
-            this.lblUseRemainder.Size = new System.Drawing.Size(98, 19);
+            this.lblUseRemainder.Size = new System.Drawing.Size(120, 19);
             this.lblUseRemainder.TabIndex = 194;
-            this.lblUseRemainder.Text = "Remainder:";
+            this.lblUseRemainder.Text = "New Total Qty:";
             // 
             // lblUseUsed
             // 
@@ -301,9 +301,9 @@ namespace SVSU_Capstone_Project.Views
             this.lblUseUsed.Location = new System.Drawing.Point(550, 207);
             this.lblUseUsed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUseUsed.Name = "lblUseUsed";
-            this.lblUseUsed.Size = new System.Drawing.Size(55, 19);
+            this.lblUseUsed.Size = new System.Drawing.Size(85, 19);
             this.lblUseUsed.TabIndex = 193;
-            this.lblUseUsed.Text = "Used:";
+            this.lblUseUsed.Text = "Used Qty:";
             // 
             // label24
             // 
@@ -343,9 +343,9 @@ namespace SVSU_Capstone_Project.Views
             this.lblUseAvailable.Location = new System.Drawing.Point(406, 206);
             this.lblUseAvailable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUseAvailable.Name = "lblUseAvailable";
-            this.lblUseAvailable.Size = new System.Drawing.Size(83, 19);
+            this.lblUseAvailable.Size = new System.Drawing.Size(113, 19);
             this.lblUseAvailable.TabIndex = 189;
-            this.lblUseAvailable.Text = "Available:";
+            this.lblUseAvailable.Text = "Available Qty:";
             // 
             // nudUseDeduct
             // 

@@ -91,7 +91,7 @@ namespace SVSU_Capstone_Project.ViewModel
             return db.SaveChanges();
         }
 
-        public static bool UseItem( Storage objUsedFrom, User objUser, uint intQuantityChange, string strNotes )
+        public static bool UseItem( Storage objUsedFrom, User objUser, uint intQuantityChange, string strNotes, Action onDeleted = null )
         {
             if (objUsedFrom.objCommodity.enuCommodityType == ItemType.Consumable && objUsedFrom.intQuantity < intQuantityChange)
             {
@@ -112,7 +112,11 @@ namespace SVSU_Capstone_Project.ViewModel
 
             StartTransaction();
             Add(objLog);
-            if (objUsedFrom.intQuantity == 0) Delete(objUsedFrom);
+            if (objUsedFrom.intQuantity == 0)
+            {
+                Delete(objUsedFrom);
+                if (onDeleted != null) onDeleted();
+            }
             else Update(objUsedFrom);
             return CommitTransaction() > 0;
         }

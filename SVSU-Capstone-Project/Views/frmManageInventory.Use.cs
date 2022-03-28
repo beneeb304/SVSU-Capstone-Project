@@ -53,11 +53,11 @@ namespace SVSU_Capstone_Project.Views
                 ).First(),
                 Authentication.ActiveUser,
                 Convert.ToUInt32(nudUseDeduct.Value),
-                "Item Used via Manage Inventory Tab"
+                "Item Used via Manage Inventory Tab",
+                () => trvUseSelectByRoom.Nodes.Remove(trvUseSelectByRoom.SelectedNode)
             );
             // notify User of success
             MessageBox.Show("Item used successfully.");
-
             btnUseCancel_Click();
         }
 
@@ -82,21 +82,23 @@ namespace SVSU_Capstone_Project.Views
             if (selected.enuCommodityType == ItemType.Consumable)
             {
                 var itemStorage = selected.lstStorage.Where(x => x.objNLevel == ((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Tag).val as NLevel && x.objCabinet == ((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Parent.Tag).val as Cabinet).First();
-                lblUseAvailable.Text = "Available";
+                lblUseAvailable.Text = "Available Qty";
                 lblUseOperatorSymb.Text = "-";
+                lblUseUsed.Text = "Used Qty";
                 nudUseDeduct.Value = nudUseDeduct.Minimum;
                 nudUseDeduct.Maximum = itemStorage.intQuantity;
-                lblUseAvailable.Text = "Remainder";
+                lblUseRemainder.Text = "New Total Qty";
                 txtUseAvailable.Text = itemStorage.intQuantity.ToString();
             }
             else
             {
                 var itemUsage = ItemModel.Get<SimulatorUse>(x => x.objCommodity == selected);
                 if (itemUsage == null) ItemModel.Add(new SimulatorUse() { objCommodity = selected }, out itemUsage);
-                lblUseAvailable.Text = "Hours Used";
+                lblUseAvailable.Text = "Current Hours";
                 lblUseOperatorSymb.Text = "+";
+                lblUseUsed.Text = "Used Hours";
                 nudUseDeduct.Value = nudUseDeduct.Minimum;
-                lblUseAvailable.Text = "New Total";
+                lblUseRemainder.Text = "New Total Hours";
                 nudUseDeduct.Maximum = 1000;
                 txtUseAvailable.Text = itemUsage.intHoursUsed.ToString();
             }

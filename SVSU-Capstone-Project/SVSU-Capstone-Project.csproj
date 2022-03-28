@@ -88,10 +88,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarcodeScanner.cs" />
-    <Compile Include="frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Model\BarcodeScanner.cs" />
+    <Compile Include="frmMain.cs" />
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
@@ -108,15 +106,11 @@
     </Compile>
     <Compile Include="Model\SimulatorUse.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="Views\frmHome.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\frmHome.cs" />
     <Compile Include="Views\frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSetPassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\frmSetPassword.cs" />
     <Compile Include="Views\frmSetPassword.Designer.cs">
       <DependentUpon>frmSetPassword.cs</DependentUpon>
     </Compile>
@@ -146,71 +140,50 @@
     <Compile Include="Model\VendorItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\frmGenerateReports.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\frmGenerateReports.cs" />
     <Compile Include="Views\frmGenerateReports.Designer.cs">
       <DependentUpon>frmGenerateReports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmManageInventory.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\frmManageInventory.cs" />
     <Compile Include="Views\frmManageInventory.Designer.cs">
       <DependentUpon>frmManageInventory.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmManageInventory.Add.cs">
       <DependentUpon>frmManageInventory.cs</DependentUpon>
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmManageInventory.Create.cs">
       <DependentUpon>frmManageInventory.cs</DependentUpon>
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmManageInventory.Move.cs">
       <DependentUpon>frmManageInventory.cs</DependentUpon>
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmManageInventory.Use.cs">
       <DependentUpon>frmManageInventory.cs</DependentUpon>
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmManageInventory.Delete.cs">
       <DependentUpon>frmManageInventory.cs</DependentUpon>
-      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmCheckInOutItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\frmCheckInOutItems.cs" />
     <Compile Include="Views\frmCheckInOutItems.Designer.cs">
       <DependentUpon>frmCheckInOutItems.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\frmLogin.cs" />
     <Compile Include="Views\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmPrintBarcodes.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\frmPrintBarcodes.cs" />
     <Compile Include="Views\frmPrintBarcodes.Designer.cs">
       <DependentUpon>frmPrintBarcodes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\frmSettings.cs" />
     <Compile Include="Views\frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSplash.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\frmSplash.cs" />
     <Compile Include="Views\frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmViewInventory.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\frmViewInventory.cs" />
     <Compile Include="Views\frmViewInventory.Designer.cs">
       <DependentUpon>frmViewInventory.cs</DependentUpon>
     </Compile>
@@ -292,7 +265,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Printer_Manual.pdf" />
     <None Include="Resources\OPTIMA_B.TTF" />
+    <None Include="Resources\User_Guide.pdf" />
     <None Include="Views\OPTIMA_B.TTF" />
   </ItemGroup>
   <ItemGroup>

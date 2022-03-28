@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SVSU_Capstone_Project.ViewModel;
 using SVSU_Capstone_Project.Model;
+using System.IO;
 
 namespace SVSU_Capstone_Project.Views
 {
@@ -31,6 +32,40 @@ namespace SVSU_Capstone_Project.Views
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+        }
+
+        private void btnUserGuide_Click( object sender, EventArgs e )
+        {
+            try
+            {
+                var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                string filePath = Path.Combine(projectPath, "Resources\\User_Guide.pdf");
+                System.Diagnostics.Process.Start(filePath);
+            }
+            catch
+            {
+                MessageBox.Show("Could not open User Guide PDF! Please make sure:\r\r" +
+                    "The file isn't already opened.\r" +
+                    "The file exists in the resource folder.\r" +
+                    "A PDF viewer is installed.", "Alert");
+            }
+        }
+
+        private void btnPrinterManual_Click( object sender, EventArgs e )
+        {
+            try
+            {
+                var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                string filePath = Path.Combine(projectPath, "Resources\\Printer_Manual.pdf");
+                System.Diagnostics.Process.Start(filePath);
+            }
+            catch
+            {
+                MessageBox.Show("Could not open Printer Manual PDF! Please make sure:\r\r" +
+                    "The file isn't already opened.\r" +
+                    "The file exists in the resource folder.\r" +
+                    "A PDF viewer is installed.", "Alert");
+            }
         }
     }
 }

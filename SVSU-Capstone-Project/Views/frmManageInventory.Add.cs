@@ -42,12 +42,12 @@ namespace SVSU_Capstone_Project.Views
          */
         private void cmbAddRoom_SelectedValueChanged( object sender, EventArgs e )
         {
-            if(cmbAddCommodity.SelectedIndex > -1)
+            if (cmbAddCommodity.SelectedIndex > -1)
             {
                 this.cmbAddCabinet.DataSource = (this.cmbAddRoom.SelectedValue as Room).lstCabinets.OrderBy(x => x.strName).ToList();
                 txtCurrentQty_DependancyUpdated();
             }
-            
+
         }
 
         /* Function: cmbAddCommodity_SelectedValueChanged
@@ -87,8 +87,8 @@ namespace SVSU_Capstone_Project.Views
          */
         private void cmbAddCategory_SelectedValueChanged( object sender, EventArgs e )
         {
-           
-            if(cmbAddCategory.SelectedIndex > -1)
+
+            if (cmbAddCategory.SelectedIndex > -1)
             {
                 this.cmbAddCommodity.DataSource = (this.cmbAddCategory.SelectedValue as Category).lstCommodities;
             }
@@ -145,21 +145,29 @@ namespace SVSU_Capstone_Project.Views
                     );
                 }
                 // User info has to be passed, either globally or locally
-                ItemModel.RestockItem(
-                    storageItem,
-                    Authentication.ActiveUser,
-                    (uint)this.nudAddQty.Value,
-                    "Stock Added"
-                );
-                // notify User of success
-                MessageBox.Show("Successfully added a quantity of " + nudAddQty.Value + " "+ cmbAddCommodity.Text + " in room " + cmbAddRoom.Text + ", " + cmbAddCabinet.Text + ".");
+                try
+                {
+                    ItemModel.RestockItem(
+                        storageItem,
+                        Authentication.ActiveUser,
+                        (uint)this.nudAddQty.Value,
+                        "Stock Added"
+                    );
+
+                    // notify User of success
+                    MessageBox.Show("Successfully added a quantity of " + nudAddQty.Value + " " + cmbAddCommodity.Text + " in room " + cmbAddRoom.Text + ", " + cmbAddCabinet.Text + ".");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {
-                 // notify User of failure
+                // notify User of failure
                 MessageBox.Show("Please make sure all fields are properly filled in.");
             }
-           
+
             // clear fields
             btnAddCancel_Click(sender, e);
         }

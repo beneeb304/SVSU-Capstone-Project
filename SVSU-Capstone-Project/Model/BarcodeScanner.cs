@@ -23,10 +23,11 @@ namespace SVSU_Capstone_Project
      * bool blnStartRead; Used to indicate a potential scan has been initiated.
      * string strReadCode; Holds the string read in by the scan.
      * int intBeginTime; Marks the start time of a scan in milliseconds.
+     * CheckedItem checkedItem; Item found as a result of a barcode scan.
      */
     public partial class BarcodeScanner
     {
-        public const int intCHECK = 50; // 50 is what C# uses to indicate @
+        private const int intCHECK = 50; // 50 is what C# uses to indicate @
         private bool blnStartRead;
         private string strReadCode;
         private int intBeginTime;
@@ -45,12 +46,12 @@ namespace SVSU_Capstone_Project
          * Description: checks if a pressed key equals the required start character.
          * 
          * Local Variables
-         * int intKeyValue; the KeyValue in ASCII passed by the key pressed.
+         * int intKeyValue; the KeyValue passed by the key pressed.
          */
         public bool isSeqStart(int intKeyValue) { return intKeyValue == intCHECK; }
 
         /* Function resetValues
-         * Description: Sets the barcode scanner back to its default state
+         * Description: Sets the barcode scanner back to its default state.
          * 
          * No Local Variables
          */
@@ -59,6 +60,7 @@ namespace SVSU_Capstone_Project
             this.blnStartRead = false;
             this.strReadCode = "";
             this.intBeginTime = 0;
+            this.checkedItem = null;
         }
 
         /* Function beginScan
@@ -90,10 +92,9 @@ namespace SVSU_Capstone_Project
          */
         public CheckedItem getCommodity()
         {
-            //CheckedItem checkedItem = null;
             try { checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.strBarCode == strReadCode); } 
             catch{ Console.WriteLine("Commodity not found from Barcode"); }
-            resetValues();
+            //resetValues(); // Values are now reset by the receiving function.
             return checkedItem;
         }
     }

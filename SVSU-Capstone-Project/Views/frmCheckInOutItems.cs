@@ -25,13 +25,18 @@ namespace SVSU_Capstone_Project.Views
             InitializeComponent();
             // checked in/out status set to null
             tbcCheckInOut_SelectedIndexChanged(null, null);
+            // Checks if the form was called after a barcode scan to transfer the data.
+            if (frmMain.barcodeScanner.isStartRead())
+            {
+                setScannedBarcode(frmMain.barcodeScanner.checkedItem);
+            }
         }
 
         private void tbcCheckInOut_SelectedIndexChanged( object sender, EventArgs e )
         {
             /* Function: tbcCheckInOut_SelectedIndexChanged
             * -----------------------------------------------------------------------------
-            * Description: This ucntion will populate either the assets tab with data or the 
+            * Description: This function will populate either the assets tab with data or the 
             * Consumable tab with data depending on which tab is clicked. 
             * -----------------------------------------------------------------------------
             *  Parameter Dictionary (in parameter order):  
@@ -39,6 +44,9 @@ namespace SVSU_Capstone_Project.Views
             *  object sender; The object calling the method. 
             * -----------------------------------------------------------------------------
             * Local Variables
+            * object sender; Object calling the method, in this case the form's tabs.
+            * EventArgs e; Arguments passed by the calling object.
+            * CheckedItem checkedItems; Temporary CheckedItem to fill the controls of the form.
             */
 
             switch (tbcCheckInOut.SelectedTab.Name)
@@ -60,6 +68,16 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: cmbChkOutCommodity_SelectedIndexChanged
+         * Description: When a commodity is selected from the CheckOut combobox, update the quantity text field
+         * with the quantity of that commodity from the database.
+         * 
+         * Local Variables
+         * object sender; Object control that called the function, in this case cmbChkOutCommodity.
+         * EventArgs e; Arguments passed by the Object sender.
+         * Commodity objSelectedCommodity; Represents the commodity selected in the combobox.
+         * Storage quantity; Represents the commodity in specific storage so the quantity can be displayed.
+         */
         private void cmbChkOutCommodity_SelectedIndexChanged( object sender, EventArgs e )
         {
             if (cmbChkOutCommodity.SelectedIndex >= 0)
@@ -72,6 +90,26 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: btnChkOut_Click
+         * Description: Checks out a commodity item to a specific user. Ensures that the commodity is eligible to be checked out,
+         * and the user is eligible to checkout an item. A successful checkout it created then logged before sending it to the database.
+         * 
+         * Local Variables
+         * object sender; Object control that called the function, in this case btnChkOut.
+         * EventArgs e; Arguments passed by the Object sender.
+         * Commodity objSelectedCommodity; Represents the commodity selected in the combobox.
+         * Storage quantity; Represents the commodity in specific storage so the quantity can be displayed.
+         * Storage objStorage_tuid; The selected inventory commodity based on storage ID.
+         * String email; Email string of the user checking out the commodity.
+         * User objUser_tuid; User object of the user checking out the commodity looked up via email.
+         * CheckedItem doesExist; Used to determine if the selected commodity has been checked out by the user already.
+         * DialogueResult result; Prompts the user to confirm the checkout.
+         * DateTime timestamp; The time of checkout.
+         * Log log; Logs the transaction as a Log object.
+         * Log objLog_Tuid; To send the log object as an ItemModel.
+         * CheckedItem checkedItem; To store the details of the checkout and add it to the database.
+         * Storage storage; Updates the quantity to the user after a checkout.
+         */
         private void btnChkOut_Click( object sender, EventArgs e )
         {
             if (cmbChkOutStudent.SelectedIndex == -1 | cmbChkOutCommodity.SelectedIndex == -1)
@@ -141,18 +179,35 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: setScannedBarcode
+         * Description: When this form is called as the result of a barcode scan, take in the CheckedItem, check if it is in the checked in or 
+         * checked out items, then select it in the corresponding list. Reset the values of the barcode scanner in frmMain to complete the scan.
+         * 
+         * Local Variables
+         * CheckedItem checkedItem; The object found as a result of the barcode scan.
+         */
         public void setScannedBarcode( CheckedItem checkedItem )
         {
             if (cmbChkOutCommodity.Items.Contains(checkedItem.objCommodities))
             {
+                tbcCheckInOut.SelectTab(0);
                 cmbChkOutCommodity.SelectedItem = checkedItem.objCommodities;
             }
             else if (cmbChkInCommodity.Items.Contains(checkedItem.objCommodities))
             {
+                tbcCheckInOut.SelectTab(1);
                 cmbChkInCommodity.SelectedItem = checkedItem.objCommodities;
             }
+            frmMain.barcodeScanner.resetValues();
         }
 
+        /* Function: btnChkOutCancel_Click
+         * Description: Cancels any filled out fields on the form and sets them all back to their default state.
+         * 
+         * Local Variables
+         * Object sender; Object that calls this method, in this case btnChkOutCancel.
+         * EventArgs e; Arguments provided by the sender object.
+         */
         private void btnChkOutCancel_Click( object sender, EventArgs e )
         {
             cmbChkOutCommodity.SelectedIndex = -1;
@@ -161,6 +216,22 @@ namespace SVSU_Capstone_Project.Views
             txtAvailableChkOutQuantity.Text = "";
         }
 
+        /* Function: btnChkIn_Click
+         * Description: Marks a commoditiy checked out by a user to returned. Logs the transaction.
+         * 
+         * Local Variables
+         * Object sender; Object that calls this method, in this case btnChkIn.
+         * EventArgs e; Arguments provided by the sender object.
+         * String email; Email string of the user checking in the commodity.
+         * CheckedItem objSelectedItem; Represents the commodity selected in the combobox.
+         * Commodity objCommodity_tuid; Used to look up the commodity in the database by ID.
+         * CheckedItem doesExist; Used to determine if the selected commodity has been checked out by the user already.
+         * DateTime timestamp; The time of checkin.
+         * User objUser; User checking in the item.
+         * Storage objStorage_tuid; The selected inventory commodity based on storage ID.
+         * Storage storage; Updates the quantity to the user after a checkin.
+         * Log log; Logs the transaction as a Log object.
+         */
         private void btnChkIn_Click( object sender, EventArgs e )
         {
             if (cmbChkInStudent.SelectedIndex == -1 || cmbChkInCommodity.SelectedIndex == -1)
@@ -207,6 +278,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: cmbChkInStudent_SelectedIndexChanged
+         * Description: When a student is selected in the CheckIn page, the students email is used to pull
+         * which items were checked out by that user. 
+         * 
+         * Local Variables
+         * Object sender; Object that calls this method, in this case cmbChkInStudent.
+         * EventArgs e; Arguments provided by the sender object.
+         * String email; Email of the user selected.
+         */
         private void cmbChkInStudent_SelectedIndexChanged( object sender, EventArgs e )
         {
             cmbChkInCommodity.Enabled = false;
@@ -218,6 +298,13 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: btnChkInCancel_Click
+         * Description: Cancels any filled out fields in the form and sets them back to their default state.
+         * 
+         * Local Variables
+         * Object sender; Object that calls this method, in this case btnChkInCancel.
+         * EventArgs e; Arguments provided by the sender object.
+         */
         private void btnChkInCancel_Click( object sender, EventArgs e )
         {
             cmbChkInStudent.SelectedIndex = -1;
