@@ -190,10 +190,12 @@ namespace SVSU_Capstone_Project.Views
         {
             if (cmbChkOutCommodity.Items.Contains(checkedItem.objCommodities))
             {
+                tbcCheckInOut.SelectTab(0);
                 cmbChkOutCommodity.SelectedItem = checkedItem.objCommodities;
             }
             else if (cmbChkInCommodity.Items.Contains(checkedItem.objCommodities))
             {
+                tbcCheckInOut.SelectTab(1);
                 cmbChkInCommodity.SelectedItem = checkedItem.objCommodities;
             }
             frmMain.barcodeScanner.resetValues();

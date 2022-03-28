@@ -46,12 +46,12 @@ namespace SVSU_Capstone_Project
          * Description: checks if a pressed key equals the required start character.
          * 
          * Local Variables
-         * int intKeyValue; the KeyValue in ASCII passed by the key pressed.
+         * int intKeyValue; the KeyValue passed by the key pressed.
          */
         public bool isSeqStart(int intKeyValue) { return intKeyValue == intCHECK; }
 
         /* Function resetValues
-         * Description: Sets the barcode scanner back to its default state
+         * Description: Sets the barcode scanner back to its default state.
          * 
          * No Local Variables
          */
@@ -60,6 +60,7 @@ namespace SVSU_Capstone_Project
             this.blnStartRead = false;
             this.strReadCode = "";
             this.intBeginTime = 0;
+            this.checkedItem = null;
         }
 
         /* Function beginScan
@@ -91,7 +92,6 @@ namespace SVSU_Capstone_Project
          */
         public CheckedItem getCommodity()
         {
-            //CheckedItem checkedItem = null;
             try { checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.strBarCode == strReadCode); } 
             catch{ Console.WriteLine("Commodity not found from Barcode"); }
             //resetValues(); // Values are now reset by the receiving function.
