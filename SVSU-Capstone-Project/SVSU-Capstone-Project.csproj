@@ -292,7 +292,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Printer_Manual.pdf" />
     <None Include="Resources\OPTIMA_B.TTF" />
+    <None Include="Resources\User_Guide.pdf" />
     <None Include="Views\OPTIMA_B.TTF" />
   </ItemGroup>
   <ItemGroup>
