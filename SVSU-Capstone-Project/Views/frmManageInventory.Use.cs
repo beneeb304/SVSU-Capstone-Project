@@ -39,7 +39,7 @@ namespace SVSU_Capstone_Project.Views
         private void btnUse_Click( object sender = null, EventArgs e = null )
         {
             //Check if all fields are filled out
-            if (trvUseSelectByRoom.SelectedNode.Tag == null || nudUseDeduct.Value == 0)
+            if (trvUseSelectByRoom.SelectedNode?.Tag == null || nudUseDeduct.Value == 0)
             {
                 MessageBox.Show("Please select an item and used quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
