@@ -50,7 +50,14 @@ namespace SVSU_Capstone_Project
             //Make sure passwords match
             if (txtPassword.Text.Equals(txtRetypePassword.Text))
             {
-                if(txtPassword.Text.Length >= 8)
+                if (txtPassword.Text == "Capstone2022")
+                {
+                    //Don't let user use default password
+                    txtPassword.Text = "";
+                    txtRetypePassword.Text = "";
+                    MessageBox.Show("Password cannot be same as default password!", "Alert");
+                }
+                else if(txtPassword.Text.Length >= 8)
                 {
                     //Get hash
                     strHash = Authentication.GenerateHash(txtPassword.Text);
@@ -59,6 +66,7 @@ namespace SVSU_Capstone_Project
                 }
                 else
                 {
+                    //Don't let user use password
                     txtPassword.Text = "";
                     txtRetypePassword.Text = "";
                     MessageBox.Show("Password must be at least 8 characters in length!", "Alert");

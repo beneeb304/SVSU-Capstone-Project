@@ -667,7 +667,7 @@ namespace SVSU_Capstone_Project.Views
                 }
                 catch
                 {
-                    MessageBox.Show("Delete failed!", "Alert");
+                    MessageBox.Show("Delete failed! Make sure the vendor is not associated with any commodities.", "Alert");
                 }
 
                 //Clear fields
