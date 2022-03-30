@@ -218,7 +218,7 @@ namespace SVSU_Capstone_Project
         private void frmMain_KeyDown( object sender, KeyEventArgs e )
         {
             // When @ is entered by the keyboard (occurs at start of a scan), prepare for the scan.
-            if (barcodeScanner.isSeqStart(e.KeyValue))
+            if (barcodeScanner.isSeqStart(e))
             {
                 barcodeScanner.beginScan(); 
             }

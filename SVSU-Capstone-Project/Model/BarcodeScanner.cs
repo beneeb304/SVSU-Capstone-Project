@@ -48,7 +48,10 @@ namespace SVSU_Capstone_Project
          * Local Variables
          * int intKeyValue; the KeyValue passed by the key pressed.
          */
-        public bool isSeqStart(int intKeyValue) { return intKeyValue == intCHECK; }
+        public bool isSeqStart(KeyEventArgs e) 
+        {
+            return (e.KeyData == Keys.C || e.KeyData == Keys.E || e.KeyData == Keys.S);
+        }
 
         /* Function resetValues
          * Description: Sets the barcode scanner back to its default state.
