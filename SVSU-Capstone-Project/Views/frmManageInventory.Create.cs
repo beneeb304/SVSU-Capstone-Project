@@ -76,8 +76,25 @@ namespace SVSU_Capstone_Project.Views
         }
         private void btnCreate_Click( object sender, EventArgs e )
         {
+            
             //Make sure fields are filled out
-            if (txtCreateDescription.Text != "" && txtCreateItemName.Text != "" && cmbCreateCategory.Text != "")
+           if(string.IsNullOrWhiteSpace(txtCreateItemName.Text))
+            {
+                MessageBox.Show("Item name cannot be left blank or contain only space values. Please fill in the Item name textbox.", "Alert");
+            }
+           else if(string.IsNullOrWhiteSpace(txtCreateDescription.Text))
+            {
+                MessageBox.Show("Description cannot be left blank or contain only space values. Please fill in the Description textbox.", "Alert");
+            }
+           else if(string.IsNullOrWhiteSpace(cmbCreateCategory.Text))
+            {
+                MessageBox.Show("Category dropdown cannot be left blank. Please select a category from the dropdown list.", "Alert");
+            }
+           else if(string.IsNullOrWhiteSpace(cmbCreateType.Text))
+            {
+                MessageBox.Show("Item type cannot be left blank. Please select a item type from the dropdown list.", "Alert");
+            }
+           else
             {
                 Commodity selected = null;
                 Action<Commodity> submit = ( x ) => ItemModel.Update(x);
@@ -156,10 +173,10 @@ namespace SVSU_Capstone_Project.Views
                 MessageBox.Show("Successful " + btnCreate.Text, "Alert");
                 btnCreateCancel_Click(null, null);
             }
-            else
-            {
-                MessageBox.Show("Please fill out all of the commodity fields before creating!", "Alert");
-            }
+            //else
+            //{
+            //    MessageBox.Show("Please fill out all of the commodity fields before creating!", "Alert");
+            //}
         }
     }
 }
