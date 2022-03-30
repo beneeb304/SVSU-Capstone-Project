@@ -596,12 +596,17 @@ namespace SVSU_Capstone_Project.Views
             //If a category is selected
             if (lstCategory.SelectedIndex >= 0)
             {
+                string strName = lstCategory.SelectedItem.ToString();
+                
                 //Get category
-                Category category = ItemModel.Get<Category>(x => x.strName == lstCategory.SelectedItem.ToString());
+                Category category = ItemModel.Get<Category>(x => x.strName == strName);
 
-                //Populate other controls
-                txtCategoryDescription.Text = category.strDescription;
-                txtCategoryName.Text = category.strName;
+                if(category != null)
+                {
+                    //Populate other controls
+                    txtCategoryDescription.Text = category.strDescription;
+                    txtCategoryName.Text = category.strName;
+                }
             }
         }
 
@@ -1417,21 +1422,21 @@ namespace SVSU_Capstone_Project.Views
                             txtRoomName.Text + " as a new room?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Set room properties                        
-                            Room room = new Room
-                            {
-                                strDescription = txtRoomDescription.Text,
-                                strName = txtRoomName.Text
-                            };
-
                             //Check for duplicates
-                            if (lstRoom.Items.Contains(room.strName))
+                            if (lstRoom.Items.Contains(txtRoomName.Text))
                             {
                                 MessageBox.Show("Cannot add duplicate room", "Alert");
                                 btnRoomCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Set room properties                        
+                                Room room = new Room
+                                {
+                                    strDescription = txtRoomDescription.Text,
+                                    strName = txtRoomName.Text
+                                };
+
                                 //Add room
                                 ItemModel.Add<Room>(room);
 
@@ -1484,21 +1489,21 @@ namespace SVSU_Capstone_Project.Views
                             lstRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Get room
-                            Room room = ItemModel.Get<Room>(x => x.strName == lstRoom.SelectedItem.ToString());
-
-                            //Modify room
-                            room.strName = txtRoomName.Text;
-                            room.strDescription = txtRoomDescription.Text;
-
                             //Check for duplicates
-                            if (lstRoom.Items.Contains(room.strName))
+                            if (lstRoom.Items.Contains(txtRoomName.Text) && !lstRoom.SelectedItem.ToString().Equals(txtRoomName.Text))
                             {
-                                MessageBox.Show("Cannot add duplicate room", "Alert");
+                                MessageBox.Show("Cannot modify duplicate room", "Alert");
                                 btnRoomCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Get room
+                                Room room = ItemModel.Get<Room>(x => x.strName == lstRoom.SelectedItem.ToString());
+
+                                //Modify room
+                                room.strName = txtRoomName.Text;
+                                room.strDescription = txtRoomDescription.Text;
+
                                 //Save room
                                 ItemModel.Update<Room>(room);
 
@@ -1568,22 +1573,22 @@ namespace SVSU_Capstone_Project.Views
                             txtCabinetName.Text + " as a new cabinet for " + cmbRoom.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Set cabinet properties                        
-                            Cabinet cabinet = new Cabinet()
-                            {
-                                strDescription = txtCabinetDescription.Text,
-                                strName = txtCabinetName.Text,
-                                objRoom = ItemModel.Get<Room>(x => x.strName == cmbRoom.SelectedItem.ToString())
-                            };
-
                             //Check for duplicate cabinets in the room
-                            if (lstCabinet.Items.Contains(cabinet.strName))
+                            if (lstCabinet.Items.Contains(txtCabinetName.Text))
                             {
                                 MessageBox.Show("Cannot add duplicate cabinet!", "Alert");
                                 btnCabinetCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Set cabinet properties                        
+                                Cabinet cabinet = new Cabinet()
+                                {
+                                    strDescription = txtCabinetDescription.Text,
+                                    strName = txtCabinetName.Text,
+                                    objRoom = ItemModel.Get<Room>(x => x.strName == cmbRoom.SelectedItem.ToString())
+                                };
+
                                 //Add cabinet
                                 ItemModel.Add<Cabinet>(cabinet);
 
@@ -1636,22 +1641,22 @@ namespace SVSU_Capstone_Project.Views
                             lstCabinet.SelectedItem.ToString() + " in " + cmbRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Get cabinet
-                            Cabinet cabinet = ItemModel.Get<Cabinet>(x => x.strName == lstCabinet.SelectedItem.ToString() &&
-                                x.objRoom.strName == cmbRoom.SelectedItem.ToString());
-
-                            //Modify cabinet
-                            cabinet.strName = txtCabinetName.Text;
-                            cabinet.strDescription = txtCabinetDescription.Text;
-
                             //Check for duplicate cabinets in the room
-                            if (lstCabinet.Items.Contains(cabinet.strName))
+                            if (lstCabinet.Items.Contains(txtCabinetName.Text) && !lstCabinet.SelectedItem.ToString().Equals(txtCabinetName.Text))
                             {
-                                MessageBox.Show("Cannot add duplicate cabinet!", "Alert");
+                                MessageBox.Show("Cannot modify duplicate cabinet!", "Alert");
                                 btnCabinetCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Get cabinet
+                                Cabinet cabinet = ItemModel.Get<Cabinet>(x => x.strName == lstCabinet.SelectedItem.ToString() &&
+                                    x.objRoom.strName == cmbRoom.SelectedItem.ToString());
+
+                                //Modify cabinet
+                                cabinet.strName = txtCabinetName.Text;
+                                cabinet.strDescription = txtCabinetDescription.Text;
+
                                 //Save cabinet
                                 ItemModel.Update<Cabinet>(cabinet);
 
@@ -1721,29 +1726,26 @@ namespace SVSU_Capstone_Project.Views
                             txtCategoryName.Text + " as a new category?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Set room properties                        
-                            Category category = new Category()
-                            {
-                                strDescription = txtCategoryDescription.Text,
-                                strName = txtCategoryName.Text
-                            };
-
                             //Check for duplicates
-                            if (lstCategory.Items.Contains(category.strName))
+                            if (lstCategory.Items.Contains(txtCategoryName.Text))
                             {
                                 MessageBox.Show("Cannot add duplicate category", "Alert");
                                 btnCategoryCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Set room properties                        
+                                Category category = new Category()
+                                {
+                                    strDescription = txtCategoryDescription.Text,
+                                    strName = txtCategoryName.Text
+                                };
+
                                 //Add cabinet
                                 ItemModel.Add<Category>(category);
 
                                 //Alert user
                                 MessageBox.Show("Successful Add", "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
 
                                 //Hide buttons
                                 btnCategorySave.Visible = false;
@@ -1788,29 +1790,25 @@ namespace SVSU_Capstone_Project.Views
                             lstCategory.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Get category
-                            Category category = ItemModel.Get<Category>(x => x.strName == lstCategory.SelectedItem.ToString());
-
-                            //Modify category
-                            category.strName = txtCategoryName.Text;
-                            category.strDescription = txtCategoryDescription.Text;
-
-                            //Check for duplicates
-                            if (lstCategory.Items.Contains(category.strName))
+                            if (lstCategory.Items.Contains(txtCategoryName.Text) && !lstCategory.SelectedItem.ToString().Equals(txtCategoryName.Text))
                             {
-                                MessageBox.Show("Cannot add duplicate category", "Alert");
+                                MessageBox.Show("Cannot modify duplicate category", "Alert");
                                 btnCategoryCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Make category
+                                Category category = ItemModel.Get<Category>(x => x.strName == lstCategory.SelectedItem.ToString());
+
+                                //Modify category
+                                category.strName = txtCategoryName.Text;
+                                category.strDescription = txtCategoryDescription.Text;
+
                                 //Save category
                                 ItemModel.Update<Category>(category);
 
                                 //Alert user
                                 MessageBox.Show("Successful Modification", "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
 
                                 //Hide buttons
                                 btnCategorySave.Visible = false;
@@ -1827,6 +1825,9 @@ namespace SVSU_Capstone_Project.Views
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid category information!", "Alert");
                     }
+
+                    //Refresh list
+                    tbcSettings_SelectedIndexChanged(sender, e);
 
                     //Clear fields
                     ClearCategoryFields();
@@ -1872,22 +1873,22 @@ namespace SVSU_Capstone_Project.Views
                             txtVendorName.Text + " as a new vendor?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Set room properties
-                            Vendor vendor = new Vendor()
-                            {
-                                strDescription = txtVendorDescription.Text,
-                                strName = txtVendorName.Text,
-                                strHomepage = txtVendorHomepage.Text
-                            };
-
                             //Cannot add duplicate vendor
-                            if (lstVendor.Items.Contains(vendor.strName))
+                            if (lstVendor.Items.Contains(txtVendorName.Text))
                             {
                                 MessageBox.Show("Cannot add duplicate vendor", "Alert");
                                 btnVendorCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Set room properties
+                                Vendor vendor = new Vendor()
+                                {
+                                    strDescription = txtVendorDescription.Text,
+                                    strName = txtVendorName.Text,
+                                    strHomepage = txtVendorHomepage.Text
+                                };
+
                                 //Add vendor
                                 ItemModel.Add<Vendor>(vendor);
 
@@ -1940,22 +1941,22 @@ namespace SVSU_Capstone_Project.Views
                             lstVendor.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Get vendor
-                            Vendor vendor = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
-
-                            //Modify category
-                            vendor.strName = txtVendorName.Text;
-                            vendor.strDescription = txtVendorDescription.Text;
-                            vendor.strHomepage = txtVendorHomepage.Text;
-
                             //Cannot add duplicate vendor
-                            if (lstVendor.Items.Contains(vendor.strName))
+                            if (lstVendor.Items.Contains(txtVendorName.Text) && !lstVendor.SelectedItem.ToString().Equals(txtVendorName.Text))
                             {
-                                MessageBox.Show("Cannot add duplicate vendor", "Alert");
+                                MessageBox.Show("Cannot modify duplicate vendor", "Alert");
                                 btnVendorCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Get vendor
+                                Vendor vendor = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
+
+                                //Modify category
+                                vendor.strName = txtVendorName.Text;
+                                vendor.strDescription = txtVendorDescription.Text;
+                                vendor.strHomepage = txtVendorHomepage.Text;
+
                                 //Save vendor
                                 ItemModel.Update<Vendor>(vendor);
 
@@ -2025,21 +2026,21 @@ namespace SVSU_Capstone_Project.Views
                             txtNLevelName.Text + " as a new N-Level?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Set n-level properties                        
-                            NLevel nLevel = new NLevel()
-                            {
-                                strDescription = txtNLevelDescription.Text,
-                                strName = txtNLevelName.Text
-                            };
-
                             //Cannot add duplicate n-level
-                            if (lstNLevel.Items.Contains(nLevel.strName))
+                            if (lstNLevel.Items.Contains(txtNLevelName.Text))
                             {
                                 MessageBox.Show("Cannot add duplicate N-Level", "Alert");
                                 btnNLevelCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Set n-level properties                        
+                                NLevel nLevel = new NLevel()
+                                {
+                                    strDescription = txtNLevelDescription.Text,
+                                    strName = txtNLevelName.Text
+                                };
+
                                 //Add n-level
                                 ItemModel.Add<NLevel>(nLevel);
 
@@ -2092,21 +2093,21 @@ namespace SVSU_Capstone_Project.Views
                             lstNLevel.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Get n-level
-                            NLevel nLevel = ItemModel.Get<NLevel>(x => x.strName == lstNLevel.SelectedItem.ToString());
-
-                            //Modify n-level
-                            nLevel.strName = txtNLevelName.Text;
-                            nLevel.strDescription = txtNLevelDescription.Text;
-
                             //Cannot add duplicate n-level
-                            if (lstNLevel.Items.Contains(nLevel.strName))
+                            if (lstNLevel.Items.Contains(txtNLevelName.Text) && !lstNLevel.SelectedItem.ToString().Equals(txtNLevelName.Text))
                             {
-                                MessageBox.Show("Cannot add duplicate N-Level", "Alert");
+                                MessageBox.Show("Cannot modify duplicate N-Level", "Alert");
                                 btnNLevelCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Get n-level
+                                NLevel nLevel = ItemModel.Get<NLevel>(x => x.strName == lstNLevel.SelectedItem.ToString());
+
+                                //Modify n-level
+                                nLevel.strName = txtNLevelName.Text;
+                                nLevel.strDescription = txtNLevelDescription.Text;
+
                                 //Save n-level
                                 ItemModel.Update<NLevel>(nLevel);
 
