@@ -89,28 +89,37 @@ namespace SVSU_Capstone_Project.Views
                 MessageBox.Show("Please fill out all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            var storageSource = ItemModel.Get<Storage>(x => x.objCommodity == (cmbMoveCommodity.SelectedItem as Commodity) && x.objCabinet == (cmbMoveCabinetFrom.SelectedItem as Cabinet) && x.objNLevel == (cmbMoveNLevelFrom.SelectedItem as NLevel));
-            var storageDestination = ItemModel.Get<Storage>(x => x.objCommodity == (cmbMoveCommodity.SelectedItem as Commodity) && x.objCabinet == (cmbMoveCabinetTo.SelectedItem as Cabinet) && x.objNLevel == (cmbMoveNLevelTo.SelectedItem as NLevel));
-            if (storageDestination == null)
+
+            //Double check for positive quantity?
+            if(int.Parse(txtMoveAvailable.Text) < 1)
             {
-                // create new storage
-                ItemModel.Add<Storage>(new Storage()
-                {
-                    objCommodity = (cmbMoveCommodity.SelectedItem as Commodity),
-                    objCabinet = (cmbMoveCabinetTo.SelectedItem as Cabinet),
-                    objNLevel = (cmbMoveNLevelTo.SelectedItem as NLevel),
-                    intQuantity = 0
-                }, out storageDestination);
+                MessageBox.Show("Must have positive inventory to move!", "Alert");
             }
-            ItemModel.MoveItem(
-                storageSource,
-                storageDestination,
-                Authentication.ActiveUser,
-                (uint)nudMoveQuantity.Value,
-                ""
-            );
-            MessageBox.Show("Item(s) moved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            btnMoveReset_Click(null, null);
+            else
+            {
+                var storageSource = ItemModel.Get<Storage>(x => x.objCommodity == (cmbMoveCommodity.SelectedItem as Commodity) && x.objCabinet == (cmbMoveCabinetFrom.SelectedItem as Cabinet) && x.objNLevel == (cmbMoveNLevelFrom.SelectedItem as NLevel));
+                var storageDestination = ItemModel.Get<Storage>(x => x.objCommodity == (cmbMoveCommodity.SelectedItem as Commodity) && x.objCabinet == (cmbMoveCabinetTo.SelectedItem as Cabinet) && x.objNLevel == (cmbMoveNLevelTo.SelectedItem as NLevel));
+                if (storageDestination == null)
+                {
+                    // create new storage
+                    ItemModel.Add<Storage>(new Storage()
+                    {
+                        objCommodity = (cmbMoveCommodity.SelectedItem as Commodity),
+                        objCabinet = (cmbMoveCabinetTo.SelectedItem as Cabinet),
+                        objNLevel = (cmbMoveNLevelTo.SelectedItem as NLevel),
+                        intQuantity = 0
+                    }, out storageDestination);
+                }
+                ItemModel.MoveItem(
+                    storageSource,
+                    storageDestination,
+                    Authentication.ActiveUser,
+                    (uint)nudMoveQuantity.Value,
+                    ""
+                );
+                MessageBox.Show("Item(s) moved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnMoveReset_Click(null, null);
+            }
         }
     }
 }
