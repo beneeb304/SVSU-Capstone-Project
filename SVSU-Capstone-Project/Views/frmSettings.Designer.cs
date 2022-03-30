@@ -177,7 +177,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnUserCancel.Location = new System.Drawing.Point(705, 75);
             this.btnUserCancel.Name = "btnUserCancel";
             this.btnUserCancel.Size = new System.Drawing.Size(210, 40);
-            this.btnUserCancel.TabIndex = 128;
+            this.btnUserCancel.TabIndex = 14;
             this.btnUserCancel.Text = "Cancel";
             this.btnUserCancel.UseVisualStyleBackColor = true;
             this.btnUserCancel.Visible = false;
@@ -190,7 +190,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnUserSave.Location = new System.Drawing.Point(705, 29);
             this.btnUserSave.Name = "btnUserSave";
             this.btnUserSave.Size = new System.Drawing.Size(210, 40);
-            this.btnUserSave.TabIndex = 127;
+            this.btnUserSave.TabIndex = 13;
             this.btnUserSave.Text = "Save User";
             this.btnUserSave.UseVisualStyleBackColor = true;
             this.btnUserSave.Visible = false;
@@ -203,7 +203,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnUserUpload.Location = new System.Drawing.Point(489, 29);
             this.btnUserUpload.Name = "btnUserUpload";
             this.btnUserUpload.Size = new System.Drawing.Size(210, 40);
-            this.btnUserUpload.TabIndex = 126;
+            this.btnUserUpload.TabIndex = 8;
             this.btnUserUpload.Text = "Mass Upload Students";
             this.btnUserUpload.UseVisualStyleBackColor = true;
             this.btnUserUpload.Click += new System.EventHandler(this.btnUpload_Click);
@@ -215,7 +215,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnUserPassword.Location = new System.Drawing.Point(489, 167);
             this.btnUserPassword.Name = "btnUserPassword";
             this.btnUserPassword.Size = new System.Drawing.Size(210, 40);
-            this.btnUserPassword.TabIndex = 125;
+            this.btnUserPassword.TabIndex = 11;
             this.btnUserPassword.Text = "Reset Password";
             this.btnUserPassword.UseVisualStyleBackColor = true;
             this.btnUserPassword.Click += new System.EventHandler(this.btnUserPassword_Click);
@@ -237,7 +237,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserPhone.Location = new System.Drawing.Point(228, 230);
             this.txtUserPhone.Name = "txtUserPhone";
             this.txtUserPhone.Size = new System.Drawing.Size(255, 22);
-            this.txtUserPhone.TabIndex = 5;
+            this.txtUserPhone.TabIndex = 6;
             // 
             // label10
             // 
@@ -256,7 +256,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserEmail.Location = new System.Drawing.Point(228, 186);
             this.txtUserEmail.Name = "txtUserEmail";
             this.txtUserEmail.Size = new System.Drawing.Size(255, 22);
-            this.txtUserEmail.TabIndex = 4;
+            this.txtUserEmail.TabIndex = 5;
             // 
             // label8
             // 
@@ -275,7 +275,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserSVSUID.Location = new System.Drawing.Point(228, 51);
             this.txtUserSVSUID.Name = "txtUserSVSUID";
             this.txtUserSVSUID.Size = new System.Drawing.Size(255, 22);
-            this.txtUserSVSUID.TabIndex = 1;
+            this.txtUserSVSUID.TabIndex = 2;
             // 
             // label7
             // 
@@ -294,7 +294,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserLName.Location = new System.Drawing.Point(228, 140);
             this.txtUserLName.Name = "txtUserLName";
             this.txtUserLName.Size = new System.Drawing.Size(255, 22);
-            this.txtUserLName.TabIndex = 3;
+            this.txtUserLName.TabIndex = 4;
             // 
             // label6
             // 
@@ -325,7 +325,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnUserModify.Location = new System.Drawing.Point(489, 121);
             this.btnUserModify.Name = "btnUserModify";
             this.btnUserModify.Size = new System.Drawing.Size(210, 40);
-            this.btnUserModify.TabIndex = 9;
+            this.btnUserModify.TabIndex = 10;
             this.btnUserModify.Text = "Modify User";
             this.btnUserModify.UseVisualStyleBackColor = true;
             this.btnUserModify.Click += new System.EventHandler(this.btnModifyUser_Click);
@@ -337,7 +337,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserFName.Location = new System.Drawing.Point(228, 95);
             this.txtUserFName.Name = "txtUserFName";
             this.txtUserFName.Size = new System.Drawing.Size(255, 22);
-            this.txtUserFName.TabIndex = 2;
+            this.txtUserFName.TabIndex = 3;
             // 
             // btnUserDelete
             // 
@@ -358,7 +358,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnUserAdd.Location = new System.Drawing.Point(489, 75);
             this.btnUserAdd.Name = "btnUserAdd";
             this.btnUserAdd.Size = new System.Drawing.Size(210, 40);
-            this.btnUserAdd.TabIndex = 8;
+            this.btnUserAdd.TabIndex = 9;
             this.btnUserAdd.Text = "Add User";
             this.btnUserAdd.UseVisualStyleBackColor = true;
             this.btnUserAdd.Click += new System.EventHandler(this.btnAddUser_Click);
@@ -372,7 +372,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstUser.Margin = new System.Windows.Forms.Padding(2);
             this.lstUser.Name = "lstUser";
             this.lstUser.Size = new System.Drawing.Size(210, 372);
-            this.lstUser.TabIndex = 11;
+            this.lstUser.TabIndex = 1;
             this.lstUser.SelectedIndexChanged += new System.EventHandler(this.lstUser_SelectedIndexChanged);
             // 
             // label3
@@ -415,7 +415,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnRoomCancel.Location = new System.Drawing.Point(705, 75);
             this.btnRoomCancel.Name = "btnRoomCancel";
             this.btnRoomCancel.Size = new System.Drawing.Size(210, 40);
-            this.btnRoomCancel.TabIndex = 130;
+            this.btnRoomCancel.TabIndex = 8;
             this.btnRoomCancel.Text = "Cancel";
             this.btnRoomCancel.UseVisualStyleBackColor = true;
             this.btnRoomCancel.Visible = false;
@@ -428,7 +428,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnRoomSave.Location = new System.Drawing.Point(705, 29);
             this.btnRoomSave.Name = "btnRoomSave";
             this.btnRoomSave.Size = new System.Drawing.Size(210, 40);
-            this.btnRoomSave.TabIndex = 129;
+            this.btnRoomSave.TabIndex = 7;
             this.btnRoomSave.Text = "Save Room";
             this.btnRoomSave.UseVisualStyleBackColor = true;
             this.btnRoomSave.Visible = false;
@@ -441,7 +441,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnRoomModify.Location = new System.Drawing.Point(489, 75);
             this.btnRoomModify.Name = "btnRoomModify";
             this.btnRoomModify.Size = new System.Drawing.Size(210, 40);
-            this.btnRoomModify.TabIndex = 4;
+            this.btnRoomModify.TabIndex = 5;
             this.btnRoomModify.Text = "Modify Room";
             this.btnRoomModify.UseVisualStyleBackColor = true;
             this.btnRoomModify.Click += new System.EventHandler(this.btnModifyRoom_Click);
@@ -453,7 +453,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnRoomAdd.Location = new System.Drawing.Point(489, 29);
             this.btnRoomAdd.Name = "btnRoomAdd";
             this.btnRoomAdd.Size = new System.Drawing.Size(210, 40);
-            this.btnRoomAdd.TabIndex = 3;
+            this.btnRoomAdd.TabIndex = 4;
             this.btnRoomAdd.Text = "Add Room";
             this.btnRoomAdd.UseVisualStyleBackColor = true;
             this.btnRoomAdd.Click += new System.EventHandler(this.btnAddRoom_Click);
@@ -476,7 +476,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtRoomDescription.Multiline = true;
             this.txtRoomDescription.Name = "txtRoomDescription";
             this.txtRoomDescription.Size = new System.Drawing.Size(258, 124);
-            this.txtRoomDescription.TabIndex = 2;
+            this.txtRoomDescription.TabIndex = 3;
             // 
             // label4
             // 
@@ -495,7 +495,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtRoomName.Location = new System.Drawing.Point(225, 48);
             this.txtRoomName.Name = "txtRoomName";
             this.txtRoomName.Size = new System.Drawing.Size(258, 22);
-            this.txtRoomName.TabIndex = 1;
+            this.txtRoomName.TabIndex = 2;
             // 
             // btnRoomDelete
             // 
@@ -504,7 +504,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnRoomDelete.Location = new System.Drawing.Point(489, 121);
             this.btnRoomDelete.Name = "btnRoomDelete";
             this.btnRoomDelete.Size = new System.Drawing.Size(210, 40);
-            this.btnRoomDelete.TabIndex = 7;
+            this.btnRoomDelete.TabIndex = 6;
             this.btnRoomDelete.Text = "Delete Room";
             this.btnRoomDelete.UseVisualStyleBackColor = true;
             this.btnRoomDelete.Click += new System.EventHandler(this.btnDeleteRoom_Click);
@@ -518,7 +518,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstRoom.Margin = new System.Windows.Forms.Padding(2);
             this.lstRoom.Name = "lstRoom";
             this.lstRoom.Size = new System.Drawing.Size(210, 372);
-            this.lstRoom.TabIndex = 6;
+            this.lstRoom.TabIndex = 1;
             this.lstRoom.SelectedIndexChanged += new System.EventHandler(this.lstRoom_SelectedIndexChanged);
             // 
             // lblRoom
@@ -562,7 +562,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCabinetCancel.Location = new System.Drawing.Point(705, 75);
             this.btnCabinetCancel.Name = "btnCabinetCancel";
             this.btnCabinetCancel.Size = new System.Drawing.Size(210, 40);
-            this.btnCabinetCancel.TabIndex = 132;
+            this.btnCabinetCancel.TabIndex = 9;
             this.btnCabinetCancel.Text = "Cancel";
             this.btnCabinetCancel.UseVisualStyleBackColor = true;
             this.btnCabinetCancel.Visible = false;
@@ -575,7 +575,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCabinetSave.Location = new System.Drawing.Point(705, 29);
             this.btnCabinetSave.Name = "btnCabinetSave";
             this.btnCabinetSave.Size = new System.Drawing.Size(210, 40);
-            this.btnCabinetSave.TabIndex = 131;
+            this.btnCabinetSave.TabIndex = 8;
             this.btnCabinetSave.Text = "Save Cabinet";
             this.btnCabinetSave.UseVisualStyleBackColor = true;
             this.btnCabinetSave.Visible = false;
@@ -665,7 +665,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCabinet.Margin = new System.Windows.Forms.Padding(2);
             this.lstCabinet.Name = "lstCabinet";
             this.lstCabinet.Size = new System.Drawing.Size(210, 372);
-            this.lstCabinet.TabIndex = 2;
+            this.lstCabinet.TabIndex = 1;
             this.lstCabinet.SelectedIndexChanged += new System.EventHandler(this.lstCabinet_SelectedIndexChanged);
             // 
             // label17
@@ -697,7 +697,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbRoom.Location = new System.Drawing.Point(225, 27);
             this.cmbRoom.Name = "cmbRoom";
             this.cmbRoom.Size = new System.Drawing.Size(258, 24);
-            this.cmbRoom.TabIndex = 1;
+            this.cmbRoom.TabIndex = 2;
             this.cmbRoom.SelectedIndexChanged += new System.EventHandler(this.cmbRoom_SelectedIndexChanged);
             // 
             // tbpCategories
@@ -727,7 +727,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCategoryCancel.Location = new System.Drawing.Point(705, 75);
             this.btnCategoryCancel.Name = "btnCategoryCancel";
             this.btnCategoryCancel.Size = new System.Drawing.Size(210, 40);
-            this.btnCategoryCancel.TabIndex = 134;
+            this.btnCategoryCancel.TabIndex = 8;
             this.btnCategoryCancel.Text = "Cancel";
             this.btnCategoryCancel.UseVisualStyleBackColor = true;
             this.btnCategoryCancel.Visible = false;
@@ -740,7 +740,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnCategorySave.Location = new System.Drawing.Point(705, 29);
             this.btnCategorySave.Name = "btnCategorySave";
             this.btnCategorySave.Size = new System.Drawing.Size(210, 40);
-            this.btnCategorySave.TabIndex = 133;
+            this.btnCategorySave.TabIndex = 7;
             this.btnCategorySave.Text = "Save Category";
             this.btnCategorySave.UseVisualStyleBackColor = true;
             this.btnCategorySave.Visible = false;
@@ -874,7 +874,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnVendorCancel.Location = new System.Drawing.Point(705, 75);
             this.btnVendorCancel.Name = "btnVendorCancel";
             this.btnVendorCancel.Size = new System.Drawing.Size(210, 40);
-            this.btnVendorCancel.TabIndex = 138;
+            this.btnVendorCancel.TabIndex = 9;
             this.btnVendorCancel.Text = "Cancel";
             this.btnVendorCancel.UseVisualStyleBackColor = true;
             this.btnVendorCancel.Visible = false;
@@ -887,7 +887,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnVendorSave.Location = new System.Drawing.Point(705, 29);
             this.btnVendorSave.Name = "btnVendorSave";
             this.btnVendorSave.Size = new System.Drawing.Size(210, 40);
-            this.btnVendorSave.TabIndex = 137;
+            this.btnVendorSave.TabIndex = 8;
             this.btnVendorSave.Text = "Save Vendor";
             this.btnVendorSave.UseVisualStyleBackColor = true;
             this.btnVendorSave.Visible = false;
@@ -910,7 +910,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtVendorHomepage.Location = new System.Drawing.Point(225, 95);
             this.txtVendorHomepage.Name = "txtVendorHomepage";
             this.txtVendorHomepage.Size = new System.Drawing.Size(258, 22);
-            this.txtVendorHomepage.TabIndex = 135;
+            this.txtVendorHomepage.TabIndex = 3;
             // 
             // btnVendorModify
             // 
@@ -919,7 +919,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnVendorModify.Location = new System.Drawing.Point(489, 75);
             this.btnVendorModify.Name = "btnVendorModify";
             this.btnVendorModify.Size = new System.Drawing.Size(210, 40);
-            this.btnVendorModify.TabIndex = 5;
+            this.btnVendorModify.TabIndex = 6;
             this.btnVendorModify.Text = "Modify Vendor";
             this.btnVendorModify.UseVisualStyleBackColor = true;
             this.btnVendorModify.Click += new System.EventHandler(this.btnModifyVendor_Click);
@@ -931,7 +931,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnVendorAdd.Location = new System.Drawing.Point(489, 29);
             this.btnVendorAdd.Name = "btnVendorAdd";
             this.btnVendorAdd.Size = new System.Drawing.Size(210, 40);
-            this.btnVendorAdd.TabIndex = 4;
+            this.btnVendorAdd.TabIndex = 5;
             this.btnVendorAdd.Text = "Add Vendor";
             this.btnVendorAdd.UseVisualStyleBackColor = true;
             this.btnVendorAdd.Click += new System.EventHandler(this.btnAddVendor_Click);
@@ -954,7 +954,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtVendorDescription.Multiline = true;
             this.txtVendorDescription.Name = "txtVendorDescription";
             this.txtVendorDescription.Size = new System.Drawing.Size(258, 124);
-            this.txtVendorDescription.TabIndex = 3;
+            this.txtVendorDescription.TabIndex = 4;
             // 
             // label23
             // 
@@ -982,7 +982,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnVendorDelete.Location = new System.Drawing.Point(489, 121);
             this.btnVendorDelete.Name = "btnVendorDelete";
             this.btnVendorDelete.Size = new System.Drawing.Size(210, 40);
-            this.btnVendorDelete.TabIndex = 6;
+            this.btnVendorDelete.TabIndex = 7;
             this.btnVendorDelete.Text = "Delete Vendor";
             this.btnVendorDelete.UseVisualStyleBackColor = true;
             this.btnVendorDelete.Click += new System.EventHandler(this.btnDeleteVendor_Click);
@@ -1038,7 +1038,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnNLevelCancel.Location = new System.Drawing.Point(705, 75);
             this.btnNLevelCancel.Name = "btnNLevelCancel";
             this.btnNLevelCancel.Size = new System.Drawing.Size(210, 40);
-            this.btnNLevelCancel.TabIndex = 147;
+            this.btnNLevelCancel.TabIndex = 8;
             this.btnNLevelCancel.Text = "Cancel";
             this.btnNLevelCancel.UseVisualStyleBackColor = true;
             this.btnNLevelCancel.Visible = false;
@@ -1051,7 +1051,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnNLevelSave.Location = new System.Drawing.Point(705, 29);
             this.btnNLevelSave.Name = "btnNLevelSave";
             this.btnNLevelSave.Size = new System.Drawing.Size(210, 40);
-            this.btnNLevelSave.TabIndex = 146;
+            this.btnNLevelSave.TabIndex = 7;
             this.btnNLevelSave.Text = "Save N-Level";
             this.btnNLevelSave.UseVisualStyleBackColor = true;
             this.btnNLevelSave.Visible = false;

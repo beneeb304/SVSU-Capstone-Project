@@ -98,7 +98,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbItemType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbItemType.Name = "cmbItemType";
             this.cmbItemType.Size = new System.Drawing.Size(194, 26);
-            this.cmbItemType.TabIndex = 43;
+            this.cmbItemType.TabIndex = 2;
             this.cmbItemType.SelectedIndexChanged += new System.EventHandler(this.cmbItemType_SelectedIndexChanged);
             // 
             // cmbCategory
@@ -112,7 +112,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(194, 26);
-            this.cmbCategory.TabIndex = 2;
+            this.cmbCategory.TabIndex = 3;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // label1
@@ -168,7 +168,7 @@ namespace SVSU_Capstone_Project.Views
             this.dgvDetails.RowHeadersWidth = 51;
             this.dgvDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetails.Size = new System.Drawing.Size(517, 288);
-            this.dgvDetails.TabIndex = 44;
+            this.dgvDetails.TabIndex = 6;
             this.dgvDetails.TabStop = false;
             // 
             // btnPrintBarcode
@@ -178,7 +178,7 @@ namespace SVSU_Capstone_Project.Views
             this.btnPrintBarcode.Location = new System.Drawing.Point(844, 90);
             this.btnPrintBarcode.Name = "btnPrintBarcode";
             this.btnPrintBarcode.Size = new System.Drawing.Size(98, 55);
-            this.btnPrintBarcode.TabIndex = 45;
+            this.btnPrintBarcode.TabIndex = 4;
             this.btnPrintBarcode.Text = "Print Barcode";
             this.btnPrintBarcode.UseVisualStyleBackColor = true;
             this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
@@ -191,7 +191,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCommodity.Location = new System.Drawing.Point(8, 172);
             this.lstCommodity.Name = "lstCommodity";
             this.lstCommodity.Size = new System.Drawing.Size(402, 251);
-            this.lstCommodity.TabIndex = 46;
+            this.lstCommodity.TabIndex = 5;
             this.lstCommodity.Click += new System.EventHandler(this.lstCommodity_Click);
             this.lstCommodity.DoubleClick += new System.EventHandler(this.lstCommodity_DoubleClick);
             // 
