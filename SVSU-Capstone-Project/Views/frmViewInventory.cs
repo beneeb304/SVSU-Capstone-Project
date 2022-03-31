@@ -171,6 +171,28 @@ namespace SVSU_Capstone_Project.Views
         {
             if (lstCommodity.DataSource != null)
             {
+                var comm = ItemModel.Get<Commodity>(x => x.strName == lstCommodity.SelectedItem.ToString());
+                if(comm.enuCommodityType == ItemType.Simulator)
+                {
+                    string strCategory = cmbCategory.Text;
+                    string strCommodity = lstCommodity.SelectedItem.ToString();
+                    Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
+                    SimulatorUse simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == commodity.uidTuid);
+                    string strMessage = "Name: " + commodity.strName + "\r" +
+                        "Desciption: " + commodity.strDescription + "\r" +
+                        "Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                        "Features: " + commodity.strFeatures + "\r" +
+                        "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
+                        "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                        "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
+                        "URL: " + commodity.strItemUrl + "\r" +
+                        "Barcode: " + commodity.strBarCode + "\r" +
+                        "Hours Used: " + simulator.intHoursUsed + "\r"+
+                        "Times Used: " + simulator.intTimesUsed;
+                    MessageBox.Show(strMessage,"Commodity Details");
+                }
+                else
+                {
                 string strCategory = cmbCategory.Text;
                 string strCommodity = lstCommodity.SelectedItem.ToString();
                 Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
@@ -183,7 +205,8 @@ namespace SVSU_Capstone_Project.Views
                     "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
                     "URL: " + commodity.strItemUrl + "\r" +
                     "Barcode: " + commodity.strBarCode;
-                MessageBox.Show(strMessage);
+                MessageBox.Show(strMessage, "Commodity Details");
+                }
             }
         }
 
