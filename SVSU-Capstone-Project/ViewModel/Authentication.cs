@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 using SVSU_Capstone_Project.Model;
 
 namespace SVSU_Capstone_Project.ViewModel
@@ -44,6 +46,20 @@ namespace SVSU_Capstone_Project.ViewModel
             if (objUserProfile == null) throw new UserNotFoundException("User does not exist");
             if (objUserProfile.strHash != strHash) throw new PasswordInvalidException($"Password does not match for {objUserProfile.strEmail}");
             ActiveUser = objUserProfile;
+
+            //check to make sure we are connected to db
+            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            SqlConnection conn = new SqlConnection(conSring);
+            try
+            {
+                conn.Open();
+                //MessageBox.Show("successfull connection", "Alert");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please check your internet connection and try agian. You can also restart the application and try agian.", "Alert");
+            }
             return ActiveUser;
         }
         public static string GenerateHash( string value )
