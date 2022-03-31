@@ -1767,6 +1767,9 @@ namespace SVSU_Capstone_Project.Views
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid category information!", "Alert");
                     }
 
+                    //Refresh list
+                    tbcSettings_SelectedIndexChanged(sender, e);
+
                     //Clear fields
                     ClearCategoryFields();
 
