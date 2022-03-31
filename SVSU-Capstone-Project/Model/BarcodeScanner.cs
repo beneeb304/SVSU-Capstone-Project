@@ -71,10 +71,11 @@ namespace SVSU_Capstone_Project
          * 
          * No Local Variables
          */
-        public void beginScan()
+        public void beginScan(KeyEventArgs e)
         {
             this.blnStartRead = true;
             this.intBeginTime = DateTime.Now.Millisecond;
+            strReadCode += e.KeyCode.ToString();
         }
 
         /* isStartRead returns whether a potential scan is happening or not */

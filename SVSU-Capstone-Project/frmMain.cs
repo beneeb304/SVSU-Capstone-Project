@@ -220,7 +220,7 @@ namespace SVSU_Capstone_Project
             // When @ is entered by the keyboard (occurs at start of a scan), prepare for the scan.
             if (barcodeScanner.isSeqStart(e))
             {
-                barcodeScanner.beginScan(); 
+                barcodeScanner.beginScan(e); 
             }
 
             // Check if the barcodeScanner object reflects that a scan is happening.
