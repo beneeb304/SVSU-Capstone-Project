@@ -147,7 +147,7 @@ namespace SVSU_Capstone_Project.Views
                 else
                 {
                     //Cast barcode to picture box
-                    pcbBarcode.Image = barcode.Draw(commodity.strBarCode, 115, 1);
+                    pcbBarcode.Image = barcode.Draw(commodity.strBarCode, 115, 2);
 
                     //Enable print barcode button
                     btnPrintBarcode.Enabled = true;
