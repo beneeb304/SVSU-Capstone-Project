@@ -210,7 +210,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -400,7 +399,12 @@
                         <Color>#00243f</Color>
                       </Style>
                       <ChartMarker>
-                        <Style />
+                        <Size>3pt</Size>
+                        <Style>
+                          <Border>
+                            <Width>0.5pt</Width>
+                          </Border>
+                        </Style>
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
                     </ChartDataPoint>
@@ -687,9 +691,8 @@
             </ChartNoDataMessage>
             <DataSetName>SimulatorUse</DataSetName>
             <Top>1.88in</Top>
-            <Left>1.39667in</Left>
-            <Height>2in</Height>
-            <Width>3in</Width>
+            <Height>3.325in</Height>
+            <Width>9.21665in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1025,10 +1028,9 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>SimulatorUse</DataSetName>
-            <Top>1.88in</Top>
-            <Left>5.355in</Left>
-            <Height>2in</Height>
-            <Width>3in</Width>
+            <Top>5.81333in</Top>
+            <Height>3.65611in</Height>
+            <Width>9.21665in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1039,10 +1041,10 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>4.13333in</Height>
+        <Height>9.75in</Height>
         <Style />
       </Body>
-      <Width>9.63333in</Width>
+      <Width>9.9in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
