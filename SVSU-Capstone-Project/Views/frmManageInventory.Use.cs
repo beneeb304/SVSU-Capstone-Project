@@ -40,33 +40,37 @@ namespace SVSU_Capstone_Project.Views
         {
             //Check if all fields are filled out
             var commodity = trvUseSelectByRoom.SelectedNode?.Tag;
-            var sim = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == ((TreeNodeTag)trvUseSelectByRoom.SelectedNode?.Tag).val.uidTuid);
+            
             if (trvUseSelectByRoom.SelectedNode?.Tag == null || nudUseDeduct.Value == 0)
             {
                 MessageBox.Show("Please select an item and used quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (sim != null)
+            else if (commodity != null)
             {
-                var simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == sim.objCommodity.uidTuid);
-                simulator.intHoursUsed = (int)(simulator.intHoursUsed + nudUseDeduct.Value);
-                simulator.intTimesUsed = simulator.intTimesUsed + 1;
-                ItemModel.Update<SimulatorUse>(simulator);
-            }
-            else
-            {
-                ItemModel.UseItem(
-                    (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Tag).val as Commodity)
-                    .lstStorage
-                    .Where(x =>
-                        x.objNLevel == (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Tag).val as NLevel)
-                        && x.objCabinet == (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Parent.Tag).val as Cabinet)
-                    ).First(),
-                    Authentication.ActiveUser,
-                    Convert.ToUInt32(nudUseDeduct.Value),
-                    "Item Used via Manage Inventory Tab",
-                    () => trvUseSelectByRoom.Nodes.Remove(trvUseSelectByRoom.SelectedNode)
-                    );
+                var sim = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == ((TreeNodeTag)trvUseSelectByRoom.SelectedNode?.Tag).val.uidTuid);
+                if(sim != null)
+                {
+                    var simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == sim.objCommodity.uidTuid);
+                    simulator.intHoursUsed = (int)(simulator.intHoursUsed + nudUseDeduct.Value);
+                    simulator.intTimesUsed = simulator.intTimesUsed + 1;
+                    ItemModel.Update<SimulatorUse>(simulator);
+                }
+                else
+                {
+                    ItemModel.UseItem(
+                        (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Tag).val as Commodity)
+                        .lstStorage
+                        .Where(x =>
+                            x.objNLevel == (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Tag).val as NLevel)
+                            && x.objCabinet == (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Parent.Tag).val as Cabinet)
+                        ).First(),
+                        Authentication.ActiveUser,
+                        Convert.ToUInt32(nudUseDeduct.Value),
+                        "Item Used via Manage Inventory Tab",
+                        () => trvUseSelectByRoom.Nodes.Remove(trvUseSelectByRoom.SelectedNode)
+                        );
+                }
             }
             // notify User of success
             MessageBox.Show("Item used successfully.");
