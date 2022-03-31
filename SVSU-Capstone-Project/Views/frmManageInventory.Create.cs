@@ -39,6 +39,7 @@ namespace SVSU_Capstone_Project.Views
             nudCreateCost.Value = 0;
             btnCreate.Text = "Create";
             cmbCreateType.SelectedIndex = -1;
+            cmbCreateType.Enabled = true;
             trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
             trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
             trvCreateSelectByCategory.SelectedNode = null;
@@ -70,6 +71,7 @@ namespace SVSU_Capstone_Project.Views
             cmbCreateVendor.SelectedItem = selected.objVendor;
             cmbCreateType.DataSource = Enum.GetValues(typeof(ItemType));
             cmbCreateType.SelectedItem = selected.enuCommodityType;
+            cmbCreateType.Enabled = false;
             nudCreateAlertQty.Value = selected.intAlert_quantity;
             nudCreateCost.Value = (decimal)(selected.intCostInCents / 100.00);
             btnCreate.Text = "Modify";
@@ -170,7 +172,7 @@ namespace SVSU_Capstone_Project.Views
 
                 selected.strBarCode = strBarcode;
                 submit(selected);
-                MessageBox.Show($"{txtCreateItemName} has been successfully created!" + "\r\n\r\n" + $"Note:{txtCreateItemName.Text} will not show in the Category/Room tree until stock is added to a Room.", $"Successful {btnCreate.Text}!");
+                MessageBox.Show($"{txtCreateItemName.Text} has been successfully created!" + "\r\n\r\n" + $"Note:{txtCreateItemName.Text} will not show in the Category/Room tree until stock is added to a Room.", $"Successful {btnCreate.Text}!");
                 btnCreateCancel_Click(null, null);
             }
             //else

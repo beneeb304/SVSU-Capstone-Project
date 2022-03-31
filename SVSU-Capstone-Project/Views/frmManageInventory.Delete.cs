@@ -58,6 +58,12 @@ namespace SVSU_Capstone_Project.Views
                     else
                     {
                         List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
+                        SimulatorUse simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == commodity.uidTuid);
+
+                        if(simulator != null)
+                        {
+                            ItemModel.Delete<SimulatorUse>(simulator);
+                        }
 
                         foreach (Storage storage in lstStorage)
                         {
