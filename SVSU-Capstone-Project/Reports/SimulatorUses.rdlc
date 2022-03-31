@@ -48,18 +48,18 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.24444in</Width>
+                  <Width>2.25in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.24444in</Width>
+                  <Width>2.25in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.72777in</Width>
+                  <Width>1.73333in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.76389in</Height>
+                  <Height>0.76111in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -102,7 +102,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.51667in</Height>
+                  <Height>0.51389in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -215,7 +215,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.36667in</Height>
+                  <Height>0.36389in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -344,14 +344,16 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>SimulatorUse</DataSetName>
             <SortExpressions>
               <SortExpression>
                 <Value>=Fields!name.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Height>1.64723in</Height>
-            <Width>9.21665in</Width>
+            <Left>0.11667in</Left>
+            <Height>1.6389in</Height>
+            <Width>6.23332in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -482,6 +484,8 @@
                     <CrossAt>NaN</CrossAt>
                     <Minimum>NaN</Minimum>
                     <Maximum>NaN</Maximum>
+                    <Angle>-41</Angle>
+                    <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
                     <ChartAxisScaleBreak>
                       <Style />
                     </ChartAxisScaleBreak>
@@ -691,8 +695,9 @@
             </ChartNoDataMessage>
             <DataSetName>SimulatorUse</DataSetName>
             <Top>1.88in</Top>
+            <Left>0.11667in</Left>
             <Height>3.325in</Height>
-            <Width>9.21665in</Width>
+            <Width>6.23332in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -820,6 +825,8 @@
                     <CrossAt>NaN</CrossAt>
                     <Minimum>NaN</Minimum>
                     <Maximum>NaN</Maximum>
+                    <Angle>-41</Angle>
+                    <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
                     <ChartAxisScaleBreak>
                       <Style />
                     </ChartAxisScaleBreak>
@@ -1028,9 +1035,10 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>SimulatorUse</DataSetName>
-            <Top>5.81333in</Top>
-            <Height>3.65611in</Height>
-            <Width>9.21665in</Width>
+            <Top>5.23278in</Top>
+            <Left>0.11667in</Left>
+            <Height>3.64778in</Height>
+            <Width>6.23332in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1041,15 +1049,17 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>9.75in</Height>
+        <Height>8.92222in</Height>
         <Style />
       </Body>
-      <Width>9.9in</Width>
+      <Width>6.86333in</Width>
       <Page>
-        <LeftMargin>1in</LeftMargin>
-        <RightMargin>1in</RightMargin>
-        <TopMargin>1in</TopMargin>
-        <BottomMargin>1in</BottomMargin>
+        <PageHeight>8.5in</PageHeight>
+        <PageWidth>11in</PageWidth>
+        <LeftMargin>0.5in</LeftMargin>
+        <RightMargin>0.5in</RightMargin>
+        <TopMargin>0.5in</TopMargin>
+        <BottomMargin>0.5in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
