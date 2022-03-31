@@ -37,7 +37,9 @@ namespace SVSU_Capstone_Project.Views
             switch (e.TabPage.Name)
             {
                 case ("tbpAddItems"):
+                    this.cmbAddCategory.SelectedIndex = -1;
                     this.cmbAddCategory.DataSource = lstCategories;
+                    
                     break;
                 case ("tbpCreateItem"):
                     this.cmbCreateCategory.DataSource = lstCategories;
@@ -51,6 +53,7 @@ namespace SVSU_Capstone_Project.Views
                     break;
                 case ("tbpMoveItem"):
                     this.cmbMoveCategory.DataSource = lstCategories;
+                   
                     break;
                 case ("tbpDeleteItem"):
                     this.cmbDeleteCategory.DataSource = lstCategories;
@@ -168,9 +171,12 @@ namespace SVSU_Capstone_Project.Views
                 var node = new TreeNode(cat.strName) { Tag = new TreeNodeTag { val = cat, selectable = false } };
                 cat.lstCommodities.ForEach(comm =>
                 {
-                    if (filterCommodity == null || filterCommodity(comm))
+                  if(comm.lstStorage != null)
                     {
-                        node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = new TreeNodeTag { val = comm, selectable = true } });
+                        if (filterCommodity == null || filterCommodity(comm))
+                            {
+                                node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = new TreeNodeTag { val = comm, selectable = true } });
+                            }
                     }
                 });
                 treeView.Nodes.Add(node);

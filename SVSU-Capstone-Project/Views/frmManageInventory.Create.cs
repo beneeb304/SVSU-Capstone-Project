@@ -170,7 +170,7 @@ namespace SVSU_Capstone_Project.Views
 
                 selected.strBarCode = strBarcode;
                 submit(selected);
-                MessageBox.Show("Successful " + btnCreate.Text, "Alert");
+                MessageBox.Show($"{txtCreateItemName} has been successfully created!" + "\r\n\r\n" + $"Note:{txtCreateItemName.Text} will not show in the Category/Room tree until stock is added to a Room.", $"Successful {btnCreate.Text}!");
                 btnCreateCancel_Click(null, null);
             }
             //else
