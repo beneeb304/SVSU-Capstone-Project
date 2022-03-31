@@ -16,6 +16,7 @@ namespace SVSU_Capstone_Project.Views
          * -----------------------------------------------------------------------------
          */
             InitializeComponent();
+            
         }
 
 
@@ -161,6 +162,14 @@ namespace SVSU_Capstone_Project.Views
             else
             {
                 MessageBox.Show("Security Bypass Failed: Cannot contact DB", "Security Bypass Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmLogin_KeyPress( object sender, KeyPressEventArgs e )
+        {
+            if (e.KeyChar == (char)13)
+            {
+                btnLogin_Click(sender, e);
             }
         }
     }
