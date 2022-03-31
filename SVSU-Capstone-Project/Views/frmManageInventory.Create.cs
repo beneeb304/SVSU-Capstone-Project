@@ -188,10 +188,6 @@ namespace SVSU_Capstone_Project.Views
                 }
                 
             }
-            //else
-            //{
-            //    MessageBox.Show("Please fill out all of the commodity fields before creating!", "Alert");
-            //}
         }
     }
 }
