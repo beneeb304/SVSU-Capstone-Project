@@ -124,10 +124,12 @@ namespace SVSU_Capstone_Project.ViewModel
         public static bool RestockItem( Storage objUsedFrom, User objUser, uint intQuantityChange, string notes )
         {
             // if item is not consumable, throw exception
-            if (objUsedFrom.objCommodity.enuCommodityType != ItemType.Consumable)
-            {
-                throw new Exception("Item is not restockable");
-            }
+
+            //if (objUsedFrom.objCommodity.enuCommodityType != ItemType.Consumable)
+            //{
+            //    throw new Exception("Item is not restockable");
+            //}
+
             // create new log
             Log objLog = new Log
             {
