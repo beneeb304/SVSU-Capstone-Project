@@ -78,7 +78,7 @@ namespace SVSU_Capstone_Project.Views
         }
         private void btnCreate_Click( object sender, EventArgs e )
         {
-            
+            var exists = ItemModel.Get<Commodity>(x => x.strName == txtCreateItemName.Text);
             //Make sure fields are filled out
            if(string.IsNullOrWhiteSpace(txtCreateItemName.Text))
             {
@@ -95,6 +95,10 @@ namespace SVSU_Capstone_Project.Views
            else if(string.IsNullOrWhiteSpace(cmbCreateType.Text))
             {
                 MessageBox.Show("Item type cannot be left blank. Please select a item type from the dropdown list.", "Alert");
+            }
+           else if(exists != null)
+            {
+                MessageBox.Show("Item already exists in the database. Please enter a different item name.", "Alert");
             }
            else
             {
