@@ -273,34 +273,41 @@ namespace SVSU_Capstone_Project.Views
 
                     //Get user
                     User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
-
-                    if (user.blnIsAdmin)
+                    if (Authentication.ActiveUser.strEmail == "brneeb@svsu.edu" || Authentication.ActiveUser.strEmail == "mjsimon1@svsu.edu" || Authentication.ActiveUser.strEmail == "ldscott2@svsu.edu" || Authentication.ActiveUser.strEmail == "taeurich@svsu.edu" || Authentication.ActiveUser.strEmail == "hmclippe@svsu.edu")
                     {
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to reset " +
-                            mailAddress.Address + "'s password?", "Confirm", MessageBoxButtons.YesNo);
-
-                        if (result == DialogResult.Yes)
+                        if (user.blnIsAdmin)
                         {
-                            //Modify user password
-                            user.strHash = "Capstone2022";
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to reset " +
+                                mailAddress.Address + "'s password?", "Confirm", MessageBoxButtons.YesNo);
 
-                            //Save user
-                            ItemModel.Update<User>(user);
+                            if (result == DialogResult.Yes)
+                            {
+                                //Modify user password
+                                user.strHash = "Capstone2022";
 
-                            //Alert user
-                            MessageBox.Show("Successful Reset\r\n\r\n"
-                                + txtUserEmail.Text + " will be prompted to reset their password on their next login\r\n" +
-                                "Their temporary password is 'Capstone2022'", "Alert");
+                                //Save user
+                                ItemModel.Update<User>(user);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Alert user
+                                MessageBox.Show("Successful Reset\r\n\r\n"
+                                    + txtUserEmail.Text + " will be prompted to reset their password on their next login\r\n" +
+                                    "Their temporary password is 'Capstone2022'", "Alert");
+
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot change non-admin password", "Alert");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Cannot change non-admin password", "Alert");
+                        MessageBox.Show("You dont have permission to perform this action", "Alert");
                     }
+
                 }
                 catch
                 {
