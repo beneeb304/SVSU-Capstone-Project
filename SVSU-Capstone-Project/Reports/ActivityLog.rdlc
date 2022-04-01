@@ -612,7 +612,7 @@
               </SortExpression>
             </SortExpressions>
             <Height>1.68889in</Height>
-            <Width>9.80834in</Width>
+            <Width>9.80833in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -625,8 +625,8 @@
       </Body>
       <Width>9.95001in</Width>
       <Page>
-        <PageHeight>7in</PageHeight>
-        <PageWidth>7in</PageWidth>
+        <PageHeight>8.5in</PageHeight>
+        <PageWidth>11in</PageWidth>
         <LeftMargin>0.5in</LeftMargin>
         <RightMargin>0.5in</RightMargin>
         <TopMargin>0.5in</TopMargin>

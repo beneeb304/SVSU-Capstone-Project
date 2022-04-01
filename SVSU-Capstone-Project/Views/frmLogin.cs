@@ -66,6 +66,7 @@ namespace SVSU_Capstone_Project.Views
                         
                         //Alert user
                         MessageBox.Show("Password Set Successfully", "Alert");
+
                     }
                     else
                     {
@@ -74,6 +75,17 @@ namespace SVSU_Capstone_Project.Views
                         return;
                     }
                 }
+
+                Log log = new Log
+                {
+                    enuAction = ItemAction.UserLogin,
+                    dtTimestamp = DateTime.Now,
+                    intQuantityChange = 0,
+                    objStorage = null,
+                    objUser = Authentication.ActiveUser,
+                    strNotes = $"{Authentication.ActiveUser} logged into the system on {DateTime.Now}."
+                };
+                ItemModel.Add<Log>(log);
             }
             catch (ArgumentException ex)
             {

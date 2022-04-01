@@ -55,6 +55,18 @@ namespace SVSU_Capstone_Project.Views
                     simulator.intHoursUsed = (int)(simulator.intHoursUsed + nudUseDeduct.Value);
                     simulator.intTimesUsed = simulator.intTimesUsed + 1;
                     ItemModel.Update<SimulatorUse>(simulator);
+                    var storage = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == simulator.objCommodity.uidTuid);
+                    Log log = new Log
+                    {
+                        dtTimestamp = DateTime.Now,
+                        enuAction = ItemAction.Used,
+                        intQuantityChange = (int)nudUseDeduct.Value,
+                        objStorage = storage,
+                        objUser = Authentication.ActiveUser,
+                        strNotes = $"{simulator.objCommodity.strName} has been used for {nudUseDeduct.Value} hours on {DateTime.Now}."
+                    };
+                    ItemModel.Add<Log>(log);
+
                 }
                 else
                 {
