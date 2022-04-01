@@ -1598,6 +1598,7 @@ namespace SVSU_Capstone_Project.Views
                                     objRoom = ItemModel.Get<Room>(x => x.strName == cmbRoom.SelectedItem.ToString())
                                 };
 
+                                var selectedRoom = cmbRoom.SelectedItem;
                                 //Add cabinet
                                 ItemModel.Add<Cabinet>(cabinet);
 
@@ -1615,6 +1616,9 @@ namespace SVSU_Capstone_Project.Views
                                 btnCabinetAdd.Enabled = true;
                                 btnCabinetDelete.Enabled = true;
                                 btnCabinetModify.Enabled = true;
+                                ClearCabinetFields();
+                                cmbRoom.SelectedItem = selectedRoom;
+                                btnCabinetAdd.PerformClick();
                             }
                         }
                         else
@@ -1627,11 +1631,11 @@ namespace SVSU_Capstone_Project.Views
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
                     }
 
-                    //Clear controls
-                    ClearCabinetFields();
+                    ////Clear controls
+                    //ClearCabinetFields();
 
-                    //Disable fields
-                    EnableDisableCabinetFields(false);
+                    ////Disable fields
+                    //EnableDisableCabinetFields(false);
                 }
                 else
                 {
