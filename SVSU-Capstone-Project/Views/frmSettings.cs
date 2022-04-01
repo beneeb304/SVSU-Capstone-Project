@@ -1345,6 +1345,10 @@ namespace SVSU_Capstone_Project.Views
                         //Make sure new email is valid
                         MailAddress mailAddressNew = new MailAddress(txtUserEmail.Text);
 
+                        //Make sure SVSU ID is 8 chars or less
+                        if (txtUserSVSUID.Text.Length > 8)
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to modify " +
                             mailAddressCurrent.Address + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
