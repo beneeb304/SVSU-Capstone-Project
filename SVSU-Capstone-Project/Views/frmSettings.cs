@@ -1164,6 +1164,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableUserFields(bool blnEnable)
         {
             if (blnEnable)
@@ -1186,6 +1192,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableRoomFields(bool blnEnable )
         {
             if (blnEnable)
@@ -1200,6 +1212,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableCabinetFields( bool blnEnable )
         {
             if (blnEnable)
@@ -1214,6 +1232,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableCategoryFields( bool blnEnable )
         {
             if (blnEnable)
@@ -1228,6 +1252,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableVendorFields( bool blnEnable )
         {
             if (blnEnable)
@@ -1244,6 +1274,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableNLevelFields( bool blnEnable )
         {
             if (blnEnable)
@@ -1258,6 +1294,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnUserSave_Click( object sender, EventArgs e )
         {
             if (btnUserAdd.Enabled)
@@ -1441,6 +1483,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnUserCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons
@@ -1461,6 +1509,12 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableUserFields(false);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnRoomSave_Click( object sender, EventArgs e )
         {
             if (btnRoomAdd.Enabled)
@@ -1594,6 +1648,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnRoomCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons
@@ -1612,6 +1672,12 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableRoomFields(false);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnCabinetSave_Click( object sender, EventArgs e )
         {
             if (btnCabinetAdd.Enabled)
@@ -1751,6 +1817,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnCabinetCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons
@@ -1769,6 +1841,12 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableCabinetFields(false);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnCategorySave_Click( object sender, EventArgs e )
         {
             if (btnCategoryAdd.Enabled)
@@ -1901,6 +1979,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnCategoryCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons
@@ -1919,6 +2003,12 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableCategoryFields(false);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnVendorSave_Click( object sender, EventArgs e )
         {
             if (btnVendorAdd.Enabled)
@@ -2054,6 +2144,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnVendorCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons
@@ -2072,6 +2168,12 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableVendorFields(false);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnNLevelSave_Click( object sender, EventArgs e )
         {
             if (btnNLevelAdd.Enabled)
@@ -2205,6 +2307,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnNLevelCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons

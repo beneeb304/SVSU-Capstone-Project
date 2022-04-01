@@ -36,6 +36,17 @@ namespace SVSU_Capstone_Project.Views
             nudUseDeduct.Value = 1;
         }
 
+        /* Function: btnUse_Click
+         * Description: Marks simulator use upon btnUse click. Adds the amount of time used to the specified simulator.
+         * 
+         * Local Variables
+         * Object sender; Object calling the method.
+         * EventArgs e; Arguments provided by the sender object.
+         * Commodity commodity; A commodity to check for null fields.
+         * SimulatorUse sim; The simulator being marked used.
+         * Storage storage; Storage location for the simulator.
+         * Log log; Log object of the transaction.
+         */
         private void btnUse_Click( object sender = null, EventArgs e = null )
         {
             //Check if all fields are filled out
@@ -89,6 +100,14 @@ namespace SVSU_Capstone_Project.Views
             btnUseCancel_Click();
         }
 
+        /* Function: trvUseSelectByRoom_BeforeSelect
+         * Description: Ensures a tree node is selectable before action is taken.
+         * 
+         * Local Variables
+         * Object sender; Object calling the method.
+         * TreeViewCancelventArgs e; Arguments provided by the sender object.
+         * TreeNodeTag tag; TreeNode object to check for selectability.
+         */
         private void trvUseSelectByRoom_BeforeSelect( object sender, TreeViewCancelEventArgs e )
         {
             // cast Tag to TreeNodeTag
@@ -100,6 +119,17 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: trvUseSelectByRoom_AfterSelect
+         * Description: Updates fields within the form after a selectable tree node is clicked with information of the object selected.
+         * 
+         * Local Variables
+         * Object sender; Object calling the method.
+         * TreeViewCancelventArgs e; Arguments provided by the sender object.
+         * Commodity selected; Object of the item selected to pull information from.
+         * Storage itemStorage; The selected commodity's storage location.
+         * SimulatorUse itemUsage; Used to ensure the selected commodity is an available simulator.
+         * SimulatorUse sim; Simulator object to manipulate data.
+         */
         private void trvUseSelectByRoom_AfterSelect( object sender, TreeViewEventArgs e )
         {
             Commodity selected = (Commodity)((TreeNodeTag)((TreeView)sender).SelectedNode.Tag).val;
@@ -134,6 +164,13 @@ namespace SVSU_Capstone_Project.Views
             nudUseDeduct_ValueChanged();
         }
 
+        /* Function: nudUseDeduct_ValueChanged
+         * Description: Updates use values in the form's fields.
+         * 
+         * Local Variables
+         * Object sender; Object calling the method.
+         * EventArgs e; Arguments provided by the sender object.
+         */
         private void nudUseDeduct_ValueChanged( object sender = null, EventArgs e = null )
         {
             if (int.TryParse(txtUseAvailable.Text, out int available))

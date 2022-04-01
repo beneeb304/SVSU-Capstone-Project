@@ -16,12 +16,25 @@ namespace SVSU_Capstone_Project.Views
     public partial class frmManageInventory : Form
     {
         private bool blnEventBlock = false;
+
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         public frmManageInventory()
         {
             InitializeComponent();
             trvUseSelectByRoom.PopulateCommodityTreeByRoom(x => x.enuCommodityType != ItemType.Equipment);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void tbcInventory_Selected( object sender, TabControlEventArgs e )
         {
             List<Category> lstCategories = ItemModel.GetMany<Category>().OrderBy(x => x.strName).ToList();
@@ -61,6 +74,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void nonTriggeringCall( Action predicate )
         {
             // This is a non-triggering call to prevent the event from firing twice
@@ -69,6 +88,12 @@ namespace SVSU_Capstone_Project.Views
             blnEventBlock = false;
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void Category_SelectedValueChanged( ComboBox cmbCategory, ComboBox cmbCommodity )
         {
             if (blnEventBlock) return;
@@ -79,7 +104,12 @@ namespace SVSU_Capstone_Project.Views
             cmbCommodity.SelectedIndex = -1;
         }
 
-
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void Commodity_SelectedValueChanged( ComboBox cmbCommodity, ComboBox cmbRoom )
         {
             if (blnEventBlock) return;
@@ -90,6 +120,12 @@ namespace SVSU_Capstone_Project.Views
             cmbRoom.SelectedIndex = -1;
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void Room_SelectedValueChanged( ComboBox cmbRoom, ComboBox cmbCabinet, ComboBox cmbCommodity )
         {
             if (blnEventBlock) return;
@@ -101,6 +137,12 @@ namespace SVSU_Capstone_Project.Views
             cmbCabinet.SelectedIndex = -1;
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void Cabinet_SelectedValueChanged( ComboBox cmbCabinet, ComboBox cmbCommodity, ComboBox cmbNLevel )
         {
             if (blnEventBlock) return;
@@ -114,6 +156,13 @@ namespace SVSU_Capstone_Project.Views
                 cmbNLevel.DataSource = null;
             cmbNLevel.SelectedIndex = -1;
         }
+
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void NLevel_SelectedValueChanged( ComboBox cmbCommodity, ComboBox cmbCabinet, ComboBox cmbNLevel, TextBox txtAvailable = null, NumericUpDown nudChange = null, TextBox txtRemainder = null )
         {
             if (blnEventBlock) return;
@@ -148,6 +197,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void button1_Click( object sender, EventArgs e )
         {
             txtCreateBarcode.Text = "";
@@ -162,6 +217,13 @@ namespace SVSU_Capstone_Project.Views
             public bool selectable;
             public ContextEntity val;
         }
+
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         public static void PopulateCommodityTreeByCategory( this TreeView treeView, Func<Commodity, bool> filterCommodity = null )
         {
             treeView.Nodes.Clear();
@@ -183,6 +245,12 @@ namespace SVSU_Capstone_Project.Views
             });
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         public static void PopulateCommodityTreeByRoom( this TreeView treeView, Func<Commodity, bool> filterCommodity = null )
         {
             treeView.Nodes.Clear();

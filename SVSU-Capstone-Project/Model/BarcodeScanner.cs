@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SVSU_Capstone_Project.Model;
@@ -19,7 +20,6 @@ namespace SVSU_Capstone_Project
      * the read in string is given back to frmMain.
      * 
      * Global Variables
-     * const int intCHECK = 064; Used to check if a key pressed is @.
      * bool blnStartRead; Used to indicate a potential scan has been initiated.
      * string strReadCode; Holds the string read in by the scan.
      * int intBeginTime; Marks the start time of a scan in milliseconds.
@@ -27,11 +27,10 @@ namespace SVSU_Capstone_Project
      */
     public partial class BarcodeScanner
     {
-        private const int intCHECK = 50; // 50 is what C# uses to indicate @
         private bool blnStartRead;
         private string strReadCode;
         private int intBeginTime;
-        public CheckedItem checkedItem;
+        public Commodity commodity;
 
         // Constructor to create the barcode scanner object. Only called once per program session.
         public BarcodeScanner()
@@ -39,7 +38,7 @@ namespace SVSU_Capstone_Project
             this.blnStartRead = false;
             this.strReadCode = "";
             this.intBeginTime = 0;
-            this.checkedItem = null;
+            this.commodity = null;
         }
 
         /* Function: isSeqStart
@@ -48,9 +47,13 @@ namespace SVSU_Capstone_Project
          * Local Variables
          * int intKeyValue; the KeyValue passed by the key pressed.
          */
-        public bool isSeqStart(KeyEventArgs e) 
+        public bool isSeqStart(string s) 
         {
-            return (e.KeyData == Keys.C || e.KeyData == Keys.E || e.KeyData == Keys.S);
+            if (s == "C" || s == "S" || s == "E")
+            {
+                return true;
+            }
+            return false;
         }
 
         /* Function resetValues
@@ -63,7 +66,7 @@ namespace SVSU_Capstone_Project
             this.blnStartRead = false;
             this.strReadCode = "";
             this.intBeginTime = 0;
-            this.checkedItem = null;
+            this.commodity = null;
         }
 
         /* Function beginScan
@@ -71,21 +74,33 @@ namespace SVSU_Capstone_Project
          * 
          * No Local Variables
          */
-        public void beginScan(KeyEventArgs e)
+        public void beginScan(string s)
         {
             this.blnStartRead = true;
             this.intBeginTime = DateTime.Now.Millisecond;
-            strReadCode += e.KeyCode.ToString();
+            strReadCode += s;
         }
 
         /* isStartRead returns whether a potential scan is happening or not */
         public bool isStartRead() { return blnStartRead; }
 
         /* getBeginTime returns the recorded start time in milliseconds of a potential scan */
-        public int getBeginTime() { return intBeginTime; } 
+        public int getBeginTime() { return intBeginTime; }
 
-        /* addToCode sums up the read in characters of a potential barcode */
-        public void addToCode(string s) { this.strReadCode += s; }
+        /* Function addToCode
+         * Description: Regex each key press and add it to the scanned code if it matches.
+         * 
+         * Local Variables
+         * Regex regex; Used to compare the string value of the key press.
+         */
+        public void addToCode(string s) 
+        {
+            Regex regex = new Regex("^[a-zA-Z0-9~]+$");
+            if (regex.IsMatch(strReadCode))
+            {
+                this.strReadCode += s;
+            }
+        }
  
         /* Function getCommodity
          * Description: If a barcode scan seems legit, find the commodity matching the item.
@@ -94,12 +109,13 @@ namespace SVSU_Capstone_Project
          * Local Variables
          * CheckedItem checkedItem; Stores information about a CheckedItem based on barcode.
          */
-        public CheckedItem getCommodity()
+        public Commodity getCommodity()
         {
-            try { checkedItem = ItemModel.Get<CheckedItem>(x => x.objCommodities.strBarCode == strReadCode); } 
+            MessageBox.Show(strReadCode);
+            try { commodity = ItemModel.Get<Commodity>(x => x.strBarCode == strReadCode); } 
             catch{ Console.WriteLine("Commodity not found from Barcode"); }
             //resetValues(); // Values are now reset by the receiving function.
-            return checkedItem;
+            return commodity;
         }
     }
 }

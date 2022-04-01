@@ -46,6 +46,12 @@ namespace SVSU_Capstone_Project.Views
             trvCreateSelectByRoom.SelectedNode = null;
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void trvCreateSelect_BeforeSelect( object sender, TreeViewCancelEventArgs e )
         {
             // cast Tag to TreeNodeTag
@@ -57,6 +63,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void trvCreateSelect_AfterSelect( object sender, TreeViewEventArgs e )
         {
             Commodity selected = ((TreeNodeTag)e.Node.Tag).val as Commodity;
@@ -76,6 +88,13 @@ namespace SVSU_Capstone_Project.Views
             nudCreateCost.Value = (decimal)(selected.intCostInCents / 100.00);
             btnCreate.Text = "Modify";
         }
+
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnCreate_Click( object sender, EventArgs e )
         {
             var exists = ItemModel.Get<Commodity>(x => x.strName == txtCreateItemName.Text);

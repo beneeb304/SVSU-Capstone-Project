@@ -15,11 +15,23 @@ namespace SVSU_Capstone_Project.Views
 {
     public partial class frmManageInventory : Form
     {
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbDeleteCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
             Category_SelectedValueChanged(cmbDeleteCategory, cmbDeleteCommodity);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbDeleteCommodity_SelectedIndexChanged( object sender, EventArgs e )
         {
             dgvDeletionDelta.DataSource = ItemModel
@@ -37,6 +49,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnDeleteConfirm_Click( object sender, EventArgs e )
         {            
             if(cmbDeleteCommodity.SelectedIndex != -1)
@@ -89,6 +107,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnConfirmReset_Click( object sender, EventArgs e )
         {            
             cmbDeleteCategory.SelectedIndex = -1;
