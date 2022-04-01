@@ -138,8 +138,8 @@ namespace SVSU_Capstone_Project.Views
                         //String that contain both alphabets and numbers
                         string strAlphaNumeric = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-                        //Set to 20 characters long (plus 1 for tilde)
-                        int size = 20;
+                        //Set to 12 characters long (10 generated plus 2 for prefix and tilde)
+                        int size = 10;
 
                         switch (selected.enuCommodityType.ToString())
                         {
