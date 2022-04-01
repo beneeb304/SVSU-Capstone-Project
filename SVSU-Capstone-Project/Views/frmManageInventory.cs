@@ -37,9 +37,9 @@ namespace SVSU_Capstone_Project.Views
             switch (e.TabPage.Name)
             {
                 case ("tbpAddItems"):
-                    this.cmbAddCategory.SelectedIndex = -1;
                     this.cmbAddCategory.DataSource = lstCategories;
-                    
+                    this.cmbAddCategory.SelectedIndex = -1;
+                    this.cmbAddCommodity.DataSource = null;
                     break;
                 case ("tbpCreateItem"):
                     this.cmbCreateCategory.DataSource = lstCategories;
