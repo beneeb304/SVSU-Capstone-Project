@@ -47,20 +47,23 @@ namespace SVSU_Capstone_Project
          */
         private void btnSet_Click( object sender, EventArgs e )
         {
+            string strPassword = txtPassword.Text.Trim();
+            string strRetypePassword = txtRetypePassword.Text.Trim();
+
             //Make sure passwords match
-            if (txtPassword.Text.Equals(txtRetypePassword.Text))
+            if (strPassword.Equals(strRetypePassword))
             {
-                if (txtPassword.Text == "Capstone2022")
+                if (strPassword == "Capstone2022")
                 {
                     //Don't let user use default password
                     txtPassword.Text = "";
                     txtRetypePassword.Text = "";
                     MessageBox.Show("Password cannot be same as default password!", "Alert");
                 }
-                else if(txtPassword.Text.Length >= 8)
+                else if(strPassword.Length >= 8)
                 {
                     //Get hash
-                    strHash = Authentication.GenerateHash(txtPassword.Text);
+                    strHash = Authentication.GenerateHash(strPassword);
                     DialogResult = DialogResult.OK;
                     Close();
                 }
