@@ -1374,6 +1374,10 @@ namespace SVSU_Capstone_Project.Views
                             btnUserPassword.Enabled = true;
                             btnUserDelete.Enabled = true;
                         }
+                        else
+                        {
+                            btnUserCancel_Click(sender, e);
+                        }
                     }
                     catch
                     {
