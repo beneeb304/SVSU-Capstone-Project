@@ -157,24 +157,26 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnBypass_Click( object sender, EventArgs e )
         {
-            /* Function: btnBypass_Click
-            * -----------------------------------------------------------------------------
-            * Description: Here for development testing to get around entering credentials.
-            * To be removed.
-            * -----------------------------------------------------------------------------
-            * Parameter Dictionary (in parameter order):  
-            * EventArgs e; Information passed by the sender object about the method call.
-            * object sender; The object calling the method. btnBypass in this case.
-            */
+            ///* Function: btnBypass_Click
+            //* -----------------------------------------------------------------------------
+            //* Description: Here for development testing to get around entering credentials.
+            //* To be removed.
+            //* -----------------------------------------------------------------------------
+            //* Parameter Dictionary (in parameter order):  
+            //* EventArgs e; Information passed by the sender object about the method call.
+            //* object sender; The object calling the method. btnBypass in this case.
+            //*/
 
-            if (Authentication.SecurityBypass())
-            {
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("Security Bypass Failed: Cannot contact DB", "Security Bypass Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if (Authentication.SecurityBypass())
+            //{
+            //    Close();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Security Bypass Failed: Cannot contact DB", "Security Bypass Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+
+            MessageBox.Show("Login with your own account for testing purposes. If you need assistance, contact Ben or Mike S");
         }
 
         private void frmLogin_KeyPress( object sender, KeyPressEventArgs e )
