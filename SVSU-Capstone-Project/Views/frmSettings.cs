@@ -1270,6 +1270,22 @@ namespace SVSU_Capstone_Project.Views
                         //Valid email
                         MailAddress mailAddress = new MailAddress(txtUserEmail.Text);
 
+                        //Only alpha first name
+                        if (!txtUserFName.Text.All(char.IsLetter))
+                            throw new Exception();
+
+                        //Only alpha last name
+                        if (!txtUserLName.Text.All(char.IsLetter))
+                            throw new Exception();
+
+                        //Only alphanumeric SVSU ID
+                        if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit))
+                            throw new Exception();
+
+                        //Only empty or numeric phone
+                        if (!txtUserPhone.Text.All(char.IsNumber) || txtUserPhone.Text != "")
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to add " +
                             txtUserEmail.Text + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
@@ -1339,6 +1355,22 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alpha first name
+                        if (!txtUserFName.Text.All(char.IsLetter))
+                            throw new Exception();
+
+                        //Only alpha last name
+                        if (!txtUserLName.Text.All(char.IsLetter))
+                            throw new Exception();
+
+                        //Only alphanumeric SVSU ID
+                        if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit))
+                            throw new Exception();
+
+                        //Only empty or numeric phone
+                        if (!txtUserPhone.Text.All(char.IsNumber) || txtUserPhone.Text != "")
+                            throw new Exception();
+
                         //Get the user email
                         MailAddress mailAddressCurrent = new MailAddress(lstUser.SelectedItem.ToString());
 
