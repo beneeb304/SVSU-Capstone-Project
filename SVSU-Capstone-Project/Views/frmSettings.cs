@@ -1346,7 +1346,7 @@ namespace SVSU_Capstone_Project.Views
                         MailAddress mailAddressNew = new MailAddress(txtUserEmail.Text);
 
                         //Make sure SVSU ID is 8 chars or less
-                        if (txtUserSVSUID.Text.Length > 8)
+                        if (txtUserSVSUID.Text.Length > 8 || mailAddressNew.ToString().Length > 25)
                             throw new Exception();
 
                         //Ask user to confirm action
