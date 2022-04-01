@@ -25,6 +25,7 @@
         Used,
         CheckedIn,
         CheckedOut,
-        UserLogin
+        UserLogin,
+        Deleted
     }
 }

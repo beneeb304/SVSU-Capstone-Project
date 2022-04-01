@@ -8015,36 +8015,26 @@ namespace SVSU_Capstone_Project.InvDbDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Logs.timestamp, Users.svsu_id, CONCAT(Users.first_name,' ', Users.last_name) AS [UserName], 
-CASE
-WHEN Logs.action = 0 THEN 'Added Item'
-WHEN Logs.action = 1 THEN 'Moved Item'
-WHEN Logs.action = 2 AND commodities.commodityType = 2 THEN 'Simulator Used'
-WHEN Logs.action = 2 AND commodities.commodityType = 0 THEN 'Consume Item'
-WHEN Logs.action = 3 THEN 'Checked In Item'
-WHEN Logs.action = 4 THEN 'Checked Out Item'
-WHEN Logs.action = 5 THEN 'User Logged In'
-ELSE ''
-END AS 'action',
-CASE
-WHEN Logs.action = 5 THEN CONCAT(Users.first_name,' ', Users.last_name)
-ELSE Commodities.name
-END AS 'name',
-CASE
-WHEN Logs.action = 0 THEN '+' + LTRIM(str(Logs.quantityChange))
-WHEN Logs.action = 1 THEN 'Moved ' + LTRIM(STR(Logs.quantityChange)) + ' items'
-WHEN Logs.action = 2 THEN logs.notes
-WHEN Logs.action = 3 THEN CONCAT(users.first_name, ' ', Users.last_name) + ' checked in ' + commodities.[name]
-WHEN Logs.action = 4 THEN CONCAT(Users.first_name, ' ', Users.last_name) + ' checked out ' + commodities.[name]
-WHEN Logs.action = 5 THEN Logs.notes
-ELSE ''
-END AS 'details' 
-from Logs
-LEFT JOIN Users ON logs.objUser_uidTuid = users.tuid
-left join storage ON logs.objStorage_uidTuid = Storage.tuid
-left JOIN Commodities on commodities.tuid = storage.objCommodity_uidTuid
-where Logs.action = 5 OR name is not null
-ORDER BY timestamp desc";
+            this._commandCollection[0].CommandText = "SELECT Logs.timestamp, Users.svsu_id, CONCAT(Users.first_name,\' \', Users.last_nam" +
+                "e) AS [UserName], \r\nCASE\r\nWHEN Logs.action = 0 THEN \'Added Item\'\r\nWHEN Logs.acti" +
+                "on = 1 THEN \'Moved Item\'\r\nWHEN Logs.action = 2 AND commodities.commodityType = 2" +
+                " THEN \'Simulator Used\'\r\nWHEN Logs.action = 2 AND commodities.commodityType = 0 T" +
+                "HEN \'Consume Item\'\r\nWHEN Logs.action = 3 THEN \'Checked In Item\'\r\nWHEN Logs.actio" +
+                "n = 4 THEN \'Checked Out Item\'\r\nWHEN Logs.action = 5 THEN \'User Logged In\'\r\nWHEN " +
+                "Logs.action = 6 THEN \'Deleted Item\'\r\nELSE \'\'\r\nEND AS \'action\',\r\nCASE\r\nWHEN Logs." +
+                "action = 5 THEN CONCAT(Users.first_name,\' \', Users.last_name)\r\nWHEN Logs.action " +
+                "= 6 THEN CONCAT(Users.first_name,\' \', Users.last_name)\r\nELSE Commodities.name\r\nE" +
+                "ND AS \'name\',\r\nCASE\r\nWHEN Logs.action = 0 THEN \'+\' + LTRIM(str(Logs.quantityChan" +
+                "ge))\r\nWHEN Logs.action = 1 THEN \'Moved \' + LTRIM(STR(Logs.quantityChange)) + \' i" +
+                "tems\'\r\nWHEN Logs.action = 2 THEN logs.notes\r\nWHEN Logs.action = 3 THEN CONCAT(us" +
+                "ers.first_name, \' \', Users.last_name) + \' checked in \' + commodities.[name]\r\nWHE" +
+                "N Logs.action = 4 THEN CONCAT(Users.first_name, \' \', Users.last_name) + \' checke" +
+                "d out \' + commodities.[name]\r\nWHEN Logs.action = 5 THEN Logs.notes\r\nWHEN Logs.ac" +
+                "tion = 6 THEN Logs.notes\r\nELSE \'\'\r\nEND AS \'details\' \r\nfrom Logs\r\nLEFT JOIN Users" +
+                " ON logs.objUser_uidTuid = users.tuid\r\nleft join storage ON logs.objStorage_uidT" +
+                "uid = Storage.tuid\r\nleft JOIN Commodities on commodities.tuid = storage.objCommo" +
+                "dity_uidTuid\r\nwhere Logs.action = 5 OR name is not null OR logs.action = 6\r\nORDE" +
+                "R BY timestamp desc";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;

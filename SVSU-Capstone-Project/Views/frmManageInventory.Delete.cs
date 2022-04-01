@@ -71,6 +71,17 @@ namespace SVSU_Capstone_Project.Views
                         }
 
                         ItemModel.Delete<Commodity>(commodity);
+
+                        Log log = new Log
+                        {
+                            enuAction = ItemAction.Deleted,
+                            dtTimestamp = DateTime.Now,
+                            intQuantityChange = 0,
+                            objStorage = null,
+                            objUser = Authentication.ActiveUser,
+                            strNotes = $"{commodity.strName} has successfully been deleted by {Authentication.ActiveUser} on {DateTime.Now}."
+                        };
+                        ItemModel.Add<Log>(log);
                     }
                 }
 
