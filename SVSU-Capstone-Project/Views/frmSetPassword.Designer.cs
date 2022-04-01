@@ -113,6 +113,7 @@ namespace SVSU_Capstone_Project
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSetPassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Set Password";
             this.ResumeLayout(false);
             this.PerformLayout();
