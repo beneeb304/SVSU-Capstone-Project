@@ -1309,6 +1309,7 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid user information!", "Alert");
+                        btnUserCancel_Click(sender, e);
                     }
 
                     //Clear fields
@@ -1332,22 +1333,25 @@ namespace SVSU_Capstone_Project.Views
                     try
                     {
                         //Get the user email
-                        MailAddress mailAddress = new MailAddress(lstUser.SelectedItem.ToString());
+                        MailAddress mailAddressCurrent = new MailAddress(lstUser.SelectedItem.ToString());
+
+                        //Make sure new email is valid
+                        MailAddress mailAddressNew = new MailAddress(txtUserEmail.Text);
 
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                            mailAddress.Address + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                            mailAddressCurrent.Address + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
                                                 
                         if (result == DialogResult.Yes)
                         {
                             //Get user
-                            User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
+                            User user = ItemModel.Get<User>(x => x.strEmail == mailAddressCurrent.Address);
 
                             //Modify user
                             user.strSvsu_id = txtUserSVSUID.Text;
                             user.strFirst_name = txtUserFName.Text;
                             user.strLast_name = txtUserLName.Text;
-                            user.strEmail = txtUserEmail.Text;
+                            user.strEmail = mailAddressNew.ToString();
                             user.strPhone = txtUserPhone.Text;
                             user.blnIsAdmin = chkUserAdmin.Checked;
 
@@ -1374,6 +1378,7 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
+                        btnUserCancel_Click(sender, e);
                     }
 
                     //Clear fields
