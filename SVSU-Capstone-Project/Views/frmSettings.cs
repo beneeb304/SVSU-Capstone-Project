@@ -1143,24 +1143,30 @@ namespace SVSU_Capstone_Project.Views
                     strLName = row[0].Substring(0, row[0].IndexOf(","));
                     mailAddress = new MailAddress(row[3] + "@svsu.edu");
 
-                    //Make user
-                    User user = new User()
+                    //Check if user already exists
+                    if(ItemModel.Get<User>(x => x.strEmail == mailAddress.ToString() || x.strSvsu_id == strSVSUID) == null)
                     {
-                        //Default fields
-                        blnIsAdmin = false,
-                        strPhone = "",
-                        strHash = "Capstone2022",
+                        //Make user
+                        User user = new User()
+                        {
+                            //Default fields
+                            blnIsAdmin = false,
+                            strPhone = "",
+                            strHash = "Capstone2022",
 
-                        //Row fields
-                        strSvsu_id = strSVSUID,
-                        strFirst_name = strFName,
-                        strLast_name = strLName,
-                        strEmail = mailAddress.ToString()
-                    };
+                            //Row fields
+                            strSvsu_id = strSVSUID,
+                            strFirst_name = strFName,
+                            strLast_name = strLName,
+                            strEmail = mailAddress.ToString()
+                        };
 
-                    //Add to db
-                    ItemModel.Add<User>(user);
-                    intGoodCtr++;
+                        //Add to db
+                        ItemModel.Add<User>(user);
+                        intGoodCtr++;
+                    }
+                    else
+                        intBadCtr++;                    
                 }
                 catch (Exception)
                 {
