@@ -932,6 +932,7 @@ namespace SVSU_Capstone_Project.Views
             //Disable buttons
             btnCabinetDelete.Enabled = false;
             btnCabinetModify.Enabled = false;
+            cmbRoom.Enabled = false;
 
             //Show buttons
             btnCabinetCancel.Visible = true;
@@ -956,16 +957,23 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyCabinet_Click( object sender, EventArgs e )
         {
-            //Disable buttons
-            btnCabinetAdd.Enabled = false;
-            btnCabinetDelete.Enabled = false;
+            //Check if there are any cabinets in the room to modify
+            if (ItemModel.Get<Room>(x => x.lstCabinets.Count > 0 && x.strName == cmbRoom.Text) != null)
+            {
+                //Disable buttons
+                btnCabinetAdd.Enabled = false;
+                btnCabinetDelete.Enabled = false;
+                cmbRoom.Enabled = false;
 
-            //Show buttons
-            btnCabinetCancel.Visible = true;
-            btnCabinetSave.Visible = true;
+                //Show buttons
+                btnCabinetCancel.Visible = true;
+                btnCabinetSave.Visible = true;
 
-            //Enable fields
-            EnableDisableCabinetFields(true);
+                //Enable fields
+                EnableDisableCabinetFields(true);
+            }
+            else
+                MessageBox.Show("Room does not contain any cabinets to modify!", "Alert");
         }
 
         /* Function: btnDeleteCabinet_Click
@@ -1523,6 +1531,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in room name
+                        if (!txtRoomName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to add " +
                             txtRoomName.Text + " as a new room?", "Confirm", MessageBoxButtons.YesNo);
@@ -1570,6 +1582,7 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid room information!", "Alert");
+                        btnRoomCancel_Click(sender, e);
                     }
 
                     //Clear fields
@@ -1580,7 +1593,7 @@ namespace SVSU_Capstone_Project.Views
                 }
                 else
                 {
-                    MessageBox.Show("Please fill out all of the room fields before saving!", "Alert");
+                    MessageBox.Show("Please fill out a valid room name before saving!", "Alert");
                 }
             }
             else if (btnRoomModify.Enabled)
@@ -1633,6 +1646,7 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid room information!", "Alert");
+                        btnRoomCancel_Click(sender, e);
                     }
 
                     //Clear fields
@@ -1725,9 +1739,14 @@ namespace SVSU_Capstone_Project.Views
                                 btnCabinetAdd.Enabled = true;
                                 btnCabinetDelete.Enabled = true;
                                 btnCabinetModify.Enabled = true;
-                                ClearCabinetFields();
                                 cmbRoom.SelectedItem = selectedRoom;
-                                btnCabinetAdd.PerformClick();
+                                cmbRoom.Enabled = true;
+
+                                //Clear controls
+                                ClearCabinetFields();
+
+                                //Disable fields
+                                EnableDisableCabinetFields(false);
                             }
                         }
                         else
@@ -1738,6 +1757,7 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
+                        btnCabinetCancel_Click(sender, e);
                     }
 
                     ////Clear controls
@@ -1745,6 +1765,9 @@ namespace SVSU_Capstone_Project.Views
 
                     ////Disable fields
                     //EnableDisableCabinetFields(false);
+
+                    ////Enable combo box
+                    //cmbRoom.Enabled = true;
                 }
                 else
                 {
@@ -1802,6 +1825,7 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
+                        btnCabinetCancel_Click(sender, e);
                     }
 
                     //Clear fields
@@ -1809,6 +1833,9 @@ namespace SVSU_Capstone_Project.Views
 
                     //Disable fields
                     EnableDisableCabinetFields(false);
+
+                    //Enable combo box
+                    cmbRoom.Enabled = true;
                 }
                 else
                 {
@@ -1833,6 +1860,7 @@ namespace SVSU_Capstone_Project.Views
             btnCabinetAdd.Enabled = true;
             btnCabinetDelete.Enabled = true;
             btnCabinetModify.Enabled = true;
+            cmbRoom.Enabled = true;
 
             //Clear fields
             ClearCabinetFields();
