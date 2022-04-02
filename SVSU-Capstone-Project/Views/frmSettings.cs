@@ -1130,12 +1130,19 @@ namespace SVSU_Capstone_Project.Views
         private void UploadStudents( List<string[]> lstRows )
         {
             int intBadCtr = 0, intGoodCtr = 0;
+            string strSVSUID, strFName, strLName;
+            MailAddress mailAddress;
 
             //Use list to add users
             foreach (string[] row in lstRows)
             {
                 try
                 {
+                    strSVSUID = row[2];
+                    strFName = row[0].Substring(row[0].IndexOf(",") + 1);
+                    strLName = row[0].Substring(0, row[0].IndexOf(","));
+                    mailAddress = new MailAddress(row[3] + "@svsu.edu");
+
                     //Make user
                     User user = new User()
                     {
@@ -1145,10 +1152,10 @@ namespace SVSU_Capstone_Project.Views
                         strHash = "Capstone2022",
 
                         //Row fields
-                        strSvsu_id = row[2],
-                        strFirst_name = row[0].Substring(row[0].IndexOf(",") + 1),
-                        strLast_name = row[0].Substring(0, row[0].IndexOf(",")),
-                        strEmail = row[3] + "@svsu.edu"
+                        strSvsu_id = strSVSUID,
+                        strFirst_name = strFName,
+                        strLast_name = strLName,
+                        strEmail = mailAddress.ToString()
                     };
 
                     //Add to db
@@ -1319,6 +1326,12 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Valid email
                         MailAddress mailAddress = new MailAddress(txtUserEmail.Text);
+
+                        //(in hindsight, should have used REGEX)
+
+                        //Additional check to make sure email is only alphanumeric with period or hyphen
+                        if (!txtUserEmail.Text.All(c => char.IsLetterOrDigit(c) || c.Equals('.') || c.Equals('-') || c.Equals('@')))
+                            throw new Exception();
 
                         //Only alpha first name
                         if (!txtUserFName.Text.All(char.IsLetter))
