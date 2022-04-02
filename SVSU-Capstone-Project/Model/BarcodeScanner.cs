@@ -111,7 +111,7 @@ namespace SVSU_Capstone_Project
          */
         public Commodity getCommodity()
         {
-            MessageBox.Show(strReadCode);
+            //MessageBox.Show(strReadCode);
             try { commodity = ItemModel.Get<Commodity>(x => x.strBarCode == strReadCode); } 
             catch{ Console.WriteLine("Commodity not found from Barcode"); }
             //resetValues(); // Values are now reset by the receiving function.
