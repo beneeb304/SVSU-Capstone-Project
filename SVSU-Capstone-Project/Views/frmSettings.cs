@@ -382,16 +382,24 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyRoom_Click( object sender, EventArgs e )
         {
-            //Disable buttons
-            btnRoomAdd.Enabled = false;
-            btnRoomDelete.Enabled = false;
-
-            //Show buttons
-            btnRoomCancel.Visible = true;
-            btnRoomSave.Visible = true;
-
-            //Enable fields
-            EnableDisableRoomFields(true);
+            if(lstRoom.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Room to modify!", "Alert");
+            }
+            else
+            {
+                //Disable buttons
+                btnRoomAdd.Enabled = false;
+                btnRoomDelete.Enabled = false;
+                
+                //Show buttons
+                btnRoomCancel.Visible = true;
+                btnRoomSave.Visible = true;
+                
+                //Enable fields
+                EnableDisableRoomFields(true);
+            }
+            
         }
 
         /* Function: btnAddRoom_Click
@@ -1700,7 +1708,7 @@ namespace SVSU_Capstone_Project.Views
 
             //Clear fields
             ClearRoomFields();
-
+            lstRoom.SelectedIndex = -1;
             //Disable fields
             EnableDisableRoomFields(false);
         }
