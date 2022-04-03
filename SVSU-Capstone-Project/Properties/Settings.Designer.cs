@@ -26,22 +26,22 @@ namespace SVSU_Capstone_Project.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sql.dvlin.me;Initial Catalog=InvDb;Persist Security Info=True;User ID" +
-            "=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M")]
-        public string InvDbConnectionString1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=127.0.0.1; Initial Catalog=InvDb; Persist Security Info=True; User ID" +
+            "=CIS022; Password=CIS!@022ComputerInformationSystemsWI022")]
+        public string InvDbConnectionString {
             get {
-                return ((string)(this["InvDbConnectionString1"]));
+                return ((string)(this["InvDbConnectionString"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sql.dvlin.me;Initial Catalog=InvDb;Persist Security Info=True;User ID" +
-            "=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M")]
-        public string InvDbConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=127.0.0.1; Initial Catalog=InvDb; Persist Security Info=True; User ID" +
+            "=CIS022; Password=CIS!@022ComputerInformationSystemsWI022")]
+        public string InvDbConnectionString1 {
             get {
-                return ((string)(this["InvDbConnectionString"]));
+                return ((string)(this["InvDbConnectionString1"]));
             }
         }
     }
