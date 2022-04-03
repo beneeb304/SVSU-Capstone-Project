@@ -43,7 +43,7 @@ namespace SVSU_Capstone_Project.ViewModel
         public static T Get<T>( Func<T, bool> predicate ) where T : ContextEntity
         {
             //check to make sure we are connected to db
-            string conSring = "Data Source=127.0.0.1; Initial Catalog=InvDb; Persist Security Info=True; User ID=CIS022; Password=CIS!@022ComputerInformationSystemsWI022";
+            string conSring = "Data Source=127.0.0.1, 1433; Initial Catalog=CIS022; Persist Security Info=True; User ID=CIS022; Password=CIS!@022ComputerInformationSystemsWI022";
             SqlConnection conn = new SqlConnection(conSring);
             try
             {
