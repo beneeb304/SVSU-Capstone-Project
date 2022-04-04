@@ -27,10 +27,10 @@ namespace SVSU_Capstone_Project
      */
     public partial class BarcodeScanner
     {
-        private bool blnStartRead;
-        private string strReadCode;
-        private int intBeginTime;
-        public Commodity commodity;
+        public bool blnStartRead { get; set; }
+        public string strReadCode { get; set; }
+        public int intBeginTime { get; set; }
+        public Commodity commodity { get; set; }
 
         // Constructor to create the barcode scanner object. Only called once per program session.
         public BarcodeScanner()
@@ -42,20 +42,78 @@ namespace SVSU_Capstone_Project
         }
 
         /* Function: isSeqStart
-         * Description: checks if a pressed key equals the required start character.
+         * Description: Checks if a pressed key equals the required start character.
          * 
          * Local Variables
          * int intKeyValue; the KeyValue passed by the key pressed.
          */
-        public bool isSeqStart(string s) 
+        public bool isSeqStart( KeyEventArgs e )
         {
-            if (s == "C" || s == "S" || s == "E")
+            if (e.KeyCode == Keys.C || e.KeyCode == Keys.E || e.KeyCode == Keys.S)
             {
                 return true;
             }
             return false;
         }
 
+        /* Function beginScan
+         * Description: When the character indicating a potential scan is used, record the start time and indicate a scan.
+         * 
+         * No Local Variables
+         */
+        public void beginScan( KeyEventArgs e )
+        {
+            this.blnStartRead = true;
+            this.intBeginTime = DateTime.Now.Millisecond;
+            this.strReadCode += e.KeyCode.ToString().ToUpper();
+        }
+
+        /* Function addToCode
+         * Description: Regex each key press and add it to the scanned code if it matches.
+         * 
+         * Local Variables
+         * Regex regex; Used to compare the string value of the key press.
+         */
+        public void addToCode( KeyEventArgs e )
+        {
+            if ((e.KeyCode <= Keys.D0 && e.KeyCode >= Keys.D9)
+                || (e.KeyCode <= Keys.NumPad0 && e.KeyCode >= Keys.NumPad9))
+            {
+                this.strReadCode += e.KeyCode.ToString().Substring(1);
+            }
+            else if (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z)
+            {
+                this.strReadCode += e.KeyCode.ToString().ToLower();
+            }
+            else if (e.KeyCode == Keys.Oemtilde)
+            {
+                this.strReadCode += "~";
+            }
+        }
+
+        public bool isLegit()
+        {
+            if ((strReadCode.StartsWith("C~") || strReadCode.StartsWith("E~") || strReadCode.StartsWith("S~"))
+                && strReadCode.Length >= 10)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /* Function getCommodity
+         * Description: If a barcode scan seems legit, find the commodity matching the item.
+         * If a commodity isn't found, write to console.
+         * 
+         * Local Variables
+         * CheckedItem checkedItem; Stores information about a CheckedItem based on barcode.
+         */
+        public void getCommodity()
+        {
+            try { this.commodity = ItemModel.Get<Commodity>(x => x.strBarCode == strReadCode); }
+            catch { Console.WriteLine("Commodity not found from Barcode"); }
+        } 
+        
         /* Function resetValues
          * Description: Sets the barcode scanner back to its default state.
          * 
@@ -67,55 +125,6 @@ namespace SVSU_Capstone_Project
             this.strReadCode = "";
             this.intBeginTime = 0;
             this.commodity = null;
-        }
-
-        /* Function beginScan
-         * Description: When the character indicating a potential scan is used, record the start time and indicate a scan.
-         * 
-         * No Local Variables
-         */
-        public void beginScan(string s)
-        {
-            this.blnStartRead = true;
-            this.intBeginTime = DateTime.Now.Millisecond;
-            strReadCode += s;
-        }
-
-        /* isStartRead returns whether a potential scan is happening or not */
-        public bool isStartRead() { return blnStartRead; }
-
-        /* getBeginTime returns the recorded start time in milliseconds of a potential scan */
-        public int getBeginTime() { return intBeginTime; }
-
-        /* Function addToCode
-         * Description: Regex each key press and add it to the scanned code if it matches.
-         * 
-         * Local Variables
-         * Regex regex; Used to compare the string value of the key press.
-         */
-        public void addToCode(string s) 
-        {
-            Regex regex = new Regex("^[a-zA-Z0-9~]+$");
-            if (regex.IsMatch(strReadCode))
-            {
-                this.strReadCode += s;
-            }
-        }
- 
-        /* Function getCommodity
-         * Description: If a barcode scan seems legit, find the commodity matching the item.
-         * If a commodity isn't found, write to console.
-         * 
-         * Local Variables
-         * CheckedItem checkedItem; Stores information about a CheckedItem based on barcode.
-         */
-        public Commodity getCommodity()
-        {
-            //MessageBox.Show(strReadCode);
-            try { commodity = ItemModel.Get<Commodity>(x => x.strBarCode == strReadCode); } 
-            catch{ Console.WriteLine("Commodity not found from Barcode"); }
-            //resetValues(); // Values are now reset by the receiving function.
-            return commodity;
         }
     }
 }
