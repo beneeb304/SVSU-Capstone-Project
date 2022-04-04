@@ -213,15 +213,15 @@ namespace SVSU_Capstone_Project
             }
 
             // Check if the barcodeScanner object reflects that a scan is happening.
-            else if (barcodeScanner.blnStartRead)
+            else if (barcodeScanner.isStartRead())
             {
                 // Attempt to add new keys to the read barcode scan.
                 barcodeScanner.addToCode(e);
                 
                 // If Enter is entered within 100 milliseconds of the scan beginning, check that the current string read in matches the generated barcode format.
-                // A legit barcode read in within the time frame followed by enter indicates a legit scan.
+                // A legit barcode read in within the time frame followed by enter indicates a legit scan. If it doesn't work, reset the scanner and try again.
                 // The barcode scanner enters the entire string read in very quickly, taking longer indicates it was likely not a scan.
-                if (e.KeyCode == Keys.Enter && (DateTime.Now.Millisecond - barcodeScanner.intBeginTime) < 100)
+                if (e.KeyCode == Keys.Enter && (DateTime.Now.Millisecond - barcodeScanner.getStartTime()) < 100)
                 {
                     if (barcodeScanner.isLegit())
                     {
@@ -235,7 +235,7 @@ namespace SVSU_Capstone_Project
                 }
 
                 // If the potential scan took too long for the entry to be by barcode scanner, cancel the scan and reset the read information.
-                else if ((DateTime.Now.Millisecond - barcodeScanner.intBeginTime) > 100)
+                else if ((DateTime.Now.Millisecond - barcodeScanner.getStartTime()) > 100)
                 {
                     barcodeScanner.resetValues();
                 }

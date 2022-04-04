@@ -186,7 +186,7 @@ namespace SVSU_Capstone_Project.Views
          * Local Variables
          * CheckedItem checkedItem; The object found as a result of the barcode scan.
          */
-        public void setScannedBarcode( Commodity commodity)
+        private void setScannedBarcode( Commodity commodity)
         {
             if (commodity != null)
             {

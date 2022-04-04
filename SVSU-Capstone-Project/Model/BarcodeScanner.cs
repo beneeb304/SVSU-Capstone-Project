@@ -41,6 +41,16 @@ namespace SVSU_Capstone_Project
             this.commodity = null;
         }
 
+        public bool isStartRead()
+        {
+            return this.blnStartRead;
+        }
+
+        public int getStartTime()
+        {
+            return intBeginTime;
+        }
+
         /* Function: isSeqStart
          * Description: Checks if a pressed key equals the required start character.
          * 
