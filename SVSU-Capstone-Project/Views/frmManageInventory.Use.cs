@@ -36,6 +36,13 @@ namespace SVSU_Capstone_Project.Views
             nudUseDeduct.Value = 1;
         }
 
+        private void nudQuantity_KeyPress( object sender, KeyPressEventArgs e )
+        {
+            if (e.KeyChar == (char)13)
+            {
+                btnUse_Click(sender, e);
+            }
+        }
         /* Function: btnUse_Click
          * Description: Marks simulator use upon btnUse click. Adds the amount of time used to the specified simulator.
          * 
@@ -63,7 +70,7 @@ namespace SVSU_Capstone_Project.Views
                 if(sim != null)
                 {
                     var simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == sim.objCommodity.uidTuid);
-                    simulator.intHoursUsed = (int)(simulator.intHoursUsed + nudUseDeduct.Value);
+                    simulator.intHoursUsed = ((int)(simulator.intHoursUsed + (uint)nudUseDeduct.Value));
                     simulator.intTimesUsed = simulator.intTimesUsed + 1;
                     ItemModel.Update<SimulatorUse>(simulator);
                     var storage = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == simulator.objCommodity.uidTuid);
@@ -74,7 +81,7 @@ namespace SVSU_Capstone_Project.Views
                         intQuantityChange = (int)nudUseDeduct.Value,
                         objStorage = storage,
                         objUser = Authentication.ActiveUser,
-                        strNotes = $"{simulator.objCommodity.strName} has been used for {nudUseDeduct.Value} hours on {DateTime.Now}."
+                        strNotes = $"{simulator.objCommodity.strName} has been used for {(uint)nudUseDeduct.Value} hours on {DateTime.Now}."
                     };
                     ItemModel.Add<Log>(log);
 

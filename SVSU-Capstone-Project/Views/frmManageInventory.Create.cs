@@ -54,9 +54,10 @@ namespace SVSU_Capstone_Project.Views
          */
         private void trvCreateSelect_BeforeSelect( object sender, TreeViewCancelEventArgs e )
         {
+            if (e.Node == null) return;
+
             // cast Tag to TreeNodeTag
             TreeNodeTag tag = (TreeNodeTag)e.Node.Tag;
-
             if (!tag.selectable)
             {
                 e.Cancel = true;
