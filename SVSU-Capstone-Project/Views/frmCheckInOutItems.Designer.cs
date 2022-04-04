@@ -179,9 +179,9 @@ namespace SVSU_Capstone_Project.Views
             // 
             // txtStudentSearch
             // 
-            this.txtStudentSearch.Location = new System.Drawing.Point(840, 65);
+            this.txtStudentSearch.Location = new System.Drawing.Point(852, 65);
             this.txtStudentSearch.Name = "txtStudentSearch";
-            this.txtStudentSearch.Size = new System.Drawing.Size(337, 26);
+            this.txtStudentSearch.Size = new System.Drawing.Size(325, 26);
             this.txtStudentSearch.TabIndex = 200;
             this.txtStudentSearch.TextChanged += new System.EventHandler(this.txtStudentSearch_TextChanged);
             // 
