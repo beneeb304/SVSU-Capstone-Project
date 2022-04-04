@@ -1172,9 +1172,9 @@ namespace SVSU_Capstone_Project.Views
             {
                 try
                 {
-                    strSVSUID = row[2];
-                    strFName = row[0].Substring(row[0].IndexOf(",") + 1);
-                    strLName = row[0].Substring(0, row[0].IndexOf(","));
+                    strSVSUID = row[2].Trim();
+                    strFName = row[0].Substring(row[0].IndexOf(",") + 1).Trim();
+                    strLName = row[0].Substring(0, row[0].IndexOf(",")).Trim();
                     mailAddress = new MailAddress(row[3] + "@svsu.edu");
 
                     //Check if user already exists
