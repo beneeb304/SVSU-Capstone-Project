@@ -75,13 +75,22 @@ namespace SVSU_Capstone_Project.Views
             var lstStudent = ItemModel.GetMany<User>().Where(x => x.blnIsAdmin == false).ToList();
             lstStudents.ClearSelected();
 
+            string strTemp;
+
             if(txtStudentSearch.Text.Length > 0)
             {
+                lstStudents.DataSource = null;
+                lstStudents.Items.Clear();
+
                 List<User> lstTemp = lstStudent.Where(x => x.strEmail.IndexOf(txtStudentSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1 ||
                 x.strFirst_name.IndexOf(txtStudentSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1 ||
                 x.strLast_name.IndexOf(txtStudentSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
 
-                lstStudents.DataSource = lstTemp;
+                foreach (User user in lstTemp)
+                {
+                    strTemp = user.strFirst_name.Trim() + " " + user.strLast_name.Trim() + " - " + user.strEmail.Trim();
+                    lstStudents.Items.Add(strTemp);
+                }
             }
             else
             {
