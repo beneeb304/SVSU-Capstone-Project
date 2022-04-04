@@ -15,11 +15,23 @@ namespace SVSU_Capstone_Project.Views
 {
     public partial class frmManageInventory : Form
     {
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbMoveCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
             Category_SelectedValueChanged(cmbMoveCategory, cmbMoveCommodity);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbMoveCommodity_SelectedIndexChanged( object sender, EventArgs e )
         {
             if (blnEventBlock) return;
@@ -29,21 +41,45 @@ namespace SVSU_Capstone_Project.Views
             cmbMoveRoomTo.SelectedIndex = -1;
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbMoveRoomFrom_SelectedIndexChanged( object sender, EventArgs e )
         {
             Room_SelectedValueChanged(cmbMoveRoomFrom, cmbMoveCabinetFrom, cmbMoveCommodity);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbMoveCabinetFrom_SelectedIndexChanged( object sender, EventArgs e )
         {
             Cabinet_SelectedValueChanged(cmbMoveCabinetFrom, cmbMoveCommodity, cmbMoveNLevelFrom);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbMoveNLevelFrom_SelectedIndexChanged( object sender, EventArgs e )
         {
             NLevel_SelectedValueChanged(cmbMoveCommodity, cmbMoveCabinetFrom, cmbMoveNLevelFrom, txtMoveAvailable, nudMoveQuantity);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbMoveRoomTo_SelectedIndexChanged( object sender, EventArgs e )
         {
             if (blnEventBlock) return;
@@ -55,6 +91,12 @@ namespace SVSU_Capstone_Project.Views
 
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbMoveCabinetTo_SelectedIndexChanged( object sender, EventArgs e )
         {
             if (blnEventBlock) return;
@@ -65,6 +107,12 @@ namespace SVSU_Capstone_Project.Views
             cmbMoveNLevelTo.SelectedIndex = -1;
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnMoveReset_Click( object sender, EventArgs e )
         {
             cmbMoveCategory.SelectedIndex = -1;
@@ -73,6 +121,12 @@ namespace SVSU_Capstone_Project.Views
             nudMoveQuantity.Value = 1;
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnMove_Click( object sender, EventArgs e )
         {
             //Check if all fields are filled out

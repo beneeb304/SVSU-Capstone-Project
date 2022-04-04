@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 using SVSU_Capstone_Project.Model;
 
 namespace SVSU_Capstone_Project.ViewModel
@@ -25,16 +27,43 @@ namespace SVSU_Capstone_Project.ViewModel
 
         public static List<T> GetMany<T>() where T : ContextEntity
         {
+            //check to make sure we are connected to db
+            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            SqlConnection conn = new SqlConnection(conSring);
+            try
+            {
+                conn.Open();
+                //MessageBox.Show("successfull connection", "Alert");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please check your internet connection and try agian. You can also restart the application and try agian.", "Alert");
+            }
             return db.Set<T>().ToList();
         }
 
         public static T Get<T>( Func<T, bool> predicate ) where T : ContextEntity
         {
+            //check to make sure we are connected to db
+            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            SqlConnection conn = new SqlConnection(conSring);
+            try
+            {
+                conn.Open();
+                //MessageBox.Show("successfull connection", "Alert");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please check your internet connection and try agian. You can also restart the application and try agian.", "Alert");
+            }
             return db.Set<T>().FirstOrDefault(predicate);
         }
 
         public static Guid Add<T>( T obj, out T item ) where T : ContextEntity
         {
+            
             //Set tuid
             obj.uidTuid = Guid.NewGuid();
 
@@ -54,18 +83,60 @@ namespace SVSU_Capstone_Project.ViewModel
 
         public static Guid Add<T>( T obj ) where T : ContextEntity
         {
+            //check to make sure we are connected to db
+            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            SqlConnection conn = new SqlConnection(conSring);
+            try
+            {
+                conn.Open();
+                //MessageBox.Show("successfull connection", "Alert");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please check your internet connection and try agian. You can also restart the application and try agian.", "Alert");
+            }
+
             return Add(obj, out T item);
         }
 
 
         public static void Update<T>( T obj ) where T : ContextEntity
         {
+            //check to make sure we are connected to db
+            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            SqlConnection conn = new SqlConnection(conSring);
+            try
+            {
+                conn.Open();
+                //MessageBox.Show("successfull connection", "Alert");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please check your internet connection and try agian. You can also restart the application and try agian.", "Alert");
+            }
+
             db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
             if (!blnCommitHold) db.SaveChanges();
         }
 
         public static void Delete<T>( T obj ) where T : ContextEntity
         {
+            //check to make sure we are connected to db
+            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            SqlConnection conn = new SqlConnection(conSring);
+            try
+            {
+                conn.Open();
+                //MessageBox.Show("successfull connection", "Alert");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please check your internet connection and try agian. You can also restart the application and try agian.", "Alert");
+            }
+
             db.Set<T>().Remove(obj);
             if (!blnCommitHold) db.SaveChanges();
         }

@@ -273,34 +273,41 @@ namespace SVSU_Capstone_Project.Views
 
                     //Get user
                     User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
-
-                    if (user.blnIsAdmin)
+                    if (Authentication.ActiveUser.strEmail == "brneeb@svsu.edu" || Authentication.ActiveUser.strEmail == "mjsimon1@svsu.edu" || Authentication.ActiveUser.strEmail == "ldscott2@svsu.edu" || Authentication.ActiveUser.strEmail == "taeurich@svsu.edu" || Authentication.ActiveUser.strEmail == "hmclippe@svsu.edu")
                     {
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to reset " +
-                            mailAddress.Address + "'s password?", "Confirm", MessageBoxButtons.YesNo);
-
-                        if (result == DialogResult.Yes)
+                        if (user.blnIsAdmin)
                         {
-                            //Modify user password
-                            user.strHash = "Capstone2022";
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to reset " +
+                                mailAddress.Address + "'s password?", "Confirm", MessageBoxButtons.YesNo);
 
-                            //Save user
-                            ItemModel.Update<User>(user);
+                            if (result == DialogResult.Yes)
+                            {
+                                //Modify user password
+                                user.strHash = "Capstone2022";
 
-                            //Alert user
-                            MessageBox.Show("Successful Reset\r\n\r\n"
-                                + txtUserEmail.Text + " will be prompted to reset their password on their next login\r\n" +
-                                "Their temporary password is 'Capstone2022'", "Alert");
+                                //Save user
+                                ItemModel.Update<User>(user);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Alert user
+                                MessageBox.Show("Successful Reset\r\n\r\n"
+                                    + txtUserEmail.Text + " will be prompted to reset their password on their next login\r\n" +
+                                    "Their temporary password is 'Capstone2022'", "Alert");
+
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot change non-admin password", "Alert");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Cannot change non-admin password", "Alert");
+                        MessageBox.Show("You dont have permission to perform this action", "Alert");
                     }
+
                 }
                 catch
                 {
@@ -375,16 +382,24 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyRoom_Click( object sender, EventArgs e )
         {
-            //Disable buttons
-            btnRoomAdd.Enabled = false;
-            btnRoomDelete.Enabled = false;
-
-            //Show buttons
-            btnRoomCancel.Visible = true;
-            btnRoomSave.Visible = true;
-
-            //Enable fields
-            EnableDisableRoomFields(true);
+            if(lstRoom.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Room to modify!", "Alert");
+            }
+            else
+            {
+                //Disable buttons
+                btnRoomAdd.Enabled = false;
+                btnRoomDelete.Enabled = false;
+                
+                //Show buttons
+                btnRoomCancel.Visible = true;
+                btnRoomSave.Visible = true;
+                
+                //Enable fields
+                EnableDisableRoomFields(true);
+            }
+            
         }
 
         /* Function: btnAddRoom_Click
@@ -925,6 +940,7 @@ namespace SVSU_Capstone_Project.Views
             //Disable buttons
             btnCabinetDelete.Enabled = false;
             btnCabinetModify.Enabled = false;
+            cmbRoom.Enabled = false;
 
             //Show buttons
             btnCabinetCancel.Visible = true;
@@ -949,16 +965,23 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyCabinet_Click( object sender, EventArgs e )
         {
-            //Disable buttons
-            btnCabinetAdd.Enabled = false;
-            btnCabinetDelete.Enabled = false;
+            //Check if there are any cabinets in the room to modify
+            if (ItemModel.Get<Room>(x => x.lstCabinets.Count > 0 && x.strName == cmbRoom.Text) != null)
+            {
+                //Disable buttons
+                btnCabinetAdd.Enabled = false;
+                btnCabinetDelete.Enabled = false;
+                cmbRoom.Enabled = false;
 
-            //Show buttons
-            btnCabinetCancel.Visible = true;
-            btnCabinetSave.Visible = true;
+                //Show buttons
+                btnCabinetCancel.Visible = true;
+                btnCabinetSave.Visible = true;
 
-            //Enable fields
-            EnableDisableCabinetFields(true);
+                //Enable fields
+                EnableDisableCabinetFields(true);
+            }
+            else
+                MessageBox.Show("Room does not contain any cabinets to modify!", "Alert");
         }
 
         /* Function: btnDeleteCabinet_Click
@@ -1115,30 +1138,43 @@ namespace SVSU_Capstone_Project.Views
         private void UploadStudents( List<string[]> lstRows )
         {
             int intBadCtr = 0, intGoodCtr = 0;
+            string strSVSUID, strFName, strLName;
+            MailAddress mailAddress;
 
             //Use list to add users
             foreach (string[] row in lstRows)
             {
                 try
                 {
-                    //Make user
-                    User user = new User()
+                    strSVSUID = row[2];
+                    strFName = row[0].Substring(row[0].IndexOf(",") + 1);
+                    strLName = row[0].Substring(0, row[0].IndexOf(","));
+                    mailAddress = new MailAddress(row[3] + "@svsu.edu");
+
+                    //Check if user already exists
+                    if(ItemModel.Get<User>(x => x.strEmail == mailAddress.ToString() || x.strSvsu_id == strSVSUID) == null)
                     {
-                        //Default fields
-                        blnIsAdmin = false,
-                        strPhone = "",
-                        strHash = "Capstone2022",
+                        //Make user
+                        User user = new User()
+                        {
+                            //Default fields
+                            blnIsAdmin = false,
+                            strPhone = "",
+                            strHash = "Capstone2022",
 
-                        //Row fields
-                        strSvsu_id = row[2],
-                        strFirst_name = row[0].Substring(row[0].IndexOf(",") + 1),
-                        strLast_name = row[0].Substring(0, row[0].IndexOf(",")),
-                        strEmail = row[3] + "@svsu.edu"
-                    };
+                            //Row fields
+                            strSvsu_id = strSVSUID,
+                            strFirst_name = strFName,
+                            strLast_name = strLName,
+                            strEmail = mailAddress.ToString()
+                        };
 
-                    //Add to db
-                    ItemModel.Add<User>(user);
-                    intGoodCtr++;
+                        //Add to db
+                        ItemModel.Add<User>(user);
+                        intGoodCtr++;
+                    }
+                    else
+                        intBadCtr++;                    
                 }
                 catch (Exception)
                 {
@@ -1157,6 +1193,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableUserFields(bool blnEnable)
         {
             if (blnEnable)
@@ -1179,6 +1221,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableRoomFields(bool blnEnable )
         {
             if (blnEnable)
@@ -1193,6 +1241,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableCabinetFields( bool blnEnable )
         {
             if (blnEnable)
@@ -1207,6 +1261,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableCategoryFields( bool blnEnable )
         {
             if (blnEnable)
@@ -1221,6 +1281,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableVendorFields( bool blnEnable )
         {
             if (blnEnable)
@@ -1237,6 +1303,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void EnableDisableNLevelFields( bool blnEnable )
         {
             if (blnEnable)
@@ -1251,6 +1323,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnUserSave_Click( object sender, EventArgs e )
         {
             if (btnUserAdd.Enabled)
@@ -1262,6 +1340,28 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Valid email
                         MailAddress mailAddress = new MailAddress(txtUserEmail.Text);
+
+                        //(in hindsight, should have used REGEX)
+
+                        //Additional check to make sure email is only alphanumeric with period or hyphen
+                        if (!txtUserEmail.Text.All(c => char.IsLetterOrDigit(c) || c.Equals('.') || c.Equals('-') || c.Equals('@')))
+                            throw new Exception();
+
+                        //Only alpha first name
+                        if (!txtUserFName.Text.All(char.IsLetter))
+                            throw new Exception();
+
+                        //Only alpha last name
+                        if (!txtUserLName.Text.All(char.IsLetter))
+                            throw new Exception();
+
+                        //Only alphanumeric SVSU ID
+                        if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit))
+                            throw new Exception();
+
+                        //Only empty or numeric phone
+                        if (!txtUserPhone.Text.All(char.IsNumber) || txtUserPhone.Text != "")
+                            throw new Exception();
 
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to add " +
@@ -1309,6 +1409,7 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid user information!", "Alert");
+                        btnUserCancel_Click(sender, e);
                     }
 
                     //Clear fields
@@ -1331,23 +1432,46 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alpha first name
+                        if (!txtUserFName.Text.All(char.IsLetter))
+                            throw new Exception();
+
+                        //Only alpha last name
+                        if (!txtUserLName.Text.All(char.IsLetter))
+                            throw new Exception();
+
+                        //Only alphanumeric SVSU ID
+                        if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit))
+                            throw new Exception();
+
+                        //Only empty or numeric phone
+                        if (!txtUserPhone.Text.All(char.IsNumber) || txtUserPhone.Text != "")
+                            throw new Exception();
+
                         //Get the user email
-                        MailAddress mailAddress = new MailAddress(lstUser.SelectedItem.ToString());
+                        MailAddress mailAddressCurrent = new MailAddress(lstUser.SelectedItem.ToString());
+
+                        //Make sure new email is valid
+                        MailAddress mailAddressNew = new MailAddress(txtUserEmail.Text);
+
+                        //Make sure SVSU ID is 8 chars or less
+                        if (txtUserSVSUID.Text.Length > 8 || mailAddressNew.ToString().Length > 25)
+                            throw new Exception();
 
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                            mailAddress.Address + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                            mailAddressCurrent.Address + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
                                                 
                         if (result == DialogResult.Yes)
                         {
                             //Get user
-                            User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
+                            User user = ItemModel.Get<User>(x => x.strEmail == mailAddressCurrent.Address);
 
                             //Modify user
                             user.strSvsu_id = txtUserSVSUID.Text;
                             user.strFirst_name = txtUserFName.Text;
                             user.strLast_name = txtUserLName.Text;
-                            user.strEmail = txtUserEmail.Text;
+                            user.strEmail = mailAddressNew.ToString();
                             user.strPhone = txtUserPhone.Text;
                             user.blnIsAdmin = chkUserAdmin.Checked;
 
@@ -1370,10 +1494,15 @@ namespace SVSU_Capstone_Project.Views
                             btnUserPassword.Enabled = true;
                             btnUserDelete.Enabled = true;
                         }
+                        else
+                        {
+                            btnUserCancel_Click(sender, e);
+                        }
                     }
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
+                        btnUserCancel_Click(sender, e);
                     }
 
                     //Clear fields
@@ -1389,6 +1518,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnUserCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons
@@ -1409,6 +1544,12 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableUserFields(false);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnRoomSave_Click( object sender, EventArgs e )
         {
             if (btnRoomAdd.Enabled)
@@ -1417,6 +1558,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in room name
+                        if (!txtRoomName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to add " +
                             txtRoomName.Text + " as a new room?", "Confirm", MessageBoxButtons.YesNo);
@@ -1464,6 +1609,7 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid room information!", "Alert");
+                        btnRoomCancel_Click(sender, e);
                     }
 
                     //Clear fields
@@ -1474,7 +1620,7 @@ namespace SVSU_Capstone_Project.Views
                 }
                 else
                 {
-                    MessageBox.Show("Please fill out all of the room fields before saving!", "Alert");
+                    MessageBox.Show("Please fill out a valid room name before saving!", "Alert");
                 }
             }
             else if (btnRoomModify.Enabled)
@@ -1527,6 +1673,7 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid room information!", "Alert");
+                        btnRoomCancel_Click(sender, e);
                     }
 
                     //Clear fields
@@ -1542,6 +1689,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnRoomCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons
@@ -1555,11 +1708,17 @@ namespace SVSU_Capstone_Project.Views
 
             //Clear fields
             ClearRoomFields();
-
+            lstRoom.SelectedIndex = -1;
             //Disable fields
             EnableDisableRoomFields(false);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnCabinetSave_Click( object sender, EventArgs e )
         {
             if (btnCabinetAdd.Enabled)
@@ -1589,6 +1748,7 @@ namespace SVSU_Capstone_Project.Views
                                     objRoom = ItemModel.Get<Room>(x => x.strName == cmbRoom.SelectedItem.ToString())
                                 };
 
+                                var selectedRoom = cmbRoom.SelectedItem;
                                 //Add cabinet
                                 ItemModel.Add<Cabinet>(cabinet);
 
@@ -1606,6 +1766,14 @@ namespace SVSU_Capstone_Project.Views
                                 btnCabinetAdd.Enabled = true;
                                 btnCabinetDelete.Enabled = true;
                                 btnCabinetModify.Enabled = true;
+                                cmbRoom.SelectedItem = selectedRoom;
+                                cmbRoom.Enabled = true;
+
+                                //Clear controls
+                                ClearCabinetFields();
+
+                                //Disable fields
+                                EnableDisableCabinetFields(false);
                             }
                         }
                         else
@@ -1616,13 +1784,17 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
+                        btnCabinetCancel_Click(sender, e);
                     }
 
-                    //Clear controls
-                    ClearCabinetFields();
+                    ////Clear controls
+                    //ClearCabinetFields();
 
-                    //Disable fields
-                    EnableDisableCabinetFields(false);
+                    ////Disable fields
+                    //EnableDisableCabinetFields(false);
+
+                    ////Enable combo box
+                    //cmbRoom.Enabled = true;
                 }
                 else
                 {
@@ -1680,6 +1852,7 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
+                        btnCabinetCancel_Click(sender, e);
                     }
 
                     //Clear fields
@@ -1687,6 +1860,9 @@ namespace SVSU_Capstone_Project.Views
 
                     //Disable fields
                     EnableDisableCabinetFields(false);
+
+                    //Enable combo box
+                    cmbRoom.Enabled = true;
                 }
                 else
                 {
@@ -1695,6 +1871,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnCabinetCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons
@@ -1705,6 +1887,7 @@ namespace SVSU_Capstone_Project.Views
             btnCabinetAdd.Enabled = true;
             btnCabinetDelete.Enabled = true;
             btnCabinetModify.Enabled = true;
+            cmbRoom.Enabled = true;
 
             //Clear fields
             ClearCabinetFields();
@@ -1713,6 +1896,12 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableCabinetFields(false);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnCategorySave_Click( object sender, EventArgs e )
         {
             if (btnCategoryAdd.Enabled)
@@ -1845,6 +2034,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnCategoryCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons
@@ -1863,6 +2058,12 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableCategoryFields(false);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnVendorSave_Click( object sender, EventArgs e )
         {
             if (btnVendorAdd.Enabled)
@@ -1998,6 +2199,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnVendorCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons
@@ -2016,6 +2223,12 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableVendorFields(false);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnNLevelSave_Click( object sender, EventArgs e )
         {
             if (btnNLevelAdd.Enabled)
@@ -2149,6 +2362,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnNLevelCancel_Click( object sender, EventArgs e )
         {
             //Hide buttons

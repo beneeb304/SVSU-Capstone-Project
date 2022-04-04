@@ -47,6 +47,12 @@ namespace SVSU_Capstone_Project.Views
             cmbItemType_SelectedIndexChanged(sender, e);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnPrintBarcode_Click( object sender, EventArgs e )
         {
             if(lstCommodity.SelectedIndex > -1)
@@ -61,6 +67,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbItemType_SelectedIndexChanged( object sender, EventArgs e )
         {
             var selectedType = cmbItemType.SelectedIndex;
@@ -69,6 +81,12 @@ namespace SVSU_Capstone_Project.Views
            cmbCategory.DataSource = ItemModel.GetMany<Commodity>().Where(x => ((int)x.enuCommodityType) == selectedType).Select(x => x.objCategory.strName).Distinct().ToList();
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
             //Clear detail dgv rows
@@ -90,6 +108,12 @@ namespace SVSU_Capstone_Project.Views
            
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void txtSearch_TextChanged( object sender, EventArgs e )
         {
             //Get rid of current rows
@@ -111,6 +135,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void lstCommodity_Click( object sender, EventArgs e )
         {
             if (lstCommodity.DataSource != null)
@@ -167,6 +197,12 @@ namespace SVSU_Capstone_Project.Views
 
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void lstCommodity_DoubleClick( object sender, EventArgs e )
         {
             if (lstCommodity.DataSource != null)
@@ -210,6 +246,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void pdtBarcode_PrintPage( object sender, System.Drawing.Printing.PrintPageEventArgs e )
         {
             Bitmap bmpBarcode = new Bitmap(pcbBarcode.Width, pcbBarcode.Height);

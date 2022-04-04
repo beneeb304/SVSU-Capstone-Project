@@ -46,6 +46,12 @@ namespace SVSU_Capstone_Project.Views
             trvCreateSelectByRoom.SelectedNode = null;
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void trvCreateSelect_BeforeSelect( object sender, TreeViewCancelEventArgs e )
         {
             if (e.Node == null) return;
@@ -58,6 +64,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void trvCreateSelect_AfterSelect( object sender, TreeViewEventArgs e )
         {
             Commodity selected = ((TreeNodeTag)e.Node.Tag).val as Commodity;
@@ -77,6 +89,13 @@ namespace SVSU_Capstone_Project.Views
             nudCreateCost.Value = (decimal)(selected.intCostInCents / 100.00);
             btnCreate.Text = "Modify";
         }
+
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnCreate_Click( object sender, EventArgs e )
         {
             var exists = ItemModel.Get<Commodity>(x => x.strName == txtCreateItemName.Text);
@@ -97,7 +116,7 @@ namespace SVSU_Capstone_Project.Views
             {
                 MessageBox.Show("Item type cannot be left blank. Please select a item type from the dropdown list.", "Alert");
             }
-           else if(exists != null)
+           else if(exists != null && btnCreate.Text == "Create")
             {
                 MessageBox.Show("Item already exists in the database. Please enter a different item name.", "Alert");
             }
@@ -139,8 +158,8 @@ namespace SVSU_Capstone_Project.Views
                         //String that contain both alphabets and numbers
                         string strAlphaNumeric = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-                        //Set to 20 characters long (plus 1 for tilde)
-                        int size = 20;
+                        //Set to 12 characters long (10 generated plus 2 for prefix and tilde)
+                        int size = 10;
 
                         switch (selected.enuCommodityType.ToString())
                         {
@@ -177,13 +196,18 @@ namespace SVSU_Capstone_Project.Views
 
                 selected.strBarCode = strBarcode;
                 submit(selected);
-                MessageBox.Show($"{txtCreateItemName.Text} has been successfully created!" + "\r\n\r\n" + $"Note:{txtCreateItemName.Text} will not show in the Category/Room tree until stock is added to a Room.", $"Successful {btnCreate.Text}!");
-                btnCreateCancel_Click(null, null);
+                if(btnCreate.Text == "Create")
+                {
+                    MessageBox.Show($"{txtCreateItemName.Text} has been successfully created!" + "\r\n\r\n" + $"Note:{txtCreateItemName.Text} will not show in the Category/Room tree until stock is added to a Room.", $"Successful {btnCreate.Text}!");
+                    btnCreateCancel_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show($"{txtCreateItemName.Text} has been successfully modified!", $"Successful {btnCreate.Text}!");
+                    btnCreateCancel_Click(null, null);
+                }
+                
             }
-            //else
-            //{
-            //    MessageBox.Show("Please fill out all of the commodity fields before creating!", "Alert");
-            //}
         }
     }
 }

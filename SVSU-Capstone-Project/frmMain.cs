@@ -128,24 +128,13 @@ namespace SVSU_Capstone_Project
                     this.Text = "Saginaw Valley Nursing Inventory System | Generate Reports";
                     break;
                 case "msiCheckInOutItems":
-                    // If this is called from a barcode scan, pass the CheckedItem
-                    // then clear the barcode's variables.
-                    if (barcodeScanner.checkedItem != null)
-                    {
-                        //newF = new frmCheckInOutItems(barcodeScanner.checkedItem);
-                        barcodeScanner.resetValues();
-                    }
-                    else
-                    {
-                        newF = new frmCheckInOutItems();                 
-                    }
+                    newF = new frmCheckInOutItems();                 
                     this.Text = "Saginaw Valley Nursing Inventory System | Check In/Out Items";
                     break;
                 case "msiSettings":
                     newF = new frmSettings();
                     this.Text = "Saginaw Valley Nursing Inventory System | Settings";
                     break;
-
             }
 
             //If a child (old) form already exists
@@ -217,7 +206,7 @@ namespace SVSU_Capstone_Project
         public static BarcodeScanner barcodeScanner;
         private void frmMain_KeyDown( object sender, KeyEventArgs e )
         {
-            // When @ is entered by the keyboard (occurs at start of a scan), prepare for the scan.
+            // If indicating keys are pressed that may be a barcode scan, begin storing proceeding keys.
             if (barcodeScanner.isSeqStart(e))
             {
                 barcodeScanner.beginScan(e); 
@@ -226,27 +215,27 @@ namespace SVSU_Capstone_Project
             // Check if the barcodeScanner object reflects that a scan is happening.
             else if (barcodeScanner.isStartRead())
             {
-                // Any key entered by the keyboard between 0-9 or A-Z is added to the barcode string.
-                // Numbers need to be trimmed otherwise the letter D is put before them.
-                // 40-49 are standard number keys, 96-105 are number pad number keys.
-                if ((e.KeyValue >= 40 && e.KeyValue <= 49) || (e.KeyValue >= 96 && e.KeyValue <= 105))
-                {
-                    barcodeScanner.addToCode(e.KeyCode.ToString().Substring(1));
-                }  
-                else if (e.KeyValue >= 65 && e.KeyValue <= 90)
-                {
-                    barcodeScanner.addToCode(e.KeyCode.ToString());
-                }
+                // Attempt to add new keys to the read barcode scan.
+                barcodeScanner.addToCode(e);
                 
-                // If Enter is entered within 50 milliseconds of the scan beginning, locate the CheckedItem based on barcode ID.
+                // If Enter is entered within 100 milliseconds of the scan beginning, check that the current string read in matches the generated barcode format.
+                // A legit barcode read in within the time frame followed by enter indicates a legit scan. If it doesn't work, reset the scanner and try again.
                 // The barcode scanner enters the entire string read in very quickly, taking longer indicates it was likely not a scan.
-                else if (e.KeyCode == Keys.Enter && (DateTime.Now.Millisecond - barcodeScanner.getBeginTime()) < 50)
+                if (e.KeyCode == Keys.Enter && (DateTime.Now.Millisecond - barcodeScanner.getStartTime()) < 100)
                 {
-                    PageController(msiCheckInOutItems as ToolStripMenuItem, e);
+                    if (barcodeScanner.isLegit())
+                    {
+                        barcodeScanner.getCommodity();
+                        PageController(msiCheckInOutItems as ToolStripMenuItem, e);
+                    }
+                    else
+                    {
+                        barcodeScanner.resetValues();
+                    }
                 }
 
-                // If the potential scan took too long for the entry to be by barcode scanner, reset the read information.
-                else if ((DateTime.Now.Millisecond - barcodeScanner.getBeginTime()) > 50)
+                // If the potential scan took too long for the entry to be by barcode scanner, cancel the scan and reset the read information.
+                else if ((DateTime.Now.Millisecond - barcodeScanner.getStartTime()) > 100)
                 {
                     barcodeScanner.resetValues();
                 }
@@ -255,3 +244,4 @@ namespace SVSU_Capstone_Project
     }
 }
 //Hunter was here hehe XP
+// Brett wasn't here :O

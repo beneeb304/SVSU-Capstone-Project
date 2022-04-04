@@ -28,7 +28,7 @@ namespace SVSU_Capstone_Project.Views
             // Checks if the form was called after a barcode scan to transfer the data.
             if (frmMain.barcodeScanner.isStartRead())
             {
-                setScannedBarcode(frmMain.barcodeScanner.checkedItem);
+                setScannedBarcode(frmMain.barcodeScanner.commodity);
             }
         }
 
@@ -186,17 +186,20 @@ namespace SVSU_Capstone_Project.Views
          * Local Variables
          * CheckedItem checkedItem; The object found as a result of the barcode scan.
          */
-        public void setScannedBarcode( CheckedItem checkedItem )
+        private void setScannedBarcode( Commodity commodity)
         {
-            if (cmbChkOutCommodity.Items.Contains(checkedItem.objCommodities))
+            if (commodity != null)
             {
-                tbcCheckInOut.SelectTab(0);
-                cmbChkOutCommodity.SelectedItem = checkedItem.objCommodities;
-            }
-            else if (cmbChkInCommodity.Items.Contains(checkedItem.objCommodities))
-            {
-                tbcCheckInOut.SelectTab(1);
-                cmbChkInCommodity.SelectedItem = checkedItem.objCommodities;
+                if (cmbChkInCommodity.Items.Contains(commodity))
+                {
+                    tbcCheckInOut.SelectTab(1);
+                    cmbChkInCommodity.SelectedItem = commodity;
+                }
+                else if (cmbChkOutCommodity.Items.Contains(commodity))
+                {
+                    tbcCheckInOut.SelectTab(0);
+                    cmbChkOutCommodity.SelectedItem = commodity;
+                }
             }
             frmMain.barcodeScanner.resetValues();
         }
