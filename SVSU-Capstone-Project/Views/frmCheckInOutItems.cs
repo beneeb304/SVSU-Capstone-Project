@@ -52,7 +52,7 @@ namespace SVSU_Capstone_Project.Views
             switch (tbcCheckInOut.SelectedTab.Name)
             {
                 case "tbpCheckOut":
-                    cmbChkOutCommodity.DataSource = ItemModel.GetMany<Commodity>(x => x.enuCommodityType == ItemType.Equipment && x.lstStorage.Count != 0).OrderBy(x => x.strName).ToList();
+                    cmbChkOutCommodity.DataSource = ItemModel.GetMany<Commodity>(x => x.enuCommodityType == ItemType.Equipment && x.lstStorage != null && x.lstStorage.Count != 0).OrderBy(x => x.strName).ToList();
                     cmbChkOutStudent.DataSource = ItemModel.GetMany<User>().Where(x => x.blnIsAdmin == false).OrderBy(x => x.strLast_name).Select(x => x.strLast_name + ", " + x.strFirst_name + " - " + x.strEmail).ToList();
                     txtAvailableChkOutQuantity.Text = "";
                     cmbChkOutCommodity.SelectedIndex = -1;
