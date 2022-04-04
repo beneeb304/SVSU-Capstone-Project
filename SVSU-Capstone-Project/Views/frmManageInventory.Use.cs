@@ -36,6 +36,13 @@ namespace SVSU_Capstone_Project.Views
             nudUseDeduct.Value = 1;
         }
 
+        private void nudQuantity_KeyPress( object sender, KeyPressEventArgs e )
+        {
+            if (e.KeyChar == (char)13)
+            {
+                btnUse_Click(sender, e);
+            }
+        }
         /* Function: btnUse_Click
          * Description: Marks simulator use upon btnUse click. Adds the amount of time used to the specified simulator.
          * 
