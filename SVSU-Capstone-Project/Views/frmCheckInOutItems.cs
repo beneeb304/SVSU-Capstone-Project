@@ -77,7 +77,10 @@ namespace SVSU_Capstone_Project.Views
 
             if(txtStudentSearch.Text.Length > 0)
             {
-                List<User> lstTemp = lstStudent.Where(x => x.strEmail.IndexOf(txtStudentSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                List<User> lstTemp = lstStudent.Where(x => x.strEmail.IndexOf(txtStudentSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1 ||
+                x.strFirst_name.IndexOf(txtStudentSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1 ||
+                x.strLast_name.IndexOf(txtStudentSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+
                 lstStudents.DataSource = lstTemp;
             }
             else
