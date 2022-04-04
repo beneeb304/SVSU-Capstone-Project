@@ -14,6 +14,7 @@ namespace SVSU_Capstone_Project.Views
 {
     public partial class frmCheckInOutItems : Form
     {
+       
         public frmCheckInOutItems()
         {
             /* Function: frmCheckInOutItems
@@ -52,11 +53,11 @@ namespace SVSU_Capstone_Project.Views
             switch (tbcCheckInOut.SelectedTab.Name)
             {
                 case "tbpCheckOut":
+                    lstStudents.DataSource = ItemModel.GetMany<User>().Where(x => x.blnIsAdmin == false).OrderBy(x => x.strLast_name).Select(x => x.strLast_name + ", " + x.strFirst_name + " - " + x.strEmail).ToList();
+                    lstStudents.SelectedIndex = -1;
                     cmbChkOutCommodity.DataSource = ItemModel.GetMany<Commodity>(x => x.enuCommodityType == ItemType.Equipment && x.lstStorage != null && x.lstStorage.Count != 0).OrderBy(x => x.strName).ToList();
-                    cmbChkOutStudent.DataSource = ItemModel.GetMany<User>().Where(x => x.blnIsAdmin == false).OrderBy(x => x.strLast_name).Select(x => x.strLast_name + ", " + x.strFirst_name + " - " + x.strEmail).ToList();
                     txtAvailableChkOutQuantity.Text = "";
                     cmbChkOutCommodity.SelectedIndex = -1;
-                    cmbChkOutStudent.SelectedIndex = -1;
                     break;
 
                 case "tbpCheckIn":
@@ -65,6 +66,23 @@ namespace SVSU_Capstone_Project.Views
                     cmbChkInStudent.SelectedIndex = -1;
                     cmbChkInCommodity.SelectedIndex = -1;
                     break;
+            }
+        }
+
+
+        private void txtStudentSearch_TextChanged(object sender, EventArgs e)
+        {
+            var lstStudent = ItemModel.GetMany<User>().Where(x => x.blnIsAdmin == false).ToList();
+            lstStudents.ClearSelected();
+
+            if(txtStudentSearch.Text.Length > 0)
+            {
+                List<User> lstTemp = lstStudent.Where(x => x.strEmail.IndexOf(txtStudentSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                lstStudents.DataSource = lstTemp;
+            }
+            else
+            {
+                lstStudents.DataSource = ItemModel.GetMany<User>().Where(x => x.blnIsAdmin == false).OrderBy(x => x.strLast_name).Select(x => x.strLast_name + ", " + x.strFirst_name + " - " + x.strEmail).ToList();
             }
         }
 
@@ -90,6 +108,7 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+
         /* Function: btnChkOut_Click
          * Description: Checks out a commodity item to a specific user. Ensures that the commodity is eligible to be checked out,
          * and the user is eligible to checkout an item. A successful checkout it created then logged before sending it to the database.
@@ -112,7 +131,7 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnChkOut_Click( object sender, EventArgs e )
         {
-            if (cmbChkOutStudent.SelectedIndex == -1 | cmbChkOutCommodity.SelectedIndex == -1)
+            if (lstStudents.SelectedIndex == -1 | cmbChkOutCommodity.SelectedIndex == -1)
             {
                 MessageBox.Show("Please make sure all fields are properly filled out!", "Alert");
             }
@@ -128,7 +147,7 @@ namespace SVSU_Capstone_Project.Views
                 else
                 {
                     var objStorage_tuid = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == objSelectedCommodity.uidTuid);
-                    var email = cmbChkOutStudent.Text.Split(' ').Last();
+                    var email = lstStudents.Text.Split(' ').Last();
                     var objUser_tuid = ItemModel.Get<User>(x => x.strEmail == email);
                     var doesExist = ItemModel.GetMany<CheckedItem>().Where(x => x.objUser.uidTuid == objUser_tuid.uidTuid && x.objCommodities.strName == objSelectedCommodity.strName).ToList();
                     if (doesExist.Count != 0)
@@ -214,9 +233,10 @@ namespace SVSU_Capstone_Project.Views
         private void btnChkOutCancel_Click( object sender, EventArgs e )
         {
             cmbChkOutCommodity.SelectedIndex = -1;
-            cmbChkOutStudent.SelectedIndex = -1;
+            lstStudents.SelectedIndex = -1;
             txtChkOutNotes.Text = "";
             txtAvailableChkOutQuantity.Text = "";
+            txtStudentSearch.Text = "";
         }
 
         /* Function: btnChkIn_Click
