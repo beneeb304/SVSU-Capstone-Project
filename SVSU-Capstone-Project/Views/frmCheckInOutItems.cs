@@ -58,13 +58,15 @@ namespace SVSU_Capstone_Project.Views
                     cmbChkOutCommodity.DataSource = ItemModel.GetMany<Commodity>(x => x.enuCommodityType == ItemType.Equipment && x.lstStorage != null && x.lstStorage.Count != 0).OrderBy(x => x.strName).ToList();
                     txtAvailableChkOutQuantity.Text = "";
                     cmbChkOutCommodity.SelectedIndex = -1;
+                    txtStudentSearch.Text = "";
                     break;
 
                 case "tbpCheckIn":
                     var checkedItems = ItemModel.GetMany<CheckedItem>().Where(x => x.objLog.enuAction == ItemAction.CheckedOut).ToList();
-                    cmbChkInStudent.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => (x.objLog.enuAction) == ItemAction.CheckedOut).OrderBy(x => x.objUser.strLast_name).Select(x => x.objUser.strLast_name + ", " + x.objUser.strFirst_name + " - " + x.objUser.strEmail).Distinct().ToList();
-                    cmbChkInStudent.SelectedIndex = -1;
+                    lstStudentChkIn.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => (x.objLog.enuAction) == ItemAction.CheckedOut).OrderBy(x => x.objUser.strLast_name).Select(x => x.objUser.strLast_name + ", " + x.objUser.strFirst_name + " - " + x.objUser.strEmail).Distinct().ToList();
+                    lstStudentChkIn.SelectedIndex = -1;
                     cmbChkInCommodity.SelectedIndex = -1;
+                    txtStudentChkIn.Text = "";
                     break;
             }
         }
@@ -95,6 +97,49 @@ namespace SVSU_Capstone_Project.Views
             else
             {
                 lstStudents.DataSource = ItemModel.GetMany<User>().Where(x => x.blnIsAdmin == false).OrderBy(x => x.strLast_name).Select(x => x.strLast_name + ", " + x.strFirst_name + " - " + x.strEmail).ToList();
+            }
+        }
+
+        private void txtStudentChkInSearch_TextChanged( object sender, EventArgs e )
+        {
+            var lstStudent = ItemModel.GetMany<CheckedItem>().Where(x => (x.objLog.enuAction) == ItemAction.CheckedOut).ToList();
+            
+            lstStudentChkIn.ClearSelected();
+
+            string strTemp;
+
+            if (txtStudentChkIn.Text.Length > 0)
+            {
+              
+                lstStudentChkIn.DataSource = null;
+                lstStudentChkIn.Items.Clear();
+
+                List<CheckedItem> lstTemp = lstStudent.Where(x => x.objUser.strEmail.IndexOf(txtStudentChkIn.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1 ||
+                x.objUser.strFirst_name.IndexOf(txtStudentChkIn.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1 ||
+                x.objUser.strLast_name.IndexOf(txtStudentChkIn.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1).Distinct().ToList();
+
+
+
+
+                foreach (CheckedItem user in lstTemp)
+                {
+                    strTemp = user.objUser.strFirst_name.Trim() + " " + user.objUser.strLast_name.Trim() + " - " + user.objUser.strEmail.Trim();;
+                    if(lstStudentChkIn.Items.Contains(strTemp))
+                    {
+                        //Do Nothing.
+                    }
+                    else
+                    {
+                        lstStudentChkIn.Items.Add(strTemp);
+                    }
+                    
+                }
+            }
+            else
+            {
+                lstStudentChkIn.DataSource = ItemModel.GetMany<CheckedItem>().Where(x => (x.objLog.enuAction) == ItemAction.CheckedOut).OrderBy(x => x.objUser.strLast_name).Select(x => x.objUser.strLast_name + ", " + x.objUser.strFirst_name + " - " + x.objUser.strEmail).Distinct().ToList();
+                lstStudentChkIn.SelectedIndex = -1;
+                cmbChkInCommodity.SelectedIndex = -1;
             }
         }
 
@@ -269,13 +314,13 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnChkIn_Click( object sender, EventArgs e )
         {
-            if (cmbChkInStudent.SelectedIndex == -1 || cmbChkInCommodity.SelectedIndex == -1)
+            if (lstStudentChkIn.SelectedIndex == -1 || cmbChkInCommodity.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select make sure a student and commodity is selected to check back in!", "Alert");
             }
             else
             {
-                var email = cmbChkInStudent.Text.Split(' ').Last();
+                var email = lstStudentChkIn.Text.Split(' ').Last();
                 var objSelectedItem = cmbChkInCommodity.SelectedItem;
                 var objCommodity_tuid = ItemModel.Get<Commodity>(x => x.strName == objSelectedItem);
                 var doesExist = ItemModel.Get<CheckedItem>(x => x.objUser.strEmail == email && x.objCommodities.strName == objSelectedItem.ToString());
@@ -287,7 +332,7 @@ namespace SVSU_Capstone_Project.Views
                     Storage storage = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == doesExist.objCommodities.uidTuid);
                     storage.intQuantity = storage.intQuantity + 1;
                     ItemModel.Update<Storage>(storage);
-                    cmbChkInStudent.SelectedIndex = -1;
+                    lstStudentChkIn.SelectedIndex = -1;
                     cmbChkInCommodity.SelectedIndex = -1;
 
                     Log log = new Log()
@@ -305,6 +350,7 @@ namespace SVSU_Capstone_Project.Views
                     ItemModel.Delete<CheckedItem>(doesExist);
                     tbcCheckInOut_SelectedIndexChanged(null, null);
                     cmbChkInStudent_SelectedIndexChanged(sender, e);
+                    txtStudentChkIn.Text = "";
                 }
                 else
                 {
@@ -325,9 +371,9 @@ namespace SVSU_Capstone_Project.Views
         private void cmbChkInStudent_SelectedIndexChanged( object sender, EventArgs e )
         {
             cmbChkInCommodity.Enabled = false;
-            if (cmbChkInStudent.SelectedIndex >= 0)
+            if (lstStudentChkIn.SelectedIndex >= 0)
             {
-                var email = cmbChkInStudent.Text.Split(' ').Last();
+                var email = lstStudentChkIn.Text.Split(' ').Last();
                 cmbChkInCommodity.DataSource = ItemModel.GetMany<CheckedItem>(x => x.objUser.strEmail == email).Select(x => x.objCommodities.strName).ToList();
                 cmbChkInCommodity.Enabled = true;
             }
@@ -342,8 +388,9 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnChkInCancel_Click( object sender, EventArgs e )
         {
-            cmbChkInStudent.SelectedIndex = -1;
             cmbChkInCommodity.SelectedIndex = -1;
+            lstStudentChkIn.SelectedIndex = -1;
+            txtStudentChkIn.Text = "";
         }
     }
 }
