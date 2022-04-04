@@ -27,10 +27,10 @@ namespace SVSU_Capstone_Project
      */
     public partial class BarcodeScanner
     {
-        public bool blnStartRead { get; set; }
-        public string strReadCode { get; set; }
-        public int intBeginTime { get; set; }
-        public Commodity commodity { get; set; }
+        public bool blnStartRead;
+        public string strReadCode;
+        public int intBeginTime;
+        public Commodity commodity;
 
         // Constructor to create the barcode scanner object. Only called once per program session.
         public BarcodeScanner()
@@ -41,15 +41,11 @@ namespace SVSU_Capstone_Project
             this.commodity = null;
         }
 
-        public bool isStartRead()
-        {
-            return this.blnStartRead;
-        }
+        /* isStartRead returns the value of btlnStartRead */
+        public bool isStartRead() { return this.blnStartRead; }
 
-        public int getStartTime()
-        {
-            return intBeginTime;
-        }
+        /* getStartTime returns the value of intBeginTime */
+        public int getStartTime() { return intBeginTime; }
 
         /* Function: isSeqStart
          * Description: Checks if a pressed key equals the required start character.
@@ -101,6 +97,11 @@ namespace SVSU_Capstone_Project
             }
         }
 
+        /* Function isLegit
+         * Description: Check if a completed barcode scan is legit by checking for specific starting characters and overall length.
+         * 
+         * No Local Variables
+         */
         public bool isLegit()
         {
             if ((strReadCode.StartsWith("C~") || strReadCode.StartsWith("E~") || strReadCode.StartsWith("S~"))
@@ -115,13 +116,17 @@ namespace SVSU_Capstone_Project
          * Description: If a barcode scan seems legit, find the commodity matching the item.
          * If a commodity isn't found, write to console.
          * 
-         * Local Variables
-         * CheckedItem checkedItem; Stores information about a CheckedItem based on barcode.
+         * No Local Variables
          */
-        public void getCommodity()
+        public Commodity getCommodity()
         {
-            try { this.commodity = ItemModel.Get<Commodity>(x => x.strBarCode == strReadCode); }
+            try 
+            {
+                this.commodity = ItemModel.Get<Commodity>(x => x.strBarCode == strReadCode);
+                return this.commodity;
+            }
             catch { Console.WriteLine("Commodity not found from Barcode"); }
+            return null;
         } 
         
         /* Function resetValues

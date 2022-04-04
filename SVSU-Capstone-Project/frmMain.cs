@@ -225,7 +225,6 @@ namespace SVSU_Capstone_Project
                 {
                     if (barcodeScanner.isLegit())
                     {
-                        barcodeScanner.getCommodity();
                         PageController(msiCheckInOutItems as ToolStripMenuItem, e);
                     }
                     else

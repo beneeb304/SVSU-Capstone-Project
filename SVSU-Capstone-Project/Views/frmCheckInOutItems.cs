@@ -28,7 +28,7 @@ namespace SVSU_Capstone_Project.Views
             // Checks if the form was called after a barcode scan to transfer the data.
             if (frmMain.barcodeScanner.isStartRead())
             {
-                setScannedBarcode(frmMain.barcodeScanner.commodity);
+                setScannedBarcode(frmMain.barcodeScanner.getCommodity());
             }
         }
 
