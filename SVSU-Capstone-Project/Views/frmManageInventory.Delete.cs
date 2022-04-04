@@ -38,8 +38,8 @@ namespace SVSU_Capstone_Project.Views
         }
 
         private void btnDeleteConfirm_Click( object sender, EventArgs e )
-        {            
-            if(cmbDeleteCommodity.SelectedIndex != -1)
+        {
+            if (cmbDeleteCommodity.SelectedIndex != -1)
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this commodity?",
                 "Confirm", MessageBoxButtons.YesNo);
@@ -58,19 +58,18 @@ namespace SVSU_Capstone_Project.Views
                     else
                     {
                         List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
-                        SimulatorUse simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == commodity.uidTuid);
+                        List<Log> lstLogs = ItemModel.GetMany<Log>(x => lstStorage.Contains(x.objStorage));
+                        SimulatorUse simulatorUsage = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == commodity.uidTuid);
 
-                        if(simulator != null)
+                        ItemModel.StartTransaction();
+                        if (simulatorUsage != null)
                         {
-                            ItemModel.Delete<SimulatorUse>(simulator);
+                            ItemModel.Delete<SimulatorUse>(simulatorUsage);
                         }
-
-                        foreach (Storage storage in lstStorage)
-                        {
-                            ItemModel.Delete(storage);
-                        }
-
+                        lstLogs.AsParallel().ForAll(x => ItemModel.Delete<Log>(x));
+                        lstStorage.AsParallel().ForAll(x => ItemModel.Delete<Storage>(x));
                         ItemModel.Delete<Commodity>(commodity);
+                        ItemModel.CommitTransaction();
                     }
                 }
 
@@ -79,7 +78,7 @@ namespace SVSU_Capstone_Project.Views
         }
 
         private void btnConfirmReset_Click( object sender, EventArgs e )
-        {            
+        {
             cmbDeleteCategory.SelectedIndex = -1;
         }
     }
