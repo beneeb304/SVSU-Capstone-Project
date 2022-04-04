@@ -52,7 +52,7 @@ namespace SVSU_Capstone_Project.Views
                     throw new UserNotFoundException("Must be admin to login");
                 }
                 //If user is flagged to change password
-                else if (user.strHash == "Capstone2022")
+                else if (user.blnPwdReset == true)
                 {
                     var f = new frmSetPassword();
                     DialogResult result = f.ShowDialog();
@@ -60,6 +60,7 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Set user password
                         user.strHash = frmSetPassword.strHash;
+                        user.blnPwdReset = false;
 
                         //Save user
                         ItemModel.Update<User>(user);

@@ -283,8 +283,10 @@ namespace SVSU_Capstone_Project.Views
 
                             if (result == DialogResult.Yes)
                             {
-                                //Modify user password
-                                user.strHash = "Capstone2022";
+                                //Set password
+                                string strHash = RandomPassword();
+                                user.strHash = Authentication.GenerateHash(strHash);
+                                user.blnPwdReset = true;
 
                                 //Save user
                                 ItemModel.Update<User>(user);
@@ -292,7 +294,7 @@ namespace SVSU_Capstone_Project.Views
                                 //Alert user
                                 MessageBox.Show("Successful Reset\r\n\r\n"
                                     + txtUserEmail.Text + " will be prompted to reset their password on their next login\r\n" +
-                                    "Their temporary password is 'Capstone2022'", "Alert");
+                                    "Their temporary password is " + strHash, "Alert");
 
                                 //Refresh list
                                 tbcSettings_SelectedIndexChanged(sender, e);
@@ -317,6 +319,30 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearUserFields();
             }
+        }
+
+        private string RandomPassword()
+        {
+            //Randomize user password
+            Random random = new Random();
+
+            //String that contain both alphabets and numbers
+            string strAlphaNumeric = "abcdefghijklmnopqrstuvwxyz0123456789";
+            string strHash = "";
+
+            //Set to 8 characters long
+            int size = 8;
+
+            for (int i = 0; i < size; i++)
+            {
+                //Selecting a index randomly
+                int x = random.Next(strAlphaNumeric.Length);
+
+                //Appending the character at the index to the random alphanumeric string.
+                strHash += strAlphaNumeric[x];
+            }
+
+            return strHash;
         }
 
         /* Function: lstUser_SelectedIndexChanged
@@ -1376,17 +1402,27 @@ namespace SVSU_Capstone_Project.Views
                                 strLast_name = txtUserLName.Text,
                                 strEmail = mailAddress.ToString(),
                                 strPhone = txtUserPhone.Text,
-                                strHash = "Capstone2022",
-                                blnIsAdmin = chkUserAdmin.Checked
+                                blnIsAdmin = chkUserAdmin.Checked,
+                                blnPwdReset = true
                             };
+
+                            string strHash = RandomPassword();
+                            user.strHash = Authentication.GenerateHash(strHash);
 
                             //Add user
                             ItemModel.Add<User>(user);
 
                             //Alert user
-                            MessageBox.Show("Successful Add\r\n\r\n"
+                            if (chkUserAdmin.Checked)
+                            {
+                                MessageBox.Show("Successful Add\r\n\r\n"
                                 + txtUserEmail.Text + " will be prompted to set their password on their fist login\r\n" +
-                                "Their temporary password is 'Capstone2022'", "Alert");
+                                "Their temporary password is " + strHash, "Alert");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Successfully Added User!", "Alert");
+                            }
 
                             //Refresh list
                             tbcSettings_SelectedIndexChanged(sender, e);
