@@ -42,11 +42,13 @@ namespace SVSU_Capstone_Project.Views
             if (lstVendors.Find(x => x.uidTuid == Guid.Empty) == null)
             {
                 lstVendors.Insert(0, new Vendor() { uidTuid = Guid.Empty, strName = "None" });
-            }else{
+            }
+            else
+            {
                 var emptyVendor = lstVendors.Find(x => x.uidTuid == Guid.Empty);
                 lstVendors.Remove(emptyVendor);
                 lstVendors.Insert(0, emptyVendor);
-            }            
+            }
             switch (e.TabPage.Name)
             {
                 case ("tbpAddItems"):
@@ -66,7 +68,7 @@ namespace SVSU_Capstone_Project.Views
                     break;
                 case ("tbpMoveItem"):
                     this.cmbMoveCategory.DataSource = lstCategories;
-                   
+
                     break;
                 case ("tbpDeleteItem"):
                     this.cmbDeleteCategory.DataSource = lstCategories;
@@ -227,18 +229,21 @@ namespace SVSU_Capstone_Project.Views
         public static void PopulateCommodityTreeByCategory( this TreeView treeView, Func<Commodity, bool> filterCommodity = null )
         {
             treeView.Nodes.Clear();
-            var lstCategories = ItemModel.GetMany<Category>();
-            lstCategories.ForEach(cat =>
+            ItemModel.GetMany<Category>(null, "lstCommodities").ForEach(cat =>
             {
                 var node = new TreeNode(cat.strName) { Tag = new TreeNodeTag { val = cat, selectable = false } };
-                cat.lstCommodities.ForEach(comm =>
+                cat.lstCommodities?.ForEach(comm =>
                 {
-                  if(comm.lstStorage != null)
+                    if (filterCommodity == null || filterCommodity(comm))
                     {
-                        if (filterCommodity == null || filterCommodity(comm))
-                            {
-                                node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = new TreeNodeTag { val = comm, selectable = true } });
-                            }
+                        if (comm.lstStorage != null)
+                        {
+                            node.Nodes.Add(new TreeNode($"{comm.strName} ({comm.lstStorage.Sum(x => x.intQuantity)})") { Tag = new TreeNodeTag { val = comm, selectable = true } });
+                        }
+                        else
+                        {
+                            node.Nodes.Add(new TreeNode($"{comm.strName} (0)") { Tag = new TreeNodeTag { val = comm, selectable = true } });
+                        }
                     }
                 });
                 treeView.Nodes.Add(node);
