@@ -1666,6 +1666,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in room name
+                        if (!txtRoomName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to modify " +
                             lstRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
@@ -1962,6 +1966,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in category name
+                        if (!txtCategoryName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to add " +
                             txtCategoryName.Text + " as a new category?", "Confirm", MessageBoxButtons.YesNo);
@@ -2029,6 +2037,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in category name
+                        if (!txtCategoryName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to modify " +
                             lstCategory.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
@@ -2128,6 +2140,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in vendor name
+                        if (!txtVendorName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to add " +
                             txtVendorName.Text + " as a new vendor?", "Confirm", MessageBoxButtons.YesNo);
@@ -2196,6 +2212,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in vendor name
+                        if (!txtVendorName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to modify " +
                             lstVendor.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
@@ -2297,6 +2317,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in nlevel name
+                        if (!txtNLevelName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ') || c.Equals('-')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to add " +
                             txtNLevelName.Text + " as a new N-Level?", "Confirm", MessageBoxButtons.YesNo);
@@ -2364,6 +2388,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in nlevel name
+                        if (!txtNLevelName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ') || c.Equals('-')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to modify " +
                             lstNLevel.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
