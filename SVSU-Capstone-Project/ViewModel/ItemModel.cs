@@ -28,7 +28,7 @@ namespace SVSU_Capstone_Project.ViewModel
         public static List<T> GetMany<T>() where T : ContextEntity
         {
             //check to make sure we are connected to db
-            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            string conSring = "Data Source=127.0.0.1, 1433; Initial Catalog=CIS022; User ID=CIS022; Password=CIS!@022ComputerInformationSystemsWI022;";
             SqlConnection conn = new SqlConnection(conSring);
             try
             {
@@ -84,7 +84,7 @@ namespace SVSU_Capstone_Project.ViewModel
         public static Guid Add<T>( T obj ) where T : ContextEntity
         {
             //check to make sure we are connected to db
-            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            string conSring = "Data Source=127.0.0.1, 1433; Initial Catalog=CIS022; User ID=CIS022; Password=CIS!@022ComputerInformationSystemsWI022;";
             SqlConnection conn = new SqlConnection(conSring);
             try
             {
@@ -104,7 +104,7 @@ namespace SVSU_Capstone_Project.ViewModel
         public static void Update<T>( T obj ) where T : ContextEntity
         {
             //check to make sure we are connected to db
-            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            string conSring = "Data Source=127.0.0.1, 1433; Initial Catalog=CIS022; User ID=CIS022; Password=CIS!@022ComputerInformationSystemsWI022;";
             SqlConnection conn = new SqlConnection(conSring);
             try
             {
@@ -124,7 +124,7 @@ namespace SVSU_Capstone_Project.ViewModel
         public static void Delete<T>( T obj ) where T : ContextEntity
         {
             //check to make sure we are connected to db
-            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            string conSring = "Data Source=127.0.0.1, 1433; Initial Catalog=CIS022; User ID=CIS022; Password=CIS!@022ComputerInformationSystemsWI022;";
             SqlConnection conn = new SqlConnection(conSring);
             try
             {
