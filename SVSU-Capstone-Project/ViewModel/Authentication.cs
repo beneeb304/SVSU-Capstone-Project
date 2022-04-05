@@ -48,7 +48,7 @@ namespace SVSU_Capstone_Project.ViewModel
             ActiveUser = objUserProfile;
 
             //check to make sure we are connected to db
-            string conSring = "Data Source=sql.dvlin.me;Initial Catalog=InvDB;User id=InventoryAdmin;Password=N4E!A!@qGfe4m2qTV70M;";
+            string conSring = "Data Source=127.0.0.1, 1433; Initial Catalog=CIS022; User ID=CIS022; Password=CIS!@022ComputerInformationSystemsWI022;";
             SqlConnection conn = new SqlConnection(conSring);
             try
             {
