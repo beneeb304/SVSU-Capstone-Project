@@ -240,6 +240,22 @@ namespace SVSU_Capstone_Project
                 }
             }
         }
+
+        private void pcbHeHe_DoubleClick( object sender, EventArgs e )
+        {
+            HeHe(pcbHeHe);
+        }
+
+        public static async Task HeHe(PictureBox pcbHeHe)
+        {
+            await Task.Run(() =>
+            {
+                pcbHeHe.Image = Properties.Resources.cardinal;
+                Task.Delay(2000).Wait();
+                pcbHeHe.Image = Properties.Resources.HeHe;
+            });
+            
+        }
     }
 }
 //Hunter was here hehe XP
