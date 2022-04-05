@@ -74,3 +74,11 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.Timer tmrSplash;
     }
 }
+//If this message is ever found you probably know what you are doing.
+//As a programmer I like to leave little snipets and messages and easter
+//  eggs in comments, code and the program in general.
+//There are some jokes hidden and a fun easter egg if you click on the 
+//  black cardinal on the home program page you get a little gif.
+//Anyway it was nice chatting with you, I am gonna go lay down and drink
+// some tea and go to bed. See yah around buddy.
+//                                                 --One of the programmers.
