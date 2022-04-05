@@ -33,7 +33,8 @@ namespace SVSU_Capstone_Project.Views
             * object sender; The object calling the method. btnLogin in this case.
             * -----------------------------------------------------------------------------
             * Local Variables
-            * Authentication user; Sends the login credentials to the database to check for a match.
+            * User user; Holds potential user data to match a login with the user storage.
+            * String userEmail; Checks if the user's attempted login only contains the username, not the full email. Adds the email domain if missing.
             */
 
             User user;
@@ -41,8 +42,13 @@ namespace SVSU_Capstone_Project.Views
             //Use Authentication ViewModel to check user's ID/password combination
             try
             {
+                string userEmail = txtEmail.Text;
+                if (!userEmail.Contains("@svsu.edu"))
+                {
+                    userEmail += "@svsu.edu";
+                }
                 //Get user
-                user = Authentication.Authenticate(txtEmail.Text, txtPassword.Text);
+                user = Authentication.Authenticate(userEmail, txtPassword.Text);
                                 
                 //If user isn't admin and somehow got this far, don't let them login
                 if(user.blnIsAdmin == false)
