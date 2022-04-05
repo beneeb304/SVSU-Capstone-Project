@@ -206,9 +206,9 @@ namespace SVSU_Capstone_Project.Views
             // pcbBarcode
             // 
             this.pcbBarcode.BackColor = System.Drawing.Color.White;
-            this.pcbBarcode.Location = new System.Drawing.Point(121, 225);
+            this.pcbBarcode.Location = new System.Drawing.Point(13, 225);
             this.pcbBarcode.Name = "pcbBarcode";
-            this.pcbBarcode.Size = new System.Drawing.Size(753, 150);
+            this.pcbBarcode.Size = new System.Drawing.Size(930, 150);
             this.pcbBarcode.TabIndex = 47;
             this.pcbBarcode.TabStop = false;
             this.pcbBarcode.Visible = false;
