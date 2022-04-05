@@ -274,19 +274,25 @@ namespace SVSU_Capstone_Project.Views
                     .ForEach(cab =>
                     {
                         var cabinetNode = new TreeNode(cab.strName) { Tag = new TreeNodeTag { val = cab, selectable = false } };
-                        cab.lstStorage
-                        .GroupBy(x => x.objNLevel)
-                        .ToList()
-                        .ForEach(grp =>
+                        if(cab.lstStorage != null)
                         {
-                            var nlevelNode = new TreeNode(grp.Key.strName) { Tag = new TreeNodeTag { val = grp.Key, selectable = false } };
-                            grp.ToList().ForEach(stor =>
+                            cab.lstStorage
+                            .GroupBy(x => x.objNLevel)
+                            .ToList()
+                            .ForEach(grp =>
                             {
-                                if (filterCommodity == null || filterCommodity(stor.objCommodity))
-                                    nlevelNode.Nodes.Add(new TreeNode($"{stor.objCommodity.strName} ({stor.intQuantity})") { Tag = new TreeNodeTag { val = stor.objCommodity, selectable = true } });
+                                var nlevelNode = new TreeNode(grp.Key.strName) { Tag = new TreeNodeTag { val = grp.Key, selectable = false } };
+                                if(grp != null)
+                                {
+                                    grp.ToList().ForEach(stor =>
+                                    {
+                                        if (filterCommodity == null || filterCommodity(stor.objCommodity))
+                                            nlevelNode.Nodes.Add(new TreeNode($"{stor.objCommodity.strName} ({stor.intQuantity})") { Tag = new TreeNodeTag { val = stor.objCommodity, selectable = true } });
+                                    });
+                                }
+                                cabinetNode.Nodes.Add(nlevelNode);
                             });
-                            cabinetNode.Nodes.Add(nlevelNode);
-                        });
+                        }
                         roomNode.Nodes.Add(cabinetNode);
                     });
                 }
