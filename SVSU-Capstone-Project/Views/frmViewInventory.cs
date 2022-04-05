@@ -47,6 +47,12 @@ namespace SVSU_Capstone_Project.Views
             cmbItemType_SelectedIndexChanged(sender, e);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnPrintBarcode_Click( object sender, EventArgs e )
         {
             if(lstCommodity.SelectedIndex > -1)
@@ -61,6 +67,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbItemType_SelectedIndexChanged( object sender, EventArgs e )
         {
             var selectedType = cmbItemType.SelectedIndex;
@@ -69,6 +81,12 @@ namespace SVSU_Capstone_Project.Views
            cmbCategory.DataSource = ItemModel.GetMany<Commodity>().Where(x => ((int)x.enuCommodityType) == selectedType).Select(x => x.objCategory.strName).Distinct().ToList();
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
             //Clear detail dgv rows
@@ -90,6 +108,12 @@ namespace SVSU_Capstone_Project.Views
            
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void txtSearch_TextChanged( object sender, EventArgs e )
         {
             //Get rid of current rows
@@ -111,6 +135,12 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void lstCommodity_Click( object sender, EventArgs e )
         {
             if (lstCommodity.DataSource != null)
@@ -147,7 +177,7 @@ namespace SVSU_Capstone_Project.Views
                 else
                 {
                     //Cast barcode to picture box
-                    pcbBarcode.Image = barcode.Draw(commodity.strBarCode, 115, 1);
+                    pcbBarcode.Image = barcode.Draw(commodity.strBarCode, 115, 2);
 
                     //Enable print barcode button
                     btnPrintBarcode.Enabled = true;
@@ -167,10 +197,38 @@ namespace SVSU_Capstone_Project.Views
 
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void lstCommodity_DoubleClick( object sender, EventArgs e )
         {
             if (lstCommodity.DataSource != null)
             {
+                var comm = ItemModel.Get<Commodity>(x => x.strName == lstCommodity.SelectedItem.ToString());
+                if(comm.enuCommodityType == ItemType.Simulator)
+                {
+                    string strCategory = cmbCategory.Text;
+                    string strCommodity = lstCommodity.SelectedItem.ToString();
+                    Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
+                    SimulatorUse simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == commodity.uidTuid);
+                    string strMessage = "Name: " + commodity.strName + "\r" +
+                        "Desciption: " + commodity.strDescription + "\r" +
+                        "Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                        "Features: " + commodity.strFeatures + "\r" +
+                        "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
+                        "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                        "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
+                        "URL: " + commodity.strItemUrl + "\r" +
+                        "Barcode: " + commodity.strBarCode + "\r" +
+                        "Hours Used: " + simulator.intHoursUsed + "\r"+
+                        "Times Used: " + simulator.intTimesUsed;
+                    MessageBox.Show(strMessage,"Commodity Details");
+                }
+                else
+                {
                 string strCategory = cmbCategory.Text;
                 string strCommodity = lstCommodity.SelectedItem.ToString();
                 Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
@@ -183,10 +241,17 @@ namespace SVSU_Capstone_Project.Views
                     "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
                     "URL: " + commodity.strItemUrl + "\r" +
                     "Barcode: " + commodity.strBarCode;
-                MessageBox.Show(strMessage);
+                MessageBox.Show(strMessage, "Commodity Details");
+                }
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void pdtBarcode_PrintPage( object sender, System.Drawing.Printing.PrintPageEventArgs e )
         {
             Bitmap bmpBarcode = new Bitmap(pcbBarcode.Width, pcbBarcode.Height);

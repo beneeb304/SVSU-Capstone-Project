@@ -15,11 +15,23 @@ namespace SVSU_Capstone_Project.Views
 {
     public partial class frmManageInventory : Form
     {
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbDeleteCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
             Category_SelectedValueChanged(cmbDeleteCategory, cmbDeleteCommodity);
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void cmbDeleteCommodity_SelectedIndexChanged( object sender, EventArgs e )
         {
             dgvDeletionDelta.DataSource = ItemModel
@@ -37,9 +49,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnDeleteConfirm_Click( object sender, EventArgs e )
-        {            
-            if(cmbDeleteCommodity.SelectedIndex != -1)
+        {
+            if (cmbDeleteCommodity.SelectedIndex != -1)
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this commodity?",
                 "Confirm", MessageBoxButtons.YesNo);
@@ -58,13 +76,29 @@ namespace SVSU_Capstone_Project.Views
                     else
                     {
                         List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
+                        List<Log> lstLogs = ItemModel.GetMany<Log>(x => lstStorage.Contains(x.objStorage));
+                        SimulatorUse simulatorUsage = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == commodity.uidTuid);
 
-                        foreach (Storage storage in lstStorage)
+                        ItemModel.StartTransaction();
+                        if (simulatorUsage != null)
                         {
-                            ItemModel.Delete(storage);
+                            ItemModel.Delete<SimulatorUse>(simulatorUsage);
                         }
-
+                        lstLogs.AsParallel().ForAll(x => ItemModel.Delete<Log>(x));
+                        lstStorage.AsParallel().ForAll(x => ItemModel.Delete<Storage>(x));
                         ItemModel.Delete<Commodity>(commodity);
+                        ItemModel.CommitTransaction();
+
+                        Log log = new Log
+                        {
+                            enuAction = ItemAction.Deleted,
+                            dtTimestamp = DateTime.Now,
+                            intQuantityChange = 0,
+                            objStorage = null,
+                            objUser = Authentication.ActiveUser,
+                            strNotes = $"{commodity.strName} has successfully been deleted by {Authentication.ActiveUser} on {DateTime.Now}."
+                        };
+                        ItemModel.Add<Log>(log);
                     }
                 }
 
@@ -72,8 +106,14 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: 
+         * Description: 
+         * 
+         * Local Variables
+         * 
+         */
         private void btnConfirmReset_Click( object sender, EventArgs e )
-        {            
+        {
             cmbDeleteCategory.SelectedIndex = -1;
         }
     }

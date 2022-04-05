@@ -16,6 +16,7 @@ namespace SVSU_Capstone_Project.Views
          * -----------------------------------------------------------------------------
          */
             InitializeComponent();
+            
         }
 
 
@@ -51,7 +52,7 @@ namespace SVSU_Capstone_Project.Views
                     throw new UserNotFoundException("Must be admin to login");
                 }
                 //If user is flagged to change password
-                else if (user.strHash == "Capstone2022")
+                else if (user.blnPwdReset == true)
                 {
                     var f = new frmSetPassword();
                     DialogResult result = f.ShowDialog();
@@ -59,12 +60,14 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Set user password
                         user.strHash = frmSetPassword.strHash;
+                        user.blnPwdReset = false;
 
                         //Save user
                         ItemModel.Update<User>(user);
                         
                         //Alert user
                         MessageBox.Show("Password Set Successfully", "Alert");
+
                     }
                     else
                     {
@@ -73,6 +76,17 @@ namespace SVSU_Capstone_Project.Views
                         return;
                     }
                 }
+
+                Log log = new Log
+                {
+                    enuAction = ItemAction.UserLogin,
+                    dtTimestamp = DateTime.Now,
+                    intQuantityChange = 0,
+                    objStorage = null,
+                    objUser = Authentication.ActiveUser,
+                    strNotes = $"{Authentication.ActiveUser} logged into the system on {DateTime.Now}."
+                };
+                ItemModel.Add<Log>(log);
             }
             catch (ArgumentException ex)
             {
@@ -144,23 +158,33 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnBypass_Click( object sender, EventArgs e )
         {
-            /* Function: btnBypass_Click
-            * -----------------------------------------------------------------------------
-            * Description: Here for development testing to get around entering credentials.
-            * To be removed.
-            * -----------------------------------------------------------------------------
-            * Parameter Dictionary (in parameter order):  
-            * EventArgs e; Information passed by the sender object about the method call.
-            * object sender; The object calling the method. btnBypass in this case.
-            */
+            ///* Function: btnBypass_Click
+            //* -----------------------------------------------------------------------------
+            //* Description: Here for development testing to get around entering credentials.
+            //* To be removed.
+            //* -----------------------------------------------------------------------------
+            //* Parameter Dictionary (in parameter order):  
+            //* EventArgs e; Information passed by the sender object about the method call.
+            //* object sender; The object calling the method. btnBypass in this case.
+            //*/
 
-            if (Authentication.SecurityBypass())
+            //if (Authentication.SecurityBypass())
+            //{
+            //    Close();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Security Bypass Failed: Cannot contact DB", "Security Bypass Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+
+            MessageBox.Show("Login with your own account for testing purposes. If you need assistance, contact Ben or Mike S");
+        }
+
+        private void frmLogin_KeyPress( object sender, KeyPressEventArgs e )
+        {
+            if (e.KeyChar == (char)13)
             {
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("Security Bypass Failed: Cannot contact DB", "Security Bypass Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnLogin_Click(sender, e);
             }
         }
     }

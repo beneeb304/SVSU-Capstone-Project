@@ -58,7 +58,7 @@ namespace SVSU_Capstone_Project.ViewModel
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("Please check your internet connection and try agian. You can also restart the application and try agian.", "Alert");
+                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try again.", "Alert");
             }
             return ActiveUser;
         }
@@ -90,3 +90,7 @@ namespace SVSU_Capstone_Project.ViewModel
             }
         }
 }
+//Hidden Joke from Hunter ;)
+//---------------------------
+//How many programmers does it take to change a light bulb?
+//None, It’s a hardware problem

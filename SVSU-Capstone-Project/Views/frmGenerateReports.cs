@@ -66,5 +66,26 @@ namespace SVSU_Capstone_Project.Views
             this.reportViewer4.RefreshReport();
         }
 
+
+        public void tbcReports_SelectedIndexChanged( object sender, EventArgs e)
+        {
+            switch (tbcReports.SelectedTab.Name)
+            {
+                case "tabActivityLog":
+                    this.reportViewer1.RefreshReport();
+                    break;
+                case "tabSimulatorUse":
+                    this.reportViewer2.RefreshReport();
+                    break;
+                case "tabLowStock":
+                    this.reportViewer3.RefreshReport();
+                    break;
+                case "tabDynamicItems":
+                    this.reportViewer4.RefreshReport();
+                    break;
+            }
+        }
+
+
     }
 }

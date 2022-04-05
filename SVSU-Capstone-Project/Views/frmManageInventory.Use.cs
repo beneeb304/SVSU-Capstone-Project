@@ -36,31 +36,85 @@ namespace SVSU_Capstone_Project.Views
             nudUseDeduct.Value = 1;
         }
 
+        private void nudQuantity_KeyPress( object sender, KeyPressEventArgs e )
+        {
+            if (e.KeyChar == (char)13)
+            {
+                btnUse_Click(sender, e);
+            }
+        }
+        /* Function: btnUse_Click
+         * Description: Marks simulator use upon btnUse click. Adds the amount of time used to the specified simulator.
+         * 
+         * Local Variables
+         * Object sender; Object calling the method.
+         * EventArgs e; Arguments provided by the sender object.
+         * Commodity commodity; A commodity to check for null fields.
+         * SimulatorUse sim; The simulator being marked used.
+         * Storage storage; Storage location for the simulator.
+         * Log log; Log object of the transaction.
+         */
         private void btnUse_Click( object sender = null, EventArgs e = null )
         {
             //Check if all fields are filled out
+            var commodity = trvUseSelectByRoom.SelectedNode?.Tag;
+            
             if (trvUseSelectByRoom.SelectedNode?.Tag == null || nudUseDeduct.Value == 0)
             {
                 MessageBox.Show("Please select an item and used quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            ItemModel.UseItem(
-                (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Tag).val as Commodity)
-                .lstStorage
-                .Where(x =>
-                    x.objNLevel == (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Tag).val as NLevel)
-                    && x.objCabinet == (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Parent.Tag).val as Cabinet)
-                ).First(),
-                Authentication.ActiveUser,
-                Convert.ToUInt32(nudUseDeduct.Value),
-                "Item Used via Manage Inventory Tab",
-                () => trvUseSelectByRoom.Nodes.Remove(trvUseSelectByRoom.SelectedNode)
-            );
+            else if (commodity != null)
+            {
+                var sim = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == ((TreeNodeTag)trvUseSelectByRoom.SelectedNode?.Tag).val.uidTuid);
+                if(sim != null)
+                {
+                    var simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == sim.objCommodity.uidTuid);
+                    simulator.intHoursUsed = ((int)(simulator.intHoursUsed + (uint)nudUseDeduct.Value));
+                    simulator.intTimesUsed = simulator.intTimesUsed + 1;
+                    ItemModel.Update<SimulatorUse>(simulator);
+                    var storage = ItemModel.Get<Storage>(x => x.objCommodity.uidTuid == simulator.objCommodity.uidTuid);
+                    Log log = new Log
+                    {
+                        dtTimestamp = DateTime.Now,
+                        enuAction = ItemAction.Used,
+                        intQuantityChange = (int)nudUseDeduct.Value,
+                        objStorage = storage,
+                        objUser = Authentication.ActiveUser,
+                        strNotes = $"{simulator.objCommodity.strName} has been used for {(uint)nudUseDeduct.Value} hours on {DateTime.Now}."
+                    };
+                    ItemModel.Add<Log>(log);
+
+                }
+                else
+                {
+                    ItemModel.UseItem(
+                        (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Tag).val as Commodity)
+                        .lstStorage
+                        .Where(x =>
+                            x.objNLevel == (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Tag).val as NLevel)
+                            && x.objCabinet == (((TreeNodeTag)trvUseSelectByRoom.SelectedNode.Parent.Parent.Tag).val as Cabinet)
+                        ).First(),
+                        Authentication.ActiveUser,
+                        Convert.ToUInt32(nudUseDeduct.Value),
+                        "Item Used via Manage Inventory Tab",
+                        () => trvUseSelectByRoom.Nodes.Remove(trvUseSelectByRoom.SelectedNode)
+                        );
+                }
+            }
             // notify User of success
             MessageBox.Show("Item used successfully.");
             btnUseCancel_Click();
         }
 
+        /* Function: trvUseSelectByRoom_BeforeSelect
+         * Description: Ensures a tree node is selectable before action is taken.
+         * 
+         * Local Variables
+         * Object sender; Object calling the method.
+         * TreeViewCancelventArgs e; Arguments provided by the sender object.
+         * TreeNodeTag tag; TreeNode object to check for selectability.
+         */
         private void trvUseSelectByRoom_BeforeSelect( object sender, TreeViewCancelEventArgs e )
         {
             // cast Tag to TreeNodeTag
@@ -72,6 +126,17 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        /* Function: trvUseSelectByRoom_AfterSelect
+         * Description: Updates fields within the form after a selectable tree node is clicked with information of the object selected.
+         * 
+         * Local Variables
+         * Object sender; Object calling the method.
+         * TreeViewCancelventArgs e; Arguments provided by the sender object.
+         * Commodity selected; Object of the item selected to pull information from.
+         * Storage itemStorage; The selected commodity's storage location.
+         * SimulatorUse itemUsage; Used to ensure the selected commodity is an available simulator.
+         * SimulatorUse sim; Simulator object to manipulate data.
+         */
         private void trvUseSelectByRoom_AfterSelect( object sender, TreeViewEventArgs e )
         {
             Commodity selected = (Commodity)((TreeNodeTag)((TreeView)sender).SelectedNode.Tag).val;
@@ -94,17 +159,25 @@ namespace SVSU_Capstone_Project.Views
             {
                 var itemUsage = ItemModel.Get<SimulatorUse>(x => x.objCommodity == selected);
                 if (itemUsage == null) ItemModel.Add(new SimulatorUse() { objCommodity = selected }, out itemUsage);
+                var sim = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == selected.uidTuid);
                 lblUseAvailable.Text = "Current Hours";
                 lblUseOperatorSymb.Text = "+";
                 lblUseUsed.Text = "Used Hours";
-                nudUseDeduct.Value = nudUseDeduct.Minimum;
+                nudUseDeduct.Value = nudUseDeduct.Value;
                 lblUseRemainder.Text = "New Total Hours";
                 nudUseDeduct.Maximum = 1000;
-                txtUseAvailable.Text = itemUsage.intHoursUsed.ToString();
+                txtUseAvailable.Text = sim.intHoursUsed.ToString();
             }
             nudUseDeduct_ValueChanged();
         }
 
+        /* Function: nudUseDeduct_ValueChanged
+         * Description: Updates use values in the form's fields.
+         * 
+         * Local Variables
+         * Object sender; Object calling the method.
+         * EventArgs e; Arguments provided by the sender object.
+         */
         private void nudUseDeduct_ValueChanged( object sender = null, EventArgs e = null )
         {
             if (int.TryParse(txtUseAvailable.Text, out int available))

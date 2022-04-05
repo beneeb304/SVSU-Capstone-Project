@@ -30,7 +30,8 @@ namespace SVSU_Capstone_Project.Views
         private void InitializeComponent()
         {
             this.tbpCheckIn = new System.Windows.Forms.TabPage();
-            this.cmbChkInStudent = new System.Windows.Forms.ComboBox();
+            this.txtStudentChkIn = new System.Windows.Forms.TextBox();
+            this.lstStudentChkIn = new System.Windows.Forms.ListBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.btnChkInCancel = new System.Windows.Forms.Button();
@@ -38,7 +39,8 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkInCommodity = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.tbpCheckOut = new System.Windows.Forms.TabPage();
-            this.cmbChkOutStudent = new System.Windows.Forms.ComboBox();
+            this.txtStudentSearch = new System.Windows.Forms.TextBox();
+            this.lstStudents = new System.Windows.Forms.ListBox();
             this.txtChkOutNotes = new System.Windows.Forms.RichTextBox();
             this.txtAvailableChkOutQuantity = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -57,61 +59,71 @@ namespace SVSU_Capstone_Project.Views
             // 
             // tbpCheckIn
             // 
-            this.tbpCheckIn.Controls.Add(this.cmbChkInStudent);
+            this.tbpCheckIn.Controls.Add(this.txtStudentChkIn);
+            this.tbpCheckIn.Controls.Add(this.lstStudentChkIn);
             this.tbpCheckIn.Controls.Add(this.label22);
             this.tbpCheckIn.Controls.Add(this.label23);
             this.tbpCheckIn.Controls.Add(this.btnChkInCancel);
             this.tbpCheckIn.Controls.Add(this.btnChkIn);
             this.tbpCheckIn.Controls.Add(this.cmbChkInCommodity);
             this.tbpCheckIn.Controls.Add(this.label27);
-            this.tbpCheckIn.Location = new System.Drawing.Point(4, 25);
-            this.tbpCheckIn.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpCheckIn.Location = new System.Drawing.Point(4, 27);
+            this.tbpCheckIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpCheckIn.Name = "tbpCheckIn";
-            this.tbpCheckIn.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpCheckIn.Size = new System.Drawing.Size(923, 402);
+            this.tbpCheckIn.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpCheckIn.Size = new System.Drawing.Size(1233, 499);
             this.tbpCheckIn.TabIndex = 3;
             this.tbpCheckIn.Text = "Check In";
             this.tbpCheckIn.UseVisualStyleBackColor = true;
             // 
-            // cmbChkInStudent
+            // txtStudentChkIn
             // 
-            this.cmbChkInStudent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbChkInStudent.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbChkInStudent.FormattingEnabled = true;
-            this.cmbChkInStudent.Location = new System.Drawing.Point(133, 87);
-            this.cmbChkInStudent.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbChkInStudent.Name = "cmbChkInStudent";
-            this.cmbChkInStudent.Size = new System.Drawing.Size(336, 26);
-            this.cmbChkInStudent.TabIndex = 1;
-            this.cmbChkInStudent.SelectedIndexChanged += new System.EventHandler(this.cmbChkInStudent_SelectedIndexChanged);
+            this.txtStudentChkIn.Location = new System.Drawing.Point(888, 117);
+            this.txtStudentChkIn.Name = "txtStudentChkIn";
+            this.txtStudentChkIn.Size = new System.Drawing.Size(304, 26);
+            this.txtStudentChkIn.TabIndex = 213;
+            this.txtStudentChkIn.TextChanged += new System.EventHandler(this.txtStudentChkInSearch_TextChanged);
+            // 
+            // lstStudentChkIn
+            // 
+            this.lstStudentChkIn.FormattingEnabled = true;
+            this.lstStudentChkIn.ItemHeight = 18;
+            this.lstStudentChkIn.Location = new System.Drawing.Point(102, 91);
+            this.lstStudentChkIn.Name = "lstStudentChkIn";
+            this.lstStudentChkIn.Size = new System.Drawing.Size(587, 310);
+            this.lstStudentChkIn.TabIndex = 212;
+            this.lstStudentChkIn.SelectedIndexChanged += new System.EventHandler(this.cmbChkInStudent_SelectedIndexChanged);
             // 
             // label22
             // 
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(26, 89);
+            this.label22.Location = new System.Drawing.Point(718, 119);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(75, 19);
+            this.label22.Size = new System.Drawing.Size(163, 24);
             this.label22.TabIndex = 211;
-            this.label22.Text = "Student:";
+            this.label22.Text = "Student Search:";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(12, 14);
+            this.label23.Location = new System.Drawing.Point(16, 17);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(191, 22);
+            this.label23.Size = new System.Drawing.Size(239, 29);
             this.label23.TabIndex = 210;
             this.label23.Text = "Check In Asset Item";
             // 
             // btnChkInCancel
             // 
             this.btnChkInCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChkInCancel.Location = new System.Drawing.Point(323, 237);
+            this.btnChkInCancel.Location = new System.Drawing.Point(1040, 406);
+            this.btnChkInCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnChkInCancel.Name = "btnChkInCancel";
-            this.btnChkInCancel.Size = new System.Drawing.Size(114, 43);
+            this.btnChkInCancel.Size = new System.Drawing.Size(152, 53);
             this.btnChkInCancel.TabIndex = 4;
             this.btnChkInCancel.Text = "Cancel";
             this.btnChkInCancel.UseVisualStyleBackColor = true;
@@ -120,9 +132,10 @@ namespace SVSU_Capstone_Project.Views
             // btnChkIn
             // 
             this.btnChkIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChkIn.Location = new System.Drawing.Point(147, 237);
+            this.btnChkIn.Location = new System.Drawing.Point(863, 406);
+            this.btnChkIn.Margin = new System.Windows.Forms.Padding(4);
             this.btnChkIn.Name = "btnChkIn";
-            this.btnChkIn.Size = new System.Drawing.Size(114, 43);
+            this.btnChkIn.Size = new System.Drawing.Size(152, 53);
             this.btnChkIn.TabIndex = 3;
             this.btnChkIn.Text = "Check In";
             this.btnChkIn.UseVisualStyleBackColor = true;
@@ -133,26 +146,26 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkInCommodity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChkInCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbChkInCommodity.FormattingEnabled = true;
-            this.cmbChkInCommodity.Location = new System.Drawing.Point(133, 139);
-            this.cmbChkInCommodity.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbChkInCommodity.Location = new System.Drawing.Point(863, 233);
+            this.cmbChkInCommodity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbChkInCommodity.Name = "cmbChkInCommodity";
-            this.cmbChkInCommodity.Size = new System.Drawing.Size(336, 26);
+            this.cmbChkInCommodity.Size = new System.Drawing.Size(329, 31);
             this.cmbChkInCommodity.TabIndex = 2;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(25, 145);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Location = new System.Drawing.Point(719, 240);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(103, 19);
+            this.label27.Size = new System.Drawing.Size(124, 24);
             this.label27.TabIndex = 206;
             this.label27.Text = "Commodity:";
             // 
             // tbpCheckOut
             // 
-            this.tbpCheckOut.Controls.Add(this.cmbChkOutStudent);
+            this.tbpCheckOut.Controls.Add(this.txtStudentSearch);
+            this.tbpCheckOut.Controls.Add(this.lstStudents);
             this.tbpCheckOut.Controls.Add(this.txtChkOutNotes);
             this.tbpCheckOut.Controls.Add(this.txtAvailableChkOutQuantity);
             this.tbpCheckOut.Controls.Add(this.label14);
@@ -163,52 +176,61 @@ namespace SVSU_Capstone_Project.Views
             this.tbpCheckOut.Controls.Add(this.label20);
             this.tbpCheckOut.Controls.Add(this.cmbChkOutCommodity);
             this.tbpCheckOut.Controls.Add(this.label21);
-            this.tbpCheckOut.Location = new System.Drawing.Point(4, 25);
-            this.tbpCheckOut.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpCheckOut.Location = new System.Drawing.Point(4, 27);
+            this.tbpCheckOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpCheckOut.Name = "tbpCheckOut";
-            this.tbpCheckOut.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpCheckOut.Size = new System.Drawing.Size(923, 402);
+            this.tbpCheckOut.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpCheckOut.Size = new System.Drawing.Size(1233, 499);
             this.tbpCheckOut.TabIndex = 2;
             this.tbpCheckOut.Text = "Check Out";
             this.tbpCheckOut.UseVisualStyleBackColor = true;
             // 
-            // cmbChkOutStudent
+            // txtStudentSearch
             // 
-            this.cmbChkOutStudent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbChkOutStudent.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbChkOutStudent.FormattingEnabled = true;
-            this.cmbChkOutStudent.Location = new System.Drawing.Point(143, 65);
-            this.cmbChkOutStudent.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbChkOutStudent.Name = "cmbChkOutStudent";
-            this.cmbChkOutStudent.Size = new System.Drawing.Size(322, 26);
-            this.cmbChkOutStudent.TabIndex = 1;
+            this.txtStudentSearch.Location = new System.Drawing.Point(852, 65);
+            this.txtStudentSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtStudentSearch.Name = "txtStudentSearch";
+            this.txtStudentSearch.Size = new System.Drawing.Size(325, 26);
+            this.txtStudentSearch.TabIndex = 200;
+            this.txtStudentSearch.TextChanged += new System.EventHandler(this.txtStudentSearch_TextChanged);
+            // 
+            // lstStudents
+            // 
+            this.lstStudents.FormattingEnabled = true;
+            this.lstStudents.ItemHeight = 18;
+            this.lstStudents.Location = new System.Drawing.Point(64, 62);
+            this.lstStudents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstStudents.Name = "lstStudents";
+            this.lstStudents.Size = new System.Drawing.Size(543, 274);
+            this.lstStudents.TabIndex = 199;
             // 
             // txtChkOutNotes
             // 
             this.txtChkOutNotes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtChkOutNotes.Location = new System.Drawing.Point(563, 125);
+            this.txtChkOutNotes.Location = new System.Drawing.Point(840, 151);
+            this.txtChkOutNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtChkOutNotes.Name = "txtChkOutNotes";
-            this.txtChkOutNotes.Size = new System.Drawing.Size(254, 185);
+            this.txtChkOutNotes.Size = new System.Drawing.Size(337, 227);
             this.txtChkOutNotes.TabIndex = 4;
             this.txtChkOutNotes.Text = "";
             // 
             // txtAvailableChkOutQuantity
             // 
             this.txtAvailableChkOutQuantity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAvailableChkOutQuantity.Location = new System.Drawing.Point(221, 171);
+            this.txtAvailableChkOutQuantity.Location = new System.Drawing.Point(277, 420);
+            this.txtAvailableChkOutQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.txtAvailableChkOutQuantity.Name = "txtAvailableChkOutQuantity";
             this.txtAvailableChkOutQuantity.ReadOnly = true;
-            this.txtAvailableChkOutQuantity.Size = new System.Drawing.Size(120, 26);
+            this.txtAvailableChkOutQuantity.Size = new System.Drawing.Size(159, 30);
             this.txtAvailableChkOutQuantity.TabIndex = 3;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(478, 125);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(761, 154);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 19);
+            this.label14.Size = new System.Drawing.Size(72, 24);
             this.label14.TabIndex = 198;
             this.label14.Text = "Notes:";
             // 
@@ -217,28 +239,31 @@ namespace SVSU_Capstone_Project.Views
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(40, 67);
+            this.label15.Location = new System.Drawing.Point(670, 67);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(75, 19);
+            this.label15.Size = new System.Drawing.Size(163, 24);
             this.label15.TabIndex = 196;
-            this.label15.Text = "Student:";
+            this.label15.Text = "Student Search:";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(14, 14);
+            this.label16.Location = new System.Drawing.Point(19, 17);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(207, 22);
+            this.label16.Size = new System.Drawing.Size(258, 29);
             this.label16.TabIndex = 195;
             this.label16.Text = "Check Out Asset Item";
             // 
             // btnChkOutCancel
             // 
             this.btnChkOutCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChkOutCancel.Location = new System.Drawing.Point(702, 333);
+            this.btnChkOutCancel.Location = new System.Drawing.Point(1025, 409);
+            this.btnChkOutCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnChkOutCancel.Name = "btnChkOutCancel";
-            this.btnChkOutCancel.Size = new System.Drawing.Size(114, 43);
+            this.btnChkOutCancel.Size = new System.Drawing.Size(152, 53);
             this.btnChkOutCancel.TabIndex = 6;
             this.btnChkOutCancel.Text = "Cancel";
             this.btnChkOutCancel.UseVisualStyleBackColor = true;
@@ -247,9 +272,10 @@ namespace SVSU_Capstone_Project.Views
             // btnChkOut
             // 
             this.btnChkOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChkOut.Location = new System.Drawing.Point(563, 333);
+            this.btnChkOut.Location = new System.Drawing.Point(840, 409);
+            this.btnChkOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnChkOut.Name = "btnChkOut";
-            this.btnChkOut.Size = new System.Drawing.Size(114, 43);
+            this.btnChkOut.Size = new System.Drawing.Size(152, 53);
             this.btnChkOut.TabIndex = 5;
             this.btnChkOut.Text = "Check Out";
             this.btnChkOut.UseVisualStyleBackColor = true;
@@ -259,9 +285,10 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(58, 174);
+            this.label20.Location = new System.Drawing.Point(60, 423);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(151, 19);
+            this.label20.Size = new System.Drawing.Size(187, 24);
             this.label20.TabIndex = 192;
             this.label20.Text = "Available Quantity:";
             // 
@@ -270,10 +297,10 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkOutCommodity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChkOutCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbChkOutCommodity.FormattingEnabled = true;
-            this.cmbChkOutCommodity.Location = new System.Drawing.Point(143, 102);
-            this.cmbChkOutCommodity.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbChkOutCommodity.Location = new System.Drawing.Point(189, 369);
+            this.cmbChkOutCommodity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbChkOutCommodity.Name = "cmbChkOutCommodity";
-            this.cmbChkOutCommodity.Size = new System.Drawing.Size(322, 26);
+            this.cmbChkOutCommodity.Size = new System.Drawing.Size(416, 31);
             this.cmbChkOutCommodity.TabIndex = 2;
             this.cmbChkOutCommodity.SelectedIndexChanged += new System.EventHandler(this.cmbChkOutCommodity_SelectedIndexChanged);
             // 
@@ -281,10 +308,9 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(40, 105);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Location = new System.Drawing.Point(60, 372);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(103, 19);
+            this.label21.Size = new System.Drawing.Size(124, 24);
             this.label21.TabIndex = 191;
             this.label21.Text = "Commodity:";
             // 
@@ -293,19 +319,21 @@ namespace SVSU_Capstone_Project.Views
             this.tbcCheckInOut.Controls.Add(this.tbpCheckOut);
             this.tbcCheckInOut.Controls.Add(this.tbpCheckIn);
             this.tbcCheckInOut.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbcCheckInOut.Location = new System.Drawing.Point(10, 12);
+            this.tbcCheckInOut.Location = new System.Drawing.Point(13, 15);
+            this.tbcCheckInOut.Margin = new System.Windows.Forms.Padding(4);
             this.tbcCheckInOut.Name = "tbcCheckInOut";
             this.tbcCheckInOut.SelectedIndex = 0;
-            this.tbcCheckInOut.Size = new System.Drawing.Size(931, 431);
+            this.tbcCheckInOut.Size = new System.Drawing.Size(1241, 530);
             this.tbcCheckInOut.TabIndex = 43;
             this.tbcCheckInOut.SelectedIndexChanged += new System.EventHandler(this.tbcCheckInOut_SelectedIndexChanged);
             // 
             // frmCheckInOutItems
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 453);
+            this.ClientSize = new System.Drawing.Size(1275, 558);
             this.Controls.Add(this.tbcCheckInOut);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCheckInOutItems";
             this.Text = "Check-In/Out Items";
             this.tbpCheckIn.ResumeLayout(false);
@@ -320,7 +348,6 @@ namespace SVSU_Capstone_Project.Views
         #endregion
 
         private System.Windows.Forms.TabPage tbpCheckIn;
-        internal System.Windows.Forms.ComboBox cmbChkInStudent;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Button btnChkInCancel;
@@ -328,7 +355,6 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.ComboBox cmbChkInCommodity;
         internal System.Windows.Forms.Label label27;
         private System.Windows.Forms.TabPage tbpCheckOut;
-        internal System.Windows.Forms.ComboBox cmbChkOutStudent;
         internal System.Windows.Forms.RichTextBox txtChkOutNotes;
         private System.Windows.Forms.TextBox txtAvailableChkOutQuantity;
         internal System.Windows.Forms.Label label14;
@@ -340,5 +366,9 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.ComboBox cmbChkOutCommodity;
         internal System.Windows.Forms.Label label21;
         private System.Windows.Forms.TabControl tbcCheckInOut;
+        private System.Windows.Forms.ListBox lstStudents;
+        private System.Windows.Forms.TextBox txtStudentSearch;
+        private System.Windows.Forms.TextBox txtStudentChkIn;
+        private System.Windows.Forms.ListBox lstStudentChkIn;
     }
 }

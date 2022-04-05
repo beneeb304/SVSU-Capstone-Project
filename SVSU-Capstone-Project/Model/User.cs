@@ -21,6 +21,7 @@
         public string strHash { get; set; }
         [Column("isAdmin"), Required]
         public bool blnIsAdmin { get; set; }
+        public bool blnPwdReset { get; set; }
 
         public virtual List<Log> lstLogs { get; set; }
         public virtual List<CheckedItem> lstCheckedItems { get; set; }

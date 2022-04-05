@@ -19,9 +19,12 @@ namespace SVSU_Capstone_Project.ViewModel
         {
             var dbSet = db.Set<T>();
             foreach (string include in includes)
+            {
                 dbSet.Include(include);
-            return dbSet.Where(predicate).ToList();
+            }
+            return predicate != null ? dbSet.Where(predicate).ToList() : dbSet.ToList();
         }
+
         public static List<T> GetMany<T>() where T : ContextEntity
         {
             //check to make sure we are connected to db
@@ -56,19 +59,6 @@ namespace SVSU_Capstone_Project.ViewModel
                 MessageBox.Show("Please check your internet connection and try agian. You can also restart the application and try agian.", "Alert");
             }
             return db.Set<T>().FirstOrDefault(predicate);
-        }
-
-        public static T Include<T>( this T parent, params string[] propname ) where T : ContextEntity
-        {
-            // return prop of type R from T with property name = propname
-            foreach (string prop in propname)
-            {
-                if (parent.GetType().GetProperty(prop) != null)
-                {
-                    parent = db.Entry(parent).Entity.Include(prop);
-                }
-            }
-            return parent;
         }
 
         public static Guid Add<T>( T obj, out T item ) where T : ContextEntity
@@ -195,10 +185,12 @@ namespace SVSU_Capstone_Project.ViewModel
         public static bool RestockItem( Storage objUsedFrom, User objUser, uint intQuantityChange, string notes )
         {
             // if item is not consumable, throw exception
-            if (objUsedFrom.objCommodity.enuCommodityType != ItemType.Consumable)
-            {
-                throw new Exception("Item is not restockable");
-            }
+
+            //if (objUsedFrom.objCommodity.enuCommodityType != ItemType.Consumable)
+            //{
+            //    throw new Exception("Item is not restockable");
+            //}
+
             // create new log
             Log objLog = new Log
             {
