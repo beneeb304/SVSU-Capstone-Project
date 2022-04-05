@@ -1436,6 +1436,9 @@ namespace SVSU_Capstone_Project.Views
                             btnUserModify.Enabled = true;
                             btnUserPassword.Enabled = true;
                             btnUserDelete.Enabled = true;
+                            
+                            //Clear fields
+                            ClearUserFields();
                         }
                         else
                         {
@@ -1446,10 +1449,8 @@ namespace SVSU_Capstone_Project.Views
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid user information!", "Alert");
                         btnUserCancel_Click(sender, e);
+                    
                     }
-
-                    //Clear fields
-                    ClearUserFields();
 
                     //Disable fields
                     EnableDisableUserFields(false);
@@ -1528,7 +1529,10 @@ namespace SVSU_Capstone_Project.Views
                             btnUserAdd.Enabled = true;
                             btnUserUpload.Enabled = true;
                             btnUserPassword.Enabled = true;
-                            btnUserDelete.Enabled = true;
+                            btnUserDelete.Enabled = true; 
+                            
+                            //Clear fields
+                            ClearUserFields();
                         }
                         else
                         {
@@ -1540,9 +1544,6 @@ namespace SVSU_Capstone_Project.Views
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
                         btnUserCancel_Click(sender, e);
                     }
-
-                    //Clear fields
-                    ClearUserFields();
 
                     //Disable fields
                     EnableDisableUserFields(false);
