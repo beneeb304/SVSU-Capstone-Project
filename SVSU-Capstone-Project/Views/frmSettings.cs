@@ -1538,14 +1538,10 @@ namespace SVSU_Capstone_Project.Views
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
-                        btnUserCancel_Click(sender, e);
+                        
                     }
 
-                    //Clear fields
-                    ClearUserFields();
 
-                    //Disable fields
-                    EnableDisableUserFields(false);
                 }
                 else
                 {
