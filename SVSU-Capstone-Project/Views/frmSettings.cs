@@ -1763,6 +1763,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in cabinet name
+                        if (!txtCabinetName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to add " +
                             txtCabinetName.Text + " as a new cabinet for " + cmbRoom.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
@@ -1844,6 +1848,10 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
+                        //Only alphanumeric and spaces in cabinet name
+                        if (!txtCabinetName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                            throw new Exception();
+
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to modify " +
                             lstCabinet.SelectedItem.ToString() + " in " + cmbRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
