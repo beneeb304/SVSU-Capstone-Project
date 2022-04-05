@@ -254,27 +254,36 @@ namespace SVSU_Capstone_Project.Views
             .ForEach(room =>
             {
                 var roomNode = new TreeNode(room.strName) { Tag = new TreeNodeTag { val = room, selectable = false } };
-                room.lstCabinets
-                .OrderBy(x => x.strName)
-                .ToList()
-                .ForEach(cab =>
+                if(room.lstCabinets != null)
                 {
-                    var cabinetNode = new TreeNode(cab.strName) { Tag = new TreeNodeTag { val = cab, selectable = false } };
-                    cab.lstStorage
-                    .GroupBy(x => x.objNLevel)
+                    room.lstCabinets
+                    .OrderBy(x => x.strName)
                     .ToList()
-                    .ForEach(grp =>
+                    .ForEach(cab =>
                     {
-                        var nlevelNode = new TreeNode(grp.Key.strName) { Tag = new TreeNodeTag { val = grp.Key, selectable = false } };
-                        grp.ToList().ForEach(stor =>
+                        var cabinetNode = new TreeNode(cab.strName) { Tag = new TreeNodeTag { val = cab, selectable = false } };
+                        if(cab.lstStorage != null)
                         {
-                            if (filterCommodity == null || filterCommodity(stor.objCommodity))
-                                nlevelNode.Nodes.Add(new TreeNode($"{stor.objCommodity.strName} ({stor.intQuantity})") { Tag = new TreeNodeTag { val = stor.objCommodity, selectable = true } });
-                        });
-                        cabinetNode.Nodes.Add(nlevelNode);
+                            cab.lstStorage
+                            .GroupBy(x => x.objNLevel)
+                            .ToList()
+                            .ForEach(grp =>
+                            {
+                                var nlevelNode = new TreeNode(grp.Key.strName) { Tag = new TreeNodeTag { val = grp.Key, selectable = false } };
+                                if(grp != null)
+                                {
+                                    grp.ToList().ForEach(stor =>
+                                    {
+                                        if (filterCommodity == null || filterCommodity(stor.objCommodity))
+                                            nlevelNode.Nodes.Add(new TreeNode($"{stor.objCommodity.strName} ({stor.intQuantity})") { Tag = new TreeNodeTag { val = stor.objCommodity, selectable = true } });
+                                    });
+                                }
+                                cabinetNode.Nodes.Add(nlevelNode);
+                            });
+                        }
+                        roomNode.Nodes.Add(cabinetNode);
                     });
-                    roomNode.Nodes.Add(cabinetNode);
-                });
+                }
                 treeView.Nodes.Add(roomNode);
             });
         }
