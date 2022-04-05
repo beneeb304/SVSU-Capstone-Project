@@ -266,13 +266,15 @@ namespace SVSU_Capstone_Project.Views
         {
             if (commodity != null)
             {
-                if (cmbChkInCommodity.Items.Contains(commodity))
+                string commodityName = commodity.strName;
+                //if (cmbChkInCommodity.Items.Contains(commodityName))
+                //{
+                //    tbcCheckInOut.SelectTab(1);
+                //    cmbChkInCommodity.SelectedItem = commodityName;
+                //}
+                if (cmbChkOutCommodity.Items.Contains(commodity))
                 {
-                    tbcCheckInOut.SelectTab(1);
-                    cmbChkInCommodity.SelectedItem = commodity;
-                }
-                else if (cmbChkOutCommodity.Items.Contains(commodity))
-                {
+                    Console.WriteLine("Commodity Match: " + commodity.strName);
                     tbcCheckInOut.SelectTab(0);
                     cmbChkOutCommodity.SelectedItem = commodity;
                 }

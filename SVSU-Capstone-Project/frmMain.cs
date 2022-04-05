@@ -207,6 +207,7 @@ namespace SVSU_Capstone_Project
         private void frmMain_KeyDown( object sender, KeyEventArgs e )
         {
             // If indicating keys are pressed that may be a barcode scan, begin storing proceeding keys.
+          
             if (barcodeScanner.isSeqStart(e))
             {
                 barcodeScanner.beginScan(e); 
@@ -217,24 +218,32 @@ namespace SVSU_Capstone_Project
             {
                 // Attempt to add new keys to the read barcode scan.
                 barcodeScanner.addToCode(e);
+
+                if (barcodeScanner.strReadCode.Length == 12)
+                {
+                    if (barcodeScanner.isLegit(e))
+                    {
+                        PageController(msiCheckInOutItems as ToolStripMenuItem, e);
+                    }
+                }
                 
                 // If Enter is entered within 100 milliseconds of the scan beginning, check that the current string read in matches the generated barcode format.
                 // A legit barcode read in within the time frame followed by enter indicates a legit scan. If it doesn't work, reset the scanner and try again.
                 // The barcode scanner enters the entire string read in very quickly, taking longer indicates it was likely not a scan.
-                if (e.KeyCode == Keys.Enter && (DateTime.Now.Millisecond - barcodeScanner.getStartTime()) < 100)
-                {
-                    if (barcodeScanner.isLegit())
-                    {
-                        PageController(msiCheckInOutItems as ToolStripMenuItem, e);
-                    }
-                    else
-                    {
-                        barcodeScanner.resetValues();
-                    }
-                }
+                //if (e.KeyData == Keys.Enter && (DateTime.Now.Millisecond - barcodeScanner.getStartTime()) < 100)
+                //{
+                //    if (barcodeScanner.isLegit(e))
+                //    {
+                //        PageController(msiCheckInOutItems as ToolStripMenuItem, e);
+                //    }
+                //    else
+                //    {
+                //        barcodeScanner.resetValues();
+                //    }
+                //}
 
                 // If the potential scan took too long for the entry to be by barcode scanner, cancel the scan and reset the read information.
-                else if ((DateTime.Now.Millisecond - barcodeScanner.getStartTime()) > 100)
+                else if (DateTime.Now.Subtract(barcodeScanner.getStartTime()).TotalMilliseconds > 100)
                 {
                     barcodeScanner.resetValues();
                 }

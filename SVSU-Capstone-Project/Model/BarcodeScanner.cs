@@ -27,17 +27,17 @@ namespace SVSU_Capstone_Project
      */
     public partial class BarcodeScanner
     {
-        public bool blnStartRead;
+        private bool blnStartRead;
         public string strReadCode;
-        public int intBeginTime;
-        public Commodity commodity;
+        private DateTime dteStartTime;
+        private Commodity commodity;
 
         // Constructor to create the barcode scanner object. Only called once per program session.
         public BarcodeScanner()
         {
             this.blnStartRead = false;
             this.strReadCode = "";
-            this.intBeginTime = 0;
+            this.dteStartTime = DateTime.Now;
             this.commodity = null;
         }
 
@@ -45,7 +45,7 @@ namespace SVSU_Capstone_Project
         public bool isStartRead() { return this.blnStartRead; }
 
         /* getStartTime returns the value of intBeginTime */
-        public int getStartTime() { return intBeginTime; }
+        public DateTime getStartTime() { return dteStartTime; }
 
         /* Function: isSeqStart
          * Description: Checks if a pressed key equals the required start character.
@@ -55,7 +55,7 @@ namespace SVSU_Capstone_Project
          */
         public bool isSeqStart( KeyEventArgs e )
         {
-            if (e.KeyCode == Keys.C || e.KeyCode == Keys.E || e.KeyCode == Keys.S)
+            if (e.KeyData == (Keys.C | Keys.Shift) || e.KeyData == (Keys.E | Keys.Shift) || e.KeyData == (Keys.S | Keys.Shift))
             {
                 return true;
             }
@@ -70,8 +70,9 @@ namespace SVSU_Capstone_Project
         public void beginScan( KeyEventArgs e )
         {
             this.blnStartRead = true;
-            this.intBeginTime = DateTime.Now.Millisecond;
+            this.dteStartTime = DateTime.Now;
             this.strReadCode += e.KeyCode.ToString().ToUpper();
+            Console.WriteLine("Entered Key: " + e.KeyCode.ToString() + " at " + dteStartTime);
         }
 
         /* Function addToCode
@@ -82,19 +83,20 @@ namespace SVSU_Capstone_Project
          */
         public void addToCode( KeyEventArgs e )
         {
-            if ((e.KeyCode <= Keys.D0 && e.KeyCode >= Keys.D9)
-                || (e.KeyCode <= Keys.NumPad0 && e.KeyCode >= Keys.NumPad9))
+            if ((e.KeyValue >= 48 && e.KeyValue <= 57)
+                || (e.KeyValue >= 96 && e.KeyValue <= 105))
             {
                 this.strReadCode += e.KeyCode.ToString().Substring(1);
             }
-            else if (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z)
+            else if (e.KeyData >= Keys.A && e.KeyData <= Keys.Z)
             {
                 this.strReadCode += e.KeyCode.ToString().ToLower();
             }
-            else if (e.KeyCode == Keys.Oemtilde)
+            else if (e.KeyData == (Keys.Oem3 | Keys.Shift))
             {
                 this.strReadCode += "~";
             }
+            Console.WriteLine(e.KeyCode.ToString() + " should be added, strReadCode is: " + strReadCode + " at time: " + DateTime.Now.ToString()); 
         }
 
         /* Function isLegit
@@ -102,13 +104,18 @@ namespace SVSU_Capstone_Project
          * 
          * No Local Variables
          */
-        public bool isLegit()
+        public bool isLegit( KeyEventArgs e )
         {
-            if ((strReadCode.StartsWith("C~") || strReadCode.StartsWith("E~") || strReadCode.StartsWith("S~"))
-                && strReadCode.Length >= 10)
+            if (strReadCode.StartsWith("C~") || strReadCode.StartsWith("E~") || strReadCode.StartsWith("S~"))
             {
-                return true;
+                Console.WriteLine(DateTime.Now.Subtract(getStartTime()).TotalMilliseconds);
+                if (DateTime.Now.Subtract(dteStartTime).TotalMilliseconds < 100)
+                {
+                    Console.WriteLine("IsLegit. True. ");
+                    return true;
+                }
             }
+            Console.WriteLine("IsNotLegit. False. ");
             return false;
         }
 
@@ -123,6 +130,7 @@ namespace SVSU_Capstone_Project
             try 
             {
                 this.commodity = ItemModel.Get<Commodity>(x => x.strBarCode == strReadCode);
+                Console.WriteLine("Commodity found: " + commodity.strName);
                 return this.commodity;
             }
             catch { Console.WriteLine("Commodity not found from Barcode"); }
@@ -138,8 +146,9 @@ namespace SVSU_Capstone_Project
         {
             this.blnStartRead = false;
             this.strReadCode = "";
-            this.intBeginTime = 0;
+            this.dteStartTime = DateTime.Now;
             this.commodity = null;
+            Console.WriteLine("Barcode Scanner Reset");
         }
     }
 }
