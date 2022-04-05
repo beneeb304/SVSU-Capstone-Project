@@ -47,10 +47,6 @@ namespace SVSU_Capstone_Project
             //Set this form as an MDI parent
             IsMdiContainer = true;
 
-            // Initiate Barcode Scanner object once logged in so barcodes can be used
-            barcodeScanner = new BarcodeScanner();
-
-
             PageController(msiHome as ToolStripMenuItem, null);
         }
 
@@ -143,8 +139,6 @@ namespace SVSU_Capstone_Project
                 //Don't do anything if the child is already open
                 if (newF.Name == oldF.Name)
                 {
-                    // If frmCheckInOutItems already exists but is called again
-                    // due to barcode scan, reopen it so it can accept the scan.
                     if (!(oldF is frmCheckInOutItems))
                     {
                         return;
@@ -190,64 +184,6 @@ namespace SVSU_Capstone_Project
             if(dialogResult == DialogResult.Yes)
                 //Restart the program
                 Application.Restart();
-        }
-
-        /* Function: frmMain_KeyDown
-         * Description: When specific values, @ followed by a string finishing with Enter, are entered anywhere in the form,
-         * within a short amount of time, it is considered a barcode scan. A barcode scan looks for the specific item then
-         * brings up that item in the CheckIn/Out form. 
-         * 
-         * Local Variables
-         * BarcodeScanner barcodeScanner; Made global instead so it can be used anytime the program is open.
-         * object sender; The object calling the method.
-         * KeyEventArgs e; Message sent by the key object pressed.
-         * CheckedItem checkedItem; Represents the item located by scanning a barcode.
-         */
-        public static BarcodeScanner barcodeScanner;
-        private void frmMain_KeyDown( object sender, KeyEventArgs e )
-        {
-            // If indicating keys are pressed that may be a barcode scan, begin storing proceeding keys.
-          
-            if (barcodeScanner.isSeqStart(e))
-            {
-                barcodeScanner.beginScan(e); 
-            }
-
-            // Check if the barcodeScanner object reflects that a scan is happening.
-            else if (barcodeScanner.isStartRead())
-            {
-                // Attempt to add new keys to the read barcode scan.
-                barcodeScanner.addToCode(e);
-
-                if (barcodeScanner.strReadCode.Length == 12)
-                {
-                    if (barcodeScanner.isLegit(e))
-                    {
-                        PageController(msiCheckInOutItems as ToolStripMenuItem, e);
-                    }
-                }
-                
-                // If Enter is entered within 100 milliseconds of the scan beginning, check that the current string read in matches the generated barcode format.
-                // A legit barcode read in within the time frame followed by enter indicates a legit scan. If it doesn't work, reset the scanner and try again.
-                // The barcode scanner enters the entire string read in very quickly, taking longer indicates it was likely not a scan.
-                //if (e.KeyData == Keys.Enter && (DateTime.Now.Millisecond - barcodeScanner.getStartTime()) < 100)
-                //{
-                //    if (barcodeScanner.isLegit(e))
-                //    {
-                //        PageController(msiCheckInOutItems as ToolStripMenuItem, e);
-                //    }
-                //    else
-                //    {
-                //        barcodeScanner.resetValues();
-                //    }
-                //}
-
-                // If the potential scan took too long for the entry to be by barcode scanner, cancel the scan and reset the read information.
-                else if (DateTime.Now.Subtract(barcodeScanner.getStartTime()).TotalMilliseconds > 100)
-                {
-                    barcodeScanner.resetValues();
-                }
-            }
         }
 
         private void pcbHeHe_DoubleClick( object sender, EventArgs e )

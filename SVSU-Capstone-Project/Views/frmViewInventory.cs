@@ -165,23 +165,23 @@ namespace SVSU_Capstone_Project.Views
                 Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
                 List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
 
-                //Genorate and populate the barcode for the selected item
-                Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
-                if (commodity.strBarCode == null)
-                {
-                    //Disable print barcode button
-                    btnPrintBarcode.Enabled = false;
-                    //Clear picturebox image
-                    pcbBarcode.Image = null;
-                }
-                else
-                {
-                    //Cast barcode to picture box
-                    pcbBarcode.Image = barcode.Draw(commodity.strBarCode, 115, 2);
+                ////Genorate and populate the barcode for the selected item
+                //Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+                //if (commodity.strBarCode == null)
+                //{
+                //    //Disable print barcode button
+                //    btnPrintBarcode.Enabled = false;
+                //    //Clear picturebox image
+                //    pcbBarcode.Image = null;
+                //}
+                //else
+                //{
+                //    //Cast barcode to picture box
+                //    pcbBarcode.Image = barcode.Draw(commodity.strBarCode, 115, 2);
 
-                    //Enable print barcode button
-                    btnPrintBarcode.Enabled = true;
-                }
+                //    //Enable print barcode button
+                //    btnPrintBarcode.Enabled = true;
+                //}
 
                 //Add to the dgv
                 foreach (Storage storage in lstStorage)
@@ -222,7 +222,6 @@ namespace SVSU_Capstone_Project.Views
                         "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
                         "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
                         "URL: " + commodity.strItemUrl + "\r" +
-                        "Barcode: " + commodity.strBarCode + "\r" +
                         "Hours Used: " + simulator.intHoursUsed + "\r"+
                         "Times Used: " + simulator.intTimesUsed;
                     MessageBox.Show(strMessage,"Commodity Details");
@@ -232,16 +231,15 @@ namespace SVSU_Capstone_Project.Views
                 string strCategory = cmbCategory.Text;
                 string strCommodity = lstCommodity.SelectedItem.ToString();
                 Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
-                string strMessage = "Name: " + commodity.strName + "\r" +
-                    "Desciption: " + commodity.strDescription + "\r" +
-                    "Type: " + commodity.enuCommodityType.ToString() + "\r" +
-                    "Features: " + commodity.strFeatures + "\r" +
-                    "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
-                    "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
-                    "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
-                    "URL: " + commodity.strItemUrl + "\r" +
-                    "Barcode: " + commodity.strBarCode;
-                MessageBox.Show(strMessage, "Commodity Details");
+                    string strMessage = "Name: " + commodity.strName + "\r" +
+                            "Desciption: " + commodity.strDescription + "\r" +
+                            "Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                            "Features: " + commodity.strFeatures + "\r" +
+                            "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
+                            "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                            "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
+                            "URL: " + commodity.strItemUrl;
+                    MessageBox.Show(strMessage, "Commodity Details");
                 }
             }
         }

@@ -17,7 +17,6 @@
         public int intAlert_quantity { get; set; }
         [Column("commodityType")]
         public ItemType enuCommodityType { get; set; }        
-        public string strBarCode { get; set; }
         [Column("costInCents")]
         public int intCostInCents { get; set; }
         [Column("itemUrl")]

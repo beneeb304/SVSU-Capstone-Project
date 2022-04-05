@@ -233,7 +233,6 @@ namespace SVSU_Capstone_Project
             this.Text = "Saginaw Valley Nursing Inventory System";
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyDown);
             this.mstMain.ResumeLayout(false);
             this.mstMain.PerformLayout();
             this.panel1.ResumeLayout(false);

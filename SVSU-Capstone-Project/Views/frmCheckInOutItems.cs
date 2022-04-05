@@ -26,11 +26,6 @@ namespace SVSU_Capstone_Project.Views
             InitializeComponent();
             // checked in/out status set to null
             tbcCheckInOut_SelectedIndexChanged(null, null);
-            // Checks if the form was called after a barcode scan to transfer the data.
-            if (frmMain.barcodeScanner.isStartRead())
-            {
-                setScannedBarcode(frmMain.barcodeScanner.getCommodity());
-            }
         }
 
         private void tbcCheckInOut_SelectedIndexChanged( object sender, EventArgs e )
@@ -253,33 +248,6 @@ namespace SVSU_Capstone_Project.Views
                     }
                 }
             }
-        }
-
-        /* Function: setScannedBarcode
-         * Description: When this form is called as the result of a barcode scan, take in the CheckedItem, check if it is in the checked in or 
-         * checked out items, then select it in the corresponding list. Reset the values of the barcode scanner in frmMain to complete the scan.
-         * 
-         * Local Variables
-         * CheckedItem checkedItem; The object found as a result of the barcode scan.
-         */
-        private void setScannedBarcode( Commodity commodity)
-        {
-            if (commodity != null)
-            {
-                string commodityName = commodity.strName;
-                //if (cmbChkInCommodity.Items.Contains(commodityName))
-                //{
-                //    tbcCheckInOut.SelectTab(1);
-                //    cmbChkInCommodity.SelectedItem = commodityName;
-                //}
-                if (cmbChkOutCommodity.Items.Contains(commodity))
-                {
-                    Console.WriteLine("Commodity Match: " + commodity.strName);
-                    tbcCheckInOut.SelectTab(0);
-                    cmbChkOutCommodity.SelectedItem = commodity;
-                }
-            }
-            frmMain.barcodeScanner.resetValues();
         }
 
         /* Function: btnChkOutCancel_Click

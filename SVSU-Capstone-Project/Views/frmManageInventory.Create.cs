@@ -32,7 +32,6 @@ namespace SVSU_Capstone_Project.Views
             txtCreateDescription.Text = "";
             txtCreateFeatures.Text = "";
             txtCreateItemName.Text = "";
-            txtCreateBarcode.Text = "";
             txtCreateUrl.Text = "";
             txtCurrentQty.Text = "";
             nudCreateAlertQty.Value = 0;
@@ -77,7 +76,6 @@ namespace SVSU_Capstone_Project.Views
             txtCreateDescription.Text = selected.strDescription;
             txtCreateFeatures.Text = selected.strFeatures;
             txtCreateUrl.Text = selected.strItemUrl;
-            txtCreateBarcode.Text = selected.strBarCode;
             cmbCreateCategory.DataSource = ItemModel.GetMany<Category>();
             cmbCreateCategory.SelectedItem = selected.objCategory;
             cmbCreateVendor.DataSource = ItemModel.GetMany<Vendor>();
@@ -144,57 +142,6 @@ namespace SVSU_Capstone_Project.Views
                 selected.intCostInCents = (int)(nudCreateCost.Value * 100);
                 selected.strFeatures = txtCreateFeatures.Text;
 
-                //Generate new barcode if textbox is empty
-                string strBarcode = txtCreateBarcode.Text;
-                bool blnExists = true;
-                Commodity barcodeCommodity;
-
-                while (blnExists)
-                {
-                    if (strBarcode == "")
-                    {
-                        Random random = new Random();
-
-                        //String that contain both alphabets and numbers
-                        string strAlphaNumeric = "abcdefghijklmnopqrstuvwxyz0123456789";
-
-                        //Set to 12 characters long (10 generated plus 2 for prefix and tilde)
-                        int size = 10;
-
-                        switch (selected.enuCommodityType.ToString())
-                        {
-                            case "Consumable":
-                                strBarcode = "C";
-                                break;
-                            case "Equipment":
-                                strBarcode = "E";
-                                break;
-                            case "Simulator":
-                                strBarcode = "S";
-                                break;
-                        }
-
-                        strBarcode += "~";
-
-                        for (int i = 0; i < size; i++)
-                        {
-                            //Selecting a index randomly
-                            int x = random.Next(strAlphaNumeric.Length);
-
-                            //Appending the character at the index to the random alphanumeric string.
-                            strBarcode += strAlphaNumeric[x];
-                        }
-                    }
-
-                    barcodeCommodity = ItemModel.Get<Commodity>(x => x.strBarCode == strBarcode);
-
-                    if (barcodeCommodity == null || barcodeCommodity.uidTuid == selected.uidTuid)
-                        blnExists = false;
-                    else
-                        strBarcode = "";
-                }
-
-                selected.strBarCode = strBarcode;
                 submit(selected);
                 if(btnCreate.Text == "Create")
                 {
