@@ -1705,6 +1705,10 @@ namespace SVSU_Capstone_Project.Views
                                 btnRoomModify.Enabled = true;
                             }
                         }
+                        else
+                        {
+                            btnRoomCancel_Click(sender, e);
+                        }
                     }
                     catch
                     {
@@ -1892,6 +1896,10 @@ namespace SVSU_Capstone_Project.Views
                                 btnCabinetModify.Enabled = true;
                             }
                         }
+                        else
+                        {
+                            btnCabinetCancel_Click(sender, e);
+                        }
                     }
                     catch
                     {
@@ -2055,6 +2063,10 @@ namespace SVSU_Capstone_Project.Views
                                 btnCategoryDelete.Enabled = true;
                                 btnCategoryModify.Enabled = true;
                             }
+                        }
+                        else
+                        {
+                            btnCategoryCancel_Click(sender, e);
                         }
                     }
                     catch
@@ -2224,6 +2236,10 @@ namespace SVSU_Capstone_Project.Views
                                 btnVendorModify.Enabled = true;
                             }
                         }
+                        else
+                        {
+                            btnVendorCancel_Click(sender, e);
+                        }
                     }
                     catch
                     {
@@ -2386,6 +2402,10 @@ namespace SVSU_Capstone_Project.Views
                                 btnNLevelDelete.Enabled = true;
                                 btnNLevelModify.Enabled = true;
                             }
+                        }
+                        else
+                        {
+                            btnNLevelCancel_Click(sender, e);
                         }
                     }
                     catch
