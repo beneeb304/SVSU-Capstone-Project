@@ -1359,56 +1359,68 @@ namespace SVSU_Capstone_Project.Views
         {
             if (btnUserAdd.Enabled)
             {
-                if (txtUserEmail.Text.Trim().Length > 0 && txtUserFName.Text.Trim().Length > 0 && 
+                if (txtUserEmail.Text.Trim().Length > 0 && txtUserFName.Text.Trim().Length > 0 &&
                     txtUserLName.Text.Trim().Length > 0 && txtUserSVSUID.Text.Trim().Length > 0)
                 {
-                    try
+                    //try
+                    //{
+                    //Valid email
+                    MailAddress mailAddress = new MailAddress(txtUserEmail.Text);
+
+                    //(in hindsight, should have used REGEX)
+
+                    //Additional check to make sure email is only alphanumeric with period or hyphen
+                    if (!txtUserEmail.Text.All(c => char.IsLetterOrDigit(c) || c.Equals('.') || c.Equals('-') || c.Equals('@')))
+                        throw new Exception();
+
+                    //Only alpha first name
+                    if (!txtUserFName.Text.All(char.IsLetter))
+                        throw new Exception();
+
+                    //Only alpha last name
+                    if (!txtUserLName.Text.All(char.IsLetter))
+                        throw new Exception();
+
+                    //Only alphanumeric SVSU ID
+                    if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit))
+                        throw new Exception();
+
+                    //Only empty or numeric phone
+                    if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
+                        throw new Exception();
+
+                    //Ask user to confirm action
+                    DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                        txtUserEmail.Text + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        //Valid email
-                        MailAddress mailAddress = new MailAddress(txtUserEmail.Text);
-
-                        //(in hindsight, should have used REGEX)
-
-                        //Additional check to make sure email is only alphanumeric with period or hyphen
-                        if (!txtUserEmail.Text.All(c => char.IsLetterOrDigit(c) || c.Equals('.') || c.Equals('-') || c.Equals('@')))
-                            throw new Exception();
-
-                        //Only alpha first name
-                        if (!txtUserFName.Text.All(char.IsLetter))
-                            throw new Exception();
-
-                        //Only alpha last name
-                        if (!txtUserLName.Text.All(char.IsLetter))
-                            throw new Exception();
-
-                        //Only alphanumeric SVSU ID
-                        if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit))
-                            throw new Exception();
-
-                        //Only empty or numeric phone
-                        if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                            txtUserEmail.Text + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                        //Set user properties                        
+                        User user = new User
                         {
-                            //Set user properties                        
-                            User user = new User
-                            {
-                                strSvsu_id = txtUserSVSUID.Text,
-                                strFirst_name = txtUserFName.Text,
-                                strLast_name = txtUserLName.Text,
-                                strEmail = mailAddress.ToString(),
-                                strPhone = txtUserPhone.Text,
-                                blnIsAdmin = chkUserAdmin.Checked,
-                                blnPwdReset = true
-                            };
+                            strSvsu_id = txtUserSVSUID.Text,
+                            strFirst_name = txtUserFName.Text,
+                            strLast_name = txtUserLName.Text,
+                            strEmail = mailAddress.ToString(),
+                            strPhone = txtUserPhone.Text,
+                            blnIsAdmin = chkUserAdmin.Checked,
+                            blnPwdReset = true
+                        };
 
-                            string strHash = RandomPassword();
-                            user.strHash = Authentication.GenerateHash(strHash);
+                        string strHash = RandomPassword();
+                        user.strHash = Authentication.GenerateHash(strHash);
 
+                        var Emailexists = ItemModel.Get<User>(x => x.strEmail == user.strEmail);
+                        var idExists = ItemModel.Get<User>(x => x.strSvsu_id == user.strSvsu_id);
+                        if(Emailexists != null)
+                        {
+                          MessageBox.Show("A user already exists with the entered email.", "Alert");  
+                        }
+                        else if(idExists != null)
+                        {
+                          MessageBox.Show("A user alread exists with the entered SVSU ID.", "Alert");
+                        }
+                        else
+                        {
                             //Add user
                             ItemModel.Add<User>(user);
 
@@ -1436,120 +1448,108 @@ namespace SVSU_Capstone_Project.Views
                             btnUserModify.Enabled = true;
                             btnUserPassword.Enabled = true;
                             btnUserDelete.Enabled = true;
-                            
+
                             //Clear fields
                             ClearUserFields();
-                        }
-                        else
-                        {
-                            btnUserCancel_Click(sender, e);
+                            EnableDisableUserFields(false);
                         }
                     }
-                    catch
+                    else
                     {
-                        MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid user information!", "Alert");
-                        btnUserCancel_Click(sender, e);
-                    
+                        MessageBox.Show("Please fill out all of the user fields before saving! You need:\r" +
+                                "A valid email\rA first name\rA last name\rAn SVSU ID", "Alert");
                     }
-
-                    //Disable fields
-                    EnableDisableUserFields(false);
                 }
-                else
+                else if (btnUserModify.Enabled)
                 {
-                    MessageBox.Show("Please fill out all of the user fields before saving! You need:\r" +
-                            "A valid email\rA first name\rA last name\rAn SVSU ID", "Alert");
-                }
-            }
-            else if (btnUserModify.Enabled)
-            {
-                //If a user is selected
-                if (lstUser.SelectedIndex >= 0 && txtUserEmail.Text.Trim() != "" && txtUserFName.Text.Trim() != "" && 
-                    txtUserLName.Text.Trim() != "" && txtUserSVSUID.Text.Trim() != "")
-                {
-                    try
+                    //If a user is selected
+                    if (lstUser.SelectedIndex >= 0 && txtUserEmail.Text.Trim() != "" && txtUserFName.Text.Trim() != "" &&
+                        txtUserLName.Text.Trim() != "" && txtUserSVSUID.Text.Trim() != "")
                     {
-                        //Only alpha first name
-                        if (!txtUserFName.Text.All(char.IsLetter))
-                            throw new Exception();
-
-                        //Only alpha last name
-                        if (!txtUserLName.Text.All(char.IsLetter))
-                            throw new Exception();
-
-                        //Only alphanumeric SVSU ID
-                        if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit))
-                            throw new Exception();
-
-                        //Only empty or numeric phone
-                        if (!txtUserPhone.Text.All(char.IsNumber) || txtUserPhone.Text != "")
-                            throw new Exception();
-
-                        //Get the user email
-                        MailAddress mailAddressCurrent = new MailAddress(lstUser.SelectedItem.ToString());
-
-                        //Make sure new email is valid
-                        MailAddress mailAddressNew = new MailAddress(txtUserEmail.Text);
-
-                        //Make sure SVSU ID is 8 chars or less
-                        if (txtUserSVSUID.Text.Length > 8 || mailAddressNew.ToString().Length > 25)
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                            mailAddressCurrent.Address + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
-                                                
-                        if (result == DialogResult.Yes)
+                        try
                         {
-                            //Get user
-                            User user = ItemModel.Get<User>(x => x.strEmail == mailAddressCurrent.Address);
+                            //Only alpha first name
+                            if (!txtUserFName.Text.All(char.IsLetter))
+                                throw new Exception();
 
-                            //Modify user
-                            user.strSvsu_id = txtUserSVSUID.Text;
-                            user.strFirst_name = txtUserFName.Text;
-                            user.strLast_name = txtUserLName.Text;
-                            user.strEmail = mailAddressNew.ToString();
-                            user.strPhone = txtUserPhone.Text;
-                            user.blnIsAdmin = chkUserAdmin.Checked;
+                            //Only alpha last name
+                            if (!txtUserLName.Text.All(char.IsLetter))
+                                throw new Exception();
 
-                            //Save user
-                            ItemModel.Update<User>(user);
+                            //Only alphanumeric SVSU ID
+                            if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit))
+                                throw new Exception();
 
-                            //Alert user
-                            MessageBox.Show("Successful Modification", "Alert");
+                            //Only empty or numeric phone
+                            if (!txtUserPhone.Text.All(char.IsNumber) || txtUserPhone.Text != "")
+                                throw new Exception();
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                            //Get the user email
+                            MailAddress mailAddressCurrent = new MailAddress(lstUser.SelectedItem.ToString());
 
-                            //Hide buttons
-                            btnUserSave.Visible = false;
-                            btnUserCancel.Visible = false;
+                            //Make sure new email is valid
+                            MailAddress mailAddressNew = new MailAddress(txtUserEmail.Text);
 
-                            //Enable buttons
-                            btnUserAdd.Enabled = true;
-                            btnUserUpload.Enabled = true;
-                            btnUserPassword.Enabled = true;
-                            btnUserDelete.Enabled = true; 
-                            
-                            //Clear fields
-                            ClearUserFields();
+                            //Make sure SVSU ID is 8 chars or less
+                            if (txtUserSVSUID.Text.Length > 8 || mailAddressNew.ToString().Length > 25)
+                                throw new Exception();
+
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                                mailAddressCurrent.Address + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
+
+                            if (result == DialogResult.Yes)
+                            {
+                                //Get user
+                                User user = ItemModel.Get<User>(x => x.strEmail == mailAddressCurrent.Address);
+
+                                //Modify user
+                                user.strSvsu_id = txtUserSVSUID.Text;
+                                user.strFirst_name = txtUserFName.Text;
+                                user.strLast_name = txtUserLName.Text;
+                                user.strEmail = mailAddressNew.ToString();
+                                user.strPhone = txtUserPhone.Text;
+                                user.blnIsAdmin = chkUserAdmin.Checked;
+
+                                //Save user
+                                ItemModel.Update<User>(user);
+
+                                //Alert user
+                                MessageBox.Show("Successful Modification", "Alert");
+
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
+
+                                //Hide buttons
+                                btnUserSave.Visible = false;
+                                btnUserCancel.Visible = false;
+
+                                //Enable buttons
+                                btnUserAdd.Enabled = true;
+                                btnUserUpload.Enabled = true;
+                                btnUserPassword.Enabled = true;
+                                btnUserDelete.Enabled = true;
+
+                                //Clear fields
+                                ClearUserFields();
+                            }
+                            else
+                            {
+                                btnUserCancel_Click(sender, e);
+                            }
                         }
-                        else
+                        catch
                         {
-                            btnUserCancel_Click(sender, e);
+                            MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
+
                         }
+
+
                     }
-                    catch
+                    else
                     {
-                        MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
-                        
+                        MessageBox.Show("Please select a user to modify before saving!", "Alert");
                     }
-
-
-                }
-                else
-                {
-                    MessageBox.Show("Please select a user to modify before saving!", "Alert");
                 }
             }
         }
