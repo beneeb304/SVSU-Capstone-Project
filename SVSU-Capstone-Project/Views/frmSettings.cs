@@ -323,6 +323,10 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearUserFields();
             }
+            else
+            {
+                MessageBox.Show("Select a user to perform a password reset", "Alert");
+            }
         }
 
         private string RandomPassword()
