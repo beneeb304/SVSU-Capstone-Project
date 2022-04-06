@@ -165,10 +165,12 @@ namespace SVSU_Capstone_Project.Views
 
                 //Get the selected category and commodity
 
-                string strCategory = cmbCategory.Text;
+                
                 string strCommodity = lstCommodity.SelectedItem.ToString();
 
-                Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
+                Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity);
+                Category category = ItemModel.Get<Category>(x => x.uidTuid == commodity.objCategory.uidTuid);
+                string strCategory = category.strName;
                 List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
 
                 ////Genorate and populate the barcode for the selected item
@@ -234,9 +236,14 @@ namespace SVSU_Capstone_Project.Views
                 }
                 else
                 {
-                string strCategory = cmbCategory.Text;
-                string strCommodity = lstCommodity.SelectedItem.ToString();
-                Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
+                
+                
+                    string strCommodity = lstCommodity.SelectedItem.ToString();
+                
+                    Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity);
+                
+                    Category category = ItemModel.Get<Category>(x => x.uidTuid == commodity.objCategory.uidTuid);
+                    string strCategory = category.strName;
                     string strMessage = "Name: " + commodity.strName + "\r" +
                             "Desciption: " + commodity.strDescription + "\r" +
                             "Type: " + commodity.enuCommodityType.ToString() + "\r" +
