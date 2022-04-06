@@ -227,7 +227,7 @@ namespace SVSU_Capstone_Project.Views
                         "Type: " + commodity.enuCommodityType.ToString() + "\r" +
                         "Features: " + commodity.strFeatures + "\r" +
                         "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
-                        "Commodoty Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                        "Commodity Category: " + commodity.objCategory.strName + "\r" +
                         "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
                         "URL: " + commodity.strItemUrl + "\r" +
                         "Hours Used: " + simulator.intHoursUsed + "\r"+
