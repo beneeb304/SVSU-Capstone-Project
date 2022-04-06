@@ -118,6 +118,14 @@ namespace SVSU_Capstone_Project.Views
             {
                 MessageBox.Show("Item already exists in the database. Please enter a different item name.", "Alert");
             }
+            else if(!txtCreateItemName.Text.All(char.IsLetter))
+            {
+                MessageBox.Show("Item name cannot have special characters. Please enter only alphabetical characters." ,"Alert");
+            }
+           else if(!txtCreateFeatures.Text.All(char.IsLetter))
+            {
+                MessageBox.Show("IFeatures cannot have special characters. Please enter only alphabetical characters.", "Alert");
+            }
            else
             {
                 Commodity selected = null;
