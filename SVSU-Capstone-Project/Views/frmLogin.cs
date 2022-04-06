@@ -95,6 +95,8 @@ namespace SVSU_Capstone_Project.Views
                     strNotes = $"{Authentication.ActiveUser} logged into the system on {DateTime.Now}."
                 };
                 ItemModel.Add<Log>(log);
+                var homeLoad = new frmHome();
+                homeLoad.populateTables();
             }
             catch (ArgumentException ex)
             {

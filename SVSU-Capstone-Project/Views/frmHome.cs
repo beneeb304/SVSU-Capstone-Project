@@ -19,7 +19,8 @@ namespace SVSU_Capstone_Project.Views
         public frmHome()
         {
             InitializeComponent();
-            internetCheck();
+            populateTables();
+            
         }
 
         private void frmHome_Load( object sender, EventArgs e )
@@ -63,6 +64,7 @@ namespace SVSU_Capstone_Project.Views
 
         public void populateTables()
         {
+            
             // TODO: This line of code loads data into the 'invDbDataSet.CheckedItemsTable' table. You can move, or remove it, as needed.
             this.checkedItemsTableAdapter1.Fill(this.invDbDataSet.CheckedItemsTable);
             // TODO: This line of code loads data into the 'invDbDataSet.LowStock' table. You can move, or remove it, as needed.
@@ -74,23 +76,5 @@ namespace SVSU_Capstone_Project.Views
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        public bool internetCheck()
-        {
-            string host = "http://www.google.com";
-            bool result = false;
-            Ping p = new Ping();
-            try
-            {
-                PingReply reply = p.Send(host, 3000);
-                if (reply.Status == IPStatus.Success)
-                    result = true;
-            }
-            catch { }
-            if (result == true)
-            {
-                populateTables();
-            }
-            return true;
-        }
     }
 }
