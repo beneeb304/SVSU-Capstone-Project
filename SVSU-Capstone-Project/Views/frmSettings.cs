@@ -1402,8 +1402,8 @@ namespace SVSU_Capstone_Project.Views
                 if (txtUserEmail.Text.Trim().Length > 0 && txtUserFName.Text.Trim().Length > 0 &&
                     txtUserLName.Text.Trim().Length > 0 && txtUserSVSUID.Text.Trim().Length > 0)
                 {
-                    //try
-                    //{
+                    string strError = "";
+
                     //Valid email
                     MailAddress mailAddress = new MailAddress(txtUserEmail.Text);
 
@@ -1411,94 +1411,99 @@ namespace SVSU_Capstone_Project.Views
 
                     //Additional check to make sure email is only alphanumeric with period or hyphen
                     if (!txtUserEmail.Text.All(c => char.IsLetterOrDigit(c) || c.Equals('.') || c.Equals('-') || c.Equals('@')))
-                        throw new Exception();
+                        strError += "Invalid email\r";
 
                     //Only alpha first name
                     if (!txtUserFName.Text.All(char.IsLetter))
-                        throw new Exception();
+                        strError += "Invalid first name\r";
 
                     //Only alpha last name
                     if (!txtUserLName.Text.All(char.IsLetter))
-                        throw new Exception();
+                        strError += "Invalid last name\r";
 
                     //Only alphanumeric SVSU ID
                     if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit))
-                        throw new Exception();
+                        strError += "Invalid SVSU ID\r";
 
                     //Only empty or numeric phone
                     if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
-                        throw new Exception();
+                        strError += "Invalid phone\r";
 
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                        txtUserEmail.Text + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
+                    if (strError == "")
                     {
-                        //Set user properties                        
-                        User user = new User
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                            txtUserEmail.Text + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
                         {
-                            strSvsu_id = txtUserSVSUID.Text,
-                            strFirst_name = txtUserFName.Text,
-                            strLast_name = txtUserLName.Text,
-                            strEmail = mailAddress.ToString(),
-                            strPhone = txtUserPhone.Text,
-                            blnIsAdmin = chkUserAdmin.Checked,
-                            blnPwdReset = true
-                        };
-
-                        string strHash = RandomPassword();
-                        user.strHash = Authentication.GenerateHash(strHash);
-
-                        var Emailexists = ItemModel.Get<User>(x => x.strEmail == user.strEmail);
-                        var idExists = ItemModel.Get<User>(x => x.strSvsu_id == user.strSvsu_id);
-                        if(Emailexists != null)
-                        {
-                          MessageBox.Show("A user already exists with the entered email.", "Alert");  
-                        }
-                        else if(idExists != null)
-                        {
-                          MessageBox.Show("A user alread exists with the entered SVSU ID.", "Alert");
-                        }
-                        else
-                        {
-                            //Add user
-                            ItemModel.Add<User>(user);
-
-                            //Alert user
-                            if (chkUserAdmin.Checked)
+                            //Set user properties                        
+                            User user = new User
                             {
-                                MessageBox.Show("Successful Add\r\n\r\n"
-                                + txtUserEmail.Text + " will be prompted to set their password on their fist login\r\n" +
-                                "Their temporary password is " + strHash, "Alert");
+                                strSvsu_id = txtUserSVSUID.Text,
+                                strFirst_name = txtUserFName.Text,
+                                strLast_name = txtUserLName.Text,
+                                strEmail = mailAddress.ToString(),
+                                strPhone = txtUserPhone.Text,
+                                blnIsAdmin = chkUserAdmin.Checked,
+                                blnPwdReset = true
+                            };
+
+                            string strHash = RandomPassword();
+                            user.strHash = Authentication.GenerateHash(strHash);
+
+                            var Emailexists = ItemModel.Get<User>(x => x.strEmail == user.strEmail);
+                            var idExists = ItemModel.Get<User>(x => x.strSvsu_id == user.strSvsu_id);
+                            if (Emailexists != null)
+                            {
+                                MessageBox.Show("A user already exists with the entered email.", "Alert");
+                            }
+                            else if (idExists != null)
+                            {
+                                MessageBox.Show("A user alread exists with the entered SVSU ID.", "Alert");
                             }
                             else
                             {
-                                MessageBox.Show("Successfully Added User!", "Alert");
+                                //Add user
+                                ItemModel.Add<User>(user);
+
+                                //Alert user
+                                if (chkUserAdmin.Checked)
+                                {
+                                    MessageBox.Show("Successful Add\r\n\r\n"
+                                    + txtUserEmail.Text + " will be prompted to set their password on their fist login\r\n" +
+                                    "Their temporary password is " + strHash, "Alert");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Successfully Added User!", "Alert");
+                                }
+
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
+
+                                //Hide buttons
+                                btnUserSave.Visible = false;
+                                btnUserCancel.Visible = false;
+
+                                //Enable buttons
+                                btnUserUpload.Enabled = true;
+                                btnUserModify.Enabled = true;
+                                btnUserPassword.Enabled = true;
+                                btnUserDelete.Enabled = true;
+
+                                //Clear fields
+                                ClearUserFields();
+                                EnableDisableUserFields(false);
                             }
-
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
-
-                            //Hide buttons
-                            btnUserSave.Visible = false;
-                            btnUserCancel.Visible = false;
-
-                            //Enable buttons
-                            btnUserUpload.Enabled = true;
-                            btnUserModify.Enabled = true;
-                            btnUserPassword.Enabled = true;
-                            btnUserDelete.Enabled = true;
-
-                            //Clear fields
-                            ClearUserFields();
-                            EnableDisableUserFields(false);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please fill out all of the user fields before saving! You need:\r" +
+                                    "A valid email\rA first name\rA last name\rAn SVSU ID", "Alert");
                         }
                     }
                     else
-                    {
-                        MessageBox.Show("Please fill out all of the user fields before saving! You need:\r" +
-                                "A valid email\rA first name\rA last name\rAn SVSU ID", "Alert");
-                    }
+                        MessageBox.Show("Error adding user!\r\r" + strError, "Alert");
                 }
                 else if (btnUserModify.Enabled)
                 {
@@ -1581,10 +1586,7 @@ namespace SVSU_Capstone_Project.Views
                         catch
                         {
                             MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
-
                         }
-
-
                     }
                     else
                     {
