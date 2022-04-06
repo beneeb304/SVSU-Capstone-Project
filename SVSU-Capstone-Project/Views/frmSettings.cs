@@ -178,6 +178,10 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearUserFields();
             }
+            else
+            {
+                MessageBox.Show("Select a user to delete", "Alert");
+            }
         }
 
         /* Function: btnAddUser_Click
@@ -512,6 +516,10 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearRoomFields();
             }
+            else
+            {
+                MessageBox.Show("Select a room to delete", "Alert");
+            }
         }
 
         /* Function: btnAddCategory_Click
@@ -622,6 +630,10 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearCategoryFields();
             }
+            else
+            {
+                MessageBox.Show("Select a category to delete", "Alert");
+            }
         }
 
         /* Function: lstCategory_SelectedIndexChanged
@@ -718,6 +730,10 @@ namespace SVSU_Capstone_Project.Views
 
                 //Clear fields
                 ClearVendorFields();
+            }
+            else
+            {
+                MessageBox.Show("Select a vendor to delete", "Alert");
             }
         }
 
@@ -902,6 +918,10 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearNLevelFields();
             }
+            else
+            {
+                MessageBox.Show("Select an n-level to delete", "Alert");
+            }
         }
 
         /* Function: cmbRoom_SelectedIndexChanged
@@ -1068,6 +1088,10 @@ namespace SVSU_Capstone_Project.Views
 
                 //Clear fields
                 ClearCabinetFields();
+            }
+            else
+            {
+                MessageBox.Show("Select a cabinet to delete", "Alert");
             }
         }
 
