@@ -1099,11 +1099,11 @@ namespace SVSU_Capstone_Project.Views
                 UploadStudents(ReadCSVFile(fd.FileName));
             }
 
-            //Refresh list
-            tbcSettings_SelectedIndexChanged(sender, e);
-
             //Clear fields
             ClearUserFields();
+
+            //Refresh list
+            tbcSettings_SelectedIndexChanged(sender, e);
         }
 
         /* Function: ReadCSVFile
@@ -1177,8 +1177,20 @@ namespace SVSU_Capstone_Project.Views
                     strLName = row[0].Substring(0, row[0].IndexOf(",")).Trim();
                     mailAddress = new MailAddress(row[3] + "@svsu.edu");
 
+                    //Additional check to make sure email is only alphanumeric with period or hyphen
+                    if (!mailAddress.ToString().All(c => char.IsLetterOrDigit(c) || c.Equals('.') || c.Equals('-') || c.Equals('@')))
+                        intBadCtr++;
+                    //Only alpha first name
+                    else if (!strFName.All(char.IsLetter))
+                        intBadCtr++;
+                    //Only alpha last name
+                    else if (!strLName.All(char.IsLetter))
+                        intBadCtr++;
+                    //Only alphanumeric SVSU ID
+                    else if (!strSVSUID.All(char.IsLetterOrDigit))
+                        intBadCtr++;
                     //Check if user already exists
-                    if(ItemModel.Get<User>(x => x.strEmail == mailAddress.ToString() || x.strSvsu_id == strSVSUID) == null)
+                    else if (ItemModel.Get<User>(x => x.strEmail == mailAddress.ToString() || x.strSvsu_id == strSVSUID) == null)
                     {
                         //Make user
                         User user = new User()
