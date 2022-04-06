@@ -34,6 +34,7 @@ namespace SVSU_Capstone_Project.Views
             txtUseAvailable.Text = "";
             txtUseRemaining.Text = "";
             nudUseDeduct.Value = 1;
+            btnUseAccept.Enabled = true;
         }
 
         private void nudQuantity_KeyPress( object sender, KeyPressEventArgs e )
@@ -104,6 +105,7 @@ namespace SVSU_Capstone_Project.Views
             }
             // notify User of success
             MessageBox.Show("Item used successfully.");
+            btnUseAccept.Enabled = false;
             btnUseCancel_Click();
         }
 
