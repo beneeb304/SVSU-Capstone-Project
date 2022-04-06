@@ -183,9 +183,18 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnChkOut_Click( object sender, EventArgs e )
         {
-            if (lstStudents.SelectedIndex == -1 | cmbChkOutCommodity.SelectedIndex == -1)
+            // Ensure both a commodity and user are selected, and display alerts based on the combination. If both are selected, attempt the checkout.
+            if (lstStudents.SelectedIndex == -1 && cmbChkOutCommodity.SelectedIndex == -1)
             {
-                MessageBox.Show("Please make sure all fields are properly filled out!", "Alert");
+                MessageBox.Show("Please select a user and an item!", "Alert");
+            }
+            else if (lstStudents.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a user!", "Alert");
+            }
+            else if (cmbChkOutCommodity.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an item!", "Alert");
             }
             else
             {
