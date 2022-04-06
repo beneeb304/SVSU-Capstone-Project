@@ -183,7 +183,7 @@ namespace SVSU_Capstone_Project.Views
             //    MessageBox.Show("Security Bypass Failed: Cannot contact DB", "Security Bypass Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
 
-            MessageBox.Show("Login with your own account for testing purposes. If you need assistance, contact Ben or Mike S");
+            //MessageBox.Show("Login with your own account for testing purposes. If you need assistance, contact Ben or Mike S");
         }
 
         private void frmLogin_KeyPress( object sender, KeyPressEventArgs e )
