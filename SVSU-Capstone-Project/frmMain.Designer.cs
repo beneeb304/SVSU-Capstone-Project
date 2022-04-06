@@ -190,9 +190,9 @@ namespace SVSU_Capstone_Project
             // pcbHeHe
             // 
             this.pcbHeHe.Image = global::SVSU_Capstone_Project.Properties.Resources.HeHe;
-            this.pcbHeHe.Location = new System.Drawing.Point(0, 39);
+            this.pcbHeHe.Location = new System.Drawing.Point(0, 35);
             this.pcbHeHe.Name = "pcbHeHe";
-            this.pcbHeHe.Size = new System.Drawing.Size(180, 146);
+            this.pcbHeHe.Size = new System.Drawing.Size(180, 150);
             this.pcbHeHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbHeHe.TabIndex = 9;
             this.pcbHeHe.TabStop = false;
