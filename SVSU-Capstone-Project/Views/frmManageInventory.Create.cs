@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SVSU_Capstone_Project.Model;
@@ -88,6 +89,12 @@ namespace SVSU_Capstone_Project.Views
             btnCreate.Text = "Modify";
         }
 
+        private void ItemNametxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = e.KeyChar != (char)Keys.Back && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+
         /* Function: 
          * Description: 
          * 
@@ -118,13 +125,9 @@ namespace SVSU_Capstone_Project.Views
             {
                 MessageBox.Show("Item already exists in the database. Please enter a different item name.", "Alert");
             }
-            else if(!txtCreateItemName.Text.All(char.IsLetter))
+           else if(txtCreateFeatures.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Item name cannot have special characters. Please enter only alphabetical characters." ,"Alert");
-            }
-           else if(!txtCreateFeatures.Text.All(char.IsLetter))
-            {
-                MessageBox.Show("IFeatures cannot have special characters. Please enter only alphabetical characters.", "Alert");
+                MessageBox.Show("Features cannot contain only space values.", "Alert");
             }
            else
             {

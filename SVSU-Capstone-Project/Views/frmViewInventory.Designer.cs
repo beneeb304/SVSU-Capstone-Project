@@ -31,6 +31,7 @@ namespace SVSU_Capstone_Project.Views
         {
             this.lblViewInventory = new System.Windows.Forms.Label();
             this.grbFilterFields = new System.Windows.Forms.GroupBox();
+            this.btnCategoryReset = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbItemType = new System.Windows.Forms.ComboBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
@@ -43,7 +44,6 @@ namespace SVSU_Capstone_Project.Views
             this.pdgBarcode = new System.Windows.Forms.PrintDialog();
             this.pdtBarcode = new System.Drawing.Printing.PrintDocument();
             this.pcbBarcode = new System.Windows.Forms.PictureBox();
-            this.btnCategoryReset = new System.Windows.Forms.Button();
             this.grbFilterFields.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbBarcode)).BeginInit();
@@ -76,6 +76,16 @@ namespace SVSU_Capstone_Project.Views
             this.grbFilterFields.TabIndex = 41;
             this.grbFilterFields.TabStop = false;
             this.grbFilterFields.Text = "Filter Fields";
+            // 
+            // btnCategoryReset
+            // 
+            this.btnCategoryReset.Location = new System.Drawing.Point(404, 60);
+            this.btnCategoryReset.Name = "btnCategoryReset";
+            this.btnCategoryReset.Size = new System.Drawing.Size(174, 35);
+            this.btnCategoryReset.TabIndex = 45;
+            this.btnCategoryReset.Text = "Category Reset";
+            this.btnCategoryReset.UseVisualStyleBackColor = true;
+            this.btnCategoryReset.Click += new System.EventHandler(this.btnCategoryReset_Click);
             // 
             // label2
             // 
@@ -145,10 +155,10 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(273, 13);
+            this.txtSearch.Location = new System.Drawing.Point(284, 13);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(325, 30);
+            this.txtSearch.Size = new System.Drawing.Size(314, 30);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -214,16 +224,6 @@ namespace SVSU_Capstone_Project.Views
             this.pcbBarcode.TabIndex = 47;
             this.pcbBarcode.TabStop = false;
             this.pcbBarcode.Visible = false;
-            // 
-            // btnCategoryReset
-            // 
-            this.btnCategoryReset.Location = new System.Drawing.Point(404, 60);
-            this.btnCategoryReset.Name = "btnCategoryReset";
-            this.btnCategoryReset.Size = new System.Drawing.Size(174, 35);
-            this.btnCategoryReset.TabIndex = 45;
-            this.btnCategoryReset.Text = "Category Reset";
-            this.btnCategoryReset.UseVisualStyleBackColor = true;
-            this.btnCategoryReset.Click += new System.EventHandler(this.btnCategoryReset_Click);
             // 
             // frmViewInventory
             // 
