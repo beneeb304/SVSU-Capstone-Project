@@ -178,6 +178,10 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearUserFields();
             }
+            else
+            {
+                MessageBox.Show("Select a user to delete", "Alert");
+            }
         }
 
         /* Function: btnAddUser_Click
@@ -318,6 +322,10 @@ namespace SVSU_Capstone_Project.Views
 
                 //Clear fields
                 ClearUserFields();
+            }
+            else
+            {
+                MessageBox.Show("Select a user to perform a password reset", "Alert");
             }
         }
 
@@ -512,6 +520,10 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearRoomFields();
             }
+            else
+            {
+                MessageBox.Show("Select a room to delete", "Alert");
+            }
         }
 
         /* Function: btnAddCategory_Click
@@ -622,6 +634,10 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearCategoryFields();
             }
+            else
+            {
+                MessageBox.Show("Select a category to delete", "Alert");
+            }
         }
 
         /* Function: lstCategory_SelectedIndexChanged
@@ -718,6 +734,10 @@ namespace SVSU_Capstone_Project.Views
 
                 //Clear fields
                 ClearVendorFields();
+            }
+            else
+            {
+                MessageBox.Show("Select a vendor to delete", "Alert");
             }
         }
 
@@ -902,6 +922,10 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearNLevelFields();
             }
+            else
+            {
+                MessageBox.Show("Select an n-level to delete", "Alert");
+            }
         }
 
         /* Function: cmbRoom_SelectedIndexChanged
@@ -1069,6 +1093,10 @@ namespace SVSU_Capstone_Project.Views
                 //Clear fields
                 ClearCabinetFields();
             }
+            else
+            {
+                MessageBox.Show("Select a cabinet to delete", "Alert");
+            }
         }
 
         /* Function: btnUpload_Click
@@ -1099,11 +1127,11 @@ namespace SVSU_Capstone_Project.Views
                 UploadStudents(ReadCSVFile(fd.FileName));
             }
 
-            //Refresh list
-            tbcSettings_SelectedIndexChanged(sender, e);
-
             //Clear fields
             ClearUserFields();
+
+            //Refresh list
+            tbcSettings_SelectedIndexChanged(sender, e);
         }
 
         /* Function: ReadCSVFile
@@ -1177,8 +1205,20 @@ namespace SVSU_Capstone_Project.Views
                     strLName = row[0].Substring(0, row[0].IndexOf(",")).Trim();
                     mailAddress = new MailAddress(row[3] + "@svsu.edu");
 
+                    //Additional check to make sure email is only alphanumeric with period or hyphen
+                    if (!mailAddress.ToString().All(c => char.IsLetterOrDigit(c) || c.Equals('.') || c.Equals('-') || c.Equals('@')))
+                        intBadCtr++;
+                    //Only alpha first name
+                    else if (!strFName.All(char.IsLetter))
+                        intBadCtr++;
+                    //Only alpha last name
+                    else if (!strLName.All(char.IsLetter))
+                        intBadCtr++;
+                    //Only alphanumeric SVSU ID
+                    else if (!strSVSUID.All(char.IsLetterOrDigit))
+                        intBadCtr++;
                     //Check if user already exists
-                    if(ItemModel.Get<User>(x => x.strEmail == mailAddress.ToString() || x.strSvsu_id == strSVSUID) == null)
+                    else if (ItemModel.Get<User>(x => x.strEmail == mailAddress.ToString() || x.strSvsu_id == strSVSUID) == null)
                     {
                         //Make user
                         User user = new User()

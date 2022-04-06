@@ -53,14 +53,7 @@ namespace SVSU_Capstone_Project
             //Make sure passwords match
             if (strPassword.Equals(strRetypePassword))
             {
-                if (strPassword == "Capstone2022")
-                {
-                    //Don't let user use default password
-                    txtPassword.Text = "";
-                    txtRetypePassword.Text = "";
-                    MessageBox.Show("Password cannot be same as default password!", "Alert");
-                }
-                else if(strPassword.Length >= 8)
+                if(strPassword.Length >= 8)
                 {
                     //Get hash
                     strHash = Authentication.GenerateHash(strPassword);
