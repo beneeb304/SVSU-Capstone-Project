@@ -1386,7 +1386,7 @@ namespace SVSU_Capstone_Project.Views
                             throw new Exception();
 
                         //Only empty or numeric phone
-                        if (!txtUserPhone.Text.All(char.IsNumber) || txtUserPhone.Text != "")
+                        if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
                             throw new Exception();
 
                         //Ask user to confirm action
