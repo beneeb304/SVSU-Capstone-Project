@@ -42,11 +42,13 @@ namespace SVSU_Capstone_Project.Views
             //Use Authentication ViewModel to check user's ID/password combination
             try
             {
-                string userEmail = txtEmail.Text;
+                //Check for @svsu.edu prefix (note: if domain is not svsu, this will not work)
+                string userEmail = txtEmail.Text.Trim();
                 if (!userEmail.Contains("@svsu.edu"))
                 {
                     userEmail += "@svsu.edu";
                 }
+                
                 //Get user
                 user = Authentication.Authenticate(userEmail, txtPassword.Text);
                                 
