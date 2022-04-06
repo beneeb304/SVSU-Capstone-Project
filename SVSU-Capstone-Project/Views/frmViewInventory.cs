@@ -78,7 +78,8 @@ namespace SVSU_Capstone_Project.Views
             var selectedType = cmbItemType.SelectedIndex;
             cmbCategory.Enabled = true;
             var category = ItemModel.GetMany<Category>().ToList();
-           cmbCategory.DataSource = ItemModel.GetMany<Commodity>().Where(x => ((int)x.enuCommodityType) == selectedType).Select(x => x.objCategory.strName).Distinct().ToList();
+            cmbCategory.DataSource = ItemModel.GetMany<Commodity>().Where(x => ((int)x.enuCommodityType) == selectedType).Select(x => x.objCategory.strName).Distinct().ToList();
+            cmbCategory.SelectedIndex = -1;
         }
 
         /* Function: 
@@ -97,6 +98,11 @@ namespace SVSU_Capstone_Project.Views
             if(cmbItemType.SelectedIndex == -1)
             {
                 lstCommodity.DataSource = null;
+            }
+            else if(cmbItemType.SelectedIndex >= 0 && cmbCategory.SelectedIndex == -1)
+            {
+                lstCommodities = ItemModel.GetMany<Commodity>(x => (int)x.enuCommodityType == cmbItemType.SelectedIndex).OrderBy(x => x.strName).ToList();
+                lstCommodity.DataSource = lstCommodities;
             }
             else
             {
@@ -255,6 +261,12 @@ namespace SVSU_Capstone_Project.Views
             Bitmap bmpBarcode = new Bitmap(pcbBarcode.Width, pcbBarcode.Height);
             pcbBarcode.DrawToBitmap(bmpBarcode, new Rectangle(0, 0, pcbBarcode.Width, pcbBarcode.Height));
             e.Graphics.DrawImage(bmpBarcode, 0, 0);
+        }
+
+        private void btnCategoryReset_Click( object sender, EventArgs e )
+        {
+            cmbCategory.SelectedIndex = -1;
+            
         }
     }
 }
