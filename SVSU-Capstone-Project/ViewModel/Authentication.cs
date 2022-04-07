@@ -58,7 +58,10 @@ namespace SVSU_Capstone_Project.ViewModel
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try again.", "Alert");
+                MessageBox.Show("Please check your internet connection and try to start the application again. The application will now close.", "Alert");
+
+                //close application 
+                Environment.Exit(0);
             }
             return ActiveUser;
         }

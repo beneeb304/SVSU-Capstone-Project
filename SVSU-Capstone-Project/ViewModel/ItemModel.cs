@@ -38,8 +38,10 @@ namespace SVSU_Capstone_Project.ViewModel
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try again.", "Alert");
-                Environment.Exit(0);
+                MessageBox.Show("Please check your internet connection and try to start the application again. The application will now close.", "Alert");
+                
+                //close application 
+                Environment.Exit(0);              
             }
             return db.Set<T>().ToList();
         }
@@ -57,8 +59,7 @@ namespace SVSU_Capstone_Project.ViewModel
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try again.", "Alert");
-                Environment.Exit(0);
+                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try agian.", "Alert");
             }
 
                 return db.Set<T>().FirstOrDefault(predicate);
@@ -99,7 +100,7 @@ namespace SVSU_Capstone_Project.ViewModel
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try again.", "Alert");
+                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try agian.", "Alert");
             }
 
             return Add(obj, out T item);
@@ -119,7 +120,7 @@ namespace SVSU_Capstone_Project.ViewModel
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try again.", "Alert");
+                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try agian.", "Alert");
             }
 
             db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
@@ -139,7 +140,7 @@ namespace SVSU_Capstone_Project.ViewModel
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try again.", "Alert");
+                MessageBox.Show("Please check your internet connection and try again. You can also restart the application and try agian.", "Alert");
             }
 
             db.Set<T>().Remove(obj);
