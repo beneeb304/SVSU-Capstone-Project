@@ -585,6 +585,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtCreateDescription.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCreateDescription.Location = new System.Drawing.Point(422, 110);
+            this.txtCreateDescription.MaxLength = 255;
             this.txtCreateDescription.Name = "txtCreateDescription";
             this.txtCreateDescription.ShortcutsEnabled = false;
             this.txtCreateDescription.Size = new System.Drawing.Size(254, 65);
