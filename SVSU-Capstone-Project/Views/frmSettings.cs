@@ -1210,11 +1210,11 @@ namespace SVSU_Capstone_Project.Views
                     //Additional check to make sure email is only alphanumeric with period or hyphen
                     if (!mailAddress.ToString().All(c => char.IsLetterOrDigit(c) || c.Equals('.') || c.Equals('-') || c.Equals('@')))
                         intBadCtr++;
-                    //Only alpha first name
-                    else if (!strFName.All(char.IsLetter))
+                    //Only alpha and hyphen first name
+                    else if (!strFName.All(c => char.IsLetter(c) || c.Equals('-')))
                         intBadCtr++;
-                    //Only alpha last name
-                    else if (!strLName.All(char.IsLetter))
+                    //Only alpha and hyphen last name
+                    else if (!strLName.All(c => char.IsLetter(c) || c.Equals('-')))
                         intBadCtr++;
                     //Only alphanumeric SVSU ID
                     else if (!strSVSUID.All(char.IsLetterOrDigit))
@@ -1416,12 +1416,12 @@ namespace SVSU_Capstone_Project.Views
                         RegexOptions.IgnoreCase))
                         strError += "Invalid email\r";
 
-                    //Only alpha first name
-                    if (!txtUserFName.Text.All(char.IsLetter))
+                    //Only letters and hyphens in firstname
+                    if (!txtUserFName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
                         strError += "Invalid first name\r";
 
-                    //Only alpha last name
-                    if (!txtUserLName.Text.All(char.IsLetter))
+                    //Only letters and hyphens in lastname
+                    if (!txtUserLName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
                         strError += "Invalid last name\r";
 
                     //Only alphanumeric SVSU ID less than 8 chars
@@ -1525,13 +1525,13 @@ namespace SVSU_Capstone_Project.Views
                             RegexOptions.IgnoreCase))
                             strError += "Invalid email\r";
 
-                        //Only alpha first name
-                        if (!txtUserFName.Text.All(char.IsLetter))
-                            strError += "Invalid first name\r";
+                        //Only letters and hyphens in firstname
+                    if (!txtUserFName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
+                        strError += "Invalid first name\r";
 
-                        //Only alpha last name
-                        if (!txtUserLName.Text.All(char.IsLetter))
-                            strError += "Invalid last name\r";
+                    //Only letters and hyphens in lastname
+                    if (!txtUserLName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
+                        strError += "Invalid last name\r";
 
                         //Only alphanumeric SVSU ID less than 8 chars
                         if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit) || txtUserSVSUID.Text.Length > 8)
