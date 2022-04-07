@@ -239,6 +239,7 @@ namespace SVSU_Capstone_Project.Views
 
             //Enable fields
             EnableDisableUserFields(true);
+            txtUserSVSUID.Enabled = false;
         }
 
         /* Function: ClearUserFields
@@ -1545,7 +1546,7 @@ namespace SVSU_Capstone_Project.Views
                             if (result == DialogResult.Yes)
                             {
                                 //Get user
-                                User user = ItemModel.Get<User>(x => x.strEmail == txtUserEmail.Text);
+                                User user = ItemModel.Get<User>(x => x.strSvsu_id == txtUserSVSUID.Text);
 
                                 //Modify user
                                 user.strSvsu_id = txtUserSVSUID.Text;
