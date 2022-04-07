@@ -1551,7 +1551,10 @@ namespace SVSU_Capstone_Project.Views
                             {
                                 //Get user
                                 User user = ItemModel.Get<User>(x => x.strSvsu_id == txtUserSVSUID.Text);
-                                var exists = ItemModel.Get<User>(x => x.strEmail.ToLower() == txtUserEmail.Text.ToLower());
+                                
+                                User exists = ItemModel.Get<User>(x => x.strEmail.ToLower() == txtUserEmail.Text.ToLower() &&
+                                x.strSvsu_id != user.strSvsu_id);
+                                                                
                                 if (exists != null)
                                 {
                                     MessageBox.Show("This email already Exists", "Alert");
@@ -1587,6 +1590,7 @@ namespace SVSU_Capstone_Project.Views
 
                                     //Clear fields
                                     ClearUserFields();
+                                    EnableDisableUserFields(false);
                                 }  
                             }
                             else
