@@ -53,7 +53,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lowStockTableAdapter = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.LowStockTableAdapter();
             this.checkedItemsTableAdapter1 = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.CheckedItemsTableAdapter1();
-            this.btnPrinterManual = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lowStockBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invDbDataSet)).BeginInit();
@@ -65,20 +64,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 29);
+            this.label1.Size = new System.Drawing.Size(99, 22);
             this.label1.TabIndex = 4;
             this.label1.Text = "Welcome!";
             // 
             // btnUserGuide
             // 
             this.btnUserGuide.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserGuide.Location = new System.Drawing.Point(21, 487);
-            this.btnUserGuide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUserGuide.Location = new System.Drawing.Point(16, 396);
             this.btnUserGuide.Name = "btnUserGuide";
-            this.btnUserGuide.Size = new System.Drawing.Size(124, 55);
+            this.btnUserGuide.Size = new System.Drawing.Size(93, 45);
             this.btnUserGuide.TabIndex = 6;
             this.btnUserGuide.Text = "User Guide";
             this.btnUserGuide.UseVisualStyleBackColor = true;
@@ -111,8 +108,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 139);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 113);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -125,7 +122,7 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(463, 302);
+            this.dataGridView1.Size = new System.Drawing.Size(347, 245);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.TabStop = false;
             // 
@@ -187,8 +184,8 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView2.Location = new System.Drawing.Point(481, 139);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView2.Location = new System.Drawing.Point(361, 113);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -201,7 +198,7 @@
             this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(807, 302);
+            this.dataGridView2.Size = new System.Drawing.Size(605, 245);
             this.dataGridView2.TabIndex = 8;
             this.dataGridView2.TabStop = false;
             // 
@@ -259,9 +256,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 103);
+            this.label3.Location = new System.Drawing.Point(11, 84);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(338, 32);
+            this.label3.Size = new System.Drawing.Size(269, 26);
             this.label3.TabIndex = 9;
             this.label3.Text = "Low Stock Commodities";
             // 
@@ -269,9 +267,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(489, 105);
+            this.label4.Location = new System.Drawing.Point(367, 85);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(428, 32);
+            this.label4.Size = new System.Drawing.Size(338, 26);
             this.label4.TabIndex = 10;
             this.label4.Text = "Checked Out Asset Equipment";
             // 
@@ -283,31 +282,17 @@
             // 
             this.checkedItemsTableAdapter1.ClearBeforeFill = true;
             // 
-            // btnPrinterManual
-            // 
-            this.btnPrinterManual.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrinterManual.Location = new System.Drawing.Point(153, 487);
-            this.btnPrinterManual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnPrinterManual.Name = "btnPrinterManual";
-            this.btnPrinterManual.Size = new System.Drawing.Size(124, 55);
-            this.btnPrinterManual.TabIndex = 12;
-            this.btnPrinterManual.Text = "Printer Manual";
-            this.btnPrinterManual.UseVisualStyleBackColor = true;
-            this.btnPrinterManual.Click += new System.EventHandler(this.btnPrinterManual_Click);
-            // 
             // frmHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1303, 558);
-            this.Controls.Add(this.btnPrinterManual);
+            this.ClientSize = new System.Drawing.Size(977, 453);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnUserGuide);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmHome";
             this.Text = "frmHome";
             this.Load += new System.EventHandler(this.frmHome_Load);
@@ -341,6 +326,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn detailsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnPrinterManual;
     }
 }

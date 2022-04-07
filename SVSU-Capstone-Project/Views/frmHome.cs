@@ -45,23 +45,6 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        private void btnPrinterManual_Click( object sender, EventArgs e )
-        {
-            try
-            {
-                var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-                string filePath = Path.Combine(projectPath, "Resources\\Printer_Manual.pdf");
-                System.Diagnostics.Process.Start(filePath);
-            }
-            catch
-            {
-                MessageBox.Show("Could not open Printer Manual PDF! Please make sure:\r\r" +
-                    "The file isn't already opened.\r" +
-                    "The file exists in the resource folder.\r" +
-                    "A PDF viewer is installed.", "Alert");
-            }
-        }
-
         public void populateTables()
         {
             
