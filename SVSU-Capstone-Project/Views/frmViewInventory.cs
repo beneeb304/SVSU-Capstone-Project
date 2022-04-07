@@ -53,26 +53,6 @@ namespace SVSU_Capstone_Project.Views
          * Local Variables
          * 
          */
-        private void btnPrintBarcode_Click( object sender, EventArgs e )
-        {
-            if(lstCommodity.SelectedIndex > -1)
-            {
-                
-                pdgBarcode.Document = pdtBarcode;
-                if (pdgBarcode.ShowDialog() == DialogResult.OK)
-                {
-                    pdtBarcode.Print();
-                }
-                
-            }
-        }
-
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void cmbItemType_SelectedIndexChanged( object sender, EventArgs e )
         {
             var selectedType = cmbItemType.SelectedIndex;
@@ -175,24 +155,6 @@ namespace SVSU_Capstone_Project.Views
                 string strCategory = category.strName;
                 List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
 
-                ////Genorate and populate the barcode for the selected item
-                //Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
-                //if (commodity.strBarCode == null)
-                //{
-                //    //Disable print barcode button
-                //    btnPrintBarcode.Enabled = false;
-                //    //Clear picturebox image
-                //    pcbBarcode.Image = null;
-                //}
-                //else
-                //{
-                //    //Cast barcode to picture box
-                //    pcbBarcode.Image = barcode.Draw(commodity.strBarCode, 115, 2);
-
-                //    //Enable print barcode button
-                //    btnPrintBarcode.Enabled = true;
-                //}
-
                 //Add to the dgv
                 foreach (Storage storage in lstStorage)
                 {
@@ -263,23 +225,9 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
-        private void pdtBarcode_PrintPage( object sender, System.Drawing.Printing.PrintPageEventArgs e )
-        {
-            Bitmap bmpBarcode = new Bitmap(pcbBarcode.Width, pcbBarcode.Height);
-            pcbBarcode.DrawToBitmap(bmpBarcode, new Rectangle(0, 0, pcbBarcode.Width, pcbBarcode.Height));
-            e.Graphics.DrawImage(bmpBarcode, 0, 0);
-        }
-
         private void btnCategoryReset_Click( object sender, EventArgs e )
         {
             cmbCategory.SelectedIndex = -1;
-            
         }
     }
 }

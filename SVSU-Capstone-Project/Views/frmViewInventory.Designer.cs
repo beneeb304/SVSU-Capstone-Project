@@ -39,7 +39,6 @@ namespace SVSU_Capstone_Project.Views
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvDetails = new System.Windows.Forms.DataGridView();
-            this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.lstCommodity = new System.Windows.Forms.ListBox();
             this.pdgBarcode = new System.Windows.Forms.PrintDialog();
             this.pdtBarcode = new System.Drawing.Printing.PrintDocument();
@@ -55,7 +54,7 @@ namespace SVSU_Capstone_Project.Views
             this.lblViewInventory.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblViewInventory.Location = new System.Drawing.Point(12, 13);
             this.lblViewInventory.Name = "lblViewInventory";
-            this.lblViewInventory.Size = new System.Drawing.Size(183, 29);
+            this.lblViewInventory.Size = new System.Drawing.Size(147, 22);
             this.lblViewInventory.TabIndex = 43;
             this.lblViewInventory.Text = "View Inventory";
             // 
@@ -95,7 +94,7 @@ namespace SVSU_Capstone_Project.Views
             this.label2.Location = new System.Drawing.Point(8, 30);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 24);
+            this.label2.Size = new System.Drawing.Size(88, 19);
             this.label2.TabIndex = 44;
             this.label2.Text = "Item Type:";
             // 
@@ -105,11 +104,11 @@ namespace SVSU_Capstone_Project.Views
             this.cmbItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbItemType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbItemType.FormattingEnabled = true;
-            this.cmbItemType.ItemHeight = 23;
+            this.cmbItemType.ItemHeight = 18;
             this.cmbItemType.Location = new System.Drawing.Point(4, 64);
             this.cmbItemType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbItemType.Name = "cmbItemType";
-            this.cmbItemType.Size = new System.Drawing.Size(194, 31);
+            this.cmbItemType.Size = new System.Drawing.Size(194, 26);
             this.cmbItemType.TabIndex = 2;
             this.cmbItemType.SelectedIndexChanged += new System.EventHandler(this.cmbItemType_SelectedIndexChanged);
             // 
@@ -119,11 +118,11 @@ namespace SVSU_Capstone_Project.Views
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.ItemHeight = 23;
+            this.cmbCategory.ItemHeight = 18;
             this.cmbCategory.Location = new System.Drawing.Point(203, 64);
             this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(194, 31);
+            this.cmbCategory.Size = new System.Drawing.Size(194, 26);
             this.cmbCategory.TabIndex = 3;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
@@ -135,7 +134,7 @@ namespace SVSU_Capstone_Project.Views
             this.label1.Location = new System.Drawing.Point(208, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 24);
+            this.label1.Size = new System.Drawing.Size(85, 19);
             this.label1.TabIndex = 42;
             this.label1.Text = "Category:";
             // 
@@ -147,7 +146,7 @@ namespace SVSU_Capstone_Project.Views
             this.lblSearch.Location = new System.Drawing.Point(202, 16);
             this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(83, 24);
+            this.lblSearch.Size = new System.Drawing.Size(69, 19);
             this.lblSearch.TabIndex = 38;
             this.lblSearch.Text = "Search:";
             // 
@@ -158,7 +157,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtSearch.Location = new System.Drawing.Point(284, 13);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(314, 30);
+            this.txtSearch.Size = new System.Drawing.Size(314, 26);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -183,53 +182,23 @@ namespace SVSU_Capstone_Project.Views
             this.dgvDetails.TabIndex = 6;
             this.dgvDetails.TabStop = false;
             // 
-            // btnPrintBarcode
-            // 
-            this.btnPrintBarcode.Enabled = false;
-            this.btnPrintBarcode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintBarcode.Location = new System.Drawing.Point(844, 90);
-            this.btnPrintBarcode.Name = "btnPrintBarcode";
-            this.btnPrintBarcode.Size = new System.Drawing.Size(98, 55);
-            this.btnPrintBarcode.TabIndex = 4;
-            this.btnPrintBarcode.Text = "Print Barcode";
-            this.btnPrintBarcode.UseVisualStyleBackColor = true;
-            this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
-            // 
             // lstCommodity
             // 
             this.lstCommodity.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstCommodity.FormattingEnabled = true;
-            this.lstCommodity.ItemHeight = 24;
+            this.lstCommodity.ItemHeight = 19;
             this.lstCommodity.Location = new System.Drawing.Point(8, 172);
             this.lstCommodity.Name = "lstCommodity";
-            this.lstCommodity.Size = new System.Drawing.Size(402, 268);
+            this.lstCommodity.Size = new System.Drawing.Size(402, 251);
             this.lstCommodity.TabIndex = 5;
             this.lstCommodity.Click += new System.EventHandler(this.lstCommodity_Click);
             this.lstCommodity.DoubleClick += new System.EventHandler(this.lstCommodity_DoubleClick);
-            // 
-            // pdgBarcode
-            // 
-            this.pdgBarcode.UseEXDialog = true;
-            // 
-            // pdtBarcode
-            // 
-            this.pdtBarcode.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.pdtBarcode_PrintPage);
-            // 
-            // pcbBarcode
-            // 
-            this.pcbBarcode.BackColor = System.Drawing.Color.White;
-            this.pcbBarcode.Location = new System.Drawing.Point(13, 225);
-            this.pcbBarcode.Name = "pcbBarcode";
-            this.pcbBarcode.Size = new System.Drawing.Size(930, 150);
-            this.pcbBarcode.TabIndex = 47;
-            this.pcbBarcode.TabStop = false;
-            this.pcbBarcode.Visible = false;
+
             // 
             // frmViewInventory
             // 
             this.ClientSize = new System.Drawing.Size(955, 453);
             this.Controls.Add(this.lstCommodity);
-            this.Controls.Add(this.btnPrintBarcode);
             this.Controls.Add(this.dgvDetails);
             this.Controls.Add(this.lblViewInventory);
             this.Controls.Add(this.grbFilterFields);
@@ -264,7 +233,6 @@ namespace SVSU_Capstone_Project.Views
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvDetails;
-        private System.Windows.Forms.Button btnPrintBarcode;
         private System.Windows.Forms.ListBox lstCommodity;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbItemType;
