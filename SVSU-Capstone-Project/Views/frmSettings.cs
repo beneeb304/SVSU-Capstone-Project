@@ -1406,11 +1406,11 @@ namespace SVSU_Capstone_Project.Views
                     string strError = "";
 
                     //Valid email
-                    if (!Regex.IsMatch(txtUserEmail.Text, 
-                        @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", 
+                    if (!Regex.IsMatch(txtUserEmail.Text,
+                        @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
                         RegexOptions.IgnoreCase))
                         strError += "Invalid email\r";
-                    
+
                     //Only alpha first name
                     if (!txtUserFName.Text.All(char.IsLetter))
                         strError += "Invalid first name\r";
@@ -1503,94 +1503,94 @@ namespace SVSU_Capstone_Project.Views
                     else
                         MessageBox.Show("Error adding user!\r\r" + strError, "Alert");
                 }
-                else if (btnUserModify.Enabled)
+            }
+            else if (btnUserModify.Enabled)
+            {
+                //If a user is selected
+                if (lstUser.SelectedIndex >= 0 && txtUserEmail.Text.Trim() != "" && txtUserFName.Text.Trim() != "" &&
+                    txtUserLName.Text.Trim() != "" && txtUserSVSUID.Text.Trim() != "")
                 {
-                    //If a user is selected
-                    if (lstUser.SelectedIndex >= 0 && txtUserEmail.Text.Trim() != "" && txtUserFName.Text.Trim() != "" &&
-                        txtUserLName.Text.Trim() != "" && txtUserSVSUID.Text.Trim() != "")
+                    try
                     {
-                        try
+                        string strError = "";
+
+                        //Valid email
+                        if (!Regex.IsMatch(txtUserEmail.Text,
+                            @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
+                            RegexOptions.IgnoreCase))
+                            strError += "Invalid email\r";
+
+                        //Only alpha first name
+                        if (!txtUserFName.Text.All(char.IsLetter))
+                            strError += "Invalid first name\r";
+
+                        //Only alpha last name
+                        if (!txtUserLName.Text.All(char.IsLetter))
+                            strError += "Invalid last name\r";
+
+                        //Only alphanumeric SVSU ID less than 8 chars
+                        if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit) || txtUserSVSUID.Text.Length > 8)
+                            strError += "Invalid SVSU ID\r";
+
+                        //Only empty or numeric phone
+                        if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
+                            strError += "Invalid phone\r";
+
+                        if (strError == "")
                         {
-                            string strError = "";
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                                txtUserEmail.Text + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
 
-                            //Valid email
-                            if (!Regex.IsMatch(txtUserEmail.Text,
-                                @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
-                                RegexOptions.IgnoreCase))
-                                strError += "Invalid email\r";
-
-                            //Only alpha first name
-                            if (!txtUserFName.Text.All(char.IsLetter))
-                                strError += "Invalid first name\r";
-
-                            //Only alpha last name
-                            if (!txtUserLName.Text.All(char.IsLetter))
-                                strError += "Invalid last name\r";
-
-                            //Only alphanumeric SVSU ID less than 8 chars
-                            if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit) || txtUserSVSUID.Text.Length > 8)
-                                strError += "Invalid SVSU ID\r";
-
-                            //Only empty or numeric phone
-                            if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
-                                strError += "Invalid phone\r";
-
-                            if (strError == "")
+                            if (result == DialogResult.Yes)
                             {
-                                //Ask user to confirm action
-                                DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                                    txtUserEmail.Text + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                                //Get user
+                                User user = ItemModel.Get<User>(x => x.strEmail == txtUserEmail.Text);
 
-                                if (result == DialogResult.Yes)
-                                {
-                                    //Get user
-                                    User user = ItemModel.Get<User>(x => x.strEmail == txtUserEmail.Text);
+                                //Modify user
+                                user.strSvsu_id = txtUserSVSUID.Text;
+                                user.strFirst_name = txtUserFName.Text;
+                                user.strLast_name = txtUserLName.Text;
+                                user.strEmail = txtUserEmail.Text;
+                                user.strPhone = txtUserPhone.Text;
+                                user.blnIsAdmin = chkUserAdmin.Checked;
 
-                                    //Modify user
-                                    user.strSvsu_id = txtUserSVSUID.Text;
-                                    user.strFirst_name = txtUserFName.Text;
-                                    user.strLast_name = txtUserLName.Text;
-                                    user.strEmail = txtUserEmail.Text;
-                                    user.strPhone = txtUserPhone.Text;
-                                    user.blnIsAdmin = chkUserAdmin.Checked;
+                                //Save user
+                                ItemModel.Update<User>(user);
 
-                                    //Save user
-                                    ItemModel.Update<User>(user);
+                                //Alert user
+                                MessageBox.Show("Successful Modification", "Alert");
 
-                                    //Alert user
-                                    MessageBox.Show("Successful Modification", "Alert");
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
 
-                                    //Refresh list
-                                    tbcSettings_SelectedIndexChanged(sender, e);
+                                //Hide buttons
+                                btnUserSave.Visible = false;
+                                btnUserCancel.Visible = false;
 
-                                    //Hide buttons
-                                    btnUserSave.Visible = false;
-                                    btnUserCancel.Visible = false;
+                                //Enable buttons
+                                btnUserAdd.Enabled = true;
+                                btnUserUpload.Enabled = true;
+                                btnUserPassword.Enabled = true;
+                                btnUserDelete.Enabled = true;
 
-                                    //Enable buttons
-                                    btnUserAdd.Enabled = true;
-                                    btnUserUpload.Enabled = true;
-                                    btnUserPassword.Enabled = true;
-                                    btnUserDelete.Enabled = true;
-
-                                    //Clear fields
-                                    ClearUserFields();
-                                }
-                                else
-                                {
-                                    btnUserCancel_Click(sender, e);
-                                }
-                            }   
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
+                                //Clear fields
+                                ClearUserFields();
+                            }
+                            else
+                            {
+                                btnUserCancel_Click(sender, e);
+                            }
                         }
                     }
-                    else
+                    catch
                     {
-                        MessageBox.Show("Please select a user to modify before saving!", "Alert");
+                        MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a user to modify before saving!", "Alert");
                 }
             }
         }
