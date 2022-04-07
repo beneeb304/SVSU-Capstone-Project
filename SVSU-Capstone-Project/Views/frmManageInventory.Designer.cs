@@ -554,6 +554,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCreateFeatures.Location = new System.Drawing.Point(422, 304);
             this.txtCreateFeatures.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateFeatures.Name = "txtCreateFeatures";
+            this.txtCreateFeatures.ShortcutsEnabled = false;
             this.txtCreateFeatures.Size = new System.Drawing.Size(159, 26);
             this.txtCreateFeatures.TabIndex = 12;
             this.txtCreateFeatures.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ItemNametxt_KeyPress);
@@ -585,6 +586,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCreateDescription.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCreateDescription.Location = new System.Drawing.Point(422, 110);
             this.txtCreateDescription.Name = "txtCreateDescription";
+            this.txtCreateDescription.ShortcutsEnabled = false;
             this.txtCreateDescription.Size = new System.Drawing.Size(254, 65);
             this.txtCreateDescription.TabIndex = 5;
             this.txtCreateDescription.Text = "";
@@ -628,6 +630,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCreateUrl.Location = new System.Drawing.Point(422, 242);
             this.txtCreateUrl.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateUrl.Name = "txtCreateUrl";
+            this.txtCreateUrl.ShortcutsEnabled = false;
             this.txtCreateUrl.Size = new System.Drawing.Size(159, 26);
             this.txtCreateUrl.TabIndex = 10;
             // 
@@ -703,6 +706,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCreateItemName.Location = new System.Drawing.Point(422, 19);
             this.txtCreateItemName.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateItemName.Name = "txtCreateItemName";
+            this.txtCreateItemName.ShortcutsEnabled = false;
             this.txtCreateItemName.Size = new System.Drawing.Size(250, 26);
             this.txtCreateItemName.TabIndex = 2;
             this.txtCreateItemName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ItemNametxt_KeyPress);

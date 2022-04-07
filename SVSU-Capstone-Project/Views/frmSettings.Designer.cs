@@ -236,6 +236,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserPhone.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserPhone.Location = new System.Drawing.Point(228, 230);
             this.txtUserPhone.Name = "txtUserPhone";
+            this.txtUserPhone.ShortcutsEnabled = false;
             this.txtUserPhone.Size = new System.Drawing.Size(255, 22);
             this.txtUserPhone.TabIndex = 6;
             // 
@@ -255,6 +256,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserEmail.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserEmail.Location = new System.Drawing.Point(228, 186);
             this.txtUserEmail.Name = "txtUserEmail";
+            this.txtUserEmail.ShortcutsEnabled = false;
             this.txtUserEmail.Size = new System.Drawing.Size(255, 22);
             this.txtUserEmail.TabIndex = 5;
             // 
@@ -274,6 +276,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserSVSUID.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserSVSUID.Location = new System.Drawing.Point(228, 51);
             this.txtUserSVSUID.Name = "txtUserSVSUID";
+            this.txtUserSVSUID.ShortcutsEnabled = false;
             this.txtUserSVSUID.Size = new System.Drawing.Size(255, 22);
             this.txtUserSVSUID.TabIndex = 2;
             // 
@@ -293,6 +296,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserLName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserLName.Location = new System.Drawing.Point(228, 140);
             this.txtUserLName.Name = "txtUserLName";
+            this.txtUserLName.ShortcutsEnabled = false;
             this.txtUserLName.Size = new System.Drawing.Size(255, 22);
             this.txtUserLName.TabIndex = 4;
             // 
@@ -336,6 +340,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserFName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserFName.Location = new System.Drawing.Point(228, 95);
             this.txtUserFName.Name = "txtUserFName";
+            this.txtUserFName.ShortcutsEnabled = false;
             this.txtUserFName.Size = new System.Drawing.Size(255, 22);
             this.txtUserFName.TabIndex = 3;
             // 
@@ -475,6 +480,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtRoomDescription.Location = new System.Drawing.Point(225, 96);
             this.txtRoomDescription.Multiline = true;
             this.txtRoomDescription.Name = "txtRoomDescription";
+            this.txtRoomDescription.ShortcutsEnabled = false;
             this.txtRoomDescription.Size = new System.Drawing.Size(258, 124);
             this.txtRoomDescription.TabIndex = 3;
             // 
@@ -494,6 +500,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtRoomName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoomName.Location = new System.Drawing.Point(225, 48);
             this.txtRoomName.Name = "txtRoomName";
+            this.txtRoomName.ShortcutsEnabled = false;
             this.txtRoomName.Size = new System.Drawing.Size(258, 22);
             this.txtRoomName.TabIndex = 2;
             // 
@@ -622,6 +629,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCabinetDescription.Location = new System.Drawing.Point(225, 120);
             this.txtCabinetDescription.Multiline = true;
             this.txtCabinetDescription.Name = "txtCabinetDescription";
+            this.txtCabinetDescription.ShortcutsEnabled = false;
             this.txtCabinetDescription.Size = new System.Drawing.Size(257, 124);
             this.txtCabinetDescription.TabIndex = 4;
             // 
@@ -641,6 +649,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCabinetName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCabinetName.Location = new System.Drawing.Point(225, 73);
             this.txtCabinetName.Name = "txtCabinetName";
+            this.txtCabinetName.ShortcutsEnabled = false;
             this.txtCabinetName.Size = new System.Drawing.Size(258, 22);
             this.txtCabinetName.TabIndex = 3;
             // 
@@ -787,6 +796,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCategoryDescription.Location = new System.Drawing.Point(225, 95);
             this.txtCategoryDescription.Multiline = true;
             this.txtCategoryDescription.Name = "txtCategoryDescription";
+            this.txtCategoryDescription.ShortcutsEnabled = false;
             this.txtCategoryDescription.Size = new System.Drawing.Size(258, 124);
             this.txtCategoryDescription.TabIndex = 3;
             // 
@@ -806,6 +816,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCategoryName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCategoryName.Location = new System.Drawing.Point(225, 48);
             this.txtCategoryName.Name = "txtCategoryName";
+            this.txtCategoryName.ShortcutsEnabled = false;
             this.txtCategoryName.Size = new System.Drawing.Size(258, 22);
             this.txtCategoryName.TabIndex = 2;
             // 
@@ -909,6 +920,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtVendorHomepage.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVendorHomepage.Location = new System.Drawing.Point(225, 95);
             this.txtVendorHomepage.Name = "txtVendorHomepage";
+            this.txtVendorHomepage.ShortcutsEnabled = false;
             this.txtVendorHomepage.Size = new System.Drawing.Size(258, 22);
             this.txtVendorHomepage.TabIndex = 3;
             // 
@@ -953,6 +965,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtVendorDescription.Location = new System.Drawing.Point(225, 143);
             this.txtVendorDescription.Multiline = true;
             this.txtVendorDescription.Name = "txtVendorDescription";
+            this.txtVendorDescription.ShortcutsEnabled = false;
             this.txtVendorDescription.Size = new System.Drawing.Size(258, 124);
             this.txtVendorDescription.TabIndex = 4;
             // 
@@ -972,6 +985,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtVendorName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVendorName.Location = new System.Drawing.Point(225, 48);
             this.txtVendorName.Name = "txtVendorName";
+            this.txtVendorName.ShortcutsEnabled = false;
             this.txtVendorName.Size = new System.Drawing.Size(259, 22);
             this.txtVendorName.TabIndex = 2;
             // 
@@ -1098,6 +1112,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtNLevelDescription.Location = new System.Drawing.Point(225, 98);
             this.txtNLevelDescription.Multiline = true;
             this.txtNLevelDescription.Name = "txtNLevelDescription";
+            this.txtNLevelDescription.ShortcutsEnabled = false;
             this.txtNLevelDescription.Size = new System.Drawing.Size(258, 124);
             this.txtNLevelDescription.TabIndex = 3;
             // 
@@ -1117,6 +1132,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtNLevelName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNLevelName.Location = new System.Drawing.Point(225, 48);
             this.txtNLevelName.Name = "txtNLevelName";
+            this.txtNLevelName.ShortcutsEnabled = false;
             this.txtNLevelName.Size = new System.Drawing.Size(258, 22);
             this.txtNLevelName.TabIndex = 2;
             // 

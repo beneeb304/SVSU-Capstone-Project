@@ -53,6 +53,7 @@ namespace SVSU_Capstone_Project
             this.txtPassword.Location = new System.Drawing.Point(16, 36);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
+            this.txtPassword.ShortcutsEnabled = false;
             this.txtPassword.Size = new System.Drawing.Size(326, 31);
             this.txtPassword.TabIndex = 9;
             // 
@@ -72,6 +73,7 @@ namespace SVSU_Capstone_Project
             this.txtRetypePassword.Location = new System.Drawing.Point(16, 107);
             this.txtRetypePassword.Name = "txtRetypePassword";
             this.txtRetypePassword.PasswordChar = '*';
+            this.txtRetypePassword.ShortcutsEnabled = false;
             this.txtRetypePassword.Size = new System.Drawing.Size(326, 31);
             this.txtRetypePassword.TabIndex = 11;
             // 

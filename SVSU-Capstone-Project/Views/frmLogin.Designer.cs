@@ -70,6 +70,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtPassword.Location = new System.Drawing.Point(12, 243);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
+            this.txtPassword.ShortcutsEnabled = false;
             this.txtPassword.Size = new System.Drawing.Size(326, 31);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmLogin_KeyPress);
@@ -127,6 +128,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(12, 153);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ShortcutsEnabled = false;
             this.txtEmail.Size = new System.Drawing.Size(326, 31);
             this.txtEmail.TabIndex = 1;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmLogin_KeyPress);
