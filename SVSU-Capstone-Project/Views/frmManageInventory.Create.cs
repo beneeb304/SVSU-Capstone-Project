@@ -125,7 +125,7 @@ namespace SVSU_Capstone_Project.Views
             {
                 MessageBox.Show("Item already exists in the database. Please enter a different item name.", "Alert");
             }
-           else if(txtCreateFeatures.Text.Trim().Length == 0)
+           else if(String.IsNullOrWhiteSpace(txtCreateFeatures.Text) && txtCreateFeatures.Text.Length > 0)
             {
                 MessageBox.Show("Features cannot contain only space values.", "Alert");
             }
