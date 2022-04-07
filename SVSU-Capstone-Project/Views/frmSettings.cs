@@ -1637,63 +1637,70 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Only alphanumeric and spaces in room name
                         if (!txtRoomName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                            txtRoomName.Text + " as a new room?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                            MessageBox.Show("Only alphanumeric and spaces in room name", "Alert");
+                        else
                         {
-                            //Check for duplicates
-                            if (lstRoom.Items.Contains(txtRoomName.Text))
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                                txtRoomName.Text + " as a new room?", "Confirm", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
-                                MessageBox.Show("Cannot add duplicate room", "Alert");
-                                btnRoomCancel_Click(sender, e);
+                                //Check for duplicates
+                                if (lstRoom.Items.Contains(txtRoomName.Text))
+                                {
+                                    MessageBox.Show("Cannot add duplicate room", "Alert");
+                                    btnRoomCancel_Click(sender, e);
+                                }
+                                else
+                                {
+                                    //Set room properties                        
+                                    Room room = new Room
+                                    {
+                                        strDescription = txtRoomDescription.Text,
+                                        strName = txtRoomName.Text
+                                    };
+
+                                    //Add room
+                                    ItemModel.Add<Room>(room);
+
+                                    //Alert user
+                                    MessageBox.Show("Successful Add", "Alert");
+
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
+
+                                    //Hide buttons
+                                    btnRoomSave.Visible = false;
+                                    btnRoomCancel.Visible = false;
+
+                                    //Enable buttons
+                                    btnRoomAdd.Enabled = true;
+                                    btnRoomDelete.Enabled = true;
+                                    btnRoomModify.Enabled = true;
+                                }
                             }
                             else
                             {
-                                //Set room properties                        
-                                Room room = new Room
-                                {
-                                    strDescription = txtRoomDescription.Text,
-                                    strName = txtRoomName.Text
-                                };
-
-                                //Add room
-                                ItemModel.Add<Room>(room);
-
-                                //Alert user
-                                MessageBox.Show("Successful Add", "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
-
-                                //Hide buttons
-                                btnRoomSave.Visible = false;
-                                btnRoomCancel.Visible = false;
-
-                                //Enable buttons
-                                btnRoomAdd.Enabled = true;
-                                btnRoomDelete.Enabled = true;
-                                btnRoomModify.Enabled = true;
+                                btnRoomCancel_Click(sender, e);
                             }
-                        }
-                        else
-                        {
-                            btnRoomCancel_Click(sender, e);
+
+                            //Clear fields
+                            ClearRoomFields();
+
+                            //Disable fields
+                            EnableDisableRoomFields(false);
                         }
                     }
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid room information!", "Alert");
-                        btnRoomCancel_Click(sender, e);
+
+                        //Clear fields
+                        ClearRoomFields();
+
+                        //Disable fields
+                        EnableDisableRoomFields(false);
                     }
-
-                    //Clear fields
-                    ClearRoomFields();
-
-                    //Disable fields
-                    EnableDisableRoomFields(false);
                 }
                 else
                 {
@@ -1709,63 +1716,70 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Only alphanumeric and spaces in room name
                         if (!txtRoomName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                            lstRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                            MessageBox.Show("Only alphanumeric and spaces in room name", "Alert");
+                        else
                         {
-                            //Check for duplicates
-                            if (lstRoom.Items.Contains(txtRoomName.Text) && !lstRoom.SelectedItem.ToString().Equals(txtRoomName.Text))
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
-                                MessageBox.Show("Cannot modify duplicate room", "Alert");
-                                btnRoomCancel_Click(sender, e);
+                                //Check for duplicates
+                                if (lstRoom.Items.Contains(txtRoomName.Text) && !lstRoom.SelectedItem.ToString().Equals(txtRoomName.Text))
+                                {
+                                    MessageBox.Show("Cannot modify duplicate room", "Alert");
+                                    btnRoomCancel_Click(sender, e);
+                                }
+                                else
+                                {
+                                    //Get room
+                                    Room room = ItemModel.Get<Room>(x => x.strName == lstRoom.SelectedItem.ToString());
+
+                                    //Modify room
+                                    room.strName = txtRoomName.Text;
+                                    room.strDescription = txtRoomDescription.Text;
+
+                                    //Save room
+                                    ItemModel.Update<Room>(room);
+
+                                    //Alert user
+                                    MessageBox.Show("Successful Modification", "Alert");
+
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
+
+                                    //Hide buttons
+                                    btnRoomSave.Visible = false;
+                                    btnRoomCancel.Visible = false;
+
+                                    //Enable buttons
+                                    btnRoomAdd.Enabled = true;
+                                    btnRoomDelete.Enabled = true;
+                                    btnRoomModify.Enabled = true;
+                                }
                             }
                             else
                             {
-                                //Get room
-                                Room room = ItemModel.Get<Room>(x => x.strName == lstRoom.SelectedItem.ToString());
-
-                                //Modify room
-                                room.strName = txtRoomName.Text;
-                                room.strDescription = txtRoomDescription.Text;
-
-                                //Save room
-                                ItemModel.Update<Room>(room);
-
-                                //Alert user
-                                MessageBox.Show("Successful Modification", "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
-
-                                //Hide buttons
-                                btnRoomSave.Visible = false;
-                                btnRoomCancel.Visible = false;
-
-                                //Enable buttons
-                                btnRoomAdd.Enabled = true;
-                                btnRoomDelete.Enabled = true;
-                                btnRoomModify.Enabled = true;
+                                btnRoomCancel_Click(sender, e);
                             }
-                        }
-                        else
-                        {
-                            btnRoomCancel_Click(sender, e);
-                        }
+
+                            //Clear fields
+                            ClearRoomFields();
+
+                            //Disable fields
+                            EnableDisableRoomFields(false);
+                        }    
                     }
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid room information!", "Alert");
-                        btnRoomCancel_Click(sender, e);
+
+                        //Clear fields
+                        ClearRoomFields();
+
+                        //Disable fields
+                        EnableDisableRoomFields(false);
                     }
-
-                    //Clear fields
-                    ClearRoomFields();
-
-                    //Disable fields
-                    EnableDisableRoomFields(false);
                 }
                 else
                 {
@@ -1814,76 +1828,86 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Only alphanumeric and spaces in cabinet name
                         if (!txtCabinetName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                            txtCabinetName.Text + " as a new cabinet for " + cmbRoom.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                            MessageBox.Show("Only alphanumeric and spaces in cabinet name", "Alert");
+                        else
                         {
-                            //Check for duplicate cabinets in the room
-                            if (lstCabinet.Items.Contains(txtCabinetName.Text))
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                                txtCabinetName.Text + " as a new cabinet for " + cmbRoom.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
-                                MessageBox.Show("Cannot add duplicate cabinet!", "Alert");
-                                btnCabinetCancel_Click(sender, e);
+                                //Check for duplicate cabinets in the room
+                                if (lstCabinet.Items.Contains(txtCabinetName.Text))
+                                {
+                                    MessageBox.Show("Cannot add duplicate cabinet!", "Alert");
+                                    btnCabinetCancel_Click(sender, e);
+                                }
+                                else
+                                {
+                                    //Set cabinet properties                        
+                                    Cabinet cabinet = new Cabinet()
+                                    {
+                                        strDescription = txtCabinetDescription.Text,
+                                        strName = txtCabinetName.Text,
+                                        objRoom = ItemModel.Get<Room>(x => x.strName == cmbRoom.SelectedItem.ToString())
+                                    };
+
+                                    var selectedRoom = cmbRoom.SelectedItem;
+                                    //Add cabinet
+                                    ItemModel.Add<Cabinet>(cabinet);
+
+                                    //Alert user
+                                    MessageBox.Show("Successful Add", "Alert");
+
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
+
+                                    //Hide buttons
+                                    btnCabinetSave.Visible = false;
+                                    btnCabinetCancel.Visible = false;
+
+                                    //Enable buttons
+                                    btnCabinetAdd.Enabled = true;
+                                    btnCabinetDelete.Enabled = true;
+                                    btnCabinetModify.Enabled = true;
+                                    cmbRoom.SelectedItem = selectedRoom;
+                                    cmbRoom.Enabled = true;
+
+                                    //Clear controls
+                                    ClearCabinetFields();
+
+                                    //Disable fields
+                                    EnableDisableCabinetFields(false);
+                                }
                             }
                             else
                             {
-                                //Set cabinet properties                        
-                                Cabinet cabinet = new Cabinet()
-                                {
-                                    strDescription = txtCabinetDescription.Text,
-                                    strName = txtCabinetName.Text,
-                                    objRoom = ItemModel.Get<Room>(x => x.strName == cmbRoom.SelectedItem.ToString())
-                                };
-
-                                var selectedRoom = cmbRoom.SelectedItem;
-                                //Add cabinet
-                                ItemModel.Add<Cabinet>(cabinet);
-
-                                //Alert user
-                                MessageBox.Show("Successful Add", "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
-
-                                //Hide buttons
-                                btnCabinetSave.Visible = false;
-                                btnCabinetCancel.Visible = false;
-
-                                //Enable buttons
-                                btnCabinetAdd.Enabled = true;
-                                btnCabinetDelete.Enabled = true;
-                                btnCabinetModify.Enabled = true;
-                                cmbRoom.SelectedItem = selectedRoom;
-                                cmbRoom.Enabled = true;
-
-                                //Clear controls
-                                ClearCabinetFields();
-
-                                //Disable fields
-                                EnableDisableCabinetFields(false);
+                                btnCabinetCancel_Click(sender, e);
                             }
-                        }
-                        else
-                        {
-                            btnCabinetCancel_Click(sender, e);
+
+                            //Clear controls
+                            ClearCabinetFields();
+
+                            //Disable fields
+                            EnableDisableCabinetFields(false);
+
+                            //Enable combo box
+                            cmbRoom.Enabled = true;
                         }
                     }
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
-                        btnCabinetCancel_Click(sender, e);
+
+                        //Clear controls
+                        ClearCabinetFields();
+
+                        //Disable fields
+                        EnableDisableCabinetFields(false);
+
+                        //Enable combo box
+                        cmbRoom.Enabled = true;
                     }
-
-                    ////Clear controls
-                    //ClearCabinetFields();
-
-                    ////Disable fields
-                    //EnableDisableCabinetFields(false);
-
-                    ////Enable combo box
-                    //cmbRoom.Enabled = true;
                 }
                 else
                 {
@@ -1899,67 +1923,77 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Only alphanumeric and spaces in cabinet name
                         if (!txtCabinetName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                            lstCabinet.SelectedItem.ToString() + " in " + cmbRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                            MessageBox.Show("Only alphanumeric and spaces in cabinet name", "Alert");
+                        else
                         {
-                            //Check for duplicate cabinets in the room
-                            if (lstCabinet.Items.Contains(txtCabinetName.Text) && !lstCabinet.SelectedItem.ToString().Equals(txtCabinetName.Text))
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstCabinet.SelectedItem.ToString() + " in " + cmbRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
-                                MessageBox.Show("Cannot modify duplicate cabinet!", "Alert");
-                                btnCabinetCancel_Click(sender, e);
+                                //Check for duplicate cabinets in the room
+                                if (lstCabinet.Items.Contains(txtCabinetName.Text) && !lstCabinet.SelectedItem.ToString().Equals(txtCabinetName.Text))
+                                {
+                                    MessageBox.Show("Cannot modify duplicate cabinet!", "Alert");
+                                    btnCabinetCancel_Click(sender, e);
+                                }
+                                else
+                                {
+                                    //Get cabinet
+                                    Cabinet cabinet = ItemModel.Get<Cabinet>(x => x.strName == lstCabinet.SelectedItem.ToString() &&
+                                        x.objRoom.strName == cmbRoom.SelectedItem.ToString());
+
+                                    //Modify cabinet
+                                    cabinet.strName = txtCabinetName.Text;
+                                    cabinet.strDescription = txtCabinetDescription.Text;
+
+                                    //Save cabinet
+                                    ItemModel.Update<Cabinet>(cabinet);
+
+                                    //Alert user
+                                    MessageBox.Show("Successful Modification", "Alert");
+
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
+
+                                    //Hide buttons
+                                    btnCabinetSave.Visible = false;
+                                    btnCabinetCancel.Visible = false;
+
+                                    //Enable buttons
+                                    btnCabinetAdd.Enabled = true;
+                                    btnCabinetDelete.Enabled = true;
+                                    btnCabinetModify.Enabled = true;
+                                }
                             }
                             else
                             {
-                                //Get cabinet
-                                Cabinet cabinet = ItemModel.Get<Cabinet>(x => x.strName == lstCabinet.SelectedItem.ToString() &&
-                                    x.objRoom.strName == cmbRoom.SelectedItem.ToString());
-
-                                //Modify cabinet
-                                cabinet.strName = txtCabinetName.Text;
-                                cabinet.strDescription = txtCabinetDescription.Text;
-
-                                //Save cabinet
-                                ItemModel.Update<Cabinet>(cabinet);
-
-                                //Alert user
-                                MessageBox.Show("Successful Modification", "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
-
-                                //Hide buttons
-                                btnCabinetSave.Visible = false;
-                                btnCabinetCancel.Visible = false;
-
-                                //Enable buttons
-                                btnCabinetAdd.Enabled = true;
-                                btnCabinetDelete.Enabled = true;
-                                btnCabinetModify.Enabled = true;
+                                btnCabinetCancel_Click(sender, e);
                             }
-                        }
-                        else
-                        {
-                            btnCabinetCancel_Click(sender, e);
-                        }
+
+                            //Clear fields
+                            ClearCabinetFields();
+
+                            //Disable fields
+                            EnableDisableCabinetFields(false);
+
+                            //Enable combo box
+                            cmbRoom.Enabled = true;
+                        }    
                     }
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid cabinet information!", "Alert");
-                        btnCabinetCancel_Click(sender, e);
+
+                        //Clear fields
+                        ClearCabinetFields();
+
+                        //Disable fields
+                        EnableDisableCabinetFields(false);
+
+                        //Enable combo box
+                        cmbRoom.Enabled = true;
                     }
-
-                    //Clear fields
-                    ClearCabinetFields();
-
-                    //Disable fields
-                    EnableDisableCabinetFields(false);
-
-                    //Enable combo box
-                    cmbRoom.Enabled = true;
                 }
                 else
                 {
@@ -2009,62 +2043,70 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Only alphanumeric and spaces in category name
                         if (!txtCategoryName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                            txtCategoryName.Text + " as a new category?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                            MessageBox.Show("Only alphanumeric and spaces in category name", "Alert");
+                        else
                         {
-                            //Check for duplicates
-                            if (lstCategory.Items.Contains(txtCategoryName.Text))
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                                txtCategoryName.Text + " as a new category?", "Confirm", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
-                                MessageBox.Show("Cannot add duplicate category", "Alert");
-                                btnCategoryCancel_Click(sender, e);
+                                //Check for duplicates
+                                if (lstCategory.Items.Contains(txtCategoryName.Text))
+                                {
+                                    MessageBox.Show("Cannot add duplicate category", "Alert");
+                                    btnCategoryCancel_Click(sender, e);
+                                }
+                                else
+                                {
+                                    //Set room properties                        
+                                    Category category = new Category()
+                                    {
+                                        strDescription = txtCategoryDescription.Text,
+                                        strName = txtCategoryName.Text
+                                    };
+
+                                    //Add cabinet
+                                    ItemModel.Add<Category>(category);
+
+                                    //Alert user
+                                    MessageBox.Show("Successful Add", "Alert");
+
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
+
+                                    //Hide buttons
+                                    btnCategorySave.Visible = false;
+                                    btnCategoryCancel.Visible = false;
+
+                                    //Enable buttons
+                                    btnCategoryAdd.Enabled = true;
+                                    btnCategoryDelete.Enabled = true;
+                                    btnCategoryModify.Enabled = true;
+                                }
                             }
                             else
                             {
-                                //Set room properties                        
-                                Category category = new Category()
-                                {
-                                    strDescription = txtCategoryDescription.Text,
-                                    strName = txtCategoryName.Text
-                                };
-
-                                //Add cabinet
-                                ItemModel.Add<Category>(category);
-
-                                //Alert user
-                                MessageBox.Show("Successful Add", "Alert");
-
-                                //Hide buttons
-                                btnCategorySave.Visible = false;
-                                btnCategoryCancel.Visible = false;
-
-                                //Enable buttons
-                                btnCategoryAdd.Enabled = true;
-                                btnCategoryDelete.Enabled = true;
-                                btnCategoryModify.Enabled = true;
+                                btnCategoryCancel_Click(sender, e);
                             }
-                        }
-                        else
-                        {
-                            btnCategoryCancel_Click(sender, e);
+
+                            //Clear fields
+                            ClearCategoryFields();
+
+                            //Disable fields
+                            EnableDisableCategoryFields(false);
                         }
                     }
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid category information!", "Alert");
+
+                        //Clear fields
+                        ClearCategoryFields();
+
+                        //Disable fields
+                        EnableDisableCategoryFields(false);
                     }
-
-                    //Refresh list
-                    tbcSettings_SelectedIndexChanged(sender, e);
-
-                    //Clear fields
-                    ClearCategoryFields();
-
-                    //Disable fields
-                    EnableDisableCategoryFields(false);
                 }
                 else
                 {
@@ -2080,61 +2122,69 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Only alphanumeric and spaces in category name
                         if (!txtCategoryName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                            lstCategory.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                            MessageBox.Show("Only alphanumeric and spaces in category name", "Alert");
+                        else
                         {
-                            if (lstCategory.Items.Contains(txtCategoryName.Text) && !lstCategory.SelectedItem.ToString().Equals(txtCategoryName.Text))
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstCategory.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
-                                MessageBox.Show("Cannot modify duplicate category", "Alert");
-                                btnCategoryCancel_Click(sender, e);
+                                if (lstCategory.Items.Contains(txtCategoryName.Text) && !lstCategory.SelectedItem.ToString().Equals(txtCategoryName.Text))
+                                {
+                                    MessageBox.Show("Cannot modify duplicate category", "Alert");
+                                    btnCategoryCancel_Click(sender, e);
+                                }
+                                else
+                                {
+                                    //Make category
+                                    Category category = ItemModel.Get<Category>(x => x.strName == lstCategory.SelectedItem.ToString());
+
+                                    //Modify category
+                                    category.strName = txtCategoryName.Text;
+                                    category.strDescription = txtCategoryDescription.Text;
+
+                                    //Save category
+                                    ItemModel.Update<Category>(category);
+
+                                    //Alert user
+                                    MessageBox.Show("Successful Modification", "Alert");
+
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
+
+                                    //Hide buttons
+                                    btnCategorySave.Visible = false;
+                                    btnCategoryCancel.Visible = false;
+
+                                    //Enable buttons
+                                    btnCategoryAdd.Enabled = true;
+                                    btnCategoryDelete.Enabled = true;
+                                    btnCategoryModify.Enabled = true;
+                                }
                             }
                             else
                             {
-                                //Make category
-                                Category category = ItemModel.Get<Category>(x => x.strName == lstCategory.SelectedItem.ToString());
-
-                                //Modify category
-                                category.strName = txtCategoryName.Text;
-                                category.strDescription = txtCategoryDescription.Text;
-
-                                //Save category
-                                ItemModel.Update<Category>(category);
-
-                                //Alert user
-                                MessageBox.Show("Successful Modification", "Alert");
-
-                                //Hide buttons
-                                btnCategorySave.Visible = false;
-                                btnCategoryCancel.Visible = false;
-
-                                //Enable buttons
-                                btnCategoryAdd.Enabled = true;
-                                btnCategoryDelete.Enabled = true;
-                                btnCategoryModify.Enabled = true;
+                                btnCategoryCancel_Click(sender, e);
                             }
-                        }
-                        else
-                        {
-                            btnCategoryCancel_Click(sender, e);
-                        }
+
+                            //Clear fields
+                            ClearCategoryFields();
+
+                            //Disable fields
+                            EnableDisableCategoryFields(false);
+                        }    
                     }
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid category information!", "Alert");
+
+                        //Clear fields
+                        ClearCategoryFields();
+
+                        //Disable fields
+                        EnableDisableCategoryFields(false);
                     }
-
-                    //Refresh list
-                    tbcSettings_SelectedIndexChanged(sender, e);
-
-                    //Clear fields
-                    ClearCategoryFields();
-
-                    //Disable fields
-                    EnableDisableCategoryFields(false);
                 }
                 else
                 {
@@ -2183,63 +2233,71 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Only alphanumeric and spaces in vendor name
                         if (!txtVendorName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                            txtVendorName.Text + " as a new vendor?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                            MessageBox.Show("Only alphanumeric and spaces in vendor name", "Alert");
+                        else
                         {
-                            //Cannot add duplicate vendor
-                            if (lstVendor.Items.Contains(txtVendorName.Text))
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                                txtVendorName.Text + " as a new vendor?", "Confirm", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
-                                MessageBox.Show("Cannot add duplicate vendor", "Alert");
-                                btnVendorCancel_Click(sender, e);
+                                //Cannot add duplicate vendor
+                                if (lstVendor.Items.Contains(txtVendorName.Text))
+                                {
+                                    MessageBox.Show("Cannot add duplicate vendor", "Alert");
+                                    btnVendorCancel_Click(sender, e);
+                                }
+                                else
+                                {
+                                    //Set room properties
+                                    Vendor vendor = new Vendor()
+                                    {
+                                        strDescription = txtVendorDescription.Text,
+                                        strName = txtVendorName.Text,
+                                        strHomepage = txtVendorHomepage.Text
+                                    };
+
+                                    //Add vendor
+                                    ItemModel.Add<Vendor>(vendor);
+
+                                    //Alert user
+                                    MessageBox.Show("Successful Add", "Alert");
+
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
+
+                                    //Hide buttons
+                                    btnVendorSave.Visible = false;
+                                    btnVendorCancel.Visible = false;
+
+                                    //Enable buttons
+                                    btnVendorAdd.Enabled = true;
+                                    btnVendorDelete.Enabled = true;
+                                    btnVendorModify.Enabled = true;
+                                }
                             }
                             else
                             {
-                                //Set room properties
-                                Vendor vendor = new Vendor()
-                                {
-                                    strDescription = txtVendorDescription.Text,
-                                    strName = txtVendorName.Text,
-                                    strHomepage = txtVendorHomepage.Text
-                                };
-
-                                //Add vendor
-                                ItemModel.Add<Vendor>(vendor);
-
-                                //Alert user
-                                MessageBox.Show("Successful Add", "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
-
-                                //Hide buttons
-                                btnVendorSave.Visible = false;
-                                btnVendorCancel.Visible = false;
-
-                                //Enable buttons
-                                btnVendorAdd.Enabled = true;
-                                btnVendorDelete.Enabled = true;
-                                btnVendorModify.Enabled = true;
+                                btnVendorCancel_Click(sender, e);
                             }
-                        }
-                        else
-                        {
-                            btnVendorCancel_Click(sender, e);
+
+                            //Clear controls
+                            ClearVendorFields();
+
+                            //Disable fields
+                            EnableDisableVendorFields(false);
                         }
                     }
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid vendor information!", "Alert");
+
+                        //Clear controls
+                        ClearVendorFields();
+
+                        //Disable fields
+                        EnableDisableVendorFields(false);
                     }
-
-                    //Clear controls
-                    ClearVendorFields();
-
-                    //Disable fields
-                    EnableDisableVendorFields(false);
                 }
                 else
                 {
@@ -2255,63 +2313,71 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Only alphanumeric and spaces in vendor name
                         if (!txtVendorName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                            lstVendor.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                            MessageBox.Show("Only alphanumeric and spaces in vendor name", "Alert");
+                        else
                         {
-                            //Cannot add duplicate vendor
-                            if (lstVendor.Items.Contains(txtVendorName.Text) && !lstVendor.SelectedItem.ToString().Equals(txtVendorName.Text))
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstVendor.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
-                                MessageBox.Show("Cannot modify duplicate vendor", "Alert");
-                                btnVendorCancel_Click(sender, e);
+                                //Cannot add duplicate vendor
+                                if (lstVendor.Items.Contains(txtVendorName.Text) && !lstVendor.SelectedItem.ToString().Equals(txtVendorName.Text))
+                                {
+                                    MessageBox.Show("Cannot modify duplicate vendor", "Alert");
+                                    btnVendorCancel_Click(sender, e);
+                                }
+                                else
+                                {
+                                    //Get vendor
+                                    Vendor vendor = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
+
+                                    //Modify category
+                                    vendor.strName = txtVendorName.Text;
+                                    vendor.strDescription = txtVendorDescription.Text;
+                                    vendor.strHomepage = txtVendorHomepage.Text;
+
+                                    //Save vendor
+                                    ItemModel.Update<Vendor>(vendor);
+
+                                    //Alert user
+                                    MessageBox.Show("Successful Modification", "Alert");
+
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
+
+                                    //Hide buttons
+                                    btnVendorSave.Visible = false;
+                                    btnVendorCancel.Visible = false;
+
+                                    //Enable buttons
+                                    btnVendorAdd.Enabled = true;
+                                    btnVendorDelete.Enabled = true;
+                                    btnVendorModify.Enabled = true;
+                                }
                             }
                             else
                             {
-                                //Get vendor
-                                Vendor vendor = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
-
-                                //Modify category
-                                vendor.strName = txtVendorName.Text;
-                                vendor.strDescription = txtVendorDescription.Text;
-                                vendor.strHomepage = txtVendorHomepage.Text;
-
-                                //Save vendor
-                                ItemModel.Update<Vendor>(vendor);
-
-                                //Alert user
-                                MessageBox.Show("Successful Modification", "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
-
-                                //Hide buttons
-                                btnVendorSave.Visible = false;
-                                btnVendorCancel.Visible = false;
-
-                                //Enable buttons
-                                btnVendorAdd.Enabled = true;
-                                btnVendorDelete.Enabled = true;
-                                btnVendorModify.Enabled = true;
+                                btnVendorCancel_Click(sender, e);
                             }
-                        }
-                        else
-                        {
-                            btnVendorCancel_Click(sender, e);
+
+                            //Clear fields
+                            ClearVendorFields();
+
+                            //Disable fields
+                            EnableDisableVendorFields(false);
                         }
                     }
                     catch
                     {
                         MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid vendor information!", "Alert");
+
+                        //Clear fields
+                        ClearVendorFields();
+
+                        //Disable fields
+                        EnableDisableVendorFields(false);
                     }
-
-                    //Clear fields
-                    ClearVendorFields();
-
-                    //Disable fields
-                    EnableDisableVendorFields(false);
                 }
                 else
                 {
@@ -2360,62 +2426,70 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Only alphanumeric and spaces in nlevel name
                         if (!txtNLevelName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ') || c.Equals('-')))
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                            txtNLevelName.Text + " as a new N-Level?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                            MessageBox.Show("Only alphanumeric and spaces in nlevel name", "Alert");
+                        else
                         {
-                            //Cannot add duplicate n-level
-                            if (lstNLevel.Items.Contains(txtNLevelName.Text))
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                                txtNLevelName.Text + " as a new N-Level?", "Confirm", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
-                                MessageBox.Show("Cannot add duplicate N-Level", "Alert");
-                                btnNLevelCancel_Click(sender, e);
+                                //Cannot add duplicate n-level
+                                if (lstNLevel.Items.Contains(txtNLevelName.Text))
+                                {
+                                    MessageBox.Show("Cannot add duplicate N-Level", "Alert");
+                                    btnNLevelCancel_Click(sender, e);
+                                }
+                                else
+                                {
+                                    //Set n-level properties                        
+                                    NLevel nLevel = new NLevel()
+                                    {
+                                        strDescription = txtNLevelDescription.Text,
+                                        strName = txtNLevelName.Text
+                                    };
+
+                                    //Add n-level
+                                    ItemModel.Add<NLevel>(nLevel);
+
+                                    //Alert user
+                                    MessageBox.Show("Successful Add", "Alert");
+
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
+
+                                    //Hide buttons
+                                    btnNLevelSave.Visible = false;
+                                    btnNLevelCancel.Visible = false;
+
+                                    //Enable buttons
+                                    btnNLevelAdd.Enabled = true;
+                                    btnNLevelDelete.Enabled = true;
+                                    btnNLevelModify.Enabled = true;
+                                }
                             }
                             else
                             {
-                                //Set n-level properties                        
-                                NLevel nLevel = new NLevel()
-                                {
-                                    strDescription = txtNLevelDescription.Text,
-                                    strName = txtNLevelName.Text
-                                };
-
-                                //Add n-level
-                                ItemModel.Add<NLevel>(nLevel);
-
-                                //Alert user
-                                MessageBox.Show("Successful Add", "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
-
-                                //Hide buttons
-                                btnNLevelSave.Visible = false;
-                                btnNLevelCancel.Visible = false;
-
-                                //Enable buttons
-                                btnNLevelAdd.Enabled = true;
-                                btnNLevelDelete.Enabled = true;
-                                btnNLevelModify.Enabled = true;
+                                btnNLevelCancel_Click(sender, e);
                             }
-                        }
-                        else
-                        {
-                            btnNLevelCancel_Click(sender, e);
+
+                            //Clear controls
+                            ClearNLevelFields();
+
+                            //Disable fields
+                            EnableDisableNLevelFields(false);
                         }
                     }
                     catch
                     {
                         MessageBox.Show("Add failed\r\nPlease ensure that you fill out valid N-Level information!", "Alert");
+
+                        //Clear controls
+                        ClearNLevelFields();
+
+                        //Disable fields
+                        EnableDisableNLevelFields(false);
                     }
-
-                    //Clear controls
-                    ClearNLevelFields();
-
-                    //Disable fields
-                    EnableDisableNLevelFields(false);
                 }
                 else
                 {
@@ -2431,51 +2505,53 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Only alphanumeric and spaces in nlevel name
                         if (!txtNLevelName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ') || c.Equals('-')))
-                            throw new Exception();
-
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                            lstNLevel.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                            MessageBox.Show("Only alphanumeric and spaces in nlevel name", "Alert");
+                        else
                         {
-                            //Cannot add duplicate n-level
-                            if (lstNLevel.Items.Contains(txtNLevelName.Text) && !lstNLevel.SelectedItem.ToString().Equals(txtNLevelName.Text))
+                            //Ask user to confirm action
+                            DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                            lstNLevel.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
-                                MessageBox.Show("Cannot modify duplicate N-Level", "Alert");
-                                btnNLevelCancel_Click(sender, e);
+                                //Cannot add duplicate n-level
+                                if (lstNLevel.Items.Contains(txtNLevelName.Text) && !lstNLevel.SelectedItem.ToString().Equals(txtNLevelName.Text))
+                                {
+                                    MessageBox.Show("Cannot modify duplicate N-Level", "Alert");
+                                    btnNLevelCancel_Click(sender, e);
+                                }
+                                else
+                                {
+                                    //Get n-level
+                                    NLevel nLevel = ItemModel.Get<NLevel>(x => x.strName == lstNLevel.SelectedItem.ToString());
+
+                                    //Modify n-level
+                                    nLevel.strName = txtNLevelName.Text;
+                                    nLevel.strDescription = txtNLevelDescription.Text;
+
+                                    //Save n-level
+                                    ItemModel.Update<NLevel>(nLevel);
+
+                                    //Alert user
+                                    MessageBox.Show("Successful Modification", "Alert");
+
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
+
+                                    //Hide buttons
+                                    btnNLevelSave.Visible = false;
+                                    btnNLevelCancel.Visible = false;
+
+                                    //Enable buttons
+                                    btnNLevelAdd.Enabled = true;
+                                    btnNLevelDelete.Enabled = true;
+                                    btnNLevelModify.Enabled = true;
+                                }
                             }
                             else
                             {
-                                //Get n-level
-                                NLevel nLevel = ItemModel.Get<NLevel>(x => x.strName == lstNLevel.SelectedItem.ToString());
-
-                                //Modify n-level
-                                nLevel.strName = txtNLevelName.Text;
-                                nLevel.strDescription = txtNLevelDescription.Text;
-
-                                //Save n-level
-                                ItemModel.Update<NLevel>(nLevel);
-
-                                //Alert user
-                                MessageBox.Show("Successful Modification", "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
-
-                                //Hide buttons
-                                btnNLevelSave.Visible = false;
-                                btnNLevelCancel.Visible = false;
-
-                                //Enable buttons
-                                btnNLevelAdd.Enabled = true;
-                                btnNLevelDelete.Enabled = true;
-                                btnNLevelModify.Enabled = true;
+                                btnNLevelCancel_Click(sender, e);
                             }
-                        }
-                        else
-                        {
-                            btnNLevelCancel_Click(sender, e);
-                        }
+                        }    
                     }
                     catch
                     {
