@@ -80,6 +80,7 @@ namespace SVSU_Capstone_Project.Views
             var category = ItemModel.GetMany<Category>().ToList();
             cmbCategory.DataSource = ItemModel.GetMany<Commodity>().Where(x => ((int)x.enuCommodityType) == selectedType).Select(x => x.objCategory.strName).Distinct().ToList();
             cmbCategory.SelectedIndex = -1;
+            txtSearch.Text = "";
         }
 
         /* Function: 
@@ -149,8 +150,9 @@ namespace SVSU_Capstone_Project.Views
          */
         private void lstCommodity_Click( object sender, EventArgs e )
         {
-            if (lstCommodity.DataSource != null)
+            if (lstCommodity.SelectedIndex != -1)
             {
+                
                 //Get rid of current rows
                 dgvDetails.Rows.Clear();
 
@@ -213,26 +215,30 @@ namespace SVSU_Capstone_Project.Views
          */
         private void lstCommodity_DoubleClick( object sender, EventArgs e )
         {
-            if (lstCommodity.DataSource != null)
+            if (lstCommodity.SelectedIndex != -1)
             {
                 var comm = ItemModel.Get<Commodity>(x => x.strName == lstCommodity.SelectedItem.ToString());
                 if(comm.enuCommodityType == ItemType.Simulator)
                 {
                     string strCategory = cmbCategory.Text;
                     string strCommodity = lstCommodity.SelectedItem.ToString();
-                    Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity && x.objCategory.strName == strCategory);
-                    SimulatorUse simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == commodity.uidTuid);
-                    string strMessage = "Name: " + commodity.strName + "\r" +
-                        "Desciption: " + commodity.strDescription + "\r" +
-                        "Type: " + commodity.enuCommodityType.ToString() + "\r" +
-                        "Features: " + commodity.strFeatures + "\r" +
-                        "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
-                        "Commodity Category: " + commodity.objCategory.strName + "\r" +
-                        "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
-                        "URL: " + commodity.strItemUrl + "\r" +
-                        "Hours Used: " + simulator.intHoursUsed + "\r"+
-                        "Times Used: " + simulator.intTimesUsed;
-                    MessageBox.Show(strMessage,"Commodity Details");
+                    Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity);
+
+                    if(commodity != null)
+                    {
+                      SimulatorUse simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == commodity.uidTuid);
+                      string strMessage = "Name: " + commodity.strName + "\r" +
+                          "Desciption: " + commodity.strDescription + "\r" +
+                          "Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                          "Features: " + commodity.strFeatures + "\r" +
+                          "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
+                          "Commodity Category: " + commodity.objCategory.strName + "\r" +
+                          "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
+                          "URL: " + commodity.strItemUrl + "\r" +
+                          "Hours Used: " + simulator.intHoursUsed + "\r"+
+                          "Times Used: " + simulator.intTimesUsed;
+                      MessageBox.Show(strMessage,"Commodity Details");
+                    }
                 }
                 else
                 {
