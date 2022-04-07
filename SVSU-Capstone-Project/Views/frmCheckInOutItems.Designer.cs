@@ -78,11 +78,11 @@ namespace SVSU_Capstone_Project.Views
             // 
             // txtStudentChkIn
             // 
-            this.txtStudentChkIn.Location = new System.Drawing.Point(666, 95);
+            this.txtStudentChkIn.Location = new System.Drawing.Point(676, 74);
             this.txtStudentChkIn.Margin = new System.Windows.Forms.Padding(2);
             this.txtStudentChkIn.Name = "txtStudentChkIn";
             this.txtStudentChkIn.ShortcutsEnabled = false;
-            this.txtStudentChkIn.Size = new System.Drawing.Size(229, 22);
+            this.txtStudentChkIn.Size = new System.Drawing.Size(219, 22);
             this.txtStudentChkIn.TabIndex = 213;
             this.txtStudentChkIn.TextChanged += new System.EventHandler(this.txtStudentChkInSearch_TextChanged);
             // 
@@ -102,7 +102,7 @@ namespace SVSU_Capstone_Project.Views
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(538, 97);
+            this.label22.Location = new System.Drawing.Point(538, 74);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(133, 19);
             this.label22.TabIndex = 211;
@@ -145,7 +145,7 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkInCommodity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChkInCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbChkInCommodity.FormattingEnabled = true;
-            this.cmbChkInCommodity.Location = new System.Drawing.Point(647, 189);
+            this.cmbChkInCommodity.Location = new System.Drawing.Point(647, 128);
             this.cmbChkInCommodity.Margin = new System.Windows.Forms.Padding(2);
             this.cmbChkInCommodity.Name = "cmbChkInCommodity";
             this.cmbChkInCommodity.Size = new System.Drawing.Size(248, 26);
@@ -155,7 +155,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(539, 195);
+            this.label27.Location = new System.Drawing.Point(538, 131);
             this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(103, 19);
@@ -208,17 +208,18 @@ namespace SVSU_Capstone_Project.Views
             // txtChkOutNotes
             // 
             this.txtChkOutNotes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtChkOutNotes.Location = new System.Drawing.Point(630, 123);
+            this.txtChkOutNotes.Location = new System.Drawing.Point(640, 101);
+            this.txtChkOutNotes.MaxLength = 200;
             this.txtChkOutNotes.Name = "txtChkOutNotes";
             this.txtChkOutNotes.ShortcutsEnabled = false;
-            this.txtChkOutNotes.Size = new System.Drawing.Size(254, 185);
+            this.txtChkOutNotes.Size = new System.Drawing.Size(244, 207);
             this.txtChkOutNotes.TabIndex = 4;
             this.txtChkOutNotes.Text = "";
             // 
             // txtAvailableChkOutQuantity
             // 
             this.txtAvailableChkOutQuantity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAvailableChkOutQuantity.Location = new System.Drawing.Point(208, 341);
+            this.txtAvailableChkOutQuantity.Location = new System.Drawing.Point(202, 341);
             this.txtAvailableChkOutQuantity.Name = "txtAvailableChkOutQuantity";
             this.txtAvailableChkOutQuantity.ReadOnly = true;
             this.txtAvailableChkOutQuantity.Size = new System.Drawing.Size(120, 26);
@@ -228,7 +229,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(571, 125);
+            this.label14.Location = new System.Drawing.Point(575, 101);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(60, 19);
@@ -293,10 +294,10 @@ namespace SVSU_Capstone_Project.Views
             this.cmbChkOutCommodity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChkOutCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbChkOutCommodity.FormattingEnabled = true;
-            this.cmbChkOutCommodity.Location = new System.Drawing.Point(142, 300);
+            this.cmbChkOutCommodity.Location = new System.Drawing.Point(152, 300);
             this.cmbChkOutCommodity.Margin = new System.Windows.Forms.Padding(2);
             this.cmbChkOutCommodity.Name = "cmbChkOutCommodity";
-            this.cmbChkOutCommodity.Size = new System.Drawing.Size(313, 26);
+            this.cmbChkOutCommodity.Size = new System.Drawing.Size(303, 26);
             this.cmbChkOutCommodity.TabIndex = 2;
             this.cmbChkOutCommodity.SelectedIndexChanged += new System.EventHandler(this.cmbChkOutCommodity_SelectedIndexChanged);
             // 
