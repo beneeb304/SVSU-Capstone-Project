@@ -62,6 +62,7 @@ namespace SVSU_Capstone_Project.Views
                     this.cmbCreateVendor.DataSource = lstVendors;
                     trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
                     trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
+                    txtCreateDescription.ShortcutsEnabled = false;
                     break;
                 case ("tbpUseItem"):
                     trvUseSelectByRoom.PopulateCommodityTreeByRoom(x => x.enuCommodityType != ItemType.Equipment);

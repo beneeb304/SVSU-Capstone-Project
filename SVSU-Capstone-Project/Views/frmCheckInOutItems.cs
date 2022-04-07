@@ -54,6 +54,7 @@ namespace SVSU_Capstone_Project.Views
                     txtAvailableChkOutQuantity.Text = "";
                     cmbChkOutCommodity.SelectedIndex = -1;
                     txtStudentSearch.Text = "";
+                    txtChkOutNotes.ShortcutsEnabled = false;
                     break;
 
                 case "tbpCheckIn":

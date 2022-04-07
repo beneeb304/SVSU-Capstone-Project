@@ -102,21 +102,26 @@ namespace SVSU_Capstone_Project.Views
                 case "tbpRooms":
                     //Populate room listbox with room names
                     lstRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).Select(x => x.strName).ToList();
+                    txtRoomDescription.ShortcutsEnabled = false;
                     break;
                 case "tbpCabinets":
                     cmbRoom.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).Select(x => x.strName).ToList();
+                    txtCabinetDescription.ShortcutsEnabled = false;
                     break;
                 case "tbpCategories":
                     //Populate category listbox with category names
                     lstCategory.DataSource = ItemModel.GetMany<Category>().OrderBy(x => x.strName).Select(x => x.strName).ToList();
+                    txtCategoryDescription.ShortcutsEnabled = false;
                     break;
                 case "tbpVendors":
                     //Populate vendor listbox with vendor names
                     lstVendor.DataSource = ItemModel.GetMany<Vendor>().OrderBy(x => x.strName).Select(x => x.strName).ToList();
+                    txtVendorDescription.ShortcutsEnabled = false;
                     break;
                 case "tbpNLevel":
                     //Populate N-level listbox with N-levels
                     lstNLevel.DataSource = ItemModel.GetMany<NLevel>().OrderBy(x => x.strName).Select(x => x.strName).ToList();
+                    txtVendorDescription.ShortcutsEnabled = false;
                     break;
             }
         }
