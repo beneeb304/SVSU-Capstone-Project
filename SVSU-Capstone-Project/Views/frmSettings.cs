@@ -1405,7 +1405,11 @@ namespace SVSU_Capstone_Project.Views
                     txtUserLName.Text.Trim().Length > 0 && txtUserSVSUID.Text.Trim().Length > 0)
                 {
                     string strError = "";
-
+                    var exists = ItemModel.Get<User>(x => x.strEmail.ToLower() == txtUserEmail.Text.ToLower());
+                    if(exists != null)
+                    {
+                        strError += "Email Already exists\r";
+                    }
                     //Valid email
                     if (!Regex.IsMatch(txtUserEmail.Text,
                         @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
@@ -1541,42 +1545,49 @@ namespace SVSU_Capstone_Project.Views
                         {
                             //Ask user to confirm action
                             DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                                txtUserEmail.Text + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
+                                txtUserFName.Text + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
 
                             if (result == DialogResult.Yes)
                             {
                                 //Get user
                                 User user = ItemModel.Get<User>(x => x.strSvsu_id == txtUserSVSUID.Text);
+                                var exists = ItemModel.Get<User>(x => x.strEmail.ToLower() == txtUserEmail.Text.ToLower());
+                                if (exists != null)
+                                {
+                                    MessageBox.Show("This email already Exists", "Alert");
+                                }
+                                else
+                                {
+                                    //Modify user
+                                    user.strSvsu_id = txtUserSVSUID.Text;
+                                    user.strFirst_name = txtUserFName.Text;
+                                    user.strLast_name = txtUserLName.Text;
+                                    user.strEmail = txtUserEmail.Text;
+                                    user.strPhone = txtUserPhone.Text;
+                                    user.blnIsAdmin = chkUserAdmin.Checked;
 
-                                //Modify user
-                                user.strSvsu_id = txtUserSVSUID.Text;
-                                user.strFirst_name = txtUserFName.Text;
-                                user.strLast_name = txtUserLName.Text;
-                                user.strEmail = txtUserEmail.Text;
-                                user.strPhone = txtUserPhone.Text;
-                                user.blnIsAdmin = chkUserAdmin.Checked;
+                                    //Save user
+                                    ItemModel.Update<User>(user);
 
-                                //Save user
-                                ItemModel.Update<User>(user);
+                                    //Alert user
+                                    MessageBox.Show("Successful Modification", "Alert");
 
-                                //Alert user
-                                MessageBox.Show("Successful Modification", "Alert");
+                                    //Refresh list
+                                    tbcSettings_SelectedIndexChanged(sender, e);
 
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
+                                    //Hide buttons
+                                    btnUserSave.Visible = false;
+                                    btnUserCancel.Visible = false;
 
-                                //Hide buttons
-                                btnUserSave.Visible = false;
-                                btnUserCancel.Visible = false;
+                                    //Enable buttons
+                                    btnUserAdd.Enabled = true;
+                                    btnUserUpload.Enabled = true;
+                                    btnUserPassword.Enabled = true;
+                                    btnUserDelete.Enabled = true;
 
-                                //Enable buttons
-                                btnUserAdd.Enabled = true;
-                                btnUserUpload.Enabled = true;
-                                btnUserPassword.Enabled = true;
-                                btnUserDelete.Enabled = true;
-
-                                //Clear fields
-                                ClearUserFields();
+                                    //Clear fields
+                                    ClearUserFields();
+                                }  
                             }
                             else
                             {
