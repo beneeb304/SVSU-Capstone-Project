@@ -150,25 +150,31 @@ namespace SVSU_Capstone_Project.Views
                         //Get user
                         User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
 
-                        //Check if user has any commodities checked out to them
-                        List<CheckedItem> lstCheckedItems = ItemModel.GetMany<CheckedItem>(x => x.objUser.uidTuid == user.uidTuid).ToList();
-                        
-                        if (lstCheckedItems.Count == 0)
+                        //Check if user is trying to delete themself
+                        if (user == Authentication.ActiveUser)
                         {
-                            //Remove user
-                            ItemModel.Delete<User>(user);
+                            //Check if user has any commodities checked out to them
+                            List<CheckedItem> lstCheckedItems = ItemModel.GetMany<CheckedItem>(x => x.objUser.uidTuid == user.uidTuid).ToList();
 
-                            //Alert user
-                            MessageBox.Show("Successful Deletion", "Alert");
+                            if (lstCheckedItems.Count == 0)
+                            {
+                                //Remove user
+                                ItemModel.Delete<User>(user);
 
-                            //Refresh list
-                            tbcSettings_SelectedIndexChanged(sender, e);
+                                //Alert user
+                                MessageBox.Show("Successful Deletion", "Alert");
+
+                                //Refresh list
+                                tbcSettings_SelectedIndexChanged(sender, e);
+                            }
+                            else
+                            {
+                                //Alert user
+                                MessageBox.Show("User has items checked-out. Check them back in before attempting deletion", "Alert");
+                            }
                         }
                         else
-                        {
-                            //Alert user
-                            MessageBox.Show("User has items checked-out. Check them back in before attempting deletion", "Alert");
-                        }
+                            MessageBox.Show("Cannot delete yourself while logged in!", "Alert");                        
                     }
                 }
                 catch
@@ -1508,11 +1514,6 @@ namespace SVSU_Capstone_Project.Views
                                 EnableDisableUserFields(false);
                             }
                         }
-                        else
-                        {
-                            MessageBox.Show("Please fill out all of the user fields before saving! You need:\r" +
-                                    "A valid email\rA first name\rA last name\rAn SVSU ID", "Alert");
-                        }
                     }
                     else
                         MessageBox.Show("Error adding user!\r\r" + strError, "Alert");
@@ -2449,9 +2450,9 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
-                        //Only alphanumeric and spaces in nlevel name
-                        if (!txtNLevelName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ') || c.Equals('-')))
-                            MessageBox.Show("Only alphanumeric and spaces in nlevel name", "Alert");
+                        //Only alphanumeric and hyphen in nlevel name
+                        if (!txtNLevelName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals('-')))
+                            MessageBox.Show("Only alphanumeric and hyphen in N-Level name", "Alert");
                         else
                         {
                             //Ask user to confirm action
@@ -2528,9 +2529,9 @@ namespace SVSU_Capstone_Project.Views
                 {
                     try
                     {
-                        //Only alphanumeric and spaces in nlevel name
-                        if (!txtNLevelName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ') || c.Equals('-')))
-                            MessageBox.Show("Only alphanumeric and spaces in nlevel name", "Alert");
+                        //Only alphanumeric and hyphen in nlevel name
+                        if (!txtNLevelName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals('-')))
+                            MessageBox.Show("Only alphanumeric and hyphens in N-Level name", "Alert");
                         else
                         {
                             //Ask user to confirm action

@@ -121,9 +121,9 @@ namespace SVSU_Capstone_Project.Views
             // btnChkInCancel
             // 
             this.btnChkInCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChkInCancel.Location = new System.Drawing.Point(780, 330);
+            this.btnChkInCancel.Location = new System.Drawing.Point(801, 345);
             this.btnChkInCancel.Name = "btnChkInCancel";
-            this.btnChkInCancel.Size = new System.Drawing.Size(114, 43);
+            this.btnChkInCancel.Size = new System.Drawing.Size(110, 43);
             this.btnChkInCancel.TabIndex = 4;
             this.btnChkInCancel.Text = "Cancel";
             this.btnChkInCancel.UseVisualStyleBackColor = true;
@@ -132,9 +132,9 @@ namespace SVSU_Capstone_Project.Views
             // btnChkIn
             // 
             this.btnChkIn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChkIn.Location = new System.Drawing.Point(647, 330);
+            this.btnChkIn.Location = new System.Drawing.Point(664, 345);
             this.btnChkIn.Name = "btnChkIn";
-            this.btnChkIn.Size = new System.Drawing.Size(114, 43);
+            this.btnChkIn.Size = new System.Drawing.Size(111, 43);
             this.btnChkIn.TabIndex = 3;
             this.btnChkIn.Text = "Check In";
             this.btnChkIn.UseVisualStyleBackColor = true;
@@ -260,9 +260,9 @@ namespace SVSU_Capstone_Project.Views
             // btnChkOutCancel
             // 
             this.btnChkOutCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChkOutCancel.Location = new System.Drawing.Point(769, 332);
+            this.btnChkOutCancel.Location = new System.Drawing.Point(799, 344);
             this.btnChkOutCancel.Name = "btnChkOutCancel";
-            this.btnChkOutCancel.Size = new System.Drawing.Size(114, 43);
+            this.btnChkOutCancel.Size = new System.Drawing.Size(111, 43);
             this.btnChkOutCancel.TabIndex = 6;
             this.btnChkOutCancel.Text = "Cancel";
             this.btnChkOutCancel.UseVisualStyleBackColor = true;
@@ -271,9 +271,9 @@ namespace SVSU_Capstone_Project.Views
             // btnChkOut
             // 
             this.btnChkOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChkOut.Location = new System.Drawing.Point(630, 332);
+            this.btnChkOut.Location = new System.Drawing.Point(666, 344);
             this.btnChkOut.Name = "btnChkOut";
-            this.btnChkOut.Size = new System.Drawing.Size(114, 43);
+            this.btnChkOut.Size = new System.Drawing.Size(110, 43);
             this.btnChkOut.TabIndex = 5;
             this.btnChkOut.Text = "Check Out";
             this.btnChkOut.UseVisualStyleBackColor = true;

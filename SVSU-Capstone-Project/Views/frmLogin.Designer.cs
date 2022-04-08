@@ -38,7 +38,6 @@ namespace SVSU_Capstone_Project.Views
             this.btnCancel = new System.Windows.Forms.Button();
             this.erpLoginForm = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnBypass = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.erpLoginForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -48,7 +47,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(8, 216);
+            this.lblPassword.Location = new System.Drawing.Point(19, 216);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(116, 24);
             this.lblPassword.TabIndex = 8;
@@ -58,7 +57,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Location = new System.Drawing.Point(8, 126);
+            this.lblUserName.Location = new System.Drawing.Point(19, 126);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(133, 24);
             this.lblUserName.TabIndex = 7;
@@ -67,20 +66,20 @@ namespace SVSU_Capstone_Project.Views
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(12, 243);
+            this.txtPassword.Location = new System.Drawing.Point(23, 243);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.ShortcutsEnabled = false;
-            this.txtPassword.Size = new System.Drawing.Size(326, 31);
+            this.txtPassword.Size = new System.Drawing.Size(304, 31);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmLogin_KeyPress);
             // 
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(12, 324);
+            this.btnLogin.Location = new System.Drawing.Point(23, 324);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(326, 58);
+            this.btnLogin.Size = new System.Drawing.Size(304, 58);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -89,9 +88,9 @@ namespace SVSU_Capstone_Project.Views
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(12, 400);
+            this.btnCancel.Location = new System.Drawing.Point(23, 400);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(326, 58);
+            this.btnCancel.Size = new System.Drawing.Size(304, 58);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -111,25 +110,13 @@ namespace SVSU_Capstone_Project.Views
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
-            // btnBypass
-            // 
-            this.btnBypass.Enabled = false;
-            this.btnBypass.Location = new System.Drawing.Point(263, 190);
-            this.btnBypass.Name = "btnBypass";
-            this.btnBypass.Size = new System.Drawing.Size(75, 44);
-            this.btnBypass.TabIndex = 14;
-            this.btnBypass.Text = "Testing bypass";
-            this.btnBypass.UseVisualStyleBackColor = true;
-            this.btnBypass.Visible = false;
-            this.btnBypass.Click += new System.EventHandler(this.btnBypass_Click);
-            // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(12, 153);
+            this.txtEmail.Location = new System.Drawing.Point(23, 153);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ShortcutsEnabled = false;
-            this.txtEmail.Size = new System.Drawing.Size(326, 31);
+            this.txtEmail.Size = new System.Drawing.Size(304, 31);
             this.txtEmail.TabIndex = 1;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmLogin_KeyPress);
             // 
@@ -140,7 +127,6 @@ namespace SVSU_Capstone_Project.Views
             this.ClientSize = new System.Drawing.Size(350, 476);
             this.ControlBox = false;
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.btnBypass);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
@@ -169,7 +155,6 @@ namespace SVSU_Capstone_Project.Views
         internal System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ErrorProvider erpLoginForm;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnBypass;
         internal System.Windows.Forms.TextBox txtEmail;
     }
 }
