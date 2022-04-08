@@ -279,7 +279,7 @@ namespace SVSU_Capstone_Project.Views
 
                     //Get user
                     User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
-                    if (Authentication.ActiveUser.strEmail == "brneeb@svsu.edu" || Authentication.ActiveUser.strEmail == "mjsimon1@svsu.edu" || Authentication.ActiveUser.strEmail == "ldscott2@svsu.edu" || Authentication.ActiveUser.strEmail == "taeurich@svsu.edu" || Authentication.ActiveUser.strEmail == "hmclippe@svsu.edu")
+                    if (Authentication.ActiveUser.strEmail == "brneeb@svsu.edu" || Authentication.ActiveUser.strEmail == "mjsimon1@svsu.edu" || Authentication.ActiveUser.strEmail == "aataylo3@svsu.edu")
                     {
                         if (user.blnIsAdmin)
                         {
