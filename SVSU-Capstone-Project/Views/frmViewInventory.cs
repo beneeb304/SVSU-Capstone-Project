@@ -71,6 +71,7 @@ namespace SVSU_Capstone_Project.Views
          */
         private void cmbCategory_SelectedIndexChanged( object sender, EventArgs e )
         {
+            txtSearch.Text = "";
             //Clear detail dgv rows
             dgvDetails.Rows.Clear();
             lstCommodity.DataSource = null;

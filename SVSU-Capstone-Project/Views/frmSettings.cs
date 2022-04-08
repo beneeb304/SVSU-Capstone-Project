@@ -711,22 +711,31 @@ namespace SVSU_Capstone_Project.Views
             {
                 try
                 {
-                    //Ask user to confirm action
-                    DialogResult result = MessageBox.Show("Are you sure you want to delete " +
-                        lstVendor.SelectedItem.ToString() + " from vendors?", "Confirm", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
+                    Vendor vendors = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
+                    var commodities = ItemModel.GetMany<Commodity>().Where(x => x.objVendor.uidTuid == vendors.uidTuid);
+                    if(commodities != null)
                     {
-                        //Get vendor
-                        Vendor vendor = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
+                        MessageBox.Show($"{vendors.strName} is currently selected on a commodity. Please remove from the commodity if you wish to delete this vendor.", "Alert");
+                    }
+                    else
+                    {
+                        //Ask user to confirm action
+                        DialogResult result = MessageBox.Show("Are you sure you want to delete " +
+                            lstVendor.SelectedItem.ToString() + " from vendors?", "Confirm", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //Get vendor
+                            Vendor vendor = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
 
-                        //Remove vendor
-                        ItemModel.Delete<Vendor>(vendor);
+                            //Remove vendor
+                            ItemModel.Delete<Vendor>(vendor);
 
-                        //Alert user
-                        MessageBox.Show("Successful Deletion", "Alert");
+                            //Alert user
+                            MessageBox.Show("Successful Deletion", "Alert");
 
-                        //Refresh list
-                        tbcSettings_SelectedIndexChanged(sender, e);
+                            //Refresh list
+                            tbcSettings_SelectedIndexChanged(sender, e);
+                        }
                     }
                 }
                 catch

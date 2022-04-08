@@ -37,8 +37,16 @@ namespace SVSU_Capstone_Project.Views
             if (blnEventBlock) return;
             Commodity_SelectedValueChanged(cmbMoveCommodity, cmbMoveRoomFrom);
             if (cmbMoveCommodity.SelectedIndex != -1)
+            {
                 nonTriggeringCall(() => cmbMoveRoomTo.DataSource = ItemModel.GetMany<Room>().OrderBy(x => x.strName).ToList());
-            cmbMoveRoomTo.SelectedIndex = -1;
+                cmbMoveCabinetTo.Enabled = true;
+                cmbMoveRoomTo.Enabled = true;
+                cmbMoveNLevelTo.Enabled = true;
+                cmbMoveRoomTo.SelectedIndex = -1;
+
+            }
+                
+
         }
 
         /* Function: 
@@ -119,6 +127,10 @@ namespace SVSU_Capstone_Project.Views
             cmbMoveRoomTo.SelectedIndex = -1;
             txtMoveAvailable.Text = "";
             nudMoveQuantity.Value = 1;
+            cmbMoveCabinetTo.Enabled = false;
+            cmbMoveRoomTo.Enabled = false;
+            cmbMoveNLevelTo.Enabled = false;
+
         }
 
         /* Function: 
