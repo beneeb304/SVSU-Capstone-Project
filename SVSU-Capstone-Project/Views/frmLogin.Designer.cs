@@ -47,7 +47,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(8, 216);
+            this.lblPassword.Location = new System.Drawing.Point(19, 216);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(116, 24);
             this.lblPassword.TabIndex = 8;
@@ -57,7 +57,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Location = new System.Drawing.Point(8, 126);
+            this.lblUserName.Location = new System.Drawing.Point(19, 126);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(133, 24);
             this.lblUserName.TabIndex = 7;
@@ -77,9 +77,9 @@ namespace SVSU_Capstone_Project.Views
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(12, 324);
+            this.btnLogin.Location = new System.Drawing.Point(23, 324);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(326, 58);
+            this.btnLogin.Size = new System.Drawing.Size(304, 58);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -88,9 +88,9 @@ namespace SVSU_Capstone_Project.Views
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(12, 400);
+            this.btnCancel.Location = new System.Drawing.Point(23, 400);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(326, 58);
+            this.btnCancel.Size = new System.Drawing.Size(304, 58);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;

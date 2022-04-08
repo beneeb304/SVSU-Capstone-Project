@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.Devices;
 
 namespace SVSU_Capstone_Project.Views
 {
@@ -32,7 +33,6 @@ namespace SVSU_Capstone_Project.Views
              * EventArgs e; Information passed by the sender object about the method call.
              * object sender; The object calling the method. 
              */
-
             tmrSplash.Start();
         }
 
@@ -49,6 +49,22 @@ namespace SVSU_Capstone_Project.Views
     
             //Close splash screen
             Close();
+        }
+
+        //Gotta have a little fun right? ;)
+        //Here is another easter egg
+        private void pcbSplash_DoubleClick( object sender, EventArgs e )
+        {
+            tmrSplash.Interval = 6000;
+            HeHe(pcbSplash);
+        }
+
+        public static async Task HeHe( PictureBox pcbHeHe )
+        {
+            await Task.Run(() =>
+            {
+                pcbHeHe.Image = Properties.Resources.ea;
+            });
         }
     }
 }

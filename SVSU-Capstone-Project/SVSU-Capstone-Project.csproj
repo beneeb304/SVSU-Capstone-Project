@@ -299,6 +299,7 @@
     <Content Include="favicon.ico" />
     <None Include="Resources\HeHe.png" />
     <Content Include="Resources\cardinal.gif" />
+    <None Include="Resources\ea.gif" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll" />
     <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll" />
