@@ -1583,7 +1583,7 @@ namespace SVSU_Capstone_Project.Views
                                     ItemModel.Update<User>(user);
 
                                     //Alert user
-                                    MessageBox.Show("Successful Modification", "Alert");
+                                    MessageBox.Show("Successful Modification!\rIf you just made this user an admin, be sure to reset their password.", "Alert");
 
                                     //Refresh list
                                     tbcSettings_SelectedIndexChanged(sender, e);
