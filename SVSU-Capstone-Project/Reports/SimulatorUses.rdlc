@@ -164,7 +164,7 @@
                           <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <BackgroundColor>White</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -352,8 +352,8 @@
               </SortExpression>
             </SortExpressions>
             <Left>0.11667in</Left>
-            <Height>1.6389in</Height>
-            <Width>6.23332in</Width>
+            <Height>1.63889in</Height>
+            <Width>6.23333in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
