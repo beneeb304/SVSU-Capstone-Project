@@ -2622,5 +2622,18 @@ namespace SVSU_Capstone_Project.Views
             //Disable fields
             EnableDisableNLevelFields(false);
         }
+
+        private void chkUserAdmin_Click( object sender, EventArgs e )
+        {
+            if (btnUserModify.Enabled && btnUserSave.Visible)
+            {
+                User user = ItemModel.Get<User>(x => x.strSvsu_id == txtUserSVSUID.Text);
+                if (user.lstCheckedItems.Count > 0)
+                {
+                    MessageBox.Show("Cannot change Admin status while user has items checked out!", "Alert");
+                    chkUserAdmin.Checked = !chkUserAdmin.Checked;
+                }
+            }
+        }
     }
 }
