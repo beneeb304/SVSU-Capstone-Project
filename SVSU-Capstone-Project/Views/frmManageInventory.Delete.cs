@@ -104,6 +104,8 @@ namespace SVSU_Capstone_Project.Views
 
                 cmbDeleteCategory.SelectedIndex = -1;
             }
+            else
+                MessageBox.Show("Select a commodity to delete!", "Alert");
         }
 
         /* Function: 
