@@ -243,6 +243,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserPhone.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserPhone.Location = new System.Drawing.Point(304, 283);
             this.txtUserPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUserPhone.MaxLength = 10;
             this.txtUserPhone.Name = "txtUserPhone";
             this.txtUserPhone.ShortcutsEnabled = false;
             this.txtUserPhone.Size = new System.Drawing.Size(339, 26);
@@ -310,6 +311,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserLName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserLName.Location = new System.Drawing.Point(304, 172);
             this.txtUserLName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUserLName.MaxLength = 40;
             this.txtUserLName.Name = "txtUserLName";
             this.txtUserLName.ShortcutsEnabled = false;
             this.txtUserLName.Size = new System.Drawing.Size(339, 26);
@@ -358,6 +360,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtUserFName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserFName.Location = new System.Drawing.Point(304, 117);
             this.txtUserFName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUserFName.MaxLength = 25;
             this.txtUserFName.Name = "txtUserFName";
             this.txtUserFName.ShortcutsEnabled = false;
             this.txtUserFName.Size = new System.Drawing.Size(339, 26);
@@ -531,6 +534,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtRoomName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoomName.Location = new System.Drawing.Point(300, 59);
             this.txtRoomName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRoomName.MaxLength = 25;
             this.txtRoomName.Name = "txtRoomName";
             this.txtRoomName.ShortcutsEnabled = false;
             this.txtRoomName.Size = new System.Drawing.Size(343, 26);
@@ -692,6 +696,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCabinetName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCabinetName.Location = new System.Drawing.Point(300, 90);
             this.txtCabinetName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCabinetName.MaxLength = 25;
             this.txtCabinetName.Name = "txtCabinetName";
             this.txtCabinetName.ShortcutsEnabled = false;
             this.txtCabinetName.Size = new System.Drawing.Size(343, 26);
@@ -873,6 +878,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtCategoryName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCategoryName.Location = new System.Drawing.Point(300, 59);
             this.txtCategoryName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCategoryName.MaxLength = 25;
             this.txtCategoryName.Name = "txtCategoryName";
             this.txtCategoryName.ShortcutsEnabled = false;
             this.txtCategoryName.Size = new System.Drawing.Size(343, 26);
@@ -984,6 +990,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtVendorHomepage.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVendorHomepage.Location = new System.Drawing.Point(300, 117);
             this.txtVendorHomepage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtVendorHomepage.MaxLength = 150;
             this.txtVendorHomepage.Name = "txtVendorHomepage";
             this.txtVendorHomepage.ShortcutsEnabled = false;
             this.txtVendorHomepage.Size = new System.Drawing.Size(343, 26);
@@ -1056,8 +1063,8 @@ namespace SVSU_Capstone_Project.Views
             this.txtVendorName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVendorName.Location = new System.Drawing.Point(300, 59);
             this.txtVendorName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtVendorName.MaxLength = 40;
             this.txtVendorName.Name = "txtVendorName";
-            this.txtVendorName.ShortcutsEnabled = false;
             this.txtVendorName.Size = new System.Drawing.Size(344, 26);
             this.txtVendorName.TabIndex = 2;
             // 
@@ -1215,6 +1222,7 @@ namespace SVSU_Capstone_Project.Views
             this.txtNLevelName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNLevelName.Location = new System.Drawing.Point(300, 59);
             this.txtNLevelName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNLevelName.MaxLength = 25;
             this.txtNLevelName.Name = "txtNLevelName";
             this.txtNLevelName.ShortcutsEnabled = false;
             this.txtNLevelName.Size = new System.Drawing.Size(343, 26);
