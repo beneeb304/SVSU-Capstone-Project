@@ -151,7 +151,7 @@ namespace SVSU_Capstone_Project.Views
                         User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
 
                         //Check if user is trying to delete themself
-                        if (user == Authentication.ActiveUser)
+                        if (user != Authentication.ActiveUser)
                         {
                             //Check if user has any commodities checked out to them
                             List<CheckedItem> lstCheckedItems = ItemModel.GetMany<CheckedItem>(x => x.objUser.uidTuid == user.uidTuid).ToList();
