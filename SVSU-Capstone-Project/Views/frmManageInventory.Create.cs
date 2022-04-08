@@ -156,7 +156,7 @@ namespace SVSU_Capstone_Project.Views
                 submit(selected);
                 if(btnCreate.Text == "Create")
                 {
-                    MessageBox.Show($"{txtCreateItemName.Text} has been successfully created!" + "\r\n\r\n" + $"Note:{txtCreateItemName.Text} will not show in the Category/Room tree until stock is added to a Room.", $"Successful {btnCreate.Text}!");
+                    MessageBox.Show($"{txtCreateItemName.Text} has been successfully created!" + "\r\n\r\n" + $"Note: {txtCreateItemName.Text} will not show in the Category/Room tree until stock is added to a Room.", $"Successful {btnCreate.Text}!");
                     btnCreateCancel_Click(null, null);
                 }
                 else

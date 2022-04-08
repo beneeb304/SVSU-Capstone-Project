@@ -37,6 +37,9 @@ namespace SVSU_Capstone_Project.Views
             * String userEmail; Checks if the user's attempted login only contains the username, not the full email. Adds the email domain if missing.
             */
 
+            //Get rid of errorprovider
+            erpLoginForm.Clear();
+
             User user;
 
             //Use Authentication ViewModel to check user's ID/password combination
@@ -163,31 +166,6 @@ namespace SVSU_Capstone_Project.Views
 
             //Clear the error provider
             erpLoginForm.Clear();
-        }
-
-
-        private void btnBypass_Click( object sender, EventArgs e )
-        {
-            ///* Function: btnBypass_Click
-            //* -----------------------------------------------------------------------------
-            //* Description: Here for development testing to get around entering credentials.
-            //* To be removed.
-            //* -----------------------------------------------------------------------------
-            //* Parameter Dictionary (in parameter order):  
-            //* EventArgs e; Information passed by the sender object about the method call.
-            //* object sender; The object calling the method. btnBypass in this case.
-            //*/
-
-            //if (Authentication.SecurityBypass())
-            //{
-            //    Close();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Security Bypass Failed: Cannot contact DB", "Security Bypass Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-
-            //MessageBox.Show("Login with your own account for testing purposes. If you need assistance, contact Ben or Mike S");
         }
 
         private void frmLogin_KeyPress( object sender, KeyPressEventArgs e )
