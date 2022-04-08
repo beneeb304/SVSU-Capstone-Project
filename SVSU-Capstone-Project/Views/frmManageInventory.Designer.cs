@@ -1406,9 +1406,11 @@ namespace SVSU_Capstone_Project.Views
             // 
             // cmbDeleteCommodity
             // 
+            this.cmbDeleteCommodity.DropDownHeight = 150;
             this.cmbDeleteCommodity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDeleteCommodity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeleteCommodity.FormattingEnabled = true;
+            this.cmbDeleteCommodity.IntegralHeight = false;
             this.cmbDeleteCommodity.Location = new System.Drawing.Point(122, 82);
             this.cmbDeleteCommodity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbDeleteCommodity.Name = "cmbDeleteCommodity";
