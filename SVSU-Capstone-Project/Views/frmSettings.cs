@@ -1536,16 +1536,16 @@ namespace SVSU_Capstone_Project.Views
                             strError += "Invalid email\r";
 
                         //Only letters and hyphens in firstname
-                    if (!txtUserFName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
-                        strError += "Invalid first name\r";
+                        if (!txtUserFName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
+                            strError += "Invalid first name\r";
 
-                    //Only letters and hyphens in lastname
-                    if (!txtUserLName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
-                        strError += "Invalid last name\r";
+                        //Only letters and hyphens in lastname
+                        if (!txtUserLName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
+                            strError += "Invalid last name\r";
 
                         //Only alphanumeric SVSU ID less than 8 chars
                         if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit) || txtUserSVSUID.Text.Length > 8)
-                            strError += "Invalid SVSU ID\r";
+                        strError += "Invalid SVSU ID\r";
 
                         //Only empty or numeric phone
                         if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
@@ -1561,10 +1561,10 @@ namespace SVSU_Capstone_Project.Views
                             {
                                 //Get user
                                 User user = ItemModel.Get<User>(x => x.strSvsu_id == txtUserSVSUID.Text);
-                                
+
                                 User exists = ItemModel.Get<User>(x => x.strEmail.ToLower() == txtUserEmail.Text.ToLower() &&
                                 x.strSvsu_id != user.strSvsu_id);
-                                                                
+
                                 if (exists != null)
                                 {
                                     MessageBox.Show("This email already Exists", "Alert");
@@ -1601,13 +1601,15 @@ namespace SVSU_Capstone_Project.Views
                                     //Clear fields
                                     ClearUserFields();
                                     EnableDisableUserFields(false);
-                                }  
+                                }
                             }
                             else
                             {
                                 btnUserCancel_Click(sender, e);
                             }
                         }
+                        else
+                            MessageBox.Show("Error modifying user!\r\r" + strError, "Alert");
                     }
                     catch
                     {
