@@ -31,10 +31,15 @@ namespace SVSU_Capstone_Project.Views
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSplash));
-            this.pcbSplash = new System.Windows.Forms.PictureBox();
             this.tmrSplash = new System.Windows.Forms.Timer(this.components);
+            this.pcbSplash = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcbSplash)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tmrSplash
+            // 
+            this.tmrSplash.Interval = 2000;
+            this.tmrSplash.Tick += new System.EventHandler(this.tmrSplash_Tick);
             // 
             // pcbSplash
             // 
@@ -45,11 +50,7 @@ namespace SVSU_Capstone_Project.Views
             this.pcbSplash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbSplash.TabIndex = 0;
             this.pcbSplash.TabStop = false;
-            // 
-            // tmrSplash
-            // 
-            this.tmrSplash.Interval = 2000;
-            this.tmrSplash.Tick += new System.EventHandler(this.tmrSplash_Tick);
+            this.pcbSplash.DoubleClick += new System.EventHandler(this.pcbSplash_DoubleClick);
             // 
             // frmSplash
             // 

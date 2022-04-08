@@ -1,4 +1,4 @@
-namespace SVSU_Capstone_Project.Model
+﻿namespace SVSU_Capstone_Project.Model
 {
     using System;
     using System.Collections.Generic;
@@ -23,3 +23,4 @@ namespace SVSU_Capstone_Project.Model
         }
     }
 }
+//Mike Simon is getting married on June 4th 2022, be there or be square yah nerd!

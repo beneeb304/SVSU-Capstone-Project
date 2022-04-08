@@ -20,6 +20,8 @@ namespace SVSU_Capstone_Project
             }
             base.Dispose(disposing);
         }
+        //I want to claim Lamar as my dad. He is tall, attractive and dark ;) <3
+        //Please be my daddy
 
         #region Windows Form Designer generated code
 
