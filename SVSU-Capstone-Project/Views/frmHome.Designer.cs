@@ -53,6 +53,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lowStockTableAdapter = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.LowStockTableAdapter();
             this.checkedItemsTableAdapter1 = new SVSU_Capstone_Project.InvDbDataSetTableAdapters.CheckedItemsTableAdapter1();
+            this.lblEA = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lowStockBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invDbDataSet)).BeginInit();
@@ -64,7 +65,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(10, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 22);
             this.label1.TabIndex = 4;
@@ -73,7 +74,7 @@
             // btnUserGuide
             // 
             this.btnUserGuide.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserGuide.Location = new System.Drawing.Point(16, 396);
+            this.btnUserGuide.Location = new System.Drawing.Point(12, 396);
             this.btnUserGuide.Name = "btnUserGuide";
             this.btnUserGuide.Size = new System.Drawing.Size(93, 45);
             this.btnUserGuide.TabIndex = 6;
@@ -109,7 +110,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(9, 113);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -185,7 +186,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.Location = new System.Drawing.Point(361, 113);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -256,7 +257,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 84);
+            this.label3.Location = new System.Drawing.Point(4, 85);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(269, 26);
@@ -267,7 +268,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(367, 85);
+            this.label4.Location = new System.Drawing.Point(356, 85);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(338, 26);
@@ -282,17 +283,27 @@
             // 
             this.checkedItemsTableAdapter1.ClearBeforeFill = true;
             // 
+            // lblEA
+            // 
+            this.lblEA.AutoSize = true;
+            this.lblEA.Location = new System.Drawing.Point(542, 232);
+            this.lblEA.Name = "lblEA";
+            this.lblEA.Size = new System.Drawing.Size(210, 13);
+            this.lblEA.TabIndex = 11;
+            this.lblEA.Text = "Sometimes I wonder if all of this is worth it...";
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 453);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnUserGuide);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblEA);
             this.Name = "frmHome";
             this.Text = "frmHome";
             this.Load += new System.EventHandler(this.frmHome_Load);
@@ -326,5 +337,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn detailsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label lblEA;
     }
 }

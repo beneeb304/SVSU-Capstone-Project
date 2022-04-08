@@ -80,7 +80,7 @@ namespace SVSU_Capstone_Project
             // btnSet
             // 
             this.btnSet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSet.Location = new System.Drawing.Point(184, 144);
+            this.btnSet.Location = new System.Drawing.Point(184, 154);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(158, 50);
             this.btnSet.TabIndex = 13;
@@ -91,7 +91,7 @@ namespace SVSU_Capstone_Project
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(16, 144);
+            this.btnCancel.Location = new System.Drawing.Point(16, 154);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(158, 50);
             this.btnCancel.TabIndex = 14;
@@ -103,7 +103,7 @@ namespace SVSU_Capstone_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 206);
+            this.ClientSize = new System.Drawing.Size(362, 216);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSet);
