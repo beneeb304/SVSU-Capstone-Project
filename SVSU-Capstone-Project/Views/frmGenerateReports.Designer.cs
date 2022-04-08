@@ -30,10 +30,10 @@ namespace SVSU_Capstone_Project.Views
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.logsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invDbDataSet1 = new SVSU_Capstone_Project.InvDbDataSet();
             this.simulatorUseBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -128,13 +128,14 @@ namespace SVSU_Capstone_Project.Views
             // 
             // reportViewer1
             // 
-            reportDataSource5.Name = "ActivityLog";
-            reportDataSource5.Value = this.logsBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
+            reportDataSource1.Name = "ActivityLog";
+            reportDataSource1.Value = this.logsBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "SVSU_Capstone_Project.Reports.ActivityLog.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(3, 3);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.ShowZoomControl = false;
             this.reportViewer1.Size = new System.Drawing.Size(1501, 504);
             this.reportViewer1.TabIndex = 0;
             // 
@@ -151,13 +152,14 @@ namespace SVSU_Capstone_Project.Views
             // 
             // reportViewer2
             // 
-            reportDataSource6.Name = "SimulatorUse";
-            reportDataSource6.Value = this.simulatorUseBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource6);
+            reportDataSource2.Name = "SimulatorUse";
+            reportDataSource2.Value = this.simulatorUseBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "SVSU_Capstone_Project.Reports.SimulatorUses.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(3, 3);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;
+            this.reportViewer2.ShowZoomControl = false;
             this.reportViewer2.Size = new System.Drawing.Size(1504, 483);
             this.reportViewer2.TabIndex = 0;
             // 
@@ -175,13 +177,14 @@ namespace SVSU_Capstone_Project.Views
             // reportViewer3
             // 
             this.reportViewer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource7.Name = "LowStock";
-            reportDataSource7.Value = this.LowStockBindingSource;
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource7);
+            reportDataSource3.Name = "LowStock";
+            reportDataSource3.Value = this.LowStockBindingSource;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "SVSU_Capstone_Project.Reports.LowStock.rdlc";
             this.reportViewer3.Location = new System.Drawing.Point(3, 3);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
+            this.reportViewer3.ShowZoomControl = false;
             this.reportViewer3.Size = new System.Drawing.Size(1501, 784);
             this.reportViewer3.TabIndex = 0;
             // 
@@ -198,13 +201,14 @@ namespace SVSU_Capstone_Project.Views
             // 
             // reportViewer4
             // 
-            reportDataSource8.Name = "DynamicItems";
-            reportDataSource8.Value = this.dynamicItemsBindingSource;
-            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource8);
+            reportDataSource4.Name = "DynamicItems";
+            reportDataSource4.Value = this.dynamicItemsBindingSource;
+            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer4.LocalReport.ReportEmbeddedResource = "SVSU_Capstone_Project.Reports.DynamicItems.rdlc";
             this.reportViewer4.Location = new System.Drawing.Point(0, 0);
             this.reportViewer4.Name = "reportViewer4";
             this.reportViewer4.ServerReport.BearerToken = null;
+            this.reportViewer4.ShowZoomControl = false;
             this.reportViewer4.Size = new System.Drawing.Size(1501, 645);
             this.reportViewer4.TabIndex = 0;
             // 
