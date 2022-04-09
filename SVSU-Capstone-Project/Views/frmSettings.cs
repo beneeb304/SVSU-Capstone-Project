@@ -1417,19 +1417,19 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnUserSave_Click( object sender, EventArgs e )
         {
+            //Trim unique identifiers
+            string strEmail = txtUserEmail.Text.Trim();
+            string strID = txtUserSVSUID.Text.Trim();
+
             if (btnUserAdd.Enabled)
             {
-                if (txtUserEmail.Text.Trim().Length > 0 && txtUserFName.Text.Trim().Length > 0 &&
-                    txtUserLName.Text.Trim().Length > 0 && txtUserSVSUID.Text.Trim().Length > 0)
+                if (strEmail.Length > 0 && txtUserFName.Text.Trim().Length > 0 &&
+                    txtUserLName.Text.Trim().Length > 0 && strID.Length > 0)
                 {
                     string strError = "";
-                    var exists = ItemModel.Get<User>(x => x.strEmail.ToLower() == txtUserEmail.Text.ToLower());
-                    if(exists != null)
-                    {
-                        strError += "Email Already exists\r";
-                    }
+
                     //Valid email
-                    if (!Regex.IsMatch(txtUserEmail.Text,
+                    if (!Regex.IsMatch(strEmail,
                         @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
                         RegexOptions.IgnoreCase))
                         strError += "Invalid email\r";
@@ -1443,7 +1443,7 @@ namespace SVSU_Capstone_Project.Views
                         strError += "Invalid last name\r";
 
                     //Only alphanumeric SVSU ID less than 8 chars
-                    if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit) || txtUserSVSUID.Text.Length > 8)
+                    if (!strID.All(char.IsLetterOrDigit) || strID.Length > 8)
                         strError += "Invalid SVSU ID\r";
 
                     //Only empty or numeric phone
@@ -1454,36 +1454,40 @@ namespace SVSU_Capstone_Project.Views
                     {
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                            txtUserEmail.Text + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
+                            strEmail + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //Set user properties                        
-                            User user = new User
-                            {
-                                strSvsu_id = txtUserSVSUID.Text,
-                                strFirst_name = txtUserFName.Text,
-                                strLast_name = txtUserLName.Text,
-                                strEmail = txtUserEmail.Text,
-                                strPhone = txtUserPhone.Text,
-                                blnIsAdmin = chkUserAdmin.Checked,
-                                blnPwdReset = true
-                            };
+                            //Check for duplicate user
+                            var emailExists = ItemModel.Get<User>(x => x.strEmail.ToLower() == strEmail.ToLower());
+                            var idExists = ItemModel.Get<User>(x => x.strSvsu_id.ToLower() == strID.ToLower());
 
-                            string strHash = RandomPassword();
-                            user.strHash = Authentication.GenerateHash(strHash);
-
-                            var Emailexists = ItemModel.Get<User>(x => x.strEmail == user.strEmail);
-                            var idExists = ItemModel.Get<User>(x => x.strSvsu_id == user.strSvsu_id);
-                            if (Emailexists != null)
+                            if (emailExists != null)
                             {
                                 MessageBox.Show("A user already exists with the entered email.", "Alert");
+                                btnUserCancel_Click(sender, e);
                             }
                             else if (idExists != null)
                             {
                                 MessageBox.Show("A user alread exists with the entered SVSU ID.", "Alert");
+                                btnUserCancel_Click(sender, e);
                             }
                             else
                             {
+                                //Set user properties                        
+                                User user = new User
+                                {
+                                    strSvsu_id = strID,
+                                    strEmail = strEmail,
+                                    strFirst_name = txtUserFName.Text.Trim(),
+                                    strLast_name = txtUserLName.Text.Trim(),
+                                    strPhone = txtUserPhone.Text.Trim(),
+                                    blnIsAdmin = chkUserAdmin.Checked,
+                                    blnPwdReset = true
+                                };
+
+                                string strHash = RandomPassword();
+                                user.strHash = Authentication.GenerateHash(strHash);
+
                                 //Add user
                                 ItemModel.Add<User>(user);
 
@@ -1491,7 +1495,7 @@ namespace SVSU_Capstone_Project.Views
                                 if (chkUserAdmin.Checked)
                                 {
                                     MessageBox.Show("Successful Add\r\n\r\n"
-                                    + txtUserEmail.Text + " will be prompted to set their password on their fist login\r\n" +
+                                    + strEmail + " will be prompted to set their password on their fist login\r\n" +
                                     "Their temporary password is " + strHash, "Alert");
                                 }
                                 else
@@ -1525,15 +1529,15 @@ namespace SVSU_Capstone_Project.Views
             else if (btnUserModify.Enabled)
             {
                 //If a user is selected
-                if (lstUser.SelectedIndex >= 0 && txtUserEmail.Text.Trim() != "" && txtUserFName.Text.Trim() != "" &&
-                    txtUserLName.Text.Trim() != "" && txtUserSVSUID.Text.Trim() != "")
+                if (lstUser.SelectedIndex >= 0 && strEmail != "" && txtUserFName.Text.Trim() != "" &&
+                    txtUserLName.Text.Trim() != "" && strID != "")
                 {
                     try
                     {
                         string strError = "";
 
                         //Valid email
-                        if (!Regex.IsMatch(txtUserEmail.Text,
+                        if (!Regex.IsMatch(strEmail,
                             @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
                             RegexOptions.IgnoreCase))
                             strError += "Invalid email\r";
@@ -1547,7 +1551,7 @@ namespace SVSU_Capstone_Project.Views
                             strError += "Invalid last name\r";
 
                         //Only alphanumeric SVSU ID less than 8 chars
-                        if (!txtUserSVSUID.Text.All(char.IsLetterOrDigit) || txtUserSVSUID.Text.Length > 8)
+                        if (!strID.All(char.IsLetterOrDigit) || strID.Length > 8)
                         strError += "Invalid SVSU ID\r";
 
                         //Only empty or numeric phone
@@ -1563,23 +1567,31 @@ namespace SVSU_Capstone_Project.Views
                             if (result == DialogResult.Yes)
                             {
                                 //Get user
-                                User user = ItemModel.Get<User>(x => x.strSvsu_id == txtUserSVSUID.Text);
+                                User user = ItemModel.Get<User>(x => x.strSvsu_id.ToLower() == strID.ToLower());
 
-                                User exists = ItemModel.Get<User>(x => x.strEmail.ToLower() == txtUserEmail.Text.ToLower() &&
-                                x.strSvsu_id != user.strSvsu_id);
+                                //Check for duplicate user
+                                var emailExists = ItemModel.Get<User>(x => x.strEmail.ToLower() == strEmail.ToLower());
+                                var idExists = ItemModel.Get<User>(x => x.strSvsu_id.ToLower() == strID.ToLower());
 
-                                if (exists != null)
+                                //If email exists and it's not the selected user's email
+                                if(emailExists != null && emailExists.strEmail.ToLower() != user.strEmail.ToLower())
                                 {
-                                    MessageBox.Show("This email already Exists", "Alert");
+                                    MessageBox.Show("This email already exists", "Alert");
+                                    btnUserCancel_Click(sender, e);
+                                }
+                                else if(idExists != null && idExists.strSvsu_id.ToLower() != user.strSvsu_id.ToLower())
+                                {
+                                    MessageBox.Show("This SVSU ID already exists", "Alert");
+                                    btnUserCancel_Click(sender, e);
                                 }
                                 else
                                 {
                                     //Modify user
-                                    user.strSvsu_id = txtUserSVSUID.Text;
-                                    user.strFirst_name = txtUserFName.Text;
-                                    user.strLast_name = txtUserLName.Text;
-                                    user.strEmail = txtUserEmail.Text;
-                                    user.strPhone = txtUserPhone.Text;
+                                    user.strSvsu_id = strID;
+                                    user.strEmail = strEmail;
+                                    user.strFirst_name = txtUserFName.Text.Trim();
+                                    user.strLast_name = txtUserLName.Text.Trim();
+                                    user.strPhone = txtUserPhone.Text.Trim();
                                     user.blnIsAdmin = chkUserAdmin.Checked;
 
                                     //Save user
@@ -1660,24 +1672,28 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnRoomSave_Click( object sender, EventArgs e )
         {
+            //Trim unique identifier
+            string strRoomName = txtRoomName.Text.Trim();
+            
             if (btnRoomAdd.Enabled)
             {
-                if (txtRoomName.Text.Trim().Length > 0)
+                if (strRoomName.Length > 0)
                 {
                     try
                     {
                         //Only alphanumeric and spaces in room name
-                        if (!txtRoomName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                        if (!strRoomName.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
                             MessageBox.Show("Only alphanumeric and spaces in room name", "Alert");
                         else
                         {
                             //Ask user to confirm action
                             DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                                txtRoomName.Text + " as a new room?", "Confirm", MessageBoxButtons.YesNo);
+                                strRoomName + " as a new room?", "Confirm", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
-                                //Check for duplicates
-                                if (lstRoom.Items.Contains(txtRoomName.Text))
+                                //Cannot add duplicate room
+                                Room exists = ItemModel.Get<Room>(x => x.strName.ToLower() == strRoomName.ToLower());
+                                if (exists != null)
                                 {
                                     MessageBox.Show("Cannot add duplicate room", "Alert");
                                     btnRoomCancel_Click(sender, e);
@@ -1687,8 +1703,8 @@ namespace SVSU_Capstone_Project.Views
                                     //Set room properties                        
                                     Room room = new Room
                                     {
-                                        strDescription = txtRoomDescription.Text,
-                                        strName = txtRoomName.Text
+                                        strName = strRoomName,
+                                        strDescription = txtRoomDescription.Text.Trim()
                                     };
 
                                     //Add room
@@ -1741,12 +1757,12 @@ namespace SVSU_Capstone_Project.Views
             else if (btnRoomModify.Enabled)
             {
                 //If a room is selected
-                if (lstRoom.SelectedIndex >= 0 && txtRoomName.Text.Trim() != "")
+                if (lstRoom.SelectedIndex >= 0 && strRoomName.Length > 0)
                 {
                     try
                     {
                         //Only alphanumeric and spaces in room name
-                        if (!txtRoomName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                        if (!strRoomName.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
                             MessageBox.Show("Only alphanumeric and spaces in room name", "Alert");
                         else
                         {
@@ -1755,8 +1771,11 @@ namespace SVSU_Capstone_Project.Views
                             lstRoom.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
-                                //Check for duplicates
-                                if (lstRoom.Items.Contains(txtRoomName.Text) && !lstRoom.SelectedItem.ToString().Equals(txtRoomName.Text))
+                                //Cannot add duplicate room
+                                Room exists = ItemModel.Get<Room>(x => x.strName.ToLower() == strRoomName.ToLower());
+
+                                //If room exists and it's not the selected room
+                                if (exists != null && exists.strName.ToLower() != lstRoom.SelectedItem.ToString().ToLower())
                                 {
                                     MessageBox.Show("Cannot modify duplicate room", "Alert");
                                     btnRoomCancel_Click(sender, e);
@@ -1767,8 +1786,8 @@ namespace SVSU_Capstone_Project.Views
                                     Room room = ItemModel.Get<Room>(x => x.strName == lstRoom.SelectedItem.ToString());
 
                                     //Modify room
-                                    room.strName = txtRoomName.Text;
-                                    room.strDescription = txtRoomDescription.Text;
+                                    room.strName = strRoomName;
+                                    room.strDescription = txtRoomDescription.Text.Trim();
 
                                     //Save room
                                     ItemModel.Update<Room>(room);
@@ -1851,24 +1870,30 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnCabinetSave_Click( object sender, EventArgs e )
         {
+            //Trim unique identifier
+            string strCabinetName = txtCabinetName.Text.Trim();
+
             if (btnCabinetAdd.Enabled)
             {
-                if (txtCabinetName.Text.Trim() != "" && cmbRoom.SelectedIndex >= 0)
+                if (strCabinetName != "" && cmbRoom.SelectedIndex >= 0)
                 {
                     try
                     {
                         //Only alphanumeric and spaces in cabinet name
-                        if (!txtCabinetName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                        if (!strCabinetName.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
                             MessageBox.Show("Only alphanumeric and spaces in cabinet name", "Alert");
                         else
                         {
                             //Ask user to confirm action
                             DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                                txtCabinetName.Text + " as a new cabinet for " + cmbRoom.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
+                                strCabinetName + " as a new cabinet for " + cmbRoom.SelectedItem.ToString() + "?", "Confirm", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
                                 //Check for duplicate cabinets in the room
-                                if (lstCabinet.Items.Contains(txtCabinetName.Text))
+                                Cabinet exists = ItemModel.Get<Cabinet>(x => x.strName.ToLower() == strCabinetName.ToLower() &&
+                                    x.objRoom.strName == cmbRoom.Text);
+                                
+                                if (exists != null)
                                 {
                                     MessageBox.Show("Cannot add duplicate cabinet!", "Alert");
                                     btnCabinetCancel_Click(sender, e);
@@ -1878,8 +1903,8 @@ namespace SVSU_Capstone_Project.Views
                                     //Set cabinet properties                        
                                     Cabinet cabinet = new Cabinet()
                                     {
-                                        strDescription = txtCabinetDescription.Text,
-                                        strName = txtCabinetName.Text,
+                                        strName = strCabinetName,
+                                        strDescription = txtCabinetDescription.Text.Trim(),
                                         objRoom = ItemModel.Get<Room>(x => x.strName == cmbRoom.SelectedItem.ToString())
                                     };
 
@@ -1948,12 +1973,12 @@ namespace SVSU_Capstone_Project.Views
             else if (btnCabinetModify.Enabled)
             {                
                 //If a cabinet is selected
-                if (lstCabinet.SelectedIndex >= 0 && cmbRoom.SelectedIndex >= 0 && txtCabinetName.Text.Trim() != "")
+                if (lstCabinet.SelectedIndex >= 0 && cmbRoom.SelectedIndex >= 0 && strCabinetName.Length > 0)
                 {
                     try
                     {
                         //Only alphanumeric and spaces in cabinet name
-                        if (!txtCabinetName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                        if (!strCabinetName.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
                             MessageBox.Show("Only alphanumeric and spaces in cabinet name", "Alert");
                         else
                         {
@@ -1963,9 +1988,13 @@ namespace SVSU_Capstone_Project.Views
                             if (result == DialogResult.Yes)
                             {
                                 //Check for duplicate cabinets in the room
-                                if (lstCabinet.Items.Contains(txtCabinetName.Text) && !lstCabinet.SelectedItem.ToString().Equals(txtCabinetName.Text))
+                                Cabinet exists = ItemModel.Get<Cabinet>(x => x.strName.ToLower() == strCabinetName.ToLower() &&
+                                    x.objRoom.strName == cmbRoom.Text);
+
+                                //If cabinet exists and it's not the selected cabinet
+                                if (exists != null && exists.strName.ToLower() != lstCabinet.SelectedItem.ToString().ToLower())
                                 {
-                                    MessageBox.Show("Cannot modify duplicate cabinet!", "Alert");
+                                    MessageBox.Show("Cannot modify duplicate cabinet", "Alert");
                                     btnCabinetCancel_Click(sender, e);
                                 }
                                 else
@@ -1975,8 +2004,8 @@ namespace SVSU_Capstone_Project.Views
                                         x.objRoom.strName == cmbRoom.SelectedItem.ToString());
 
                                     //Modify cabinet
-                                    cabinet.strName = txtCabinetName.Text;
-                                    cabinet.strDescription = txtCabinetDescription.Text;
+                                    cabinet.strName = strCabinetName;
+                                    cabinet.strDescription = txtCabinetDescription.Text.Trim();
 
                                     //Save cabinet
                                     ItemModel.Update<Cabinet>(cabinet);
@@ -2066,38 +2095,41 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnCategorySave_Click( object sender, EventArgs e )
         {
+            string strCategoryName = txtCategoryName.Text.Trim();
+            
             if (btnCategoryAdd.Enabled)
             {
-                if (txtCategoryName.Text.Trim().Length > 0)
+                if (strCategoryName.Length > 0)
                 {
                     try
                     {
                         //Only alphanumeric and spaces in category name
-                        if (!txtCategoryName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                        if (!strCategoryName.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
                             MessageBox.Show("Only alphanumeric and spaces in category name", "Alert");
                         else
                         {
                             //Ask user to confirm action
                             DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                                txtCategoryName.Text + " as a new category?", "Confirm", MessageBoxButtons.YesNo);
+                                strCategoryName + " as a new category?", "Confirm", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
                                 //Check for duplicates
-                                if (lstCategory.Items.Contains(txtCategoryName.Text))
+                                Category exists = ItemModel.Get<Category>(x => x.strName.ToLower() == strCategoryName.ToLower());
+                                if (exists != null)
                                 {
                                     MessageBox.Show("Cannot add duplicate category", "Alert");
                                     btnCategoryCancel_Click(sender, e);
                                 }
                                 else
                                 {
-                                    //Set room properties                        
+                                    //Set category properties                        
                                     Category category = new Category()
                                     {
-                                        strDescription = txtCategoryDescription.Text,
-                                        strName = txtCategoryName.Text
+                                        strName = strCategoryName,
+                                        strDescription = txtCategoryDescription.Text.Trim()
                                     };
 
-                                    //Add cabinet
+                                    //Add category
                                     ItemModel.Add<Category>(category);
 
                                     //Alert user
@@ -2147,12 +2179,12 @@ namespace SVSU_Capstone_Project.Views
             else if (btnCategoryModify.Enabled)
             {
                 //If a category is selected
-                if (lstCategory.SelectedIndex >= 0 && txtCategoryName.Text.Trim() != "")
+                if (lstCategory.SelectedIndex >= 0 && strCategoryName.Length > 0)
                 {
                     try
                     {
                         //Only alphanumeric and spaces in category name
-                        if (!txtCategoryName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                        if (!strCategoryName.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
                             MessageBox.Show("Only alphanumeric and spaces in category name", "Alert");
                         else
                         {
@@ -2161,7 +2193,11 @@ namespace SVSU_Capstone_Project.Views
                             lstCategory.SelectedItem.ToString() + " to current field values?", "Confirm", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
-                                if (lstCategory.Items.Contains(txtCategoryName.Text) && !lstCategory.SelectedItem.ToString().Equals(txtCategoryName.Text))
+                                //Cannot add duplicate category
+                                Category exists = ItemModel.Get<Category>(x => x.strName.ToLower() == strCategoryName.ToLower());
+
+                                //If category exists and it's not the selected category
+                                if (exists != null && exists.strName.ToLower() != lstCategory.SelectedItem.ToString().ToLower())
                                 {
                                     MessageBox.Show("Cannot modify duplicate category", "Alert");
                                     btnCategoryCancel_Click(sender, e);
@@ -2172,8 +2208,8 @@ namespace SVSU_Capstone_Project.Views
                                     Category category = ItemModel.Get<Category>(x => x.strName == lstCategory.SelectedItem.ToString());
 
                                     //Modify category
-                                    category.strName = txtCategoryName.Text;
-                                    category.strDescription = txtCategoryDescription.Text;
+                                    category.strName = strCategoryName;
+                                    category.strDescription = txtCategoryDescription.Text.Trim();
 
                                     //Save category
                                     ItemModel.Update<Category>(category);
@@ -2456,24 +2492,28 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnNLevelSave_Click( object sender, EventArgs e )
         {
+            //Trim unique identifier
+            string strNLevelName = txtNLevelName.Text.Trim();
+            
             if (btnNLevelAdd.Enabled)
             {
-                if (txtNLevelName.Text.Trim().Length > 0)
+                if (strNLevelName.Length > 0)
                 {
                     try
                     {
                         //Only alphanumeric and hyphen in nlevel name
-                        if (!txtNLevelName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals('-')))
+                        if (!strNLevelName.All(c => char.IsLetterOrDigit(c) || c.Equals('-')))
                             MessageBox.Show("Only alphanumeric and hyphen in N-Level name", "Alert");
                         else
                         {
                             //Ask user to confirm action
                             DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                                txtNLevelName.Text + " as a new N-Level?", "Confirm", MessageBoxButtons.YesNo);
+                                strNLevelName + " as a new N-Level?", "Confirm", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
                                 //Cannot add duplicate n-level
-                                if (lstNLevel.Items.Contains(txtNLevelName.Text))
+                                NLevel exists = ItemModel.Get<NLevel>(x => x.strName.ToLower() == strNLevelName.ToLower());
+                                if(exists != null)
                                 {
                                     MessageBox.Show("Cannot add duplicate N-Level", "Alert");
                                     btnNLevelCancel_Click(sender, e);
@@ -2483,8 +2523,8 @@ namespace SVSU_Capstone_Project.Views
                                     //Set n-level properties                        
                                     NLevel nLevel = new NLevel()
                                     {
-                                        strDescription = txtNLevelDescription.Text,
-                                        strName = txtNLevelName.Text
+                                        strName = strNLevelName,
+                                        strDescription = txtNLevelDescription.Text.Trim()
                                     };
 
                                     //Add n-level
@@ -2537,12 +2577,12 @@ namespace SVSU_Capstone_Project.Views
             else if (btnNLevelModify.Enabled)
             {
                 //If a n-level is selected
-                if (lstNLevel.SelectedIndex >= 0 && txtNLevelName.Text.Trim() != "")
+                if (lstNLevel.SelectedIndex >= 0 && strNLevelName.Length > 0)
                 {
                     try
                     {
                         //Only alphanumeric and hyphen in nlevel name
-                        if (!txtNLevelName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals('-')))
+                        if (!strNLevelName.All(c => char.IsLetterOrDigit(c) || c.Equals('-')))
                             MessageBox.Show("Only alphanumeric and hyphens in N-Level name", "Alert");
                         else
                         {
@@ -2552,7 +2592,10 @@ namespace SVSU_Capstone_Project.Views
                             if (result == DialogResult.Yes)
                             {
                                 //Cannot add duplicate n-level
-                                if (lstNLevel.Items.Contains(txtNLevelName.Text) && !lstNLevel.SelectedItem.ToString().Equals(txtNLevelName.Text))
+                                NLevel exists = ItemModel.Get<NLevel>(x => x.strName.ToLower() == strNLevelName.ToLower());
+
+                                //If n-level exists and it's not the selected n-level
+                                if (exists != null && exists.strName.ToLower() != lstNLevel.SelectedItem.ToString().ToLower())
                                 {
                                     MessageBox.Show("Cannot modify duplicate N-Level", "Alert");
                                     btnNLevelCancel_Click(sender, e);
@@ -2563,8 +2606,8 @@ namespace SVSU_Capstone_Project.Views
                                     NLevel nLevel = ItemModel.Get<NLevel>(x => x.strName == lstNLevel.SelectedItem.ToString());
 
                                     //Modify n-level
-                                    nLevel.strName = txtNLevelName.Text;
-                                    nLevel.strDescription = txtNLevelDescription.Text;
+                                    nLevel.strName = strNLevelName;
+                                    nLevel.strDescription = txtNLevelDescription.Text.Trim();
 
                                     //Save n-level
                                     ItemModel.Update<NLevel>(nLevel);
