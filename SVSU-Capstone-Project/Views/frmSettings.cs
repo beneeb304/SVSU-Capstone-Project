@@ -2273,8 +2273,9 @@ namespace SVSU_Capstone_Project.Views
                             if (result == DialogResult.Yes)
                             {
                                 //Cannot add duplicate vendor
-                                if (lstVendor.Items.Contains(txtVendorName.Text))
+                                if (lstVendor.Items.Contains(txtVendorName.Text.Trim(' ')))
                                 {
+
                                     MessageBox.Show("Cannot add duplicate vendor", "Alert");
                                     btnVendorCancel_Click(sender, e);
                                 }
