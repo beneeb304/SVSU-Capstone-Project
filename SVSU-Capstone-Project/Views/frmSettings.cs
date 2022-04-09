@@ -525,8 +525,9 @@ namespace SVSU_Capstone_Project.Views
                     MessageBox.Show("Delete failed!", "Alert");
                 }
 
+                //Removed this in regards to Issue #206, leaving here just in case we need to revert.
                 //Clear fields
-                ClearRoomFields();
+                //ClearRoomFields();
             }
             else
             {
@@ -639,8 +640,9 @@ namespace SVSU_Capstone_Project.Views
                     MessageBox.Show("Delete failed!", "Alert");
                 }
 
+
                 //Clear fields
-                ClearCategoryFields();
+                //ClearCategoryFields();
             }
             else
             {
@@ -750,7 +752,7 @@ namespace SVSU_Capstone_Project.Views
                 }
 
                 //Clear fields
-                ClearVendorFields();
+                //ClearVendorFields();
             }
             else
             {
@@ -937,7 +939,7 @@ namespace SVSU_Capstone_Project.Views
                 }
 
                 //Clear fields
-                ClearNLevelFields();
+                //ClearNLevelFields();
             }
             else
             {
@@ -1107,8 +1109,9 @@ namespace SVSU_Capstone_Project.Views
                     MessageBox.Show("Delete failed!", "Alert");
                 }
 
+                //Commenting out in regards to issue #207, leaving just in case we need to revert
                 //Clear fields
-                ClearCabinetFields();
+                //ClearCabinetFields();
             }
             else
             {
