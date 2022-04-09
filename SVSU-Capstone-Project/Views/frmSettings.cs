@@ -1657,6 +1657,9 @@ namespace SVSU_Capstone_Project.Views
             btnUserPassword.Enabled = true;
             btnUserDelete.Enabled = true;
 
+            //Unselect listbox
+            lstUser.SelectedIndex = -1;
+
             //Clear fields
             ClearUserFields();
 
@@ -1855,9 +1858,12 @@ namespace SVSU_Capstone_Project.Views
             btnRoomDelete.Enabled = true;
             btnRoomModify.Enabled = true;
 
+            //Unselect listbox
+            lstRoom.SelectedIndex = -1;
+
             //Clear fields
             ClearRoomFields();
-            lstRoom.SelectedIndex = -1;
+
             //Disable fields
             EnableDisableRoomFields(false);
         }
@@ -2080,6 +2086,9 @@ namespace SVSU_Capstone_Project.Views
             btnCabinetModify.Enabled = true;
             cmbRoom.Enabled = true;
 
+            //Unselect listbox
+            lstCabinet.SelectedIndex = -1;
+
             //Clear fields
             ClearCabinetFields();
 
@@ -2276,6 +2285,9 @@ namespace SVSU_Capstone_Project.Views
             btnCategoryAdd.Enabled = true;
             btnCategoryDelete.Enabled = true;
             btnCategoryModify.Enabled = true;
+
+            //Unselect listbox
+            lstCategory.SelectedIndex = -1;
 
             //Clear fields
             ClearCategoryFields();
@@ -2477,6 +2489,9 @@ namespace SVSU_Capstone_Project.Views
             btnVendorDelete.Enabled = true;
             btnVendorModify.Enabled = true;
 
+            //Unselect listbox
+            lstVendor.SelectedIndex = -1;
+
             //Clear fields
             ClearVendorFields();
 
@@ -2668,6 +2683,9 @@ namespace SVSU_Capstone_Project.Views
             btnNLevelAdd.Enabled = true;
             btnNLevelDelete.Enabled = true;
             btnNLevelModify.Enabled = true;
+
+            //Unselect listbox
+            lstNLevel.SelectedIndex = -1;
 
             //Clear fields
             ClearNLevelFields();
