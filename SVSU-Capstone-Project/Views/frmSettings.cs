@@ -2256,26 +2256,29 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnVendorSave_Click( object sender, EventArgs e )
         {
+            //Trim unique identifier
+            string strVendorName = txtVendorName.Text.Trim();
+            
             if (btnVendorAdd.Enabled)
             {
-                if (txtVendorName.Text.Trim().Length > 0)
+                if (strVendorName.Length > 0)
                 {
                     try
                     {
                         //Only alphanumeric and spaces in vendor name
-                        if (!txtVendorName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                        if (!strVendorName.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
                             MessageBox.Show("Only alphanumeric and spaces in vendor name", "Alert");
                         else
                         {
                             //Ask user to confirm action
                             DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                                txtVendorName.Text + " as a new vendor?", "Confirm", MessageBoxButtons.YesNo);
+                                strVendorName + " as a new vendor?", "Confirm", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
                                 //Cannot add duplicate vendor
-                                if (lstVendor.Items.Contains(txtVendorName.Text.Trim(' ')))
+                                Vendor exists = ItemModel.Get<Vendor>(x => x.strName.ToLower() == strVendorName.ToLower());
+                                if(exists != null)
                                 {
-
                                     MessageBox.Show("Cannot add duplicate vendor", "Alert");
                                     btnVendorCancel_Click(sender, e);
                                 }
@@ -2284,9 +2287,9 @@ namespace SVSU_Capstone_Project.Views
                                     //Set room properties
                                     Vendor vendor = new Vendor()
                                     {
-                                        strDescription = txtVendorDescription.Text,
-                                        strName = txtVendorName.Text,
-                                        strHomepage = txtVendorHomepage.Text
+                                        strName = strVendorName,
+                                        strDescription = txtVendorDescription.Text.Trim(),
+                                        strHomepage = txtVendorHomepage.Text.Trim()
                                     };
 
                                     //Add vendor
@@ -2339,12 +2342,12 @@ namespace SVSU_Capstone_Project.Views
             else if (btnVendorModify.Enabled)
             {
                 //If a vendor is selected
-                if (lstVendor.SelectedIndex >= 0 && txtVendorName.Text.Trim() != "")
+                if (lstVendor.SelectedIndex >= 0 && strVendorName.Length > 0)
                 {
                     try
                     {
                         //Only alphanumeric and spaces in vendor name
-                        if (!txtVendorName.Text.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
+                        if (!strVendorName.All(c => char.IsLetterOrDigit(c) || c.Equals(' ')))
                             MessageBox.Show("Only alphanumeric and spaces in vendor name", "Alert");
                         else
                         {
@@ -2354,7 +2357,10 @@ namespace SVSU_Capstone_Project.Views
                             if (result == DialogResult.Yes)
                             {
                                 //Cannot add duplicate vendor
-                                if (lstVendor.Items.Contains(txtVendorName.Text) && !lstVendor.SelectedItem.ToString().Equals(txtVendorName.Text))
+                                Vendor exists = ItemModel.Get<Vendor>(x => x.strName.ToLower() == strVendorName.ToLower());
+
+                                //If vendor exists and it's not the selected vendor
+                                if (exists != null && exists.strName.ToLower() != lstVendor.SelectedItem.ToString().ToLower())
                                 {
                                     MessageBox.Show("Cannot modify duplicate vendor", "Alert");
                                     btnVendorCancel_Click(sender, e);
@@ -2365,9 +2371,9 @@ namespace SVSU_Capstone_Project.Views
                                     Vendor vendor = ItemModel.Get<Vendor>(x => x.strName == lstVendor.SelectedItem.ToString());
 
                                     //Modify category
-                                    vendor.strName = txtVendorName.Text;
-                                    vendor.strDescription = txtVendorDescription.Text;
-                                    vendor.strHomepage = txtVendorHomepage.Text;
+                                    vendor.strName = strVendorName;
+                                    vendor.strDescription = txtVendorDescription.Text.Trim();
+                                    vendor.strHomepage = txtVendorHomepage.Text.Trim();
 
                                     //Save vendor
                                     ItemModel.Update<Vendor>(vendor);
