@@ -164,7 +164,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpUsers.Controls.Add(this.label3);
             this.tbpUsers.Location = new System.Drawing.Point(4, 25);
             this.tbpUsers.Name = "tbpUsers";
-            this.tbpUsers.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tbpUsers.Padding = new System.Windows.Forms.Padding(3);
             this.tbpUsers.Size = new System.Drawing.Size(921, 411);
             this.tbpUsers.TabIndex = 0;
             this.tbpUsers.Text = "Users";
@@ -174,9 +174,9 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserCancel.Location = new System.Drawing.Point(705, 75);
+            this.btnUserCancel.Location = new System.Drawing.Point(779, 75);
             this.btnUserCancel.Name = "btnUserCancel";
-            this.btnUserCancel.Size = new System.Drawing.Size(210, 40);
+            this.btnUserCancel.Size = new System.Drawing.Size(136, 40);
             this.btnUserCancel.TabIndex = 14;
             this.btnUserCancel.Text = "Cancel";
             this.btnUserCancel.UseVisualStyleBackColor = true;
@@ -187,9 +187,9 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserSave.Location = new System.Drawing.Point(705, 29);
+            this.btnUserSave.Location = new System.Drawing.Point(779, 29);
             this.btnUserSave.Name = "btnUserSave";
-            this.btnUserSave.Size = new System.Drawing.Size(210, 40);
+            this.btnUserSave.Size = new System.Drawing.Size(136, 40);
             this.btnUserSave.TabIndex = 13;
             this.btnUserSave.Text = "Save User";
             this.btnUserSave.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserUpload.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserUpload.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserUpload.Location = new System.Drawing.Point(489, 29);
+            this.btnUserUpload.Location = new System.Drawing.Point(563, 29);
             this.btnUserUpload.Name = "btnUserUpload";
             this.btnUserUpload.Size = new System.Drawing.Size(210, 40);
             this.btnUserUpload.TabIndex = 8;
@@ -212,7 +212,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserPassword.Location = new System.Drawing.Point(489, 167);
+            this.btnUserPassword.Location = new System.Drawing.Point(563, 167);
             this.btnUserPassword.Name = "btnUserPassword";
             this.btnUserPassword.Size = new System.Drawing.Size(210, 40);
             this.btnUserPassword.TabIndex = 11;
@@ -224,9 +224,9 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(225, 211);
+            this.label9.Location = new System.Drawing.Point(330, 208);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 16);
+            this.label9.Size = new System.Drawing.Size(53, 16);
             this.label9.TabIndex = 122;
             this.label9.Text = "Phone:";
             // 
@@ -234,20 +234,20 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtUserPhone.Enabled = false;
             this.txtUserPhone.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserPhone.Location = new System.Drawing.Point(228, 230);
+            this.txtUserPhone.Location = new System.Drawing.Point(333, 227);
             this.txtUserPhone.MaxLength = 10;
             this.txtUserPhone.Name = "txtUserPhone";
             this.txtUserPhone.ShortcutsEnabled = false;
-            this.txtUserPhone.Size = new System.Drawing.Size(255, 22);
+            this.txtUserPhone.Size = new System.Drawing.Size(224, 22);
             this.txtUserPhone.TabIndex = 6;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(225, 167);
+            this.label10.Location = new System.Drawing.Point(330, 164);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 16);
+            this.label10.Size = new System.Drawing.Size(48, 16);
             this.label10.TabIndex = 120;
             this.label10.Text = "Email:";
             // 
@@ -255,20 +255,20 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtUserEmail.Enabled = false;
             this.txtUserEmail.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserEmail.Location = new System.Drawing.Point(228, 186);
+            this.txtUserEmail.Location = new System.Drawing.Point(333, 183);
             this.txtUserEmail.MaxLength = 25;
             this.txtUserEmail.Name = "txtUserEmail";
             this.txtUserEmail.ShortcutsEnabled = false;
-            this.txtUserEmail.Size = new System.Drawing.Size(255, 22);
+            this.txtUserEmail.Size = new System.Drawing.Size(224, 22);
             this.txtUserEmail.TabIndex = 5;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(225, 32);
+            this.label8.Location = new System.Drawing.Point(330, 29);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 16);
+            this.label8.Size = new System.Drawing.Size(65, 16);
             this.label8.TabIndex = 118;
             this.label8.Text = "SVSU ID:";
             // 
@@ -276,19 +276,19 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtUserSVSUID.Enabled = false;
             this.txtUserSVSUID.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserSVSUID.Location = new System.Drawing.Point(228, 51);
+            this.txtUserSVSUID.Location = new System.Drawing.Point(333, 48);
             this.txtUserSVSUID.Name = "txtUserSVSUID";
             this.txtUserSVSUID.ShortcutsEnabled = false;
-            this.txtUserSVSUID.Size = new System.Drawing.Size(255, 22);
+            this.txtUserSVSUID.Size = new System.Drawing.Size(224, 22);
             this.txtUserSVSUID.TabIndex = 2;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(225, 121);
+            this.label7.Location = new System.Drawing.Point(330, 118);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 16);
+            this.label7.Size = new System.Drawing.Size(79, 16);
             this.label7.TabIndex = 116;
             this.label7.Text = "Last Name:";
             // 
@@ -296,20 +296,20 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtUserLName.Enabled = false;
             this.txtUserLName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserLName.Location = new System.Drawing.Point(228, 140);
+            this.txtUserLName.Location = new System.Drawing.Point(333, 137);
             this.txtUserLName.MaxLength = 40;
             this.txtUserLName.Name = "txtUserLName";
             this.txtUserLName.ShortcutsEnabled = false;
-            this.txtUserLName.Size = new System.Drawing.Size(255, 22);
+            this.txtUserLName.Size = new System.Drawing.Size(224, 22);
             this.txtUserLName.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(225, 76);
+            this.label6.Location = new System.Drawing.Point(330, 73);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 16);
+            this.label6.Size = new System.Drawing.Size(80, 16);
             this.label6.TabIndex = 114;
             this.label6.Text = "First Name:";
             // 
@@ -318,9 +318,9 @@ namespace SVSU_Capstone_Project.Views
             this.chkUserAdmin.AutoSize = true;
             this.chkUserAdmin.Enabled = false;
             this.chkUserAdmin.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkUserAdmin.Location = new System.Drawing.Point(228, 258);
+            this.chkUserAdmin.Location = new System.Drawing.Point(333, 255);
             this.chkUserAdmin.Name = "chkUserAdmin";
-            this.chkUserAdmin.Size = new System.Drawing.Size(75, 20);
+            this.chkUserAdmin.Size = new System.Drawing.Size(76, 20);
             this.chkUserAdmin.TabIndex = 7;
             this.chkUserAdmin.Text = "Admin?";
             this.chkUserAdmin.UseVisualStyleBackColor = true;
@@ -330,7 +330,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserModify.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserModify.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserModify.Location = new System.Drawing.Point(489, 121);
+            this.btnUserModify.Location = new System.Drawing.Point(563, 121);
             this.btnUserModify.Name = "btnUserModify";
             this.btnUserModify.Size = new System.Drawing.Size(210, 40);
             this.btnUserModify.TabIndex = 10;
@@ -342,18 +342,18 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.txtUserFName.Enabled = false;
             this.txtUserFName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserFName.Location = new System.Drawing.Point(228, 95);
+            this.txtUserFName.Location = new System.Drawing.Point(333, 92);
             this.txtUserFName.MaxLength = 25;
             this.txtUserFName.Name = "txtUserFName";
             this.txtUserFName.ShortcutsEnabled = false;
-            this.txtUserFName.Size = new System.Drawing.Size(255, 22);
+            this.txtUserFName.Size = new System.Drawing.Size(224, 22);
             this.txtUserFName.TabIndex = 3;
             // 
             // btnUserDelete
             // 
             this.btnUserDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserDelete.Location = new System.Drawing.Point(489, 213);
+            this.btnUserDelete.Location = new System.Drawing.Point(563, 213);
             this.btnUserDelete.Name = "btnUserDelete";
             this.btnUserDelete.Size = new System.Drawing.Size(210, 40);
             this.btnUserDelete.TabIndex = 12;
@@ -365,7 +365,7 @@ namespace SVSU_Capstone_Project.Views
             // 
             this.btnUserAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUserAdd.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserAdd.Location = new System.Drawing.Point(489, 75);
+            this.btnUserAdd.Location = new System.Drawing.Point(563, 75);
             this.btnUserAdd.Name = "btnUserAdd";
             this.btnUserAdd.Size = new System.Drawing.Size(210, 40);
             this.btnUserAdd.TabIndex = 9;
@@ -379,9 +379,9 @@ namespace SVSU_Capstone_Project.Views
             this.lstUser.FormattingEnabled = true;
             this.lstUser.ItemHeight = 16;
             this.lstUser.Location = new System.Drawing.Point(10, 29);
-            this.lstUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstUser.Margin = new System.Windows.Forms.Padding(2);
             this.lstUser.Name = "lstUser";
-            this.lstUser.Size = new System.Drawing.Size(210, 356);
+            this.lstUser.Size = new System.Drawing.Size(315, 356);
             this.lstUser.TabIndex = 1;
             this.lstUser.SelectedIndexChanged += new System.EventHandler(this.lstUser_SelectedIndexChanged);
             // 
@@ -412,7 +412,7 @@ namespace SVSU_Capstone_Project.Views
             this.tbpRooms.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbpRooms.Location = new System.Drawing.Point(4, 25);
             this.tbpRooms.Name = "tbpRooms";
-            this.tbpRooms.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tbpRooms.Padding = new System.Windows.Forms.Padding(3);
             this.tbpRooms.Size = new System.Drawing.Size(921, 411);
             this.tbpRooms.TabIndex = 1;
             this.tbpRooms.Text = "Rooms";
@@ -474,7 +474,7 @@ namespace SVSU_Capstone_Project.Views
             this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(226, 77);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(123, 16);
+            this.label12.Size = new System.Drawing.Size(124, 16);
             this.label12.TabIndex = 104;
             this.label12.Text = "Room Description:";
             // 
@@ -496,7 +496,7 @@ namespace SVSU_Capstone_Project.Views
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(225, 29);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 16);
+            this.label4.Size = new System.Drawing.Size(90, 16);
             this.label4.TabIndex = 102;
             this.label4.Text = "Room Name:";
             // 
@@ -529,7 +529,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstRoom.FormattingEnabled = true;
             this.lstRoom.ItemHeight = 16;
             this.lstRoom.Location = new System.Drawing.Point(10, 29);
-            this.lstRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstRoom.Margin = new System.Windows.Forms.Padding(2);
             this.lstRoom.Name = "lstRoom";
             this.lstRoom.Size = new System.Drawing.Size(210, 356);
             this.lstRoom.TabIndex = 1;
@@ -625,7 +625,7 @@ namespace SVSU_Capstone_Project.Views
             this.label15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(226, 101);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(135, 16);
+            this.label15.Size = new System.Drawing.Size(136, 16);
             this.label15.TabIndex = 123;
             this.label15.Text = "Cabinet Description:";
             // 
@@ -647,7 +647,7 @@ namespace SVSU_Capstone_Project.Views
             this.label16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(225, 54);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(101, 16);
+            this.label16.Size = new System.Drawing.Size(102, 16);
             this.label16.TabIndex = 121;
             this.label16.Text = "Cabinet Name:";
             // 
@@ -680,7 +680,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCabinet.FormattingEnabled = true;
             this.lstCabinet.ItemHeight = 16;
             this.lstCabinet.Location = new System.Drawing.Point(10, 27);
-            this.lstCabinet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstCabinet.Margin = new System.Windows.Forms.Padding(2);
             this.lstCabinet.Name = "lstCabinet";
             this.lstCabinet.Size = new System.Drawing.Size(210, 356);
             this.lstCabinet.TabIndex = 1;
@@ -794,7 +794,7 @@ namespace SVSU_Capstone_Project.Views
             this.label19.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(225, 76);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(143, 16);
+            this.label19.Size = new System.Drawing.Size(144, 16);
             this.label19.TabIndex = 123;
             this.label19.Text = "Category Description:";
             // 
@@ -816,7 +816,7 @@ namespace SVSU_Capstone_Project.Views
             this.label20.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(225, 29);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(109, 16);
+            this.label20.Size = new System.Drawing.Size(110, 16);
             this.label20.TabIndex = 121;
             this.label20.Text = "Category Name:";
             // 
@@ -849,7 +849,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCategory.FormattingEnabled = true;
             this.lstCategory.ItemHeight = 16;
             this.lstCategory.Location = new System.Drawing.Point(10, 29);
-            this.lstCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstCategory.Margin = new System.Windows.Forms.Padding(2);
             this.lstCategory.Name = "lstCategory";
             this.lstCategory.Size = new System.Drawing.Size(210, 356);
             this.lstCategory.TabIndex = 1;
@@ -921,7 +921,7 @@ namespace SVSU_Capstone_Project.Views
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(225, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 16);
+            this.label2.Size = new System.Drawing.Size(81, 16);
             this.label2.TabIndex = 136;
             this.label2.Text = "Homepage:";
             // 
@@ -966,7 +966,7 @@ namespace SVSU_Capstone_Project.Views
             this.label22.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(225, 124);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(131, 16);
+            this.label22.Size = new System.Drawing.Size(132, 16);
             this.label22.TabIndex = 134;
             this.label22.Text = "Vendor Description:";
             // 
@@ -988,7 +988,7 @@ namespace SVSU_Capstone_Project.Views
             this.label23.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(225, 29);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(97, 16);
+            this.label23.Size = new System.Drawing.Size(98, 16);
             this.label23.TabIndex = 132;
             this.label23.Text = "Vendor Name:";
             // 
@@ -1020,7 +1020,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstVendor.FormattingEnabled = true;
             this.lstVendor.ItemHeight = 16;
             this.lstVendor.Location = new System.Drawing.Point(10, 29);
-            this.lstVendor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstVendor.Margin = new System.Windows.Forms.Padding(2);
             this.lstVendor.Name = "lstVendor";
             this.lstVendor.Size = new System.Drawing.Size(210, 356);
             this.lstVendor.TabIndex = 1;
@@ -1114,7 +1114,7 @@ namespace SVSU_Capstone_Project.Views
             this.label26.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(225, 79);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(134, 16);
+            this.label26.Size = new System.Drawing.Size(135, 16);
             this.label26.TabIndex = 145;
             this.label26.Text = "N-Level Description:";
             // 
@@ -1136,7 +1136,7 @@ namespace SVSU_Capstone_Project.Views
             this.label27.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(225, 29);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(100, 16);
+            this.label27.Size = new System.Drawing.Size(101, 16);
             this.label27.TabIndex = 143;
             this.label27.Text = "N-Level Name:";
             // 
@@ -1169,7 +1169,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstNLevel.FormattingEnabled = true;
             this.lstNLevel.ItemHeight = 16;
             this.lstNLevel.Location = new System.Drawing.Point(10, 29);
-            this.lstNLevel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstNLevel.Margin = new System.Windows.Forms.Padding(2);
             this.lstNLevel.Name = "lstNLevel";
             this.lstNLevel.Size = new System.Drawing.Size(210, 228);
             this.lstNLevel.TabIndex = 1;
