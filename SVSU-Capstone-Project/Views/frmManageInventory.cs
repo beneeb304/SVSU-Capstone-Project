@@ -55,6 +55,7 @@ namespace SVSU_Capstone_Project.Views
                     this.cmbAddCategory.DataSource = lstCategories;
                     this.cmbAddCategory.SelectedIndex = -1;
                     this.cmbAddCommodity.DataSource = null;
+                    btnAddCancel_Click(sender, e);
                     break;
                 case ("tbpCreateItem"):
                     this.cmbCreateCategory.DataSource = lstCategories;
@@ -62,16 +63,22 @@ namespace SVSU_Capstone_Project.Views
                     this.cmbCreateVendor.DataSource = lstVendors;
                     trvCreateSelectByCategory.PopulateCommodityTreeByCategory();
                     trvCreateSelectByRoom.PopulateCommodityTreeByRoom();
+                    btnCreateCancel_Click(sender, e);
                     break;
                 case ("tbpUseItem"):
                     trvUseSelectByRoom.PopulateCommodityTreeByRoom(x => x.enuCommodityType != ItemType.Equipment);
+                    txtCurrentQty.Text = "";
+                    txtUseAvailable.Text = "";
+                    txtUseRemaining.Text = "";
+                    btnUseCancel_Click(sender, e);
                     break;
                 case ("tbpMoveItem"):
                     this.cmbMoveCategory.DataSource = lstCategories;
-
+                    btnMoveReset_Click(sender, e);
                     break;
                 case ("tbpDeleteItem"):
                     this.cmbDeleteCategory.DataSource = lstCategories;
+                    btnDeleteConfirm_Click(sender, e);
                     break;
             }
         }
@@ -198,6 +205,21 @@ namespace SVSU_Capstone_Project.Views
                     txtRemainder.Text = "";
             }
         }
+
+
+
+        public static void clearAddPageFields()
+        {
+          
+
+
+        }
+
+
+
+
+
+
     }
 
     public static class TreeViewExtensions
