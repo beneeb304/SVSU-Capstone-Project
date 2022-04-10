@@ -183,7 +183,7 @@ namespace SVSU_Capstone_Project.Views
                 }
 
                 //Clear fields
-                ClearUserFields();
+                //ClearUserFields();
             }
             else
             {
