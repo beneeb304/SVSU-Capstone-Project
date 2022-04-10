@@ -213,7 +213,7 @@ namespace SVSU_Capstone_Project.Views
                     var doesExist = ItemModel.GetMany<CheckedItem>().Where(x => x.objUser.uidTuid == objUser_tuid.uidTuid && x.objCommodities.strName == objSelectedCommodity.strName).ToList();
                     if (doesExist.Count != 0)
                     {
-                        MessageBox.Show(objUser_tuid.strFirst_name + " " + objUser_tuid.strLast_name + " already has this item checked out! Please return the item, select a different item, or select a different user to continue checking out an item", "Alert");
+                        MessageBox.Show(objUser_tuid.strFirst_name + " " + objUser_tuid.strLast_name + " already has this item checked out! Please return the item, select a different item, or select a different user to continue checking out an item.", "Alert");
                     }
                     else if (objStorage_tuid.intQuantity > 0)
                     {
@@ -249,7 +249,7 @@ namespace SVSU_Capstone_Project.Views
                             Storage storage = ItemModel.Get<Storage>(x => x.uidTuid == objStorage_tuid.uidTuid);
                             storage.intQuantity = storage.intQuantity - 1;
                             ItemModel.Update<Storage>(storage);
-                            MessageBox.Show(objUser_tuid.strFirst_name + " " + objUser_tuid.strLast_name + " has successfully checked out " + objSelectedCommodity.strName);
+                            MessageBox.Show(objUser_tuid.strFirst_name + " " + objUser_tuid.strLast_name + " has successfully checked out " + objSelectedCommodity.strName + ".");
                             tbcCheckInOut_SelectedIndexChanged(null, null);
                             cmbChkOutCommodity_SelectedIndexChanged(sender, e);
                             btnChkOutCancel_Click(sender, e);
@@ -333,7 +333,7 @@ namespace SVSU_Capstone_Project.Views
                 }
                 else
                 {
-                    MessageBox.Show("Item does not appear to be checked out by this user", "Alert");
+                    MessageBox.Show("Item does not appear to be checked out by this user.", "Alert");
                 }
             }
         }
