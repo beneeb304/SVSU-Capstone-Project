@@ -8,10 +8,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 
 namespace SVSU_Capstone_Project
 {
@@ -50,11 +48,6 @@ namespace SVSU_Capstone_Project
             IsMdiContainer = true;
 
             PageController(msiHome as ToolStripMenuItem, null);
-
-
-            //checking if user will be afk
-            Thread trackerThread = new Thread(timerLogOut);
-            trackerThread.Start();
         }
 
         /* Function: InitiateLogin
@@ -192,51 +185,6 @@ namespace SVSU_Capstone_Project
                 //Restart the program
                 Application.Restart();
         }
-
-
-
-
-
-
-
-
-
-        /* Function: timerLogOut
-         * Description: Logs you out of the application when you havent moved the mouse in awhile.
-         * 
-         * Local Variables
-         * None
-         */
-        private void timerLogOut()
-        {
-            while(true)
-            {
-                int x = MousePosition.X;  
-                int y = MousePosition.Y;
-
-                
-
-            }
-
-
-        }
-
-
-        private void Application_Idle(Object sender, EventArgs e )
-        {
-            MessageBox.Show("You are in the application.idle event");
-        }
-
-
-
-
-
-
-
-
-
-
-
 
         private void pcbHeHe_DoubleClick( object sender, EventArgs e )
         {
