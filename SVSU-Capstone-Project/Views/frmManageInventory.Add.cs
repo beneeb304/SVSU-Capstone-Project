@@ -68,6 +68,16 @@ namespace SVSU_Capstone_Project.Views
                 // set quantity to quantity of selected commodity 
                 this.nudAddQty.Value = 1;
                 txtCurrentQty_DependancyUpdated();
+                var simulator = ItemModel.Get<Commodity>(x => x.strName == cmbAddCommodity.SelectedItem.ToString());
+                if(simulator.enuCommodityType == ItemType.Simulator)
+                {
+                    this.nudAddQty.Enabled = false;
+                }
+                else
+                {
+                    this.nudAddQty.Enabled = true;
+                }
+
             }
             else
             {
@@ -133,7 +143,55 @@ namespace SVSU_Capstone_Project.Views
                             x => x.objNLevel == this.cmbAddNLevel.SelectedValue as NLevel
                             && x.objCabinet == this.cmbAddCabinet.SelectedValue as Cabinet
                             && x.objCommodity == this.cmbAddCommodity.SelectedValue as Commodity);
-                    if (storageItem == null)
+
+                    var simulator = ItemModel.Get<Commodity>(x => x.strName == cmbAddCommodity.SelectedItem.ToString());
+                    
+                    if(simulator.enuCommodityType == ItemType.Simulator)
+                    {
+                        if(simulator.lstStorage == null)
+                        {
+                            ItemModel.Add(new Storage()
+                            {
+                                objCabinet = cmbAddCabinet.SelectedItem as Cabinet,
+                                objCommodity = cmbAddCommodity.SelectedItem as Commodity,
+                                objNLevel = cmbAddNLevel.SelectedItem as NLevel
+                            },
+                                 out storageItem);
+                            ItemModel.RestockItem(
+                            storageItem,
+                            Authentication.ActiveUser,
+                            (uint)this.nudAddQty.Value,
+                            "Stock Added"
+                            );
+
+                            // notify User of success
+                            MessageBox.Show("Successfully added a quantity of " + (uint)nudAddQty.Value + " " + cmbAddCommodity.Text + " in room " + cmbAddRoom.Text + ", " + cmbAddCabinet.Text + ".");
+                        }
+                        else if (simulator.lstStorage.Count == 0)
+                        {
+                            ItemModel.Add(new Storage()
+                            {
+                                objCabinet = cmbAddCabinet.SelectedItem as Cabinet,
+                                objCommodity = cmbAddCommodity.SelectedItem as Commodity,
+                                objNLevel = cmbAddNLevel.SelectedItem as NLevel
+                            },
+                                 out storageItem);
+                            ItemModel.RestockItem(
+                            storageItem,
+                            Authentication.ActiveUser,
+                            (uint)this.nudAddQty.Value,
+                            "Stock Added"
+                            );
+
+                            // notify User of success
+                            MessageBox.Show("Successfully added a quantity of " + (uint)nudAddQty.Value + " " + cmbAddCommodity.Text + " in room " + cmbAddRoom.Text + ", " + cmbAddCabinet.Text + ".");
+                        }
+                        else if (simulator.lstStorage.Count > 0)
+                            {
+                                MessageBox.Show("Simulators are only allowed to have one quantity. Please create a new simulator item if you wish to have another simulator.", "Alert");
+                            }
+                    }
+                    else if (storageItem == null)
                     {
                         ItemModel.Add(new Storage()
                         {
@@ -147,15 +205,22 @@ namespace SVSU_Capstone_Project.Views
                     // User info has to be passed, either globally or locally
                     try
                     {
-                        ItemModel.RestockItem(
+                        if(simulator.lstStorage.Count > 0 && simulator.enuCommodityType == ItemType.Simulator)
+                        {
+                            
+                        }
+                        else
+                        {
+                            ItemModel.RestockItem(
                             storageItem,
                             Authentication.ActiveUser,
                             (uint)this.nudAddQty.Value,
                             "Stock Added"
-                        );
+                            );
 
-                        // notify User of success
-                        MessageBox.Show("Successfully added a quantity of " + (uint)nudAddQty.Value + " " + cmbAddCommodity.Text + " in room " + cmbAddRoom.Text + ", " + cmbAddCabinet.Text + ".");
+                            // notify User of success
+                            MessageBox.Show("Successfully added a quantity of " + (uint)nudAddQty.Value + " " + cmbAddCommodity.Text + " in room " + cmbAddRoom.Text + ", " + cmbAddCabinet.Text + ".");
+                        }
                     }
                     catch(Exception ex)
                     {
