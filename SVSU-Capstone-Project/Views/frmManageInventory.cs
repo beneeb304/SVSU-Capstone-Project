@@ -139,7 +139,7 @@ namespace SVSU_Capstone_Project.Views
             if (blnEventBlock) return;
             if (cmbRoom.SelectedIndex != -1 && cmbCommodity.SelectedIndex != -1)
                 // cabinets which are in the selected room and have the selected commodity
-                nonTriggeringCall(() => cmbCabinet.DataSource = ItemModel.GetMany<Storage>(x => x.objCommodity == (cmbCommodity.SelectedItem as Commodity) && x.objCabinet.objRoom == (cmbRoom.SelectedItem as Room)).Select(x => x.objCabinet).OrderBy(x => x.strName).ToList());
+                nonTriggeringCall(() => cmbCabinet.DataSource = ItemModel.GetMany<Storage>(x => x.objCommodity == (cmbCommodity.SelectedItem as Commodity) && x.objCabinet.objRoom == (cmbRoom.SelectedItem as Room)).Select(x => x.objCabinet).OrderBy(x => x.strName).Distinct().ToList());
             else
                 cmbCabinet.DataSource = null;
             cmbCabinet.SelectedIndex = -1;
