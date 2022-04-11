@@ -190,17 +190,32 @@ namespace SVSU_Capstone_Project.Views
                     if(commodity != null)
                     {
                       SimulatorUse simulator = ItemModel.Get<SimulatorUse>(x => x.objCommodity.uidTuid == commodity.uidTuid);
-                      string strMessage = "Name: " + commodity.strName + "\r" +
-                          "Desciption: " + commodity.strDescription + "\r" +
-                          "Type: " + commodity.enuCommodityType.ToString() + "\r" +
-                          "Features: " + commodity.strFeatures + "\r" +
-                          "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
-                          "Commodity Category: " + commodity.objCategory.strName + "\r" +
-                          "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
-                          "URL: " + commodity.strItemUrl + "\r" +
-                          "Hours Used: " + simulator.intHoursUsed + "\r"+
-                          "Times Used: " + simulator.intTimesUsed;
-                      MessageBox.Show(strMessage,"Commodity Details");
+                        if(simulator != null)
+                        {
+                            string strMessage = "Name: " + commodity.strName + "\r" +
+                            "Desciption: " + commodity.strDescription + "\r" +
+                            "Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                            "Features: " + commodity.strFeatures + "\r" +
+                            "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
+                            "Commodity Category: " + commodity.objCategory.strName + "\r" +
+                            "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
+                            "URL: " + commodity.strItemUrl + "\r" +
+                            "Hours Used: " + simulator.intHoursUsed + "\r" +
+                            "Times Used: " + simulator.intTimesUsed;
+                            MessageBox.Show(strMessage, "Commodity Details");
+                        }
+                        else
+                        {
+                            string strMessage = "Name: " + commodity.strName + "\r" +
+                            "Desciption: " + commodity.strDescription + "\r" +
+                            "Type: " + commodity.enuCommodityType.ToString() + "\r" +
+                            "Features: " + commodity.strFeatures + "\r" +
+                            "Alert Quantity: " + commodity.intAlert_quantity + "\r" +
+                            "Commodity Category: " + commodity.objCategory.strName + "\r" +
+                            "Cost: " + (commodity.intCostInCents / 100.00).ToString("C") + "\r" +
+                            "URL: " + commodity.strItemUrl;
+                            MessageBox.Show(strMessage, "Commodity Details");
+                        }
                     }
                 }
                 else
