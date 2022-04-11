@@ -191,7 +191,7 @@ namespace SVSU_Capstone_Project.Views
             this.lstCommodity.Name = "lstCommodity";
             this.lstCommodity.Size = new System.Drawing.Size(402, 270);
             this.lstCommodity.TabIndex = 5;
-            this.lstCommodity.Click += new System.EventHandler(this.lstCommodity_Click);
+            this.lstCommodity.SelectedIndexChanged += new System.EventHandler(this.lstCommodity_SelectedIndexChanged);
             this.lstCommodity.DoubleClick += new System.EventHandler(this.lstCommodity_DoubleClick);
             // 
             // pcbBarcode

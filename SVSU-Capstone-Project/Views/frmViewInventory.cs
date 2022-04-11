@@ -129,53 +129,6 @@ namespace SVSU_Capstone_Project.Views
          * Local Variables
          * 
          */
-        private void lstCommodity_Click( object sender, EventArgs e )
-        {
-            if (lstCommodity.SelectedIndex != -1)
-            {
-                
-                //Get rid of current rows
-                dgvDetails.Rows.Clear();
-
-                //If columsn exist, don't re-add them
-                if (dgvDetails.Columns.Count != 4)
-                {
-                    dgvDetails.Columns.Add("Quantity", "Quantity");
-                    dgvDetails.Columns.Add("N-Level", "N-Level");
-                    dgvDetails.Columns.Add("Room", "Room");
-                    dgvDetails.Columns.Add("Cabinet", "Cabinet");
-                }
-
-                //Get the selected category and commodity
-
-                
-                string strCommodity = lstCommodity.SelectedItem.ToString();
-
-                Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity);
-                Category category = ItemModel.Get<Category>(x => x.uidTuid == commodity.objCategory.uidTuid);
-                string strCategory = category.strName;
-                List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
-
-                //Add to the dgv
-                foreach (Storage storage in lstStorage)
-                {
-                    dgvDetails.Rows.Add(storage.intQuantity, storage.objNLevel.strName, storage.objCabinet.objRoom.strName, storage.objCabinet.strName);
-                }
-
-            //Unselect cells
-            dgvDetails.ClearSelection();
-            }
-
-            
-
-        }
-
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void lstCommodity_DoubleClick( object sender, EventArgs e )
         {
             if (lstCommodity.SelectedIndex != -1)
@@ -244,6 +197,42 @@ namespace SVSU_Capstone_Project.Views
         private void btnCategoryReset_Click( object sender, EventArgs e )
         {
             cmbCategory.SelectedIndex = -1;
+        }
+
+        private void lstCommodity_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            if (lstCommodity.SelectedIndex != -1)
+            {
+
+                //Get rid of current rows
+                dgvDetails.Rows.Clear();
+
+                //If columsn exist, don't re-add them
+                if (dgvDetails.Columns.Count != 4)
+                {
+                    dgvDetails.Columns.Add("Quantity", "Quantity");
+                    dgvDetails.Columns.Add("N-Level", "N-Level");
+                    dgvDetails.Columns.Add("Room", "Room");
+                    dgvDetails.Columns.Add("Cabinet", "Cabinet");
+                }
+
+                //Get the selected category and commodity
+                string strCommodity = lstCommodity.SelectedItem.ToString();
+
+                Commodity commodity = ItemModel.Get<Commodity>(x => x.strName == strCommodity);
+                Category category = ItemModel.Get<Category>(x => x.uidTuid == commodity.objCategory.uidTuid);
+                string strCategory = category.strName;
+                List<Storage> lstStorage = ItemModel.GetMany<Storage>(x => x.objCommodity.uidTuid == commodity.uidTuid).ToList();
+
+                //Add to the dgv
+                foreach (Storage storage in lstStorage)
+                {
+                    dgvDetails.Rows.Add(storage.intQuantity, storage.objNLevel.strName, storage.objCabinet.objRoom.strName, storage.objCabinet.strName);
+                }
+
+                //Unselect cells
+                dgvDetails.ClearSelection();
+            }
         }
     }
 }
