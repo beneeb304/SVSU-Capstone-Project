@@ -218,19 +218,24 @@ namespace SVSU_Capstone_Project.Views
          */
         private void btnModifyUser_Click( object sender, EventArgs e )
         {
-            //Disable buttons
-            btnUserAdd.Enabled = false;
-            btnUserUpload.Enabled = false;
-            btnUserPassword.Enabled = false;
-            btnUserDelete.Enabled = false;
+            if (lstUser.SelectedIndex >= 0)
+            {
+                //Disable buttons
+                btnUserAdd.Enabled = false;
+                btnUserUpload.Enabled = false;
+                btnUserPassword.Enabled = false;
+                btnUserDelete.Enabled = false;
 
-            //Show buttons
-            btnUserSave.Visible = true;
-            btnUserCancel.Visible = true;
+                //Show buttons
+                btnUserSave.Visible = true;
+                btnUserCancel.Visible = true;
 
-            //Enable fields
-            EnableDisableUserFields(true);
-            txtUserSVSUID.Enabled = false;
+                //Enable fields
+                EnableDisableUserFields(true);
+                txtUserSVSUID.Enabled = false;
+            }
+            else
+                MessageBox.Show("Select a user before modification!", "Alert");
         }
 
         /* Function: ClearUserFields
