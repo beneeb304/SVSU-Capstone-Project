@@ -78,7 +78,6 @@ namespace SVSU_Capstone_Project.Views
                     break;
                 case ("tbpDeleteItem"):
                     this.cmbDeleteCategory.DataSource = lstCategories;
-                    btnDeleteConfirm_Click(sender, e);
                     break;
             }
         }
