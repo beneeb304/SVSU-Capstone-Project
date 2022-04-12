@@ -140,19 +140,21 @@ namespace SVSU_Capstone_Project.Views
             //Get rid of current rows
             dgvDetails.Rows.Clear();
             lstCommodity.ClearSelected();
-
-            if (txtSearch.Text.Length > 0)
+        if(lstCommodity.DataSource != null)
             {
-                //Make temp list that is filtered
-                List<Commodity> lstTemp = lstCommodities.Where(x => x.strName.IndexOf(txtSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                if (txtSearch.Text.Length > 0)
+                {
+                    //Make temp list that is filtered
+                    List<Commodity> lstTemp = lstCommodities.Where(x => x.strName.IndexOf(txtSearch.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
 
-                //Set listbox with filtered datasource
-                lstCommodity.DataSource = lstTemp;
-            }
-            else
-            {
-                //Set listbox back to normal
-                lstCommodity.DataSource = lstCommodities;
+                    //Set listbox with filtered datasource
+                    lstCommodity.DataSource = lstTemp;
+                }
+                else
+                {
+                    //Set listbox back to normal
+                    lstCommodity.DataSource = lstCommodities;
+                }
             }
         }
 
@@ -259,6 +261,7 @@ namespace SVSU_Capstone_Project.Views
             * Local Variables
             */
             cmbCategory.SelectedIndex = -1;
+            txtSearch.Text = "";
         }
 
         private void lstCommodity_SelectedIndexChanged( object sender, EventArgs e )
