@@ -19,8 +19,10 @@ namespace SVSU_Capstone_Project.Views
         public frmHome()
         {
             InitializeComponent();
-            populateTables();
             
+            //Check if the user somehow closed the login form
+            if (Authentication.ActiveUser != null)
+                populateTables();
         }
 
         private void frmHome_Load( object sender, EventArgs e )
