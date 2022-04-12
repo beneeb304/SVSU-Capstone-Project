@@ -275,8 +275,6 @@ namespace SVSU_Capstone_Project.Views
 
                     //Get user
                     User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
-                    if (Authentication.ActiveUser.strEmail == "brneeb@svsu.edu" || Authentication.ActiveUser.strEmail == "mjsimon1@svsu.edu" || Authentication.ActiveUser.strEmail == "aataylo3@svsu.edu")
-                    {
                         if (user.blnIsAdmin)
                         {
                             //Ask user to confirm action
@@ -306,11 +304,6 @@ namespace SVSU_Capstone_Project.Views
                         {
                             MessageBox.Show("Cannot change non-admin password", "Alert");
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("You dont have permission to perform this action", "Alert");
-                    }
 
                 }
                 catch
