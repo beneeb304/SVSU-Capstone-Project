@@ -28,50 +28,54 @@ namespace SVSU_Capstone_Project.Views
             InitializeComponent();
             tbcSettings_SelectedIndexChanged(null, null);
         }
-
-        /* Function: ClearRoomFields
-         * Description: Clears all fields on the room settings page.
-         */
+       
         private void ClearRoomFields()
         {
+            /* Function: ClearRoomFields
+         * Description: Clears all fields on the room settings page.
+         */
             //Clear fields
             txtRoomDescription.Text = "";
             txtRoomName.Text = "";
             //lstRoom.SelectedIndex = -1;
         }
 
+        private void ClearCabinetFields()
+        {       
         /* Function: ClearCabinetFields
          * Description: Clears all fields on the cabinet settings page.
          */
-        private void ClearCabinetFields()
-        {
+         
             //Clear fields
             txtCabinetDescription.Text = "";
             txtCabinetName.Text = "";
         }
-
-        /* Function: ClearCategoryFields
-         * Description: Clears all fields on the category settings page.
-         */
+        
         private void ClearCategoryFields()
         {
+          /* Function: ClearCategoryFields
+         * Description: Clears all fields on the category settings page.
+         */ 
             //Clear fields
             txtCategoryDescription.Text = "";
             txtCategoryName.Text = "";
             lstCategory.SelectedIndex = -1;
         }
-
-        /* Function: ClearVendorFields
-         * Description: Clears all fields on the vendor settings page.
-         */
+        
         private void ClearVendorFields()
         {
+            /* Function: ClearVendorFields
+         * Description: Clears all fields on the vendor settings page.
+         */
             //Clear fields
             txtVendorDescription.Text = "";
             txtVendorName.Text = "";
             txtVendorHomepage.Text = "";
             lstVendor.SelectedIndex = -1;
         }
+
+        private void tbcSettings_SelectedIndexChanged( object sender, EventArgs e )
+        {
 
         /* Function: tbcSettings_SelectedIndexChanged
          * Description: Switches the page in the settings menu when a tab is clicked.
@@ -80,8 +84,7 @@ namespace SVSU_Capstone_Project.Views
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void tbcSettings_SelectedIndexChanged( object sender, EventArgs e )
-        {
+
             switch (tbcSettings.SelectedTab.Name)
             {
                 case "tbpUsers":
@@ -105,8 +108,10 @@ namespace SVSU_Capstone_Project.Views
                     break;
             }
         }
-
-        /* Function: btnDeleteUser_Click
+       
+        private void btnDeleteUser_Click( object sender, EventArgs e )
+        {
+            /* Function: btnDeleteUser_Click
          * Description: Deletes a user upon request.
          * Asks the user wqith confirmation dialogue if they want to delete a user before deleting from the database.
          * 
@@ -116,8 +121,6 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox to confirm the deletion of a user.
          * User user; Represents the user being deleted from the database.
          */
-        private void btnDeleteUser_Click( object sender, EventArgs e )
-        {
             //If a user is selected
             if (lstUser.SelectedIndex >= 0)
             {
@@ -175,8 +178,10 @@ namespace SVSU_Capstone_Project.Views
                 MessageBox.Show("Select a user to delete", "Alert");
             }
         }
-
-        /* Function: btnAddUser_Click
+       
+        private void btnAddUser_Click( object sender, EventArgs e )
+        {
+            /* Function: btnAddUser_Click
          * Description: Adds a user to the user list.
          * Asks the user to confirm before adding the new user to the database with the given information.
          * 
@@ -187,8 +192,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox to confirm the new user addition.
          * User user; Represents the new user being added to the database.
          */
-        private void btnAddUser_Click( object sender, EventArgs e )
-        {
+             
             //Disable buttons
             btnUserUpload.Enabled = false;
             btnUserModify.Enabled = false;
@@ -205,8 +209,10 @@ namespace SVSU_Capstone_Project.Views
             //Clear fields
             ClearUserFields();
         }
-
-        /* Function: btnModifyUser_Click
+       
+        private void btnModifyUser_Click( object sender, EventArgs e )
+        { 
+             /* Function: btnModifyUser_Click
          * Description: Modifies an existing user in the database.
          * Asks the user for confirmation before modifying the selected user.
          * 
@@ -216,8 +222,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox to confirm the user modification.
          * User user; Represents the user being modified in the database.
          */
-        private void btnModifyUser_Click( object sender, EventArgs e )
-        {
+           
             if (lstUser.SelectedIndex >= 0)
             {
                 //Disable buttons
@@ -237,12 +242,13 @@ namespace SVSU_Capstone_Project.Views
             else
                 MessageBox.Show("Select a user before modification!", "Alert");
         }
-
-        /* Function: ClearUserFields
-         * Description: Clears all fields in the user settings page.
-         */
+       
         private void ClearUserFields()
         {
+            /* Function: ClearUserFields
+         * Description: Clears all fields in the user settings page.
+         */
+       
             //Clear fields
             txtUserSVSUID.Text = "";
             txtUserEmail.Text = "";
@@ -253,7 +259,10 @@ namespace SVSU_Capstone_Project.Views
             lstUser.SelectedIndex = -1;
         }
 
-        /* Function: btnUserPassword_Click
+        private void btnUserPassword_Click( object sender, EventArgs e )
+        {
+          
+          /* Function: btnUserPassword_Click
          * Description: Change a selected user's password.
          * Asks the user for confirmation before changing the password.
          * 
@@ -263,8 +272,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox to confirm the password change.
          * User user; Represents the user being modified in the database.
          */
-        private void btnUserPassword_Click( object sender, EventArgs e )
-        {
+           
             //If a user is selected
             if (lstUser.SelectedIndex >= 0)
             {
@@ -322,6 +330,11 @@ namespace SVSU_Capstone_Project.Views
 
         private string RandomPassword()
         {
+            /* Function: RandomPassword
+         * Description: Will randomize the user password when reset to protect privacy
+         * Return: created and randomized password
+         */
+
             //Randomize user password
             Random random = new Random();
 
@@ -343,8 +356,10 @@ namespace SVSU_Capstone_Project.Views
 
             return strHash;
         }
-
-        /* Function: lstUser_SelectedIndexChanged
+   
+        private void lstUser_SelectedIndexChanged( object sender, EventArgs e )
+        {
+             /* Function: lstUser_SelectedIndexChanged
          * Description: Fills the fields on the user settings page with user information when a new user is selected.
          * 
          * Local Variables
@@ -352,8 +367,7 @@ namespace SVSU_Capstone_Project.Views
          * EventArgs e; Information passed by the sender object about the method call.
          * User user; Represents the user being selected.
          */
-        private void lstUser_SelectedIndexChanged( object sender, EventArgs e )
-        {
+            
             //If a user is selected
             if (lstUser.SelectedIndex >= 0)
             {
@@ -372,8 +386,10 @@ namespace SVSU_Capstone_Project.Views
                 chkUserAdmin.Checked = user.blnIsAdmin;
             }
         }
-
-        /* Function: lstRoom_SelectedIndexChanged
+       
+        private void lstRoom_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            /* Function: lstRoom_SelectedIndexChanged
          * Description: Fills the fields on the room settings page when a new room is selected.
          * 
          * Local Variables
@@ -381,8 +397,7 @@ namespace SVSU_Capstone_Project.Views
          * EventArgs e; Information passed by the sender object about the method call.
          * Room room; Represents the room to pass its information from the database to the fields.
          */
-        private void lstRoom_SelectedIndexChanged( object sender, EventArgs e )
-        {
+            
             //If a room is selected
             if (lstRoom.SelectedIndex >= 0)
             {
@@ -394,8 +409,10 @@ namespace SVSU_Capstone_Project.Views
                 txtRoomName.Text = room.strName;
             }
         }
-
-        /* Function: btnModifyRoom_Click
+      
+        private void btnModifyRoom_Click( object sender, EventArgs e )
+        {      
+              /* Function: btnModifyRoom_Click
          * Description: Modifies a selected room's information in the database.
          * Asks the user for confirmation before maodfying data.
          * 
@@ -405,8 +422,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox confirmation to the user.
          * Room room; Represents the room's information.
          */
-        private void btnModifyRoom_Click( object sender, EventArgs e )
-        {
+            
             if(lstRoom.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a Room to modify!", "Alert");
@@ -426,8 +442,10 @@ namespace SVSU_Capstone_Project.Views
             }
             
         }
-
-        /* Function: btnAddRoom_Click
+       
+        private void btnAddRoom_Click( object sender, EventArgs e )
+        {
+            /* Function: btnAddRoom_Click
          * Description: Adds a new room to the database with the given information.
          * Asks the user for confirmation before adding the room.
          * 
@@ -437,8 +455,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox confirmation to the user.
          * Room room; Represents the room's information.
          */
-        private void btnAddRoom_Click( object sender, EventArgs e )
-        {
+            
             //Disable buttons
             btnRoomDelete.Enabled = false;
             btnRoomModify.Enabled = false;
@@ -454,20 +471,20 @@ namespace SVSU_Capstone_Project.Views
             ClearRoomFields();
         }
 
-        /* Function: btnDeleteRoom_Click
-         * Description: Deletes a selected room from the database.
-         * Asks the user for confirmation before deleting the room.
-         * Ensures all cabinets are deleted before the room.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
-         * DialogResult result; MessageBox confirmation to the user.
-         * Room room; Represents the room's information.
-         * Cabinet cabinet; Represents a cabinet in a selected room.
-         */
         private void btnDeleteRoom_Click( object sender, EventArgs e )
         {
+            /* Function: btnDeleteRoom_Click
+        * Description: Deletes a selected room from the database.
+        * Asks the user for confirmation before deleting the room.
+        * Ensures all cabinets are deleted before the room.
+        * 
+        * Local Variables
+        * object sender; The object calling the method.
+        * EventArgs e; Information passed by the sender object about the method call.
+        * DialogResult result; MessageBox confirmation to the user.
+        * Room room; Represents the room's information.
+        * Cabinet cabinet; Represents a cabinet in a selected room.
+        */
             //If a room is selected
             if (lstRoom.SelectedIndex >= 0)
             {
@@ -517,8 +534,10 @@ namespace SVSU_Capstone_Project.Views
                 MessageBox.Show("Select a room to delete", "Alert");
             }
         }
-
-        /* Function: btnAddCategory_Click
+       
+        private void btnAddCategory_Click( object sender, EventArgs e )
+        {      
+         /* Function: btnAddCategory_Click
          * Description: Adds a new category to the database with the given information.
          * Asks the user for confirmation before adding the room.
          * 
@@ -527,9 +546,7 @@ namespace SVSU_Capstone_Project.Views
          * EventArgs e; Information passed by the sender object about the method call.
          * DialogResult result; MessageBox confirmation to the user.
          * Cabinet cabinet; Represents a cabinet in a selected room.
-         */
-        private void btnAddCategory_Click( object sender, EventArgs e )
-        {
+         */    
             //Disable buttons
             btnCategoryDelete.Enabled = false;
             btnCategoryModify.Enabled = false;
@@ -544,8 +561,10 @@ namespace SVSU_Capstone_Project.Views
             //Clear fields
             ClearCategoryFields();
         }
-
-        /* Function: btnModifyCategory_Click
+       
+        private void btnModifyCategory_Click( object sender, EventArgs e )
+        {
+           /* Function: btnModifyCategory_Click
          * Description: Modifies the selected room in the database.
          * Asks the user confirmation before modifying the room.
          * 
@@ -555,8 +574,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox confirmation to the user.
          * Cabinet cabinet; Represents a cabinet in a selected room.
          */
-        private void btnModifyCategory_Click( object sender, EventArgs e )
-        {
+            
             //Disable buttons
             btnCategoryAdd.Enabled = false;
             btnCategoryDelete.Enabled = false;
@@ -568,8 +586,10 @@ namespace SVSU_Capstone_Project.Views
             //Enable fields
             EnableDisableCategoryFields(true);
         }
-
-        /* Function: btnDeleteCategory_Click
+       
+        private void btnDeleteCategory_Click( object sender, EventArgs e )
+        {
+            /* Function: btnDeleteCategory_Click
          * Description: Deletes the selected room from the database.
          * Asks the user for confirmation before deleting the database.
          * Ensures no commodities have the category selected before deleting.
@@ -581,8 +601,7 @@ namespace SVSU_Capstone_Project.Views
          * Cabinet cabinet; Represents a cabinet in a selected room.
          * Commodity commodity; Represents a commodity item.
          */
-        private void btnDeleteCategory_Click( object sender, EventArgs e )
-        {
+            
             //If a category is selected
             if (lstCategory.SelectedIndex >= 0)
             {
@@ -632,17 +651,18 @@ namespace SVSU_Capstone_Project.Views
                 MessageBox.Show("Select a category to delete", "Alert");
             }
         }
-
-        /* Function: lstCategory_SelectedIndexChanged
+      
+        private void lstCategory_SelectedIndexChanged( object sender, EventArgs e )
+        {
+          
+             /* Function: lstCategory_SelectedIndexChanged
          * Description: Sets the fields of the category settings page to reflect information of the selected category.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          * Category category; Represents a category object.
-         */
-        private void lstCategory_SelectedIndexChanged( object sender, EventArgs e )
-        {
+         */ 
             //If a category is selected
             if (lstCategory.SelectedIndex >= 0)
             {
@@ -659,8 +679,10 @@ namespace SVSU_Capstone_Project.Views
                 }
             }
         }
-
-        /* Function: lstVendor_SelectedIndexChanged
+        
+        private void lstVendor_SelectedIndexChanged( object sender, EventArgs e )
+        {
+           /* Function: lstVendor_SelectedIndexChanged
          * Description: Sets the fields of the vendor settings page to reflect the information of a selected vendor.
          * 
          * Local Variables
@@ -668,8 +690,7 @@ namespace SVSU_Capstone_Project.Views
          * EventArgs e; Information passed by the sender object about the method call.
          * Vendor vendor; Represents a vendor object.
          */
-        private void lstVendor_SelectedIndexChanged( object sender, EventArgs e )
-        {
+            
             //If a vendor is selected
             if (lstVendor.SelectedIndex >= 0)
             {
@@ -683,6 +704,9 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
+        private void btnDeleteVendor_Click( object sender, EventArgs e )
+        {
+           
         /* Function: btnDeleteVendor_Click
          * Description: Deletes the selected vendor from the database.
          * Asks for confirmation from the user before deleting the vendor.
@@ -695,8 +719,7 @@ namespace SVSU_Capstone_Project.Views
          * Vendor vendor; Represents a vendor object.
          * VendorItem vItem; Represents all items using a selected vendor in its description.
          */
-        private void btnDeleteVendor_Click( object sender, EventArgs e )
-        {
+            
             //If a vendor is selected
             if (lstVendor.SelectedIndex >= 0)
             {
@@ -742,8 +765,10 @@ namespace SVSU_Capstone_Project.Views
                 MessageBox.Show("Select a vendor to delete", "Alert");
             }
         }
-
-        /* Function: btnAddVendor_Click
+      
+        private void btnAddVendor_Click( object sender, EventArgs e )
+        {
+            /* Function: btnAddVendor_Click
          * Description: Adds a new vendor to the database with the provided information.
          * Asks for confirmation from the user before adding the new vendor.
          * 
@@ -753,8 +778,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox confirmation to the user.
          * Vendor vendor; Represents a vendor object.
          */
-        private void btnAddVendor_Click( object sender, EventArgs e )
-        {
+            
             //Disable buttons
             btnVendorDelete.Enabled = false;
             btnVendorModify.Enabled = false;
@@ -769,8 +793,10 @@ namespace SVSU_Capstone_Project.Views
             //Clear fields
             ClearVendorFields();
         }
-
-        /* Function: btnModifyVendor_Click
+       
+        private void btnModifyVendor_Click( object sender, EventArgs e )
+        {
+             /* Function: btnModifyVendor_Click
          * Description: Modifies the selected vendor in the database to reflect the newly given information.
          * Asks the user for confirmation before modifying the vendor.
          * 
@@ -780,8 +806,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox confirmation to the user.
          * Vendor vendor; Represents a vendor object.
          */
-        private void btnModifyVendor_Click( object sender, EventArgs e )
-        {
+            
             //Disable buttons
             btnVendorAdd.Enabled = false;
             btnVendorDelete.Enabled = false;
@@ -793,18 +818,21 @@ namespace SVSU_Capstone_Project.Views
             //Enable fields
             EnableDisableVendorFields(true);
         }
-
-        /* Function: cmbRoom_SelectedIndexChanged
+        
+        private void cmbRoom_SelectedIndexChanged( object sender, EventArgs e )
+        {
+           
+            /* Function: cmbRoom_SelectedIndexChanged
          * Description: Reflects the fields in the room settings page to have information of the selected room.
          * 
          * Local Variables
          * object sender; The object calling the method.
          * EventArgs e; Information passed by the sender object about the method call.
          */
-        private void cmbRoom_SelectedIndexChanged( object sender, EventArgs e )
-        {
+            
             if (cmbRoom.Text != "")
             {
+                // populate the textfield with appropriate data
                 lstCabinet.DataSource = ItemModel.GetMany<Cabinet>(x => x.objRoom.strName == cmbRoom.SelectedItem.ToString())
                 .OrderBy(x => x.strName).Select(x => x.strName).ToList();
             }
@@ -818,8 +846,10 @@ namespace SVSU_Capstone_Project.Views
             }
 
         }
-
-        /* Function: lstCabinet_SelectedIndexChanged
+      
+        private void lstCabinet_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            /* Function: lstCabinet_SelectedIndexChanged
          * Description: Reflects the fields in the cabinet settings page to show information of the selected cabinet.
          * 
          * Local Variables
@@ -827,8 +857,7 @@ namespace SVSU_Capstone_Project.Views
          * EventArgs e; Information passed by the sender object about the method call.
          * Cabinet cabinet; Represents the selected cabinet object.
          */
-        private void lstCabinet_SelectedIndexChanged( object sender, EventArgs e )
-        {
+            
             //If a cabinet is selected
             if (lstCabinet.SelectedIndex >= 0)
             {
@@ -840,8 +869,10 @@ namespace SVSU_Capstone_Project.Views
                 txtCabinetName.Text = cabinet.strName;
             }
         }
-
-        /* Function: btnAddCabinet_Click
+        
+        private void btnAddCabinet_Click( object sender, EventArgs e )
+        {
+           /* Function: btnAddCabinet_Click
          * Description: Adds a cabinet to the database with the provided information.
          * Asks the user for confirmation before adding the cabinet.
          * 
@@ -851,8 +882,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox confirmation to the user.
          * Cabinet cabinet; Represents the new cabinet as an object to pass to the database.
          */
-        private void btnAddCabinet_Click( object sender, EventArgs e )
-        {
+            
             //Disable buttons
             btnCabinetDelete.Enabled = false;
             btnCabinetModify.Enabled = false;
@@ -868,8 +898,10 @@ namespace SVSU_Capstone_Project.Views
             //Clear fields
             ClearCabinetFields();
         }
-
-        /* Function: btnModifyCabinet_Click
+       
+        private void btnModifyCabinet_Click( object sender, EventArgs e )
+        {
+           /* Function: btnModifyCabinet_Click
          * Description: Modifies the selected cabinet to reflect new information in the database.
          * Asks the user for confirmation before modifying the cabinet.
          * 
@@ -879,8 +911,7 @@ namespace SVSU_Capstone_Project.Views
          * DialogResult result; MessageBox confirmation to the user.
          * Cabinet cabinet; Represents the cabinet being modified in the database.
          */
-        private void btnModifyCabinet_Click( object sender, EventArgs e )
-        {
+            
             //Check if there are any cabinets in the room to modify
             if (ItemModel.Get<Room>(x => x.lstCabinets.Count > 0 && x.strName == cmbRoom.Text) != null)
             {
@@ -899,8 +930,10 @@ namespace SVSU_Capstone_Project.Views
             else
                 MessageBox.Show("Room does not contain any cabinets to modify!", "Alert");
         }
-
-        /* Function: btnDeleteCabinet_Click
+        
+        private void btnDeleteCabinet_Click( object sender, EventArgs e )
+        {
+           /* Function: btnDeleteCabinet_Click
          * Description: Deletes the selected cabinet from the database.
          * Asks the user for confirmation before deleting the cabinet.
          * Ensures no commodities are using the cabinet in its information.
@@ -912,8 +945,7 @@ namespace SVSU_Capstone_Project.Views
          * Cabinet cabinet; Represents the cabinet being deleted from the database.
          * Storage storage; Represents all items to see if they are using the cabinet.
          */
-        private void btnDeleteCabinet_Click( object sender, EventArgs e )
-        {
+            
             //If a cabinet is selected
             if (lstCabinet.SelectedIndex >= 0)
             {
@@ -966,7 +998,9 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function: btnUpload_Click
+        private void btnUpload_Click( object sender, EventArgs e )
+        {        
+             /* Function: btnUpload_Click
          * Description: Uploads a csv file of student information to mass upload users.
          * 
          * Local Variables
@@ -974,8 +1008,7 @@ namespace SVSU_Capstone_Project.Views
          * EventArgs e; Information passed by the sender object about the method call.
          * OpenfileDialog fd; Lets the user select the file to use for the upload.
          */
-        private void btnUpload_Click( object sender, EventArgs e )
-        {
+            
             //Make file dialog
             OpenFileDialog fd = new OpenFileDialog
             {
@@ -1000,8 +1033,10 @@ namespace SVSU_Capstone_Project.Views
             //Refresh list
             tbcSettings_SelectedIndexChanged(sender, e);
         }
-
-        /* Function: ReadCSVFile
+        
+        private List<string[]> ReadCSVFile( string strPath )
+        {
+          /* Function: ReadCSVFile
          * Description: Reads the file given by the user to upload multiple users at once.
          * 
          * Local Variables
@@ -1009,8 +1044,7 @@ namespace SVSU_Capstone_Project.Views
          * List<string[]> lstRows; Holds the list read from the file to be uploaded.
          * TextFieldParser parser; Reads the information from the uploaded file to the List.
          */
-        private List<string[]> ReadCSVFile( string strPath )
-        {
+            
             //List to hold row data
             List<string[]> lstRows = new List<string[]>();
 
@@ -1047,8 +1081,10 @@ namespace SVSU_Capstone_Project.Views
 
             return lstRows;
         }
-
-        /* Function: UploadStudents
+       
+        private void UploadStudents( List<string[]> lstRows )
+        {
+           /* Function: UploadStudents
          * Description: Uploads the student list from the provided csv file to the database of users.
          * 
          * Local Variables
@@ -1056,8 +1092,7 @@ namespace SVSU_Capstone_Project.Views
          * int intBadCtr, intGoodctr; Counts the amount of invalid and valid uploaded users respectively.
          * User user; Passes the uploaded information as an object to the database.
          */
-        private void UploadStudents( List<string[]> lstRows )
-        {
+
             int intBadCtr = 0, intGoodCtr = 0;
             string strSVSUID, strFName, strLName;
             MailAddress mailAddress;
@@ -1126,16 +1161,18 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void EnableDisableUserFields(bool blnEnable)
         {
+
+            /* Function: EnableDisableUserFields
+       * Description: Will enable or disable appropriate user fields when needed 
+       * 
+       * bool blnEnable hold the status the components being passed thru
+       */
+     
             if (blnEnable)
             {
+               // enable fields  
                 txtUserEmail.Enabled = true;
                 txtUserFName.Enabled = true;
                 txtUserLName.Enabled = true;
@@ -1145,6 +1182,7 @@ namespace SVSU_Capstone_Project.Views
             }
             else
             {
+                  // disable fields
                 txtUserEmail.Enabled = false;
                 txtUserFName.Enabled = false;
                 txtUserLName.Enabled = false;
@@ -1154,102 +1192,125 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void EnableDisableRoomFields(bool blnEnable )
         {
+            /* Function: EnableDisableRoomFields
+       * Description: Will enable or disable appropriate room fields when needed 
+       * 
+       * bool blnEnable hold the status the components being passed thru
+       * 
+       */
+            
             if (blnEnable)
             {
+                // enable fields
                 txtRoomDescription.Enabled = true;
                 txtRoomName.Enabled = true;
             }
+            
             else
             {
+                // disable fields
                 txtRoomDescription.Enabled = false;
                 txtRoomName.Enabled = false;
             }
         }
-
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
+  
         private void EnableDisableCabinetFields( bool blnEnable )
         {
+            /* Function: EnableDisableCabinetFields
+            * Description: Will enable or disable appropriate cabinet fields when needed 
+            * 
+            * bool blnEnable hold the status the components being passed thru
+            */
+
             if (blnEnable)
             {
+                // Enable fields 
                 txtCabinetDescription.Enabled = true;
                 txtCabinetName.Enabled = true;
             }
+            // disable fields
             else
             {
                 txtCabinetDescription.Enabled = false;
                 txtCabinetName.Enabled = false;
             }
         }
-
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
+        
         private void EnableDisableCategoryFields( bool blnEnable )
         {
+            /* Function: EnableDisableCategoryFields
+            * Description: Will enable or disable appropriate category fields when needed 
+            * 
+            * bool blnEnable hold the status the components being passed thru
+            * 
+            */
+
             if (blnEnable)
             {
+                //enable fields
                 txtCategoryDescription.Enabled = true;
                 txtCategoryName.Enabled = true;
             }
             else
             {
+                // disable fields
                 txtCategoryDescription.Enabled = false;
                 txtCategoryName.Enabled = false;
             }
         }
-
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
+ 
         private void EnableDisableVendorFields( bool blnEnable )
         {
+            /* Function: EnableDisableVendorFields
+             * Description: Will enable or disable appropriate category fields when needed 
+             * 
+             * bool blnEnable hold the status the components being passed thru
+             * 
+             */
+
+            
             if (blnEnable)
             {
+                //enable fields
                 txtVendorDescription.Enabled = true;
                 txtVendorName.Enabled = true;
                 txtVendorHomepage.Enabled = true;
             }
+         
             else
             {
+                // disable fields
                 txtVendorDescription.Enabled = false;
                 txtVendorName.Enabled = false;
                 txtVendorHomepage.Enabled = false;
             }
         }
-
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
+        
         private void btnUserSave_Click( object sender, EventArgs e )
         {
+            /* Function: btnUserSave_Click
+          * Description: This functions will save the user credentials only if the entree 
+          *              meets the requirements that are placed by the system
+          * Local Variables:
+          * string strEmail - user inout stored for the email
+          * string strID - user input stored for the user ID
+          * string strHas - the random default password that was created
+          * object sender; The object calling the method.
+          * EventArgs e; Information passed by the sender object about the method call.
+          */
+
             //Trim unique identifiers
+            // stored email
             string strEmail = txtUserEmail.Text.Trim();
+            // stored user ID
             string strID = txtUserSVSUID.Text.Trim();
 
+            // if button is entered
             if (btnUserAdd.Enabled)
             {
+                // as long as data is entered
                 if (strEmail.Length > 0 && txtUserFName.Text.Trim().Length > 0 &&
                     txtUserLName.Text.Trim().Length > 0 && strID.Length > 0)
                 {
@@ -1277,22 +1338,26 @@ namespace SVSU_Capstone_Project.Views
                     if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
                         strError += "Invalid phone\r";
 
+                    // if there is an error
                     if (strError == "")
                     {
                         //Ask user to confirm action
                         DialogResult result = MessageBox.Show("Are you sure you want to add " +
                             strEmail + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
+                        // if yes is selected from error
                         if (result == DialogResult.Yes)
                         {
                             //Check for duplicate user
                             var emailExists = ItemModel.Get<User>(x => x.strEmail.ToLower() == strEmail.ToLower());
                             var idExists = ItemModel.Get<User>(x => x.strSvsu_id.ToLower() == strID.ToLower());
 
+                            // if email already exist
                             if (emailExists != null)
                             {
                                 MessageBox.Show("A user already exists with the entered email.", "Alert");
                                 btnUserCancel_Click(sender, e);
                             }
+                            //if ID already exist
                             else if (idExists != null)
                             {
                                 MessageBox.Show("A user alread exists with the entered SVSU ID.", "Alert");
@@ -1312,6 +1377,7 @@ namespace SVSU_Capstone_Project.Views
                                     blnPwdReset = true
                                 };
 
+                                // sets the password to the random password that was generated
                                 string strHash = RandomPassword();
                                 user.strHash = Authentication.GenerateHash(strHash);
 
@@ -1465,14 +1531,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void btnUserCancel_Click( object sender, EventArgs e )
         {
+            /* Function: btnUserCancel_Click
+         * Description: This functions will clear the fields and disable fields if cancel is selected when adding a user
+         * Local Variables:
+         * object sender; The object calling the method.
+         * EventArgs e; Information passed by the sender object about the method call.
+         */
+
             //Hide buttons
             btnUserSave.Visible = false;
             btnUserCancel.Visible = false;
@@ -1494,14 +1561,17 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableUserFields(false);
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void btnRoomSave_Click( object sender, EventArgs e )
         {
+            /* Function: btnRoomSave_Click
+         * Description: This functions will save the room credentials only if the entree 
+         *              meets the requirements that are placed by the system
+         * Local Variables:
+         * string strRoomName - user input stored for the room name
+         * 
+         * object sender; The object calling the method.
+         * EventArgs e; Information passed by the sender object about the method call.
+         */
             //Trim unique identifier
             string strRoomName = txtRoomName.Text.Trim();
             
@@ -1668,14 +1738,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void btnRoomCancel_Click( object sender, EventArgs e )
         {
+            /* Function: btnRoomCancel_Click
+            * Description: This functions will clear the fields and disable fields if cancel is selected when adding a room
+            * Local Variables:
+            * object sender; The object calling the method.
+            * EventArgs e; Information passed by the sender object about the method call.
+            */
+
             //Hide buttons
             btnRoomSave.Visible = false;
             btnRoomCancel.Visible = false;
@@ -1694,15 +1765,19 @@ namespace SVSU_Capstone_Project.Views
             //Disable fields
             EnableDisableRoomFields(false);
         }
-
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
+        
         private void btnCabinetSave_Click( object sender, EventArgs e )
         {
+            /* Function: btnCabinetSave_Click
+        * Description: This functions will save the cabinet credentials only if the entree 
+        *              meets the requirements that are placed by the system
+        * Local Variables:
+        * string strRoomName - user input stored for the cabinet name
+        * Cabinet cabinet - new cabinet component
+        * 
+        * object sender; The object calling the method.
+        * EventArgs e; Information passed by the sender object about the method call.
+        */
             //Trim unique identifier
             string strCabinetName = txtCabinetName.Text.Trim();
 
@@ -1895,14 +1970,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void btnCabinetCancel_Click( object sender, EventArgs e )
         {
+            /* Function: btnCabinetCancel_Click
+           * Description: This functions will clear the fields and disable fields if cancel is selected when adding a cabinet
+           * Local Variables:
+           * object sender; The object calling the method.
+           * EventArgs e; Information passed by the sender object about the method call.
+           */
+
             //Hide buttons
             btnCabinetCancel.Visible = false;
             btnCabinetSave.Visible = false;
@@ -1923,14 +1999,17 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableCabinetFields(false);
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void btnCategorySave_Click( object sender, EventArgs e )
         {
+            /* Function: btnCategorySave_Click
+       * Description: This functions will save the category credentials only if the entree 
+       *              meets the requirements that are placed by the system
+       * Local Variables:
+       * string strCategoryName - user input stored for the category name
+       * 
+       * object sender; The object calling the method.
+       * EventArgs e; Information passed by the sender object about the method call.
+       */
             string strCategoryName = txtCategoryName.Text.Trim();
             
             if (btnCategoryAdd.Enabled)
@@ -2096,14 +2175,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void btnCategoryCancel_Click( object sender, EventArgs e )
         {
+            /* Function: btnCategoryCancel_Click
+           * Description: This functions will clear the fields and disable fields if cancel is selected when adding a category
+           * Local Variables:
+           * object sender; The object calling the method.
+           * EventArgs e; Information passed by the sender object about the method call.
+           */
+
             //Hide buttons
             btnCategorySave.Visible = false;
             btnCategoryCancel.Visible = false;
@@ -2123,14 +2203,18 @@ namespace SVSU_Capstone_Project.Views
             EnableDisableCategoryFields(false);
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void btnVendorSave_Click( object sender, EventArgs e )
         {
+            /* Function: btnVendorSave_Click
+       * Description: This functions will save the vendor credentials only if the entree 
+       *              meets the requirements that are placed by the system
+       * Local Variables:
+       * string strVendorName - user input stored for the vendor name
+       * 
+       * object sender; The object calling the method.
+       * EventArgs e; Information passed by the sender object about the method call.
+       */
+
             //Trim unique identifier
             string strVendorName = txtVendorName.Text.Trim();
             
@@ -2299,14 +2383,15 @@ namespace SVSU_Capstone_Project.Views
             }
         }
 
-        /* Function: 
-         * Description: 
-         * 
-         * Local Variables
-         * 
-         */
         private void btnVendorCancel_Click( object sender, EventArgs e )
         {
+            /* Function: btnVendorCancel_Click
+           * Description: This functions will clear the fields and disable fields if cancel is selected when adding a vendor
+           * Local Variables:
+           * object sender; The object calling the method.
+           * EventArgs e; Information passed by the sender object about the method call.
+           */
+
             //Hide buttons
             btnVendorSave.Visible = false;
             btnVendorCancel.Visible = false;
@@ -2328,15 +2413,29 @@ namespace SVSU_Capstone_Project.Views
 
         private void chkUserAdmin_Click( object sender, EventArgs e )
         {
+            /* Function: chkUserAdmin_Click
+       * Description: This functions will check to see if user has items checked out and not let the 
+       *                admin status be changed if items are checked out buy the user
+       * Local Variables:
+       * 
+       * object sender; The object calling the method.
+       * EventArgs e; Information passed by the sender object about the method call.
+       */
+
             if (btnUserModify.Enabled && btnUserSave.Visible)
             {
                 User user = ItemModel.Get<User>(x => x.strSvsu_id == txtUserSVSUID.Text);
+                // if user has items checked out prompt error message
                 if (user.lstCheckedItems.Count > 0)
                 {
                     MessageBox.Show("Cannot change Admin status while user has items checked out!", "Alert");
                     chkUserAdmin.Checked = !chkUserAdmin.Checked;
                 }
             }
+        }
+        private void frmSettings_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
