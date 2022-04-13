@@ -198,6 +198,7 @@ namespace SVSU_Capstone_Project.Views
             btnUserModify.Enabled = false;
             btnUserPassword.Enabled = false;
             btnUserDelete.Enabled = false;
+            btnMassDelete.Enabled = false;
 
             //Show buttons
             btnUserSave.Visible = true;
@@ -230,6 +231,7 @@ namespace SVSU_Capstone_Project.Views
                 btnUserUpload.Enabled = false;
                 btnUserPassword.Enabled = false;
                 btnUserDelete.Enabled = false;
+                btnMassDelete.Enabled = false;
 
                 //Show buttons
                 btnUserSave.Visible = true;
@@ -369,7 +371,7 @@ namespace SVSU_Capstone_Project.Views
          */
             
             //If a user is selected
-            if (lstUser.SelectedIndex >= 0)
+            if (lstUser.SelectedIndex >= 0 && btnUserSave.Text != "Confirm Delete")
             {
                 //Get the user email
                 MailAddress mailAddress = new MailAddress(lstUser.SelectedItem.ToString());
@@ -1301,131 +1303,62 @@ namespace SVSU_Capstone_Project.Views
           * EventArgs e; Information passed by the sender object about the method call.
           */
 
-            //Trim unique identifiers
-            // stored email
-            string strEmail = txtUserEmail.Text.Trim();
-            // stored user ID
-            string strID = txtUserSVSUID.Text.Trim();
-
-            // if button is entered
-            if (btnUserAdd.Enabled)
+            if (btnMassDelete.Enabled)
             {
-                // as long as data is entered
-                if (strEmail.Length > 0 && txtUserFName.Text.Trim().Length > 0 &&
-                    txtUserLName.Text.Trim().Length > 0 && strID.Length > 0)
+                List<User> LstDeleteUsers = new List<User>();
+                try
                 {
-                    string strError = "";
-
-                    //Valid email
-                    if (!Regex.IsMatch(strEmail,
-                        @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
-                        RegexOptions.IgnoreCase))
-                        strError += "Invalid email\r";
-
-                    //Only letters and hyphens in firstname
-                    if (!txtUserFName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
-                        strError += "Invalid first name\r";
-
-                    //Only letters and hyphens in lastname
-                    if (!txtUserLName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
-                        strError += "Invalid last name\r";
-
-                    //Only alphanumeric SVSU ID less than 8 chars
-                    if (!strID.All(char.IsLetterOrDigit) || strID.Length > 8)
-                        strError += "Invalid SVSU ID\r";
-
-                    //Only empty or numeric phone
-                    if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
-                        strError += "Invalid phone\r";
-
-                    // if there is an error
-                    if (strError == "")
+                    foreach (string strUser in lstUser.SelectedItems)
                     {
-                        //Ask user to confirm action
-                        DialogResult result = MessageBox.Show("Are you sure you want to add " +
-                            strEmail + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
-                        // if yes is selected from error
-                        if (result == DialogResult.Yes)
-                        {
-                            //Check for duplicate user
-                            var emailExists = ItemModel.Get<User>(x => x.strEmail.ToLower() == strEmail.ToLower());
-                            var idExists = ItemModel.Get<User>(x => x.strSvsu_id.ToLower() == strID.ToLower());
+                        //Get the user email
+                        MailAddress mailAddress = new MailAddress(strUser);
 
-                            // if email already exist
-                            if (emailExists != null)
-                            {
-                                MessageBox.Show("A user already exists with the entered email.", "Alert");
-                                btnUserCancel_Click(sender, e);
-                            }
-                            //if ID already exist
-                            else if (idExists != null)
-                            {
-                                MessageBox.Show("A user alread exists with the entered SVSU ID.", "Alert");
-                                btnUserCancel_Click(sender, e);
-                            }
-                            else
-                            {
-                                //Set user properties                        
-                                User user = new User
-                                {
-                                    strSvsu_id = strID,
-                                    strEmail = strEmail,
-                                    strFirst_name = txtUserFName.Text.Trim(),
-                                    strLast_name = txtUserLName.Text.Trim(),
-                                    strPhone = txtUserPhone.Text.Trim(),
-                                    blnIsAdmin = chkUserAdmin.Checked,
-                                    blnPwdReset = true
-                                };
+                        //Get user
+                        User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
 
-                                // sets the password to the random password that was generated
-                                string strHash = RandomPassword();
-                                user.strHash = Authentication.GenerateHash(strHash);
-
-                                //Add user
-                                ItemModel.Add<User>(user);
-
-                                //Alert user
-                                if (chkUserAdmin.Checked)
-                                {
-                                    MessageBox.Show("Successful Add\r\n\r\n"
-                                    + strEmail + " will be prompted to set their password on their fist login\r\n" +
-                                    "Their temporary password is " + strHash, "Alert");
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Successfully Added User!", "Alert");
-                                }
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
-
-                                //Hide buttons
-                                btnUserSave.Visible = false;
-                                btnUserCancel.Visible = false;
-
-                                //Enable buttons
-                                btnUserUpload.Enabled = true;
-                                btnUserModify.Enabled = true;
-                                btnUserPassword.Enabled = true;
-                                btnUserDelete.Enabled = true;
-
-                                //Clear fields
-                                ClearUserFields();
-                                EnableDisableUserFields(false);
-                            }
-                        }
+                        //Add user to list
+                        LstDeleteUsers.Add(user);
                     }
-                    else
-                        MessageBox.Show("Error adding user!\r\r" + strError, "Alert");
+
+                    //Ask the user before deletion
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete " + LstDeleteUsers.Count + " users?",
+                        "Alert", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        //Delete each user in the list
+                        foreach (User user in LstDeleteUsers)
+                        {
+                            ItemModel.Delete<User>(user);
+                        }
+
+                        //Alert user
+                        MessageBox.Show("Successfully deleted " + LstDeleteUsers.Count + " users!", "Alert");
+                    }
                 }
-            }
-            else if (btnUserModify.Enabled)
-            {
-                //If a user is selected
-                if (lstUser.SelectedIndex >= 0 && strEmail != "" && txtUserFName.Text.Trim() != "" &&
-                    txtUserLName.Text.Trim() != "" && strID != "")
+                catch(Exception ex)
                 {
-                    try
+                    MessageBox.Show("Failed to delete users!", "Error");
+                }
+
+                //Refresh list
+                tbcSettings_SelectedIndexChanged(sender, e);
+                btnUserCancel_Click(sender, e);
+            }
+            else
+            {
+                //Trim unique identifiers
+                // stored email
+                string strEmail = txtUserEmail.Text.Trim();
+                // stored user ID
+                string strID = txtUserSVSUID.Text.Trim();
+
+                // if button is entered
+                if (btnUserAdd.Enabled)
+                {
+                    // as long as data is entered
+                    if (strEmail.Length > 0 && txtUserFName.Text.Trim().Length > 0 &&
+                        txtUserLName.Text.Trim().Length > 0 && strID.Length > 0)
                     {
                         string strError = "";
 
@@ -1445,53 +1378,69 @@ namespace SVSU_Capstone_Project.Views
 
                         //Only alphanumeric SVSU ID less than 8 chars
                         if (!strID.All(char.IsLetterOrDigit) || strID.Length > 8)
-                        strError += "Invalid SVSU ID\r";
+                            strError += "Invalid SVSU ID\r";
 
                         //Only empty or numeric phone
                         if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
                             strError += "Invalid phone\r";
 
+                        // if there is an error
                         if (strError == "")
                         {
                             //Ask user to confirm action
-                            DialogResult result = MessageBox.Show("Are you sure you want to modify " +
-                                txtUserFName.Text + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
-
+                            DialogResult result = MessageBox.Show("Are you sure you want to add " +
+                                strEmail + " as a new user?", "Confirm", MessageBoxButtons.YesNo);
+                            // if yes is selected from error
                             if (result == DialogResult.Yes)
                             {
-                                //Get user
-                                User user = ItemModel.Get<User>(x => x.strSvsu_id.ToLower() == strID.ToLower());
-
                                 //Check for duplicate user
                                 var emailExists = ItemModel.Get<User>(x => x.strEmail.ToLower() == strEmail.ToLower());
                                 var idExists = ItemModel.Get<User>(x => x.strSvsu_id.ToLower() == strID.ToLower());
 
-                                //If email exists and it's not the selected user's email
-                                if(emailExists != null && emailExists.strEmail.ToLower() != user.strEmail.ToLower())
+                                // if email already exist
+                                if (emailExists != null)
                                 {
-                                    MessageBox.Show("This email already exists", "Alert");
+                                    MessageBox.Show("A user already exists with the entered email.", "Alert");
                                     btnUserCancel_Click(sender, e);
                                 }
-                                else if(idExists != null && idExists.strSvsu_id.ToLower() != user.strSvsu_id.ToLower())
+                                //if ID already exist
+                                else if (idExists != null)
                                 {
-                                    MessageBox.Show("This SVSU ID already exists", "Alert");
+                                    MessageBox.Show("A user alread exists with the entered SVSU ID.", "Alert");
                                     btnUserCancel_Click(sender, e);
                                 }
                                 else
                                 {
-                                    //Modify user
-                                    user.strSvsu_id = strID;
-                                    user.strEmail = strEmail;
-                                    user.strFirst_name = txtUserFName.Text.Trim();
-                                    user.strLast_name = txtUserLName.Text.Trim();
-                                    user.strPhone = txtUserPhone.Text.Trim();
-                                    user.blnIsAdmin = chkUserAdmin.Checked;
+                                    //Set user properties                        
+                                    User user = new User
+                                    {
+                                        strSvsu_id = strID,
+                                        strEmail = strEmail,
+                                        strFirst_name = txtUserFName.Text.Trim(),
+                                        strLast_name = txtUserLName.Text.Trim(),
+                                        strPhone = txtUserPhone.Text.Trim(),
+                                        blnIsAdmin = chkUserAdmin.Checked,
+                                        blnPwdReset = true
+                                    };
 
-                                    //Save user
-                                    ItemModel.Update<User>(user);
+                                    // sets the password to the random password that was generated
+                                    string strHash = RandomPassword();
+                                    user.strHash = Authentication.GenerateHash(strHash);
+
+                                    //Add user
+                                    ItemModel.Add<User>(user);
 
                                     //Alert user
-                                    MessageBox.Show("Successful Modification!\rIf you just made this user an admin, be sure to reset their password.", "Alert");
+                                    if (chkUserAdmin.Checked)
+                                    {
+                                        MessageBox.Show("Successful Add\r\n\r\n"
+                                        + strEmail + " will be prompted to set their password on their fist login\r\n" +
+                                        "Their temporary password is " + strHash, "Alert");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Successfully Added User!", "Alert");
+                                    }
 
                                     //Refresh list
                                     tbcSettings_SelectedIndexChanged(sender, e);
@@ -1501,8 +1450,8 @@ namespace SVSU_Capstone_Project.Views
                                     btnUserCancel.Visible = false;
 
                                     //Enable buttons
-                                    btnUserAdd.Enabled = true;
                                     btnUserUpload.Enabled = true;
+                                    btnUserModify.Enabled = true;
                                     btnUserPassword.Enabled = true;
                                     btnUserDelete.Enabled = true;
 
@@ -1511,22 +1460,120 @@ namespace SVSU_Capstone_Project.Views
                                     EnableDisableUserFields(false);
                                 }
                             }
-                            else
-                            {
-                                btnUserCancel_Click(sender, e);
-                            }
                         }
                         else
-                            MessageBox.Show("Error modifying user!\r\r" + strError, "Alert");
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
+                            MessageBox.Show("Error adding user!\r\r" + strError, "Alert");
                     }
                 }
-                else
+                else if (btnUserModify.Enabled)
                 {
-                    MessageBox.Show("Please select a user to modify before saving!", "Alert");
+                    //If a user is selected
+                    if (lstUser.SelectedIndex >= 0 && strEmail != "" && txtUserFName.Text.Trim() != "" &&
+                        txtUserLName.Text.Trim() != "" && strID != "")
+                    {
+                        try
+                        {
+                            string strError = "";
+
+                            //Valid email
+                            if (!Regex.IsMatch(strEmail,
+                                @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
+                                RegexOptions.IgnoreCase))
+                                strError += "Invalid email\r";
+
+                            //Only letters and hyphens in firstname
+                            if (!txtUserFName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
+                                strError += "Invalid first name\r";
+
+                            //Only letters and hyphens in lastname
+                            if (!txtUserLName.Text.All(c => char.IsLetter(c) || c.Equals('-')))
+                                strError += "Invalid last name\r";
+
+                            //Only alphanumeric SVSU ID less than 8 chars
+                            if (!strID.All(char.IsLetterOrDigit) || strID.Length > 8)
+                                strError += "Invalid SVSU ID\r";
+
+                            //Only empty or numeric phone
+                            if (!txtUserPhone.Text.All(char.IsNumber) && txtUserPhone.Text != "")
+                                strError += "Invalid phone\r";
+
+                            if (strError == "")
+                            {
+                                //Ask user to confirm action
+                                DialogResult result = MessageBox.Show("Are you sure you want to modify " +
+                                    txtUserFName.Text + "'s user profile to current field values?", "Confirm", MessageBoxButtons.YesNo);
+
+                                if (result == DialogResult.Yes)
+                                {
+                                    //Get user
+                                    User user = ItemModel.Get<User>(x => x.strSvsu_id.ToLower() == strID.ToLower());
+
+                                    //Check for duplicate user
+                                    var emailExists = ItemModel.Get<User>(x => x.strEmail.ToLower() == strEmail.ToLower());
+                                    var idExists = ItemModel.Get<User>(x => x.strSvsu_id.ToLower() == strID.ToLower());
+
+                                    //If email exists and it's not the selected user's email
+                                    if (emailExists != null && emailExists.strEmail.ToLower() != user.strEmail.ToLower())
+                                    {
+                                        MessageBox.Show("This email already exists", "Alert");
+                                        btnUserCancel_Click(sender, e);
+                                    }
+                                    else if (idExists != null && idExists.strSvsu_id.ToLower() != user.strSvsu_id.ToLower())
+                                    {
+                                        MessageBox.Show("This SVSU ID already exists", "Alert");
+                                        btnUserCancel_Click(sender, e);
+                                    }
+                                    else
+                                    {
+                                        //Modify user
+                                        user.strSvsu_id = strID;
+                                        user.strEmail = strEmail;
+                                        user.strFirst_name = txtUserFName.Text.Trim();
+                                        user.strLast_name = txtUserLName.Text.Trim();
+                                        user.strPhone = txtUserPhone.Text.Trim();
+                                        user.blnIsAdmin = chkUserAdmin.Checked;
+
+                                        //Save user
+                                        ItemModel.Update<User>(user);
+
+                                        //Alert user
+                                        MessageBox.Show("Successful Modification!\rIf you just made this user an admin, be sure to reset their password.", "Alert");
+
+                                        //Refresh list
+                                        tbcSettings_SelectedIndexChanged(sender, e);
+
+                                        //Hide buttons
+                                        btnUserSave.Visible = false;
+                                        btnUserCancel.Visible = false;
+
+                                        //Enable buttons
+                                        btnUserAdd.Enabled = true;
+                                        btnUserUpload.Enabled = true;
+                                        btnUserPassword.Enabled = true;
+                                        btnUserDelete.Enabled = true;
+
+                                        //Clear fields
+                                        ClearUserFields();
+                                        EnableDisableUserFields(false);
+                                    }
+                                }
+                                else
+                                {
+                                    btnUserCancel_Click(sender, e);
+                                }
+                            }
+                            else
+                                MessageBox.Show("Error modifying user!\r\r" + strError, "Alert");
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Modify failed\r\nPlease ensure that you fill out valid user information!", "Alert");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select a user to modify before saving!", "Alert");
+                    }
                 }
             }
         }
@@ -1534,11 +1581,11 @@ namespace SVSU_Capstone_Project.Views
         private void btnUserCancel_Click( object sender, EventArgs e )
         {
             /* Function: btnUserCancel_Click
-         * Description: This functions will clear the fields and disable fields if cancel is selected when adding a user
-         * Local Variables:
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
-         */
+            * Description: This functions will clear the fields and disable fields if cancel is selected when adding a user
+            * Local Variables:
+            * object sender; The object calling the method.
+            * EventArgs e; Information passed by the sender object about the method call.
+            */
 
             //Hide buttons
             btnUserSave.Visible = false;
@@ -1550,6 +1597,7 @@ namespace SVSU_Capstone_Project.Views
             btnUserModify.Enabled = true;
             btnUserPassword.Enabled = true;
             btnUserDelete.Enabled = true;
+            btnMassDelete.Enabled = true;
 
             //Unselect listbox
             lstUser.SelectedIndex = -1;
@@ -1559,6 +1607,15 @@ namespace SVSU_Capstone_Project.Views
 
             //Disable fields
             EnableDisableUserFields(false);
+
+            if (btnMassDelete.Enabled)
+            {
+                //Change back to single selection mode
+                lstUser.SelectionMode = SelectionMode.One;
+
+                //Change text back
+                btnUserSave.Text = "Save User";
+            }
         }
 
         private void btnRoomSave_Click( object sender, EventArgs e )
@@ -2436,6 +2493,35 @@ namespace SVSU_Capstone_Project.Views
         private void frmSettings_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnMassDelete_Click( object sender, EventArgs e )
+        {
+            //Put the listbox on multi-select mode
+            lstUser.SelectionMode = SelectionMode.MultiSimple;
+
+            //Disable buttons
+            btnUserUpload.Enabled = false;
+            btnUserAdd.Enabled = false;
+            btnUserModify.Enabled = false;
+            btnUserPassword.Enabled = false;
+            btnUserDelete.Enabled = false;
+
+            //Show buttons
+            btnUserSave.Visible = true;
+            btnUserCancel.Visible = true;
+
+            //Change text
+            btnUserSave.Text = "Confirm Delete";
+
+            //Enable fields
+            EnableDisableUserFields(true);
+
+            //Clear fields
+            ClearUserFields();
+
+            //Alert user what to do
+            MessageBox.Show("Select all of the users that you want to delete. Then, click to confirm your actions.", "Alert");
         }
     }
 }
