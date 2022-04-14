@@ -31,62 +31,67 @@ namespace SVSU_Capstone_Project.Views
          */
         private void frmGenerateReports_Load( object sender, EventArgs e )
         {
-            // TODO: This line of code loads data into the 'invDbDataSet1.DynamicItemsTable' table. You can move, or remove it, as needed.
-            this.dynamicItemsTableAdapter.Fill(this.invDbDataSet1.DynamicItemsTable);
-            // TODO: This line of code loads data into the 'invDbDataSet1.LowStock' table. You can move, or remove it, as needed.
-            this.lowStockTableAdapter.Fill(this.invDbDataSet1.LowStock);
-            // TODO: This line of code loads data into the 'invDbDataSet1.SimulatorUse' table. You can move, or remove it, as needed.
-            this.simulatorUseTableAdapter1.Fill(this.invDbDataSet1.SimulatorUse);
-            // TODO: This line of code loads data into the 'invDbDataset1.Logs' table. You can move, or remove it, as needed.
-            this.logsTableAdapter.Fill(this.invDbDataSet1.Logs);
+            //this.reportViewer1.RefreshReport();
+            //this.reportViewer2.RefreshReport();
+            //this.reportViewer3.RefreshReport();
+            //this.reportViewer4.RefreshReport();
 
-            //Set Activity Log page margins and orientation to display all data when report is printed.
-            System.Drawing.Printing.PageSettings activityLog = new System.Drawing.Printing.PageSettings();
-            activityLog.Landscape = true;
-            activityLog.Margins = new System.Drawing.Printing.Margins(50,50,50,50);
-            reportViewer1.SetPageSettings(activityLog);
-
-            //Set Simulator uses page margins and orientation to display all data when report is printed.
-            System.Drawing.Printing.PageSettings simulatorUses = new System.Drawing.Printing.PageSettings();
-            simulatorUses.Landscape = true;
-            simulatorUses.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50);
-            reportViewer2.SetPageSettings(simulatorUses);
-
-
-            //Set Dynamic Items page margins and orientation to display all data when report it printed.
-            System.Drawing.Printing.PageSettings dynamicItems = new System.Drawing.Printing.PageSettings();
-            dynamicItems.Landscape = true;
-            dynamicItems.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50);
-            reportViewer4.SetPageSettings(dynamicItems);
-
-
-            this.reportViewer1.RefreshReport();
-            this.reportViewer2.RefreshReport();
-            this.reportViewer3.RefreshReport();
-            this.reportViewer4.RefreshReport();
+            //Load data for first tab
+            tbcReports_SelectedIndexChanged(sender, e);
         }
 
 
-        public void tbcReports_SelectedIndexChanged( object sender, EventArgs e)
+        public void tbcReports_SelectedIndexChanged( object sender, EventArgs e )
         {
             switch (tbcReports.SelectedTab.Name)
             {
                 case "tabActivityLog":
+                    // TODO: This line of code loads data into the 'invDbDataset1.Logs' table. You can move, or remove it, as needed.
+                    this.logsTableAdapter.Fill(this.invDbDataSet1.Logs);
+
+                    //Set Activity Log page margins and orientation to display all data when report is printed.
+                    System.Drawing.Printing.PageSettings activityLog = new System.Drawing.Printing.PageSettings();
+                    activityLog.Landscape = true;
+                    activityLog.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50);
+                    reportViewer1.SetPageSettings(activityLog);
+
                     this.reportViewer1.RefreshReport();
                     break;
                 case "tabSimulatorUse":
+
+                    // TODO: This line of code loads data into the 'invDbDataSet1.SimulatorUse' table. You can move, or remove it, as needed.
+                    this.simulatorUseTableAdapter1.Fill(this.invDbDataSet1.SimulatorUse);
+
+                    //Set Simulator uses page margins and orientation to display all data when report is printed.
+                    System.Drawing.Printing.PageSettings simulatorUses = new System.Drawing.Printing.PageSettings();
+                    simulatorUses.Landscape = true;
+                    simulatorUses.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50);
+                    reportViewer2.SetPageSettings(simulatorUses);
+
                     this.reportViewer2.RefreshReport();
                     break;
                 case "tabLowStock":
+
+                    // TODO: This line of code loads data into the 'invDbDataSet1.LowStock' table. You can move, or remove it, as needed.
+                    this.lowStockTableAdapter.Fill(this.invDbDataSet1.LowStock);
+
                     this.reportViewer3.RefreshReport();
                     break;
                 case "tabDynamicItems":
+
+                    // TODO: This line of code loads data into the 'invDbDataSet1.DynamicItemsTable' table. You can move, or remove it, as needed.
+                    this.dynamicItemsTableAdapter.Fill(this.invDbDataSet1.DynamicItemsTable);
+
+                    //Set Dynamic Items page margins and orientation to display all data when report it printed.
+                    System.Drawing.Printing.PageSettings dynamicItems = new System.Drawing.Printing.PageSettings();
+                    dynamicItems.Landscape = true;
+                    dynamicItems.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50);
+                    reportViewer4.SetPageSettings(dynamicItems);
+
                     this.reportViewer4.RefreshReport();
                     break;
             }
         }
-
-
     }
 }
 //Lamar, is there a way to make this page load faster? -Everyone, especially Ben
