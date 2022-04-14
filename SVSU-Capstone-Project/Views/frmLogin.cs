@@ -116,7 +116,7 @@ namespace SVSU_Capstone_Project.Views
         {
             var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
             string batDir = Path.Combine(projectPath, "CSISConnect\\");
-            string strCommand = "/C START /MIN CSISConnect.bat " + strUsername + " " + strPassword;
+            string strCommand = "/C START /MIN CSISConnect.bat \"" + strUsername + "\" \"" + strPassword+ "\"";            
             Environment.CurrentDirectory = batDir;
             Process.Start("CMD.exe", strCommand);
         }
