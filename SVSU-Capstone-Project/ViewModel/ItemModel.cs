@@ -54,17 +54,21 @@ namespace SVSU_Capstone_Project.ViewModel
             try
             {
                 conn.Open();
-                //MessageBox.Show("successfull connection", "Alert");
+                return db.Set<T>().FirstOrDefault(predicate);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("Please check your internet connection and try to start the application again. The application will now close.", "Alert");
+                MessageBox.Show(ex.Message, "Error! No connection to database!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (Application.OpenForms["frmLogin"] != null)
+                    MessageBox.Show("Cannot login, shutting down!\r\rMake sure you are connected to the internet and entering valid SVSU credentials!", "Error");
+                else
+                    MessageBox.Show("Please check your internet connection and try to start the application again. The application will now close.", "Alert");
 
                 //close application 
-                Environment.Exit(0);
+                Application.Exit();
+                return null;
             }
-            return db.Set<T>().FirstOrDefault(predicate);
         }
 
         public static Guid Add<T>( T obj, out T item ) where T : ContextEntity

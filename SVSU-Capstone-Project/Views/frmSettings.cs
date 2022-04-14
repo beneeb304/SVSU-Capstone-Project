@@ -196,7 +196,6 @@ namespace SVSU_Capstone_Project.Views
             //Disable buttons
             btnUserUpload.Enabled = false;
             btnUserModify.Enabled = false;
-            btnUserPassword.Enabled = false;
             btnUserDelete.Enabled = false;
             btnMassDelete.Enabled = false;
 
@@ -229,7 +228,6 @@ namespace SVSU_Capstone_Project.Views
                 //Disable buttons
                 btnUserAdd.Enabled = false;
                 btnUserUpload.Enabled = false;
-                btnUserPassword.Enabled = false;
                 btnUserDelete.Enabled = false;
                 btnMassDelete.Enabled = false;
 
@@ -247,7 +245,7 @@ namespace SVSU_Capstone_Project.Views
        
         private void ClearUserFields()
         {
-            /* Function: ClearUserFields
+         /* Function: ClearUserFields
          * Description: Clears all fields in the user settings page.
          */
        
@@ -259,104 +257,6 @@ namespace SVSU_Capstone_Project.Views
             txtUserPhone.Text = "";
             chkUserAdmin.Checked = false;
             lstUser.SelectedIndex = -1;
-        }
-
-        private void btnUserPassword_Click( object sender, EventArgs e )
-        {
-          
-          /* Function: btnUserPassword_Click
-         * Description: Change a selected user's password.
-         * Asks the user for confirmation before changing the password.
-         * 
-         * Local Variables
-         * object sender; The object calling the method.
-         * EventArgs e; Information passed by the sender object about the method call.
-         * DialogResult result; MessageBox to confirm the password change.
-         * User user; Represents the user being modified in the database.
-         */
-           
-            //If a user is selected
-            if (lstUser.SelectedIndex >= 0)
-            {
-                try
-                {
-                    //Get the user email
-                    MailAddress mailAddress = new MailAddress(lstUser.SelectedItem.ToString());
-
-                    //Get user
-                    User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
-                        if (user.blnIsAdmin)
-                        {
-                            //Ask user to confirm action
-                            DialogResult result = MessageBox.Show("Are you sure you want to reset " +
-                                mailAddress.Address + "'s password?", "Confirm", MessageBoxButtons.YesNo);
-
-                            if (result == DialogResult.Yes)
-                            {
-                                //Set password
-                                string strHash = RandomPassword();
-                                user.strHash = Authentication.GenerateHash(strHash);
-                                user.blnPwdReset = true;
-
-                                //Save user
-                                ItemModel.Update<User>(user);
-
-                                //Alert user
-                                MessageBox.Show("Successful Reset\r\n\r\n"
-                                    + txtUserEmail.Text + " will be prompted to reset their password on their next login\r\n" +
-                                    "Their temporary password is " + strHash, "Alert");
-
-                                //Refresh list
-                                tbcSettings_SelectedIndexChanged(sender, e);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Cannot change non-admin password", "Alert");
-                        }
-
-                }
-                catch
-                {
-                    MessageBox.Show("Password reset failed!", "Alert");
-                }
-
-                //Clear fields
-                ClearUserFields();
-            }
-            else
-            {
-                MessageBox.Show("Select a user to perform a password reset", "Alert");
-            }
-        }
-
-        private string RandomPassword()
-        {
-            /* Function: RandomPassword
-         * Description: Will randomize the user password when reset to protect privacy
-         * Return: created and randomized password
-         */
-
-            //Randomize user password
-            Random random = new Random();
-
-            //String that contain both alphabets and numbers
-            string strAlphaNumeric = "abcdefghijklmnopqrstuvwxyz0123456789";
-            string strHash = "";
-
-            //Set to 8 characters long
-            int size = 8;
-
-            for (int i = 0; i < size; i++)
-            {
-                //Selecting a index randomly
-                int x = random.Next(strAlphaNumeric.Length);
-
-                //Appending the character at the index to the random alphanumeric string.
-                strHash += strAlphaNumeric[x];
-            }
-
-            return strHash;
         }
    
         private void lstUser_SelectedIndexChanged( object sender, EventArgs e )
@@ -1449,28 +1349,14 @@ namespace SVSU_Capstone_Project.Views
                                         strFirst_name = txtUserFName.Text.Trim(),
                                         strLast_name = txtUserLName.Text.Trim(),
                                         strPhone = txtUserPhone.Text.Trim(),
-                                        blnIsAdmin = chkUserAdmin.Checked,
-                                        blnPwdReset = true
+                                        blnIsAdmin = chkUserAdmin.Checked
                                     };
-
-                                    // sets the password to the random password that was generated
-                                    string strHash = RandomPassword();
-                                    user.strHash = Authentication.GenerateHash(strHash);
 
                                     //Add user
                                     ItemModel.Add<User>(user);
 
                                     //Alert user
-                                    if (chkUserAdmin.Checked)
-                                    {
-                                        MessageBox.Show("Successful Add\r\n\r\n"
-                                        + strEmail + " will be prompted to set their password on their fist login\r\n" +
-                                        "Their temporary password is " + strHash, "Alert");
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Successfully Added User!", "Alert");
-                                    }
+                                    MessageBox.Show("Successfully added " + user.strFirst_name, "Alert");
 
                                     //Refresh list
                                     tbcSettings_SelectedIndexChanged(sender, e);
@@ -1482,7 +1368,6 @@ namespace SVSU_Capstone_Project.Views
                                     //Enable buttons
                                     btnUserUpload.Enabled = true;
                                     btnUserModify.Enabled = true;
-                                    btnUserPassword.Enabled = true;
                                     btnUserDelete.Enabled = true;
 
                                     //Clear fields
@@ -1579,7 +1464,6 @@ namespace SVSU_Capstone_Project.Views
                                         //Enable buttons
                                         btnUserAdd.Enabled = true;
                                         btnUserUpload.Enabled = true;
-                                        btnUserPassword.Enabled = true;
                                         btnUserDelete.Enabled = true;
 
                                         //Clear fields
@@ -1625,7 +1509,6 @@ namespace SVSU_Capstone_Project.Views
             btnUserAdd.Enabled = true;
             btnUserUpload.Enabled = true;
             btnUserModify.Enabled = true;
-            btnUserPassword.Enabled = true;
             btnUserDelete.Enabled = true;
             btnMassDelete.Enabled = true;
 
@@ -2534,7 +2417,6 @@ namespace SVSU_Capstone_Project.Views
             btnUserUpload.Enabled = false;
             btnUserAdd.Enabled = false;
             btnUserModify.Enabled = false;
-            btnUserPassword.Enabled = false;
             btnUserDelete.Enabled = false;
 
             //Show buttons

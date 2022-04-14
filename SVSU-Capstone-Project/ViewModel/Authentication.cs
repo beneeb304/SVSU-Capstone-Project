@@ -28,23 +28,13 @@ namespace SVSU_Capstone_Project.ViewModel
             if( string.IsNullOrEmpty( password ) )
                 throw new ArgumentException( "Password cannot be null or empty" );
 
-            string strHash;
-
-            if(password == "Capstone2022")
-            {
-                strHash = password;
-            }
-            else
-            {
-                // get hash from pass
-                strHash = GenerateHash(password);
-            }
-
-            // compare hash to hash in db
             var objUserProfile = ItemModel.Get<User>(u => u.strEmail == username);
+
+            if (objUserProfile == null)
+                return null;
+
             // return user profile if found
             if (objUserProfile == null) throw new UserNotFoundException("User does not exist");
-            if (objUserProfile.strHash != strHash) throw new PasswordInvalidException($"Password does not match for {objUserProfile.strEmail}");
             ActiveUser = objUserProfile;
 
             //check to make sure we are connected to db
@@ -73,12 +63,6 @@ namespace SVSU_Capstone_Project.ViewModel
             var hash = sha256.ComputeHash(inputBytes);
             return Convert.ToBase64String(hash);
         }
-        public static bool SecurityBypass()
-        {
-            ActiveUser = ItemModel.Get<User>(x => x.blnIsAdmin == true);
-            if (ActiveUser == null) return false;
-            else return true;
-        }
     }
     public class UserNotFoundException : Exception
         {
@@ -97,3 +81,8 @@ namespace SVSU_Capstone_Project.ViewModel
 //---------------------------
 //How many programmers does it take to change a light bulb?
 //None, It’s a hardware problem
+
+//Hidden Joke from Ben ;)
+//---------------------------
+//Hunter
+// <3

@@ -15,7 +15,6 @@ namespace SVSU_Capstone_Project
 {
     public partial class frmMain : Form
     {
-
         public frmMain()
         {
           /* Function: frmMain
@@ -213,6 +212,18 @@ namespace SVSU_Capstone_Project
                 pcbHeHe.Image = Properties.Resources.HeHe;
             });
             
+        }
+
+        private void frmMain_FormClosing( object sender, FormClosingEventArgs e )
+        {
+            foreach (System.Diagnostics.Process proc in System.Diagnostics.Process.GetProcesses())
+            {
+                if (proc.MainWindowTitle.Contains("CSIS-Connect"))
+                {
+                    proc.CloseMainWindow();
+                    break;
+                }
+            }
         }
     }
 }

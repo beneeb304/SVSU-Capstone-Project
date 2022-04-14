@@ -43,11 +43,13 @@ namespace SVSU_Capstone_Project.Views
             //Get rid of errorprovider
             erpLoginForm.Clear();
 
-            User user;
-
             //Use Authentication ViewModel to check user's ID/password combination
             try
             {
+                //Make sure fields are filled out
+                if (txtEmail.Text.Trim().Length == 0) throw new UserNotFoundException("Cannot leave username blank");
+                if (txtPassword.Text.Trim().Length == 0) throw new PasswordInvalidException("Cannot leave password blank");
+
                 //Check for @ in the login (note: if domain is not svsu, this will not work)
                 string userEmail = txtEmail.Text.Trim();
                 if (!userEmail.Contains("@"))
@@ -57,57 +59,36 @@ namespace SVSU_Capstone_Project.Views
                 }
                 else
                 {
-                    ExecuteBatch(userEmail.Substring(userEmail.IndexOf("@") + 1) + "@csis.svsu.edu", txtPassword.Text);
+                    ExecuteBatch(userEmail.Substring(0, userEmail.IndexOf("@") + 1) + "@csis.svsu.edu", txtPassword.Text);
                 }
 
                 //Get user
-                user = Authentication.Authenticate(userEmail, txtPassword.Text);
-                                
-                //If user isn't admin and somehow got this far, don't let them login
-                if(user.blnIsAdmin == false)
+                User user = Authentication.Authenticate(userEmail, txtPassword.Text);
+                
+                if(user != null)
                 {
-                    //Set user back to null
-                    Authentication.ActiveUser = null;
-                    throw new UserNotFoundException("Must be admin to login");
-                }
-                //If user is flagged to change password
-                else if (user.blnPwdReset == true)
-                {
-                    var f = new frmSetPassword();
-                    DialogResult result = f.ShowDialog();
-                    if (result == DialogResult.OK)
+                    //If user isn't admin and somehow got this far, don't let them login
+                    if (user.blnIsAdmin == false)
                     {
-                        //Set user password
-                        user.strHash = frmSetPassword.strHash;
-                        user.blnPwdReset = false;
-
-                        //Save user
-                        ItemModel.Update<User>(user);
-                        
-                        //Alert user
-                        MessageBox.Show("Password Set Successfully", "Alert");
+                        //Set user back to null
+                        Authentication.ActiveUser = null;
+                        throw new UserNotFoundException("Must be admin to login");
                     }
                     else
                     {
-                        txtPassword.Text = "";
-                        txtEmail.Text = "";
-                        return;
+                        Log log = new Log
+                        {
+                            enuAction = ItemAction.UserLogin,
+                            dtTimestamp = DateTime.Now,
+                            intQuantityChange = 0,
+                            objStorage = null,
+                            objUser = Authentication.ActiveUser,
+                            strNotes = $"{Authentication.ActiveUser} logged into the system on {DateTime.Now}."
+                        };
+                        ItemModel.Add<Log>(log);
+                        var homeLoad = new frmHome();
+                        homeLoad.populateTables();
                     }
-                }
-                else if(user != null)
-                {
-                    Log log = new Log
-                    {
-                        enuAction = ItemAction.UserLogin,
-                        dtTimestamp = DateTime.Now,
-                        intQuantityChange = 0,
-                        objStorage = null,
-                        objUser = Authentication.ActiveUser,
-                        strNotes = $"{Authentication.ActiveUser} logged into the system on {DateTime.Now}."
-                    };
-                    ItemModel.Add<Log>(log);
-                    var homeLoad = new frmHome();
-                    homeLoad.populateTables();
                 }
             }
             catch (ArgumentException ex)
@@ -135,14 +116,14 @@ namespace SVSU_Capstone_Project.Views
         {
             var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
             string batDir = Path.Combine(projectPath, "CSISConnect\\");
-            string strCommand = "/C CSISConnect.bat " + strUsername + " " + strPassword;
+            string strCommand = "/C START /MIN CSISConnect.bat " + strUsername + " " + strPassword;
             Environment.CurrentDirectory = batDir;
             Process.Start("CMD.exe", strCommand);
         }
 
         private void btnCancel_Click( object sender, EventArgs e )
         {
-                /* Function: btnCancel_Click
+           /* Function: btnCancel_Click
            * -----------------------------------------------------------------------------
            * Description: Closes the application upon clicking the cancel button from the login form.
            * -----------------------------------------------------------------------------

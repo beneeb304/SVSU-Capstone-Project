@@ -147,12 +147,6 @@
     <Compile Include="Views\frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSetPassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\frmSetPassword.Designer.cs">
-      <DependentUpon>frmSetPassword.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202202110253137_init.cs" />
     <Compile Include="Migrations\202202110253137_init.designer.cs">
       <DependentUpon>202202110253137_init.cs</DependentUpon>
@@ -256,9 +250,6 @@
     <EmbeddedResource Include="Reports\SimulatorUses.rdlc" />
     <EmbeddedResource Include="Views\frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmSetPassword.resx">
-      <DependentUpon>frmSetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202110253137_init.resx">
       <DependentUpon>202202110253137_init.cs</DependentUpon>
