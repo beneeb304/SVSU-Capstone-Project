@@ -31,11 +31,6 @@ namespace SVSU_Capstone_Project.Views
          */
         private void frmGenerateReports_Load( object sender, EventArgs e )
         {
-            //this.reportViewer1.RefreshReport();
-            //this.reportViewer2.RefreshReport();
-            //this.reportViewer3.RefreshReport();
-            //this.reportViewer4.RefreshReport();
-
             //Load data for first tab
             tbcReports_SelectedIndexChanged(sender, e);
         }
@@ -95,3 +90,4 @@ namespace SVSU_Capstone_Project.Views
     }
 }
 //Lamar, is there a way to make this page load faster? -Everyone, especially Ben
+//Dear Everyone, you could have easily created the reports for them in whatever way you guys wanted, yet no one offered to help with them, but there is a lot of opinions out there... Interesting. -Lamar
