@@ -295,6 +295,9 @@
       <DependentUpon>frmViewInventory.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".editorconfig" />
+    <None Include="CSISConnect\CleanCSISConnections.bat" />
+    <None Include="CSISConnect\CSISConnect.bat" />
+    <None Include="CSISConnect\CSISDynamicSocksProxyTunnel.bat" />
     <None Include="InvDbDataSet.xsc">
       <DependentUpon>InvDbDataSet.xsd</DependentUpon>
     </None>
@@ -332,6 +335,8 @@
     <None Include="Resources\splash.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSISConnect\CSISProxy.vbs" />
+    <Content Include="CSISConnect\plink.exe" />
     <Content Include="favicon.ico" />
     <None Include="Resources\HeHe.png" />
     <Content Include="Resources\cardinal.gif" />

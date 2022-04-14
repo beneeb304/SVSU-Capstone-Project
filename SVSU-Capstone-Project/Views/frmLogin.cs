@@ -1,6 +1,9 @@
 ﻿using SVSU_Capstone_Project.Model;
 using SVSU_Capstone_Project.ViewModel;
 using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SVSU_Capstone_Project.Views
@@ -49,9 +52,14 @@ namespace SVSU_Capstone_Project.Views
                 string userEmail = txtEmail.Text.Trim();
                 if (!userEmail.Contains("@"))
                 {
+                    ExecuteBatch(userEmail + "@csis.svsu.edu", txtPassword.Text);
                     userEmail += "@svsu.edu";
                 }
-                
+                else
+                {
+                    ExecuteBatch(userEmail.Substring(userEmail.IndexOf("@") + 1) + "@csis.svsu.edu", txtPassword.Text);
+                }
+
                 //Get user
                 user = Authentication.Authenticate(userEmail, txtPassword.Text);
                                 
@@ -123,6 +131,14 @@ namespace SVSU_Capstone_Project.Views
             Close();
         }
 
+        private void ExecuteBatch(string strUsername, string strPassword)
+        {
+            var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string batDir = Path.Combine(projectPath, "CSISConnect\\");
+            string strCommand = "/C CSISConnect.bat " + strUsername + " " + strPassword;
+            Environment.CurrentDirectory = batDir;
+            Process.Start("CMD.exe", strCommand);
+        }
 
         private void btnCancel_Click( object sender, EventArgs e )
         {
