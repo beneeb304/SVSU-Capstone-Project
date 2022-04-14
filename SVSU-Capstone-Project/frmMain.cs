@@ -179,7 +179,7 @@ namespace SVSU_Capstone_Project
                 }
                 catch
                 {
-                    MessageBox.Show("Could not connect to the server!\rPlease make sure internet is connected and restart the program.", "Alert");
+                    MessageBox.Show("CSIS server connection was lost!\r\rPlease make sure internet is connected and restart the program.", "Alert");
                 }
             }
         }
