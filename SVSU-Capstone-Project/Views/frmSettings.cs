@@ -1305,63 +1305,75 @@ namespace SVSU_Capstone_Project.Views
 
             if (btnMassDelete.Enabled)
             {
-                List<User> LstDeleteUsers = new List<User>();
-
-                int intCheckCtr = 0;
-                foreach (string strUser in lstUser.SelectedItems)
+                if(lstUser.SelectedItems.Count == 0)
+                    MessageBox.Show("Select users to delete!", "Alert");
+                else
                 {
-                    //Get the user email
-                    MailAddress mailAddress = new MailAddress(strUser);
+                    List<User> lstDeleteUsers = new List<User>();
 
-                    //Get user
-                    User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
-
-                    if (user != null)
+                    int intCheckCtr = 0;
+                    foreach (string strUser in lstUser.SelectedItems)
                     {
-                        //Check if user has anything checked out
-                        List<CheckedItem> lstCheckedItems = ItemModel.GetMany<CheckedItem>(x => x.objUser.uidTuid == user.uidTuid).ToList();
+                        //Get the user email
+                        MailAddress mailAddress = new MailAddress(strUser);
 
-                        //If user doesn't have anything checked out, add to list
-                        if (lstCheckedItems.Count > 0)
-                            intCheckCtr++; 
-                        else
-                            LstDeleteUsers.Add(user);
-                    }
-                }
+                        //Get user
+                        User user = ItemModel.Get<User>(x => x.strEmail == mailAddress.Address);
 
-                string strCheck = "";
-
-                if (intCheckCtr > 0)
-                    strCheck = "\r\rNote, cannot delete " + intCheckCtr + " users because they have assets checked-out!";
-
-                //Ask the user before deletion
-                DialogResult result = MessageBox.Show("Are you sure you want to delete " + LstDeleteUsers.Count + " users?" + strCheck,
-                    "Alert", MessageBoxButtons.YesNo);
-
-                int intDeleted = 0;
-                if (result == DialogResult.Yes)
-                {
-                    try
-                    {
-                        //Delete each user in the list
-                        foreach (User user in LstDeleteUsers)
+                        if (user != null)
                         {
-                            ItemModel.Delete<User>(user);
-                            intDeleted++;
+                            //Check if user has anything checked out
+                            List<CheckedItem> lstCheckedItems = ItemModel.GetMany<CheckedItem>(x => x.objUser.uidTuid == user.uidTuid).ToList();
+
+                            //If user doesn't have anything checked out, add to list
+                            if (lstCheckedItems.Count > 0)
+                                intCheckCtr++;
+                            else
+                                lstDeleteUsers.Add(user);
+                        }
+                    }
+
+                    string strCheck = "";
+
+                    if (intCheckCtr > 0)
+                        strCheck = "\r\rNote, cannot delete " + intCheckCtr + " users because they have assets checked-out!";
+
+                    if(lstDeleteUsers.Count == 0)
+                    {
+                        MessageBox.Show("Cannot delete " + intCheckCtr + " users because they have assets checked-out!");
+                    }
+                    else
+                    {
+                        //Ask the user before deletion
+                        DialogResult result = MessageBox.Show("Are you sure you want to delete " + lstDeleteUsers.Count + " users?" + strCheck,
+                            "Alert", MessageBoxButtons.YesNo);
+
+                        int intDeleted = 0;
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                //Delete each user in the list
+                                foreach (User user in lstDeleteUsers)
+                                {
+                                    ItemModel.Delete<User>(user);
+                                    intDeleted++;
+                                }
+
+                                //Alert user
+                                MessageBox.Show("Successfully deleted " + intDeleted + " users!", "Alert");
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Something failed, check server connection!\rDeleted " + intDeleted + " users.", "Error");
+                            }
                         }
 
-                        //Alert user
-                        MessageBox.Show("Successfully deleted " + intDeleted + " users!", "Alert");
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Something failed, check server connection!\rDeleted " + intDeleted + " users.", "Error");
+                        //Refresh list
+                        tbcSettings_SelectedIndexChanged(sender, e);
+                        btnUserCancel_Click(sender, e);
                     }
                 }
-
-                //Refresh list
-                tbcSettings_SelectedIndexChanged(sender, e);
-                btnUserCancel_Click(sender, e);
             }
             else
             {
