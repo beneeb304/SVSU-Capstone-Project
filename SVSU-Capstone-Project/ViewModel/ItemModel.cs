@@ -58,15 +58,26 @@ namespace SVSU_Capstone_Project.ViewModel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error! No connection to database!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 if (Application.OpenForms["frmLogin"] != null)
-                    MessageBox.Show("Cannot login, shutting down!\r\rMake sure you are connected to the internet and entering valid SVSU credentials!", "Error");
+                {
+                    foreach (System.Diagnostics.Process proc in System.Diagnostics.Process.GetProcesses())
+                    {
+                        if (proc.MainWindowTitle.Contains("CSIS-Connect"))
+                        {
+                            proc.CloseMainWindow();
+                            break;
+                        }
+                    }
+                }
                 else
+                {
+                    MessageBox.Show(ex.Message, "Error! No connection to database!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     MessageBox.Show("Please check your internet connection and try to start the application again. The application will now close.", "Alert");
 
-                //close application 
-                Application.Exit();
+                    //close application 
+                    Application.Exit();
+                }
+
                 return null;
             }
         }
