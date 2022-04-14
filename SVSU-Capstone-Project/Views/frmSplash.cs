@@ -56,7 +56,7 @@ namespace SVSU_Capstone_Project.Views
         private void pcbSplash_DoubleClick( object sender, EventArgs e )
         {
             tmrSplash.Interval = 6000;
-            HeHe(pcbSplash);
+            _ = HeHe(pcbSplash);
         }
 
         public static async Task HeHe( PictureBox pcbHeHe )

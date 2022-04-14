@@ -1030,7 +1030,6 @@ namespace SVSU_Capstone_Project.Views
                             //Default fields
                             blnIsAdmin = false,
                             strPhone = "",
-                            strHash = "Capstone2022",
 
                             //Row fields
                             strSvsu_id = strSVSUID,

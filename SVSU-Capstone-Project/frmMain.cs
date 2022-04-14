@@ -198,9 +198,9 @@ namespace SVSU_Capstone_Project
                 Application.Restart();
         }
 
-        private void pcbHeHe_DoubleClick( object sender, EventArgs e )
+        private async void pcbHeHe_DoubleClick( object sender, EventArgs e )
         {
-            HeHe(pcbHeHe);
+            await HeHe(pcbHeHe);
         }
 
         public static async Task HeHe(PictureBox pcbHeHe)

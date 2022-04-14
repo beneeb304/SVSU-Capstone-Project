@@ -301,7 +301,7 @@ namespace SVSU_Capstone_Project.Views
             {
                 var email = lstStudentChkIn.Text.Split(' ').Last();
                 var objSelectedItem = cmbChkInCommodity.SelectedItem;
-                var objCommodity_tuid = ItemModel.Get<Commodity>(x => x.strName == objSelectedItem);
+                var objCommodity_tuid = ItemModel.Get<Commodity>(x => x.strName == objSelectedItem.ToString());
                 var doesExist = ItemModel.Get<CheckedItem>(x => x.objUser.strEmail == email && x.objCommodities.strName == objSelectedItem.ToString());
                 var timestamp = DateTime.Now;
                 var objUser = ItemModel.Get<User>(x => x.strEmail == email);

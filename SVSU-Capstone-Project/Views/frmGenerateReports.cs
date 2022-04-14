@@ -89,3 +89,4 @@ namespace SVSU_Capstone_Project.Views
 
     }
 }
+//Lamar, is there a way to make this page load faster? -Everyone, especially Ben
