@@ -169,6 +169,19 @@ namespace SVSU_Capstone_Project
         {
             //Set time and date
             lblDateTime.Text = DateTime.Now.ToString("hh:mm:ss tt MM/dd/yyyy");
+
+            //Watchdog that runs every 5 minutes check server connection
+            if(DateTime.Now.Minute % 5 == 0 && DateTime.Now.Second == 0)
+            {
+                try
+                {
+                    List<NLevel> lstNLevels = ItemModel.GetMany<NLevel>();
+                }
+                catch
+                {
+                    MessageBox.Show("Could not connect to the server!\rPlease make sure internet is connected and restart the program.", "Alert");
+                }
+            }
         }
 
         /* Function: btnLogout_Click
