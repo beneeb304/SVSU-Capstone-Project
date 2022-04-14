@@ -147,12 +147,6 @@
     <Compile Include="Views\frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmSetPassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\frmSetPassword.Designer.cs">
-      <DependentUpon>frmSetPassword.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202202110253137_init.cs" />
     <Compile Include="Migrations\202202110253137_init.designer.cs">
       <DependentUpon>202202110253137_init.cs</DependentUpon>
@@ -257,9 +251,6 @@
     <EmbeddedResource Include="Views\frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmSetPassword.resx">
-      <DependentUpon>frmSetPassword.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202110253137_init.resx">
       <DependentUpon>202202110253137_init.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +286,9 @@
       <DependentUpon>frmViewInventory.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".editorconfig" />
+    <None Include="CSISConnect\CleanCSISConnections.bat" />
+    <None Include="CSISConnect\CSISConnect.bat" />
+    <None Include="CSISConnect\CSISDynamicSocksProxyTunnel.bat" />
     <None Include="InvDbDataSet.xsc">
       <DependentUpon>InvDbDataSet.xsd</DependentUpon>
     </None>
@@ -332,6 +326,8 @@
     <None Include="Resources\splash.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSISConnect\CSISProxy.vbs" />
+    <Content Include="CSISConnect\plink.exe" />
     <Content Include="favicon.ico" />
     <None Include="Resources\HeHe.png" />
     <Content Include="Resources\cardinal.gif" />

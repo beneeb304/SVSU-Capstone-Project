@@ -54,17 +54,32 @@ namespace SVSU_Capstone_Project.ViewModel
             try
             {
                 conn.Open();
-                //MessageBox.Show("successfull connection", "Alert");
+                return db.Set<T>().FirstOrDefault(predicate);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error! No connection to databse!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("Please check your internet connection and try to start the application again. The application will now close.", "Alert");
+                if (Application.OpenForms["frmLogin"] != null)
+                {
+                    foreach (System.Diagnostics.Process proc in System.Diagnostics.Process.GetProcesses())
+                    {
+                        if (proc.MainWindowTitle.Contains("CSIS-Connect"))
+                        {
+                            proc.CloseMainWindow();
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message, "Error! No connection to database!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please check your internet connection and try to start the application again. The application will now close.", "Alert");
 
-                //close application 
-                Environment.Exit(0);
+                    //close application 
+                    Application.Exit();
+                }
+
+                return null;
             }
-            return db.Set<T>().FirstOrDefault(predicate);
         }
 
         public static Guid Add<T>( T obj, out T item ) where T : ContextEntity

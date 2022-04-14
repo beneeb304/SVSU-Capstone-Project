@@ -17,11 +17,8 @@
         public string strEmail { get; set; }
         [Column("phone")]
         public string strPhone { get; set; }
-        [Column("hash"), Required]
-        public string strHash { get; set; }
         [Column("isAdmin"), Required]
         public bool blnIsAdmin { get; set; }
-        public bool blnPwdReset { get; set; }
 
         public virtual List<Log> lstLogs { get; set; }
         public virtual List<CheckedItem> lstCheckedItems { get; set; }

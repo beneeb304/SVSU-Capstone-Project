@@ -68,8 +68,8 @@ namespace SVSU_Capstone_Project
             this.mstMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.mstMain.Location = new System.Drawing.Point(0, 0);
             this.mstMain.Name = "mstMain";
-            this.mstMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.mstMain.Size = new System.Drawing.Size(179, 192);
+            this.mstMain.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.mstMain.Size = new System.Drawing.Size(239, 192);
             this.mstMain.TabIndex = 0;
             this.mstMain.Text = "menuStrip1";
             // 
@@ -77,7 +77,7 @@ namespace SVSU_Capstone_Project
             // 
             this.msiHome.Name = "msiHome";
             this.msiHome.Padding = new System.Windows.Forms.Padding(4);
-            this.msiHome.Size = new System.Drawing.Size(174, 31);
+            this.msiHome.Size = new System.Drawing.Size(233, 31);
             this.msiHome.Text = "Home";
             this.msiHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiHome.Click += new System.EventHandler(this.PageController);
@@ -86,7 +86,7 @@ namespace SVSU_Capstone_Project
             // 
             this.msiViewInventory.Name = "msiViewInventory";
             this.msiViewInventory.Padding = new System.Windows.Forms.Padding(4);
-            this.msiViewInventory.Size = new System.Drawing.Size(174, 31);
+            this.msiViewInventory.Size = new System.Drawing.Size(233, 31);
             this.msiViewInventory.Text = "View Inventory";
             this.msiViewInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiViewInventory.Click += new System.EventHandler(this.PageController);
@@ -95,7 +95,7 @@ namespace SVSU_Capstone_Project
             // 
             this.msiManageInventory.Name = "msiManageInventory";
             this.msiManageInventory.Padding = new System.Windows.Forms.Padding(4);
-            this.msiManageInventory.Size = new System.Drawing.Size(174, 31);
+            this.msiManageInventory.Size = new System.Drawing.Size(233, 31);
             this.msiManageInventory.Text = "Manage Inventory";
             this.msiManageInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiManageInventory.Click += new System.EventHandler(this.PageController);
@@ -104,7 +104,7 @@ namespace SVSU_Capstone_Project
             // 
             this.msiGenerateReports.Name = "msiGenerateReports";
             this.msiGenerateReports.Padding = new System.Windows.Forms.Padding(4);
-            this.msiGenerateReports.Size = new System.Drawing.Size(174, 31);
+            this.msiGenerateReports.Size = new System.Drawing.Size(233, 31);
             this.msiGenerateReports.Text = "Generate Reports";
             this.msiGenerateReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiGenerateReports.Click += new System.EventHandler(this.PageController);
@@ -113,7 +113,7 @@ namespace SVSU_Capstone_Project
             // 
             this.msiCheckInOutItems.Name = "msiCheckInOutItems";
             this.msiCheckInOutItems.Padding = new System.Windows.Forms.Padding(4);
-            this.msiCheckInOutItems.Size = new System.Drawing.Size(174, 31);
+            this.msiCheckInOutItems.Size = new System.Drawing.Size(233, 31);
             this.msiCheckInOutItems.Text = "Check-In/Out Assets";
             this.msiCheckInOutItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiCheckInOutItems.Click += new System.EventHandler(this.PageController);
@@ -122,7 +122,7 @@ namespace SVSU_Capstone_Project
             // 
             this.msiSettings.Name = "msiSettings";
             this.msiSettings.Padding = new System.Windows.Forms.Padding(4);
-            this.msiSettings.Size = new System.Drawing.Size(174, 31);
+            this.msiSettings.Size = new System.Drawing.Size(233, 31);
             this.msiSettings.Text = "Settings";
             this.msiSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msiSettings.Click += new System.EventHandler(this.PageController);
@@ -133,7 +133,8 @@ namespace SVSU_Capstone_Project
             this.lblUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(13)))), ((int)(((byte)(32)))));
             this.lblUser.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(873, 39);
+            this.lblUser.Location = new System.Drawing.Point(1164, 48);
+            this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(73, 24);
             this.lblUser.TabIndex = 2;
@@ -145,7 +146,8 @@ namespace SVSU_Capstone_Project
             this.lblDateTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(13)))), ((int)(((byte)(32)))));
             this.lblDateTime.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
-            this.lblDateTime.Location = new System.Drawing.Point(873, 95);
+            this.lblDateTime.Location = new System.Drawing.Point(1164, 117);
+            this.lblDateTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(73, 24);
             this.lblDateTime.TabIndex = 3;
@@ -162,7 +164,8 @@ namespace SVSU_Capstone_Project
             this.lblLoggedInTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(13)))), ((int)(((byte)(32)))));
             this.lblLoggedInTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoggedInTime.ForeColor = System.Drawing.Color.White;
-            this.lblLoggedInTime.Location = new System.Drawing.Point(874, 63);
+            this.lblLoggedInTime.Location = new System.Drawing.Point(1165, 78);
+            this.lblLoggedInTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLoggedInTime.Name = "lblLoggedInTime";
             this.lblLoggedInTime.Size = new System.Drawing.Size(50, 18);
             this.lblLoggedInTime.TabIndex = 5;
@@ -174,16 +177,18 @@ namespace SVSU_Capstone_Project
             this.panel1.Controls.Add(this.mstMain);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 187);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(181, 494);
+            this.panel1.Size = new System.Drawing.Size(241, 651);
             this.panel1.TabIndex = 1;
             // 
             // btnLogOut
             // 
             this.btnLogOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Location = new System.Drawing.Point(1046, 137);
+            this.btnLogOut.Location = new System.Drawing.Point(1395, 169);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(98, 41);
+            this.btnLogOut.Size = new System.Drawing.Size(131, 50);
             this.btnLogOut.TabIndex = 7;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
@@ -192,9 +197,10 @@ namespace SVSU_Capstone_Project
             // pcbHeHe
             // 
             this.pcbHeHe.Image = global::SVSU_Capstone_Project.Properties.Resources.HeHe;
-            this.pcbHeHe.Location = new System.Drawing.Point(0, 35);
+            this.pcbHeHe.Location = new System.Drawing.Point(0, 43);
+            this.pcbHeHe.Margin = new System.Windows.Forms.Padding(4);
             this.pcbHeHe.Name = "pcbHeHe";
-            this.pcbHeHe.Size = new System.Drawing.Size(180, 150);
+            this.pcbHeHe.Size = new System.Drawing.Size(240, 185);
             this.pcbHeHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbHeHe.TabIndex = 9;
             this.pcbHeHe.TabStop = false;
@@ -205,17 +211,18 @@ namespace SVSU_Capstone_Project
             this.pcbMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.pcbMain.Image = global::SVSU_Capstone_Project.Properties.Resources.svsu_top_bar;
             this.pcbMain.Location = new System.Drawing.Point(0, 0);
+            this.pcbMain.Margin = new System.Windows.Forms.Padding(4);
             this.pcbMain.Name = "pcbMain";
-            this.pcbMain.Size = new System.Drawing.Size(1156, 187);
+            this.pcbMain.Size = new System.Drawing.Size(1541, 187);
             this.pcbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pcbMain.TabIndex = 1;
             this.pcbMain.TabStop = false;
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1156, 681);
+            this.ClientSize = new System.Drawing.Size(1541, 838);
             this.Controls.Add(this.pcbHeHe);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.panel1);
@@ -228,12 +235,14 @@ namespace SVSU_Capstone_Project
             this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.mstMain;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1172, 714);
+            this.MinimumSize = new System.Drawing.Size(1557, 870);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Saginaw Valley Nursing Inventory System";
             this.TransparencyKey = System.Drawing.Color.Transparent;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.mstMain.ResumeLayout(false);
             this.mstMain.PerformLayout();
