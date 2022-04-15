@@ -58,18 +58,7 @@ namespace SVSU_Capstone_Project.ViewModel
             }
             catch (Exception ex)
             {
-                if (Application.OpenForms["frmLogin"] != null)
-                {
-                    foreach (System.Diagnostics.Process proc in System.Diagnostics.Process.GetProcesses())
-                    {
-                        if (proc.MainWindowTitle.Contains("CSIS-Connect"))
-                        {
-                            proc.CloseMainWindow();
-                            break;
-                        }
-                    }
-                }
-                else
+                if (Application.OpenForms["frmLogin"] == null)
                 {
                     MessageBox.Show(ex.Message, "Error! No connection to database!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     MessageBox.Show("Please check your internet connection and try to start the application again. The application will now close.", "Alert");

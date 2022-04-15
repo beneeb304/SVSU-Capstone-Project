@@ -19,7 +19,6 @@ namespace SVSU_Capstone_Project.Views
          * -----------------------------------------------------------------------------
          */
             InitializeComponent();
-            
         }
 
 
@@ -92,7 +91,11 @@ namespace SVSU_Capstone_Project.Views
                         }
                     }
                     else
+                    {
+                        //Close the CMD window and alert user
+                        frmMain.CloseCMD();
                         throw new UserNotFoundException("Incorrect username/password combination");
+                    }
                 }
             }
             catch (ArgumentException ex)
@@ -133,6 +136,11 @@ namespace SVSU_Capstone_Project.Views
                 MessageBox.Show("Problem accessing connection files!\r\rConsider restarting PC and try again.", "Error");
                 return false;
             }
+        }
+
+        public void CloseBatch()
+        {
+
         }
 
         private void btnCancel_Click( object sender, EventArgs e )

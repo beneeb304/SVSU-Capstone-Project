@@ -55,14 +55,6 @@ namespace SVSU_Capstone_Project.ViewModel
             }
             return ActiveUser;
         }
-        public static string GenerateHash( string value )
-        {
-            // Calculate SHA256 hash
-            var sha256 = System.Security.Cryptography.SHA256.Create();
-            var inputBytes = Encoding.ASCII.GetBytes(value);
-            var hash = sha256.ComputeHash(inputBytes);
-            return Convert.ToBase64String(hash);
-        }
     }
     public class UserNotFoundException : Exception
         {

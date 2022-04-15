@@ -1197,7 +1197,6 @@ namespace SVSU_Capstone_Project.Views
           * Local Variables:
           * string strEmail - user inout stored for the email
           * string strID - user input stored for the user ID
-          * string strHas - the random default password that was created
           * object sender; The object calling the method.
           * EventArgs e; Information passed by the sender object about the method call.
           */
@@ -1451,7 +1450,7 @@ namespace SVSU_Capstone_Project.Views
                                         ItemModel.Update<User>(user);
 
                                         //Alert user
-                                        MessageBox.Show("Successful Modification!\rIf you just made this user an admin, be sure to reset their password.", "Alert");
+                                        MessageBox.Show("Successful Modification!", "Alert");
 
                                         //Refresh list
                                         tbcSettings_SelectedIndexChanged(sender, e);

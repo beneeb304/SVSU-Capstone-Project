@@ -8006,7 +8006,7 @@ namespace SVSU_Capstone_Project.InvDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8271,7 +8271,7 @@ SELECT tuid, name, description, objRoom_uidTuid FROM Cabinets WHERE (tuid = @tui
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8620,7 +8620,7 @@ SELECT tuid, name, description, objRoom_uidTuid FROM Cabinets WHERE (tuid = @tui
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8954,7 +8954,7 @@ SELECT tuid, objCommodities_uidTuid, objUser_uidTuid, objLog_uidTuid FROM Checke
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9356,7 +9356,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9772,7 +9772,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10108,7 +10108,7 @@ SELECT tuid, name, description, features, alert_quantity, commodityType, objCate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10447,7 +10447,7 @@ SELECT tuid, quantity, objCabinet_uidTuid, objCommodity_uidTuid, objNLevel_uidTu
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10852,7 +10852,7 @@ SELECT tuid, svsu_id, first_name, last_name, email, phone, hash, isAdmin FROM Us
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11263,7 +11263,7 @@ SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11635,7 +11635,7 @@ SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11944,7 +11944,7 @@ SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12144,7 +12144,7 @@ SELECT tuid, costInCents, itemUrl, objCommodity_uidTuid, objVendor_uidTuid FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12324,7 +12324,7 @@ WHERE A.quantity <= B.alert_quantity";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString1;
+            this._connection.ConnectionString = global::SVSU_Capstone_Project.Properties.Settings.Default.InvDbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

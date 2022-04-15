@@ -214,7 +214,7 @@ namespace SVSU_Capstone_Project
             
         }
 
-        private void frmMain_FormClosing( object sender, FormClosingEventArgs e )
+        public static void CloseCMD()
         {
             foreach (System.Diagnostics.Process proc in System.Diagnostics.Process.GetProcesses())
             {
@@ -224,6 +224,11 @@ namespace SVSU_Capstone_Project
                     break;
                 }
             }
+        }
+
+        private void frmMain_FormClosing( object sender, FormClosingEventArgs e )
+        {
+            CloseCMD();
         }
     }
 }
