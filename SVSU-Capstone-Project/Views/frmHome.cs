@@ -34,7 +34,7 @@ namespace SVSU_Capstone_Project.Views
         {
             try
             {
-                var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                var projectPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\"));
                 string filePath = Path.Combine(projectPath, "Resources\\User_Guide.pdf");
                 System.Diagnostics.Process.Start(filePath);
             }
@@ -43,7 +43,7 @@ namespace SVSU_Capstone_Project.Views
                 MessageBox.Show("Could not open User Guide PDF! Please make sure:\r\r" +
                     "The file isn't already opened.\r" +
                     "The file exists in the resource folder.\r" +
-                    "A PDF viewer is installed.", "Alert");
+                    "A default PDF viewer is set and installed.", "Alert");
             }
         }
 
