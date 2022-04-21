@@ -60,7 +60,7 @@ namespace SVSU_Capstone_Project.Views
                 else
                     strCSIS = userEmail.Substring(0, userEmail.IndexOf("@") + 1) + "@csis.svsu.edu";
 
-                if(ExecuteBatch(userEmail + "@csis.svsu.edu", txtPassword.Text))
+                if(ExecuteBatch(strCSIS, txtPassword.Text))
                 {
                     //Get user
                     User user = Authentication.Authenticate(userEmail, txtPassword.Text);

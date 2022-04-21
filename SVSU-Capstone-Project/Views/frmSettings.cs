@@ -2433,5 +2433,10 @@ namespace SVSU_Capstone_Project.Views
             //Alert user what to do
             MessageBox.Show("Select all of the users that you want to delete. Then, click to confirm your actions.", "Alert");
         }
+
+        private void chkUserAdmin_CheckedChanged( object sender, EventArgs e )
+        {
+
+        }
     }
 }
