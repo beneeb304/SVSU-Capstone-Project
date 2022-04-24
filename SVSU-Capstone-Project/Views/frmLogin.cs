@@ -24,10 +24,10 @@ namespace SVSU_Capstone_Project.Views
 
         private void btnLogin_Click( object sender, EventArgs e )
         {
-                /* Function: btnLogin_Click
+            /* Function: btnLogin_Click
             * -----------------------------------------------------------------------------
             * Description: Upon the Login button click, validate the entered credentials.
-            * If both the userID and password fields are filled out and authenticate,
+            * If the userID field is filled out and authenticate,
             * log the user into the application with those credentials.
             * -----------------------------------------------------------------------------
             *  Parameter Dictionary (in parameter order):  
@@ -44,58 +44,53 @@ namespace SVSU_Capstone_Project.Views
 
             try
             {
+                //Attmept to connect to CSIS server
+                ExecuteBatch();
+                
                 //Make sure fields are filled out
                 if (txtEmail.Text.Trim().Length == 0) throw new UserNotFoundException("Cannot leave username blank");
-                if (txtPassword.Text.Trim().Length == 0) throw new PasswordInvalidException("Cannot leave password blank");
 
                 //Check for @ in the login (note: if domain is not svsu, this will not work)
                 string userEmail = txtEmail.Text.Trim();
-                string strCSIS;
 
                 if (!userEmail.Contains("@"))
                 {
-                    strCSIS = userEmail + "@csis.svsu.edu";
                     userEmail += "@svsu.edu";
                 }
-                else
-                    strCSIS = userEmail.Substring(0, userEmail.IndexOf("@") + 1) + "@csis.svsu.edu";
 
-                if(ExecuteBatch(strCSIS, txtPassword.Text))
+                //Get user
+                User user = Authentication.Authenticate(userEmail);
+
+                if (user != null)
                 {
-                    //Get user
-                    User user = Authentication.Authenticate(userEmail, txtPassword.Text);
-
-                    if (user != null)
+                    //If user isn't admin and somehow got this far, don't let them login
+                    if (user.blnIsAdmin == false)
                     {
-                        //If user isn't admin and somehow got this far, don't let them login
-                        if (user.blnIsAdmin == false)
-                        {
-                            //Set user back to null
-                            Authentication.ActiveUser = null;
-                            throw new UserNotFoundException("Must be admin to login");
-                        }
-                        else
-                        {
-                            Log log = new Log
-                            {
-                                enuAction = ItemAction.UserLogin,
-                                dtTimestamp = DateTime.Now,
-                                intQuantityChange = 0,
-                                objStorage = null,
-                                objUser = Authentication.ActiveUser,
-                                strNotes = $"{Authentication.ActiveUser} logged into the system on {DateTime.Now}."
-                            };
-                            ItemModel.Add<Log>(log);
-                            var homeLoad = new frmHome();
-                            homeLoad.populateTables();
-                        }
+                        //Set user back to null
+                        Authentication.ActiveUser = null;
+                        throw new UserNotFoundException("Must be admin to login");
                     }
                     else
                     {
-                        //Close the CMD window and alert user
-                        frmMain.CloseCMD();
-                        throw new UserNotFoundException("Incorrect username/password combination");
+                        Log log = new Log
+                        {
+                            enuAction = ItemAction.UserLogin,
+                            dtTimestamp = DateTime.Now,
+                            intQuantityChange = 0,
+                            objStorage = null,
+                            objUser = Authentication.ActiveUser,
+                            strNotes = $"{Authentication.ActiveUser} logged into the system on {DateTime.Now}."
+                        };
+                        ItemModel.Add<Log>(log);
+                        var homeLoad = new frmHome();
+                        homeLoad.populateTables();
                     }
+                }
+                else
+                {
+                    //Close the CMD window and alert user
+                    frmMain.CloseCMD();
+                    throw new UserNotFoundException("User does not exist!");
                 }
             }
             catch (ArgumentException ex)
@@ -106,12 +101,6 @@ namespace SVSU_Capstone_Project.Views
             catch (UserNotFoundException ex)
             {
                 erpLoginForm.SetError(txtEmail, ex.Message);
-                txtPassword.Text = "";
-                return;
-            }
-            catch (PasswordInvalidException ex)
-            {
-                erpLoginForm.SetError(txtPassword, ex.Message);
                 return;
             }
             erpLoginForm.Clear();
@@ -120,13 +109,13 @@ namespace SVSU_Capstone_Project.Views
             Close();
         }
 
-        private bool ExecuteBatch(string strUsername, string strPassword)
+        private bool ExecuteBatch()
         {
             try
             {
                 var projectPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\"));
                 string batDir = Path.Combine(projectPath, "CSISConnect\\");
-                string strCommand = "/C START /MIN CSISConnect.bat \"" + strUsername + "\" \"" + strPassword + "\"";
+                string strCommand = "/C START /MIN CSISConnect.bat";
                 Environment.CurrentDirectory = batDir;
                 Process.Start("CMD.exe", strCommand);
                 return true;
@@ -136,11 +125,6 @@ namespace SVSU_Capstone_Project.Views
                 MessageBox.Show("Problem accessing connection files!\r\rConsider restarting PC and try again.", "Error");
                 return false;
             }
-        }
-
-        public void CloseBatch()
-        {
-
         }
 
         private void btnCancel_Click( object sender, EventArgs e )
@@ -168,21 +152,6 @@ namespace SVSU_Capstone_Project.Views
              * EventArgs e; Information passed by the sender object about the method call.
              * object sender; The object calling the method. txtUsername in this case.
              */
-
-            //Clear the error provider
-            erpLoginForm.Clear();
-        }
-
-        private void txtPassword_Click( object sender, EventArgs e )
-        {
-            /* Function: txtPassword_Click
-         * -----------------------------------------------------------------------------
-         * Description: Clears the error asking for the user to enter a password if it is showing.
-         * -----------------------------------------------------------------------------
-         * Parameter Dictionary (in parameter order):
-         * EventArgs e; Information passed by the sender object about the method call.
-         * object sender; The object calling the method. txtPassword in this case.            
-         */
 
             //Clear the error provider
             erpLoginForm.Clear();

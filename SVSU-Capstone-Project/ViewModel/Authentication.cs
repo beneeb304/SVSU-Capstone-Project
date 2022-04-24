@@ -21,12 +21,10 @@ namespace SVSU_Capstone_Project.ViewModel
         /// <throws> ArgumentException if username or password are null or empty </throws>
         /// <throws> ArgumentException if username is not found </throws>
         /// <throws> ArgumentException if password is incorrect </throws>
-        public static User Authenticate( string username, string password ) 
+        public static User Authenticate( string username) 
         {
             if( string.IsNullOrEmpty( username ) )
                 throw new ArgumentException( "Username cannot be null or empty" );
-            if( string.IsNullOrEmpty( password ) )
-                throw new ArgumentException( "Password cannot be null or empty" );
 
             var objUserProfile = ItemModel.Get<User>(u => u.strEmail == username);
 
